@@ -337,7 +337,7 @@ const config = {
             to: "eigencloud/eigencloud_overview",
             label: "EigenCloud",
             position: "left",
-            activeBasePath: 'eigencloud/',
+            activeBasePath: 'eigenlayer/',
           },
           {
             to: "eigenlayer/overview",
