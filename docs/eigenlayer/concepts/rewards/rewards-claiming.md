@@ -10,9 +10,9 @@ The posted distribution roots contain cumulative earnings. That is, Stakers and 
 root and claiming against the most recent root will claim anything not yet claimed.
 
 For information on configuring and claiming rewards, refer to:
-* [Set Rewards Claimer](../../../operators/howto/confirgurerewards/set-rewards-claimer.md) 
-* [Set Rewards Split](../../../operators/howto/confirgurerewards/set-rewards-split.md)
-* [Set PI Split](../../../operators/howto/confirgurerewards/set-pi-split.md)
-* [Claim Rewards using the CLI](../../../operators/howto/claimrewards/claim-rewards-cli.mdx)
+* [Set Rewards Claimer](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-claimer.md) 
+* [Set Rewards Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md)
+* [Set PI Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-pi-split.md)
+* [Claim Rewards using the CLI](../../../operators/operate-eigenlayer-node/howto/claimrewards/claim-rewards-cli.mdx)
 * [Claim Rewards using the App](../../../restakers/restaking-guides/claim-rewards-app.md)
-* [Batch Claim Rewards](../../../operators/howto/claimrewards/batch-claim-rewards.md)
+* [Batch Claim Rewards](../../../operators/operate-eigenlayer-node/howto/claimrewards/batch-claim-rewards.md)

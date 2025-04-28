@@ -3,6 +3,7 @@ title: Intro to EigenLayer
 sidebar_position: 1
 ---
 
+TODO - need to update relative to EigenCloud overview. Focus on protocol.
 
 ## What is EigenLayer?
 

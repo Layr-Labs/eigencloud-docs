@@ -334,19 +334,31 @@ const config = {
         },
         items: [
           {
+            to: "eigencloud/eigencloud_overview",
+            label: "EigenCloud",
+            position: "left",
+            activeBasePath: 'eigencloud/',
+          },
+          {
             to: "eigenlayer/overview",
             label: "EigenLayer",
             position: "left",
             activeBasePath: 'eigenlayer/',
           },
           {
-            to: "developers/Concepts/avs-developer-guide",
+            to: "eigenda/eigenda_overview",
+            label: "EigenDA",
+            position: "left",
+            activeBasePath: 'eigenda/',
+          },
+          {
+            to: "developers/build-an-avs/concepts/avs-developer-guide",
             label: "Developers",
             position: "left",
             activeBasePath: 'developers/',
           },
           {
-            to: "operators/concepts/operator-introduction",
+            to: "operators/operate-eigenlayer-node/concepts/operator-introduction",
             label: "Operators",
             position: "left",
             activeBasePath: 'operators/',
