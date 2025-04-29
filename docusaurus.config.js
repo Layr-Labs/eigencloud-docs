@@ -48,225 +48,6 @@ const config = {
             from: "/overview/readme/",
             to: "/eigenlayer/overview/",
           },
-          {
-            from: "/overview/privacy-policy",
-            to: "/eigenlayer/legal/privacy-policy",
-          },
-          {
-            from: "/overview/terms-of-service",
-            to: "/eigenlayer/legal/terms-of-service",
-          },
-          {
-            from: "/overview/disclaimers",
-            to: "/eigenlayer/legal/disclaimers",
-          },
-          // This is implicit, covered by the function case below
-          // {
-          //   from: "/overview/",
-          //   to: "/eigenlayer/overview/",
-          // },
-          {
-            from: "/overview/intro/",
-            to: "/eigenlayer/overview/",
-          },
-          {
-            from: "/faqs/operator-general-faq",
-            to: "/operators/reference/operator-faq",
-          },
-          {
-            from: "/operators/operator-guides/operator-sets",
-            to: "/operators/howto/operator-sets",
-          },
-          {
-            from: "/eigenlayer/concepts/slashing",
-            to: "/eigenlayer/concepts/slashing/slashing-concept",
-          },
-          {
-            from: "/operators/operator-guides/key-management/intro-key-management",
-            to: "/eigenlayer/concepts/keys-and-signatures",
-          },
-          {
-            from: "/operators/operator-guides/operator-introduction",
-            to: "/operators/concepts/operator-introduction",
-          },
-          {
-            from: "/operators/operator-guides/avs-operator-risks-mitigations-bp",
-            to: "/operators/howto/avs-operator-risks-mitigations-bp",
-          },
-          {
-            from: "/operators/operator-guides/key-management/institutional-operators",
-            to: "/operators/howto/managekeys/institutional-operators",
-          },
-          {
-            from: "/operators/operator-guides/key-management/solo-stakers",
-            to: "/operators/howto/managekeys/solo-stakers",
-          },
-          {
-            from: "/operators/operator-guides/operator-content-guidelines",
-            to: "/operators/howto/operator-content-guidelines",
-          },
-          {
-            from: "/operators/concepts/intro-key-management",
-            to: "/eigenlayer/concepts/keys-and-signatures",
-          },
-          {
-            from: "/operators/operator-guides/operator-installation",
-            to: "/operators/howto/operator-installation",
-          },
-          {
-            from: "/operators/operator-guides/operator-rewards-config",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/operators/operator-guides/troubleshooting",
-            to: "/operators/howto/troubleshooting",
-          },
-          {
-            from: "/operators/operator-guides/operator-faq",
-            to: "/operators/reference/operator-faq",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/rewards-claiming/rewards-claiming-instructions",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/restaker-delegation/stake-and-delegate-eigen",
-            to: "/restakers/concepts/overview",
-          },
-          
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/rewards-claiming/rewards-claiming-overview",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/rewards-claiming/claim-rewards/via-ui",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/rewards-claiming/claim-rewards/via-cli",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/rewards-claiming/rewards-claiming-faq",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/stage-2-testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts",
-            to: "/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/native-restaking/create-eigenpod-and-set-withdrawal-credentials/repointing-a-validators-withdrawal-credentials",
-            to: "/restakers/restaking-guides/restaking-user-guide/native-restaking/#restake-new-validator-native-beacon-chain-eth",
-          },
-          {
-            from: "/overview/eigenlayer-privacy-policy",
-            to: "/eigenlayer/legal/privacy-policy",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/",
-            to: "/restakers/concepts/overview",
-          },
-         {
-           from: "/restakers/restaking-guides/overview",
-           to: "/restakers/concepts/overview",
-         },
-
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/",
-            to: "/restakers/restaking-guides/testnet/",
-          },
-          {
-            from: "/eigenlayer/restaking-guides/restaking-user-guide/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts",
-            to: "/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts",
-          },
-          {
-            from: "/developers",
-            to: "/developers/Concepts/avs-developer-guide",
-          },
-          {
-            from: "/eigenlayer/economy/economy-overview",
-            to: "/eigenlayer/economy/economy-calculation-and-formulas",
-          },
-          {
-            from: "/developers/avs-developer-guide",
-            to: "/developers/Concepts/avs-developer-guide",
-          },
-          {
-            from: "/developers/avs-developer-best-practices",
-            to: "/developers/Reference/avs-developer-best-practices",
-          },
-          {
-            from: "/developers/avs-opset-slashing",
-            to: "/developers/HowTo/build/slashing/implement-slashing",
-          },
-          {
-            from: "/developers/avs-permissionlesss",
-            to: "/developers/HowTo/build/avs-permissionlesss",
-          },
-          {
-            from: "/developers/deployment-testnet-mainnet",
-            to: "/developers/HowTo/deploy/deployment-testnet-mainnet",
-          },
-          {
-            from: "/developers/how-to-build-an-avs",
-            to: "/developers/HowTo/get-started/implement-minimum-onchain-components",
-          },
-          {
-            from: "/developers/HowTo/how-to-build-an-avs",
-            to: "/developers/HowTo/get-started/implement-minimum-onchain-components",
-          },
-          {
-            from: "/developers/avs-dashboard-onboarding",
-            to: "/developers/HowTo/publish/onboard-avs-dashboard",
-          },
-          {
-            from: "/developers/rewards",
-            to: "/eigenlayer/concepts/rewards/rewards-concept",
-          },
-          {
-            from: "/developers/support",
-            to: "/developers/HowTo/get-started/support",
-          },
-          {
-            from: "/developers/resources",
-            to: "/developers/Reference/resources",
-          },
-          {
-            from: "/eigenlayer/rewards-claiming/claim-rewards/via-cli",
-            to: "/operators/howto/claimrewards/claim-rewards-cli",
-          },
-          {
-            from: "/eigenlayer/rewards-claiming/claim-rewards/via-ui",
-            to: "/restakers/restaking-guides/claim-rewards-app",
-          },
-          {
-            from: "/eigenlayer/rewards-claiming/rewards-claiming-overview",
-            to: "/eigenlayer/concepts/rewards/rewards-claiming",
-          },
-          {
-            from: "/developers/HowTo/slashing/design-operator-set",
-            to: "/developers/HowTo/build/slashing/design-operator-set",
-          },
-          {
-            from: "/developers/HowTo/build/how-to-build-an-avs",
-            to: "/developers/HowTo/get-started/implement-minimum-onchain-components",
-          },
-          {
-            from: "/developers/HowTo/slashing/migrate-to-operatorsets",
-            to: "/developers/HowTo/build/slashing/migrate-to-operatorsets",
-          },
-          {
-            from: "/developers/HowTo/slashing/slashing-veto-committee-design",
-            to: "/developers/HowTo/build/slashing/slashing-veto-committee-design",
-          },
-          {
-            from: "/developers/HowTo/build/implement-minimum-onchain-components",
-            to: "/developers/HowTo/get-started/implement-minimum-onchain-components",
-          },
-          {
-            from: "/developers/quickstart",
-            to: "/developers/HowTo/get-started/quickstart",
-          },
         ],
         createRedirects(existingPath) {
 
@@ -334,19 +115,31 @@ const config = {
         },
         items: [
           {
+            to: "eigencloud/eigencloud_overview",
+            label: "EigenCloud",
+            position: "left",
+            activeBasePath: 'eigencloud/',
+          },
+          {
             to: "eigenlayer/overview",
             label: "EigenLayer",
             position: "left",
             activeBasePath: 'eigenlayer/',
           },
           {
-            to: "developers/Concepts/avs-developer-guide",
+            to: "eigenda/eigenda_overview",
+            label: "EigenDA",
+            position: "left",
+            activeBasePath: 'eigenda/',
+          },
+          {
+            to: "developers/build-an-avs/concepts/avs-developer-guide",
             label: "Developers",
             position: "left",
             activeBasePath: 'developers/',
           },
           {
-            to: "operators/concepts/operator-introduction",
+            to: "operators/operate-eigenlayer-node/concepts/operator-introduction",
             label: "Operators",
             position: "left",
             activeBasePath: 'operators/',

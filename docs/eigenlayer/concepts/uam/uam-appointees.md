@@ -20,7 +20,7 @@ given appointee, remove all permissions for a given appointee, batch add appoint
 appointees for a given function.
 
 For information on how to add and remove appointees, refer to:
-* [Add and Remove Appointees](../../../developers/HowTo/build/uam/dev-add-remove-appointees.md) for Developers 
-* [Add and Remove Appointees](../../../operators/howto/uam/op-add-remove-appointees.md) for Operators
+* [Add and Remove Appointees](../../../developers/build-an-avs/howto/build/uam/dev-add-remove-appointees.md) for Developers 
+* [Add and Remove Appointees](../../../operators/operate-eigenlayer-node/howto/uam/op-add-remove-appointees.md) for Operators
 
 

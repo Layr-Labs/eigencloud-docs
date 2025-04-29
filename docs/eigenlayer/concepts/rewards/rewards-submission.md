@@ -10,4 +10,4 @@ AVSs make rewards submissions specifying:
 * List of weights for each Strategy for the reward.
 * ERC20 token in which to make rewards.
 
-For information on how to create a rewards submission, refer to [Submit Rewards Submission](../../../developers/HowTo/build/submit-rewards-submissions.md).
+For information on how to create a rewards submission, refer to [Submit Rewards Submission](../../../developers/build-an-avs/howto/build/submit-rewards-submissions.md).

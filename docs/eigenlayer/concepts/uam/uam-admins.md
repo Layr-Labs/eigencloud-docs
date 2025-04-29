@@ -18,5 +18,5 @@ Admins cannot be given access to a subset of functions or contracts. Admins alwa
 Specific function or contract access cannot be removed for a given admin.
 
 For information on how to add and remove admins, refer to:
-* [Add and Remove Admins](../../../operators/howto/uam/op-add-remove-admins.md) for Operators
-* [Add and Remove Admins](../../../developers/HowTo/build/uam/dev-add-remove-admins.md) for Developers
+* [Add and Remove Admins](../../../operators/operate-eigenlayer-node/howto/uam/op-add-remove-admins.md) for Operators
+* [Add and Remove Admins](../../../developers/build-an-avs/howto/build/uam/dev-add-remove-admins.md) for Developers

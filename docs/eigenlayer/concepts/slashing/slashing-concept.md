@@ -46,10 +46,10 @@ of permanently locking it within EigenPod contracts as planned in this release.
 ## For AVS Developers 
 
 For information on:
-* AVS security models and slashing, refer to [AVS Security Models](../../../developers/Concepts/avs-security-models.md). 
-* Design considerations for slashing, refer to [Design Operator Sets](../../../developers/HowTo/build/slashing/design-operator-set.md) and [Design Slashing Conditions](../../../developers/HowTo/build/slashing/slashing-veto-committee-design.md).
-* Implementing slashing, refer to [Implement Slashing](../../../developers/HowTo/build/slashing/implement-slashing.md).
+* AVS security models and slashing, refer to [AVS Security Models](../../../developers/build-an-avs/concepts/avs-security-models.md). 
+* Design considerations for slashing, refer to [Design Operator Sets](../../../developers/build-an-avs/howto/build/slashing/design-operator-set.md) and [Design Slashing Conditions](../../../developers/build-an-avs/howto/build/slashing/slashing-veto-committee-design.md).
+* Implementing slashing, refer to [Implement Slashing](../../../developers/build-an-avs/howto/build/slashing/implement-slashing.md).
 
 ## For Operators
 
-For information on allocating to Operator Sets, refer to [Allocate and Register to Operator Set](../../../operators/howto/operator-sets.md). 
+For information on allocating to Operator Sets, refer to [Allocate and Register to Operator Set](../../../operators/operate-eigenlayer-node/howto/operator-sets.md). 

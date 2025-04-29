@@ -41,7 +41,7 @@ function Home() {
                 />
   
                 <Card
-                  to="operators/concepts/operator-introduction"
+                  to="operators/operate-eigenlayer-node/concepts/operator-introduction"
                   header={{
                     label:"Node Operators"
                   }}
@@ -52,7 +52,7 @@ function Home() {
   
 
                 <Card
-                  to="developers/Concepts/avs-developer-guide"
+                  to="developers/build-an-avs/concepts/avs-developer-guide"
                   header={{
                     label:"Developers"
                   }}

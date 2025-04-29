@@ -9,7 +9,7 @@ When claiming Rewards using the [EigenLayer app](https://app.eigenlayer.xyz/):
 * The [rewards recipient](../../eigenlayer/concepts/rewards/earners-claimers-recipients.md) cannot be specified and is always the [Earner](../../eigenlayer/concepts/rewards/earners-claimers-recipients.md).
 * Batch claiming cannot be used.
 
-To specify the [rewards recipient](../../operators/howto/claimrewards/claim-rewards-cli.mdx) or [batch claim](../../operators/howto/claimrewards/batch-claim-rewards.md), claim using the EigenLayer CLI.
+To specify the [rewards recipient](../../operators/operate-eigenlayer-node/howto/claimrewards/claim-rewards-cli.mdx) or [batch claim](../../operators/operate-eigenlayer-node/howto/claimrewards/batch-claim-rewards.md), claim using the EigenLayer CLI.
 
 ## Earner
 
