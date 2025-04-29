@@ -16,4 +16,4 @@ Organize your Operator Sets according to conditions for which you wish to distri
 * Hardware profiles.
 * Liveness guarantees.
 
-For more information on Operator Sets, refer to [Operator Sets](../../../../eigenlayer/concepts/operator-sets/operator-sets-concept).
+For more information on Operator Sets, refer to [Operator Sets](../../../../../eigenlayer/concepts/operator-sets/operator-sets-concept).

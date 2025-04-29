@@ -14,4 +14,4 @@ To receive Programmatic Incentives:
 By default, Operators earn a 10% split on Programmatic Incentives. The rest of the Programmatic Incentives are claimable 
 by the Operator’s delegated Stakers. Programmatic Incentive distributions are proportional to delegated stake.
 
-For information on how to change the default Programmatic Incentives split, refer to [Set Programmatic Incentives Split](../../../operators/howto/confirgurerewards/set-pi-split).
+For information on how to change the default Programmatic Incentives split, refer to [Set Programmatic Incentives Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-pi-split).
