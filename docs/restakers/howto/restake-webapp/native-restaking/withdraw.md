@@ -22,7 +22,7 @@ Queue the Withdrawal:
 1. Click **Queue Withdrawal** in the web app.
 1. Choose the amount you wish to queue for withdrawal and continue
 1. A checkpoint proof is initiated. **Sign** the associated transaction with your web3 wallet.
-1. Wait for the [Escrow Period](/docs/restakers/howto/testnet/restake-testnet-overview#testnet-vs-mainnet-differences) to complete.
+1. Wait for the [Escrow Period](/docs/restakers/howto/testnet/restake-testnet-overview.md#testnet-vs-mainnet-differences) to complete.
 
 
 Redeposit or Complete Withdrawal:
