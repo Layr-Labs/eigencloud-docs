@@ -14,5 +14,5 @@ For information on configuring and claiming rewards, refer to:
 * [Set Rewards Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md)
 * [Set PI Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-pi-split.md)
 * [Claim Rewards using the CLI](../../../operators/operate-eigenlayer-node/howto/claimrewards/claim-rewards-cli.mdx)
-* [Claim Rewards using the App](../../../restakers/restaking-guides/claim-rewards-app.md)
+* [Claim Rewards using the App](../../../restakers/howto/claim-rewards-app.md)
 * [Batch Claim Rewards](../../../operators/operate-eigenlayer-node/howto/claimrewards/batch-claim-rewards.md)
