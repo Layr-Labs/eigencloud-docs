@@ -22,6 +22,8 @@ To add a new Strategy to the EigenLayer protocol:
 
 Please see the contract documentation [here](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/StrategyManager.md#strategyfactorydeploynewstrategy) for further detail.
 
+Once the strategy has been added to EigenLayer, add to [Operator Sets for your AVS](manage-operator-sets.md#modify-strategy-composition).
+
 :::note
 Custom Strategies are strategies that are not deployed via `StrategyFactory.deployNewStrategy()` and require whitelisting via 
 `StrategyFactory.whitelistStrategies` (see [here](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/StrategyManager.md#strategyfactorywhiteliststrategies)). Custom Strategies have custom bytecode and do not implement `StrategyBase`. 
