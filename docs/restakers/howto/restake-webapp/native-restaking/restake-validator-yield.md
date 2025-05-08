@@ -18,7 +18,9 @@ As of the PEPE release, users can now convert consensus rewards, validator execu
 
 ### Checkpoint Frequency
 
-Users should not initiate a checkpoint more frequently than once every two weeks (approximately).
-The longer you wait before performing a checkpoint, the more gas users will save. The gas cost of a checkpoint is the same, regardless of how many consensus rewards will be proven. Each user should determine the best interval to fit their gas cost and restaking benefit needs.
+To optimize gas costs, initiating a checkpoint no more than once every two weeks is generally recommended. Waiting longer
+before performing a checkpoint can lead to greater gas savings, as the gas cost remains the same regardless of the number of
+consensus rewards being proven. Users should choose a checkpoint interval that aligns with their gas cost considerations and restaking benefits.
 
-Consensus rewards are moved from the beacon chain to your EigenPod once every approximately 8 days per the Ethereum protocol. Checkpoint intervals more frequently than 8 days would result in no benefit for the user.
+Consensus rewards are transferred from the beacon chain to your EigenPod approximately every 9 days, according to the Ethereum protocol.
+Creating checkpoints more than once per sweep provides no additional benefit.
