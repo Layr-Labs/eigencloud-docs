@@ -34,17 +34,13 @@ function OperateNodeSection() {
     },
   ];
 
-  const [hovered, setHovered] = React.useState(-1);
-  const [lastHovered, setLastHovered] = React.useState(-1);
+  const [hovered, setHovered] = React.useState(0);
+  const [lastHovered, setLastHovered] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
 
   const handleMouseEnter = (idx) => {
     setHovered(idx);
     setLastHovered(idx);
-  };
-  
-  const handleMouseLeave = () => {
-    setHovered(-1);
   };
 
   // Helper: Convert HTML code block to plain text with indentation and trailing newline
@@ -76,7 +72,6 @@ function OperateNodeSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={handleMouseLeave}
               />
             ))}
           </div>

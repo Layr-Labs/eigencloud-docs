@@ -40,7 +40,7 @@
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
-  padding: 100px 0 96px 0;
+  padding: 100px 24px 96px 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -98,7 +98,7 @@
 
 @media screen and (max-width: 966px) {
   .container {
-    padding: 48px 16px 48px 16px;
+    padding: 48px 24px 48px 24px;
     max-width: 100%;
   }
   .logoImg {
@@ -126,17 +126,18 @@
 
 @media screen and (max-width: 600px) {
   .container {
-    padding: 32px 8px 32px 8px;
+    padding: 32px 24px 32px 24px;
     align-items: stretch;
   }
   .logoWrapper {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
   .logoImg {
     height: 40px;
   }
   .h1 {
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: 500;
     margin-bottom: 16px;
   }
   .subheading {

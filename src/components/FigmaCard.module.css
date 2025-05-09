@@ -27,4 +27,10 @@
   color: #C7C7E5;
   font-weight: 400;
   line-height: 1.5;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    margin-bottom: 4px;
+  }
 } 

@@ -26,16 +26,12 @@ function RestakeSection() {
       image: '/img/restake-4.png',
     },
   ];
-  const [hovered, setHovered] = React.useState(-1);
+  const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
 
   const handleMouseEnter = (idx) => {
     setHovered(idx);
     setLastHovered(idx);
-  };
-  
-  const handleMouseLeave = () => {
-    setHovered(-1);
   };
 
   return (
@@ -56,7 +52,6 @@ function RestakeSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={handleMouseLeave}
               />
             ))}
           </div>

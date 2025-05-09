@@ -21,16 +21,12 @@ function BuildApplicationSection() {
       image: '/img/build-app-3.png',
     },
   ];
-  const [hovered, setHovered] = React.useState(-1);
+  const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
 
   const handleMouseEnter = (idx) => {
     setHovered(idx);
     setLastHovered(idx);
-  };
-  
-  const handleMouseLeave = () => {
-    setHovered(-1);
   };
 
   return (
@@ -51,7 +47,6 @@ function BuildApplicationSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={handleMouseLeave}
               />
             ))}
           </div>
@@ -64,4 +59,4 @@ function BuildApplicationSection() {
   );
 }
 
-export default BuildApplicationSection; 
+export default BuildApplicationSection;                                                               

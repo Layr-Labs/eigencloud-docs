@@ -11,6 +11,8 @@
   max-width: 1136px;
   width: 100%;
   flex-direction: column;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .row {
@@ -103,7 +105,8 @@
   }
   .container {
     max-width: 100%;
-    padding: 0 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .row {
     gap: 24px;
@@ -111,7 +114,6 @@
   .cardGrid {
     min-width: 0;
     max-width: 100%;
-    grid-template-rows: repeat(3, 100px);
   }
   .codeBlock {
     width: 100%;
@@ -125,10 +127,11 @@
     padding: 32px 0;
   }
   .container {
-    padding: 0 8px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .row {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 16px;
   }
   .cardGrid {
