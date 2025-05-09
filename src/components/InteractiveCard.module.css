@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: #F9F9FA;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.active {
+  background: #fff;
+  border-color: rgba(16,16,45,0.05);
+  box-shadow: 0 2px 8px 0 rgba(16,16,45,0.05);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  color: #2F2F3C;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.36px;
+  flex: 1;
+}
+
+.chevron {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
+
+.desc {
+  color: #6F6C89;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  max-height: 72px;
+  overflow: hidden;
+} 

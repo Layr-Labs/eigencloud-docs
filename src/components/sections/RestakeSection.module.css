@@ -1,0 +1,101 @@
+.section {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(135, 102, 38, 0.10) 0%, rgba(135, 102, 38, 0.00) 28.47%);
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  max-width: 1136px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cardGrid {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  min-width: 420px;
+  max-width: 480px;
+}
+
+.imageArea {
+  width: 557.786px;
+  height: 100%;
+  aspect-ratio: 557.79/456;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(16,16,45,0.05);
+}
+
+@media screen and (max-width: 966px) {
+  .section {
+    padding: 48px 0;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  .row {
+    gap: 24px;
+  }
+  .cardGrid {
+    min-width: 0;
+    max-width: 100%;
+    grid-template-rows: repeat(4, 80px);
+  }
+  .imageArea {
+    width: 100%;
+    height: 300px;
+  }
+  .image {
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 32px 0;
+  }
+  .container {
+    padding: 0 8px;
+  }
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cardGrid {
+    grid-template-rows: repeat(4, 1fr);
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  .imageArea {
+    width: 100%;
+    height: 200px;
+    margin-top: 12px;
+  }
+  .image {
+    border-radius: 8px;
+  }
+} 

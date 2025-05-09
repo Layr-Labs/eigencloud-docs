@@ -1,0 +1,148 @@
+.section {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(102, 47, 26, 0.10) 0%, rgba(102, 47, 26, 0.00) 28.47%);
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  max-width: 1136px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cardGrid {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  min-width: 420px;
+  max-width: 480px;
+}
+
+.codeArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.codeBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(16,16,45,0.02);
+  font-family: Geist Mono, DM Mono, Fira Mono, Menlo, Monaco, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  color: #413F50;
+  width: 500px;
+  padding: 40px;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+.codeContent {
+  background: none;
+  color: #413F50;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+  white-space: pre-line;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6F6C89;
+  text-align: center;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+  background: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 4px 12px 4px 8px;
+  cursor: pointer;
+  box-shadow: none;
+  margin-top: 16px;
+  align-self: flex-start;
+}
+
+.copyIcon {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 966px) {
+  .section {
+    padding: 48px 0;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  .row {
+    gap: 24px;
+  }
+  .cardGrid {
+    min-width: 0;
+    max-width: 100%;
+    grid-template-rows: repeat(3, 100px);
+  }
+  .codeBlock {
+    width: 100%;
+    padding: 24px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 32px 0;
+  }
+  .container {
+    padding: 0 8px;
+  }
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cardGrid {
+    grid-template-rows: repeat(3, 1fr);
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  .codeArea {
+    width: 100%;
+  }
+  .codeBlock {
+    width: 100%;
+    padding: 16px;
+    font-size: 12px;
+  }
+} 

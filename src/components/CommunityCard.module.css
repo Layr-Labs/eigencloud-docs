@@ -1,0 +1,57 @@
+.link {
+  text-decoration: none;
+}
+
+.card {
+  display: flex;
+  width: 560px;
+  padding: 24px;
+  align-items: center;
+  gap: 24px;
+  border-radius: 12px;
+  border: 0.95px solid #E9E9ED;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 30px;
+  background: rgba(16, 16, 45, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconImg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  color: #2F2F3C;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.36px;
+}
+
+.description {
+  color: #6F6C89;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+} 
