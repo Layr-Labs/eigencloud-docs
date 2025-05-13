@@ -33,8 +33,7 @@ To move funds from a validator on BeaconChain to an EigenPod, the following step
    * Once swept, funds arrive in the EigenPod on the Execution Layer.
 
 6. EigenLayer Withdrawal Escrow
-   * 7-day* mandatory waiting period before final withdrawal can be executed.
-   * The Escrow increases to 14 days post [Slashing upgrade](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-002.md#why-is-withdrawal_delay-set-to-14-days-worth-of-blocks).
+   * 14-day mandatory waiting period before final withdrawal can be executed.
 
 7. Complete Withdrawal
    * Once the escrow period ends, funds can be withdrawn from EigenLayer to the user’s wallet.
@@ -47,12 +46,11 @@ To move funds from a validator on BeaconChain to an EigenPod, the following step
 </img>
 
 For users comfortable with smart contract interactions, it is possible to reduce the total withdrawal time by overlapping certain steps:
-* The BeaconChain withdrawal process (1-10 days) can overlap with the EigenLayer escrow period (7* days) by proactively 
+* The BeaconChain withdrawal process (1-10 days) can overlap with the EigenLayer escrow period (14 days) by proactively 
 queuing withdrawals on-chain in advance.
-  * Escrow increases to 14 days post [Slashing upgrade](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-002.md#why-is-withdrawal_delay-set-to-14-days-worth-of-blocks).
 * Overlapping these steps requires knowing the exact amount to withdraw ahead of time to prevent issues with overestimating (which leads to delays) or underestimating (which leaves residual funds in the EigenPod).
 
-**Minimum Theoretical Withdrawal Time:** 1-10 days instead of 8-17 days.
+**Minimum Theoretical Withdrawal Time:** 1-10 days instead of 15-24 days.
 
 ## Key Considerations for Operators & Restaking Integrators
 * Validator Sweep Randomness: The 0-9 day delay is unpredictable for a given validator due to the sequential sweep mechanism.
