@@ -3,11 +3,28 @@ sidebar_position: 3
 title: Delegation
 ---
 
-Delegation is the process of assigning restaked balance to an Operator. The Restaker receives fees according to the AVSs
-that the Operator chooses to run. Restakers can undelegate their balance to end their assignment to the Operator and later
-redelegate the balance to a new Operator.
+Delegation is a core step in the restaking process that allows users to assign their restaked balance to an **Operator**, who acts on their behalf in securing Autonomously Verifiable Services (AVSs). Delegation is **required** unless you choose to operate your own Operator node directly.
 
-Note the following conditions:
+Operators play a critical role in the EigenLayer ecosystem:
+
+- They run the off-chain infrastructure required by AVSs
+- They decide which AVSs to support
+- They are responsible for responding to slashing conditions
+
+By delegating to an Operator, a **Restaker** entrusts their staked assets to support the services the Operator opts into. In return, the Restaker shares in the rewards generated from those AVSs — without needing to manage infrastructure themselves.
+
+## Why Delegate?
+
+Most Restakers do not run their own Operators. Delegation allows them to:
+
+- Participate in securing AVSs
+- Earn protocol rewards
+- Avoid the operational overhead of running infrastructure
+
+This separation of roles keeps EigenLayer accessible, while enabling a robust and decentralized security model.
+
+## Delegation Rules and Behavior
+
 - Restakers can only delegate to a single Operator at a time.
 - Delegation is an all or nothing operation. You must delegate all of your available Restaked balance to a single Operator.
 - Delegation is not possible for Native Restakers while their validators are in the activation (entry) queue. Native Restaked

@@ -3,9 +3,26 @@ sidebar_position: 1
 title: Restaking Overview
 ---
 
-**Liquid restaking** is the process of depositing liquid tokens, including LSTs, EIGEN token, and any ERC20 token into the EigenLayer smart contracts. For information on adding new ERC20 tokens, refer to [Permissionless Token Strategies](../../developers/build-an-avs/howto/build/avs-permissionlesss.md).
+## What is Restaking?
+Restaking is a mechanism that enables token holders to contribute to the security of emerging Web3 infrastructure. By restaking assets such as ETH, Liquid Staking Tokens (LSTs), the EIGEN token, or any ERC20 token, participants provide security to Autonomous Verifiable Services (AVSs) on EigenLayer. In return, stakers may earn rewards, creating an incentive-aligned ecosystem where network security is shared across multiple services.
 
-**Native restaking** is the process of changing an Ethereum validator's[ withdrawal credentials](https://notes.ethereum.org/@launchpad/withdrawals-faq#Q-What-are-withdrawals) to EigenLayer's smart contracts. You must operate an Ethereum Validator node in order to participate in Native Restaking. For more information on Ethereum Validators, or set up your Ethereum Validator, refer to [Ethereum Foundation](https://launchpad.ethereum.org/).
+This model extends the utility of staked capital and promotes more efficient use of network resources, while enabling new innovation in decentralized infrastructure.
+
+## Restaking Pathways
+EigenLayer supports two primary methods of restaking:
+
+**Liquid restaking** allows users to deposit liquid tokens — such as Liquid Staking Tokens (LSTs), the EIGEN token, or any ERC20 token — into EigenLayer smart contracts. This method does not require running an ETH validator and is accessible to any holder of supported tokens.
+
+To learn how new ERC20 tokens can be added, see [Permissionless Token Strategies](../../developers/build-an-avs/howto/build/avs-permissionlesss.md).
+
+**Native restaking** allows Ethereum validators to opt into restaking by redirecting their [ withdrawal credentials](https://notes.ethereum.org/@launchpad/withdrawals-faq#Q-What-are-withdrawals) to EigenLayer's smart contracts. This approach requires:
+- Operating an Ethereum validator
+- A minimum of **32 ETH** (Ethereum protocol requirement)
+- Creating an **EigenPod**
+
+An [**EigenPod**](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/EigenPodManager.md) is a smart contract deployed and controlled by the staker. It enables EigenLayer to track your validator’s balance and withdrawal status while preserving self-custody. Each staker must create an EigenPod before restaking and can link multiple validators to a single EigenPod.
+
+For setup instructions, see the [EigenPod Deployment Guide](https://eigencloud-docs-git-restakerestructure-eigen-labs.vercel.app/restakers/concepts/eigenpod) and the [Ethereum Validator Guide](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/#validators).
 
 ## Escrow Period (Withdrawal Delay)
 

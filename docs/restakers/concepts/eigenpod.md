@@ -3,6 +3,10 @@ sidebar_position: 2
 title: EigenPods
 ---
 
+:::note
+This page applies **only** to users participating in **native restaking** using Ethereum validators. If you are staking Liquid Staking Tokens (LSTs), EIGEN, or other ERC20 tokens via liquid restaking, EigenPods are not required.
+:::
+
 An [EigenPod](https://github.com/Layr-Labs/eigenlayer-contracts/blob/master/docs/core/EigenPodManager.md) is a smart contract managed by users, designed to facilitate the EigenLayer protocol in monitoring and managing balance and withdrawal statuses. Please review the following considerations when planning your EigenPod and validator operations:
 
 - You may repoint any number of validators to a single EigenPod.
