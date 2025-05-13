@@ -5,6 +5,12 @@ title: Restake New Validator Native Beacon Chain ETH
 
 The steps below are only required for new validator native beacon chain ETH. Any validator native beacon chain ETH that was restaked prior to the PEPE release will not need to repeat these steps.
 
+:::important
+Running your own EigenPod for native restaking is an advanced task that requires operating and maintaining Ethereum validator infrastructure.
+It involves managing validator keys and associated risks including slashing, downtime penalties, or loss of access to
+restaked funds if keys are lost or compromised. For more information, refer to [Ethereum Launchpad](https://launchpad.ethereum.org/en/).
+:::
+
 **Prerequisites**
 
 The user will need an environment available to run the [EigenPod Proof Gen CLI](https://github.com/Layr-Labs/eigenpod-proofs-generation/tree/master/cli#quickstart) including its software prerequisites.

@@ -3,6 +3,12 @@ sidebar_position: 2
 title: Restake New Validator
 ---
 
+:::important
+Running your own EigenPod for native restaking is an advanced task that requires operating and maintaining Ethereum validator infrastructure.
+It involves managing validator keys and associated risks including slashing, downtime penalties, or loss of access to
+restaked funds if keys are lost or compromised. For more information, refer to [Ethereum Launchpad](https://launchpad.ethereum.org/en/).
+:::
+
 Create EigenPod:
 1. Visit the [EigenLayer App](https://app.eigenlayer.xyz/).
 1. Click **Natively Staked Ether** via the Dashboard or Token tab.
