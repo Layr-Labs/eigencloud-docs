@@ -17,7 +17,7 @@ The following instructions will walk you through how tokens can be restaked on t
 **Step 3:** Click on the asset you wish to restake. Choose the amount of the asset you wish to restake. Click **Submit** to continue.
 
 :::info
-This guide to Liquid Staking refers to all assets displayed on the Token tab, except for `Natively Staked Ether`, which refers to [Native Staking here](../native-restaking/native-restaking-prerequisites).
+This guide to Liquid Staking refers to all assets displayed on the Token tab, except for `Natively Staked Ether`, which refers to [Native Staking here](../native-restaking/native-restaking-get-started).
 :::
 ![](/img/restake-guides/lst-restake-2.png)
 
