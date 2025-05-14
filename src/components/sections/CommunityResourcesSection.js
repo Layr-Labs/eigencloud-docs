@@ -5,12 +5,6 @@ import styles from './CommunityResourcesSection.module.css';
 function CommunityResourcesSection() {
   const resources = [
     {
-      icon: '/img/community-discord.png',
-      title: 'Join the EigenLayer Community Discord →',
-      description: 'Join the Discord for discussions about EigenLayer',
-      link: 'https://discord.com/invite/eigenlayer'
-    },
-    {
       icon: '/img/community-avs.png',
       title: 'Book an AVS Intro Call →',
       description: 'Chat with the EigenLayer team about your AVS idea',
@@ -24,10 +18,16 @@ function CommunityResourcesSection() {
     },
     {
       icon: '/img/community-groupchat.png',
-      title: 'Join the group chat →',
+      title: 'Join the Telegram group chat →',
       description: 'Meet and chat with other developers and builders',
       link: 'https://airtable.com/appnYZo360sWuEYLS/shrz6Pstds7EXjC5N'
-    }
+    },
+    {
+      icon: '/img/community-discord.png',
+      title: 'Join the EigenLayer Community Discord →',
+      description: 'Join the Discord for discussions about EigenLayer',
+      link: 'https://discord.com/invite/eigenlayer'
+    },
   ];
 
   return (
@@ -50,4 +50,4 @@ function CommunityResourcesSection() {
   );
 }
 
-export default CommunityResourcesSection; 
+export default CommunityResourcesSection;

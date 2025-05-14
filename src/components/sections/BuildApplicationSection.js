@@ -24,6 +24,22 @@ function BuildApplicationSection() {
   const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
 
+  const cardGridRef = React.useRef(null);
+  const [imageAreaHeight, setImageAreaHeight] = React.useState(0);
+  React.useEffect(() => {
+    if (cardGridRef.current) {
+      const gridHeight = cardGridRef.current.offsetHeight;
+      const cards = cardGridRef.current.querySelectorAll(`.${styles.card}`);
+      let lastCardMargin = 0;
+      if (cards.length > 0) {
+        const lastCard = cards[cards.length - 1];
+        const style = window.getComputedStyle(lastCard);
+        lastCardMargin = parseFloat(style.marginBottom || 0);
+      }
+      setImageAreaHeight(gridHeight + lastCardMargin);
+    }
+  }, [cardData, hovered]);
+
   const handleMouseEnter = (idx) => {
     setHovered(idx);
     setLastHovered(idx);
@@ -39,7 +55,7 @@ function BuildApplicationSection() {
           description="Leverage Ethereum's security for offchain verification."
         />
         <div className={styles.row}>
-          <div className={styles.cardGrid}>
+          <div className={styles.cardGrid} ref={cardGridRef}>
             {cardData.map((card, idx) => (
               <InteractiveCard
                 key={card.title}
@@ -50,7 +66,7 @@ function BuildApplicationSection() {
               />
             ))}
           </div>
-          <div className={styles.imageArea}>
+          <div className={styles.imageArea} style={{ height: imageAreaHeight ? `${imageAreaHeight}px` : undefined }}>
             <img src={cardData[lastHovered].image} alt={cardData[lastHovered].title} className={styles.image} />
           </div>
         </div>
@@ -59,4 +75,4 @@ function BuildApplicationSection() {
   );
 }
 
-export default BuildApplicationSection;                                                               
+export default BuildApplicationSection;

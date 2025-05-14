@@ -1,18 +1,6 @@
 .dotPattern {
   position: relative;
   background-color: #3B2ED0;
-  background-image:
-    radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-    radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size:
-    28px 28px,
-    28px 28px;
-  background-position:
-    0 0,
-    14px 14px;
-  background-repeat:
-    repeat,
-    repeat;
   width: 100%;
   min-height: 740px;
   color: #f9f9fa;
@@ -156,4 +144,12 @@
     gap: 12px;
     align-items: stretch;
   }
-} 
+}
+
+@media screen and (max-width: 1140px) {
+  .cardsRow {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+}

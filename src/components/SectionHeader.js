@@ -13,4 +13,4 @@ function SectionHeader({ icon, iconBg, title, description }) {
   );
 }
 
-export default SectionHeader; 
+export default SectionHeader;

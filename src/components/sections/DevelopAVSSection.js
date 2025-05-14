@@ -12,7 +12,7 @@ function DevelopAVSSection() {
       code: `<span style=\"color:#211569\">function</span> <span style=\"color:#209254\">slashOperator</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SlashingParams calldata params</span><br/>) <span style=\"color:#211569\">external</span>;<br/><br/><span style=\"color:#211569\">if</span> (malicousEvent == <span style=\"color:#211569\">true</span>){<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">slasherContract</span>.<span style=\"color:#209254\">slashOperator</span>(avs, params);<br/>}`
     },
     {
-      code: `<span style=\"color:#275F8C\">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"name\": \"AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"website\": \"https.your-avs-site.xyz/\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"description\": \"A description about your AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"logo\": \"http://github.com/logo.png\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"twitter\": \"https://twitter.com/your-avs\",</span><br/><span style=\"color:#275F8C\">}</span><br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">updateAVSMetadataURI</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">string calldata metadataURI</span><br/>)<br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">createOperatorSets</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs,<br/>&nbsp;&nbsp;&nbsp;&nbsp;CreateSetParams[] calldata params</span><br/>)`
+      code: `<span style=\"color:#275F8C\">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"name\": \"AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"website\": \"https.your-avs-site.xyz/\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"description\": \"A description about your AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"logo\": \"http://github.com/logo.png\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"twitter\": \"https://twitter.com/your-avs\",</span><br/><span style=\"color:#275F8C\">}</span><br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">createOperatorDirectedAVSRewardsSubmission</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">OperatorDirectedRewardsSubmission[] calldata operatorDirectedRewardsSubmissions</span><br/>)<br/>`
     }
   ];
 
@@ -36,6 +36,7 @@ function DevelopAVSSection() {
 
   const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
+  const [copied, setCopied] = React.useState(false);
 
   const handleMouseEnter = (idx) => {
     setHovered(idx);
@@ -99,10 +100,12 @@ function DevelopAVSSection() {
                     : cardData[lastHovered].code;
                   const plain = htmlToPlainText(html);
                   navigator.clipboard.writeText(plain);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 1200);
                 }}
               >
                 <img src="/img/copy-icon.png" alt="Copy" className={styles.copyIcon} />
-                Copy Snippet
+                {copied ? 'Copied!' : 'Copy Snippet'}
               </button>
             </div>
           </div>
@@ -112,4 +115,4 @@ function DevelopAVSSection() {
   );
 }
 
-export default DevelopAVSSection; 
+export default DevelopAVSSection;

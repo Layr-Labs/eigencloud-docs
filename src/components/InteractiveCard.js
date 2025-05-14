@@ -20,4 +20,4 @@ function InteractiveCard({ title, desc, isActive, onClick, onMouseEnter, onMouse
   );
 }
 
-export default InteractiveCard; 
+export default InteractiveCard;

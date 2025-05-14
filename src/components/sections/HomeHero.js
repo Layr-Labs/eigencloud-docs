@@ -13,7 +13,7 @@ function HomeHero() {
         </div>
         <h1 className={styles.h1}>Build on EigenCloud</h1>
         <div className={styles.subheading}>
-          EigenCloud brings blockchain verification to the real world, letting developers build applications, agents, and AVSs that can securely verify any input, data or event using easy to use cloud services with no blockchain expertise needed.
+          EigenCloud brings blockchain verification to the real world, letting developers build applications, agents, and AVSs that can securely verify any input, data or event.
         </div>
         <div className={styles.divider} />
         <div className={styles.learnTitle}>Learn about EigenCloud</div>
@@ -21,14 +21,17 @@ function HomeHero() {
           <FigmaCard
             title="What is EigenLayer"
             desc="The fundamentals of EigenLayer and how it enables shared security"
+            link="https://docs.eigenlayer.xyz/overview/what-is-eigenlayer"
           />
           <FigmaCard
             title="Data Availability with EigenDA"
             desc="Fast, reliable data availability for high-throughput applications"
+            link="https://docs.eigenlayer.xyz/eigenda/overview"
           />
           <FigmaCard
-            title="An intro to AVSs"
+            title="Introduction to AVSs"
             desc="Unlock fundamentally new possibilities for decentralized coordination"
+            link="https://docs.eigenlayer.xyz/avs/overview"
           />
         </div>
       </div>
@@ -36,4 +39,4 @@ function HomeHero() {
   );
 }
 
-export default HomeHero; 
+export default HomeHero;

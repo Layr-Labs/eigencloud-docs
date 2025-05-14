@@ -4,6 +4,7 @@
   padding: 80px 0;
   display: flex;
   justify-content: center;
+  min-height: 920px;
 }
 
 .container {
@@ -19,7 +20,7 @@
   display: flex;
   flex-direction: row;
   gap: 48px;
-  align-items: flex-start;
+  align-items: stretch;
   width: 100%;
 }
 
@@ -29,6 +30,9 @@
   flex: 1;
   min-width: 420px;
   max-width: 480px;
+  height: 420px;
+  min-height: 420px;
+  max-height: 420px;
 }
 
 .codeArea {
@@ -37,12 +41,13 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  height: 100%;
 }
 
 .codeBlock {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
   flex-shrink: 0;
@@ -58,6 +63,7 @@
   padding: 40px;
   box-sizing: border-box;
   margin-top: 0;
+  height: 100%;
 }
 
 .codeContent {
@@ -115,10 +121,11 @@
     min-width: 0;
     max-width: 100%;
   }
+  .codeArea {
+    height: auto;
+  }
   .codeBlock {
-    width: 100%;
-    padding: 24px;
-    font-size: 13px;
+    height: auto;
   }
 }
 
@@ -135,17 +142,67 @@
     gap: 16px;
   }
   .cardGrid {
-    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
     min-width: 0;
     max-width: 100%;
+    gap: 8px;
+  }
+  .card {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
   }
   .codeArea {
     width: 100%;
+    height: auto;
   }
   .codeBlock {
     width: 100%;
     padding: 16px;
     font-size: 12px;
+    height: auto;
   }
-} 
+}
+
+@media screen and (max-width: 1140px) and (min-width: 601px) {
+  .row {
+    flex-direction: column-reverse;
+    gap: 32px;
+  }
+  .codeArea,
+  .cardGrid,
+  .codeBlock {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .cardGrid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    gap: 8px;
+    padding: 0;
+  }
+  .card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 12px;
+    border: 1px solid #e9e9ed;
+    background: #fff;
+  }
+}

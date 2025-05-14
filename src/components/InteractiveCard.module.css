@@ -11,9 +11,10 @@
   box-shadow: none;
   cursor: pointer;
   transition: background 0.18s, box-shadow 0.18s, border-color 0.18s;
-  height: 100%;
+  min-height: 0;
+  height: auto;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 
@@ -37,12 +38,26 @@
   line-height: 28px;
   letter-spacing: -0.36px;
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: none;
 }
 
 .chevron {
   width: 24px;
   height: 24px;
   margin-left: 8px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  opacity: 0;
+  transition: opacity 0.18s;
+  visibility: visible;
+}
+
+.active .chevron,
+.card:hover .chevron {
+  opacity: 1;
 }
 
 .desc {
@@ -52,6 +67,7 @@
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.32px;
-  max-height: 72px;
-  overflow: hidden;
-} 
+  max-height: none;
+  overflow: visible;
+  transition: none;
+}

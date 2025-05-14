@@ -72,4 +72,11 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-} 
+}
+
+@media screen and (max-width: 1140px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

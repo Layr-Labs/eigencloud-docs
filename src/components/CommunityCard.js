@@ -24,4 +24,4 @@ function CommunityCard({ icon, title, description, link }) {
   );
 }
 
-export default CommunityCard; 
+export default CommunityCard;

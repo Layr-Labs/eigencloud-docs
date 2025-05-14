@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import SectionHeader from '../SectionHeader';
 import InteractiveCard from '../InteractiveCard';
 import styles from './OperateNodeSection.module.css';
@@ -8,7 +8,7 @@ function OperateNodeSection() {
     `<span style="color:#275F8C">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"name": "AVS",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"website": "https.your-avs-site.xyz/",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"description": "A description about your AVS",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"logo": "http://github.com/logo.png",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"twitter": "https://twitter.com/your-avs",</span><br/><span style="color:#275F8C">}</span><br/><br/><span style="color:#211569">function</span> <span style="color:#209254">updateAVSMetadataURI</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">string calldata metadataURI</span><br/>)<br/><br/><span style="color:#211569">function</span> <span style="color:#209254">createOperatorSets</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">address avs,</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">CreateSetParams[] calldata params</span><br/>)`,
     `<span style="color:#275F8C">eigenlayer operator keys create --key-type ecdsa [keyname]</span><br/><span style="color:#275F8C">eigenlayer operator keys create --key-type bls [keyname]</span>`,
     `<span style="color:#275F8C">eigenlayer operator get-rewards-split</span><br/><br/><span style="color:#275F8C">eigenlayer operator set-rewards-split</span>`,
-    `<span style="color:#275F8C">./bin/eigenlayer rewards show</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--network mainnet</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--earner-address &lt;earner-address&gt;</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--claim-type unclaimed</span>`
+    `<span style="color:#275F8C">eigenlayer rewards show</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--network mainnet</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--earner-address &lt;earner-address&gt;</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--claim-type unclaimed</span>`
   ];
 
   const cardData = [
@@ -19,12 +19,12 @@ function OperateNodeSection() {
     },
     {
       title: 'Set up Operator Key Management',
-      desc: 'User Access Management (UAM) enables Operators to implement key management solutions from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).',
+      desc: 'Implement key management solutions from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).',
       code: codeBlocks[1],
     },
     {
       title: 'Set Rewards Split',
-      desc: 'Operators can set their own fee rates per AVS, providing economic flexibility and attracting diverse participation.',
+      desc: 'Set fee rates per AVS, providing economic flexibility and attracting diverse participation.',
       code: codeBlocks[2],
     },
     {
@@ -37,6 +37,20 @@ function OperateNodeSection() {
   const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
+
+  const cardGridRef = useRef(null);
+  const [cardGridHeight, setCardGridHeight] = useState(undefined);
+
+  useEffect(() => {
+    function updateHeight() {
+      if (cardGridRef.current) {
+        setCardGridHeight(cardGridRef.current.offsetHeight);
+      }
+    }
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
 
   const handleMouseEnter = (idx) => {
     setHovered(idx);
@@ -64,7 +78,7 @@ function OperateNodeSection() {
           description="EigenLayer enables experienced node operators and validator service providers to maximize yield by unlocking new revenue streams through restaking"
         />
         <div className={styles.row}>
-          <div className={styles.cardGrid}>
+          <div className={styles.cardGrid} ref={cardGridRef}>
             {cardData.map((card, idx) => (
               <InteractiveCard
                 key={card.title}
@@ -75,8 +89,8 @@ function OperateNodeSection() {
               />
             ))}
           </div>
-          <div className={styles.codeArea}>
-            <div className={styles.codeBlock}>
+          <div className={styles.codeArea} style={cardGridHeight ? { height: cardGridHeight } : {}}>
+            <div className={styles.codeBlock} style={cardGridHeight ? { height: '100%' } : {}}>
               {lastHovered === -1 ? (
                 <div
                   className={styles.codeContent}
@@ -111,4 +125,4 @@ function OperateNodeSection() {
   );
 }
 
-export default OperateNodeSection; 
+export default OperateNodeSection;
