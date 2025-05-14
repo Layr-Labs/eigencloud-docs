@@ -3,14 +3,26 @@ sidebar_position: 4
 title: Delegate and Undelegate
 ---
 
-Undelegate and/or Change Delegation
-1. Click Undelegate
-1. **Sign** the transaction using your web3 wallet. Note: a queue withdrawal event occurs via the smart contracts at this time, because Undelegate and Queue Withdrawal actions are linked at the smart contract level. This information is not presented to the user in order simplify the user flow and focus on the change delegation action.
-1. User is now Undelegated from the Operator.
-1. Wait for the [Escrow Period](/docs/restakers/howto/testnet/restake-testnet-overview.md#testnet-vs-mainnet-differences) to complete.
+Before delegating or undelegating, we recommend reviewing: 
+* [Get Started](native-restaking-prerequisites.md)
+* [Delegation](../../../concepts/delegation.md).
 
-Delegate to a New Operator
-1. Navigate to an Operator you wish to delegate your assets to.
-1. Click **Delegate** to delegate to the new Operator.
-1. **Sign** the transaction using your web3 wallet.
-1. You are now delegated to the new operator
+## Delegate to Operator
+
+To delegate to an Operator:
+1. On the *Operator* tab in the [EigenLayer app](https://app.eigenlayer.xyz/operator), navigate to the Operator to which you want to delegate your assets.
+1. Click **Delegate**.
+1. **Sign** the transaction using your Web3 wallet. You are now delegated to that Operator.
+
+## Undelegate from Operator
+
+:::important 
+Undelegating is not required to [exit and withdraw your validator](withdraw.md). Only undelegate if you intend to redelegate to a different
+Operator.
+:::
+
+To undelegate from an Operator:
+1. Click **Undelegate**.
+1. **Sign** the transaction using your Web3 wallet. You are now undelegated from that Operator.
+1. Wait for the [Escrow Period](/docs/restakers/howto/testnet/restake-testnet-overview.md#testnet-vs-mainnet-differences) to complete.
+1. [Delegate to a new Operator.](#delegate-to-operator)
