@@ -141,7 +141,7 @@
     padding-right: 24px;
   }
   .row {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 32px;
   }
   .imageArea,
