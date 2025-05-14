@@ -12,7 +12,7 @@ Before delegating or undelegating, we recommend reviewing:
 To delegate to an Operator:
 1. On the *Operator* tab in the [EigenLayer app](https://app.eigenlayer.xyz/operator), navigate to the Operator to which you want to delegate your assets.
 1. Click **Delegate**.
-1. **Sign** the transaction using your Web3 wallet. You are now delegated to that Operator
+1. **Sign** the transaction using your Web3 wallet. You are now delegated to that Operator.
 
 ## Undelegate from Operator
 
