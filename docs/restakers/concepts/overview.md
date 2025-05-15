@@ -3,32 +3,48 @@ sidebar_position: 1
 title: Restaking Overview
 ---
 
-## What is Restaking?
-Restaking is a mechanism that enables token holders to contribute to the security of emerging Web3 infrastructure. By restaking assets such as ETH, Liquid Staking Tokens (LSTs), the EIGEN token, or any ERC20 token, participants provide security to Autonomous Verifiable Services (AVSs) on EigenLayer. In return, stakers may earn rewards, creating an incentive-aligned ecosystem where network security is shared across multiple services.
+Restaking is a mechanism that enables token holders to provide security to Autonomous Verifiable Services (AVSs) on EigenLayer. 
+Stakers can restake ETH, Liquid Staking Tokens (LSTs), or stake EIGEN, and any other ERC20 token. AVSs distribute rewards
+to Stakers for participation in securing AVSs.
 
-This model extends the utility of staked capital and promotes more efficient use of network resources, while enabling new innovation in decentralized infrastructure.
+## Restaking Methods
 
-## Restaking Pathways
-EigenLayer supports two primary methods of restaking:
-yarn 
-**Liquid restaking** allows users to deposit liquid tokens — such as Liquid Staking Tokens (LSTs), the EIGEN token, or any ERC20 token — into EigenLayer smart contracts. This method does not require running an ETH validator and is accessible to any holder of supported tokens.
+EigenLayer supports: 
 
-To learn how new ERC20 tokens can be added, see [Permissionless Token Strategies](../../developers/build-an-avs/howto/build/avs-permissionlesss.md).
+* Liquid restaking enables users to deposit liquid tokens (LSTs, the EIGEN token, or any ERC20 token) into EigenLayer smart contracts. 
+Liquid restaking does not require running an Ethereum validator and is accessible to any holder of supported tokens.
+* Native restaking enables Ethereum validators to opt into restaking by redirecting their [ withdrawal credentials](https://notes.ethereum.org/@launchpad/withdrawals-faq#Q-What-are-withdrawals) to EigenLayer's smart contracts. 
+Native restaking requires:
+    - Operating an Ethereum validator
+    - A minimum of 32 ETH (Ethereum protocol requirement)
+    - Creating an [EigenPod](native-restaking/eigenpod.md)
 
-**Native restaking** allows Ethereum validators to opt into restaking by redirecting their [ withdrawal credentials](https://notes.ethereum.org/@launchpad/withdrawals-faq#Q-What-are-withdrawals) to EigenLayer's smart contracts. This approach requires:
-- Operating an Ethereum validator
-- A minimum of **32 ETH** (Ethereum protocol requirement)
-- Creating an **EigenPod**
+## Slashable Stake Risks
 
-An [**EigenPod**](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/EigenPodManager.md) is a smart contract deployed and controlled by the staker. It enables EigenLayer to track your validator’s balance and withdrawal status while preserving self-custody. Each staker must create an EigenPod before restaking and can link multiple validators to a single EigenPod.
+:::important
+With slashing, stake can become slashable for a Staker that has previously
+delegated stake to an Operator. Stakers are responsible for ensuring that they fully understand and confirm their risk tolerances
+for existing and future delegations to Operators and the Operator’s slashable allocations. Additionally, stakers are responsible
+for continuing to monitor the allocations of their chosen Operators as they update allocations across various Operator Sets.
+:::
 
-For setup instructions, see the [EigenPod Deployment Guide](https://eigencloud-docs-git-restakerestructure-eigen-labs.vercel.app/restakers/concepts/eigenpod) and the [Ethereum Validator Guide](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/#validators).
+AVSs can create [Operator Sets](../../eigenlayer/concepts/operator-sets/operator-sets-concept.md) that may include slashable
+[Unique Stake](../../eigenlayer/concepts/slashing/unique-stake.md), and Operators can allocate their delegated stake to Operator Sets. If a Staker has previously delegated stake
+to an Operator, the delegated stake becomes slashable when the Operator opts into an Operator Set and allocates Unique Stake.
+
+Stakers are responsible for understanding the increased risk posed by allocation of their delegated stake as slashable
+Unique Stake to an AVS. While the allocation of delegated stake to an Operator Set may be subject to the [Allocation Config
+Delay and Allocation Delay](../../eigenlayer/reference/safety-delays-reference.md), it is important to understand the increased risk.
+
+For more information on the safety delays for Stakers, refer to the :
+* [Safety Delays reference](../../eigenlayer/reference/safety-delays-reference.md)
+* [Allocating and Deallocating to Operator Sets section of ELIP-002](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-002.md#unique-stake-allocation--deallocation).
 
 ## Escrow Period (Withdrawal Delay)
 
 EigenLayer contracts feature a withdrawal delay for all Liquid and Native restaking, a critical security measure for instances
 of vulnerability disclosure or when anomalous behavior is detected by monitoring systems. For more information, refer to [Withdrawal Delay](/docs/eigenlayer/security/withdrawal-delay.md).
 
-## Gas Cost Planning
-
-We recommend users connect many validators to a single EigenPod in order to reduce cost and complexity where practical. For each of the actions below that require a checkpoint proof, the web app will batch up to 80 validators per proof transaction batch. Users with more validators will require additional transactions to complete each checkpoint proof. Please plan your gas costs accordingly.
+For information on how to get started, refer to:
+* [Restake and Delegate](../howto/restake-webapp/liquid-restaking/restake-lsts.md) for liquid restaking.
+* [Get Started](../howto/restake-webapp/native-restaking/native-restaking-get-started.md) for native restaking. 

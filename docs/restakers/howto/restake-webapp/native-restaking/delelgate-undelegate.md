@@ -4,7 +4,7 @@ title: Delegate and Undelegate
 ---
 
 Before delegating or undelegating, we recommend reviewing: 
-* [Get Started](native-restaking-prerequisites.md)
+* [Get Started](native-restaking-get-started.md)
 * [Delegation](../../../concepts/delegation.md).
 
 ## Delegate to Operator
