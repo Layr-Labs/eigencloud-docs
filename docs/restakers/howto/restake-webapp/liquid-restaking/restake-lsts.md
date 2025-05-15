@@ -9,7 +9,7 @@ Operator to run services for AVSs. For more information, refer to [Restaking Ove
 :::
 
 The following procedure describes how to restake tokens except for natively staked ETH. For information on restaking natively
-staked ETH, refer to [Native Restaking](../native-restaking/native-restaking-prerequisites).
+staked ETH, refer to Native Restaking.
 
 To restake tokens using the [EigenLayer app](https://app.eigenlayer.xyz/):
 
