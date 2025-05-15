@@ -11,7 +11,7 @@ restaked funds if keys are lost or compromised. For more information, refer to [
 
 Before restaking, we recommend reviewing: 
 * [Restaking Overview](../../../concepts/overview.md)
-* [EigenPods](../../../concepts/eigenpod.md)
+* [EigenPods](../../../concepts/native-restaking/eigenpod.md)
 
 To restake an Ethereum validator:
 1. [Create EigenPod](#create-eigenpod). 
