@@ -206,3 +206,7 @@
     background: #fff;
   }
 }
+
+[data-theme="dark"] .codeBlock {
+  background: white;
+}

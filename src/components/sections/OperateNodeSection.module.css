@@ -211,3 +211,8 @@
   margin-top: 0;
   box-sizing: border-box;
 }
+
+
+[data-theme="dark"] .codeBlock {
+  background: white;
+}
