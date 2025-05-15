@@ -10,7 +10,7 @@ This model extends the utility of staked capital and promotes more efficient use
 
 ## Restaking Pathways
 EigenLayer supports two primary methods of restaking:
-
+yarn 
 **Liquid restaking** allows users to deposit liquid tokens — such as Liquid Staking Tokens (LSTs), the EIGEN token, or any ERC20 token — into EigenLayer smart contracts. This method does not require running an ETH validator and is accessible to any holder of supported tokens.
 
 To learn how new ERC20 tokens can be added, see [Permissionless Token Strategies](../../developers/build-an-avs/howto/build/avs-permissionlesss.md).
