@@ -80,3 +80,7 @@
     gap: 16px;
   }
 }
+
+[data-theme="dark"] .title {
+  color: white;
+}

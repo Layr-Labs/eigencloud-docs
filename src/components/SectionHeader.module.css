@@ -37,3 +37,11 @@
   line-height: 24px;
   letter-spacing: -0.32px;
 }
+
+[data-theme="dark"] .title {
+  color: white;
+}
+
+[data-theme="dark"] .description {
+  color: white;
+}
