@@ -15,7 +15,7 @@ If you wish to withdraw native ETH from an active validator, complete the follow
 
 
 :::warning
-Each queue withdrawal action will trigger a checkpoint and the associated gas costs. Please review the [Checkpoint Frequency](#checkpoint-frequency) section and plan for gas costs accordingly.
+Each queue withdrawal action will trigger a checkpoint and the associated gas costs. Please review the [Checkpoint Frequency](/docs/restakers/howto/restake-webapp/native-restaking/restake-validator-yield.md#checkpoint-frequency) section and plan for gas costs accordingly.
 :::
 
 Queue the Withdrawal:
