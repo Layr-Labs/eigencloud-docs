@@ -1,0 +1,73 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: #F9F9FA;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s;
+  min-height: 0;
+  height: auto;
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+}
+
+.active {
+  background: #fff;
+  border-color: rgba(16,16,45,0.05);
+  box-shadow: 0 2px 8px 0 rgba(16,16,45,0.05);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  color: #2F2F3C;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.36px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: none;
+}
+
+.chevron {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  opacity: 0;
+  transition: opacity 0.18s;
+  visibility: visible;
+}
+
+.active .chevron,
+.card:hover .chevron {
+  opacity: 1;
+}
+
+.desc {
+  color: #6F6C89;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  max-height: none;
+  overflow: visible;
+  transition: none;
+}

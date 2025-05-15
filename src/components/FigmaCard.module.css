@@ -1,0 +1,103 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  padding: 24px;
+  border-radius: 12px;
+  border: 0.95px solid rgba(16, 16, 45, 0.10);
+  background: rgba(16, 16, 45, 0.20);
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+  color: #fff;
+  position: relative;
+  text-decoration: none;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.card:hover {
+  background: rgba(59, 46, 208, 0.9);
+  border-color: #3B2ED0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.title {
+  color: #F9F9FA;
+  font-family: Geist, 'Pretendard', 'Apple SD Gothic Neo', Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.4px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  display: inline-block;
+  margin-left: 6px;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+  vertical-align: middle;
+}
+
+.card:hover .chevron {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.desc {
+  color: #CDCDD7;
+  font-family: Geist, 'Pretendard', 'Apple SD Gothic Neo', Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 1140px) and (min-width: 601px) {
+  .card {
+    padding: 24px;
+    gap: 16px;
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .titleRow {
+    margin-bottom: 0;
+  }
+  .card {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+    gap: 12px;
+    padding: 16px 10px 16px 10px;
+  }
+}
+
+.card,
+.card:hover {
+  text-decoration: none;
+}

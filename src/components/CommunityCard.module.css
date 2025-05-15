@@ -1,0 +1,122 @@
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.card {
+  display: flex;
+  width: 560px;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px;
+  align-items: center;
+  gap: 24px;
+  border-radius: 12px;
+  border: 0.95px solid #E9E9ED;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 1140px) and (min-width: 601px) {
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    gap: 24px;
+    align-self: stretch;
+    padding: 24px;
+    border-radius: 12px;
+    border: 0.95px solid #E9E9ED;
+    background: #fff;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    grid-row: 1 / span 2;
+    align-self: flex-start;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 0;
+  }
+  .title {
+    margin-bottom: 4px;
+  }
+  .description {
+    margin-bottom: 0;
+  }
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 30px;
+  background: rgba(16, 16, 45, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconImg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  color: #2F2F3C;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.36px;
+}
+
+.description {
+  color: #6F6C89;
+  font-family: Geist, DM Sans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+}
+
+.arrow {
+  display: inline;
+}
+
+@media screen and (max-width: 600px) {
+  .arrow {
+    display: none;
+  }
+}
