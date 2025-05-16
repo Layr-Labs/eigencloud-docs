@@ -20,7 +20,7 @@ function Home() {
         <HomeHero />
         <DevelopAVSSection />
         <OperateNodeSection />
-        <BuildApplicationSection />
+        {/* <BuildApplicationSection /> */}
         <RestakeSection />
         <CommunityResourcesSection />
       </main>

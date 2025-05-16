@@ -41,7 +41,7 @@ function RestakeSection() {
           icon="/img/restake-icon.png"
           iconBg="#876626"
           title="Restake"
-          description="Secure EigenCloud with restaked ETH and other assets — earn rewards as you go"
+          description="Secure EigenCloud with restaked ETH and other assets — earn rewards as you go."
         />
         <div className={styles.row}>
           <div className={styles.cardGrid}>

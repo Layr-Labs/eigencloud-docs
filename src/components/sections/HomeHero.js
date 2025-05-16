@@ -21,17 +21,17 @@ function HomeHero() {
           <FigmaCard
             title="What is EigenLayer"
             desc="The fundamentals of EigenLayer and how it enables shared security"
-            link="https://docs.eigenlayer.xyz/overview/what-is-eigenlayer"
+            link="eigenlayer/overview"
           />
           <FigmaCard
             title="Data Availability with EigenDA"
             desc="Fast, reliable data availability for high-throughput applications"
-            link="https://docs.eigenlayer.xyz/eigenda/overview"
+            link="eigenda/eigenda_overview"
           />
           <FigmaCard
             title="Introduction to AVSs"
             desc="Unlock fundamentally new possibilities for decentralized coordination"
-            link="https://docs.eigenlayer.xyz/avs/overview"
+            link="developers/build-an-avs/concepts/avs-developer-guide"
           />
         </div>
       </div>
