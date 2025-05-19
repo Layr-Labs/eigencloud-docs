@@ -46,7 +46,7 @@ const config = {
         redirects: [
           {
             from: "/overview/readme/",
-            to: "/eigenlayer/overview/",
+            to: "/products/eigenlayer/overview/",
           },
         ],
         createRedirects(existingPath) {
