@@ -5,7 +5,7 @@ title: Manage Registered Operators
 
 ## AVSRegistrar
 
-The [AVSRegistrar](https://github.com/Layr-Labs/eigenlayer-contracts/blob/9a19503e2a4467f0be938f72e80b11768b2e47f9/src/contracts/interfaces/IAVSRegistrar.sol) is called when operators register for and deregister from [Operator Sets](../../../../eigenlayer/concepts/operator-sets/operator-sets-concept.md). By default (if the stored address
+The [AVSRegistrar](https://github.com/Layr-Labs/eigenlayer-contracts/blob/9a19503e2a4467f0be938f72e80b11768b2e47f9/src/contracts/interfaces/IAVSRegistrar.sol) is called when operators register for and deregister from [Operator Sets](../../../../products/eigenlayer/concepts/operator-sets/operator-sets-concept.md). By default (if the stored address
 is 0), the call is made to the ServiceManager contract for the AVS. If the AVS has set a different contract as the AVSRegistrar, the specified contract is called.
 
 ### Setting AVSRegistrar

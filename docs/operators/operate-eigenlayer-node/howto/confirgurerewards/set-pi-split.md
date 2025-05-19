@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Set Programmatic Incentives Split
 ---
 
-The default [Operator split for Programmatic Incentives (PI) is 10%](../../../../eigenlayer/concepts/rewards/pi-split.md).
+The default [Operator split for Programmatic Incentives (PI) is 10%](../../../../products/eigenlayer/concepts/rewards/pi-split.md).
 
 ## Get Current PI Split
 

@@ -10,7 +10,7 @@ title: Set Rewards Claimer
 
 ## Set Claimer Address
 
-To set an address as the [Claimer for an Earner](../../../../eigenlayer/concepts/rewards/earners-claimers-recipients.md), use:
+To set an address as the [Claimer for an Earner](../../../../products/eigenlayer/concepts/rewards/earners-claimers-recipients.md), use:
 
 `eigenlayer rewards set-claimer [options]` with 
 

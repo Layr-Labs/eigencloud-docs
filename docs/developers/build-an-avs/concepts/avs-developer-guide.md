@@ -14,7 +14,7 @@ The design of the off-chain execution and on-chain verification is entirely flex
 - If the Operators perform tasks properly, the AVS can autonomously distribute rewards.
 - If the Operators perform tasks maliciously, their delegate stake can be slashed autonomously by the AVS, and the Operator can be removed from the Operator set. 
 
- Please see the original EigenLayer whitepaper [EigenLayer: The Restaking Collective](/docs/eigenlayer/overview/whitepaper.md) for further background on AVS design.
+ Please see the original EigenLayer whitepaper [EigenLayer: The Restaking Collective](/docs/products/eigenlayer/overview/whitepaper.md) for further background on AVS design.
 
 ![AVS Architecture](/img/avs/avs-architecture-v2.png)
 

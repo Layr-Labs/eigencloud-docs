@@ -4,10 +4,10 @@ title: User Access Management
 ---
 
 For concept material on User Access Management (UAM) and roles, refer to:
-* [User Access Management](../../../eigenlayer/concepts/uam/user-access-management.md)
-* [Accounts](../../../eigenlayer/concepts/uam/uam-accounts.md)
-* [Admins](../../../eigenlayer/concepts/uam/uam-admins.md)
-* [Appointees](../../../eigenlayer/concepts/uam/uam-appointees.md)
+* [User Access Management](../../../products/eigenlayer/concepts/uam/user-access-management.md)
+* [Accounts](../../../products/eigenlayer/concepts/uam/uam-accounts.md)
+* [Admins](../../../products/eigenlayer/concepts/uam/uam-admins.md)
+* [Appointees](../../../products/eigenlayer/concepts/uam/uam-appointees.md)
 
 User Access Management (UAM) enables Operators to set appointees for actions enabling a range of key management solutions to be 
 implemented.  For example, from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).

@@ -116,41 +116,17 @@ const config = {
         items: [
           {
             to: "eigencloud/eigencloud_overview",
-            label: "EigenCloud",
+            label: "Get Started",
             position: "left",
             activeBasePath: 'eigencloud/',
           },
           {
-            to: "eigenlayer/overview",
-            label: "EigenLayer",
+            to: "products/eigenlayer/eigenlayer-product",
+            label: "Products",
             position: "left",
-            activeBasePath: 'eigenlayer/',
-          },
-          {
-            to: "eigenda/eigenda_overview",
-            label: "EigenDA",
-            position: "left",
-            activeBasePath: 'eigenda/',
-          },
-          {
-            to: "developers/build-an-avs/concepts/avs-developer-guide",
-            label: "Developers",
-            position: "left",
-            activeBasePath: 'developers/',
-          },
-          {
-            to: "operators/operate-eigenlayer-node/concepts/operator-introduction",
-            label: "Operators",
-            position: "left",
-            activeBasePath: 'operators/',
+            activeBasePath: 'products/',
           },
 
-          {
-            to: "restakers/concepts/overview",
-            label: "Restakers",
-            position: "left",
-            activeBasePath: 'restakers/concepts',
-          },
 
           {
             href: "https://github.com/Layr-Labs",

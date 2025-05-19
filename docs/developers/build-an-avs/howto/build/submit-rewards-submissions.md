@@ -10,7 +10,7 @@ The AVSDirectory method will be deprecated in a future upgrade. [All AVSs will n
 If you are currently using AVSDirectory, `RewardsCoordinator.createAVSRewardsSubmission` and `RewardsCoordinator.createOperatorDirectedAVSRewardsSubmission` can continue to be used while AVSDirectory is being used.
 :::
 
-For information on Rewards concepts, refer to [Rewards Overview](../../../../eigenlayer/concepts/rewards/rewards-concept.md).
+For information on Rewards concepts, refer to [Rewards Overview](../../../../products/eigenlayer/concepts/rewards/rewards-concept.md).
 
 Submitting rewards for an AVS is handled by the [RewardsCoorinator core contract](../../concepts/eigenlayer-contracts/core-contracts.md).
 

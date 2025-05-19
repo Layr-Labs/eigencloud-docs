@@ -9,8 +9,8 @@ with its private key.
 
 :::warning
 Poor key management can lead to compromized operators, network disruptions, or financial losses. Key Management Best 
-Practices are outlined for [Institutional Operators](../../operators/operate-eigenlayer-node/howto/managekeys/institutional-operators.md) and
-[Solo Stakers](../../operators/operate-eigenlayer-node/howto/managekeys/solo-operators.md).
+Practices are outlined for [Institutional Operators](../../../operators/operate-eigenlayer-node/howto/managekeys/institutional-operators.md) and
+[Solo Stakers](../../../operators/operate-eigenlayer-node/howto/managekeys/solo-operators.md).
 :::
 
 ## Operator Keys
@@ -34,7 +34,7 @@ Always interact with with the EigenLayer core contracts using the [eigenlayer-cl
 Do not load a Operator key into any AVS software. If authorizing any action programmatically triggered on the AVS contracts 
 use an AVS key, not the Operator key.
 
-For information on key management best practices, refer to [Key Management Best Practices for Node Operators](../../operators/operate-eigenlayer-node/howto/managekeys/institutional-operators.md).
+For information on key management best practices, refer to [Key Management Best Practices for Node Operators](../../../operators/operate-eigenlayer-node/howto/managekeys/institutional-operators.md).
 
 ## AVS Signing Keys
 

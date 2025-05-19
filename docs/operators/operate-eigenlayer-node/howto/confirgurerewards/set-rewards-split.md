@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Set Rewards Split
 ---
 
-The default Operator split for rewards is 10%. [The Operator split can be varied by AVS or by Operator Set](../../../../eigenlayer/concepts/rewards/rewards-split.md).
+The default Operator split for rewards is 10%. [The Operator split can be varied by AVS or by Operator Set](../../../../products/eigenlayer/concepts/rewards/rewards-split.md).
 
 ## Get Current AVS Rewards Split
 

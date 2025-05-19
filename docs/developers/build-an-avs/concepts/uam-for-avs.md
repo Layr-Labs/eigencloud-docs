@@ -9,10 +9,10 @@ There is no support for setting appointees for AVSDirectory functions. The AVSDi
 :::
 
 For concept material on User Access Management (UAM) and roles, refer to:
-* [User Access Management](../../../eigenlayer/concepts/uam/user-access-management.md)
-* [Accounts](../../../eigenlayer/concepts/uam/uam-accounts.md)
-* [Admins](../../../eigenlayer/concepts/uam/uam-admins.md)
-* [Appointees](../../../eigenlayer/concepts/uam/uam-appointees.md)
+* [User Access Management](../../../products/eigenlayer/concepts/uam/user-access-management.md)
+* [Accounts](../../../products/eigenlayer/concepts/uam/uam-accounts.md)
+* [Admins](../../../products/eigenlayer/concepts/uam/uam-admins.md)
+* [Appointees](../../../products/eigenlayer/concepts/uam/uam-appointees.md)
 
 UAM enables an AVS to split onchain components across multiple contracts to enable a modular design. 
 The protocol functions that an AVS can set appointees for are:

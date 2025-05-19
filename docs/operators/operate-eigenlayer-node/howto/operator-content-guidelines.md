@@ -24,7 +24,7 @@ The following content is **<ins>not permitted</ins>** to be displayed in the Ope
 - Any links to content that is not owned or controlled by the Operator 
 - Any links to social profiles other than those associated with the Operator
 - Any content that violates the intellectual property rights of any other person or entity (including using the branding or logo of EigenLayer or Eigen Labs)
-- Anything violating the [Terms of Service](/docs/eigenlayer/legal/terms-of-service.md)
+- Anything violating the [Terms of Service](/docs/products/eigenlayer/legal/terms-of-service.md)
 
 
 Eigen Labs, Inc. (“**Eigen Labs**”) reserves the right to update these Guidelines at any time and without notice. If you violate these Guidelines, Eigen Labs may delist you or otherwise decrease your visibility on the App. 

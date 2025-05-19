@@ -10,12 +10,12 @@ EigenLayer has a flexible rewards mechanism that enables:
 
 * [Operator directed Rewards](rewards-submission.md)
 
-    AVSs can [direct performance-based rewards](../../../developers/build-an-avs/howto/build/submit-rewards-submissions.md) to specific Operators using custom logic. Operator directed Rewards enable 
+    AVSs can [direct performance-based rewards](../../../../developers/build-an-avs/howto/build/submit-rewards-submissions.md) to specific Operators using custom logic. Operator directed Rewards enable 
     rewards to be distributed based on work completion, quality or other parameters determined by the AVS, allowing flexible and tailored incentives.
 
 * [Variable Operator Fee Splits for AVS Rewards](rewards-split.md)
 
-    Operators can [set their per-AVS fee rate](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md) on AVS Rewards to any amount from 0% to 100%. The default split is 10%. Setting
+    Operators can [set their per-AVS fee rate](../../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md) on AVS Rewards to any amount from 0% to 100%. The default split is 10%. Setting
     a variable split per-AVS enables Operators to align their fee structures with their economic needs and the complexity and diversity of AVS demands. 
     Operator fees can be varied by Operator Set for more granular reward fee structures.
 
@@ -27,7 +27,7 @@ EigenLayer has a flexible rewards mechanism that enables:
 
 Rewards are submitted, calculated, and distributed as follows:
 
-1. [AVSs submit rewards submissions to Operators and Stakers](../../../developers/build-an-avs/howto/build/submit-rewards-submissions.md).
+1. [AVSs submit rewards submissions to Operators and Stakers](../../../../developers/build-an-avs/howto/build/submit-rewards-submissions.md).
 2. The Rewards updater calculates Rewards offchain and consolidates these into a merkle root posted onchain.
 3. [Operators and Stakers claim their allocated Rewards](rewards-claiming).
 

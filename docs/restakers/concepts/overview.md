@@ -28,22 +28,22 @@ for existing and future delegations to Operators and the Operator’s slashable 
 for continuing to monitor the allocations of their chosen Operators as they update allocations across various Operator Sets.
 :::
 
-AVSs can create [Operator Sets](../../eigenlayer/concepts/operator-sets/operator-sets-concept.md) that may include slashable
-[Unique Stake](../../eigenlayer/concepts/slashing/unique-stake.md), and Operators can allocate their delegated stake to Operator Sets. If a Staker has previously delegated stake
+AVSs can create [Operator Sets](../../products/eigenlayer/concepts/operator-sets/operator-sets-concept.md) that may include slashable
+[Unique Stake](../../products/eigenlayer/concepts/slashing/unique-stake.md), and Operators can allocate their delegated stake to Operator Sets. If a Staker has previously delegated stake
 to an Operator, the delegated stake becomes slashable when the Operator opts into an Operator Set and allocates Unique Stake.
 
 Stakers are responsible for understanding the increased risk posed by allocation of their delegated stake as slashable
 Unique Stake to an AVS. While the allocation of delegated stake to an Operator Set may be subject to the [Allocation Config
-Delay and Allocation Delay](../../eigenlayer/reference/safety-delays-reference.md), it is important to understand the increased risk.
+Delay and Allocation Delay](../../products/eigenlayer/reference/safety-delays-reference.md), it is important to understand the increased risk.
 
 For more information on the safety delays for Stakers, refer to the :
-* [Safety Delays reference](../../eigenlayer/reference/safety-delays-reference.md)
+* [Safety Delays reference](../../products/eigenlayer/reference/safety-delays-reference.md)
 * [Allocating and Deallocating to Operator Sets section of ELIP-002](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-002.md#unique-stake-allocation--deallocation).
 
 ## Escrow Period (Withdrawal Delay)
 
 EigenLayer contracts feature a withdrawal delay for all Liquid and Native restaking, a critical security measure for instances
-of vulnerability disclosure or when anomalous behavior is detected by monitoring systems. For more information, refer to [Withdrawal Delay](/docs/eigenlayer/security/withdrawal-delay.md).
+of vulnerability disclosure or when anomalous behavior is detected by monitoring systems. For more information, refer to [Withdrawal Delay](/docs/products/eigenlayer/security/withdrawal-delay.md).
 
 For information on how to get started, refer to:
 * [Restake and Delegate](../howto/restake-webapp/liquid-restaking/restake-lsts.md) for liquid restaking.

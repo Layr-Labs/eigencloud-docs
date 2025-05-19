@@ -10,4 +10,4 @@ on Rewards. The rest of the reward is claimable by the Operator’s delegated St
 * The AVS's relative weighting of strategies in a rewards submission.
 * The number of days during the eligible timeframe of the reward submission that the Staker was delegated to the Operator.
 
-For information on how to change the default rewards split, refer to [Set Rewards Split](../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md).
+For information on how to change the default rewards split, refer to [Set Rewards Split](../../../../operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split.md).
