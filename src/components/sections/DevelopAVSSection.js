@@ -24,7 +24,7 @@ function DevelopAVSSection() {
     },
     {
       title: 'Implement Custom Slashing Logic',
-      desc: 'Enable service providers to make commitments with slashing as enforcement mechanism.',
+      desc: 'Enable Operators to make commitments with slashing as an enforcement mechanism.',
       code: codeBlocks[1].code,
     },
     {
