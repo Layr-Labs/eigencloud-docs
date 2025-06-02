@@ -9,21 +9,25 @@ function RestakeSection() {
       title: 'Restake ETH and Delegate to an Operator',
       desc: 'Using the EigenLayer app.',
       image: '/img/restake-1.png',
+      url: 'https://docs.eigenlayer.xyz/restake'
     },
     {
       title: 'Native vs Liquid Restaking and how to participate',
       desc: 'EigenLayer enables native and liquid restaking.',
       image: '/img/restake-2.png',
+      url: 'https://docs.eigenlayer.xyz/restake'
     },
     {
       title: 'Claim Rewards using the EigenLayer app',
       desc: 'Easily claim Rewards in the web app.',
       image: '/img/restake-3.png',
+      url: 'https://docs.eigenlayer.xyz/restake'
     },
     {
       title: 'Track rewards and slashing risk across AVSs',
       desc: 'Review AVSs and their associated rewards and slashing information.',
       image: '/img/restake-4.png',
+      url: 'https://docs.eigenlayer.xyz/restake'
     },
   ];
   const [hovered, setHovered] = React.useState(0);
@@ -52,6 +56,7 @@ function RestakeSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
+                to={card.url}
               />
             ))}
           </div>

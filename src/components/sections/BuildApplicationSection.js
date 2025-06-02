@@ -9,16 +9,19 @@ function BuildApplicationSection() {
       title: 'Explore apps on EigenCloud',
       desc: `Discover a growing library of applications built with verifiable trust at their core. From decentralized contests to secure audio streaming, see what's possible on EigenCloud.`,
       image: '/img/build-app-1.png',
+      url: 'https://docs.eigenlayer.xyz/build-app'
     },
     {
       title: 'MegaPhone',
       desc: `Fork the repo to launch your own audio streaming on MegaPhone — a fully verifiable, decentralized audio broadcast platform` ,
       image: '/img/build-app-2.png',
+      url: 'https://docs.eigenlayer.xyz/build-app'
     },
     {
       title: 'EigenCourt',
       desc: `Run trustless Twitter contests with EigenCourt. Fork the repo and easily set up provably fair giveaways and promotions for your community.`,
       image: '/img/build-app-3.png',
+      url: 'https://docs.eigenlayer.xyz/build-app'
     },
   ];
   const [hovered, setHovered] = React.useState(0);
@@ -63,6 +66,7 @@ function BuildApplicationSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
+                to={card.url}
               />
             ))}
           </div>

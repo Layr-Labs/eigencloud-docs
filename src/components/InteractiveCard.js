@@ -1,11 +1,20 @@
 import React from 'react';
 import styles from './InteractiveCard.module.css';
 
-function InteractiveCard({ title, desc, isActive, onClick, onMouseEnter, onMouseLeave }) {
+function InteractiveCard({ title, desc, isActive, onClick, onMouseEnter, onMouseLeave, to }) {
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e);
+    }
+    if (to) {
+      window.location.href = to;
+    }
+  };
+
   return (
     <div
       className={styles.card + (isActive ? ' ' + styles.active : '')}
-      onClick={onClick}
+      onClick={handleClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

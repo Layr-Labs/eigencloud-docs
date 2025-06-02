@@ -21,16 +21,19 @@ function DevelopAVSSection() {
       title: 'Implement Onchain Components',
       desc: 'Implement core AVS functionality in the AVS contracts',
       code: codeBlocks[0].code,
+      url: 'https://docs.eigenlayer.xyz/develop-avs'
     },
     {
       title: 'Implement Custom Slashing Logic',
       desc: 'Enable service providers to make commitments with slashing as enforcement mechanism.',
       code: codeBlocks[1].code,
+      url: 'https://docs.eigenlayer.xyz/develop-avs'
     },
     {
       title: 'Distribute Rewards to Stakers and Operators',
       desc: 'Implement performance-based rewards and set variable fee splits.',
       code: codeBlocks[2].code,
+      url: 'https://docs.eigenlayer.xyz/develop-avs'
     },
   ];
 
@@ -74,6 +77,7 @@ function DevelopAVSSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
+                to={card.url}
               />
             ))}
           </div>
