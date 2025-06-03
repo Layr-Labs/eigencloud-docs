@@ -34,7 +34,8 @@
 
 .title {
   color: #F9F9FA;
-  font-family: Geist, 'Pretendard', 'Apple SD Gothic Neo', Arial, sans-serif;
+  font-family: 'ABC Repro';
+  src: url('/font/ABCReproVariable.woff2') format('woff2');
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
