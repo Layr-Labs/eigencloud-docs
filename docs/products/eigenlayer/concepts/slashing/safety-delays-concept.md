@@ -14,5 +14,3 @@ Safety delays are applied when allocating or deallocating to prevent rapid stake
 * Ensure stability. Delays ensure gradual transitions when stake is being allocated or dellocated enabling AVSs to adjust to changes in Operator security.
 * Reduce risks from slashing. Delays ensure that staked assets remain at risk for a period after deallocation preventing the withdrawal of stake immediately before a slashing event to avoid slashing penalties.
 * Preventing stake cycling to collect rewards. Delays ensure commitment periods to securing an AVS.
-
-For more information on provided safety delays, refer to the [Safety Delays reference](../../reference/safety-delays-reference).

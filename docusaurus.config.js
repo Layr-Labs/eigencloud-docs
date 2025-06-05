@@ -44,7 +44,7 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-          
+
         ],
         createRedirects(existingPath) {
 
