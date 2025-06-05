@@ -46,7 +46,7 @@ A cryptographic proof attesting that specific data has been properly encoded, di
 User submitted data to EigenDA.
 
 ### Blob
-The intermediate representation of user‑submitted data (payload) following Reed–Solomon erasure encoding over the BN254 prime field (chunked and mapped to field elements), whose elements serve as polynomial coefficients and are KZG‑committed for distribution to validators.
+The intermediate representation of user-submitted data (payload) following Reed–Solomon erasure encoding over the BN254 prime field (chunked and mapped to field elements), whose elements serve as polynomial coefficients and are KZG-committed for distribution to validators.
 
 ### Chunk
 A shard of the erasure-coded blob that is assigned to and stored by individual validators based on their stake weight. Each validator is responsible for only storing their specific chunks rather than the entire blob.

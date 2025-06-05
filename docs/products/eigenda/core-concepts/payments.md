@@ -65,7 +65,7 @@ type PaymentMetadata struct {
 }
 ```
 
-On-demand bandwidth users must first deposit tokens into the payment vault contract for a particular account, in which the contract stores the total payment deposited to that account (`totalDeposit`). Users should be mindful in depositing as they cannot withdrawal or request for refunds from the current Payment Vault contract. This amount will be validated against the payment metadata’s `CumulativePayment` field authroized by the user for each blob dispersal request. The network will ensure that the `CumulativePayment` is great enough to cover the bandwidth usage by the user but still remains with the total amount deposited on chain. 
+On-demand bandwidth users must first deposit tokens into the payment vault contract for a particular account, in which the contract stores the total payment deposited to that account (`totalDeposit`). Users should be mindful in depositing as they cannot withdrawal or request for refunds from the current Payment Vault contract. This amount will be validated against the payment metadata's `CumulativePayment` field authroized by the user for each blob dispersal request. The network will ensure that the `CumulativePayment` is great enough to cover the bandwidth usage by the user but still remains with the total amount deposited on chain. 
 
 ```solidity
 // On-chain record of on-demand payments
@@ -98,7 +98,7 @@ When a disperser client disperse blobs with on-demand bandwidth, the client will
 
 Example: Initially, EigenDA team will set the price per symbol to be `0.4470gwei`, aiming for the price of `0.015ETH/GB`, or `2000gwei/128Kib` blob dispersal. We limit the global on-demand rate to be `131072` symbols per second (`4mb/s`) and 30 second rate intervals; this allows for ~4 MiB of data to be dispersed every second on average, and the maximum single spike of dispersal to be ~120MiB over 30 seconds.
 
-> Note: The Cumulative Payment method is designed with decentralized payments in mind, with the goal to serve highly concurrent dispersal requests across a large validator set. Clients can disperse blobs rapidly while request receivers can handle dispersal payments independently and consistently within the client’s deposited balance, even if the requests were received with different ordering between the validators. 
+> Note: The Cumulative Payment method is designed with decentralized payments in mind, with the goal to serve highly concurrent dispersal requests across a large validator set. Clients can disperse blobs rapidly while request receivers can handle dispersal payments independently and consistently within the client's deposited balance, even if the requests were received with different ordering between the validators. 
 
 ### Reserved Bandwidth (Reservations)
 
