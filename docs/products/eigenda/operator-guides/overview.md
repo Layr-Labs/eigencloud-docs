@@ -16,7 +16,7 @@ EigenDA Blazar (V2) is a new version of the EigenDA protocol that is currently i
 Current testnet operators running v1 must follow the [Blazar migration guide](./blazar-migration.md) to update their nodes to v2.
 
 ## New operator onboarding
-Start by understanding the [Requirements](requirements/requirements-overview.md) for being an EigenDA operator and running an EigenDA node. If you are able to satisfy all of the elligibility requirements for becoming a node operator, proceed onward to [run your node](./run-a-node/). It's important that you properly [configure and start your node](./run-a-node/run-with-docker/) before [registering your operator with the network](./run-a-node/registration/) and becoming subject to the SLA. 
+Start by understanding the [Requirements](requirements/requirements-overview.md) for being an EigenDA operator and running an EigenDA node. If you are able to satisfy all of the elligibility requirements for becoming a node operator, proceed onward to [run your node](run-a-node/run-overview.md). It's important that you properly [configure and start your node](./run-a-node/run-with-docker/) before [registering your operator with the network](./run-a-node/registration/) and becoming subject to the SLA. 
 
 EigenDA is in a state of active development. Operators must make sure to listen for [node software updates](./upgrades/software-upgrades/) in the correct channels and to implement these upgrades promptly.
 
