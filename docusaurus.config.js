@@ -44,10 +44,7 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-          {
-            from: "/overview/readme/",
-            to: "/eigenlayer/overview/",
-          },
+          
         ],
         createRedirects(existingPath) {
 
