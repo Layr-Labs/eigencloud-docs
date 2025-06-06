@@ -14,7 +14,7 @@ Labs](https://www.offchainlabs.com/) to enable rollup developers to build
 
 Arbitrum nodes communicate with EigenDA via the proxy for secure communication and low code overhead. More information can be found [here](../../eigenda-proxy/eigenda-proxy.md). An instance of proxy **must** be spun-up to use this integration securely. In your node config, this will look like:
 ```
-"eigen-da": {"enable": true,"rpc": "http://eigenda_proxy:4242"}
+"eigen-da": {"enable": true,"rpc": "http://eigenda_proxy:3100"}
 ```
 
 ## How to deploy a Rollup Creator integrated with EigenDA
@@ -54,6 +54,7 @@ Additionally, we maintain the following factories:
 |---------|---------|---------|-----------|
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Ethereum Mainnet | [0xdD6258539c41687B9afd38983c0456493423C73d](https://etherscan.io/address/0xdD6258539c41687B9afd38983c0456493423C73d#code) | [0x787c88E70900f6AE10E7B9D18024482895EBD1eb](https://etherscan.io/address/0x787c88E70900f6AE10E7B9D18024482895EBD1eb#code) |
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Ethereum Holesky | [0x22AaeA3A47d73e9585D0378D1d9e1CeF7Cd8c6a1](https://holesky.etherscan.io/address/0x22AaeA3A47d73e9585D0378D1d9e1CeF7Cd8c6a1#code) | [0xFe52fE1940858DCb6e12153E2104aD0fDFbE1162](https://holesky.etherscan.io/address/0xFe52fE1940858DCb6e12153E2104aD0fDFbE1162#code) |
+| [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Ethereum Sepolia | [0x5af6fe79EB79A8177268ab143f31f7e0A9b7Fd53](https://sepolia.etherscan.io/address/0x5af6fe79EB79A8177268ab143f31f7e0A9b7Fd53#code) | [0xb1ffa45789f1e3ea513d58202389c8eea1e6de4e](https://sepolia.etherscan.io/address/0xb1ffa45789f1e3ea513d58202389c8eea1e6de4e#code) |
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Arbitrum Mainnet | [0x4231Dd9e6717aB9a9ABC5618d8a4Fcf1a432F698](https://arbiscan.io/address/0x4231Dd9e6717aB9a9ABC5618d8a4Fcf1a432F698#code) | **NA** |
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Arbitrum Sepolia | [0x0F7f71c48c6278422736a4a9441cd1d59ba0C2dB](https://sepolia.arbiscan.io/address/0x0F7f71c48c6278422736a4a9441cd1d59ba0C2dB#code) | **NA** |
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Base Mainnet     | [0xcC272c9249d1638B7985eFb84c0E9Cdc001b73F7](https://basescan.org/address/0xcC272c9249d1638B7985eFb84c0E9Cdc001b73F7#code) | **NA** |

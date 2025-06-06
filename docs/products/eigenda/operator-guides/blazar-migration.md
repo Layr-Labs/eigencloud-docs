@@ -7,10 +7,10 @@ sidebar_position: 6
 
 Operators running v1 will need to define new v2 specific environment variables, expose 2 new ports, and update their socket registration as part of the migration to v2.
 
-## Testnet Migration Timeline
-We are asking for all testnet operators to migrate to v2 within 2 weeks post Blazar testnet launch (Feb 20, 2025).
+## Mainnet Migration Timeline
+We are asking for all testnet operators to migrate to v2 by June 18th 2025.
 
-During this period, ejections based on Blazar (V2) signing rates will be paused (ejections based on V1 signing rate will continue to be performed). After this period, operator signing rates will be measured as the worse of V1 and Blazar (V2) signing rate, and will be ejected based on the worse of the two signing rates.
+Before this date, ejections based on Blazar (V2) signing rates will be paused (ejections based on V1 signing rate will continue to be performed). After this date, operator signing rates will be measured as the worse of V1 and Blazar (V2) signing rate, and will be ejected based on the worse of the two signing rates.
 
 ## Migration Steps
 ### 1. Update `.env` with v2 specific environment variables
@@ -27,7 +27,7 @@ NODE_INTERNAL_V2_RETRIEVAL_PORT=${NODE_V2_RETRIEVAL_PORT}
 
 ### 2. Update `MAIN_SERVICE_IMAGE`
 ```
-MAIN_SERVICE_IMAGE=ghcr.io/layr-labs/eigenda/opr-node:0.9.0-rc.0
+MAIN_SERVICE_IMAGE=ghcr.io/layr-labs/eigenda/opr-node:0.9.0
 ```
 
 ### 3. Update socket registration

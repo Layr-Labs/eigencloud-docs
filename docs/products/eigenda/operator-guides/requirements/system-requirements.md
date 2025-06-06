@@ -1,75 +1,88 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # System Requirements
+
+The following system requirements apply to the **Blazar (V2) upgrade** and are critical for maintaining optimal node performance and protocol compliance.
 
 ## General System Requirements
 
 The EigenDA network design dictates that operators with greater stake will
 be asked to store a larger number of blob chunks/shards. As a result, an operator's node requirements are a
-function of the total amount of stake they wield across all quorums, which we
-call 'Total Quorum Stake' (TQS). For example, if an operator Foobar has 3% stake
-on the restaked ETH quorum, and 5% ETH on a staked WETH quorum, then operator
-Foobar's TQS is 8%.
+function of the stake amounts across participating quorums, which we
+call 'Total Work Share' (TWS). 
 
-Operators should use the following table to determine which node class is appropriate for their level of stake:
+### How TWS Works
 
-| Total Quorum Stake (TQS) | Max Allocated Throughput |  Node Class |
-| ------------------------ | ----------------------- | -------------------- |
-| Up to 0.03% (Solo staker)      | 80 Kbps    | General Purpose - large    |
-| Up to 0.2%                     |  500 Kbps | General Purpose - xl        |
-| Up to 20%                      |  50 Mbps  | General Purpose - 4xl      |
+An operator’s **TWS** is calculated as follows:
 
+- For the ETH and EIGEN quorums, TWS is the **maximum** of the two stake weights.
+- For any additional quorums, their stake **adds** to the base TWS.
 
-Operators should use the following table to plan their hardware profile for each node class:
+**Example**:
+- 5% stake in ETH + 10% in EIGEN → TWS = 10%
+- Add 5% in a third quorum → TWS = 15%
 
-| Class                   | vCPUs (10th gen+) | Memory | Networking Capacity |
-| ----------------------- | ----------------- | ------ | ------------------- |
-| General Purpose - large | 2                 | 8 GB   | 5 Mbps              |
-| General Purpose - xl    | 4                 | 16 GB  | 25 Mbps             |
-| General Purpose - 4xl   | 16                | 64 GB  | 5 Gbps              |
+### Hardware Recommendations
 
+Use the table below to determine the recommended hardware based on your TWS:
 
-Here 'Max Allocated Throughput' refers to the maximum amount of blob shard traffic that
-will be sent to a node based on their total quorum stake. This measure does not translate
-directly to the networking capacity required by the node; operators should use the network
-capacity requirements of the associated node class.
+| Class | Total Work Share (TWS)      | vCPUs (10th gen+) | Memory | Disk IOPS | Networking Capacity |
+| ----- | --------------------------- | ----------------- | ------ | --------- | ------------------- |
+| Small | Up to 2%                    | 4                 | 16 GB  | 3,000     | 1 Gbps              |
+| Large | Greater than 2%             | 16                | 64 GB  | 12,000    | 10 Gbps             |
 
-Professional operators with large or variable amounts of delegated stake should
-select the `4xl` node class. The `large` class is intended to be used by solo
-stakers with the minimal allowed quantity of stake.
-
-We will update this specification to include new EigenLayer node classes as they
-are introduced.
+---
 
 ## Node Storage Requirements
 
 EigenDA nodes **must** provision high-performance SSD storage in order to keep
-up with network storage and retrieval tasks. Enterprise grade SSDs are recommended, such as `PCIe 4.0 x4 M.2/U.2 NVMe`.
+up with network storage and retrieval tasks. Enterprise grade SSDs are recommended, such as `PCIe 4.0 x4 M.2` or `U.2 NVMe`.
 
 :::warning
-Failure to maintain adequate performance will result in unacceptable validation latency and [automatic ejection](protocol-SLA/).
+Failure to maintain adequate
+performance will result in unacceptable validation latency and [automatic ejection](protocol-SLA/).
 :::
 
-The following table summarizes required storage capacity based on TQS:
+---
 
-| Total Quorum Stake (TQS) | Max Allocated Throughout | Required Storage |
-| ------------------------ | -------------------- | ---------------- |
-| Up to 0.03%                    | 80 Kbps              | 20 GB            |
-| Up to 0.2%                     | 500 Kbps             | 150 GB           |
-| Up to 1%                       | 2.5 Mbps             | 750 GB           |
-| Up to 10%                      | 25 Mbps              | 4 TB             |
-| Up to 20%                      | 50 Mbps              | 8 TB             |
+### Throughput and Storage Scaling
+
+EigenDA operator nodes are designed to scale up to 100 MB/s throughput. 
+
+**storage is the only resource that must scale** with 
+increased throughput. The rest of the system can remain fixed, as per the general requirements.
+
+To operate at full capacity (100 MB/s) with an TWS of 5%, 
+a node would require approximately 50 TB of storage. 
+However, provisioning full capacity is typically cost-prohibitive and results in inefficient resource usage.
+
+---
+
+### Recommended (Elastic) Provisioning Strategy
+
+The **preferred approach** is to provision storage elastically, allowing it to scale with demand. Under this model:
+- Start with **8 TB** of enterprise-grade SSD storage.
+- Ensure utilization stays below 50% over **any rolling 14-day period**.
+
+---
+
+### When Elastic Provisioning Is Not Feasible
+
+If elastic provisioning is not possible, storage must be provisioned for full capacity using the following formula:
+```
+Required Storage (TB) = TWS (%) * 1000
+```
+Example: For an TWS of 5%, provision 50 TB to support the full throughput capacity. 
+
 
 :::info
-The rough size of the message sent from the EigenDA disperser to a DA node can be estimated using the following formula:
+The formula above is derived and simplified from the following formula:
 
 ```
-<batch size (MB)>  = <throughput (MB/s)>  * <batch interval (s)>  * <coding rate> * <% stake>
+<Gross System Throughput(MB/s)> * <14 days in seconds> * <% stake>
 ```
-
-Where `<coding rate> = 5` for all current EigenDA quorums. So if the network is operating at 1MB/s with a 10 minute batch interval, and a node has 5% of the stake, then that node will receive roughly 150MB per message from the disperser.
 :::
 
 ## System Upgrades

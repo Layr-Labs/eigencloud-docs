@@ -12,12 +12,12 @@ Defined below is the process for which you can use to migrate your vanilla Arbit
 
 2. Perform node upgrade to use latest EigenDA x Nitro [version](https://github.com/Layr-Labs/nitro/releases). Please ensure that the fork version is equivalent to the nitro reference. The EigenDA x Nitro fork is designed to be backwards compatible with the latest Arbitrum release and should operate using native Arbitrum DA without any liveness compromises.
 
-3. Invoke the eigenda v2.1.0 migration action to upgrade the parent chain contracts to use EigenDA ones. Instructions can be found [here](https://github.com/Layr-Labs/orbit-actions/blob/0bc2322333e19e5b26965ffd2083d214d291e588/scripts/foundry/contract-upgrades/eigenda-2.1.0/README.md) onto how to do this. This will apply necessary eigenda contract upgrades and update the `wasmModuleRoot` to the one necessary for the new replay script used for performing validations with the EigenDA batch destination type. This action **must** be ran before enabling EigenDA feature flags on the node backend configs.
+3. Invoke the eigenda v2.1.3 migration action to upgrade the parent chain contracts to use EigenDA ones. Instructions can be found [here](https://github.com/Layr-Labs/orbit-actions/tree/63ba07bbaa849117d2074ccd3c90c2628c58b36d/scripts/foundry/contract-upgrades/eigenda-v2.1.3#readme) onto how to do this. This will apply necessary eigenda contract upgrades and update the `wasmModuleRoot` to the one necessary for the new replay script used for performing validations with the EigenDA batch destination type. This action **must** be ran before enabling EigenDA feature flags on the node backend configs.
 
 4. Update your Arbitrum system configs to enable EigenDA. This includes changes to your batch posters, validators, and sequencer node configs; i.e:
 - Update **node** field section to use eigenda-proxy configuration; ie:
 
-        `"eigen-da": {"enable": true,"rpc": "http://eigenda_proxy:4242"}`
+        `"eigen-da": {"enable": true,"rpc": "http://eigenda_proxy:3100"}`
 
 - Update **arbitrum** field section to enable eigenda; ie:
 

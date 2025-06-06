@@ -6,7 +6,7 @@ title: V1 Guide
 # Quick Start
 
 In this guide, we manually disperse and retrieve a blob from the EigenDA disperser. This is an extremely simple example that circumvents most of the complexities needed to benefit from the [secure properties](../../../core-concepts/overview)
-) that EigenDA has to offer. After completing this quickstart, we recommend reading the [EigenDA Proxy Guide](../../eigenda-proxy/eigenda-proxy.md) guide to see how to setup a full integration with EigenDA.
+ that EigenDA has to offer. After completing this quickstart, we recommend reading the [EigenDA Proxy Guide](../../eigenda-proxy/eigenda-proxy.md) guide to see how to setup a full integration with EigenDA.
 
 ## Dispersing Your First Blob to Testnet
 
