@@ -23,12 +23,6 @@ function RestakeSection() {
       image: '/img/restake-3.png',
       url: 'restakers/howto/claim-rewards-app'
     },
-    {
-      title: 'Track rewards and slashing risk across AVSs',
-      desc: 'Review AVSs and their associated rewards and slashing information.',
-      image: '/img/restake-4.png',
-      url: 'restakers/restaking-guides/restaking-user-guide/liquid-restaking/restake-lsts'
-    },
   ];
   const [hovered, setHovered] = React.useState(0);
   const [lastHovered, setLastHovered] = React.useState(0);
