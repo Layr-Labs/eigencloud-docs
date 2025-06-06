@@ -1,0 +1,41 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.cardsContainer {
+  margin: 3em 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-top: 0rem;
+  transition-property: all;
+  transition-duration: 200ms;
+  align-items: start;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+
+  color: var(--eigenda-main);
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card:hover {
+  color: var(--eigenda-main);
+}
+
+.cardBody {
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.cardHeader h2 {
+  color: var(--eigenda-main);
+}

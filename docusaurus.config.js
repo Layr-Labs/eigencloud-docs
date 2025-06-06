@@ -44,10 +44,7 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-          {
-            from: "/overview/readme/",
-            to: "/eigenlayer/overview/",
-          },
+
         ],
         createRedirects(existingPath) {
 
@@ -115,41 +112,16 @@ const config = {
         },
         items: [
           {
-            to: "eigencloud/eigencloud_overview",
-            label: "EigenCloud",
+            to: "get-started/eigencloud-overview",
+            label: "Get Started",
             position: "left",
-            activeBasePath: 'eigencloud/',
+            activeBasePath: 'get-started/',
           },
           {
-            to: "eigenlayer/overview",
-            label: "EigenLayer",
+            to: "products/eigenlayer/eigenlayer-overview",
+            label: "Products",
             position: "left",
-            activeBasePath: 'eigenlayer/',
-          },
-          {
-            to: "eigenda/eigenda_overview",
-            label: "EigenDA",
-            position: "left",
-            activeBasePath: 'eigenda/',
-          },
-          {
-            to: "developers/build-an-avs/concepts/avs-developer-guide",
-            label: "Developers",
-            position: "left",
-            activeBasePath: 'developers/',
-          },
-          {
-            to: "operators/operate-eigenlayer-node/concepts/operator-introduction",
-            label: "Operators",
-            position: "left",
-            activeBasePath: 'operators/',
-          },
-
-          {
-            to: "restakers/concepts/overview",
-            label: "Restakers",
-            position: "left",
-            activeBasePath: 'restakers/concepts',
+            activeBasePath: 'products/',
           },
 
           {

@@ -215,6 +215,9 @@ html[data-theme="dark"] .header--github-link:before {
   color: white;
 }
 
+.hidden {
+  display: none !important;
+}
 
 .link-body-icon{
   padding-left: 20px;
