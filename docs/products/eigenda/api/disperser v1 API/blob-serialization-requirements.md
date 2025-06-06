@@ -63,7 +63,7 @@ ERROR:
 ```
 
 The simplest way to resolve this until we have a dedicated EigenDA CLI is to
-use the `kzgpad` utility documented in the [tutorial](../../../integrations-guides/quick-start/v1/index.md):
+use the `kzgpad` utility documented in the [tutorial](../../integrations-guides/quick-start/v1/index.md):
 
 ```bash
 $ grpcurl \

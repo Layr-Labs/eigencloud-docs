@@ -31,4 +31,4 @@ Currently, the EigenDA disperser enforces two types of rate limits:
 - Data rate limit: Limits the total amount of data posted within a fixed (e.g. 10 minute) interval.
 - Blob rate limit: Limits the total number of blobs posted within a 10 minute interval.
 
-If a client exceeds either of these rate limits, they will receive a rate limit error and the request will not be processed. Rate limits are determined by [network defaults](../../../networks/mainnet.md) or by reservation payments. 
+If a client exceeds either of these rate limits, they will receive a rate limit error and the request will not be processed. Rate limits are determined by [network defaults](../../networks/mainnet.md) or by reservation payments. 

@@ -10,7 +10,7 @@ The source of truth for the Disperser API spec is [disperser.proto](https://gith
 
 <!-- TODO: Update to point to master, not a specific commit -->
 
-Eigen Labs hosts one disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages for [mainnet](../../../networks/mainnet.md) and [Holesky](../../../networks/holesky.md).
+Eigen Labs hosts one disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages for [mainnet](../../networks/mainnet.md) and [Holesky](../../networks/holesky.md).
 
 The EigenDA Disperser exposes 4 endpoints:
 
@@ -46,7 +46,7 @@ This endpoint will be deprecated in future releases. All production traffic shou
 The `DisperseBlob()` is a simple unauthenticated endpoint which allows users to send test traffic to the EigenDA testnet and mainnet networks. Requests to the `DisperseBlob()` endpoint are rate limited based on IP address. 
 
 :::info
-Currently, all users can permissionlessly utilize the `DisperseBlob` endpoint on [testnet](../../../networks/holesky.md) at free-tier throughput levels. Mainnet users can request IP-whitelisting via the [EigenDA Client Registration Form](https://forms.gle/3QRNTYhSMacVFNcU8), but should prefer the authenticated endpoint described in the next section. 
+Currently, all users can permissionlessly utilize the `DisperseBlob` endpoint on [testnet](../../networks/holesky.md) at free-tier throughput levels. Mainnet users can request IP-whitelisting via the [EigenDA Client Registration Form](https://forms.gle/3QRNTYhSMacVFNcU8), but should prefer the authenticated endpoint described in the next section. 
 :::
 
 The `DisperseBlob()` endpoint accepts a [DisperseBlobRequest](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/disperser/disperser.proto#L72) and returns a [DisperseBlobReply](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/disperser/disperser.proto#L92), as described below:
