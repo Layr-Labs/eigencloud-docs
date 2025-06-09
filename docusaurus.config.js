@@ -91,7 +91,7 @@ const config = {
         },
 
         gtag: {
-          trackingID: 'G-GN5RBJ9VRL',
+          trackingID: 'G-EQG5VRNYHQ',
           anonymizeIP: true,
         },
       }),
