@@ -54,7 +54,6 @@ export default function Logo(props) {
           imageClassName={imageClassName}
         />
       )}
-      {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}
     </Link>
   );
 }

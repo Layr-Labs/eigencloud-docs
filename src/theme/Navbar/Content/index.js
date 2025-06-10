@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useThemeConfig, ErrorCauseBoundary} from '@docusaurus/theme-common';
 import {
   splitNavbarItems,
@@ -41,17 +43,19 @@ export default function NavbarContent() {
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
+  const {navbar: {title: navbarTitle, logo}} = useThemeConfig();
+  const logoLink = useBaseUrl(logo?.href || '/');
 
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.topRow}>
-        {/* Optionally show mobile toggle on the left for mobile */}
-        <div style={{ width: 40, minWidth: 40 }}>
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-        </div>
-        <div className={styles.logoCenter}>
+        {/* Left: Logo */}
+        <div className={styles.logoLeft}>
           <NavbarLogo />
         </div>
+        {/* Center: (empty for now, can be used for spacing) */}
+        <div style={{ flex: 1 }} />
+        {/* Right: right items */}
         <div className={styles.rightItems}>
           <NavbarItems items={rightItems} />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
@@ -63,6 +67,11 @@ export default function NavbarContent() {
         </div>
       </div>
       <div className={styles.bottomRow}>
+        {navbarTitle && (
+          <Link to={logoLink} {...(logo?.target && {target: logo.target})} style={{marginRight: '1.5rem'}}>
+            <b className="navbar__title text--truncate">{navbarTitle}</b>
+          </Link>
+        )}
         <NavbarItems items={leftItems} />
       </div>
     </div>

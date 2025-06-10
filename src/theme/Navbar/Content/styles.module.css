@@ -35,8 +35,23 @@ Hide color mode toggle in small viewports
 
 .bottomRow {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   border-top: 1px solid var(--ifm-navbar-border-color, #eee);
   margin-bottom: 2rem;
+  padding: 0.5rem 0 0.5rem 32px;
+  /* Optional: max-width for content alignment */
+  /* max-width: 1200px; margin-left: auto; margin-right: auto; */
+}
+
+.bottomRow .navbar__items {
+  gap: 2rem;
+}
+
+.logoLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 120px;
 }

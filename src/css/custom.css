@@ -518,3 +518,7 @@ pre, code, .code-block, .DevelopAVSCode {
 }
 
 /* === End Figma Font Styles === */
+
+.navbar {
+  min-height: 120px;
+}
