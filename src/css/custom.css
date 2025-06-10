@@ -522,3 +522,20 @@ pre, code, .code-block, .DevelopAVSCode {
 .navbar {
   min-height: 120px;
 }
+
+.table-of-contents {
+  display: none !important;
+}
+
+/* Main wrapper padding */
+[class^="docsWrapper"] {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+@media (min-width: 997px) {
+  .docItemCol_VOVn {
+    max-width: 90% !important;
+    width: 90% !important;
+  }
+}
