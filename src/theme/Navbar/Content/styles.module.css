@@ -1,0 +1,42 @@
+/*
+Hide color mode toggle in small viewports
+ */
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.logoCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.rightItems {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid var(--ifm-navbar-border-color, #eee);
+  margin-bottom: 2rem;
+}
