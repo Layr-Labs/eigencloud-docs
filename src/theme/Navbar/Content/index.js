@@ -57,13 +57,14 @@ export default function NavbarContent() {
         <div style={{ flex: 1 }} />
         {/* Right: right items */}
         <div className={styles.rightItems}>
-          <NavbarItems items={rightItems} />
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          
           {!searchBarItem && (
             <NavbarSearch>
               <SearchBar />
             </NavbarSearch>
           )}
+          <NavbarItems items={rightItems} />
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </div>
       </div>
       <div className={styles.bottomRow}>

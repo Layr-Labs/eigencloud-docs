@@ -522,12 +522,12 @@ pre, code, .code-block, .DevelopAVSCode {
 .navbar {
   min-height: 120px;
 }
-
+/* 
 .table-of-contents {
   display: none !important;
-}
+} */
 
-/* Main wrapper padding */
+/* Main wrapper padding
 [class^="docsWrapper"] {
   padding-left: 100px;
   padding-right: 100px;
@@ -538,4 +538,4 @@ pre, code, .code-block, .DevelopAVSCode {
     max-width: 90% !important;
     width: 90% !important;
   }
-}
+} */
