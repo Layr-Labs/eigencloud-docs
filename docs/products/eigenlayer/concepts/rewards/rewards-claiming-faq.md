@@ -25,7 +25,7 @@ To accumulate testnet rewards from AVSs, you must be delegated to an Operator th
 FaucetAVS is designed purely to distribute WETH to staked WETH with no requirements beyond operator registration.
 
 **EigenDA:**
-EigenDA distributes rewards to [operators actively participating in EigenDA](https://docs.eigenda.xyz/operator-guides/requirements/). Operators may be ejected if they fail to sign batches or fall below the threshold requirements. Rewards are earned for:
+EigenDA distributes rewards to [operators actively participating in EigenDA](../../../eigenda/operator-guides/requirements/requirements-overview.md). Operators may be ejected if they fail to sign batches or fall below the threshold requirements. Rewards are earned for:
 - EIGEN Quorum participation
 - ETH Quorum participation including LsETH, ETHx, rETH, osETH, cbETH, ankrETH, stETH, WETH, sfrxETH, mETH and Beacon Chain ETH in EigenPods.
 
@@ -36,7 +36,7 @@ The current rewards calculation assumes that work done is directly proportional 
 
 ### Will the AVS Rewards be distributed using the same ERC20 token used to Stake / Operate (opt-in to) the AVS?
 
-An AVS can distribute any ERC-20 token it chooses in a [RewardSubmission](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/RewardsCoordinator.md#createavsrewardssubmission). These reward token(s) can be different from the list of Strategies (assets) that were originally staked, delegated and opted into by the Restaker, Operator, and AVS.
+An AVS can distribute any ERC-20 token it chooses in a [RewardSubmission](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/RewardsCoordinator.md#createavsrewardssubmission). These reward token(s) can be different from the list of Strategies (assets) that were originally staked, delegated and opted into by the Restaker, Operator, and AVS.
 
 For example, Restakers could delegate stETH (lido eth) to an Operator. The Operator could opt in to an AVS with the stETH strategy. Then a week later the AVS could pay rewards in USDC. The decision of which ERC20 token to reward to a Strategy is entirely up to the AVS to determine.
 
@@ -52,3 +52,10 @@ That is, $$ E_{\text{earned}, s} $$ is the ETH value of all reward tokens earned
 $$ E_{\text staked, s} $$ is the ETH value of tokens staked in restaked strategy $$ s $$ on a given day, excluding any days in which no reward is earned.
 
 ETH values are calculated using the latest price feeds sourced from Coingecko. Reward tokens that do not have a public price available from Coingecko are not included in the calculation. APR is not calculated for staked tokens that do not have a public price available from Coingecko.
+
+### Why are there no claimable rewards for an Operator?
+
+In order for an Operator to be eligible for a reward submission they must been registered to the AVS for at least a portion
+of the reward duration. If an Operator does not meet this condition but has rewards submitted to them, the rewards are
+refunded back to the AVS address. To claim rewards as an AVS, you must set a claimer for the AVS, which can be done 
+using [`setClaimerFor`](https://github.com/Layr-Labs/eigenlayer-middleware/blob/5e2056601c69f39f29c3fe39edf9013852e83bf3/src/ServiceManagerBase.sol#L216) on the [`ServiceManagerBase`](https://github.com/Layr-Labs/eigenlayer-middleware/blob/2afed9dd5bdd874d8c41604453efceca93abbfbc/docs/ServiceManagerBase.md#L1) contract or [using the EigenLayer CLI](../../operators/howto/configurerewards/set-rewards-claimer.md).

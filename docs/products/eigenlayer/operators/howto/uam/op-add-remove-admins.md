@@ -5,7 +5,7 @@ title: Add and Remove Admins
 
 :::caution
 Security of admin keys is critical. UAM enables appointees with lessened permissions, and use of keys that can be rotated or
-destroyed. For more information on key management best practices, refer to [AVS Developer Security Best Practices](../../../developers/Reference/avs-developer-best-practices.md).
+destroyed. For more information on key management best practices, refer to [AVS Developer Security Best Practices](../../../developers/reference/avs-developer-best-practices.md).
 
 After an account has added an admin and the pending admin has accepted, the account address no
 longer has default admin privileges. That is, the original account key of the Operator or AVS cannot be
