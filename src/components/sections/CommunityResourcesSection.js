@@ -8,7 +8,7 @@ function CommunityResourcesSection() {
       icon: '/img/community-avs.png',
       title: 'Book an AVS Intro Call →',
       description: 'Chat with the EigenLayer team about your AVS idea',
-      link: 'https://share.hsforms.com/1BksFoaPjSk2l3pQ5J4EVCAein6l'
+      link: 'eigencloud.xyz/contact'
     },
     {
       icon: '/img/community-twitter.png',
