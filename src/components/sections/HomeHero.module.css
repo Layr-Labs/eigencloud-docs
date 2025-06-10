@@ -24,6 +24,8 @@
 
 .container {
   position: relative;
+  font-family: 'ABC Repro';
+  src: url('/font/ABCReproVariable.woff2') format('woff2');
   z-index: 1;
   width: 100%;
   max-width: 1136px;

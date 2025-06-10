@@ -16,21 +16,25 @@ function OperateNodeSection() {
       title: 'Install and Register Operator Node',
       desc: 'Review Operator requirements checklist, and install and register Operator Node.',
       code: codeBlocks[0],
+      url: 'products/operators/operate-eigenlayer-node/howto/operator-installation'
     },
     {
-      title: 'Set up Operator Key Management',
+      title: 'Set Up Operator Key Management',
       desc: 'Implement key management solutions from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).',
       code: codeBlocks[1],
+      url: 'products/operators/operate-eigenlayer-node/howto/operator-installation#create-and-list-keys'
     },
     {
       title: 'Set Rewards Split',
       desc: 'Set fee rates per AVS, providing economic flexibility and attracting diverse participation.',
       code: codeBlocks[2],
+      url: 'products/operators/operate-eigenlayer-node/howto/confirgurerewards/set-rewards-split'
     },
     {
       title: 'Claim Rewards',
       desc: 'Batch claim rewards in a single transaction to increase gas efficiency.',
       code: codeBlocks[3],
+      url: 'products/operators/operate-eigenlayer-node/howto/claimrewards/claim-rewards-cli'
     },
   ];
 
@@ -86,6 +90,7 @@ function OperateNodeSection() {
                 desc={card.desc}
                 isActive={hovered === idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
+                to={card.url}
               />
             ))}
           </div>
