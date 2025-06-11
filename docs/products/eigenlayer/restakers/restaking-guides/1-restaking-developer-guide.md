@@ -3,19 +3,13 @@ sidebar_position: 3
 title: Restaking Smart Contract Developer
 ---
 
-
-
 Smart Contract Restaking allows the user to interact directly with the EigenLayer core contracts. The following sections describe how to setup your Restaking integration with the EigenLayer contracts directly with no reliance on the EigenLayer Web App.
 
 Key EigenLayer Protocol references for this guide:
-* [Source Code](https://github.com/Layr-Labs/eigenlayer-contracts/tree/dev/src/contracts): for all the following references to EigenLayer core contracts and functions, please see the src/contracts folder for their source code.
-* [Developer Documentation (specifications)](https://github.com/Layr-Labs/eigenlayer-contracts/tree/dev/docs): detailed protocol specifications for restaking smart contract integration developers.
-* [Deployed Contract Addresses](https://github.com/Layr-Labs/eigenlayer-contracts?tab=readme-ov-file#deployments): deployed contract addresses for Mainnet and Testnet.
-* [Integration Tests](https://github.com/Layr-Labs/eigenlayer-contracts/tree/dev/src/test/integration): tests that serve as examples on how to interact with the EigenLayer core contracts.
-
-
-
-
+* [Source Code](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/src/contracts): for all the following references to EigenLayer core contracts and functions, please see the src/contracts folder for their source code.
+* [Developer Documentation (specifications)](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/docs): detailed protocol specifications for restaking smart contract integration developers.
+* [Deployed Contract Addresses](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/README.md#current-deployment-contracts): deployed contract addresses for Mainnet and Testnet.
+* [Integration Tests](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/src/test/integration): tests that serve as examples on how to interact with the EigenLayer core contracts.
 
 ## Liquid Restaking Guide
 
@@ -32,7 +26,7 @@ The following sections describe the steps to Restake "liquid" tokens (including 
 
 ### Withdraw (Unstake) Liquid Tokens
 
-1. Queue Withdrawal: invoke `DelegationManager.queueWithdrawal()` to trigger the escrow period. Wait for Escrow Period: 7 days. Please see further detail [here](https://docs.eigenlayer.xyz/eigenlayer/restaking-guides/restaking-user-guide/#escrow-period-withdrawal-delay).
+1. Queue Withdrawal: invoke `DelegationManager.queueWithdrawal()` to trigger the escrow period. Wait for Escrow Period: 14 days. Please see further detail [here](https://docs.eigenlayer.xyz/eigenlayer/restaking-guides/restaking-user-guide/#escrow-period-withdrawal-delay).
    * Parameters: please see the [QueuedWithdrawalParams](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v0.3.2-mainnet-rewards/src/contracts/interfaces/IDelegationManager.sol#L93)
    * `strategy` - use the address of the deployed strategy ([example list here](https://github.com/Layr-Labs/eigenlayer-contracts?tab=readme-ov-file#deployments)).
    * `shares` - the number of shares in the given strategy. Note this parameter is not meant to reference the amount of the underlying token. Invoke `[Strategy].underlyingToShares()` and `[Strategy].sharesToUnderlying()` as needed to convert their current balances between strategy shares and underlying token amounts.
@@ -214,7 +208,7 @@ To determine the number of withdrawable shares:
 
 To queue withdrawal:
 
-1. As the EigenPod Owner wallet, invoke the [`DelegationManager.queueWithdrawals()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/DelegationManager.md#queuewithdrawals) function with:
+1. As the EigenPod Owner wallet, invoke the [`DelegationManager.queueWithdrawals()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/DelegationManager.md#queuewithdrawals) function with:
    * [`QueuedWithdrawalParams`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/src/contracts/interfaces/IDelegationManager.sol#L116)
    * Beacon chain ETH strategy (`0xbeaC0eeEeeeeEEeEeEEEEeeEEeEeeeEeeEEBEaC0`).
    * Amount of withdrawable shares in Wei.
@@ -227,10 +221,10 @@ a checkpoint or restart the escrow process before the withdrawal can be complete
 
 #### Step 5 Complete withdrawal
 
-As the EigenPod Owner Wallet, invoke the [`DelegationManager.completeQueuedWithdrawal()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/DelegationManager.md#completequeuedwithdrawal) function.
+As the EigenPod Owner Wallet, invoke the [`DelegationManager.completeQueuedWithdrawal()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/DelegationManager.md#completequeuedwithdrawal) function.
 
 :::note
-Withdrawals can only be cancelled after waiting the full escrow period. To cancel a withdrawal, invoke the [`DelegationManager.completeQueuedWithdrawal()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/dev/docs/core/DelegationManager.md#completequeuedwithdrawal)
+Withdrawals can only be cancelled after waiting the full escrow period. To cancel a withdrawal, invoke the [`DelegationManager.completeQueuedWithdrawal()`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/DelegationManager.md#completequeuedwithdrawal)
 function with the parameter `receiveAsTokens` set to `FALSE`.
 :::
 

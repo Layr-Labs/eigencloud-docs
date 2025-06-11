@@ -117,7 +117,7 @@ const config = {
             activeBasePath: 'get-started/',
           },
           {
-            to: "products/eigenlayer/eigenlayer-overview",
+            to: "products/eigenlayer/concepts/eigenlayer-overview",
             label: "Products",
             position: "left",
             activeBasePath: 'products/',

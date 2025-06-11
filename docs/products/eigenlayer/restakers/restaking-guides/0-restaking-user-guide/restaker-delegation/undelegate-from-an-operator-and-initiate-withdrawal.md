@@ -16,6 +16,8 @@ Initiating an Undelegate transaction will also **automatically queue a withdrawa
 
 **Step 1:** Navigate to the Operator tab, click the tile for the Operator you have delegated your funds to. Click the Undelegate button to continue.
 
+![](../../../../../../../static/img/restake-guides/delegate-4.png)
+
 **Step 2:** Confirm the Undelegate transaction in your Web3 wallet.
 
 **Step 3:** Observe that your Restaked balances are now 0.0 TVL.
@@ -25,6 +27,8 @@ Initiating an Undelegate transaction will also **automatically queue a withdrawa
 **Step 5:** Visit any individual page for your unstaked assets and observe your **Unstaked** balance has increased by the corresponding amount.
 
 **Step 6:** Click **Withdraw** to finalize the withdrawal for the asset.
+
+![](../../../../../../../static/img/restake-guides/delegate-5.png)
 
 :::info
 The "Redeposit" button is also available for the user to Restake funds in case the withdrawal was initiated by mistake.
