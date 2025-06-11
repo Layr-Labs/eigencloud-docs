@@ -9,10 +9,10 @@ The following is not a complete description of the Slashing and Operator Sets up
 
 Key EigenLayer Protocol references for this guide:
 
-* [Source Code](https://github.com/Layr-Labs/eigenlayer-contracts/tree/slashing-magnitudes/src/contracts): for all the following references to EigenLayer core contracts and functions, please see the src/contracts folder for their source code.  
-* [Developer Documentation (specifications)](https://github.com/Layr-Labs/eigenlayer-contracts/tree/slashing-magnitudes/docs): detailed protocol specifications for restaking smart contract integration developers.  
-* [Deployed Contract Addresses](http://todo): deployed contract addresses for Mainnet and Testnet.  
-* [Integration Tests](https://github.com/Layr-Labs/eigenlayer-contracts/tree/dev/src/test/integration): tests that serve as examples on how to interact with the EigenLayer core contracts.
+* [Source Code](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/src/contracts): for all the following references to EigenLayer core contracts and functions, please see the src/contracts folder for their source code.  
+* [Developer Documentation (specifications)](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/docs): detailed protocol specifications for restaking smart contract integration developers.  
+* [Deployed Contract Addresses](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/README.md#current-deployment-contracts): deployed contract addresses for Mainnet and Testnet.  
+* [Integration Tests](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/src/test/integration): tests that serve as examples on how to interact with the EigenLayer core contracts.
 
 ### Withdraw (Unstake) Liquid Tokens[​](https://docs.eigenlayer.xyz/eigenlayer/restaking-guides/restaking-developer-guide#withdraw-unstake-liquid-tokens)
 

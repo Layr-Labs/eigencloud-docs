@@ -3,7 +3,7 @@ sidebar_position: 4
 title: Operator Keys
 ---
 
-For information on Operator keys, refer to [Keys](../../eigenlayer/concepts/keys-and-signatures).
+For information on Operator keys, refer to [Keys](../../concepts/keys-and-signatures).
 
 :::important
 When running Redistributable Operator Sets, Operators must ensure sufficient focus is given to key management and opsec. 
