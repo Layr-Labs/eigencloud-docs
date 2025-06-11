@@ -102,7 +102,6 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: 'img/eigencloud-logo-blue.png',
-
       navbar: {
         title: "EigenLayer",
         logo: {
@@ -196,6 +195,7 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
       prism: {
