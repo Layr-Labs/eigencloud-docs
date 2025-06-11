@@ -103,7 +103,7 @@ const config = {
     ({
       image: 'img/eigencloud-logo-blue.png',
       navbar: {
-        title: "EigenLayer",
+        title: "Home",
         logo: {
           alt: "EigenLayer Logo",
           src: "img/eigencloud-logo-blue.png",
