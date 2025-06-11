@@ -6,7 +6,7 @@ title: Allocate and Register to Operator Set
 :::important
 Before proceeding, review the [Slashing Concept](../../concepts/slashing/slashing-concept.md) content for information on how Operator Sets, Allocations, and Redistribution work.
 
-When participating in Redistributable Operator Sets, Operator metadata identifies an Operator as `Redistributable`. 
+When participating in [Redistributable Operator Sets](../../concepts/slashing/redistribution.md), Operator metadata identifies an Operator as `Redistributable`. 
 The metedata helps Stakers to assess risk, but might affect an Operator's staking appeal. Operators should weigh this profile
 change against the potential for higher rewards from protocols with different risk and reward structures. 
 

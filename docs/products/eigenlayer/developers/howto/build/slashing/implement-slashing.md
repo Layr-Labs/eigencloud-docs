@@ -35,7 +35,7 @@ For more information on how magnitudes are reduced when slashed, refer to [Magni
 
 ## Define Upstream Redistribution Contracts 
 
-For redistributable Operator Sets, implement upstream contracts for [`redistributionRecipient`](../../../concepts/slashing/slashing-concept-developers.md#redistribution-recipient)
+For [redistributable Operator Sets](../../../../concepts/slashing/redistribution.md), implement upstream contracts for [`redistributionRecipient`](../../../concepts/slashing/slashing-concept-developers.md#redistribution-recipient)
 to redistribute slashed funds once they have exited the protocol.
 
 ## Returned by `slashOperator`

@@ -4,7 +4,7 @@ title: Slashable Stake Risks
 ---
 
 :::important
-Stake delegated to an Operator can become slashable, and when redistributable slashing is live on mainnet, previously delegated
+Stake delegated to an Operator can become slashable, and when [redistributable slashing](redistribution.md) is live on mainnet, previously delegated
 stake can become redistributable. Stakers are responsible for ensuring that they fully understand and confirm
 their risk tolerances for existing and future delegations to Operators and the Operator’s slashable allocations. Additionally,
 Stakers are responsible for continuing to monitor the allocations of their chosen Operators as they update allocations across

@@ -9,11 +9,11 @@ For information on how slashing works, refer to concept content on [Slashing](..
 ## Redistribution Recipient
 
 :::important
-When using Redistribution, an attacker that gains access to AVS keys for the slasher and `redistributionRecipient` can drain
+When using [Redistribution](../../../concepts/slashing/redistribution.md), an attacker that gains access to AVS keys for the slasher and `redistributionRecipient` can drain
 the entirety of Operator and Staker allocated stake for a given Operator Set.
 :::
 
-When creating a redistributable Operator Set, an immutable `redistributionRecipient` is specified. The `redistributionRecipient`
+When creating a [redistributable Operator Set](../../howto/build/operator-sets/create-operator-sets.md), an immutable `redistributionRecipient` is specified. The `redistributionRecipient`
 should be:
 * An AVS-controlled role and signing key.
 * A smart contract wallet or mulit-sig to ensure enhanced security and programmability.

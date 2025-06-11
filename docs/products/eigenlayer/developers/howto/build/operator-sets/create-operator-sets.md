@@ -28,7 +28,7 @@ For non-redistributing Operator Sets, the `redistributionRecipient` is the `DEFA
 
 ## Create Redistributing Operator Set
 
-To create a redistributing Operator Set, call the `createRedistributingOperatorSets` function.
+To create a [redistributing Operator Set](../../../../concepts/slashing/redistribution.md), call the `createRedistributingOperatorSets` function.
 
 To add strategies when creating an Operator Set, specify a `params` array containing the strategies.
 Native ETH cannot be added as a strategy for redistributing Operator Sets because redistribution of native ETH is not supported.
