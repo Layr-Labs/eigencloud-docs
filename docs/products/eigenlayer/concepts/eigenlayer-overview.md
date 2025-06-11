@@ -44,8 +44,8 @@ The core components of the EigenLayer protocol include:
 ## Next Steps
 
 Get started with EigenLayer:
-- [Restake on EigenLayer](/restakers/concepts/overview)
-- [Register as an Operator](/operators/howto/operator-installation)
-- [Build an AVS](/developers/Concepts/avs-developer-guide)
+- [Restake on EigenLayer](../restakers/concepts/overview)
+- [Register as an Operator](../operators/howto/operator-installation)
+- [Build an AVS](../developers/concepts/avs-developer-guide)
 - Join our Ecosystem: [Discord](https://discord.com/invite/eigenlayer), [Twitter](https://twitter.com/eigenlayer)
 

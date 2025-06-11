@@ -41,13 +41,13 @@ Unless specified otherwise, this documentation matches the functionality availab
 
 Refer to: 
 * [Slashing concept](concepts/slashing/slashing-concept)
-* For developers, [Implement Slashing](developers/HowTo/build/slashing/implement-slashing)
+* For developers, [Implement Slashing](developers/howto/build/slashing/implement-slashing)
 * For Stakers and Operators, [Slashable Stake Risk](concepts/slashing/slashable-stake-risks)
 
 #### Operator Sets
 
 The Slashing release introduced Operator Sets. The AllocationManager core contract manages Operator Sets and replaces
-the AVSDirectory for registering Operators to an AVS. [The AVSDirectory will be deprecated in a future upgrade](developers/howto/slashing/migrate-to-operatorsets).
+the AVSDirectory for registering Operators to an AVS. [The AVSDirectory will be deprecated in a future upgrade](developers/howto/build/slashing/migrate-to-operatorsets).
 
 #### Rewards v2.1
 
@@ -59,8 +59,8 @@ Rewards v2.1 introduced Operator directed rewards for Operator sets. For AVSs us
 
 Refer to:
 * [Rewards concept](concepts/rewards/rewards-concept)
-* For developers, [Submit Rewards Submissions](developers/HowTo/build/submit-rewards-submissions)
-* For Operators, [Configure Rewards](operators/howto/confirgurerewards/set-rewards-split) and [Claim Rewards](operators/howto/confirgurerewards/set-rewards-split)
+* For developers, [Submit Rewards Submissions](developers/howto/build/submit-rewards-submissions)
+* For Operators, [Configure Rewards](operators/howto/configurerewards/set-rewards-split) and [Claim Rewards](operators/howto/confirgurerewards/set-rewards-split)
 * For Stakers, [Claim Rewards](restakers/restaking-guides/claim-rewards-app)
 
 #### Operator Sets
@@ -74,7 +74,7 @@ Refer to:
 
 Refer to: 
 * [UAM Concept](concepts/uam/user-access-management)
-* For developers, [Add and Remove Admins](developers/HowTo/build/uam/dev-add-remove-admins) and [Add and Remove Appointees](developers/howto/build/uam/dev-add-remove-admins)
+* For developers, [Add and Remove Admins](developers/howto/build/uam/dev-add-remove-admins) and [Add and Remove Appointees](developers/howto/build/uam/dev-add-remove-admins)
 * For Operators, [Add and Remove Admins](operators/howto/uam/op-add-remove-admins) and [Add and Remove Appointees](operators/howto/uam/op-add-remove-appointees)
 
 ## Samples
