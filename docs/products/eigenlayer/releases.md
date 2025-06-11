@@ -47,12 +47,12 @@ Refer to:
 #### Operator Sets
 
 The Slashing release introduced Operator Sets. The AllocationManager core contract manages Operator Sets and replaces
-the AVSDirectory for registering Operators to an AVS. [The AVSDirectory will be deprecated in a future upgrade](developers/howto/build/slashing/migrate-to-operatorsets).
+the AVSDirectory for registering Operators to an AVS. [The AVSDirectory will be deprecated in a future upgrade](developers/howto/build/operator-sets/migrate-to-operatorsets).
 
 #### Rewards v2.1
 
 Rewards v2.1 introduced Operator directed rewards for Operator sets. For AVSs using Operator Sets, use `createOperatorDirectedOperatorSetRewardsSubmission`. 
-`createAVSRewardsSubmission` and `createOperatorDirectedAVSRewardsSubmission` remain available for use by AVSs that have not yet [migrated to Operator Sets](developers/howto/slashing/migrate-to-operatorsets).
+`createAVSRewardsSubmission` and `createOperatorDirectedAVSRewardsSubmission` remain available for use by AVSs that have not yet [migrated to Operator Sets](developers/howto/build/operator-sets/migrate-to-operatorsets).
 
 
 #### Rewards 
@@ -60,7 +60,7 @@ Rewards v2.1 introduced Operator directed rewards for Operator sets. For AVSs us
 Refer to:
 * [Rewards concept](concepts/rewards/rewards-concept)
 * For developers, [Submit Rewards Submissions](developers/howto/build/submit-rewards-submissions)
-* For Operators, [Configure Rewards](operators/howto/configurerewards/set-rewards-split) and [Claim Rewards](operators/howto/confirgurerewards/set-rewards-split)
+* For Operators, [Configure Rewards](operators/howto/configurerewards/set-rewards-split) and [Claim Rewards](operators/howto/configurerewards/set-rewards-split)
 * For Stakers, [Claim Rewards](restakers/restaking-guides/claim-rewards-app)
 
 #### Operator Sets
