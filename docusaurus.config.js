@@ -12,19 +12,14 @@ import path from "node:path";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "EigenLayer",
+  title: "EigenCloud",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.eigenlayer.xyz/",
+  url: "https://docs.eigencloud.xyz/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "layr-labs", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
