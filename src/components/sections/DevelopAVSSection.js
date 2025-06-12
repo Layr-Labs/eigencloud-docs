@@ -10,19 +10,19 @@ function DevelopAVSSection() {
     {
       title: 'Implement Onchain Components',
       desc: 'Implement core AVS functionality in the AVS contracts',
-      image: '/img/AVS1.png',
+      image: '/img/landing/AVS1.svg',
       url: 'products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components'
     },
     {
       title: 'Implement Custom Slashing Logic',
       desc: 'Enable service providers to make commitments with slashing as enforcement mechanism.',
-      image: '/img/AVS2.png',
+      image: '/img/landing/AVS2.svg',
       url: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
     },
     {
       title: 'Distribute Rewards to Stakers and Operators',
       desc: 'Implement performance-based rewards and set variable fee splits.',
-      image: '/img/AVS3.png',
+      image: '/img/landing/AVS3.svg',
       url: 'products/eigenlayer/developers/howto/build/submit-rewards-submissions'
     },
   ];
@@ -71,37 +71,8 @@ function DevelopAVSSection() {
               />
             ))}
           </div>
-          <div className={styles.codeArea}>
-            <div className={styles.codeBlock}>
-              {lastHovered === -1
-                ? (
-                  <div
-                    className={styles.codeContent}
-                    dangerouslySetInnerHTML={{ __html: codeBlocks[0].code }}
-                  />
-                )
-                : (
-                  <div
-                    className={styles.codeContent}
-                    dangerouslySetInnerHTML={{ __html: cardData[lastHovered].code ? cardData[lastHovered].code.replace(/\n/g, '<br/>') : '' }}
-                  />
-                )}
-              <button
-                className={styles.copyButton}
-                onClick={() => {
-                  const html = lastHovered === -1
-                    ? codeBlocks[0].code
-                    : cardData[lastHovered].code;
-                  const plain = htmlToPlainText(html);
-                  navigator.clipboard.writeText(plain);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 1200);
-                }}
-              >
-                <img src="/img/copy-icon.png" alt="Copy" className={styles.copyIcon} />
-                {copied ? 'Copied!' : 'Copy Snippet'}
-              </button>
-            </div>
+          <div className={styles.imageArea}>
+            <img src={cardData[lastHovered].image} alt={cardData[lastHovered].title} className={styles.image} /> 
           </div>
         </div>
       </div>

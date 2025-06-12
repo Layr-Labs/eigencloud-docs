@@ -10,25 +10,25 @@ function OperateNodeSection() {
     {
       title: 'Install and Register Operator Node',
       desc: 'Review Operator requirements checklist, and install and register Operator Node.',
-      image: '/img/Operator1.png',
+      image: '/img/landing/Operator1.svg',
       url: 'products/eigenlayer/operators/howto/operator-installation'
     },
     {
       title: 'Set Up Operator Key Management',
       desc: 'Implement key management solutions from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).',
-      image: '/img/Operator2.png',
+      image: '/img/landing/Operator2.svg',
       url: 'products/eigenlayer/operators/howto/operator-installation#create-and-list-keys'
     },
     {
       title: 'Set Rewards Split',
       desc: 'Set fee rates per AVS, providing economic flexibility and attracting diverse participation.',
-      image: '/img/Operator3.png',
+      image: '/img/landing/Operator3.svg',
       url: 'products/eigenlayer/operators/howto/configurerewards/set-rewards-split'
     },
     {
       title: 'Claim Rewards',
       desc: 'Batch claim rewards in a single transaction to increase gas efficiency.',
-      image: '/img/Operator4.png',
+      image: '/img/landing/Operator4.png',
       url: 'products/eigenlayer/operators/howto/claimrewards/batch-claim-rewards'
     },
   ];
@@ -77,7 +77,7 @@ function OperateNodeSection() {
           description="EigenLayer enables experienced node operators and validator service providers to maximize yield by unlocking new revenue streams through restaking"
         />
         <div className={styles.row}>
-          <div className={styles.cardGrid} ref={cardGridRef}>
+          <div className={styles.cardGrid}>
             {cardData.map((card, idx) => (
               <InteractiveCard
                 key={card.title}
@@ -89,35 +89,8 @@ function OperateNodeSection() {
               />
             ))}
           </div>
-          <div className={styles.codeArea} style={cardGridHeight ? { height: cardGridHeight } : {}}>
-            <div className={styles.codeBlock} style={cardGridHeight ? { height: '100%' } : {}}>
-              {lastHovered === -1 ? (
-                <div
-                  className={styles.codeContent}
-                  dangerouslySetInnerHTML={{ __html: codeBlocks[0] }}
-                />
-              ) : (
-                <div
-                  className={styles.codeContent}
-                  dangerouslySetInnerHTML={{ __html: cardData[lastHovered].code ? cardData[lastHovered].code.replace(/\n/g, '<br/>') : '' }}
-                />
-              )}
-              <button
-                className={styles.copyButton}
-                onClick={() => {
-                  const html = lastHovered !== -1 
-                    ? cardData[lastHovered].code
-                    : codeBlocks[0];
-                  const plain = htmlToPlainText(html);
-                  navigator.clipboard.writeText(plain);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 1200);
-                }}
-              >
-                <img src="/img/copy-icon.png" alt="Copy" className={styles.copyIcon} />
-                {copied ? 'Copied!' : 'Copy Snippet'}
-              </button>
-            </div>
+          <div className={styles.imageArea}>
+            <img src={cardData[lastHovered].image} alt={cardData[lastHovered].title} className={styles.image} /> 
           </div>
         </div>
       </div>
