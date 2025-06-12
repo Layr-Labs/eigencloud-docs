@@ -3,27 +3,6 @@ title: EigenCloud Roadmap
 sidebar_position: 2
 ---
 
-##  Cloud-scale Programmability, Crypto-grade Verifiability 
-
-EigenCloud is the unified platform vision for where EigenLayer is heading – a cohesive platform built to enable the next generation
-of programmable, verifiable applications and agents. EigenCloud represents a shift from infrastructure as fragmented primitives
-to a developer-first experience centered around programmable verifiability, cloud-scale coordination, and cryptoeconomic trust.
-
-Today, building verifiable applications is hard. Developers must manually manage staking, operator coordination, slashing, and
-economic incentives. Services are fragmented, tooling is underpowered, and integrations require deep protocol knowledge. For
-builders who want to create high-performance, trust-minimized systems, this complexity is a blocker.
-
-EigenCloud is our answer. It reimagines the developer experience around EigenLayer, bundling together a suite of 1st party
-verifiable services, such as EigenDA, EigenCompute, and EigenVerify with new powerful developer tooling. This includes a
-new CLI called DevKit for AVS and App developers, composable middleware and orchestration tools, unified billing and economic
-incentives, and best-in-class onboarding and monitoring capabilities.These capabilities empower developers to go from idea to
-deployment in days rather than months without needing to understand EigenLayer’s internals, enabling mainstream adoption of
-verifiable infrastructure.
-
-We're building EigenCloud for developers of Verifiable Apps. Each service or feature is tied to real user pain points, focused
-on reducing friction, increasing adoption, and unlocking new value. As our 1st party and partner offerings expand, EigenCloud
-will bundle them into out-of-the-box solutions on a unified developer platform.
-
 ## Pillars of EigenCloud 
 
 We organize the roadmap around four major pillars:
@@ -53,7 +32,7 @@ AVSs and apps without needing deep protocol expertise. Work includes:
 ### Eigen Primitives: Verifiable Blockspace
 
 To make verifiability easy to adopt, EigenCloud provides foundational, 1st party services that AVSs and applications can plug into.
-These primitives, EigenDA, EigenCompute, and EigenVerify, deliver critical capabilities, such as data availability, offchain
+These primitives, [EigenDA](../products/eigenda/core-concepts/overview.md), [EigenCompute](../products/eigencompute/eigencompute-overview.md), and [EigenVerify](../products/eigenverify/eigenverify-overview.md), deliver critical capabilities, such as data availability, offchain
 compute, and adjudication. By making these services developer-accessible, we enable new classes of verifiable applications,
 reduce developer lift, and promote ecosystem standardization. Work includes:
 * EigenDA Throughput: Scale EigenDA throughput from 50 mb/s to hundreds of mb/s
@@ -75,7 +54,7 @@ participants to apps across a broad ecosystem of chains.
 
 ### EigenLayer Protocol: Commitment Infrastructure
 
-The backbone of EigenCloud and the token is its cryptoeconomic layer with staking, delegation, and enforcement mechanisms
+[EigenLayer](../products/eigenlayer/concepts/eigenlayer-overview.md) is the backbone of EigenCloud and the token is its cryptoeconomic layer with staking, delegation, and enforcement mechanisms
 providing AVSs with flexible, programmable trust guarantees. This programmable trust layer is what allows developers to delegate
 security without managing validator sets, while still enforcing correct behavior and punishing misbehavior, on any chain. We’re
 building support for multichain delegation, long-term commitments, and expressive enforcement, all underpinned by transparent
