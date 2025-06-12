@@ -21,6 +21,8 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
+
+
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
 
@@ -35,16 +37,15 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-
   plugins: [
     async function pluginLlmsTxt(context) {
       return {
         name: "llms-txt-plugin",
         loadContent: async () => {
           const { siteDir } = context;
-          const contentDir = path.join(siteDir, "docs/products/eigenlayer");
-          const developersDir = path.join(siteDir, "docs/products/eigenlayer/developers")
-          const operatorsDir = path.join(siteDir, "docs/products/eigenlayer/operators")
+          const contentDir = path.join(siteDir, "docs");
+          const developersDir = path.join(siteDir, "docs", "developers")
+          const operatorsDir = path.join(siteDir, "docs", "operators")
           const allMd = [];
           const developersMd = []
           const operatorsMd = []
