@@ -10,19 +10,19 @@ function DevelopAVSSection() {
     {
       title: 'Implement Onchain Components',
       desc: 'Implement core AVS functionality in the AVS contracts',
-      image: '/img/AVS1.svg',
+      image: '/img/AVS1.png',
       url: 'products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components'
     },
     {
       title: 'Implement Custom Slashing Logic',
       desc: 'Enable service providers to make commitments with slashing as enforcement mechanism.',
-      image: '/img/AVS2.svg',
+      image: '/img/AVS2.png',
       url: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
     },
     {
       title: 'Distribute Rewards to Stakers and Operators',
       desc: 'Implement performance-based rewards and set variable fee splits.',
-      image: '/img/AVS3.svg',
+      image: '/img/AVS3.png',
       url: 'products/eigenlayer/developers/howto/build/submit-rewards-submissions'
     },
   ];
