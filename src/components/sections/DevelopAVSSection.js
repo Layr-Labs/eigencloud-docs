@@ -10,7 +10,7 @@ function DevelopAVSSection() {
     {
       title: 'Implement Onchain Components',
       desc: 'Implement core AVS functionality in the AVS contracts',
-      image: '/img/landing/AVS1.svg',
+      image: '/img/landing/AVS1_v2.svg',
       url: 'products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components'
     },
     {
