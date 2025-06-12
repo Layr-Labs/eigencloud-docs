@@ -26,3 +26,6 @@ will bundle them into out-of-the-box solutions on a unified developer platform.
 
 This documentation includes both currently available and planned features. To understand which capabilities are live and what’s in development, 
 refer to the [EigenCloud roadmap](eigencloud-roadmap.md). We update it regularly to reflect progress and timelines.
+
+Are you interested in building on EigenCloud?  If so, please complete [this form](http://www.eigencloud.xyz/contact).  A member of the team will reach out to discuss your
+project and how we can help support your next steps.
