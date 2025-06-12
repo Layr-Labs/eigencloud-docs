@@ -8,19 +8,19 @@ function RestakeSection() {
     {
       title: 'Restake ETH and Delegate to an Operator',
       desc: 'Using the EigenLayer app.',
-      image: '/img/restake-1.png',
+      image: '/img/landing/restake-1.png',
       url: 'products/eigenlayer/restakers/concepts/overview'
     },
     {
       title: 'Native vs Liquid Restaking and how to participate',
       desc: 'EigenLayer enables native and liquid restaking.',
-      image: '/img/restake-2.png',
+      image: '/img/landing/restake-2.png',
       url: 'products/eigenlayer/restakers/concepts/overview#restaking-methods'
     },
     {
       title: 'Claim Rewards using the EigenLayer app',
       desc: 'Easily claim Rewards in the web app.',
-      image: '/img/restake-3.png',
+      image: '/img/landing/restake-3.png',
       url: 'products/eigenlayer/restakers/restaking-guides/claim-rewards-app'
     },
   ];

@@ -4,35 +4,25 @@ import InteractiveCard from '../InteractiveCard';
 import styles from './DevelopAVSSection.module.css';
 
 function DevelopAVSSection() {
-  const codeBlocks = [
-    {
-      code: `<span style=\"color:#275F8C\">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"name\": \"AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"website\": \"https.your-avs-site.xyz/\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"description\": \"A description about your AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"logo\": \"http://github.com/logo.png\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"twitter\": \"https://twitter.com/your-avs\",</span><br/><span style=\"color:#275F8C\">}</span><br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">updateAVSMetadataURI</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">string calldata metadataURI</span><br/>)<br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">createOperatorSets</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs,</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">CreateSetParams[] calldata params</span><br/>)`
-    },
-    {
-      code: `<span style=\"color:#211569\">function</span> <span style=\"color:#209254\">slashOperator</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SlashingParams calldata params</span><br/>) <span style=\"color:#211569\">external</span>;<br/><br/><span style=\"color:#211569\">if</span> (malicousEvent == <span style=\"color:#211569\">true</span>){<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">slasherContract</span>.<span style=\"color:#209254\">slashOperator</span>(avs, params);<br/>}`
-    },
-    {
-      code: `<span style=\"color:#275F8C\">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"name\": \"AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"website\": \"https.your-avs-site.xyz/\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"description\": \"A description about your AVS\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"logo\": \"http://github.com/logo.png\",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#275F8C\">\"twitter\": \"https://twitter.com/your-avs\",</span><br/><span style=\"color:#275F8C\">}</span><br/><br/><span style=\"color:#211569\">function</span> <span style=\"color:#209254\">createOperatorDirectedAVSRewardsSubmission</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#5333B4\">OperatorDirectedRewardsSubmission[] calldata operatorDirectedRewardsSubmissions</span><br/>)<br/>`
-    }
-  ];
+  
 
   const cardData = [
     {
       title: 'Implement Onchain Components',
       desc: 'Implement core AVS functionality in the AVS contracts',
-      code: codeBlocks[0].code,
+      image: '/img/AVS1.svg',
       url: 'products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components'
     },
     {
       title: 'Implement Custom Slashing Logic',
       desc: 'Enable service providers to make commitments with slashing as enforcement mechanism.',
-      code: codeBlocks[1].code,
+      image: '/img/AVS2.svg',
       url: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
     },
     {
       title: 'Distribute Rewards to Stakers and Operators',
       desc: 'Implement performance-based rewards and set variable fee splits.',
-      code: codeBlocks[2].code,
+      image: '/img/AVS3.svg',
       url: 'products/eigenlayer/developers/howto/build/submit-rewards-submissions'
     },
   ];
