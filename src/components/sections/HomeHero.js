@@ -21,7 +21,7 @@ function HomeHero() {
           <FigmaCard
             title="What is EigenLayer"
             desc="The fundamentals of EigenLayer and how it enables shared security"
-            link="products/eigenlayer/eigenlayer-overview"
+            link="products/eigenlayer/concepts/eigenlayer-overview"
           />
           <FigmaCard
             title="Data Availability with EigenDA"
@@ -31,7 +31,7 @@ function HomeHero() {
           <FigmaCard
             title="Introduction to AVSs"
             desc="Unlock fundamentally new possibilities for decentralized coordination"
-            link="products/developers/Concepts/avs-developer-guide"
+            link="products/eigenlayer/developers/Concepts/avs-developer-guide"
           />
         </div>
       </div>
