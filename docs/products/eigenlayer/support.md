@@ -1,23 +1,23 @@
-# Community and EIGEN Claim Support
+---
+title: Community and Support
+sidebar_position: 9
+---
+
+## Community
 
 For any discussion, engagement, and learning about EigenLayer, please join the [EigenLayer Community Discord](https://discord.gg/eigenlayer).
 
-# Restaker, Operator, and AVS Development Support
+## Restaker, Operator, and AVS Development Support
 
-For issues with the dApp, LST and restaking issues and Operator questions you may send us a question via our AI-enabled chatbot and Support team here:  <a href="javascript:void(0)"  id="intercom_trigger_eldocs" >EigenLayer Support Desk</a>
+For issues with the dApp, LST and restaking issues and Operator questions you may send us a question via our AI-enabled 
+chatbot and Support team here:  <a href="javascript:void(0)"  id="intercom_trigger_eldocs" >EigenLayer Support Desk</a>
 
-# EigenLayer Forum
+## EigenLayer Forum
 
-If you are interested in EigenLayer at a deeper level, please check out the [EigenLayer forum](https://forum.eigenlayer.xyz/)! There are groups of researchers, AVS developers, and more contributing their expertise to help build the open verifiable cloud.
+If you are interested in EigenLayer at a deeper level, please check out the [EigenLayer forum](https://forum.eigenlayer.xyz/)! There are groups of 
+researchers, AVS developers, and more contributing their expertise to help build the open verifiable cloud.
 
-# EIGEN Claim Support
+## Building on EigenLayer
 
-For any issues concerning EIGEN including token claims and stakedrop issues, please visit the stakedrop-support channel in the [EigenLayer Community Discord](https://discord.gg/eigenlayer). The Eigen Foundation support team can address your question there. Please see docs.eigenfoundation.org for information related to EIGEN token claims.
-
-Please beware of any fraudulent tokens, dApps, and phishing sites:
-- The only site to claim EIGEN is: claims.eigenfoundation.org .
-- The EIGEN token contract address is: `0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83` .
-- The only support website is: docs.eigenlayer.xyz .
-    
-For a complete list of links and more information, please visit the: [EigenLayer Community Discord](https://discord.gg/eigenlayer).
-
+Are you interested in building on EigenLayer?  If so, please complete [this form](http://www.eigencloud.xyz/contact).  A member of the team will reach out to discuss your
+project and how we can help support your next steps.
