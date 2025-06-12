@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "check-links": "node ci-scripts/check-external-links.js"
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.3",
@@ -40,8 +41,11 @@
     "@docusaurus/tsconfig": "^3.6.3",
     "@docusaurus/types": "^3.6.3",
     "@types/react": "^18.2.29",
+    "axios": "^1.9.0",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.3.1",
     "typescript": "~5.2.2"
+    
   },
   "browserslist": {
     "production": [
