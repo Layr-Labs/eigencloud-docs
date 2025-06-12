@@ -27,5 +27,7 @@ No AVS setup. No validator coordination. No slashing logic to write.
 * AI: Inference and decision workflows.
 * RWAs: Proof of document review or asset validation.
 
+Private preview coming in Q3, 2025.
+
 Are you interested in building with EigenCompute?  If so, please complete [this form](http://www.eigencloud.xyz/contact).  A member of the team will reach out to discuss your
 project and how we can help support your next steps.
