@@ -12,9 +12,9 @@ EigenDA is a high-throughput, decentralized data availability (DA) layer built o
 - **Safety failure**: The DA layer issues a valid availability certificate, but users are unable to retrieve the corresponding data.
 - **Liveness failure**: Data that should be available—i.e., properly paid for and within system throughput bounds—is not served to users.
 
-EigenDA mitigates these risks through a BFT security model backed by restaked collateral. Operators participating in the DA layer are delegated stake via EigenLayer, including ETH, EIGEN, and customized tokens.
+EigenDA mitigates these risks through a BFT security model backed by restaked collateral. Operators participating in the DA layer are delegated stake via EigenLayer, including ETH, EIGEN, and customized tokens.
 
-Additionally, EIGEN slashing introduces strong accountability: in the event of a safety failure, stake can be slashed, penalizing operators who sign availability attestations for data they do not actually serve. Extra economic alignment is also provided by token toxicity.
+Additionally, EIGEN slashing introduces strong accountability: in the event of a safety failure, stake can be slashed, penalizing operators who sign availability attestations for data they do not actually serve. Extra economic alignment is also provided by token toxicity.
 
 On this page, we present a technical analysis of EigenDA's security guarantees.
 We use the terms *validator* and *operator* interchangiblity in this document.
@@ -44,7 +44,7 @@ The three security models in EigenDA, along with their corresponding quorums, ar
 - Cryptoeconomic security: EIGEN Quorum
 - Token Toxicity: Custom Quorum
 
-We begin by giving an overview of each security model and how it contributes to EigenDA’s overall resilience: BFT security ensures both safety and liveness of the system as long as the share of stake or voting power held by malicious validators stays below a certain threshold. Cryptoeconomic security goes a step further—if an attacker misbehaves, they not only need to control a significant amount of stake, but they also risk losing it through slashing. This makes attacks financially unappealing. Token toxicity adds another layer of incentive alignment. When validators misbehave, the native token may drop in value, leading to losses for token holders who delegated their stake to those validators. This dynamic encourages stakeholders to carefully choose trustworthy operators.
+We begin by giving an overview of each security model and how it contributes to EigenDA's overall resilience: BFT security ensures both safety and liveness of the system as long as the share of stake or voting power held by malicious validators stays below a certain threshold. Cryptoeconomic security goes a step further—if an attacker misbehaves, they not only need to control a significant amount of stake, but they also risk losing it through slashing. This makes attacks financially unappealing. Token toxicity adds another layer of incentive alignment. When validators misbehave, the native token may drop in value, leading to losses for token holders who delegated their stake to those validators. This dynamic encourages stakeholders to carefully choose trustworthy operators.
 
 In the rest of this page, we provide a detailed analysis of how the three kinds of security are satisfied.
 
@@ -78,7 +78,7 @@ For the purposes of modeling, we let $m_i$ denote the number of chunks which the
 | Validator Set | $N$ | Set of all the validators. $\|N\|$ is the total number of validator nodes participating in the system. |
 | Total Chunks | $m$ | The total number of chunks after encoding (currently $m=8192$) |
 | Coding Rate | $r$ | The total number of chunks after encoding / total number of chunks before encoding (currently $r=8$) |
-| Percentage of blob per validator  | $\alpha_i$ | $\alpha_i = rm_i/m$, the percentage of chunks required to reconstruct the blob assigned to validator $i$ in a quorum |
+| Percentage of blob per validator  | $\alpha_i$ | $\alpha_i = rm_i/m$, the percentage of chunks required to reconstruct the blob assigned to validator $i$ in a quorum |
 | Num of Chunks Assigned | $m_i$ | The number of chunks assigned to validator $i$ in a quorum|
 | Validator Stake | $\eta_i$  | The stake proportion of validator $i$ in a quorum ($0 \le \eta_i \le 1$, and $\sum_{i} \eta_i = 1$) |
 | Reconstruction Threshold | $\gamma$  | The minimum percentage of total stake required for a group of validators to successfully reconstruct the blob |
@@ -132,7 +132,7 @@ $$
 \Rightarrow \alpha_i = rm_i/m \ge \eta_i/\gamma
 $$
 
-Therefore, $\sum_{i\in H} \alpha_i \ge \sum_{i\in H} \eta_i/\gamma \ge 1$ when $\sum_{i \in H} \eta_i \ge \gamma$.
+Therefore, $\sum_{i\in H} \alpha_i \ge \sum_{i\in H} \eta_i/\gamma \ge 1$ when $\sum_{i \in H} \eta_i \ge \gamma$.
 This means that any set of validators holding at least a $\gamma$ fraction of the total stake collectively owns at least as many chunks as are required to reconstruct one blob, i.e., at least $m / r$ chunks.
 Since there is no overlap between the chunks assigned to each validator within a quorum, the union of their assigned chunks forms a set that can be used to reconstruct the full blob.
 
@@ -177,7 +177,7 @@ The Byzantine liveness and safety properties of a blob are specified by a collec
 We start with the assumptions to guarantee safety and liveness:
 
 1. To guarantee **safety**, we assume that the adversary controls less than the `SafetyThreshold` percentage of the total stake.
-2. To guarantee **liveness**, we currently rely on a trusted disperser that does not censor clients’ blob disperser requests. We will soon introduce decentralized dispersal to remove this trust assumption. Additionally, to ensure liveness, we assume the adversary is delegated with less than `LivenessThreshold` percentage of the total stake.
+2. To guarantee **liveness**, we currently rely on a trusted disperser that does not censor clients' blob disperser requests. We will soon introduce decentralized dispersal to remove this trust assumption. Additionally, to ensure liveness, we assume the adversary is delegated with less than `LivenessThreshold` percentage of the total stake.
 
 In the following part, we prove that the security and liveness holds when the assumptions are satisfied.
 
@@ -190,7 +190,7 @@ Second, we prove the liveness of our protocol:  If the malicious party controls 
 
 ### Encoding Rate and Security Thresholds
 
-In the previous section, we demonstrated that the system is secure—that is, both the safety and liveness properties are upheld—provided the adversarial stake remains below a certain threshold. In this section, we aim to determine the minimum required encoding rate based on a given adversarial stake percentage, in order to quantify the system’s overhead.
+In the previous section, we demonstrated that the system is secure—that is, both the safety and liveness properties are upheld—provided the adversarial stake remains below a certain threshold. In this section, we aim to determine the minimum required encoding rate based on a given adversarial stake percentage, in order to quantify the system's overhead.
 
 Suppose the maximum adversarial stake that can be used to compromise safety is denoted by $\eta_s$, and the maximum stake that can be used to compromise liveness is  $\eta_l$. To ensure the security of the system, the following conditions must be satisfied: $\eta_s \le \eta_S = \eta_C - \gamma$ and $\eta_l \leq \eta_L = 1 - \eta_C$. From these inequalities, we can derive: $\gamma \le 1 - \eta_s - \eta_l$. Also, recall that $\gamma \ge \frac{m}{(m-n)r}$ . This leads to the following constraint on the encoding rate $r$:
 
@@ -200,9 +200,9 @@ $$
 \frac{m}{(m-n)r}  \leq 1 - \eta_s - \eta_l \Leftrightarrow r \ge \frac{m}{(m-n)(1-\eta_s-\eta_l)}
 $$
 
-Assuming the system aims to tolerate up to 54% adversarial stake for safety attacks ($\eta_s = 54 \%$) and and up to 33% adversarial stake for liveness attacks ($\eta_l = 33 \%$),  and given system parameters $m = 8192$  and $n = 200$, we compute: $r \ge 8192 / (8192-200)/(1-54\% -33\%)= 7.9$ . Therefore, to ensure system security under these adversarial conditions, the encoding rate must be at least 7.9.
+Assuming the system aims to tolerate up to 54% adversarial stake for safety attacks ($\eta_s = 54 \%$) and and up to 33% adversarial stake for liveness attacks ($\eta_l = 33 \%$),  and given system parameters $m = 8192$  and $n = 200$, we compute: $r \ge 8192 / (8192-200)/(1-54\% -33\%)= 7.9$ . Therefore, to ensure system security under these adversarial conditions, the encoding rate must be at least 7.9.
 
-In our implementation, we choose an encoding rate of $r = 8$ (which means that our system operates with a 8X overhead). Therefore, we can compute the minimum value of $\gamma$ as $\gamma_{min} = \frac{8192}{(8192-200)*8} = 0.13$. This yields the following safety and liveness threshold: $\eta_S = \eta_C - 0.13$ and $\eta_L = 1 - \eta_C$. Combining the two gives: $\eta_S + \eta_L = 0.87$. The safety-liveness threshold trade-off of our system, given the chosen parameters, is illustrated in the figure below. Any adversary with a stake profile $(\eta_s, \eta_l)$ that lies below the line in the plot falls within the defensible region of the system. 
+In our implementation, we choose an encoding rate of $r = 8$ (which means that our system operates with a 8X overhead). Therefore, we can compute the minimum value of $\gamma$ as $\gamma_{min} = \frac{8192}{(8192-200)*8} = 0.13$. This yields the following safety and liveness threshold: $\eta_S = \eta_C - 0.13$ and $\eta_L = 1 - \eta_C$. Combining the two gives: $\eta_S + \eta_L = 0.87$. The safety-liveness threshold trade-off of our system, given the chosen parameters, is illustrated in the figure below. Any adversary with a stake profile $(\eta_s, \eta_l)$ that lies below the line in the plot falls within the defensible region of the system.
 
 <div style={{ textAlign: 'center' }}>
   <img src="/img/eigenda/safety-liveness-bound.png" alt="security_livness_bound" style={{ width: '50%' }} />
@@ -210,7 +210,7 @@ In our implementation, we choose an encoding rate of $r = 8$ (which means that o
 
 ## Cryptoeconomic Security Model
 
-In addition to BFT security, the EIGEN quorum provides cryptoeconomic security as an extra layer of protection. Cryptoeconomic security guarantees that if the safety of the system is compromised, a certain portion of stake will be slashed. This creates a strong disincentive for attacking the system. A protocol is considered cryptoeconomically secure when the total cost of an attack always exceeds the total profit from an attack. However, like many other attacks, the profit possible from a DA withholding attack can be difficult to quantify. That’s why the emphasis is placed on slashing: the ability to penalize misbehaving validators is key to maintaining system safety.
+In addition to BFT security, the EIGEN quorum provides cryptoeconomic security as an extra layer of protection. Cryptoeconomic security guarantees that if the safety of the system is compromised, a certain portion of stake will be slashed. This creates a strong disincentive for attacking the system. A protocol is considered cryptoeconomically secure when the total cost of an attack always exceeds the total profit from an attack. However, like many other attacks, the profit possible from a DA withholding attack can be difficult to quantify. That's why the emphasis is placed on slashing: the ability to penalize misbehaving validators is key to maintaining system safety.
 
 ### Intersubjective Slashing with Token Forking
 
@@ -224,4 +224,4 @@ As discussed in [Security FAQs](./security-FAQs.md) , the Data Availability Samp
 
 In addition to BFT security, the custom quorum provides an extra security guarantee through Token Toxicity. Token toxicity refers to the phenomenon where the value of a rollup's native token declines sharply when the rollup fails to function properly. Specifically, if DA isn't ensured for a rollup, market confidence in the roll-up service declines, causing its token price to drop. This economic incentive encourages holders of the roll-up's custom token to delegate their stakes only to trusted operators, minimizing the risk of data unavailability and potential loss in token value.
 
-In conclusion, EigenDA’s security model combines BFT security, cryptoeconomic security, and token toxicity to create a robust, multi-layered defense against safety and liveness failures. 
+In conclusion, EigenDA's security model combines BFT security, cryptoeconomic security, and token toxicity to create a robust, multi-layered defense against safety and liveness failures. 

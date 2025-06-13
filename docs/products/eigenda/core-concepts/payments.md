@@ -65,7 +65,7 @@ type PaymentMetadata struct {
 }
 ```
 
-On-demand bandwidth users must first deposit tokens into the payment vault contract for a particular account, in which the contract stores the total payment deposited to that account (`totalDeposit`). Users should be mindful in depositing as they cannot withdrawal or request for refunds from the current Payment Vault contract. This amount will be validated against the payment metadata’s `CumulativePayment` field authroized by the user for each blob dispersal request. The network will ensure that the `CumulativePayment` is great enough to cover the bandwidth usage by the user but still remains with the total amount deposited on chain. 
+On-demand bandwidth users must first deposit tokens into the payment vault contract for a particular account, in which the contract stores the total payment deposited to that account (`totalDeposit`). Users should be mindful in depositing as they cannot withdrawal or request for refunds from the current Payment Vault contract. This amount will be validated against the payment metadata's `CumulativePayment` field authroized by the user for each blob dispersal request. The network will ensure that the `CumulativePayment` is great enough to cover the bandwidth usage by the user but still remains with the total amount deposited on chain. 
 
 ```solidity
 // On-chain record of on-demand payments
