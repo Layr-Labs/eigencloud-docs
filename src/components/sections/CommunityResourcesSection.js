@@ -20,7 +20,7 @@ function CommunityResourcesSection() {
       icon: '/img/community-groupchat.png',
       title: 'Join the Telegram group chat →',
       description: 'Meet and chat with other developers and builders',
-      link: 'https://airtable.com/appnYZo360sWuEYLS/shrz6Pstds7EXjC5N'
+      link: 'https://ein6l.share.hsforms.com/22TpUSMw-SZaba6q_gNp2hA'
     },
     {
       icon: '/img/community-discord.png',
