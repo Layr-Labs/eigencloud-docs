@@ -40,4 +40,4 @@ Examples of these services include rollup services, co-processors, cryptography 
 
 ## Get in Touch
 
-If you would like to discuss your ideas to build an AVS on EigenLayer, submit your contact information via [this form](https://share.hsforms.com/1BksFoaPjSk2l3pQ5J4EVCAein6l) and we'll be in touch shortly.
+If you would like to discuss your ideas to build an AVS on EigenLayer, submit your contact information via [this form](https://www.eigencloud.xyz/contact) and we'll be in touch shortly.
