@@ -4,36 +4,31 @@ import InteractiveCard from '../InteractiveCard';
 import styles from './OperateNodeSection.module.css';
 
 function OperateNodeSection() {
-  const codeBlocks = [
-    `<span style="color:#275F8C">{</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"name": "AVS",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"website": "https.your-avs-site.xyz/",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"description": "A description about your AVS",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"logo": "http://github.com/logo.png",</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">"twitter": "https://twitter.com/your-avs",</span><br/><span style="color:#275F8C">}</span><br/><br/><span style="color:#211569">function</span> <span style="color:#209254">updateAVSMetadataURI</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">address avs, </span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">string calldata metadataURI</span><br/>)<br/><br/><span style="color:#211569">function</span> <span style="color:#209254">createOperatorSets</span>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">address avs,</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5333B4">CreateSetParams[] calldata params</span><br/>)`,
-    `<span style="color:#275F8C">eigenlayer operator keys create --key-type ecdsa [keyname]</span><br/><span style="color:#275F8C">eigenlayer operator keys create --key-type bls [keyname]</span>`,
-    `<span style="color:#275F8C">eigenlayer operator get-rewards-split</span><br/><br/><span style="color:#275F8C">eigenlayer operator set-rewards-split</span>`,
-    `<span style="color:#275F8C">eigenlayer rewards show</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--network mainnet</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--earner-address &lt;earner-address&gt;</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#275F8C">--claim-type unclaimed</span>`
-  ];
+ 
 
   const cardData = [
     {
       title: 'Install and Register Operator Node',
       desc: 'Review Operator requirements checklist, and install and register Operator Node.',
-      code: codeBlocks[0],
+      image: '/img/landing/Operator1.svg',
       url: 'products/eigenlayer/operators/howto/operator-installation'
     },
     {
       title: 'Set Up Operator Key Management',
       desc: 'Implement key management solutions from simple (ECDSA key rotation) to complex (upstream smart contract permissioning schemes).',
-      code: codeBlocks[1],
+      image: '/img/landing/Operator2.svg',
       url: 'products/eigenlayer/operators/howto/operator-installation#create-and-list-keys'
     },
     {
       title: 'Set Rewards Split',
       desc: 'Set fee rates per AVS, providing economic flexibility and attracting diverse participation.',
-      code: codeBlocks[2],
+      image: '/img/landing/Operator3.svg',
       url: 'products/eigenlayer/operators/howto/configurerewards/set-rewards-split'
     },
     {
       title: 'Claim Rewards',
       desc: 'Batch claim rewards in a single transaction to increase gas efficiency.',
-      code: codeBlocks[3],
+      image: '/img/landing/Operator4.png',
       url: 'products/eigenlayer/operators/howto/claimrewards/batch-claim-rewards'
     },
   ];
@@ -82,7 +77,7 @@ function OperateNodeSection() {
           description="EigenLayer enables experienced node operators and validator service providers to maximize yield by unlocking new revenue streams through restaking"
         />
         <div className={styles.row}>
-          <div className={styles.cardGrid} ref={cardGridRef}>
+          <div className={styles.cardGrid}>
             {cardData.map((card, idx) => (
               <InteractiveCard
                 key={card.title}
@@ -94,35 +89,8 @@ function OperateNodeSection() {
               />
             ))}
           </div>
-          <div className={styles.codeArea} style={cardGridHeight ? { height: cardGridHeight } : {}}>
-            <div className={styles.codeBlock} style={cardGridHeight ? { height: '100%' } : {}}>
-              {lastHovered === -1 ? (
-                <div
-                  className={styles.codeContent}
-                  dangerouslySetInnerHTML={{ __html: codeBlocks[0] }}
-                />
-              ) : (
-                <div
-                  className={styles.codeContent}
-                  dangerouslySetInnerHTML={{ __html: cardData[lastHovered].code ? cardData[lastHovered].code.replace(/\n/g, '<br/>') : '' }}
-                />
-              )}
-              <button
-                className={styles.copyButton}
-                onClick={() => {
-                  const html = lastHovered !== -1 
-                    ? cardData[lastHovered].code
-                    : codeBlocks[0];
-                  const plain = htmlToPlainText(html);
-                  navigator.clipboard.writeText(plain);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 1200);
-                }}
-              >
-                <img src="/img/copy-icon.png" alt="Copy" className={styles.copyIcon} />
-                {copied ? 'Copied!' : 'Copy Snippet'}
-              </button>
-            </div>
+          <div className={styles.imageArea}>
+            <img src={cardData[lastHovered].image} alt={cardData[lastHovered].title} className={styles.image} /> 
           </div>
         </div>
       </div>
