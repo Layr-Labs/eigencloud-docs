@@ -57,13 +57,12 @@ Feb 20 19:50:46.760 INF grpc/server_v2.go:140 new StoreChunks request batchHeade
 
 ```
 
-## Remote BLS Signer API Migration
-With the release of EigenDA Blazar, the the node has been upgraded to use the latest [cerberus](https://github.com/Layr-Labs/cerberus) remote BLS signer API.
+## Optional: Remote BLS Signer Support
+Blazar supports the latest [cerberus](https://github.com/Layr-Labs/cerberus) remote BLS signer API.
 
-This upgrade requires the operator to define the `NODE_BLS_SIGNER_API_KEY` environment variable within the `.env` file.
+Enabling the remote BLS signer is optional. To enable remote BLS signer, operators need to define the `NODE_BLS_SIGNER_API_KEY` environment variable within the `.env` file.
 
 Follow the steps from the [cerberus setup guide](https://github.com/Layr-Labs/cerberus?tab=readme-ov-file#remote-signer-implementation-of-cerberus-api) to create an API key.
-
 
 ## Environment Variable Reference
 

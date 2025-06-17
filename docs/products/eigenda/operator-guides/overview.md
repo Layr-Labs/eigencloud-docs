@@ -11,7 +11,7 @@ components. It’s important to check regularly for new updates to the software
 and documentation.
 
 ## Migration to EigenDA Blazar (V2)
-EigenDA Blazar (V2) is a new version of the EigenDA protocol that is currently in development. <ins>It is not yet available on mainnet.</ins>
+EigenDA Blazar (V2) is the latest version of the EigenDA protocol.
 
 Current testnet operators running v1 must follow the [Blazar migration guide](./blazar-migration.md) to update their nodes to v2.
 

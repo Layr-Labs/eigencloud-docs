@@ -10,6 +10,9 @@ EigenDA proxy is a sidecar server ran as part of a rollup node cluster for commu
 |  v1.4   |        `4mib`           |          `16mib`        |      OP Stack      |      v0         |
 |  v1.4.1 |        `16mib`          |          `16mib`        |  OP Stack, Orbit   |      v0         |
 
+EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network. Information about
+proxy releases can be found [here](https://github.com/Layr-Labs/eigenda-proxy/releases).
+
 ### Example Rollup interaction diagram
 *Shown below is a high level flow of how proxy is used across a rollup stack by different network roles (i.e, sequencer, verifier). Any rollup node using an eigenda integration who wishes to sync directly from the parent chain inbox or a safe head must run this service to do so.*
 

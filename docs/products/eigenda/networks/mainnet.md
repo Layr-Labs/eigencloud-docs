@@ -44,6 +44,7 @@ sidebar_position: 1
 | IndexRegistry | [0xbd35a7a1cdef403a6a99e4e8ba0974d198455030](https://etherscan.io/address/0xbd35a7a1cdef403a6a99e4e8ba0974d198455030) |
 | BLSApkRegistry | [0x00a5fd09f6cee6ae9c8b0e5e33287f7c82880505](https://etherscan.io/address/0x00a5fd09f6cee6ae9c8b0e5e33287f7c82880505) |
 | EigenDAServiceManager | [0x870679e138bcdf293b7ff14dd44b70fc97e12fc0](https://etherscan.io/address/0x870679e138bcdf293b7ff14dd44b70fc97e12fc0) |
+| CertVerifier | [0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6](https://etherscan.io/address/0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6) |
 | BLSOperatorStateRetriever | [0xEC35aa6521d23479318104E10B4aA216DBBE63Ce](https://etherscan.io/address/0xEC35aa6521d23479318104E10B4aA216DBBE63Ce) |
 | PaymentVault | [0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05](https://etherscan.io/address/0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05) |
 
