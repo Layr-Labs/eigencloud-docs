@@ -1,14 +1,6 @@
 # EigenDA Proxy
 
 ## About
-EigenDA proxy is a sidecar server ran as part of a rollup node cluster for communication with the EigenDA network.
-
-### Key Releases
-| version | (mainnet) max blob size | (holesky) max blob size | supported stacks   | Cert version(s) |
-|---------|-------------------------|-------------------------|--------------------|-----------------|
-|  v1.3.1 |        `2mib`           |          `2mib`         |      OP Stack      |      v0         |
-|  v1.4   |        `4mib`           |          `16mib`        |      OP Stack      |      v0         |
-|  v1.4.1 |        `16mib`          |          `16mib`        |  OP Stack, Orbit   |      v0         |
 
 EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network. Information about
 proxy releases can be found [here](https://github.com/Layr-Labs/eigenda-proxy/releases).
