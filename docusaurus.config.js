@@ -124,7 +124,10 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-
+          {
+            from: "/eigenlayer/overview/whitepaper",
+            to: "/products/eigenlayer/concepts/whitepaper",
+          },
         ],
         createRedirects(existingPath) {
 
