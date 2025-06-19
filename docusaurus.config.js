@@ -476,11 +476,11 @@ const redirects = [
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "EigenLayer",
+  title: "EigenCloud",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.eigenlayer.xyz/",
+  url: "https://docs.eigencloud.xyz/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
