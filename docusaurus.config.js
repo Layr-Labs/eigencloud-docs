@@ -16,7 +16,7 @@ const redirects = [
       to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
   {
-      from: '/eigenlayer/concepts/whitepaper',
+      from: '/eigenlayer/overview/whitepaper',
       to: '/products/eigenlayer/concepts/whitepaper',
   },
   {
@@ -228,79 +228,79 @@ const redirects = [
   
   // Developer Concepts (handle both capitalized and lowercase versions)
   {
-      from: '/developers/concepts/avs-contracts',
+      from: '/developers/Concepts/avs-contracts',
       to: '/products/eigenlayer/developers/concepts/avs-contracts',
   },
   {
-      from: '/developers/concepts/avs-developer-guide',
+      from: '/developers/Concepts/avs-developer-guide',
       to: '/products/eigenlayer/developers/concepts/avs-developer-guide',
   },
   {
-      from: '/developers/concepts/avs-keys',
+      from: '/developers/Concepts/avs-keys',
       to: '/products/eigenlayer/developers/concepts/avs-keys',
   },
   {
-      from: '/developers/concepts/avs-security-models',
+      from: '/developers/Concepts/avs-security-models',
       to: '/products/eigenlayer/developers/concepts/avs-security-models',
   },
   {
-      from: '/developers/concepts/slashing/slashing-concept-developers',
+      from: '/developers/Concepts/slashing/slashing-concept-developers',
       to: '/products/eigenlayer/developers/concepts/slashing/slashing-concept-developers',
   },
   {
-      from: '/developers/concepts/task',
+      from: '/developers/Concepts/task',
       to: '/products/eigenlayer/developers/concepts/task',
   },
   {
-      from: '/developers/concepts/uam-for-avs',
+      from: '/developers/Concepts/uam-for-avs',
       to: '/products/eigenlayer/developers/concepts/uam-for-avs',
   },
   
   // Developer HowTo (handle both capitalized and lowercase versions)
   {
-      from: '/developers/howto/deploy/deployment-testnet-mainnet',
+      from: '/developers/HowTo/deployment-testnet-mainnet',
       to: '/products/eigenlayer/developers/howto/deploy/deployment-testnet-mainnet',
   },
   {
-      from: '/developers/howto/get-started/implement-minimum-onchain-components',
+      from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
       to: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
   },
   {
-      from: '/developers/howto/get-started/quickstart',
+      from: '/developers/HowTo/get-started/quickstart',
       to: '/products/eigenlayer/developers/howto/get-started/quickstart',
   },
   {
-      from: '/developers/howto/get-started/support',
+      from: '/developers/HowTo/get-started/support',
       to: '/products/eigenlayer/developers/howto/get-started/support',
   },
   {
-      from: '/developers/howto/publish/onboard-avs-dashboard',
+      from: '/developers/HowTo/publish/onboard-avs-dashboard',
       to: '/products/eigenlayer/developers/howto/publish/onboard-avs-dashboard',
   },
   {
-      from: '/developers/howto/test/obtain-testnet-eth',
+      from: '/developers/HowTo/test/obtain-testnet-eth',
       to: '/products/eigenlayer/developers/howto/test/obtain-testnet-eth',
   },
   {
-      from: '/developers/howto/test/test-avs',
+      from: '/developers/HowTo/test/test-avs',
       to: '/products/eigenlayer/developers/howto/test/test-avs',
   },
   
   // Developer Reference (handle both capitalized and lowercase versions)
   {
-      from: '/developers/reference/ai-resources',
+      from: '/developers/Reference/ai-resources',
       to: '/products/eigenlayer/developers/reference/ai-resources',
   },
   {
-      from: '/developers/reference/avs-developer-best-practices',
+      from: '/developers/Reference/avs-developer-best-practices',
       to: '/products/eigenlayer/developers/reference/avs-developer-best-practices',
   },
   {
-      from: '/developers/reference/eigenlayer-sdks',
+      from: '/developers/Reference/eigenlayer-sdks',
       to: '/products/eigenlayer/developers/reference/eigenlayer-sdks',
   },
   {
-      from: '/developers/reference/resources',
+      from: '/developers/Reference/resources',
       to: '/products/eigenlayer/developers/reference/resources',
   },
   
