@@ -471,7 +471,7 @@ const redirects = [
   {
       from: '/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
       to: '/products/eigenlayer/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
-  },
+  }
 ]
 
 /** @type {import('@docusaurus/types').Config} */
