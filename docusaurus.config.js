@@ -12,7 +12,7 @@ import path from "node:path";
 
 const redirects = [
   {
-      from: '/eigenlayer/overview/whitepaper',
+      from: '/eigenlayer/overview',
       to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
   {
