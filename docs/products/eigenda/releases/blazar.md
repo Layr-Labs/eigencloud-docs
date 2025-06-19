@@ -75,7 +75,7 @@ In Blazar, the disperser runs a new component known as a Relay, which acts as a 
 
 ### Low-Level Specification
 
-For the full documentation of the EigenDA protobuf schema, see [this documentation](https://layr-labs.github.io/eigenda/protobufs/generated/eigenda-protos.html). The `.proto` source files can be found [here](https://github.com/Layr-Labs/eigenda/tree/master/api/proto).
+For the full documentation of the EigenDA protobuf schema, see the [`.proto` source files](https://github.com/Layr-Labs/eigenda/tree/master/api/proto).
 
 #### Offchain Data Structures
 
@@ -146,7 +146,7 @@ Blobs are broken up into KZG encoded chunks and distributed to DA nodes. The fol
 
 In the “happy pathway”, it’s generally going to be faster and easier to download the unencoded blob directly from a relay. Where downloading chunks from a DA node becomes important is from a security perspective. If all relays in possession of a blob go down or are maliciously/selfishly withholding the data, the DA nodes are a very reliable way to fetch the data (as only a fraction of the chunks distributed to DA nodes are needed to reconstruct the original data).
 
-More detailed documentation on this API can be found [here](https://layr-labs.github.io/eigenda/protobufs/generated/node_v2.html).
+More detailed documentation on this API can be found [here](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/node/node.proto).
 
 ```protobuf
 service Retrieval {
@@ -161,7 +161,7 @@ service Retrieval {
 
 Relays are responsible for storing and serving both unencoded blobs as well as encoded chunks. Encoded chunks can only be downloaded by authenticated DA validator nodes.
 
-More detailed documentation on this API can be found [here](https://layr-labs.github.io/eigenda/protobufs/generated/relay.html).
+More detailed documentation on this API can be found [here](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/relay/relay.proto).
 
 ```protobuf
 // Relay is a service that provides access to public relay functionality.
@@ -175,7 +175,7 @@ service Relay {
 
 #### Disperser Interfaces
 
-The disperser API can be used to send blobs to the Eigen DA protocol. More detailed documentation on this API can be found [here](https://layr-labs.github.io/eigenda/protobufs/generated/disperser_v2.html).
+The disperser API can be used to send blobs to the Eigen DA protocol. More detailed documentation on this API can be found [here](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/disperser/v2/disperser_v2.proto).
 
 ```protobuf
 // Disperser defines the public APIs for dispersing blobs.
