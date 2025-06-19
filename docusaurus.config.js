@@ -16,7 +16,7 @@ const redirects = [
       to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
   {
-      from: '/eigenlayer/concepts/whitepaper',
+      from: '/eigenlayer/overview/whitepaper',
       to: '/products/eigenlayer/concepts/whitepaper',
   },
   {
