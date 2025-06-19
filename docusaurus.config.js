@@ -20,11 +20,11 @@ const redirects = [
       to: '/products/eigenlayer/concepts/whitepaper',
   },
   {
-      from: '/developers/concepts/eigenlayer-contracts/core-contracts',
+      from: '/developers/Concepts/eigenlayer-contracts/core-contracts',
       to: '/products/eigenlayer/developers/concepts/eigenlayer-contracts/core-contracts',
   },
   {
-      from: '/developers/concepts/eigenlayer-contracts/middleware-contracts',
+      from: '/developers/Concepts/eigenlayer-contracts/middleware-contracts',
       to: '/products/eigenlayer/developers/concepts/eigenlayer-contracts/middleware-contracts',
   },
   {
