@@ -442,7 +442,7 @@ const redirects = [
   },
   {
     from: '/restakers/restaking-guides/restaking-user-guide/native-restaking',
-    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking',
+    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
   },
   {
     from: '/restakers/restaking-guides/overview',
