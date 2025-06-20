@@ -441,6 +441,14 @@ const redirects = [
       to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
   },
   {
+    from: '/restakers/restaking-guides/restaking-user-guide/native-restaking',
+    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking',
+  },
+  {
+    from: '/restakers/restaking-guides/overview',
+    to: '/products/eigenlayer/restakers/concepts/overview'
+  },
+  {
       from: '/restakers/restaking-guides/0-restaking-user-guide/restaker-delegation/delegate-to-an-operator',
       to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/delegate-to-an-operator',
   },
