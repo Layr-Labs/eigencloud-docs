@@ -523,9 +523,11 @@ const config = {
           const contentDir = path.join(siteDir, "docs");
           const developersDir = path.join(siteDir, "docs/products/eigenlayer/developers")
           const operatorsDir = path.join(siteDir, "docs/products/eigenlayer/operators")
+          const eigenDADir = path.join(siteDir, "docs/products/eigenda")
           const allMd = [];
           const developersMd = []
           const operatorsMd = []
+          const eigenDAMd = []
 
           // recursive function to get all mdx files
           const getMdxFiles = async (baseDir, writeDir) => {
@@ -544,15 +546,17 @@ const config = {
           await getMdxFiles(developersDir, developersMd)
           await getMdxFiles(contentDir, allMd);
           await getMdxFiles(operatorsDir, operatorsMd);
-          return { allMd , developersMd, operatorsMd};
+          await getMdxFiles(eigenDADir, eigenDAMd);
+          return { allMd , developersMd, operatorsMd, eigenDAMd};
         },
         postBuild: async ({ content, routes, outDir }) => {
-          const { allMd, developersMd, operatorsMd } = content;
+          const { allMd, developersMd, operatorsMd, eigenDAMd } = content;
 
           // Write concatenated Markdown content to build directory
           await fs.promises.writeFile(path.join(outDir, "llms-full.md"), allMd.join("\n\n---\n\n"));
           await fs.promises.writeFile(path.join(outDir, "avs-developer-docs.md"), developersMd.join("\n\n---\n\n"));
           await fs.promises.writeFile(path.join(outDir, "operators-developer-docs.md"), operatorsMd.join("\n\n---\n\n"));
+          await fs.promises.writeFile(path.join(outDir, "eigenda-docs.md"), eigenDAMd.join("\n\n---\n\n"));
 
           // we need to dig down several layers:
           // find PluginRouteConfig marked by plugin.name === "docusaurus-plugin-content-docs"
