@@ -40,7 +40,7 @@ Here we provide a narrative-level description of the major API endpoints. Please
 ### DisperseBlob()
 
 :::info
-In [v2](../disperser%20v2%20API/overview.md), the `DisperseBlob()` API is authenticated. The `DisperseBlobAuthenticated()` endpoint is not present in the [v2 API](../disperser%20v2%20API/overview.md). 
+In [v2](../disperser-v2-API/overview.md), the `DisperseBlob()` API is authenticated. The `DisperseBlobAuthenticated()` endpoint is not present in the [v2 API](../disperser-v2-API/overview.md). 
 :::
 
 The `DisperseBlob()` is a simple unauthenticated endpoint which allows users to send test traffic to the EigenDA testnet and mainnet networks. Requests to the `DisperseBlob()` endpoint are rate limited based on IP address. 
@@ -71,7 +71,7 @@ The `DisperseBlob()` endpoint accepts a [DisperseBlobRequest](https://github.com
 ### DisperseBlobAuthenticated()
 
 :::info
-In [v2](../disperser%20v2%20API/overview.md), the `DisperseBlob()` API is authenticated. The `DisperseBlobAuthenticated()` endpoint is not present in the [v2 API](../disperser%20v2%20API/overview.md).
+In [v2](../disperser-v2-API/overview.md), the `DisperseBlob()` API is authenticated. The `DisperseBlobAuthenticated()` endpoint is not present in the [v2 API](../disperser-v2-API/overview.md).
 :::
 
 `DisperseBlobAuthenticated()` provides a flow for authenticated dispersal to EigenDA networks. Ultimately, the purpose of authentication is to allow DA nodes to identify the source of a given blob request and map this to a payment source. Thus, the `DisperseBlobAuthenticated()` will ultimately serve as a convenient way for a client to provide an authorization which can be passed along to the DA nodes, without making any trust assumptions on the disperser as a service provider. The interface is expected to undergo an upgrade in order to support this use case over the next several months. 
