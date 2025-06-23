@@ -39,7 +39,7 @@ with respect to these endpoints:
 
 ```mermaid
 graph TD;
-    A[Blob Ready] --> |"Optional GetPaymentStateForAllQuorums()"| B[Blob Queued for Dispersal];
+    A[Blob Ready] --> |"On first dispersal GetPaymentStateForAllQuorums()"| B[Blob Queued for Dispersal];
     A --> |"If required GetBlobCommitment()"| B;
     A --> |"DisperseBlob()"| B;
     B -->|"GetBlobStatus()" != complete| B;
