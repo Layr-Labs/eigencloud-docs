@@ -26,14 +26,14 @@ Blazar addresses several performance and usability issues identified in the Eige
 The heart of Blazar's architectural update is a cleaner separation of “data plane” and “control plane” communications within the core protocol:
 
 - In the original EigenDA architecture, the disperser sends a payload to the DA nodes consisting of both metadata (blob headers) and data (encoded chunks).
-- In the Blazar upgrade, the disperser simply sends a batch of blob headers to the DA nodes. Upon validating payment and rate limit information, the DA nodes then request to download the associated data payloads from the disperser.
+- In the Blazar upgrade, the disperser simply sends a batch of blob headers to the DA nodes. Upon validating payment and rate limit information, the DA nodes then request to retrieve the associated data payloads from the disperser.
 
 This separation at the protocol level has a few important benefits for enabling improved performance and expanded features:
 
 **Optimized Data Plane Implementations.** Blazar makes possible optimized and scalable data plane implementations for various component implementations:
 
 - The disperser employs a content distribution network composed of specialized “relays” for serving encoded chunks to DA nodes at high volume and low latency.
-- DA Nodes can make use of parallelized requests and other strategies to optimize download performance from the relay CDN. In the future, DA nodes themselves can be optimized to be horizontally scalable for improved performance and robustness.
+- DA Nodes can make use of parallelized requests and other strategies to optimize retrieval performance from the relay CDN. In the future, DA nodes themselves can be optimized to be horizontally scalable for improved performance and robustness.
 
 **DDoS protection for decentralized dispersal.** Blazar is one of a few final stepping stones toward decentralized dispersal on EigenDA. In the original EigenDA architecture, the push model of coupled data and control plane messages from disperser to DA node presents a DDoS risk for permissionless dispersal; by enabling DA nodes to elect to initiate data plane interactions, Blazar removes this expensive attack surface, paving the way for a secure decentralized dispersal pattern.
 
@@ -69,7 +69,7 @@ In Blazar, the disperser runs a new component known as a Relay, which acts as a 
 - Client disperses a blob via disperser’s `DisperseBlob` gRPC endpoint. If the request is successful, the blob is in `QUEUED` status.
 - Disperser stores the blob in local storage, encodes the blob, and stores the encoded chunks in the relay. The blob is in `ENCODED` status.
 - Disperser constructs a batch by collecting the blob headers of encoded blobs and makes `StoreChunks` requests to validator nodes by sending the batch consisting of the blob headers. The blob is in `GATHERING_SIGNATURES` status when these requests are made to the validator network.
-- Validator node receives the `StoreChunks` request, downloads the chunks from the relay, validates them, stores them, and signs the batch.
+- Validator node receives the `StoreChunks` request, retrieves the chunks from the relay, validates them, stores them, and signs the batch.
 - Disperser receives the signatures from validator nodes, validates & aggregates them, and produces attestation for the batch. The blob is in `COMPLETE` status.
 - Client checks the dispersal status via disperser’s `GetBlobStatus` gRPC endpoint.
 
@@ -142,9 +142,9 @@ message Batch {
 
 #### DA Node Interfaces
 
-Blobs are broken up into KZG encoded chunks and distributed to DA nodes. The following API can be used to download those chunks.
+Blobs are broken up into KZG encoded chunks and distributed to DA nodes. The following API can be used to retrieve those chunks.
 
-In the “happy pathway”, it’s generally going to be faster and easier to download the unencoded blob directly from a relay. Where downloading chunks from a DA node becomes important is from a security perspective. If all relays in possession of a blob go down or are maliciously/selfishly withholding the data, the DA nodes are a very reliable way to fetch the data (as only a fraction of the chunks distributed to DA nodes are needed to reconstruct the original data).
+In the “happy pathway”, it’s generally going to be faster and easier to retrieve the unencoded blob directly from a relay. Where retrieving chunks from a DA node becomes important is from a security perspective. If all relays in possession of a blob go down or are maliciously/selfishly withholding the data, the DA nodes are a very reliable way to fetch the data (as only a fraction of the chunks distributed to DA nodes are needed to reconstruct the original data).
 
 More detailed documentation on this API can be found [here](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/node/node.proto).
 
@@ -159,7 +159,7 @@ service Retrieval {
 
 #### Relay Interfaces
 
-Relays are responsible for storing and serving both unencoded blobs as well as encoded chunks. Encoded chunks can only be downloaded by authenticated DA validator nodes.
+Relays are responsible for storing and serving both unencoded blobs as well as encoded chunks. Encoded chunks can only be retrieved by authenticated DA validator nodes.
 
 More detailed documentation on this API can be found [here](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/relay/relay.proto).
 
