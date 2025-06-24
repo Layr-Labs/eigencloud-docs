@@ -11,8 +11,7 @@ We organize the roadmap around four major pillars:
 3. **The EIGEN Token**: The EigenCloud is built on the EIGEN token. The EIGEN token’s forking design enables the ability to add cryptoeconomic security to the entire platform.
 4. **Commitment Infrastructure**: Make trust-minimized security and cryptoeconomic guarantees easily available for builders creating verifiable apps and services. 
 
-<img src="/img/eigencloud-roadmap.png" width="80%" style={{ margin: '30px'}}>
-</img>
+[![](/img/eigencloud-roadmap.png)](/img/eigencloud-roadmap.png)
 
 ### Eigen Developer Platform: Apps & AVS
 
