@@ -329,15 +329,12 @@ eigenlayer operator status operator.yaml
 ---
 
 ## Metadata Updates
-### General metadata update
-This is the command you can use to make changes or updates to the metadata of your operator. Post v0.9.0, this command will not update metadata uri. Please use [below](#update-metadata-uri-post-v090) command to update it. 
 
-```
-eigenlayer operator update operator.yaml
-```
+You are required to host the metadata url publicly. The metadata url should always be available and return a proper json response
+like [this](https://holesky-operator-metadata.s3.amazonaws.com/metadata.json).
 
-### Update metadata URI (Post v0.9.0)
-In [v0.9.0](https://github.com/Layr-Labs/eigenlayer-cli/releases/tag/v0.9.0), we have introduced a new command to update metadata uri.
+### Update metadata URI
+To update metadata uri, use:
 
 ```
 eigenlayer operator update-metadata-uri operator.yaml
