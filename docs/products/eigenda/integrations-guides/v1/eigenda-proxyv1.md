@@ -1,4 +1,4 @@
-# EigenDA Proxy
+# EigenDA Proxy v1
 
 ## About
 
@@ -8,7 +8,7 @@ proxy releases can be found [here](https://github.com/Layr-Labs/eigenda-proxy/re
 ### Example Rollup interaction diagram
 Shown below is a high level flow of how proxy is used across a rollup stack by different network roles (i.e, sequencer, verifier). Any rollup node using an eigenda integration who wishes to sync directly from the parent chain inbox or a safe head must run this service to do so.
 
-![Proxy V2 usage diagram](/img/integrations/proxy/proxy-v2.png)
+![Proxy V1 usage diagram](/img/integrations/proxy/proxy-v1.png)
 
 ### Usage
 Different actors in the rollup topology will have to use proxy for communicating with EigenDA in the following ways:
