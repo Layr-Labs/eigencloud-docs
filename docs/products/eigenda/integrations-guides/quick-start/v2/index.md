@@ -6,6 +6,11 @@ title: V2 Guide
 # EigenDA Payment and Data Dispersal Guide
 This guide walks through the process of setting up payments and dispersing data using EigenDA on Holesky.
 
+:::tip
+This guide uses the go client to set up payments and disperse data. For information on alternative methods to integrate with
+the EigenDA APIs, refer to the [Overview](../../overview.md). 
+:::
+
 ## On Demand Data Dispersal
 ### On-chain setup
 :::info Pre-Requisites
