@@ -1,19 +1,14 @@
-# EigenDA Proxy
+# EigenDA Proxy v1
 
 ## About
 
 EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network. Information about
 proxy releases can be found [here](https://github.com/Layr-Labs/eigenda-proxy/releases).
 
-:::note
-The EigenDA proxy supports [EigenDA v1](../v1/eigenda-proxyv1.md) and v2, and provides a seamless migration path from v1 to v2. If you are a v1 user,
-refer to the [migration process in the EigenDA proxy Readme](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#migrating-from-eigenda-v1-to-v2). 
-:::
-
 ### Example Rollup interaction diagram
 Shown below is a high level flow of how proxy is used across a rollup stack by different network roles (i.e, sequencer, verifier). Any rollup node using an eigenda integration who wishes to sync directly from the parent chain inbox or a safe head must run this service to do so.
 
-![Proxy V2 usage diagram](/img/integrations/proxy/proxy-v2.png)
+![Proxy V1 usage diagram](/img/integrations/proxy/proxy-v1.png)
 
 ### Usage
 Different actors in the rollup topology will have to use proxy for communicating with EigenDA in the following ways:
@@ -29,6 +24,7 @@ Reference this [Quick Start](../quick-start/v2/index.md) to setup payments for y
 :::
 ## Technical Details
 [EigenDA Proxy](https://github.com/Layr-Labs/eigenda-proxy) wraps the [high-level EigenDA client](https://github.com/Layr-Labs/eigenda/blob/master/api/clients/eigenda_client.go) with an HTTP server, and performs additional verification tasks when reading and writing blobs that eliminate any trust assumption on the EigenDA disperser service. EigenDA Proxy also provides additional security features (i.e, read fallback) and optional performance optimizations (i.e, caching). Instructions for building and running the service can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/README.md).
+
 
 ## Recommended Config Types
 Different security measures and runtime optimizations can be applied through various proxy configurations. The different configuration flags can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/docs/help_out.txt). The following recommendations are advised for different rollup node actor types:
