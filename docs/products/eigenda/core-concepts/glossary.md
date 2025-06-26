@@ -23,6 +23,10 @@ Light nodes provide observability so that Validator nodes cannot withhold data f
 ### Cert Verifier
 A smart contract on Ethereum, exposing a `verifyDACertV2()` function which verifies a blob cert using the security thresholds and required quorums. 
 
+### EigenDA Network
+
+All of the actors in the EigenDA Network including Validator Nodes, Dispersers, Retrieval Nodes, Relays, and contracts.
+
 ## Cryptography
 
 ### KZG Polynomial Commitments

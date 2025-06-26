@@ -3,8 +3,8 @@ sidebar_position: 1
 title: Overview
 ---
 
-To disperse and retrieve blobs, there are three options:
-1. Run a proxy server and use the Rest API.  This is the simplest option to implement. 
+To disperse and retrieve payloads, there are three options:
+1. Run a proxy server and use the [REST API](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#rest-api-routes).  This is the simplest option to implement. 
 2. Use the [golang](https://github.com/Layr-Labs/eigenda/blob/master/api/clients/disperser_client.go) or [rust](https://github.com/Layr-Labs/eigenda-client-rs) client with the gRPC API and onchain interfaces. 
 3. Write your own client to use with the gRPC API and onchain interfaces.
 
@@ -36,14 +36,22 @@ graph LR
         "]
     end
     
-    OP_DAClient["Proxy Client: OP DAClient"] -->|HTTP| PROXY_ENDPOINTS
-    StandardClient["Proxy Client: StandardClient"] -->|HTTP| PROXY_ENDPOINTS
+    subgraph "Proxy Clients"
+        PROXY_CLIENTS["
+            OP DAClient
+            StandardClient
+        "]
+    end
+    
+    
+    PROXY_CLIENTS -->|HTTP| PROXY_ENDPOINTS
+    PROXY_CLIENTS -->|HTTP| PROXY_ENDPOINTS
 
-    PROXY_ENDPOINTS --- PayloadDisperserClient
-    PROXY_ENDPOINTS --- PayloadRetrieverClient
+    PROXY_ENDPOINTS --- D[PayloadDisperser Client]
+    PROXY_ENDPOINTS --- R[PayloadRetriever Clients]
 
-    PayloadDisperserClient -->|gRPC| DISPERSER_ENDPOINTS
-    PayloadRetrieverClient -->|gRPC| DISPERSER_ENDPOINTS
+    D -->|gRPC| DISPERSER_ENDPOINTS
+    R -->|gRPC| DISPERSER_ENDPOINTS
     
     classDef client fill:#bfb,stroke:#333,stroke-width:1px;
     classDef endpoints fill:#fffaf0,stroke:#333,stroke-dasharray: 5 5;
@@ -59,7 +67,7 @@ graph LR
 ## Proxy with REST API
 
 The [EigenDA Proxy](./eigenda-proxy/eigenda-proxy.md) is a proxy server that can be spun up to provide a simple REST API to simplify interacting with the EigenDA
-Disperser. It handles the payment state, blob status polling, and cert verification for you, and provides a simple interface for
+Network. It handles the payment state, blob status polling, and cert verification for you, and provides a simple interface for
 dispersing and retrieving blobs. We recommend most users make use of the proxy, as it simplifies the integration process significantly.
 
 ## Clients 
