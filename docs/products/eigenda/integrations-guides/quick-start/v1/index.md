@@ -33,7 +33,7 @@ $ grpcurl \
 
 **Step 2: Poll Status Until the Blob gets Batched and Bridged**
 
-The Disperser will return a `requestId` that you can use to poll the status of the blob. The status will change from `PROCESSING` to `CONFIRMED` once the blob has been successfully bridged onchain. This can take up to a few minutes, depending on network conditions. See the [Disperser API v1 Overview](../../../api/disperser%20v1%20API/overview.md) documentation for more details.
+The Disperser will return a `requestId` that you can use to poll the status of the blob. The status will change from `PROCESSING` to `CONFIRMED` once the blob has been successfully bridged onchain. This can take up to a few minutes, depending on network conditions. See the [Disperser API v1 Overview](../../../api/disperser-v1-API/overview.md) documentation for more details.
 
 ```bash
 # Update the value of REQUEST_ID with the result of your disperse call above
@@ -142,4 +142,4 @@ that is not encoded correctly, and that in order to disperse this blob you
 should first encode it using `kzgpad`, a utility distributed in the `eigenda`
 repo. This error is much more likely to be encountered when playing with EigenDA
 using a raw GRPC CLI, since there is no encoding logic built-in. Please see
-[Blob Serialization Requirements](../../../api/disperser%20v1%20API/blob-serialization-requirements.md) for more detail.
+[Blob Serialization Requirements](../../../api/disperser-v1-API/blob-serialization-requirements.md) for more detail.
