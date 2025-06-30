@@ -21,12 +21,11 @@ Use DevKit and Hourglass to:
 
 1. Scaffold your AVS project using the DevKit CLI.
 
-   The DevKit CLI initializes an AVS project structure and configuration for Hourglass the task-based execution framework.
+   The DevKit CLI initializes an AVS project structure and configuration. Hourglass is the first supported AVS framework for DevKit CLI.
 
 2. Understand and implement using the Hourglass framework.
 
-   The Hourglass framework provides a task-based AVS implementation that provides a standardized approach to defining, distibuting,
-   executing, and verifying compute tasks.
+   The Hourglass framework provides a task-based AVS implementation that provides a standardized approach to defining, distibuting, executing, and verifying compute tasks.
 
 3. Run your AVS on a local devnet.
 
