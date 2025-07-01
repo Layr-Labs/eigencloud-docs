@@ -36,56 +36,59 @@ The interactions between Staker, Operator, AVS, and core contracts during a slas
 
 ```mermaid
 sequenceDiagram
-    participant Staker as Staker
-    participant DelegationManager as DelegationManager Core Contract
-    participant Operator as Operator
-    participant AVS as AVS
-    participant AllocationManager as AllocationManager Core Contract
-    participant StrategyManager as Strategy Manager
-    participant SlashEscrow as SlashEscrowFactory Core Contract
-    participant EscrowClone as Slash Escrow Clone
-    participant BR as Burn Address or Redistribution Recipient
+    title Redistribution & Burn Flow
 
-    Note left of Staker: Staker deposits funds
-    Staker ->> DelegationManager: Delegate funds to an Operator
-    Staker -->> DelegationManager: Staker initiates withdrawal
-    Operator ->> AVS: Commit slashable offense
-    AVS ->> AVS: AVS verifies the slashable offence has occurred
-    Note right of AVS: (Optional) AVS-designed slashing governance
-    AVS ->> AllocationManager: Initiate operator slashing (slashOperator)
-    AllocationManager -->> AllocationManager: Update max magnitudes
-    AllocationManager -->> DelegationManager: Slash operator shares
-    DelegationManager -->> StrategyManager: Mark burnable shares for slashed operator
-    StrategyManager -->> SlashEscrow: Start 4-day escrow for redistribution or burn
-    StrategyManager ->> EscrowClone: Transfer underlying stake
-    Note over SlashEscrow: Wait for slash escrow delay to expire
-    BR ->> SlashEscrow: Redistribution only: Release tokens from escrow (releaseSlashEscrow)
-    Note over SlashEscrow: Burn only: Tokens released from escrow
-    SlashEscrow -->> EscrowClone: Release tokens for slash
-    EscrowClone -->>BR: Burn or redistribute tokens
-    Note right of BR: Final protocol fund outflow
-    DelegationManager-->>Staker: Receives decremented amount of stake
+    participant AVS as AVS
+    participant ALM as Allocation Manager
+    participant DM as Delegation Manager
+    participant SM as Strategy Manager
+    participant STR as Strategy Contract
+    participant RR as Redistribution Recipient
+
+    Note over AVS,RR: Slashing Initiation
+    AVS->>ALM: slashOperator<br>(avs, slashParams)
+    ALM-->>DM: *Internal* <br>slashOperatorShares<br>(operator, strategies,<br> prevMaxMags, newMaxMags)
+    Note over DM,SM: Share Management
+    DM-->>SM: *Internal*<br>increaseBurnOrRedistributableShares<br>(operatorSet, slashId, strategy, addedSharesToBurn)
+    
+    Note over SM,RR: Direct Fund Distribution
+    SM->>SM: clearBurnOrRedistributableShares(operatorSet, slashId)
+    SM-->>STR: *Internal*<br>withdraw<br>(recipient, token, underlyingAmount)
+    STR-->>RR: *Internal*<br>transfer<br>(token, underlyingAmount)
+    Note right of RR: Final protocol fund outflow
 ```
 
 ## Burning or redistributing slashed funds
 
 When funds are slashed by an AVS, they are either burned (for non-redistributable Operator Sets) or redistributed
-(for redistributable Operator Sets). Before exiting the protocol, slashed funds (marked for burning or redistributing)
-are transferred to `SlashEscrow` contracts and held for the Slash Escrow period. For more information on the Slash Escrow,
-refer to Slash Escrow in the Security section. 
+(for redistributable Operator Sets). Similar to the original burning implementation, slashed shares are first increased in `StrategyManager` storage as "burnable or redistributable" shares.
 
-Once the Slash Escrow period has passed, the slashed funds exit the EigenLayer protocol:
+In another call, slashed shares are converted and funds are transferred directly to the `redistributionRecipient` (or burned if using a non-redistributing operator set). This is done through a permissionless call to the `clearBurnOrRedistributeShares` function on the `StrategyManager`.
+
+This two party flow is done non-atomically to maintain the guarantee that a slash should never fail, in the case where a token transfer or some other upstream issue of removing funds from the protocol may fail. This flow is maintained, with the addition of redistributable shares, using the non-atomic approach while enabling direct distribution to redistribution recipients without a delay. The AVS can call `clearBurnOrRedistributeShares` themselves via a multi-call or it will be called after some time by a cron job to ensure funds do not remain in the protocol after a slash.
+
+Once the slash distribution is processed, the slashed funds exit the EigenLayer protocol:
 * When burned, ERC-20s are sent to the dead 0x00...00e16e4 address. The dead address is used to ensure proper
 accounting with various LRT protocols. No action is required by the AVS to burn the slashed funds.
-* For redistributed funds, the `redistributionRecipient` calls `releaseSlashEscrow` and the slashed funds
-are transferred to the `redistributionRecipient` specified when the redistributable Operator Set is created.
+* For redistributed funds, the slashed funds are transferred directly to the `redistributionRecipient` specified when the redistributable Operator Set is created.
+
+### Native ETH Redistribution Limitations
+
+:::warning
+Native ETH cannot be redistributed and remains permanently locked in EigenPod contracts when slashed, just as with burn-only slashing.
+:::
+
+Native ETH is excluded from redistributable slashing due to technical constraints of the Ethereum beacon chain:
+
+**Current Behavior:**
+When native ETH is slashed, it remains permanently locked in the EigenPod contracts, making it inaccessible to both the validator operator.
 
 Burned natively restaked ETH is locked in EigenPod contracts, permanently inaccessible. The Ethereum Pectra upgrade is anticipated
 to unblock development of an EigenLayer upgrade which would burn natively restaked ETH by sending it to a dead address, instead
 of permanently locking it within EigenPod contracts.
 
 :::note
-Native ETH cannot be redistributed.
+Only ERC-20 assets staked on EigenLayer, including Liquid Staking Tokens (LSTs), and AVS tokens, can be redistributed. EIGEN is excluded from redistribution at launch.
 :::
 
 ## For AVS Developers 

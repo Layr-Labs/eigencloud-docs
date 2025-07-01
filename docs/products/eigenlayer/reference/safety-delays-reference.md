@@ -4,7 +4,7 @@ title: Safety Delays
 ---
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets with instant redistribution.
 Redistributable Slashing is available in v1.5 on testnets and will be available on mainnet in Q3.
 :::
 
@@ -17,11 +17,11 @@ EigenLayer Safety Delays are included in the following table.
 | `DEALLOCATION_DELAY`             | Amount of blocks between an Operator queuing a deallocation of stake from an Operator Set for a strategy and the deallocation taking effect. This delay also applies to an Operator *deregistering* from an Operator Set, either by their own action or that of the AVS.                                                                                                                       | 100800 blocks (~14 days)                               | Core Protocol: Set via governance |
 | `INITIAL_TOTAL_MAGNITUDE`        | Initial value of the monotonically decreasing total magnitude for every Operator for every strategy. Initially set high enough to start out with a large level of precision in magnitude allocations and slashings.                                                                                                                                                                            | 1e18                                                   | Core Protocol: Constant, unlikely to change |
 | `WITHDRAWAL_DELAY`               | Amount of blocks between a Staker queueing a withdrawal and the withdrawal becoming non-slashable and completable.                                                                                                                                                                                                                                                                             | 100800 blocks (~14 days)                               | Core Protocol: Set via governance |
-| `SLASH_ESCROW_DELAY`             | Amount of blocks between a slashing event and the slashing becoming non-pausable and the slashed funds being burnable or redistributable. In the protocol, the delay exists per Strategy, and EIGEN will have a larger delay. Per-Strategy configuration of this delay is reserved for future protocol use, need, and compatibility. | 28800 blocks (~4 days)                                 | Core Protocol: Set via governance
 
 :::note 
 For ease of use on EigenLayer testnet deployments:
 * `ALLOCATION_CONFIGURATION_DELAY` is set to 75 blocks (~15 mins)
 * `DEALLOCATION_DELAY` and `WITHDRAWAL_DELAY` are set to 25 blocks (~5 mins)
-* `SLASH_ESCROW_DELAY` is set to 5 blocks (~1 min).
+
+Slashed funds are now distributed instantly through the `StrategyManager` interface without delays on mainnet and testnet.
 :::
