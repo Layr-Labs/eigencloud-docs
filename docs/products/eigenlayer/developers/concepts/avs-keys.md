@@ -12,7 +12,7 @@ the entirety of Operator and Staker allocated stake for a given Operator Set.
 
 ## Key Management for Redistributable Slashing
 
-When implementing [redistributable slashing](../slashing/slashing-concept-developers.md), AVSs face significantly heightened security requirements. Unlike burn-only slashing where compromised keys result in destroyed funds, redistributable slashing allows attackers to steal funds directly.
+When implementing [redistributable slashing](../concepts/slashing/slashing-concept-developers.md), AVSs face significantly heightened security requirements. Unlike burn-only slashing where compromised keys result in destroyed funds, redistributable slashing allows attackers to steal funds directly.
 
 ### Critical Key Categories
 
