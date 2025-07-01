@@ -48,6 +48,8 @@ We begin by giving an overview of each security model and how it contributes to 
 
 In the rest of this page, we provide a detailed analysis of how the three kinds of security are satisfied.
 
+For information about implementing custom quorums and security thresholds, see [Custom Security](../../integrations-guides/custom-security.md).
+
 ## BFT Security Model
 
 The BFT security model ensures system safety and liveness as long as the stake delegated to malicious validators remains below a predefined threshold.
