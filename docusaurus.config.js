@@ -216,10 +216,6 @@ const redirects = [
       to: '/products/eigenlayer/security/multisig-governance',
   },
   {
-      from: '/eigenlayer/security/slashing-delay',
-      to: '/products/eigenlayer/security/slashing-delay',
-  },
-  {
       from: '/eigenlayer/security/withdrawal-delay',
       to: '/products/eigenlayer/security/withdrawal-delay',
   },
