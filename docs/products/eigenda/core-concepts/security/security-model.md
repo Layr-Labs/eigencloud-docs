@@ -197,7 +197,6 @@ In the previous section, we demonstrated that the system is secure—that is, bo
 Suppose the maximum adversarial stake that can be used to compromise safety is denoted by $\eta_s$, and the maximum stake that can be used to compromise liveness is  $\eta_l$. To ensure the security of the system, the following conditions must be satisfied: $\eta_s \le \eta_S = \eta_C - \gamma$ and $\eta_l \leq \eta_L = 1 - \eta_C$. From these inequalities, we can derive: $\gamma \le 1 - \eta_s - \eta_l$. Also, recall that $\gamma \ge \frac{m}{(m-n)r}$ . This leads to the following constraint on the encoding rate $r$:
 
 
-
 $$
 \frac{m}{(m-n)r}  \leq 1 - \eta_s - \eta_l \Leftrightarrow r \ge \frac{m}{(m-n)(1-\eta_s-\eta_l)}
 $$
@@ -224,6 +223,6 @@ As discussed in [Security FAQs](./security-FAQs.md) , the Data Availability Samp
 
 ## Token Toxicity Security Model
 
-In addition to BFT security, the [custom quorum](../../integrations-guides/custom_security.md) provides an extra security guarantee through Token Toxicity. Token toxicity refers to the phenomenon where the value of a rollup's native token declines sharply when the rollup fails to function properly. Specifically, if DA isn't ensured for a rollup, market confidence in the roll-up service declines, causing its token price to drop. This economic incentive encourages holders of the roll-up's custom token to delegate their stakes only to trusted operators, minimizing the risk of data unavailability and potential loss in token value.
+In addition to BFT security, the [custom quorum](../../integrations-guides/custom-security.md) provides an extra security guarantee through Token Toxicity. Token toxicity refers to the phenomenon where the value of a rollup's native token declines sharply when the rollup fails to function properly. Specifically, if DA isn't ensured for a rollup, market confidence in the roll-up service declines, causing its token price to drop. This economic incentive encourages holders of the roll-up's custom token to delegate their stakes only to trusted operators, minimizing the risk of data unavailability and potential loss in token value.
 
 In conclusion, EigenDA's security model combines BFT security, cryptoeconomic security, and token toxicity to create a robust, multi-layered defense against safety and liveness failures. 
