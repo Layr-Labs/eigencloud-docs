@@ -95,4 +95,4 @@ For information on:
 * Safety delays for allocations and withdrawals, refer to [Safety Delays](safety-delays-concept.md) and [Safety Delays reference](../../reference/safety-delays-reference.md).
 * Interactions and sequence when slashing, refer to the [Slashing Overview](slashing-concept.md).
 * Implementing redistributable slashing, refer to [Create Operator Sets](../../developers/howto/build/operator-sets/create-operator-sets.md).
-* Opting into redistributable Operator Sets, refer to [Allocate and Register to Operator Set](../../operators/howto/operator-sets.md).
+* Opterator opt-in to redistributable Operator Sets, refer to [Allocate and Register to Operator Set](../../operators/howto/operator-sets.md).
