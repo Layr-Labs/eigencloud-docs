@@ -20,7 +20,7 @@ Redistribution is opt-in only for AVSs, Operators, and Stakers. AVSs choose whet
 redistributable Operator Sets, Operators choose whether to accept the redistribution conditions, and Stakers decide whether 
 to delegate to Operators allocated to redistributable Operator Sets.
 
-In general, there is a larger incentive to slash user funds when redistribution is enabled. Redistributable Operator Sets 
+In general, there is an incentive to slash user funds when redistribution is enabled. Redistributable Operator Sets 
 may offer higher rewards, but these should be considered against the increased slashing risks.
 
 :::note
