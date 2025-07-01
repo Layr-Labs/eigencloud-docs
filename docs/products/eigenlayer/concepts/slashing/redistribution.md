@@ -24,8 +24,7 @@ In general, there is an incentive to slash user funds when redistribution is ena
 may offer higher rewards, but these should be considered against the increased slashing risks.
 
 :::note
-All ERC-20 assets staked on EigenLayer, including Liquid Staking Tokens (LSTs), EIGEN, and AVS tokens, can be redistributed. Native ETH is not 
-yet eligible for redistribution.
+All ERC-20 assets staked on EigenLayer, including Liquid Staking Tokens (LSTs), and AVS tokens, can be redistributed. Native ETH and EIGEN are not yet eligible for redistribution.
 :::
 
 ## Security Implications and Risks
