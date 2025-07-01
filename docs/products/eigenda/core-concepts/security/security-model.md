@@ -197,7 +197,6 @@ In the previous section, we demonstrated that the system is secure—that is, bo
 Suppose the maximum adversarial stake that can be used to compromise safety is denoted by $\eta_s$, and the maximum stake that can be used to compromise liveness is  $\eta_l$. To ensure the security of the system, the following conditions must be satisfied: $\eta_s \le \eta_S = \eta_C - \gamma$ and $\eta_l \leq \eta_L = 1 - \eta_C$. From these inequalities, we can derive: $\gamma \le 1 - \eta_s - \eta_l$. Also, recall that $\gamma \ge \frac{m}{(m-n)r}$ . This leads to the following constraint on the encoding rate $r$:
 
 
-
 $$
 \frac{m}{(m-n)r}  \leq 1 - \eta_s - \eta_l \Leftrightarrow r \ge \frac{m}{(m-n)(1-\eta_s-\eta_l)}
 $$
