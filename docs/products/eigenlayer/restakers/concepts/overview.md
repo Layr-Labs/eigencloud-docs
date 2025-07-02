@@ -95,18 +95,8 @@ EigenLayer contracts feature a withdrawal delay for all Liquid and Native restak
 of vulnerability disclosure or when anomalous behavior is detected by monitoring systems. Please see [Withdrawal Delay](../../security/withdrawal-delay.md) 
 for more detail.
 
-## Slash Escrow 
+## Slashing Distribution
 
-The `SlashEscrowFactory` core contract creates child contracts that hold and apply a delay on all slashed funds exiting the protocol
-(whether burnable or redistributable). This design is intended to permit [EigenLayer governance](https://docs.eigenfoundation.org/protocol-governance/technical-architecture) to interface with the slash
-escrow contracts in the case of an EigenLayer protocol implementation bug. During the period between slash initiation and the
-end of the delay, the [Pauser multisig](https://docs.eigenfoundation.org/protocol-governance/technical-architecture) may implement a pause per slash preventing the slashed funds from being released from a
-child `SlashEscrow` contract. Prior to the release of slashed funds from a child `SlashEscrow` contract, the [Community multisig](https://docs.eigenfoundation.org/protocol-governance/technical-architecture) may
-upgrade the `SlashEscrowFactory` to return funds to the protocol. As of the date of the v1.5 release which includes Redistribution on testnet, the
-[Protocol Council](https://docs.eigenfoundation.org/protocol-governance/technical-architecture) is considering this security and governance design and what recommendations to make to the Community multisig.
-For more information, refer to Slash Escrow in the Security section.
+When funds are slashed, they are distributed through the `StrategyManager` using a two-step process. First, slashed shares are marked as "burnable or redistributable" in the `StrategyManager` storage. Then, through a permissionless call to `clearBurnOrRedistributableShares`, the funds are either burned or transferred directly to the redistribution recipient.
 
-:::note
-In the protocol, the Slash Escrow exists per Strategy, and EIGEN will have a larger delay. Per-Strategy configuration of the Slash Escrow
-delay is reserved for future protocol use, need, and compatibility.
-:::
+This approach enables instant redistribution without delays while maintaining the guarantee that slashing operations never fail, even if fund transfers encounter issues. The AVS can call `clearBurnOrRedistributableShares` or it will be called by a cron job to ensure funds are properly distributed after a slash.
