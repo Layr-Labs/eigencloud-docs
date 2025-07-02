@@ -30,7 +30,7 @@ and consider the risk and reward trade-offs. Redistributable Operator Sets may o
 against the increased slashing risks.
 :::
 
-## Slashing sequence 
+## Slashing sequence
 
 The interactions between Staker, Operator, AVS, and core contracts during a slashing are represented in the sequence diagram.
 
@@ -72,13 +72,16 @@ Once the slash distribution is processed, the slashed funds exit the EigenLayer 
 accounting with various LRT protocols. No action is required by the AVS to burn the slashed funds.
 * For redistributed funds, the slashed funds are transferred directly to the `redistributionRecipient` specified when the redistributable Operator Set is created.
 
-### Native ETH Redistribution Limitations
+### Native ETH & EIGEN Redistribution Limitations
 
 :::warning
 Native ETH cannot be redistributed and remains permanently locked in EigenPod contracts when slashed, just as with burn-only slashing.
 :::
 
-Native ETH is excluded from redistributable slashing due to technical constraints of the Ethereum beacon chain:
+Native ETH and EIGEN are excluded from redistributable slashing.
+
+* Native ETH is excluded at this time due to technical constraints of the Ethereum beacon chain and exiting validators in a timely manner. Options are being explored to enable this feature.
+* EIGEN cannot be used in redistributable slashing at this time, as it requires a delayed protocol outflow. This is to support its use in intersubjective faults.
 
 **Current Behavior:**
 When native ETH is slashed, it remains permanently locked in the EigenPod contracts, making it inaccessible to both the validator operator.
@@ -91,7 +94,7 @@ of permanently locking it within EigenPod contracts.
 Only ERC-20 assets staked on EigenLayer, including Liquid Staking Tokens (LSTs), and AVS tokens, can be redistributed. EIGEN is excluded from redistribution at launch.
 :::
 
-## For AVS Developers 
+## For AVS Developers
 
 For information on:
 * AVS security models and slashing, refer to [AVS Security Models](../../developers/concepts/avs-security-models.md). 

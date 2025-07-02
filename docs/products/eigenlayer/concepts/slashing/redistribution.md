@@ -48,7 +48,7 @@ With redistributable slashing, compromised AVS or Operator keys can lead to thef
 ### For Operators
 
 **Increased Liability:**
-- Operators must ensure exceptional focus on key management and operational security when running *any* redistributable AVS
+- Operators must ensure exceptional focus on key management and operational security when running *any* redistributable AVS. A loss of a signing key may expose a given Operator to additional slashing via equivocation or signing of malicious certificates. 
 - A compromised Operator key could allow a malicious actor to register for a malicious AVS and slash and redistribute allocated Staker funds. This will be subject to a delay, but should be accounted for.
 - Operators would suffer potentially irreparable reputational damage and distrust from Stakers
 
