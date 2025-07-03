@@ -113,7 +113,7 @@ The following env config values should be set accordingly to ensure proper commu
 
 Each blob submitted to EigenDA consists of `OP_BATCHER_TARGET_NUM_FRAMES` number of frames, each of size `OP_BATCHER_MAX_L1_TX_SIZE_BYTES`. The above values submit blobs of ~1MiB. We advise not setting `OP_BATCHER_MAX_L1_TX_SIZE_BYTES` larger than the default in case [failover](#failover) is required, which will submit the frames directly to ethereum as calldata, so must fit in a single transaction (max 128KiB).
 
-EigenDA V2 dispersals p99 latency is ~10seconds, so in order to achieve a throughput of 1MiB/s, we set `OP_BATCHER_ALTDA_MAX_CONCURRENT_DA_REQUESTS=10` to allow 10 pipelined requests to fill those 10 seconds. 
+EigenDA V2 dispersals p99 latency is ~10 seconds, so in order to achieve a throughput of 1MiB/s, we set `OP_BATCHER_ALTDA_MAX_CONCURRENT_DA_REQUESTS=10` to allow 10 pipelined requests to fill those 10 seconds. 
 
 <!-- details creates a dropdown menu -->
 <details>
