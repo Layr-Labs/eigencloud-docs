@@ -17,7 +17,7 @@ title: Prepare for and Deploy to Testnet and Mainnet
 
 3. Follow the [AVS Developer Security Best Practices](../../reference/avs-developer-best-practices.md) and [Key Manage Considerations for Developers](../../reference/avs-developer-best-practices.md#key-management-recommendation-for-developers).
 
-4.  Follow the [Testnet Dashboard Onboarding instructions](https://docs.eigenlayer.xyz/eigenlayer/avs-guides/avs-dashboard-onboarding).
+4.  Follow the [Testnet Dashboard Onboarding instructions](../publish/onboard-avs-dashboard.md).
 
 5. Implement Rewards distributions per the instructions [here](../build/submit-rewards-submissions.md).
 
@@ -26,4 +26,4 @@ title: Prepare for and Deploy to Testnet and Mainnet
 
 1. Smart Contract Auditing: have your codebase audited with at least 2-3 reputable audit firms.
 2. Finalize User and Operator documentation.
-3. Follow the [Mainnet Dashboard Onboarding instructions](https://docs.eigenlayer.xyz/eigenlayer/avs-guides/avs-dashboard-onboarding).
+3. Follow the [Mainnet Dashboard Onboarding instructions](../publish/onboard-avs-dashboard.md#mainnet-dashboard-onboarding).

@@ -13,4 +13,4 @@ An up-to-date reference of our current mainnet and testnet contract deployments 
 
 ### Technical Documentation
 
-Our most up-to-date contract-level documentation can be found in the core repository's docs folder: [`eigenlayer-contracts/docs`](https://github.com/Layr-Labs/eigenlayer-contracts/tree/dev/docs).
+Our most up-to-date contract-level documentation can be found in the core repository's docs folder: [`eigenlayer-contracts/docs`](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/docs).

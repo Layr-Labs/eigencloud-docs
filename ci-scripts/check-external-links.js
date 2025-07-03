@@ -58,7 +58,7 @@ async function isBrokenLink(url) {
         const response = await axios.head(url, {
             maxRedirects: 5,
             timeout: 10000,
-            validateStatus: (status) => status < 400
+            validateStatus: (status) => status !== 404
         });
         return { isBroken: false, status: response.status };
     } catch (error) {

@@ -20,7 +20,7 @@ Key EigenLayer Protocol references for this guide:
 2. Prepare the 'depositShares' parameter for the queueWithdrawals() function.  
    * Pass the number of **withdrawable shares** as input to the `convertToDepositShares()` function.  
    * The resulting value represents the amount to be used in the 'depositShares' parameter in the queueWithdrawals() function.  
-3. Queue Withdrawal: invoke DelegationManager.[queueWithdrawals()](https://github.com/Layr-Labs/eigenlayer-contracts/blob/slashing-magnitudes/src/contracts/core/DelegationManager.sol#L195) to trigger the escrow period.   
+3. Queue Withdrawal: invoke `DelegationManager.queueWithdrawals()` to trigger the escrow period.   
    * Please see the `QueuedWithdrawalParams` struct documentation for more details on how to construct the input parameters.
    * Please see further detail [here](https://docs.eigenlayer.xyz/eigenlayer/restaking-guides/restaking-user-guide/#escrow-period-withdrawal-delay) on the escrow period.  
 4. Complete Withdrawal as Tokens: invoke DelegationManager.completeQueuedWithdrawal() to complete the withdrawal and return assets to the withdrawer's wallet.
