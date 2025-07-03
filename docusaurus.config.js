@@ -784,10 +784,7 @@ const config = {
       src: '/js/eigen-token-redirect.js',
       async: false,
     },
-    {
-      src: '/js/userback.js',
-      async: true,
-    },
+    
   ],
   themes: [
     [
