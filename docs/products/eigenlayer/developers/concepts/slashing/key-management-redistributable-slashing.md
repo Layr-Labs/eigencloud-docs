@@ -10,7 +10,7 @@ When using Redistribution, an attacker that gains access to AVS keys for the sla
 the entirety of Operator and Staker allocated stake for a given Operator Set.
 :::
 
-For information on AVS key types, refer to [Keys](../../concepts/keys-and-signatures).
+For information on AVS key types, refer to [Keys](../../../../eigenlayer/concepts/keys-and-signatures).
 
 ### Critical Key Categories
 
