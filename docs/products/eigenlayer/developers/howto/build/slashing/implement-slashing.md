@@ -1,16 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 title: Implement Slashing
 ---
 
 :::important
 If you're new to slashing in EigenLayer, make sure you're familiar with [Operator Sets](../../../../concepts/operator-sets/operator-sets-concept.md)
 and [Slashing](../../../../concepts/slashing/slashing-concept.md) before implementing slashing.
-:::
-
-:::caution
-The v1.5.0 Redistribution release introduced the Slash Escrow Delay. All slashed funds are held in the `SlashEscrow` contracts
-for the Slash Escrow Delay before being burnt or redistributed.
 :::
 
 The [`AllocationManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/src/contracts/interfaces/IAllocationManager.sol) provides the interface for the `slashOperator` function.
@@ -22,6 +17,10 @@ To implement slashing, AVSs specify:
 * [List of proportions (as `wads` or “parts per `1e18`”)](../../../../concepts/operator-sets/strategies-and-magnitudes)
 * Description. 
 
+:::warn
+EIGEN and Native ETH are not available for redistributing Operator Sets at launch. Setting these Strategies will revert when configuring your Operator Set.
+:::
+ 
 ## Define Slashing Proportions
 
 In the `wadsToSlash` parameter: 
@@ -36,7 +35,7 @@ For more information on how magnitudes are reduced when slashed, refer to [Magni
 ## Define Upstream Redistribution Contracts 
 
 For [redistributable Operator Sets](../../../../concepts/slashing/redistribution.md), implement upstream contracts for [`redistributionRecipient`](../../../concepts/slashing/slashing-concept-developers.md#redistribution-recipient)
-to redistribute slashed funds once they have exited the protocol.
+to handle redistributed funds once they are transferred directly from the protocol via the `clearBurnOrRedistributableShares` function.
 
 ## Returned by `slashOperator`
 

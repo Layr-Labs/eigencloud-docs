@@ -216,10 +216,6 @@ const redirects = [
       to: '/products/eigenlayer/security/multisig-governance',
   },
   {
-      from: '/eigenlayer/security/slashing-delay',
-      to: '/products/eigenlayer/security/slashing-delay',
-  },
-  {
       from: '/eigenlayer/security/withdrawal-delay',
       to: '/products/eigenlayer/security/withdrawal-delay',
   },
@@ -237,7 +233,7 @@ const redirects = [
   },
   {
       from: '/developers/Concepts/avs-keys',
-      to: '/products/eigenlayer/developers/concepts/avs-keys',
+      to: '/products/eigenlayer/developers/concepts/slashing/key-management-redistributable-slashing',
   },
   {
       from: '/developers/Concepts/avs-security-models',
