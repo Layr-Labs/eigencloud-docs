@@ -80,7 +80,7 @@ d. No Monetary Value. In your use of the Testnet, you may interact with or trans
 
 6. **Location of Our Privacy Policy**
 
-Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, please visit our [Privacy Policy here](https://docs.eigencloud.xyz/products/eigenlayer/legal/privacy-policy).
+Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, please visit our [Privacy Policy here](./privacy-policy.md).
 
 7. **Rights We Grant You**
 
