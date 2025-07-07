@@ -50,7 +50,7 @@ With redistributable slashing, compromised AVS or Operator keys can lead to thef
 **Increased Liability:**
 - Operators must ensure exceptional focus on key management and operational security when running any redistributable AVS. A loss of a signing key may expose a given Operator to additional slashing via equivocation or signing of malicious certificates. 
 - A compromised Operator key could allow a malicious actor to register for a malicious AVS and slash and redistribute allocated Staker funds. This will be subject to a delay, but should be accounted for.
-- Operators would suffer potentially irreparable reputational damage and distrust from Stakers.
+- An attack of this nature will cause Operators to suffer potentially irreparable reputational damage and distrust from Stakers.
 
 **Visibility Changes:**
 - Operators participating in redistributing Operator Sets will be marked with `Redistributable` metadata to aid in Staker risk assessment.
@@ -81,17 +81,18 @@ To provide some protection against the increased risks, redistributable Operator
 
 **Unchangeable Redistribution Capability:**
 - An Operator Set must be configured as redistributable at creation time.
-- Standard Operator Sets cannot suddenly become redistributable.
+- Standard Operator Sets cannot become redistributable.
 - Redistributable Operator Sets cannot remove their redistribution property.
 - This provides predictable risk profiles for the lifetime of the Operator Set.
 
 **Enhanced Metadata:**
-- All redistributable Operator Sets and participating Operators are clearly marked in on-chain metadata and the EigenLayer application.
+- All redistributable Operator Sets and participating Operators are clearly marked in onchain metadata and the EigenLayer app.
 - This improves risk legibility for all participants.
 
 For information on: 
 
-* Safety delays for allocations and withdrawals, refer to [Safety Delays](safety-delays-concept.md) and [Safety Delays reference](../../reference/safety-delays-reference.md).
 * Interactions and sequence when slashing, refer to the [Slashing Overview](slashing-concept.md).
+* Key management when using redistributable slashing, refer to [Key Management for Redistributable Slashing](../../developers/concepts/slashing/key-management-redistributable-slashing.md).
+* Security and risk assessments for redistributable slashing, refer to [Security for Redistributable Slashing](../../developers/howto/build/slashing/security-redistributable-slashing.md) and [Risk Assessment for Redistributable Slashing](../../developers/howto/build/slashing/risk-assessment-redistributable-slashing.md).
 * Implementing redistributable slashing, refer to [Create Operator Sets](../../developers/howto/build/operator-sets/create-operator-sets.md).
-* Opterator opt-in to redistributable Operator Sets, refer to [Allocate and Register to Operator Set](../../operators/howto/operator-sets.md).
+* Operator opt-in to redistributable Operator Sets, refer to [Allocate and Register to Operator Set](../../operators/howto/operator-sets.md).

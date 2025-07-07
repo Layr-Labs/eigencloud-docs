@@ -60,12 +60,17 @@ sequenceDiagram
 
 ## Burning or redistributing slashed funds
 
-When funds are slashed by an AVS, they are either burned (for non-redistributable Operator Sets) or redistributed
-(for redistributable Operator Sets). Similar to the original burning implementation, slashed shares are first increased in `StrategyManager` storage as "burnable or redistributable" shares.
+When funds are slashed by an AVS, they are either burned (for standard, non-redistributable Operator Sets) or redistributed
+(for redistributable Operator Sets). 
 
-In another call, slashed shares are converted and funds are transferred directly to the `redistributionRecipient` (or burned if using a non-redistributing operator set). This is done through a permissionless call to the `clearBurnOrRedistributeShares` function on the `StrategyManager`.
+Before burning or redistributing, slashed shares are increased in `StrategyManager` storage as burnable or redistributable shares.
+In another call, slashed shares are converted and funds are transferred directly to the `redistributionRecipient` (or burned if using a standard Operator Set). This is done through a permissionless call to the `clearBurnOrRedistributeShares` function on the `StrategyManager`.
 
-This two party flow is done non-atomically to maintain the guarantee that a slash should never fail, in the case where a token transfer or some other upstream issue of removing funds from the protocol may fail. This flow is maintained, with the addition of redistributable shares, using the non-atomic approach while enabling direct distribution to redistribution recipients without a delay. The AVS can call `clearBurnOrRedistributeShares` themselves via a multi-call or it will be called after some time by a cron job to ensure funds do not remain in the protocol after a slash.
+This two party flow is non-atomic to maintain the guarantee that slash does not fail, in the case where a token transfer
+or some other upstream issue of removing funds from the protocol may fail. This flow is maintained, with the addition of
+redistributable shares, using the non-atomic approach while enabling direct distribution to redistribution recipients without a
+delay. The AVS can call `clearBurnOrRedistributeShares` themselves via a multi-call or `clearBurnOrRedistributeShares` is called 
+after some time by a cron job to ensure funds do not remain in the protocol after a slash.
 
 Once the slash distribution is processed, the slashed funds exit the EigenLayer protocol:
 * When burned, ERC-20s are sent to the dead 0x00...00e16e4 address. The dead address is used to ensure proper

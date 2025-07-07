@@ -23,5 +23,5 @@ For ease of use on EigenLayer testnet deployments:
 * `ALLOCATION_CONFIGURATION_DELAY` is set to 75 blocks (~15 mins)
 * `DEALLOCATION_DELAY` and `WITHDRAWAL_DELAY` are set to 25 blocks (~5 mins)
 
-Slashed funds are now distributed instantly through the `StrategyManager` interface without delays on mainnet and testnet.
+Slashed funds are distributed instantly through the `StrategyManager` interface without delays on mainnet and testnet.
 :::
