@@ -36,58 +36,58 @@ With redistributable slashing, compromised AVS or Operator keys can lead to thef
 ### For AVSs and Service Builders
 
 **Key Management Requirements:**
-- The `redistributionRecipient` should be treated as an AVS-controlled role and signing key with the highest security standards
-- An attacker who gains access to both AVS slashing keys and the `redistributionRecipient` can drain the entirety of Operator and Staker allocated stake for a given Operator Set
-- This will have severe repercussions on the AVS's reputation and continued trust from the community
+- The `redistributionRecipient` should be treated as an AVS-controlled role and signing key with the highest security standards.
+- An attacker who gains access to both AVS slashing keys and the `redistributionRecipient` can drain the entirety of Operator and Staker allocated stake for a given Operator Set.
+- An attack of this nature will have severe repercussions on the AVS's reputation and continued trust from the community.
 
 **Design Considerations:**
-- Because redistribution allows AVSs to benefit from theft related to slashing, additional design care must be taken to consider the incentives of all parties
-- AVSs should implement robust governance mechanisms, fraud proofs, and decentralization in their slashing designs
-- Include delays and veto periods in AVS designs to avoid or cancel slashing in cases of AVS implementation bugs, improper slashing, or fraud
+- Because redistribution allows AVSs to benefit from theft related to slashing, additional design care must be taken to consider the incentives of all parties.
+- AVSs should implement robust governance mechanisms, fraud proofs, and decentralization in their slashing designs.
+- Include delays and veto periods in AVS designs to avoid or cancel slashing in cases of AVS implementation bugs, improper slashing, or fraud.
 
 ### For Operators
 
 **Increased Liability:**
-- Operators must ensure exceptional focus on key management and operational security when running *any* redistributable AVS. A loss of a signing key may expose a given Operator to additional slashing via equivocation or signing of malicious certificates. 
+- Operators must ensure exceptional focus on key management and operational security when running any redistributable AVS. A loss of a signing key may expose a given Operator to additional slashing via equivocation or signing of malicious certificates. 
 - A compromised Operator key could allow a malicious actor to register for a malicious AVS and slash and redistribute allocated Staker funds. This will be subject to a delay, but should be accounted for.
-- Operators would suffer potentially irreparable reputational damage and distrust from Stakers
+- Operators would suffer potentially irreparable reputational damage and distrust from Stakers.
 
 **Visibility Changes:**
-- Operators participating in redistributing Operator Sets will be marked with `Redistributable` metadata to aid in Staker risk assessment
-- This profile change may affect an Operator's ability to attract stake, though it may also enable access to higher reward opportunities
+- Operators participating in redistributing Operator Sets will be marked with `Redistributable` metadata to aid in Staker risk assessment.
+- This profile change may affect an Operator's ability to attract stake, though it may also enable access to higher reward opportunities.
 
 ### For Stakers
 
 **Attack Scenarios:**
 Stakers face increased risks from multiple attack vectors:
 
-1. **Malicious AVS Governance**: If an AVS's governance or slashing functionality is corrupted, an attacker may be able to drain Operator-delegated funds
-2. **Compromised Operators**: If an Operator is compromised, they may stand up their own malicious AVS to steal user funds
-3. **Collusion**: Operators and AVSs may collude to slash and redistribute funds inappropriately
+1. **Malicious AVS Governance**: If an AVS's governance or slashing functionality is corrupted, an attacker may be able to drain Operator-delegated funds.
+2. **Compromised Operators**: If an Operator is compromised, they may stand up their own malicious AVS to steal user funds.
+3. **Collusion**: Operators and AVSs may collude to slash and redistribute funds inappropriately.
 
 **Risk Assessment Guidelines:**
-- Carefully evaluate the reputation and legitimacy of Operators when making delegations
-- Consider the governance structure and security practices of AVSs using redistributable slashing
-- Understand that redistributable Operator Sets may offer higher rewards but come with proportionally higher risks
-- Monitor your delegated Operators' allocations across various Operator Sets regularly
+- Carefully evaluate the reputation and legitimacy of Operators when making delegations.
+- Consider the governance structure and security practices of AVSs using redistributable slashing.
+- Understand that redistributable Operator Sets may offer higher rewards but come with proportionally higher risks.
+- Monitor your delegated Operators' allocations across various Operator Sets regularly.
 
 ## Immutable Guarantees
 
 To provide some protection against the increased risks, redistributable Operator Sets have several immutable properties:
 
 **Fixed Redistribution Recipient:**
-- The `redistributionRecipient` address cannot be changed after Operator Set creation
-- While AVSs may use upstream proxy or pass-through contracts, the immutability in EigenLayer allows AVSs to provide additional guarantees through governance controls, timelocks, or immutability
+- The `redistributionRecipient` address cannot be changed after Operator Set creation.
+- While AVSs may use upstream proxy or pass-through contracts, the immutability in EigenLayer allows AVSs to provide additional guarantees through governance controls, timelocks, or immutability.
 
 **Unchangeable Redistribution Capability:**
-- An Operator Set must be configured as redistributable at creation time
-- Standard Operator Sets cannot suddenly become redistributable
-- Redistributable Operator Sets cannot remove their redistribution property
-- This provides predictable risk profiles for the lifetime of the Operator Set
+- An Operator Set must be configured as redistributable at creation time.
+- Standard Operator Sets cannot suddenly become redistributable.
+- Redistributable Operator Sets cannot remove their redistribution property.
+- This provides predictable risk profiles for the lifetime of the Operator Set.
 
 **Enhanced Metadata:**
-- All redistributable Operator Sets and participating Operators are clearly marked in on-chain metadata and the EigenLayer application
-- This improves risk legibility for all participants
+- All redistributable Operator Sets and participating Operators are clearly marked in on-chain metadata and the EigenLayer application.
+- This improves risk legibility for all participants.
 
 For information on: 
 

@@ -1,18 +1,16 @@
 ---
-sidebar_position: 6
-title: AVS Keys
+sidebar_position: 2
+title: Key Management for Redistributable Slashing
 ---
 
-For information on AVS key types, refer to [Keys](../../concepts/keys-and-signatures).
+When implementing [redistributable slashing](slashing-concept-developers.md), AVSs face significantly heightened security requirements. Unlike burn-only slashing where compromised keys result in destroyed funds, redistributable slashing allows attackers to steal funds directly.
 
 :::important
 When using Redistribution, an attacker that gains access to AVS keys for the slasher and `redistributionRecipient` can drain
-the entirety of Operator and Staker allocated stake for a given Operator Set. 
+the entirety of Operator and Staker allocated stake for a given Operator Set.
 :::
 
-## Key Management for Redistributable Slashing
-
-When implementing [redistributable slashing](../concepts/slashing/slashing-concept-developers.md), AVSs face significantly heightened security requirements. Unlike burn-only slashing where compromised keys result in destroyed funds, redistributable slashing allows attackers to steal funds directly.
+For information on AVS key types, refer to [Keys](../../concepts/keys-and-signatures).
 
 ### Critical Key Categories
 
