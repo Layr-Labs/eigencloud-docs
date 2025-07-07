@@ -45,6 +45,9 @@ When designing the `redistributionRecipient` contract:
 - Include emergency pause functionality.
 - Implement comprehensive access controls and role management.
 
+**Precision loss:** 
+- Implement [guidelines to minimize precision loss](precision-rounding-considerations.md).
+
 ### Governance and Fraud Prevention
 
 **Veto Mechanisms:**

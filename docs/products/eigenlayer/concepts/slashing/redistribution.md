@@ -42,14 +42,15 @@ With redistributable slashing, compromised AVS or Operator keys can lead to thef
 
 **Design Considerations:**
 - Because redistribution allows AVSs to benefit from theft related to slashing, additional design care must be taken to consider the incentives of all parties.
-- AVSs should implement robust governance mechanisms, fraud proofs, and decentralization in their slashing designs.
+- AVSs should implement robust governance mechanisms, fraud proofs, and decentralization in their slashing designs. We encourage AVSs to create robust legibility and process around individual slashings.
 - Include delays and veto periods in AVS designs to avoid or cancel slashing in cases of AVS implementation bugs, improper slashing, or fraud.
+- Have guidelines around allocation magnitudes and the lower bounds of what can be slashed without introducing [precision loss during slashing](../../developers/howto/build/slashing/precision-rounding-considerations.md).
 
 ### For Operators
 
 **Increased Liability:**
 - Operators must ensure exceptional focus on key management and operational security when running any redistributable AVS. A loss of a signing key may expose a given Operator to additional slashing via equivocation or signing of malicious certificates. 
-- A compromised Operator key could allow a malicious actor to register for a malicious AVS and slash and redistribute allocated Staker funds. This will be subject to a delay, but should be accounted for.
+- A compromised Operator key could allow a malicious actor to register for a malicious AVS and slash and redistribute allocated Staker funds. This risk may be mitigated by the [`ALLOCATION_DELAY`](../../reference/safety-delays-reference.md), which would provide Stakers an opportunity to undelegate from a compromised Operator. The [`ALLOCATION_DELAY`](../../reference/safety-delays-reference.md) is set by the Operator and should be considered by Stakers in making delegation decisions.
 - An attack of this nature will cause Operators to suffer potentially irreparable reputational damage and distrust from Stakers.
 
 **Visibility Changes:**

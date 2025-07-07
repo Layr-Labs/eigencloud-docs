@@ -4,7 +4,7 @@ title: Precision and Rounding Considerations
 ---
 
 :::warning
-Slashing in very small increments, slashing operators with very low magnitudes, or slashing operators with very low share balances may lead to precision loss that results in burned/redistributed amounts being far lower than expected.
+Slashing in very small increments, slashing operators with very low magnitudes, or slashing operators with very low share balances may lead to precision loss that results in burned and redistributed amounts being far lower than expected.
 :::
 
 AVSs should be aware of potential precision loss during slashing operations. This occurs primarily when:
@@ -89,6 +89,6 @@ AVSs should evaluate their specific use case against these parameters:
 
 ### Recovery Procedures
 
-- **Dust accumulation**: Understand that precision loss results in small amounts of "dust" remaining in the protocol
-- **Operator remediation**: Develop procedures for operators who fall below thresholds (e.g., requiring additional deposits)
-- **Slashing adjustments**: Have procedures to adjust slashing parameters if precision loss becomes problematic
+- **Dust accumulation**: Understand that precision loss results in small amounts of dust remaining in the protocol. Precision loss dust cannot be retrieved.
+- **Operator remediation**: Develop procedures for operators who fall below thresholds (for example, requiring additional deposits).
+- **Slashing adjustments**: Have procedures to adjust slashing parameters if precision loss becomes problematic.
