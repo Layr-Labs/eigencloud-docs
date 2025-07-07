@@ -233,7 +233,7 @@ const redirects = [
   },
   {
       from: '/developers/Concepts/avs-keys',
-      to: '/products/eigenlayer/developers/concepts/key-management-redistributable-slashing',
+      to: '/products/eigenlayer/developers/concepts/slashing/key-management-redistributable-slashing',
   },
   {
       from: '/developers/Concepts/avs-security-models',
