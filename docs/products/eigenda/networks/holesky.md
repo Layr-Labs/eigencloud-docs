@@ -39,7 +39,7 @@ All other contracts are now tracked inside the EigenDADirectory contract:
 4. Click on "getAllNames()" function to see the name of all registered contracts.
 5. Use the "getAddress()" function to get the address of a specific contract, using its name.
 
-![](../../../../static/img/eigenda/eigenda-directory-etherscan.png)
+![](/img/eigenda/eigenda-directory-etherscan.png)
 
 ## Quorums
 
