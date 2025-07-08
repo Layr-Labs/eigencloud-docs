@@ -30,13 +30,16 @@ The EigenDA Holesky testnet is the EigenDA testnet for operators.
 
 | Contract | Address |
 | --- | --- |
-| RegistryCoordinator | [0x53012C69A189cfA2D9d29eb6F19B32e0A2EA3490](https://holesky.etherscan.io/address/0x53012C69A189cfA2D9d29eb6F19B32e0A2EA3490) |
-| StakeRegistry | [0xBDACD5998989Eec814ac7A0f0f6596088AA2a270](https://holesky.etherscan.io/address/0xBDACD5998989Eec814ac7A0f0f6596088AA2a270) |
-| IndexRegistry | [0x2E3D6c0744b10eb0A4e6F679F71554a39Ec47a5D](https://holesky.etherscan.io/address/0x2E3D6c0744b10eb0A4e6F679F71554a39Ec47a5D) |
-| BLSApkRegistry | [0x066cF95c1bf0927124DFB8B02B401bc23A79730D](https://holesky.etherscan.io/address/0x066cF95c1bf0927124DFB8B02B401bc23A79730D) |
-| EigenDAServiceManager | [0xD4A7E1Bd8015057293f0D0A557088c286942e84b](https://holesky.etherscan.io/address/0xD4A7E1Bd8015057293f0D0A557088c286942e84b) |
-| BLSOperatorStateRetriever | [0xB4baAfee917fb4449f5ec64804217bccE9f46C67](https://holesky.etherscan.io/address/0xB4baAfee917fb4449f5ec64804217bccE9f46C67) |
-| PaymentVault | [0x4a7Fff191BCDa5806f1Bc8689afc1417c08C61AB](https://holesky.etherscan.io/address/0x4a7Fff191BCDa5806f1Bc8689afc1417c08C61AB) |
+| EigenDADirectory | [0x90776Ea0E99E4c38aA1Efe575a61B3E40160A2FE](https://holesky.etherscan.io/address/0x90776Ea0E99E4c38aA1Efe575a61B3E40160A2FE) |
+
+All other contracts are now tracked inside the EigenDADirectory contract:
+1. Click on the etherscan link above.
+2. Click on the "Contract" button.
+3. Click on the "Read as Proxy" button.
+4. Click on "getAllNames()" function to see the name of all registered contracts.
+5. Use the "getAddress()" function to get the address of a specific contract, using its name.
+
+![](../../../../static/img/eigenda/eigenda-directory-etherscan.png)
 
 ## Quorums
 

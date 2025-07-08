@@ -39,15 +39,16 @@ sidebar_position: 1
 
 | Contract | Address |
 | --- | --- |
-| RegistryCoordinator | [0x0baac79acd45a023e19345c352d8a7a83c4e5656](https://etherscan.io/address/0x0baac79acd45a023e19345c352d8a7a83c4e5656) |
-| StakeRegistry | [0x006124ae7976137266feebfb3f4d2be4c073139d](https://etherscan.io/address/0x006124ae7976137266feebfb3f4d2be4c073139d) |
-| IndexRegistry | [0xbd35a7a1cdef403a6a99e4e8ba0974d198455030](https://etherscan.io/address/0xbd35a7a1cdef403a6a99e4e8ba0974d198455030) |
-| BLSApkRegistry | [0x00a5fd09f6cee6ae9c8b0e5e33287f7c82880505](https://etherscan.io/address/0x00a5fd09f6cee6ae9c8b0e5e33287f7c82880505) |
-| EigenDAServiceManager | [0x870679e138bcdf293b7ff14dd44b70fc97e12fc0](https://etherscan.io/address/0x870679e138bcdf293b7ff14dd44b70fc97e12fc0) |
-| CertVerifier | [0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6](https://etherscan.io/address/0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6) |
-| BLSOperatorStateRetriever | [0xEC35aa6521d23479318104E10B4aA216DBBE63Ce](https://etherscan.io/address/0xEC35aa6521d23479318104E10B4aA216DBBE63Ce) |
-| BLSOperatorStateRetriever (Legacy) | [0xD5D7fB4647cE79740E6e83819EFDf43fa74F8C31](https://etherscan.io/address/0xD5D7fB4647cE79740E6e83819EFDf43fa74F8C31) |
-| PaymentVault | [0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05](https://etherscan.io/address/0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05) |
+| EigenDADirectory | [0x64AB2e9A86FA2E183CB6f01B2D4050c1c2dFAad4](https://etherscan.io/address/0x64AB2e9A86FA2E183CB6f01B2D4050c1c2dFAad4) |
+
+All other contracts are now tracked inside the EigenDADirectory contract:
+1. Click on the etherscan link above.
+2. Click on the "Contract" button.
+3. Click on the "Read as Proxy" button.
+4. Click on "getAllNames()" function to see the name of all registered contracts.
+5. Use the "getAddress()" function to get the address of a specific contract, using its name.
+
+![](../../../../static/img/eigenda/eigenda-directory-etherscan.png)
 
 ## Quorums
 
