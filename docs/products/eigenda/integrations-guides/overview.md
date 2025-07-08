@@ -17,52 +17,10 @@ making use of the EigenDA proxy. This is how [Arbitrum Nitro](./rollup-guides/or
 
 The below diagram documents the different ways to interface with the EigenDA disperser.
 
-```mermaid
-graph LR
-    
-    subgraph "Proxy (REST API)"
-        PROXY_ENDPOINTS["
-            POST /put?commitment_mode=standard
-            GET /get/&lt;hex_encoded_commitment&gt;?commitment_mode=standard
-        "]
-    end
-    
-    subgraph "Disperser (gRPC API)"
-        DISPERSER_ENDPOINTS["
-            DisperseBlob(DisperseBlobRequest)
-            GetBlobStatus(BlobStatusRequest)
-            GetBlobCommitment(BlobCommitmentRequest)
-            GetPaymentState(GetPaymentStateRequest)
-        "]
-    end
-    
-    subgraph "Proxy Clients"
-        PROXY_CLIENTS["
-            OP DAClient
-            StandardClient
-        "]
-    end
-    
-    
-    PROXY_CLIENTS -->|HTTP| PROXY_ENDPOINTS
-    PROXY_CLIENTS -->|HTTP| PROXY_ENDPOINTS
+![EigenDA Disperser Interfaces](/img/eigenda/eigenda-disperser-interfaces.png)
 
-    PROXY_ENDPOINTS --- D[PayloadDisperser Client]
-    PROXY_ENDPOINTS --- R[PayloadRetriever Clients]
 
-    D -->|gRPC| DISPERSER_ENDPOINTS
-    R -->|gRPC| DISPERSER_ENDPOINTS
-    
-    classDef client fill:#bfb,stroke:#333,stroke-width:1px;
-    classDef endpoints fill:#fffaf0,stroke:#333,stroke-dasharray: 5 5;
-    
-    class OP_DAClient client;
-    class PayloadDisperser client;
-    class PayloadRetriever client;
-    class StandardClient client;
-    class PROXY_ENDPOINTS,DISPERSER_ENDPOINTS endpoints;
 
-```
 
 ## Proxy with REST API
 
