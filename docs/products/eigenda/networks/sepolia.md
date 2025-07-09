@@ -22,11 +22,16 @@ The EigenDA Sepolia testnet is the current EigenDA testnet for integrations.
 
 | Contract | Address |
 | --- | --- |
-| EigenDAServiceManager | [0x3a5acf46ba6890B8536420F4900AC9BC45Df4764](https://sepolia.etherscan.io/address/0x3a5acf46ba6890B8536420F4900AC9BC45Df4764) |
-| CertVerifier | [0x73818fed0743085c4557a736a7630447fb57c662](https://sepolia.etherscan.io/address/0x73818fed0743085c4557a736a7630447fb57c662#readContract) |
-| BLSOperatorStateRetriever | [0x22478d082E9edaDc2baE8443E4aC9473F6E047Ff](https://sepolia.etherscan.io/address/0x22478d082E9edaDc2baE8443E4aC9473F6E047Ff) |
-| PaymentVault | [0x2E1BDB221E7D6bD9B7b2365208d41A5FD70b24Ed](https://sepolia.etherscan.io/address/0x2E1BDB221E7D6bD9B7b2365208d41A5FD70b24Ed) |
+| EigenDADirectory | [0x9620dC4B3564198554e4D2b06dEFB7A369D90257](https://sepolia.etherscan.io/address/0x9620dC4B3564198554e4D2b06dEFB7A369D90257) |
 
+All other contracts are now tracked inside the EigenDADirectory contract:
+1. Click on the etherscan link above.
+2. Click on the "Contract" button.
+3. Click on the "Read as Proxy" button.
+4. Click on "getAllNames()" function to see the name of all registered contracts.
+5. Use the "getAddress()" function to get the address of a specific contract, using its name.
+
+![](/img/eigenda/eigenda-directory-etherscan.png)
 
 ## Quorums
 
