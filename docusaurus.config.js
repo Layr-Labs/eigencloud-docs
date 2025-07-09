@@ -674,7 +674,7 @@ const config = {
           },
 
           {
-            href: "https://github.com/Layr-Labs",
+            href: "https://github.com/Layr-Labs/eigencloud-docs",
             className: "header--github-link",
             "aria-label": "GitHub repository",
             position: "right",
