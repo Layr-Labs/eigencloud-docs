@@ -5,7 +5,7 @@ title: Security Model
 
 # Security Model
 
-# Introduction
+## Introduction
 
 EigenDA is a high-throughput, decentralized data availability (DA) layer built on EigenLayer, designed to ensure that any data confirmed as available by the protocol can be reliably retrieved by clients. The system distinguishes between two core failure modes:
 
@@ -19,7 +19,7 @@ Additionally, EIGEN slashing introduces strong accountability: in the event of a
 On this page, we present a technical analysis of EigenDA's security guarantees.
 We use the terms *validator* and *operator* interchangiblity in this document.
 
-# Cryptographic Primitives
+## Cryptographic Primitives
 
 The encoding module is used for extending a blob of data into a set of encoded chunks which can be used to reconstruct the blob. The correctness of the encoding is proven by the proving module. The encoding and proving module needs to satisfy two main properties:
 
@@ -34,7 +34,7 @@ To achieve these properties, the module provides the following primitives:
 
 EigenDA implements the encoding module using Reed Solomon encoding, together with KZG polynomial commitments and opening proofs. More details about the encoding and proving module can be found in the [code spec](https://github.com/Layr-Labs/eigenda/blob/master/docs/spec/src/protocol/architecture/encoding.md).
 
-# Security Models
+## Quorums and Security Models
 
 In EigenDA, there are three different kinds of quorums where different assets (restaked-ETH, EIGEN and customized tokens of roll-ups) are delegated to the operators.  Different quorums provide different security guarantees. All three kinds of quorums must simultaneously fail for a safety attack to be successfully executed, providing multi-layered security assurance.
 
@@ -47,6 +47,8 @@ The three security models in EigenDA, along with their corresponding quorums, ar
 We begin by giving an overview of each security model and how it contributes to EigenDA's overall resilience: BFT security ensures both safety and liveness of the system as long as the share of stake or voting power held by malicious validators stays below a certain threshold. Cryptoeconomic security goes a step further—if an attacker misbehaves, they not only need to control a significant amount of stake, but they also risk losing it through slashing. This makes attacks financially unappealing. Token toxicity adds another layer of incentive alignment. When validators misbehave, the native token may drop in value, leading to losses for token holders who delegated their stake to those validators. This dynamic encourages stakeholders to carefully choose trustworthy operators.
 
 In the rest of this page, we provide a detailed analysis of how the three kinds of security are satisfied.
+
+For information about implementing custom quorums and security thresholds, see [Custom Security](../../integrations-guides/custom-security.md).
 
 ## BFT Security Model
 
@@ -167,7 +169,7 @@ We analyse the impact of the optimization as follows:
 
 In this section, we define and prove the safety and liveness properties of EigenDA, building on the reconstruction property established above.
 
-The Byzantine liveness and safety properties of a blob are specified by a collection of `SecurityParameters`.
+The Byzantine liveness and safety properties of a blob are specified by a collection of `SecurityThresholds`.
 
 - `ConfirmationThreshold` (also denoted as $\eta_C$) - The confirmation threshold defines the minimum percentage of stake which needs to sign to make the DA certificate valid.
 - `SafetyThreshold` (also denoted as $\eta_S$) - The safety threshold refers to the minimum percentage of total stake an attacker must control to make a blob with a valid DA certificate unavailable.
@@ -195,7 +197,6 @@ In the previous section, we demonstrated that the system is secure—that is, bo
 Suppose the maximum adversarial stake that can be used to compromise safety is denoted by $\eta_s$, and the maximum stake that can be used to compromise liveness is  $\eta_l$. To ensure the security of the system, the following conditions must be satisfied: $\eta_s \le \eta_S = \eta_C - \gamma$ and $\eta_l \leq \eta_L = 1 - \eta_C$. From these inequalities, we can derive: $\gamma \le 1 - \eta_s - \eta_l$. Also, recall that $\gamma \ge \frac{m}{(m-n)r}$ . This leads to the following constraint on the encoding rate $r$:
 
 
-
 $$
 \frac{m}{(m-n)r}  \leq 1 - \eta_s - \eta_l \Leftrightarrow r \ge \frac{m}{(m-n)(1-\eta_s-\eta_l)}
 $$
@@ -220,8 +221,8 @@ If BFT security fails and data certified by a valid DA certificate becomes unret
 
 As discussed in [Security FAQs](./security-FAQs.md) , the Data Availability Sampling (DAS) protocol is useful for fraud detection, especially for light nodes with limited resources, though it has limitations. We are actively developing the DAS protocol for EigenDA to address these limitations, providing better support for fraud detection and intersubjective slashing. A detailed white paper will be released soon.
 
-## Token Toxicity
+## Token Toxicity Security Model
 
-In addition to BFT security, the custom quorum provides an extra security guarantee through Token Toxicity. Token toxicity refers to the phenomenon where the value of a rollup's native token declines sharply when the rollup fails to function properly. Specifically, if DA isn't ensured for a rollup, market confidence in the roll-up service declines, causing its token price to drop. This economic incentive encourages holders of the roll-up's custom token to delegate their stakes only to trusted operators, minimizing the risk of data unavailability and potential loss in token value.
+In addition to BFT security, the [custom quorum](../../integrations-guides/custom-security.md) provides an extra security guarantee through Token Toxicity. Token toxicity refers to the phenomenon where the value of a rollup's native token declines sharply when the rollup fails to function properly. Specifically, if DA isn't ensured for a rollup, market confidence in the roll-up service declines, causing its token price to drop. This economic incentive encourages holders of the roll-up's custom token to delegate their stakes only to trusted operators, minimizing the risk of data unavailability and potential loss in token value.
 
 In conclusion, EigenDA's security model combines BFT security, cryptoeconomic security, and token toxicity to create a robust, multi-layered defense against safety and liveness failures. 

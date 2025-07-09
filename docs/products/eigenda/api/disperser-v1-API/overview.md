@@ -35,7 +35,7 @@ The Disperser offers an asynchrounous API for dispersing blobs, where clients sh
 
 ## Endpoints
 
-Here we provide a narrative-level description of the major API endpoints. Please see [the repo](https://github.com/Layr-Labs/eigenda/tree/master/api/docs) for detailed, field-level API documentation.
+Here we provide a narrative-level description of the major API endpoints. Please see [the EigenDA repo](https://github.com/Layr-Labs/eigenda/tree/master/api/proto) for detailed, field-level API documentation.
 
 ### DisperseBlob()
 

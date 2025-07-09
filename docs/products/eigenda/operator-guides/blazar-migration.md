@@ -8,7 +8,7 @@ sidebar_position: 6
 Operators running v1 will need to define new v2 specific environment variables, expose 2 new ports, and update their socket registration as part of the migration to v2.
 
 ## Mainnet Migration Timeline
-We are asking for all testnet operators to migrate to v2 by June 18th 2025.
+We are asking for all mainnet operators to migrate to v2 by June 18th 2025.
 
 Before this date, ejections based on Blazar (V2) signing rates will be paused (ejections based on V1 signing rate will continue to be performed). After this date, operator signing rates will be measured as the worse of V1 and Blazar (V2) signing rate, and will be ejected based on the worse of the two signing rates.
 
