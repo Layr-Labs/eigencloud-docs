@@ -46,6 +46,7 @@ sidebar_position: 1
 | EigenDAServiceManager | [0x870679e138bcdf293b7ff14dd44b70fc97e12fc0](https://etherscan.io/address/0x870679e138bcdf293b7ff14dd44b70fc97e12fc0) |
 | CertVerifier | [0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6](https://etherscan.io/address/0xE1Ae45810A738F13e70Ac8966354d7D0feCF7BD6) |
 | BLSOperatorStateRetriever | [0xEC35aa6521d23479318104E10B4aA216DBBE63Ce](https://etherscan.io/address/0xEC35aa6521d23479318104E10B4aA216DBBE63Ce) |
+| BLSOperatorStateRetriever (Legacy) | [0xD5D7fB4647cE79740E6e83819EFDf43fa74F8C31](https://etherscan.io/address/0xD5D7fB4647cE79740E6e83819EFDf43fa74F8C31) |
 | PaymentVault | [0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05](https://etherscan.io/address/0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05) |
 
 ## Quorums

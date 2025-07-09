@@ -6,7 +6,7 @@ sidebar_position: 2
 If you are able to satisfy all of the [eligibility requirements](../requirements/requirements-overview.md) for becoming a node operator, then you're ready to set up and run your node. 
 
 :::info
-Before registering as an operator for EigenDA, operators should [register as an operator with EigenLayer](https://docs.eigenlayer.xyz/operator-guides/operator-installation). This process will allow the operator to securely create BLS and ECDSA keys that will be needed during the DA node configuration steps outlined below.
+Before registering as an operator for EigenDA, operators should [register as an operator with EigenLayer](https://docs.eigencloud.xyz/products/eigenlayer/operators/howto/operator-installation). This process will allow the operator to securely create BLS and ECDSA keys that will be needed during the DA node configuration steps outlined below.
 :::
 
 Running an operator node consists of a few main steps:
