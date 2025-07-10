@@ -52,6 +52,22 @@ Choose from the following verification methods depending on your trust requireme
     
     `(bool valid, uint256[] memory weights) = CertificateVerifier.verifyCertificate(operatorSet, cert)`, then apply custom logic
 
+### Direct Verification Example
+
+```
+// Same code works on Ethereum, Base, etc.
+bool isValid = certificateVerifier.verifyCertificateProportion(
+operatorSet,
+certificate,
+[6600] // Require 66% of stake
+);
+
+if (isValid) {
+// Process verified result
+processOperatorOutput(certificate.messageHash);
+}
+```
+
 ## Custom Verification Logic Example
 
 ```

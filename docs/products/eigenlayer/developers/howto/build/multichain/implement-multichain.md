@@ -11,7 +11,7 @@ Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://gith
 
 The diagram illustrates the high level steps to implement multichain verification: 
 
-![Register Multichain](/img/multichain-registration.png)
+<img src="/img/multichain-registration.png" alt="Multichain Implementation" width="600"/>
 
 Implementers of multichain verification need to:
 1. [Configure Operator Set curve type](#1-configure-operator-set-curve-type)
@@ -38,6 +38,8 @@ To define custom stake weighting logic, override `calculateOperatorTable()` to a
 - Stake capping per operator
 - Oracle price feed integration
 - Custom filtering logic.
+
+For more information on stake weighting and how to customize, refer to [Stake Weighting](stake-weighting.md).
 
 ## 3. (Optional) View the registered cryptographic keys for your Operator Set
 
