@@ -1,6 +1,6 @@
 ---
-sidebar_position: 6
-title: Implement Multichain AVS
+sidebar_position: 1
+title: Implementers
 ---
 
 :::important
@@ -9,21 +9,29 @@ Multichain verification is early-access and in active development. Expect iterat
 Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://github.com/eigenfoundation/ELIPs/blob/elip-008v1/ELIPs/ELIP-008.md) and is available on testnet in v1.7.0.
 :::
 
-The following diagram illustrates the high level steps to implement a multichain AVS: 
+The diagram illustrates the high level steps to implement multichain verification: 
 
 ![Register Multichain](/img/multichain-registration.png)
 
+Implementers of multichain verification need to:
+1. [Configure Operator Set curve type](#1-configure-operator-set-curve-type)
+2. [Deploy Operator table calculator](#2-deploy-operator-table-calculator)
+3. [(Optional) View the registered cryptographic keys for your Operator Set](#3-optional-view-the-registered-cryptographic-keys-for-your-operator-set)
+4. [Opt-in to multichain](#4-opt-in-to-multichain)
+5. [Wait for deployment](#5-wait-for-deployment)
+6. [Design integration pattern for consumers](#6-design-integration-pattern-for-consumers)
+
 ## 1. Configure Operator Set Curve Type
 
-Decide on the cryptographic curve type for Operator keys. Choose ECDSA for less than 50 Operators, or BN254 BLS for more than 50 operators.
-[Create Operator Set](operator-sets/create-operator-sets.md). Set the `KeyType` in `KeyRegistrar`.
+Decide on the cryptographic curve type for Operator keys. Choose ECDSA for less than 30 Operators, or BN254 BLS for more than 30 Operators.
+[Create Operator Set](../operator-sets/create-operator-sets.md). Set the `KeyType` in `KeyRegistrar`.
 
 ## 2. Deploy Operator Table Calculator
 
 Deploy the `OperatorTableCalculator` contract to define stake weighting logic.
 
 To use the as-is unweighted stakes, deploy the template `ECDSATableCalculatorBase` or `BN254TableCalculatorBase` contract.
-The contract can be upgraded. Alternatively, use the EigenLabs default unweighted contract onchain.
+The contract can be upgraded. Alternatively, use the onchain default unweighted contract provided by EigenLabs.
 
 To define custom stake weighting logic, override `calculateOperatorTable()` to add:
 - Asset weighting (for example, ETH 2x vs stablecoins)
@@ -37,7 +45,7 @@ Operators self-register using `KeyRegistrar.registerKey(operator, operatorSet, p
 
 ## 4. Opt-in to Multichain
 
-Register with `CrossChainRegistry` to enable multichain verification. To register, use: 
+To enable multichain verification, register with `CrossChainRegistry`. To register, use: 
 
 `CrossChainRegistry.createGenerationReservation(operatorSet, calculator, config, [chainIDs])`
 
@@ -59,11 +67,9 @@ The caller must have UAM permissions for operatorSet.avs.
 
 ## 5. Wait for deployment
 
-EigenLabs generates and transports your stake table. To determine when transport complete, monitor `OperatorTableUpdater.GlobalRootConfirmed`.
+EigenLabs generates and transports your stake table. To determine when transport is complete, monitor `OperatorTableUpdater.GlobalRootConfirmed`.
 
-## 6. Design Integration Pattern
+## 6. Design Integration Pattern for Consumers
 
-Choose how AVS users will consume your service. Options are: 
-- Direct: Users call `CertificateVerifier` directly
-- Wrapped: Deploy custom contract wrapping `CertificateVerifier`
-- Hybrid: Offer both patterns.
+Choose how multichain verification users will consume your service. Options are: push, pull, or hybrid.  For more information on these
+patterns, refer to [Integration Patterns](multichain-integration-patterns.md).
