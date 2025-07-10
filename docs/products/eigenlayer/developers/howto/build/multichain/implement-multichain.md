@@ -55,6 +55,11 @@ Where `config`:
 * `staleness` = 14 days (must exceed 7-day refresh)
 * `minWeight` = 0
 
+A `staleness` period of `0` enables certificates to be verified against any timestamp in the past. 
+
+Do not set the `staleness` to greater than 0 and less than the update cadence of the Operator tables (communciated offchain 
+and currently 7 days). If set in this range, certificates will be unable to be validated.
+
 Where `chainIDs` are:
 
 | Chain Name     | Chain ID   |
@@ -73,5 +78,8 @@ EigenLabs generates and transports your stake table. To determine when transport
 
 ## 6. Design Integration Pattern for Consumers
 
-Choose how multichain verification users will consume your service. Options are: push, pull, or hybrid.  For more information on these
-patterns, refer to [Integration Patterns](multichain-integration-patterns.md).
+Choose how multichain verification users will consume your service. Options are: active verification, self-service, or hybrid.  
+The primary integration pattern is determined by the verification service. Regardless of the chosen integration pattern, 
+any consumer can verify the certificate they have against the stake weights in the contracts directly.
+
+For more information on these patterns, refer to [Integration Patterns](multichain-integration-patterns.md).

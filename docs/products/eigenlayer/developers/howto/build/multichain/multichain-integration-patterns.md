@@ -4,11 +4,11 @@ title: Integration Patterns
 ---
 
 Multichain verifiable services can use the following integration patterns: 
-1. [Pull](#pull) - Consumers pull certificate as needed.
-2. [Push](#push) - Operators publish certificates, and consumers use cached certificates.
+1. [Active verification](#active-verification) - Verification service wraps logic around the `CertificateVerifier`. Consumers pull certificate as needed.
+2. [Self-service](#self-service) - Consumers request and receive cached certificates from Operators directly and can verify certificates against the stake weights onchain.
 3. [Hybrid](#hybrid) - Consumers use cached certificates by default, and request fresh certificates as needed. 
 
-## Pull
+## Active Verification
 
 ```
 // 1. Consumer requests task from operator
@@ -23,7 +23,7 @@ bool isValid = certificateVerifier.verifyCertificateProportion(operatorSet, cert
 require(isValid, "Insufficient stake backing");
 ```
 
-## Push
+## Self-service
 
 ```
 // 1. Query cached certificate (from AVS contract, IPFS, etc.)
@@ -38,7 +38,15 @@ require(isValid, "Insufficient stake backing");
 processResult(cachedCert.messageHash);
 ```
 
+:::important
+The `staleness` period is set in the [`CrossChainRegistry` by the verification service](implement-multichain.md#4-opt-in-to-multichain). 
+A `staleness` period of `0` enables certificates to be verified against any timestamp in the past.
+
+If the `staleness` period is configured as greater than 0 and less than the update cadence of the Operator tables (communciated offchain
+and currently 7 days), certificates will be unable to be validated.
+:::
+
 ## Hybrid
 
-The hybrid model uses the push model in the first instance, and if the certificate is stale or invalid, uses the pull model
+The hybrid model uses the self-service model in the first instance, and if the certificate is stale or invalid, uses the active verification model
 to obtain a current, valid certificate.
