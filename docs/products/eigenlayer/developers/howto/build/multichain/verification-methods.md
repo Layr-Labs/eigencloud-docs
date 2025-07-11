@@ -3,9 +3,16 @@ sidebar_position: 4
 title: Certificate Verification
 ---
 
+This topic includes:
+* [Certification structures](#certificate-structures)
+* [Certificate verification methods](#certificate-verification-methods)
+* [Verification examples](#direct-verification-example)
+* [Troubleshooting certificate verification](#troubleshooting-certificate-verification)
+
 ## Certificate Structures
 
-Certificates are signed attestations that you verify against stake tables.
+Certificates are signed attestations that you verify against stake tables. Certificates are produced by Operators running
+software for a multichain verification service.
 
 ### ECDSA Certificate 
 
@@ -89,4 +96,12 @@ validOperators++;
 require(totalStake * 10000 >= getTotalOperatorSetStake() * 6000, "Need 60% stake");
 require(validOperators >= 3, "Need 3+ qualified operators");
 ```
+## Troubleshooting Certificate Verification
 
+| Symptom                                              | Likely Cause                             | Fix                                                                                                 |
+|------------------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `verifyCertificate…` returns false                   | Stake table is stale or wrong curve type | Check `referenceTimestamp`, refresh reservation, and ensure Operators registered the correct curve. |
+| Gas cost too high verifying sigs                     | Large OperatorSet using ECDSA            | Switch to BN254 BLS calculator and certificates.                                                    |
+| Operator keys missing on target chain                | Key not in `KeyRegistrar`                | Call `isRegistered()`, re-register, and wait for the next table update.                             |
+| Certificate verification fails with valid signatures | Operator not in current OperatorSet      | Check operator registration status and OperatorSet membership.                                      |
+| Custom verification logic errors                     | Incorrect stake weight interpretation    | Use `verifyCertificate()` to inspect raw weights before applying custom logic.                      |
