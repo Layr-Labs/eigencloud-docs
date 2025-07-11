@@ -15,9 +15,9 @@ The following table outlines the key security aspects to consider when implement
 
 The following table outlines possible emergency procedures. 
 
-| Procedure                        | Action                                                                 |
-|----------------------------------|------------------------------------------------------------------------|
-| Operator Ejection                | Immediately updates across all chains when operators are slashed or ejected |
+| Procedure                            | Action                                                                      |
+|--------------------------------------|-----------------------------------------------------------------------------|
+| Operator Ejection                    | Immediately updates across all chains when operators are slashed or ejected |
 | Operator Registration/Deregistration | Immediately updates across all chains when operators register or deregister |
-| Pause Mechanisms                 | System-wide pause capabilities for critical vulnerabilities            |
-| Key Rotation                     | Operators can rotate compromised keys with configurable delays         |
+| Pause Mechanisms                     | System-wide pause capabilities for critical vulnerabilities                 |
+| Key Rotation                         | Operators can rotate compromised keys with configurable delays              |
