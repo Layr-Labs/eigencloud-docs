@@ -38,9 +38,11 @@ place in the outbox once the signing threshold is met.
 Minimal `VadildateTask` and `HandleTask`functions are provided in `main.go` to get you started. The code can be restructured
 as needed for your AVS requirements.
 
-### Core business logic for AVS
+### AVS Onchain Logic in Contract
 
-The example `HelloWorld.sol` contract is included. Delete and replace with a contract implementing your AVS logic.
+The example `HelloWorld.sol` contract is included. Delete and replace with a contract implementing your AVS onchain logic.
+
+This contract provides the onchain coordination for your AVS linking offchain task processing with onchain validation.
 
 ### Task Callback Logic in AVSTaskHook 
 
