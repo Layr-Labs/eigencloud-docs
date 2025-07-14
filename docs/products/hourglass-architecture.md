@@ -18,11 +18,12 @@ Hourglass standardizes how developers define, distribute, execute, and verify co
 
 ### TaskMailbox 
 
-The `TaskMailbox` is a single EigenLayer contract that is responsible for:
+The `TaskMailbox` is an EigenLayer core contract deployed to Ethereum and each support L2 network, and is responsible for:
 
 * Allowing users and apps to create tasks.
 * Managing the lifecycle of tasks.
-* Verifying the results of tasks and making it available for users and apps to query.
+* Verifying the results of tasks against the stake weight of the Operators in the Operator Set performing the work.
+* Making the task verification results available for users and apps to query.
 * Enabling AVSs to manage their TaskMailbox configurations.
 
 ### TaskAVSRegistrar
@@ -32,7 +33,8 @@ The `TaskAVSRegistrar` is a per-AVS EigenLayer middleware contract that is respo
 * Handling Operator registration for specific Operator Sets of your AVS.
 * Providing the offchain components with BLS public keys and socket endpoints for the Aggregator and Executor operators.
 
-It works by default, but can be extended to include additional onchain logic for your AVS.
+The default `TaskAVSRegistrar` is a copy of the provided contract and works as provided. `TaskAVSRegistrar` can be extended 
+to include additional onchain logic for your use case.
 
 ### AVSTaskHook
 
@@ -45,7 +47,7 @@ It's empty by default and works out of the box, but can be extended to include a
 
 ### CertificateVerifier
 
-The `CertificateVerifier` is a per-AVS EigenLayer middleware contract that is responsible for:
+The `CertificateVerifier` is an EigenLayer core contract that is responsible for:
 
 * Verifying the validity of Operator certificates.
 * Verifying stake threshold requirements for Operator Sets.
@@ -80,3 +82,21 @@ The Hourglass framework provides all of the boilerplate and server code for your
 handle tasks for your AVS.
 
 For information on how to implement an AVS using the Hourglass template, refer to [Implementing with Hourglass](implementing-with-hourglass.md).
+
+:::important
+Rewards and Slashing are areas that Hourglass does not yet provide opinionated solutions for and must be implemented separately:
+
+* Rewards logic and distribution
+
+    Hourglass does not include logic for how Operator rewards are calculated or distributed. Each AVS must design and 
+    implement a reward model that aligns with its own incentives and application-specific goals. This logic can be implemented 
+    onchain or offchain, but is out of scope for the Hourglass framework.
+
+* Slashing Logic and Handling
+
+    Hourglass does not provide slashing mechanisms. AVS developers are responsible for defining how to detect operator misbehavior
+    and determine the conditions and consequences for slashing. This logic must be implemented independently of the Hourglass AVS
+    contracts and tooling.
+
+These areas are not part of the Hourglass framework and must be handled externally based on the specific needs of the AVS.
+:::
