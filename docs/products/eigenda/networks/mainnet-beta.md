@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Mainnet Beta
 
-The EigenDA Mainnet Beta is a beta version of EigenDA network for functional and load testing. This environment is set up as a separate AVS on mainnet and targeted for operators only. No rollup integrations can be made on Mainnet Beta, and only V2 (Blazar) mode is supported. 
+The EigenDA Mainnet Beta is a beta version of EigenDA network for functional and load testing. This environment is set up as a separate AVS on mainnet and targeted for registered mainnet operators only. No rollup integrations can be made on Mainnet Beta, and only V2 (Blazar) mode is supported.
 
 :::important
 To reuse existing stake, operators should use the same ECDSA key from mainnet but **must** generate a new BLS key. 
@@ -33,6 +33,7 @@ Please refer to [this guide](https://github.com/Layr-Labs/eigenda-operator-setup
 | --- | --- |
 | EigenDAServiceManager | [0xd314209cE0ae9aDfD7643BB9d8becD62290D826a](https://etherscan.io/address/0xd314209cE0ae9aDfD7643BB9d8becD62290D826a) |
 | BLSOperatorStateRetriever | [0x9E874193D8d500371bE151f2Bb8512Fc48a1f5aa](https://etherscan.io/address/0x9E874193D8d500371bE151f2Bb8512Fc48a1f5aa) |
+| CertVerifier | [0x9D901Ea8971287294b417277c6176fE8172Fec6F](https://etherscan.io/address/0x9D901Ea8971287294b417277c6176fE8172Fec6F) |
 
 
 ## Quorums
