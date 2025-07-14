@@ -35,7 +35,7 @@ Different security measures and runtime optimizations can be applied through var
 
 ### Batchers
 Privileged roles that are responsible for submitting rollup batches to EigenDA should have the following presets:
-- Certificate verification enabled. If the rollup (stage = 0) doesn't verify DA certs against the `EigenDAServiceManager` for writing then a `ETH_CONFIRMATION_DEPTH` should be reasonably set (i.e, >= 6). Otherwise, a certificate could be submitted to the sequencer's inbox using an EigenDA blob batch header which is reorged from Ethereum.
+- Certificate verification enabled. If the rollup (stage = 0) doesn't verify DA certs against the `EigenDACertVerifier` for writing then a `ETH_CONFIRMATION_DEPTH` should be reasonably set (i.e, >= 6). Otherwise, a certificate could be submitted to the sequencer's inbox using an EigenDA blob batch header which is reorged from Ethereum.
 
 ### Bridge Validators
 Validators that are responsible for defending or progressing a child --> parent chain withdraw bridge should be configured with the following:
