@@ -34,10 +34,9 @@ Reference this [Quick Start](../quick-start/v2/index.md) to setup payments for y
 Different security measures and runtime optimizations can be applied through various proxy configurations. The different configuration flags can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/docs/help_out.txt). The following recommendations are advised for different rollup node actor types:
 
 ### Batchers
-Privileged roles that are responsible for submitting rollup batches to EigenDA.
 
-Use the `eigenda.v2.cert-verifier-router-or-immutable-verifier-addr` option to specify the address of either the `EigenDACertVerifierRouter`
-or immutable `EigenDACertVerifier` contract. Required for performing `eth_call` to verify EigenDA certificates.
+Privileged roles that are responsible for submitting rollup batches to EigenDA requires the following:
+- `EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2` to enable v2 dispersal.
 
 ### Bridge Validators
 Validators that are responsible for defending or progressing a child --> parent chain withdraw bridge should be configured with the following:
