@@ -475,6 +475,10 @@ const redirects = [
   {
       from: '/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
       to: '/products/eigenlayer/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
+  },
+  {
+    from: '/restakers/restaking-guides/restaking-user-guide/native-restaking/create-eigenpod-and-set-withdrawal-credentials/repointing-a-validators-withdrawal-credentials',
+    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/'
   }
 ]
 
