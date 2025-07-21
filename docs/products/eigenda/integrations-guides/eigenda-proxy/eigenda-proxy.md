@@ -35,7 +35,7 @@ Different security measures and runtime optimizations can be applied through var
 
 ### Batchers
 
-Privileged roles that are responsible for submitting rollup batches to EigenDA requires the following:
+Batchers that are responsible for submitting rollup batches to EigenDA require the following:
 - `EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2` to enable v2 dispersal.
 
 ### Bridge Validators
