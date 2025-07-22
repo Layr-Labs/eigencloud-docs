@@ -19,8 +19,8 @@ Safety delays are applied when allocating or deallocating to prevent rapid stake
 * Preventing stake cycling to collect rewards. Delays ensure commitment periods to securing an AVS.
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced instant outflow for redistributable funds through the `StrategyManager` interface. Redistributable Slashing is 
-available in v1.5 on testnets and will be available on mainnet in Q3.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced instant outflow for redistributable funds through the `StrategyManager` interface. Redistributable Slashing is now
+available on mainnet.
 :::
 
 When funds are slashed, they are processed through a two-step approach within the `StrategyManager`. First, slashed shares are marked as "burnable or redistributable" shares in the `StrategyManager` storage. Then, through a permissionless call to `clearBurnOrRedistributableShares`, the funds are either burned or transferred directly to the redistribution recipient. This non-atomic approach maintains the guarantee that slashing never fails while enabling instant redistribution without delays.
