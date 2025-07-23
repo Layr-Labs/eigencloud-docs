@@ -12,8 +12,7 @@ various Operator Sets.
 :::
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets.
-Redistributable Slashing is available in v1.5 on testnets and will be available on mainnet in Q3.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets, and is now available on mainnet.
 :::
 
 AVSs create [Operator Sets](../operator-sets/operator-sets-concept.md) that may include slashable

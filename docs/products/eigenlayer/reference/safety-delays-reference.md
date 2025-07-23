@@ -5,7 +5,7 @@ title: Safety Delays
 
 :::note
 [ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets with instant redistribution.
-Redistributable Slashing is available in v1.5 on testnets and will be available on mainnet in Q3.
+Redistributable Slashing is now available on mainnet.
 :::
 
 EigenLayer Safety Delays are included in the following table.

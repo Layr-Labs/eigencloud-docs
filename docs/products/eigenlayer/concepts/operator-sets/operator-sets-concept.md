@@ -4,8 +4,7 @@ title: Operator Sets Overview
 ---
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets. 
-Redistributable Slashing is available in v1.5 on testnets and will be available on mainnet in Q3.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets, and is now available on mainnet.
 
 Before the Slashing and Operator Sets release, Operators registered to an AVS to earn rewards in the AVSDirectory. 
 We recommend existing AVSs [migrate to Operator Sets on testnet](../../developers/howto/build/operator-sets/migrate-to-operatorsets.md). 
