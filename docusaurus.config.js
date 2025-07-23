@@ -112,6 +112,10 @@ const redirects = [
       to: '/products/eigenlayer/concepts/slashing/unique-stake',
   },
   
+  {
+    from: '/developers/HowTo/build/slashing/implement-slashing',
+    to: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
+  },
   // UAM (User Access Management)
   {
       from: '/eigenlayer/concepts/uam/uam-accounts',
