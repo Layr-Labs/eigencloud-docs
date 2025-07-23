@@ -20,3 +20,9 @@ Start by understanding the [Requirements](requirements/requirements-overview.md)
 
 EigenDA is in a state of active development. Operators must make sure to listen for [node software updates](./upgrades/software-upgrades/) in the correct channels and to implement these upgrades promptly.
 
+## Testing Environments
+We have two environments for operators for testing: Holesky testnet and Mainnet Beta. Mainnet Beta is intended for active mainnet operators to participate in isolated throughput validation. If you are _not_ a mainnet validator, there is no benefit to joining mainnet beta.
+
+[Holesky Testnet](../networks/holesky.md): reserved for functional testing. Test traffic will be kept minimal.
+
+[Mainnet Beta](../networks/mainnet-beta.md): reserved for isolated mainnet throughput validation. Operators are expected to provision high network bandwidth and large performant storage. Due to potential cost associated with provisioning for large traffic, participation _may_ be incentivized.
