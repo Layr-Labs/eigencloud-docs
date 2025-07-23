@@ -34,14 +34,13 @@ Reference this [Quick Start](../quick-start/v2/index.md) to setup payments for y
 Different security measures and runtime optimizations can be applied through various proxy configurations. The different configuration flags can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/docs/help_out.txt). The following recommendations are advised for different rollup node actor types:
 
 ### Batchers
-Privileged roles that are responsible for submitting rollup batches to EigenDA should have the following presets:
-- Certificate verification enabled. If the rollup (stage = 0) doesn't verify DA certs against the `EigenDAServiceManager` for writing then a `ETH_CONFIRMATION_DEPTH` should be reasonably set (i.e, >= 6). Otherwise, a certificate could be submitted to the sequencer's inbox using an EigenDA blob batch header which is reorged from Ethereum.
+
+Batchers that are responsible for submitting rollup batches to EigenDA require the following:
+- `EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2` to enable v2 dispersal.
 
 ### Bridge Validators
 Validators that are responsible for defending or progressing a child --> parent chain withdraw bridge should be configured with the following:
-- Certificate verification enabled
 - Read fallback configured with a secondary backed to ensure blobs can be read in the event of EigenDA retrieval failure
 
 ### Permissionless Verifiers
-- Certificate verification enabled
 - Use of a cached backend provider which ensures data read from EigenDA is only done once
