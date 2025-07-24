@@ -4,8 +4,8 @@ title: Stake Weighting
 ---
 
 Use the `OperatorTableCalculator` to define how Operator stakes are weighted and formatted for your specific use case. 
-`OperatorTableCalculator` is a mandatory contract that must be deployed for each Operator Set to participate in 
-multichain verification.
+`OperatorTableCalculator` is a mandatory contract that must be deployed, or a calculator address specified that works for their use-case, 
+for each Operator Set to participate in multichain verification.
 
 The `OperatorTableCalculator` contract converts raw EigenLayer stake data into weighted Operator Tables reflecting the 
 AVS's specific requirements. For example, capping certain operators, weighting different assets differently, or integrating 
@@ -16,7 +16,7 @@ for multichain verification. The stake weights are key to verifying Operator cer
 
 ## Default Table Calculators
 
-Default table calculators are provided. For AVSs that don't need custom logic, default calculators  that return unweighted stake values 
+[Default table calculators are provided](https://github.com/Layr-Labs/eigenlayer-middleware?tab=readme-ov-file#current-middlewarev2-testnet-deployment). For AVSs that don't need custom logic, default calculators that return unweighted stake values 
 are provided for both `ECDSATableCalculator` and `BLSTableCalculator`.
 
 For larger Operator Sets (30+ operators), BLS provides more efficient verification through aggregate signatures. The BLS 
@@ -24,9 +24,13 @@ calculator follows a similar pattern but optimizes for larger scale operations.
 
 ## Stake Weights 
 
-By default, weights of USDC and ETH are treated the same if no weighting is given to either (for example, 10 ETH == 10 USDC
-when presented as raw stake values). Operator shares of a given strategy (that is, staked value for one asset) are stored
-in a numerical format and should be converted for the AVSs use-case.
+By default, Operators are weighted by the number of allocated strategy shares across all strategies in the Operator Set.
+This is a sufficient proxy for Operator Sets with single strategies, or if the value of all underlying shares are identical. 
+
+:::note
+The number of shares is decimal dependent. Assets with non-standard decimals (for example, USDC, USDT, WBTC) return 
+significantly lower numbers of shares. For example, 1 wETH \= 10^18 shares. 1 USDC \= 10^6 shares.
+::: 
 
 ## Customizing Stake Weights
 
@@ -43,6 +47,7 @@ Examples of customization options include:
 * Asset Weighting: Weight ETH stakes 2x higher than other assets
 * Oracle Integration: Use external price feeds to convert all stakes to USD values
 * Minimum Requirements: Filter out operators below certain stake thresholds (that is, set their verification weight to zero)
+* Operator Bonding: Operator self-staked assets have double weight
 
 ## Implementation Examples
 
