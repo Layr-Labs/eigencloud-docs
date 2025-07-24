@@ -14,7 +14,7 @@ Protocol parameters for multichain verification include:
 | Parameter                            | Controlled By                  | Update Frequency                | Impact                            | Monitoring Event                                                          |
 |--------------------------------------|--------------------------------|---------------------------------|-----------------------------------|---------------------------------------------------------------------------|
 | Operator Tables                      | EigenLabs (during Preview)     | Weekly + force updates          | Certificate verification validity | `CertificateVerifier.StakeTableUpdated`                                   |
-| Operator Keys                        | Operators + Verfiable Service  | On-demand                       | Certificate signature validation  | `KeyRegistrar.KeyRegistered/Deregistered`                                 |
+| Operator Keys                        | Operators                      | Updates with Operator Table     | Certificate signature validation  | `KeyRegistrar.KeyRegistered/Deregistered`                                 |
 | Stake Weights                        | `OperatorTableCalculator`      | Per table update                | Verification thresholds           | Custom events in your calculator                                          |
 | Operator Registration/Deregistration | Verifiable Service + Operators | On-demand                       | Available Operators for tasks     | `AVSRegistrar.OperatorRegistered` and `AVSRegistrar.OperatorDeregistered` |
 | Slashing/Ejections                   | EigenLayer Core                | On-demand (immediate transport) | Operator validity and weights     | `AllocationManager.OperatorSlashed`                                         |
@@ -29,10 +29,10 @@ Protocol parameters for multichain verification include:
 
 ## Configurable Parameters
 
-| Parameter               | Configured By      | Options                                                    | Configured Where                                    |
-|-------------------------|--------------------|------------------------------------------------------------|-----------------------------------------------------|
-| Staleness Period        | Verifiable service | 1–30 days (must exceed 7-day refresh)                      | `CrossChainRegistry`                                | 
-| Minimum Stake Weight    | Verifiable service | Any uint256 value                                          | `CrossChainRegistry`                                |
-| Target Chains           | Verifiable service | Any supported chain IDs                                    | `CrossChainRegistry`                                |
-| Verification Thresholds | Consumers          | Proportional % or nominal amounts                          | Consumer integration with `CertificateVerifier`     |
-| Custom Stake Weighting  | Verifiable service | Override `calculateOperatorTable()` with any logic         | `OperatorTableCalculator` contract for Operator Set |
+| Parameter               | Configured By      | Options                                             | Configured Where                                    |
+|-------------------------|--------------------|-----------------------------------------------------|-----------------------------------------------------|
+| Staleness Period        | Verifiable service | 0 (no expiry) or must exceed table update frequency | `CrossChainRegistry`                                | 
+| Minimum Stake Weight    | Verifiable service | Any uint256 value                                   | `CrossChainRegistry`                                |
+| Target Chains           | Verifiable service | Any supported chain IDs                             | `CrossChainRegistry`                                |
+| Verification Thresholds | Consumers          | Proportional % or nominal amounts                   | Consumer integration with `CertificateVerifier`     |
+| Custom Stake Weighting  | Verifiable service | Override `calculateOperatorTable()` with any logic  | `OperatorTableCalculator` contract for Operator Set |
