@@ -23,15 +23,16 @@ Implementers of multichain verification need to:
 
 ## 1. Configure Operator Set Curve Type
 
-Decide on the cryptographic curve type for Operator keys. Choose ECDSA for less than 30 Operators, or BN254 BLS for more than 30 Operators.
-[Create Operator Set](../operator-sets/create-operator-sets.md). Set the `KeyType` in `KeyRegistrar`.
+1. Decide on the cryptographic curve type for Operator keys. Choose ECDSA for less than 30 Operators, or BN254 BLS for more than 30 Operators.
+2. [Create the Operator Set](../operator-sets/create-operator-sets.md). 
+3. [Set the `KeyType` in `KeyRegistrar`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/permissions/KeyRegistrar).
 
 ## 2. Deploy Operator Table Calculator
 
 Deploy the `OperatorTableCalculator` contract to define stake weighting logic.
 
 To use the as-is unweighted stakes, deploy the template `ECDSATableCalculatorBase` or `BN254TableCalculatorBase` contract.
-The contract can be upgraded. Alternatively, use the onchain default unweighted contract provided by EigenLabs.
+The contract can be upgraded. Alternatively, use the onchain [default unweighted contract provided by EigenLabs](https://github.com/Layr-Labs/eigenlayer-middleware?tab=readme-ov-file#current-middlewarev2-testnet-deployment).
 
 To define custom stake weighting logic, override `calculateOperatorTable()` to add:
 - Asset weighting (for example, ETH 2x vs stablecoins)
@@ -43,38 +44,28 @@ For more information on stake weighting and how to customize, refer to [Stake We
 
 ## 3. (Optional) View the registered cryptographic keys for your Operator Set
 
-Operators self-register using `KeyRegistrar.registerKey(operator, operatorSet, pubkey, sig)`.
+Operators self-register using [`KeyRegistrar.registerKey(operator, operatorSet, pubkey, sig)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/permissions/KeyRegistrar.md#key-registration).
 
-## 4. Opt-in to Multichain
+## 4. Opt-in to Multichain and create a generation reservation
 
 To enable multichain verification, register with `CrossChainRegistry`. To register, use: 
 
-`CrossChainRegistry.createGenerationReservation(operatorSet, calculator, config, [chainIDs])`
+[`CrossChainRegistry.createGenerationReservation(operatorSet, calculator, config)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/source/CrossChainRegistry.md#creategenerationreservation)
 
 Where `config`:
 * `staleness` = 14 days (must exceed 7-day refresh)
-* `minWeight` = 0
+* `owner` = Permissioned owner of the Operator Set on target chains
 
 A `staleness` period of `0` enables certificates to be verified against any timestamp in the past. 
 
-Do not set the `staleness` to greater than 0 and less than the update cadence of the Operator tables (communciated offchain 
-and currently 7 days). If set in this range, certificates will be unable to be validated.
-
-Where `chainIDs` are:
-
-| Chain Name     | Chain ID   |
-|----------------|------------|
-| Ethereum       | 1          |
-| Base           | 8453       |
-| Sepolia        | 11155111   |
-| Base-Sepolia   | 84532      |
-
+The `staleness` must be greater than the update cadence of the Operator tables (communciated offchain 
+and currently 7 days). 
 
 The caller must have UAM permissions for operatorSet.avs. 
 
 ## 5. Wait for deployment
 
-EigenLabs generates and transports your stake table. To determine when transport is complete, monitor `OperatorTableUpdater.GlobalRootConfirmed`.
+EigenLabs generates and transports your stake table. To determine when transport is complete, monitor [`OperatorTableUpdater.GlobalRootConfirmed`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/destination/OperatorTableUpdater.md).
 
 ## 6. Design Integration Pattern for Consumers
 

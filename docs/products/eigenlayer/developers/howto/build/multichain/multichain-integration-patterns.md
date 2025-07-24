@@ -39,11 +39,7 @@ processResult(cachedCert.messageHash);
 ```
 
 :::important
-The `staleness` period is set in the [`CrossChainRegistry` by the verification service](implement-multichain.md#4-opt-in-to-multichain). 
-A `staleness` period of `0` enables certificates to be verified against any timestamp in the past.
-
-If the `staleness` period is configured as greater than 0 and less than the update cadence of the Operator tables (communciated offchain
-and currently 7 days), certificates will be unable to be validated.
+The `staleness` period is set in the [`CrossChainRegistry` by the verification service](implement-multichain.md#4-opt-in-to-multichain).
 :::
 
 ## Hybrid
