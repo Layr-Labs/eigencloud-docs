@@ -53,7 +53,7 @@ To enable multichain verification, register with `CrossChainRegistry`. To regist
 [`CrossChainRegistry.createGenerationReservation(operatorSet, calculator, config)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/source/CrossChainRegistry.md#creategenerationreservation)
 
 Where `config`:
-* `staleness` = 14 days (must exceed 7-day refresh)
+* `staleness` = 14 days (must be 0, or exceed 7-day refresh)
 * `owner` = Permissioned owner of the Operator Set on target chains
 
 A `staleness` period of `0` enables certificates to be verified against any timestamp in the past. 
