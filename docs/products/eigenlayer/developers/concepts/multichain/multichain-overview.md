@@ -26,7 +26,6 @@ validation.
 | **Certificates & certificate verification** | Data structure for signed Operator outputs (certificates) and a core contract (`CertificateVerifier`) for verifying those outputs against the Operator Table and Operator consensus rules (for example, signed weight above nominal or proportional stake thresholds).                                                                                                                 |
 | **Stake generation & transport**            | Specification for generating and verifying the global stake table root and transporting it to core contracts on supported target chains. The process is pluggable by AVSs and other third-parties.                                                                                                                                                                                     
 
-
 ## Process
 
 To have a single global root with up-to-date stake representation on target chains where an verifiable service is available: 
