@@ -6,7 +6,7 @@ title: Implementers
 :::important
 Multichain verification is early-access and in active development. Expect iterative updates before the mainnet release.
 
-Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://github.com/eigenfoundation/ELIPs/blob/elip-008v1/ELIPs/ELIP-008.md) and is available on testnet in v1.7.0.
+Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-008.md) and is available on testnet in v1.7.0.
 :::
 
 The diagram illustrates the high level steps to implement multichain verification: 
@@ -35,9 +35,9 @@ To use the as-is unweighted stakes, deploy the template `ECDSATableCalculatorBas
 The contract can be upgraded. Alternatively, use the onchain [default unweighted contract provided by EigenLabs](https://github.com/Layr-Labs/eigenlayer-middleware?tab=readme-ov-file#current-middlewarev2-testnet-deployment).
 
 To define custom stake weighting logic, override `calculateOperatorTable()` to add:
-- Asset weighting (for example, ETH 2x vs stablecoins)
-- Stake capping per operator
-- Oracle price feed integration
+- Asset weighting (for example, ETH 3500x vs. stablecoins),
+- Stake capping per operator,
+- Oracle price feed integration,
 - Custom filtering logic.
 
 For more information on stake weighting and how to customize, refer to [Stake Weighting](stake-weighting.md).
@@ -53,15 +53,15 @@ To enable multichain verification, register with `CrossChainRegistry`. To regist
 [`CrossChainRegistry.createGenerationReservation(operatorSet, calculator, config)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/source/CrossChainRegistry.md#creategenerationreservation)
 
 Where `config`:
-* `staleness` = 14 days (must be 0, or exceed 7-day refresh)
+* `staleness` = 14 days (either set t be 0, or exceed 7-day refresh)
 * `owner` = Permissioned owner of the Operator Set on target chains
 
-A `staleness` period of `0` enables certificates to be verified against any timestamp in the past. 
+The `staleness` parameter is the length of time that a [certificate](verification-methods.md) remains valid after its reference timestamp. It is set as an integer representing days.
 
-The `staleness` must be greater than the update cadence of the Operator tables (communciated offchain 
+A `staleness` period of `0` completely removes staleness checks, allowing certificates to be validated regardless of their timestamp. The `staleness` must be greater than the update cadence of the Operator tables (communciated offchain 
 and currently 7 days). 
 
-The caller must have UAM permissions for operatorSet.avs. 
+The caller must have UAM permissions for `operatorSet.avs`. 
 
 ## 5. Wait for deployment
 
