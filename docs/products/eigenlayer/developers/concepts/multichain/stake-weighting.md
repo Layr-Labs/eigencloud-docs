@@ -1,9 +1,9 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 title: Stake Weighting
 ---
 
-Use the `OperatorTableCalculator` to define how Operator stakes are weighted and formatted for your specific use case. 
+The `OperatorTableCalculator` defines how Operator stakes are weighted and formatted for your specific use case. 
 `OperatorTableCalculator` is a mandatory contract that must be deployed, or a calculator address specified that works for their use-case, 
 for each Operator Set to participate in multichain verification.
 
