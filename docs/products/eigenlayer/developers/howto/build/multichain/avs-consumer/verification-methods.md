@@ -1,44 +1,12 @@
 ---
-sidebar_position: 4
-title: Certificate Verification
+sidebar_position: 3
+title: Verify certificates
 ---
 
 This topic includes:
-* [Certification structures](#certificate-structures)
 * [Certificate verification methods](#certificate-verification-methods)
 * [Verification examples](#direct-verification-example)
 * [Troubleshooting certificate verification](#troubleshooting-certificate-verification)
-
-## Certificate Structures
-
-Certificates are signed attestations that you verify against stake tables. Certificates are produced by Operators running
-software for a multichain verification service.
-
-### ECDSA Certificate 
-
-For Operator Sets with less than 30 Operators. 
-
-```
-struct ECDSACertificate {
-    uint32 referenceTimestamp;  // When certificate was created
-    bytes32 messageHash;        // Hash of the signed message/task result
-    bytes sig;                  // Concatenated operator signatures
-}
-```
-
-### BLS Certificate
-
-More efficient for Operator Sets with more than 30 Operators. 
-
-```
-struct BN254Certificate {
-    uint32 referenceTimestamp;  // When certificate was created
-    bytes32 messageHash;        // Hash of the signed message/task result
-    BN254.G1Point signature;    // Aggregate signature
-    BN254.G2Point apk;         // Aggregate public key
-    BN254OperatorInfoWitness[] nonSignerWitnesses; // Proof of non-signers
-}
-```
 
 ## Certificate Verification Methods
 
@@ -55,9 +23,6 @@ Choose from the following verification methods depending on your trust requireme
 * Nominal
     
     `CertificateVerifier.verifyCertificateNominal(operatorSet, cert, [1000000]) // ≥ 1 M units`
-* Custom
-    
-    `(bool valid, uint256[] memory weights) = CertificateVerifier.verifyCertificate(operatorSet, cert)`, then apply custom logic
 
 ### Direct Verification Example
 
@@ -75,7 +40,11 @@ processOperatorOutput(certificate.messageHash);
 }
 ```
 
-## Custom Verification Logic Example
+## Custom Verification Function
+
+`(bool valid, uint256[] memory weights) = CertificateVerifier.verifyCertificate(operatorSet, cert)`, then apply custom logic
+
+### Custom Verification Logic Example
 
 ```
 // Get raw stake weights for custom logic
