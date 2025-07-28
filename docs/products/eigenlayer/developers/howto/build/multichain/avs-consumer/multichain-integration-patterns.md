@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-title: Integration Patterns
+title: Obtain certificates
 ---
 
-Multichain verifiable services can use the following integration patterns: 
+Multichain verifiable services can use the following integration patterns to obtain certificates: 
 1. [Active verification](#active-verification) - Verification service wraps logic around the `CertificateVerifier`. Consumers pull certificate as needed.
 2. [Self-service](#self-service) - Consumers request and receive cached certificates from Operators directly and can verify certificates against the stake weights onchain.
 3. [Hybrid](#hybrid) - Consumers use cached certificates by default, and request fresh certificates as needed. 
@@ -39,7 +39,7 @@ processResult(cachedCert.messageHash);
 ```
 
 :::important
-The `staleness` period is set in the [`CrossChainRegistry` by the verification service](implement-multichain.md#4-opt-in-to-multichain).
+The `staleness` period is set in the [`CrossChainRegistry` by the verification service](../avs-developer/implement-multichain.md#4-opt-in-to-multichain).
 :::
 
 ## Hybrid
