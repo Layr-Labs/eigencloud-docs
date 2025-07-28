@@ -295,7 +295,7 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
-    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verifications-methods',
+    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verification-methods',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
