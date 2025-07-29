@@ -285,7 +285,27 @@ const redirects = [
       from: '/developers/HowTo/test/test-avs',
       to: '/products/eigenlayer/developers/howto/test/test-avs',
   },
-  
+  {
+    from: '/products/eigenlayer/developers/howto/build/multichain/stake-weighting',
+    to: '/products/eigenlayer/developers/concepts/multichain/stake-weighting',
+  },
+  {
+    from: '/products/eigenlayer/developers/howto/build/multichain/multichain-integration-patterns',
+    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/multichain-integration-patterns',
+  },
+  {
+    from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
+    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verification-methods',
+  },
+  {
+    from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
+    to: '/products/eigenlayer/developers/howto/build/multichain/avs-developer/implement-multichain',
+  },
+  {
+   from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
+   to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verification-methods',
+  },
+
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
