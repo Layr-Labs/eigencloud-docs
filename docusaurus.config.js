@@ -731,6 +731,10 @@ const config = {
                 label: "Disclaimers",
                 href: "https://docs.eigenlayer.xyz/eigenlayer/legal/disclaimers",
               },
+              {
+                label: "Acceptable Use Policy",
+                href: "https://docs.eigencloud.xyz/products/eigenlayer/legal/acceptable-use-policy",
+              },
             ],
           },
           {
