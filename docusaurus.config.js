@@ -738,7 +738,7 @@ const config = {
             items: [
               {
                 label: "Support",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/developers/HowTo/get-started/support",
+                href: "https://docs.eigencloud.xyz/products/eigenlayer/developers/howto/get-started/support",
               },
               {
                 label: "Forum",
