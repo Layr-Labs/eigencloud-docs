@@ -3,8 +3,8 @@ sidebar_position: 4
 title: Certificates
 ---
 
-Certificates are signed attestations that you verify against stake tables. Certificates are produced by Operators running
-software for a multichain verification service.
+Certificates are aggregation of Operator signatures that you verify against stake tables. An AVS implementation includes 
+retrieving Operator signatures from Operators running a multichain verification service.
 
 ## ECDSA Certificate
 
