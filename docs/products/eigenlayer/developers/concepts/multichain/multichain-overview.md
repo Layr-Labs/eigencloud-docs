@@ -37,5 +37,5 @@ To have a single global root with up-to-date stake representation on target chai
 5. Offchain and crosschain, weekly, or as forcible updates are needed (for example, when an Operator is ejected or slashed), the global stake table is regenerated and transported again. 
     This ensures up-to-date weight representations wherever the verifiable service is consumed.
 
-Certificates are produced by Operators running a multichain verifiable service. To verify operator certificates against transported stake tables, 
-consumers use the `CertificateVerifier`.
+Certificates are an aggregation of signatures from Operators running a multichain verifiable service. To verify operator 
+certificates against transported stake tables, consumers use the `CertificateVerifier`.
