@@ -3,11 +3,14 @@ sidebar_position: 4
 title: Certificates
 ---
 
-A Certificate is a proof of a task being executed offchain by the Operators of an Operator Set. A Certificate consists of an 
-aggregation of Operator signatures that you verify against stake tables. An AVS implementation includes 
-retrieving Operator signatures from Operators running a multichain verification service.
+A certificate is a proof of a task being executed offchain by the Operators of an Operator Set. Typically, a certificate consists of an 
+aggregation of Operator signatures that is verified against stake tables. In the case of a single Operator, the Operator can produce
+a certificate with only their signature. 
 
-The `CertificateVerifier` is responsible for verifying certificates from an offchain task, on-chain.
+An AVS implementation includes retrieving Operator signatures from Operators running a multichain verification service. For example, 
+an AVS run aggregator that produces certificates from Operator signatures. 
+
+The `CertificateVerifier` is responsible for verifying certificates from an offchain task, onchain.
 
 ## ECDSA Certificate
 
