@@ -12,7 +12,7 @@ and act on certificates returned from the AVS. To do that, consumers:
    
     :::important
     If retrieving from a cache, consumers need to check the staleness period against the certificate.
-    The `staleness` period is set in the [`CrossChainRegistry` by the verification service](../configure-multichain#4-opt-in-to-multichain).
+    The `staleness` period is set in the [`CrossChainRegistry` by the verification service](configure-multichain).
     :::
 
 2. Use the `CertificateVerifier` contract to [verify the certificate](verification-methods.md). 
@@ -55,7 +55,7 @@ processResult(cachedCert.messageHash);
 ```
 
 :::important
-The `staleness` period is set in the [`CrossChainRegistry` by the verification service](configure-multichain#4-opt-in-to-multichain).
+The `staleness` period is set in the [`CrossChainRegistry` by the verification service](configure-multichain).
 :::
 
 ## Hybrid
