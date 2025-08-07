@@ -55,7 +55,7 @@ processResult(cachedCert.messageHash);
 ```
 
 :::important
-The `staleness` period is set in the [`CrossChainRegistry` by the verification service](../configure-multichain#4-opt-in-to-multichain).
+The `staleness` period is set in the [`CrossChainRegistry` by the verification service](configure-multichain#4-opt-in-to-multichain).
 :::
 
 ## Hybrid
