@@ -299,7 +299,7 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
-    to: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
+    to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
   {
    from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
