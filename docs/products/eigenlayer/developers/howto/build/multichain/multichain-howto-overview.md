@@ -5,14 +5,15 @@ title: Overview
 
 The following diagram shows:
 * The contracts AVS developers interact with, or specify, to build a multichain AVS
-* Offchain components AVS developers implement to create and verify certificates. In this diagram, the offchain components
-are represented by the AVS aggregator.
+* Offchain components AVS developers implement to create and verify certificates. 
+
+In this diagram, the AVS aggregator and the Certificate Storage contract illustrate one possible approach to implementing multichain verification. 
 
 <img src="/img/implement-multichain.png" alt="Multichain Implementation Overview"/>
 
 The multichain framework is highly flexible and allows AVS developers to: 
 * Support single or multiple Operators, with signature aggregation for multiple Operators.
-* Choose between different certificate delivery patterns (active, self-service, hybrid).
+* Choose between different certificate delivery patterns.
 * Customize verification logic, based on trust models and service needs.
 
 Onchain components of the multichain framework can also be used by AVS consumers to implement custom logic when verifying
@@ -22,9 +23,7 @@ certificates.
 Using the Hourglass template provides a multichain implementation that significantly reduces implementation effort.
 :::
 
-Refer to the following for more information: 
-* [Implementing a multichain AVS](configure-multichain) 
-* [Consuming multichain services](avs-consumer/multichain-verification-consumers.md).
+To get started implementing multichain verification, refer to [Configure a Multichain AVS](configure-multichain.md).
 
 Refer to the concept material for information on: 
 * [Multichain overview](../../../concepts/multichain/multichain-overview.md)

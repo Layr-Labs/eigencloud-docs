@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Configure multichain AVS
+title: Configure Multichain AVS
 ---
 
 :::important
@@ -19,7 +19,6 @@ Implementers of multichain verification need to:
 3. [(Optional) View the registered cryptographic keys for your Operator Set](#3-optional-view-the-registered-cryptographic-keys-for-your-operator-set)
 4. [Opt-in to multichain](#4-opt-in-to-multichain)
 5. [Wait for deployment](#5-wait-for-deployment)
-6. [Design integration pattern for consumers](#6-design-integration-pattern-for-consumers)
 
 ## 1. Configure Operator Set Curve Type
 
@@ -67,10 +66,6 @@ The caller must have UAM permissions for `operatorSet.avs`.
 
 EigenLabs generates and transports your stake table. To determine when transport is complete, monitor [`OperatorTableUpdater.GlobalRootConfirmed`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/destination/OperatorTableUpdater.md).
 
-## 6. Design Integration Pattern for Consumers
+## Next 
 
-Choose how multichain verification users will consume your service. Options are: active verification, self-service, or hybrid.  
-The primary integration pattern is determined by the verification service. Regardless of the chosen integration pattern, 
-any consumer can verify the certificate they have against the stake weights in the contracts directly.
-
-For more information on these patterns, refer to [Integration Patterns](multichain-integration-patterns.md).
+[Implement how certificate are created, and delivered or exposed.](implement-certificate-verification.md).
