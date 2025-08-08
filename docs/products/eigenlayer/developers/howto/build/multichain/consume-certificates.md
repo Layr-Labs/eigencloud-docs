@@ -1,25 +1,28 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 title: Consume certificates
 ---
 
-The AVS consumer is a smart contract, application, or protocol integrating with an AVS. They receive, verify, 
-and act on certificates returned from the AVS. To do that, consumers:
+## Obtain, Verify, and Act On Certificates
 
-1. Obtain a Certificate. Depending on the AVS integration model, consumers certificates by:
+An AVS consumer is a smart contract, application, or protocol integrating with an AVS. The consumer receives, verifies, 
+and acts on certificates returned from the AVS. To do that, consumers:
+
+1. Obtain a Certificate. Depending on the AVS integration model, consumers obtain certificates by:
    * Making a request (for example, API call or onchain function) to the AVS.
+   * Reading onchain.
    * Polling from decentralized storage.
    
     :::important
     If retrieving from a cache, consumers need to check the staleness period against the certificate.
-    The `staleness` period is set in the [`CrossChainRegistry` by the verification service](configure-multichain).
+    The `staleness` period is set in the [`CrossChainRegistry` by the AVS](configure-multichain).
     :::
 
-2. Use the `CertificateVerifier` contract to [verify the certificate](verification-methods.md). 
+2. Use the [`CertificateVerifier`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.8.0-rc.0/docs/multichain/destination/CertificateVerifier.md) contract to [verify the certificate](verification-methods.md). 
 
 3. Once the verification passes, the consumer can act on the AVS output. For example:
-   * Use the AVS result (for example, a price, proof, or attestation)
-   * Trigger follow-up logic (for example, settlement, payout, update)
+   * Use the AVS result (for example, a price, proof, or attestation).
+   * Trigger follow-up logic (for example, settlement, payout, update).
    * Log or cache the certificate for transparency or auditability.
 
 ## Integration Examples
@@ -60,5 +63,5 @@ The `staleness` period is set in the [`CrossChainRegistry` by the verification s
 
 ## Hybrid
 
-The hybrid model queries cached certificates in the first instance, and if the certificate is stale or invalid, retrieves
-from certificate storage.
+The hybrid model queries cached certificates in the first instance, and if the certificate is stale or invalid, obtains a
+new certificate using the [AVS integration model](#obtain-verify-and-act-on-certificates).

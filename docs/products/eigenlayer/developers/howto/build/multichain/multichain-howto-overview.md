@@ -7,7 +7,9 @@ The following diagram shows:
 * The contracts AVS developers interact with, or specify, to build a multichain AVS
 * Offchain components AVS developers implement to create and verify certificates. 
 
-In this diagram, the AVS aggregator and the Certificate Storage contract illustrate one possible approach to implementing multichain verification. 
+In this diagram, the AVS aggregator and the Certificate Storage illustrate one possible approach to implementing 
+multichain verification. The architecture of these components is determined and implemented by the AVS and not part of
+the multichain verification framework. For a reference implementation of these components, refer to the [Hourglass template](https://github.com/Layr-Labs/hourglass-avs-template).
 
 <img src="/img/implement-multichain.png" alt="Multichain Implementation Overview"/>
 
@@ -20,7 +22,7 @@ Onchain components of the multichain framework can also be used by AVS consumers
 certificates.
 
 :::tip
-Using the Hourglass template provides a multichain implementation that significantly reduces implementation effort.
+Using the [Hourglass template](https://github.com/Layr-Labs/hourglass-avs-template) provides a multichain implementation that significantly reduces implementation effort.
 :::
 
 To get started implementing multichain verification, refer to [Configure a Multichain AVS](configure-multichain.md).
