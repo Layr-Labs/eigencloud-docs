@@ -1,5 +1,5 @@
 ---
-title: Start Building on EigenLayer
+title: Why Build on EigenLayer
 sidebar_position: 1
 ---
 
