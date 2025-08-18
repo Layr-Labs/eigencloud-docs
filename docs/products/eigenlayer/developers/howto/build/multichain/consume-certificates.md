@@ -5,8 +5,10 @@ title: Consume certificates
 
 ## Obtain, Verify, and Act On Certificates
 
-An AVS consumer is a smart contract, application, or protocol integrating with an AVS. The consumer receives, verifies, 
-and acts on certificates returned from the AVS. To do that, consumers:
+An AVS consumer is a smart contract, application, or protocol integrating with an AVS. An app builder may be
+building both the consuming app and the AVS to make the app verifiable.
+
+The consumer receives, verifies, and acts on certificates returned from the AVS. To do that, consumers:
 
 1. Obtain a Certificate. Depending on the AVS integration model, consumers obtain certificates by:
    * Making a request (for example, API call or onchain function) to the AVS.
