@@ -210,7 +210,7 @@ const redirects = [
   },
   {
       from: '/eigenlayer/roadmap',
-      to: '/get-started/eigencloud-roadmap',
+      to: '/get-started/eigencloud/eigencloud-roadmap',
   },
   
   // Security
