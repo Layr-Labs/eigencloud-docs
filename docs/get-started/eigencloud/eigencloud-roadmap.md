@@ -31,7 +31,7 @@ AVSs and apps without needing deep protocol expertise. Work includes:
 ### Eigen Primitives: Verifiable Blockspace
 
 To make verifiability easy to adopt, EigenCloud provides foundational, 1st party services that AVSs and applications can plug into.
-These primitives, [EigenDA](../products/eigenda/core-concepts/overview.md), [EigenCompute](../products/eigencompute/eigencompute-overview.md), and [EigenVerify](../products/eigenverify/eigenverify-overview.md), deliver critical capabilities, such as data availability, offchain
+These primitives, [EigenDA](../../products/eigenda/core-concepts/overview.md), [EigenCompute](../../products/eigencompute/eigencompute-overview.md), and [EigenVerify](../../products/eigenverify/eigenverify-overview.md), deliver critical capabilities, such as data availability, offchain
 compute, and adjudication. By making these services developer-accessible, we enable new classes of verifiable applications,
 reduce developer lift, and promote ecosystem standardization. Work includes:
 * EigenDA Throughput: Scale EigenDA throughput from 50 mb/s to hundreds of mb/s
@@ -53,7 +53,7 @@ participants to apps across a broad ecosystem of chains.
 
 ### EigenLayer Protocol: Commitment Infrastructure
 
-[EigenLayer](../products/eigenlayer/concepts/eigenlayer-overview.md) is the backbone of EigenCloud and the token is its cryptoeconomic layer with staking, delegation, and enforcement mechanisms
+[EigenLayer](../../products/eigenlayer/concepts/eigenlayer-overview.md) is the backbone of EigenCloud and the token is its cryptoeconomic layer with staking, delegation, and enforcement mechanisms
 providing AVSs with flexible, programmable trust guarantees. This programmable trust layer is what allows developers to delegate
 security without managing validator sets, while still enforcing correct behavior and punishing misbehavior, on any chain. We’re
 building support for multichain delegation, long-term commitments, and expressive enforcement, all underpinned by transparent

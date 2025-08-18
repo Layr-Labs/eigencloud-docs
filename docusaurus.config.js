@@ -55,7 +55,18 @@ const redirects = [
       from: '/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
       to: '/products/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
   },
-  
+
+  // Get Started
+  {
+    from: '/get-started/eigencloud-overview',
+    to: '/get-started/eigencloud/eigencloud-overview',
+  },
+  {
+    from: '/get-started/eigencloud-roadmap',
+    to: '/get-started/eigencloud/eigencloud-roadmap',
+  },
+
+
   // Rewards
   {
       from: '/eigenlayer/concepts/rewards/earners-claimers-recipients',
@@ -689,7 +700,7 @@ const config = {
         },
         items: [
           {
-            to: "get-started/eigencloud-overview",
+            to: "get-started/eigencloud/eigencloud-overview",
             label: "Get Started",
             position: "left",
             activeBasePath: 'get-started/',
