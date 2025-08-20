@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 title: Verify certificates
 ---
 
@@ -12,7 +12,7 @@ This topic includes:
 
 Choose from the following verification methods depending on your trust requirements:
 1. [Direct - Call `CertificateVerifier` functions directly.](#direct-verification-functions)
-2. AVS-wrapped - Use verification contract provided by the verifiable service.
+2. AVS-wrapped - Use verification contract provided by the AVS.
 3. [Custom-wrapped - Add your own logic wrapping `CertificateVerifier`.](#custom-verification-logic-example)
 
 ## Direct Verification Functions
