@@ -63,7 +63,7 @@ Additionally, we maintain the following factories:
 
 **The cert verifier address is necessary for verifying V1 EigenDA blobs within the `SequencerInbox` to remove a trust assumption on the sequencer. This can be set within the `params` section of the orbit sdk**
 
-### Migrate or upgrade using our hosted `NitroContractsEigenDA2Point1Point0UpgradeAction`
+### Migrate or upgrade using our hosted `NitroContractsEigenDA2Point1Point3UpgradeAction`
 See how to run or deploy yourself [here](https://github.com/Layr-Labs/orbit-actions/tree/main/scripts/foundry/contract-upgrades/eigenda-v2.1.3).
 
 | Network          | Address                                      | Cert Verification Enabled | Explorer Link                                                                                    | MaxDataSize |
