@@ -8,8 +8,8 @@ The EigenDA Sepolia testnet is the current EigenDA testnet for integrations.
 
 ## Quick Links
 
-* AVS Page: coming soon
-* Blob Explorer Blazar (V2): coming soon
+* [AVS Page][2]
+* [Blob Explorer Blazar (V2)][1]
 
 ## Specs
 
@@ -39,3 +39,6 @@ All other contracts are now tracked inside the EigenDADirectory contract:
 | --- | --- |
 | 0 | LSTs |
 | 1 | [WETH](https://sepolia.etherscan.io/token/0xf531b8f309be94191af87605cfbf600d71c2cfe0) |
+
+[1]: https://blobs-v2-testnet-sepolia.eigenda.xyz/
+[2]: https://sepolia.eigenlayer.xyz/avs/eigenda
