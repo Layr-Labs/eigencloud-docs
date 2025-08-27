@@ -302,19 +302,19 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/multichain-integration-patterns',
-    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/multichain-integration-patterns',
+    to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
-    to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verification-methods',
+    to: '/products/eigenlayer/developers/howto/build/multichain/verification-methods',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
-    to: '/products/eigenlayer/developers/howto/build/multichain/avs-developer/implement-multichain',
+    to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
   {
    from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
-   to: '/products/eigenlayer/developers/howto/build/multichain/avs-consumer/verification-methods',
+   to: '/products/eigenlayer/developers/howto/build/multichain/verification-methods',
   },
 
   // Developer Reference (handle both capitalized and lowercase versions)

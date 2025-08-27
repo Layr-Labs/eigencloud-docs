@@ -50,7 +50,7 @@ The Orbit [documentation](https://docs.arbitrum.io/launch-orbit-chain/how-tos/or
 
 Additionally, we maintain the following factories:
 
-| contracts version | network | rollup creator address | cert verifier address |
+| Contracts Version | Network | Rollup Creator Address | EigenDAV1 CertVerifier Address |
 |---------|---------|---------|-----------|
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Ethereum Mainnet | [0xdD6258539c41687B9afd38983c0456493423C73d](https://etherscan.io/address/0xdD6258539c41687B9afd38983c0456493423C73d#code) | [0x787c88E70900f6AE10E7B9D18024482895EBD1eb](https://etherscan.io/address/0x787c88E70900f6AE10E7B9D18024482895EBD1eb#code) |
 | [v2.1.3](https://github.com/Layr-Labs/nitro-contracts/releases/tag/v2.1.3)  | Ethereum Holesky | [0x22AaeA3A47d73e9585D0378D1d9e1CeF7Cd8c6a1](https://holesky.etherscan.io/address/0x22AaeA3A47d73e9585D0378D1d9e1CeF7Cd8c6a1#code) | [0xFe52fE1940858DCb6e12153E2104aD0fDFbE1162](https://holesky.etherscan.io/address/0xFe52fE1940858DCb6e12153E2104aD0fDFbE1162#code) |
@@ -63,13 +63,14 @@ Additionally, we maintain the following factories:
 
 **The cert verifier address is necessary for verifying V1 EigenDA blobs within the `SequencerInbox` to remove a trust assumption on the sequencer. This can be set within the `params` section of the orbit sdk**
 
-As well as Orbit upgrade actions:
+### Migrate or upgrade using our hosted `NitroContractsEigenDA2Point1Point3UpgradeAction`
+See how to run or deploy yourself [here](https://github.com/Layr-Labs/orbit-actions/tree/main/scripts/foundry/contract-upgrades/eigenda-v2.1.3).
 
-| action version | network | address |
-|---------|---------|---------|
-| [eigenda-v2.1.3](https://github.com/Layr-Labs/orbit-actions/blob/63ba07bbaa849117d2074ccd3c90c2628c58b36d/scripts/foundry/contract-upgrades/eigenda-v2.1.3/README.md)  | Ethereum Holesky | [0x31C2C3dd9C47049a975DFaE804C886333CDCF9BB](https://holesky.etherscan.io/address/0x31C2C3dd9C47049a975DFaE804C886333CDCF9BB#code) | 
-| [eigenda-v2.1.3](https://github.com/Layr-Labs/orbit-actions/blob/63ba07bbaa849117d2074ccd3c90c2628c58b36d/scripts/foundry/contract-upgrades/eigenda-v2.1.3/README.md)  | Arbitrum Sepolia | [0xc5d5c28F94c95D851a42Ff97f1886f8af505BD04](https://sepolia.arbiscan.io/address/0xc5d5c28F94c95D851a42Ff97f1886f8af505BD04#code) | 
-| [eigenda-v2.1.3](https://github.com/Layr-Labs/orbit-actions/blob/63ba07bbaa849117d2074ccd3c90c2628c58b36d/scripts/foundry/contract-upgrades/eigenda-v2.1.3/README.md)  | Base Sepolia     | [0xbda5cff32ce4b2a1e312439e21d1b163d48b0936](https://sepolia.basescan.org/address/0xbda5cff32ce4b2a1e312439e21d1b163d48b0936) | [0xA0735f425792eCcDA1b8f50ceB36B05635c77D63](https://sepolia.basescan.org/address/0xa0735f425792eccda1b8f50ceb36b05635c77d63)
+| Network          | Address                                      | Cert Verification Enabled | Explorer Link                                                                                    | MaxDataSize |
+| ---------------- | -------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| **Eth Sepolia**  | `0x8b4b9BA6715aB493073d9e8426f3E9eb8404f12a` | true                 | [Etherscan](https://sepolia.etherscan.io/address/0x8b4b9BA6715aB493073d9e8426f3E9eb8404f12a)     | 117964      |
+| **Base Sepolia** | `0x28303a297e31ac5376047b128867e9D339B58Bf0` | false                 | [BaseScan](https://sepolia.basescan.org/address/0x28303a297e31ac5376047b128867e9D339B58Bf0#code) | 104857      |
+| **Arbitrum One** | `0xf099152D84dd3473442Ee659276b6d374c008c5a` | false                  | [Arbiscan](https://sepolia.arbiscan.io/address/0xf099152D84dd3473442Ee659276b6d374c008c5a)       | 104857      |
 
 
 ## How to deploy a Rollup on Testnet using our UI
