@@ -9,9 +9,8 @@ The EigenDA Holesky testnet is the EigenDA testnet for operators.
 ## Quick Links
 
 * [AVS Page][2]
-* [Blob Explorer V1][1]
 * [Blob Explorer Blazar (V2)][4]
-* [Deployed Contract Addresses][3]
+* [Blob Explorer V1][1]
 
 ## Specs
 
@@ -51,5 +50,4 @@ All other contracts are now tracked inside the EigenDADirectory contract:
 
 [1]: https://blobs-holesky.eigenda.xyz/
 [2]: https://holesky.eigenlayer.xyz/avs/eigenda
-[3]: https://github.com/Layr-Labs/eigenlayer-middleware/?tab=readme-ov-file#current-testnet-deployment
 [4]: https://blobs-v2-testnet-holesky.eigenda.xyz/
