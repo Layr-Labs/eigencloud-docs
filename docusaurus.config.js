@@ -359,7 +359,7 @@ const redirects = [
   },
   {
       from: '/operators/howto/operator-installation',
-      to: '/products/eigenlayer/registeroperators/operator-installation',
+      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
   },
   
   // Fix typo: confirgurerewards -> configurerewards (handles both old typo and corrected version)
@@ -410,7 +410,7 @@ const redirects = [
   },
   {
       from: '/operators/howto/operator-installation',
-      to: '/products/eigenlayer/operators/howto/operator-installation',
+      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
   },
   {
       from: '/operators/howto/operator-sets',
