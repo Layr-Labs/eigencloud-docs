@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Install and register Operators
+title: Install and Register Operators
 ---
 
 # Installation and Registration
