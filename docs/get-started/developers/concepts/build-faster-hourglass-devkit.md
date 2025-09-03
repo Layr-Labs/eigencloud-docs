@@ -1,16 +1,16 @@
 ---
 title: Build Faster with DevKit and Hourglass
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-The task-based framework Hourglass provides the onchain and offchain infrastructure to run task-based AVSs. DevKit gives 
-developers a CLI toolkit to build, test, and deploy AVSs built using the Hourglass framework with minimal friction.
+The task-based framework Hourglass provides the onchain and offchain infrastructure to run task-based AVSs. 
+Hourglass enables you to extend your smart contracts by using an offchain coprocessor AVS.
+
+DevKit gives developers a CLI toolkit to build, test, and deploy AVSs built using the Hourglass framework with minimal friction.
 
 ## What DevKit Provides 
 
-DevKit is the unified, first-party CLI toolkit for EigenCloud.
-
-DevKit gets you from zero to a working product in under an hour. Like Foundry, but for building verifiable off-chain services.
+DevKit is the unified, first-party CLI toolkit for EigenCloud. DevKit gets you from zero to a working product in under an hour. Like Foundry, but for building verifiable off-chain services.
 
 DevKit gives you:
 * Commands to simplify development including: 
@@ -32,3 +32,4 @@ Hourglass provides:
     * Verification of Operator certificates
 * Offchain infrastructure to enable offchain task management, and publishing of offchain results onchain.  
  
+For more information on DevKit and Hourglass architecture, refer to the [DevKit](https://github.com/Layr-Labs/devkit-cli) and [Hourglass](https://github.com/Layr-Labs/hourglass-monorepo) repos.

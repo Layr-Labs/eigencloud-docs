@@ -1,6 +1,6 @@
 ---
 title: Get Started Building a Task-based AVS
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 To get started: 
@@ -32,5 +32,6 @@ To get started:
 
 4. Implement your AVS task logic in `main.go`. 
 
-For more information on the task-based framework architecture, and using DevKit to deply to testnet and mainnet, refer to
-TODO-add reference.
+Next: 
+
+[Build and Test Locally](build-test-locally.md)
