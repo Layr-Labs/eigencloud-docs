@@ -357,6 +357,10 @@ const redirects = [
       from: '/operators/howto/claimrewards/claim-rewards-smart-contract',
       to: '/products/eigenlayer/operators/howto/claimrewards/claim-rewards-smart-contract',
   },
+  {
+      from: '/operators/howto/operator-installation',
+      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
+  },
   
   // Fix typo: confirgurerewards -> configurerewards (handles both old typo and corrected version)
   {
@@ -406,7 +410,7 @@ const redirects = [
   },
   {
       from: '/operators/howto/operator-installation',
-      to: '/products/eigenlayer/operators/howto/operator-installation',
+      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
   },
   {
       from: '/operators/howto/operator-sets',
