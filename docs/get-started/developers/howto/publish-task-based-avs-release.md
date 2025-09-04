@@ -5,7 +5,7 @@ sidebar_position: 3
 
 DevKit publishes your AVS release to the `ReleaseManager` contract which makes it available for operators to upgrade to.
 
-Prequisites:
+Prerequisites:
 
 [Build and Test Locally](build-test-locally.md)
 
@@ -72,3 +72,7 @@ devkit avs release publish \
 :::tip
 Optional DevKit commands are described in the [DevKit repo](https://github.com/Layr-Labs/devkit-cli).
 :::
+
+## Advertise to Operators
+
+Advertise to Operators that your AVS is an Hourglass AVS. Operators use the [Hourglass CLI (`hgctl`)](../../operators/run-task-based-avs.md) to streamline operations of Hourglass AVS.
