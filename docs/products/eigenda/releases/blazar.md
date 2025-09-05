@@ -399,7 +399,7 @@ Rollups will need to perform the following upgrade actions:
 1. **Update data routing**. Deploying a version of https://github.com/Layr-Labs/eigenda-proxy that supports Blazar (internally this new release will use the [EigenDA clients](https://github.com/Layr-Labs/eigenda/tree/master/api/clients/v2)) will enable use of the Blazar endpoints. We will make an announcement once such a release is ready.
    1. Once you do so, all blob POST request submitted to proxy will be dispersed to the Blazar disperser, and encoded using a commitment with a [0x1 version byte](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#commitment-schemas) (as opposed to 0x0 for V1).
    2. GET requests will be [routed](https://github.com/Layr-Labs/eigenda-proxy/blob/44191c1a1b3149d52a80f2fa82690f4a92ac62db/server/routing.go#L22) to the correct network based on their commitment version byte.
-2. **Implement Secure Verification**. We are in the process of individually updating each rollup stack in order to support secure integration strategies (such as fault proofs or validity proofs) for Blazar.
+2. **Implement Trustless Verification**. We are in the process of individually updating each rollup stack in order to support trustless integration strategies (such as fault proofs or validity proofs) for Blazar.
 
 ## Action Plan
 
