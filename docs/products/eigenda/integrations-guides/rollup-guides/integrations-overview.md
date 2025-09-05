@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 ---
-# Secure Integration Overview
+# Trustless Integration Overview
 
-This document aims to outline what a secure EigenDA integration looks like, to provide rollup
+This document aims to outline what a trustless EigenDA integration looks like, to provide rollup
 engineers with a strong understanding of how an EigenDA integration would impact
 their tech stack and security model. For full details, see the [EigenDA V2 integration spec](https://layr-labs.github.io/eigenda/integration/spec/6-secure-integration.html#certblobtiming-validation).
 
@@ -33,19 +33,19 @@ with external DA:
     used to generate the rollup's state root was not manipulated by the
     sequencer/proposer.
 
-A fully secure integration requires doing the 3 verification checks.
+A fully trustless integration requires doing the 3 verification checks.
 
 |               | Dispersal | Retrieval | Cert Verification | Blob Verification | Timing Verification |
 | ------------- | --------- | --------- | ----------------- | ----------------- | ------------------- |
 | Trusted       | x         | x         |                   |                   |                     |
-| Fully Secured | x         | x         | x                 | x                 | x                   |
+| Fully Trustless | x         | x         | x                 | x                 | x                   |
 
 There are different strategies for implementing each of these checks, with different rollup stacks employing
 different strategies. We outline the different approaches in this document.
 
 ## Trusted Integration (Dispersal+Retrieval) {#trusted-integration}
 
-![Insecure Dispersal](../../../../../static/img/integrations/secure/insecure-dispersal.png)
+![Trusted Dispersal](../../../../../static/img/integrations/secure/insecure-dispersal.png)
 
 The trusted integration trusts that the sequencer is verifying certs and 
 posting them to the rollup inbox in a timely fashion. 
@@ -82,7 +82,7 @@ encounters an EigenDA certificate in the rollup inbox, it knows to retrieve the
 underlying blob from the EigenDA operator set using the EigenDA client, and then
 interpret the transactions inside.
 
-Please keep in mind that this integration model is *insecure*. The rollup
+Please keep in mind that this integration model is *trusted*. The rollup
 sequencer is completely trusted in this scenario, because the fraud proof system
 is disabled, and state roots cannot be challenged. This means the sequencer can
 post whatever state roots they want to the bridge contract and potentially steal
@@ -91,7 +91,7 @@ funds.
 ## Cert Punctuality Verification
 
 EigenDA blobs are only available to download for 2 weeks, so it is important
-to ensure that the [batcher][glossary-batcher] is not posting EigenDA certs to the rollup inbox after the blob has been deleted. Each securely integrated rollup stack should have a [cert-punctuality-window][glossary-cert-punctuality-window] defined by its derivation pipeline.
+to ensure that the [batcher][glossary-batcher] is not posting EigenDA certs to the rollup inbox after the blob has been deleted. Each trustlessly integrated rollup stack should have a [cert-punctuality-window][glossary-cert-punctuality-window] defined by its derivation pipeline.
 
 ## Cert Verification
 
@@ -125,14 +125,14 @@ L2 chain when the transaction has been included in the [rollup-inbox][glossary-r
 in a finalized L1 block. When this process is complete, any L2 node can say with confidence that the
 transaction is part of the canonical L2 chain and is not subject to a reorg. For example, 
 if you were selling your car and a buyer paid you by sending you
-USDC on a secure rollup, it would be important to wait until the transaction had
+USDC on a trustless rollup, it would be important to wait until the transaction had
 reached L2 chain finalization before letting them drive away with your vehicle.
 
 ![M1 chain finalization](../../../../../static/img/integrations/secure/inbox-verified-dispersal.png)
 
 The above diagram is the same as the trusted integration diagram [above](#trusted-integration), with two slight modifications:
 
-4. In order to get a fully secured integration, the batcher should wait until the confirmBatch tx
+4. In order to get a fully trustless integration, the batcher should wait until the confirmBatch tx
     has been finalized onchain before posting the EigenDA cert to the [rollup inbox][glossary-rollup-inbox]. This is needed
     in order to protect from an L1 chain reorg that would remove/invalidate the eigenDA cert, while leaving the batch in the inbox.
 5. The rollup inbox contract is programmed not to accept the
