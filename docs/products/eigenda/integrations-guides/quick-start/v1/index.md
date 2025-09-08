@@ -18,12 +18,12 @@ In this guide, we manually disperse and retrieve a blob from the EigenDA dispers
 
 **Step 1: Store (Disperse) a blob**
 
-We target the [Holesky Network](../../../networks/holesky.md) Disperser/DisperseBlob endpoint:
+We target the [Sepolia Network](../../../networks/sepolia.md) Disperser/DisperseBlob endpoint:
 
 ```bash
 $ grpcurl \
   -d '{"data": "'$(kzgpad -e hello)'"}' \
-  disperser-holesky.eigenda.xyz:443 disperser.Disperser/DisperseBlob
+  disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/DisperseBlob
 
 {
   "result": "PROCESSING",
@@ -40,7 +40,7 @@ The Disperser will return a `requestId` that you can use to poll the status of t
 $ REQUEST_ID="OGEyYTVjOWI3Njg4MjdkZTVhOTU1MmMzOGEwNDRjNjY5NTljNjhmNmQyZjIxYjUyNjBhZjU0ZDJmODdkYjgyNy0zMTM3MzQzMjM4MzczNTMwMzEzMTM5MzMzMzM2MzgzNzMzMzAzMDJmMzAyZjMzMzMyZjMxMmYzMzMzMmZlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1"
 $ grpcurl \
   -d "{\"request_id\": \"$REQUEST_ID\"}" \
-  disperser-holesky.eigenda.xyz:443 disperser.Disperser/GetBlobStatus
+  disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/GetBlobStatus
 
 {
   "status": "CONFIRMED",
@@ -98,7 +98,7 @@ BATCH_HEADER_HASH="fRi1f2vz0fjkHvjT1Vr5/R55iVPmJG6njdA6whYhPb0="
 BLOB_INDEX="2"
 $ grpcurl \
   -d "{\"batch_header_hash\": \"$BATCH_HEADER_HASH\", \"blob_index\":\"$BLOB_INDEX\"}" \
-  disperser-holesky.eigenda.xyz:443 disperser.Disperser/RetrieveBlob
+  disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/RetrieveBlob
 
 {
   "data": "AGhlbGxv"
@@ -107,7 +107,7 @@ $ grpcurl \
 # You can further decode the data using jq and kzgpad:
 $ grpcurl \
   -d "{\"batch_header_hash\": \"$BATCH_HEADER_HASH\", \"blob_index\":\"$BLOB_INDEX\"}" \
-  disperser-holesky.eigenda.xyz:443 disperser.Disperser/RetrieveBlob | \
+  disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/RetrieveBlob | \
   jq -r .data | kzgpad -d -
 
 hello

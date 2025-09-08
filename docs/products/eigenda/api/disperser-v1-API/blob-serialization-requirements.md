@@ -52,14 +52,9 @@ If you do not adhere to this encoding scheme, you may encounter errors like thes
 
 ```bash
 $ grpcurl \
-    -import-path ./api/proto \
-    -proto ./api/proto/disperser/disperser.proto \
     -d '{"data": "hello"}' \
-    disperser-preprod-holesky.eigenda.xyz:443 disperser.Disperser/DisperseBlob
-
-ERROR:
-  Code: InvalidArgument
-  Message: rpc error: code = InvalidArgument desc = encountered an error to convert a 32-bytes into a valid field element, please use the correct format where every 32bytes(big-endian) is less than 21888242871839275222246405745257275088548364400416034343698204186575808495617
+    disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/DisperseBlob
+Error invoking method "disperser.Disperser/DisperseBlob": error getting request data: illegal base64 data at input byte 4
 ```
 
 The simplest way to resolve this until we have a dedicated EigenDA CLI is to
@@ -67,10 +62,8 @@ use the `kzgpad` utility documented in the [tutorial](../../integrations-guides/
 
 ```bash
 $ grpcurl \
-  -proto ./api/proto/disperser/disperser.proto \
-  -import-path ./api/proto \
-  -d '{"data": "'$(tools/kzgpad/bin/kzgpad -e hello)'"}' \
-  disperser-holesky.eigenda.xyz:443 disperser.Disperser/DisperseBlob
+  -d '{"data": "'$(kzgpad -e hello)'"}' \
+  disperser-testnet-sepolia.eigenda.xyz:443 disperser.Disperser/DisperseBlob
 
 {
   "result": "PROCESSING",

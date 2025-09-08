@@ -4,7 +4,7 @@ title: V2 Guide
 ---
 
 # EigenDA Payment and Data Dispersal Guide
-This guide walks through the process of setting up payments and dispersing data using EigenDA on Holesky.
+This guide walks through the process of setting up payments and dispersing data using EigenDA on Sepolia.
 
 :::tip
 This guide uses the go client to set up payments and disperse data. For information on alternative methods to integrate with
@@ -14,22 +14,22 @@ the EigenDA APIs, refer to the [Overview](../../overview.md).
 ## On Demand Data Dispersal
 ### On-chain setup
 :::info Pre-Requisites
-- ETH on the Ethereum Holesky testnet
+- ETH on the Ethereum Sepolia testnet
 - [Foundry](https://book.getfoundry.sh/getting-started/installation) installed
-- RPC URL for Holesky
+- RPC URL for Sepolia
 - Private key for transactions
 :::
 
 To disperse to the network you will need a balance to pull from. If you would like to learn more about EigenDA's Payment Module, check the reference [here](../../../core-concepts/payments.md).
 
-To start make sure you have ETH on the Ethereum Holesky testnet, we'll deposit into the Payment Vault and then any other EigenDA requests charges will be pulled from here. 
+To start make sure you have ETH on the Ethereum Sepolia testnet, we'll deposit into the Payment Vault and then any other EigenDA requests charges will be pulled from here. 
 
 To start we will deposit into the payment vault using Foundry's `cast`. 
 :::note Installation
 If you have not installed Foundry, follow their install commands [here](https://book.getfoundry.sh/getting-started/installation). 
 :::
 
-This will deposit 1 ETH into the Payment Vault on Holesky:
+This will deposit 1 ETH into the Payment Vault on Sepolia:
 :::note Deposits
 Calculate the amount of data needed to send, funds deposited into the payment vault are non-refundable.
 :::
@@ -37,7 +37,7 @@ Calculate the amount of data needed to send, funds deposited into the payment va
 ```bash
 cast send --rpc-url <YOUR_RPC_URL> \
  --private-key <YOUR_PRIVATE_KEY> \
- 0x4a7Fff191BCDa5806f1Bc8689afc1417c08C61AB \
+ 0x2E1BDB221E7D6bD9B7b2365208d41A5FD70b24Ed \
  "depositOnDemand(address)" \
 <YOUR_ADDRESS> \
  --value 1ether
@@ -92,7 +92,7 @@ err := godotenv.Load()
 
 signer, err := authv2.NewLocalBlobRequestSigner(privateKey)
 disp, err := clients.NewDisperserClient(&clients.DisperserClientConfig{
-	Hostname:          "disperser-testnet-holesky.eigenda.xyz",
+	Hostname:          "disperser-testnet-sepolia.eigenda.xyz",
 	Port:              "443",
 	UseSecureGrpcFlag: true,
 }, signer, nil, nil)
