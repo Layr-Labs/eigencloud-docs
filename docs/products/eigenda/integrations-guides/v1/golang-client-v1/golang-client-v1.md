@@ -54,7 +54,7 @@ import (
 func main() {
  // Configuration for the disperser client
  config := clients.NewConfig(
-  "disperser-holesky.eigenda.xyz",
+  "disperser-testnet-sepolia.eigenda.xyz",
   "443",
   time.Second*10, // request timeout
   true,           // useSecureGrpcFlag, should be set to true unless running against a local disperser for testing

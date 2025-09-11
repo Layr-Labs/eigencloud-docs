@@ -21,7 +21,7 @@ The goal of this document is to explain this spec at a higher level.
 <!-- TODO: Update network pages -->
 
 Eigen Labs hosts one v2 disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages 
-for [mainnet](../../networks/mainnet.md), [Holesky](../../networks/holesky.md), and [Sepolia](../../networks/sepolia.md).
+for [Mainnet](../../networks/mainnet.md) and [Sepolia](../../networks/sepolia.md).
 
 ### Disperser Endpoints
 

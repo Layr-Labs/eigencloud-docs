@@ -5,7 +5,7 @@ title: EigenDA Overview
 
 # What is EigenDA?
 
-EigenDA is a data availability protocol developed by Eigen Labs and built on EigenLayer, live on mainnet and Holesky testnet.
+EigenDA is a data availability protocol developed by Eigen Labs and built on EigenLayer, live on Mainnet and Sepolia testnet.
 
 EigenDA is built from the ground up to be optimally scalable and efficient, making it possible to provide DA at throughputs and costs that other solutions cannot approach.
 

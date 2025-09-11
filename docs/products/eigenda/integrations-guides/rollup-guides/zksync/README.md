@@ -74,13 +74,13 @@ These are the fields that can be modified:
 - `points_source_url` (string): URLs of the points source files.
 - `custom_quorum_numbers` (optional list of numbers): quorums to be used beside the default ones.
 
-So, for example, a client setup that uses the holesky EigenDA client would look like this:
+So, for example, a client setup that uses the sepolia EigenDA client would look like this:
 
 ```yaml
 eigen:
-  disperser_rpc: https://disperser-holesky.eigenda.xyz:443
+  disperser_rpc: https://disperser-testnet-sepolia.eigenda.xyz:443
   settlement_layer_confirmation_depth: 0
-  eigenda_eth_rpc: https://ethereum-holesky-rpc.publicnode.com
+  eigenda_eth_rpc: https://ethereum-sepolia-rpc.publicnode.com
   eigenda_svc_manager_address: 0xD4A7E1Bd8015057293f0D0A557088c286942e84b
   wait_for_finalization: false
   authenticated: false
