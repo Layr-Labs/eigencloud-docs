@@ -778,11 +778,11 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/Layr-Labs",
+                href: "https://github.com/Layr-Labs/eigencloud-docs",
               },
               {
                 label: "Youtube",
-                href: "https://www.youtube.com/@EigenLayer",
+                href: "https://www.youtube.com/@EigenCloud",
               },
             ],
           },
