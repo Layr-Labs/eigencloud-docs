@@ -60,43 +60,30 @@ da_dispatcher:
 The client can be set up by modifying the field `da_client` of the file `etc/env/file_based/overrides/validium.yaml`.
 These are the fields that can be modified:
 
-- `disperser_rpc` (string): URL of the EigenDA Disperser RPC server.
-- `settlement_layer_confirmation_depth` (unsigned number): Block height needed to reach in order to consider the blob
-  finalized. A value less or equal to 0 means that the disperser will not wait for finalization.
-- `eigenda_eth_rpc` (optional string): URL of the Ethereum RPC server. If the value is not set, the client will use the
-  same rpc as the rest of the zk server.
+- `disperser_rpc` (string): URL of the EigenDA Disperser RPC server. Available per network in our [docs](../../../networks/sepolia.md#specs)
+- `operator_state_retriever_addr`: Address of the OperatorStateRetriever contract. This address can be found by reading from the [EigenDA Directory](../../../networks/sepolia.md#contract-addresses).
+- `registry_coordinator_addr`: Address of the Registry Coordinator contract. This address can be found by reading from the [EigenDA Directory](../../../networks/sepolia.md#contract-addresses).
+- `cert_verifier_router_addr`: Address of the CertVerifierRouter contract. We deploy a default CertVerifier whose address can be found by reading from the [EigenDA Directory](../../../networks/sepolia.md#contract-addresses), but any team desiring custom quorums and/or custom thresholds should read our [Custom Security](../../custom-security.md) page.
 - `eigenda_svc_manager_address` (string): Address of the service manager contract.
-- `wait_for_finalization` (boolean): Wait for the blob to be finalized before returning the response.
-- `authenticated` (boolean): Authenticated dispersal. If true, the client will use the authentication mechanism, using a
-  whitelisted account. Using non authenticated dispersal is not recommended, as to many requests to the EigenDA
-  disperser leeds to timeouts. (the following two fields are mutually exclusive)
-- `points_source_path` (string): Path to the local points source files.
-- `points_source_url` (string): URLs of the points source files.
-- `custom_quorum_numbers` (optional list of numbers): quorums to be used beside the default ones.
+- `blob_version`: Specifies the BlobParams version to use. Currently only 0 is available. BlobVersions are defined in the ThresholdRegistry contract, whose address can be found by reading the from [EigenDA Directory](../../../networks/sepolia.md#contract-addresses).
 
 So, for example, a client setup that uses the sepolia EigenDA client would look like this:
 
 ```yaml
-eigen:
+da_client:
+  client: Eigen
   disperser_rpc: https://disperser-testnet-sepolia.eigenda.xyz:443
-  settlement_layer_confirmation_depth: 0
-  eigenda_eth_rpc: https://ethereum-sepolia-rpc.publicnode.com
-  eigenda_svc_manager_address: 0xD4A7E1Bd8015057293f0D0A557088c286942e84b
-  wait_for_finalization: false
-  authenticated: false
-  points_source_url:
-    g1_url: https://github.com/Layr-Labs/eigenda-proxy/raw/2fd70b99ef5bf137d7bbca3461cf9e1f2c899451/resources/g1.point
-    g2_url: https://github.com/Layr-Labs/eigenda-proxy/raw/2fd70b99ef5bf137d7bbca3461cf9e1f2c899451/resources/g2.point.powerOf2
-  # custom_quorum_numbers: 2,3 # uncomment to use other quorums besides defaults
+  operator_state_retriever_addr: 0x22478d082E9edaDc2baE8443E4aC9473F6E047Ff
+  registry_coordinator_addr: 0xAF21d3811B5d23D5466AC83BA7a9c34c261A8D81
+  cert_verifier_router_addr: 0x17ec4112c4BbD540E2c1fE0A49D264a280176F0D
+  blob_version: 0
 ```
 
-If using `authenticated` dispersal, you also need to modify `etc/env/file_based/secrets.yaml` to include the private key
-of the account that will be used. You need to add the following field:
+You also need to modify `etc/env/file_based/secrets.yaml` to include the private key
+of the account that will be used to pay for dispersals. You need to add the following field:
 
 ```yaml
 da:
-  eigen:
-    private_key: <PRIVATE_KEY>
+  client: Eigen
+  private_key: <PRIVATE_KEY> # without the `0x` prefix
 ```
-
-Note: the private key should be in hex format, without the `0x` prefix.
