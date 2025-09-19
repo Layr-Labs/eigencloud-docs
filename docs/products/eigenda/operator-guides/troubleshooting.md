@@ -10,7 +10,8 @@ sidebar_position: 5
 You can search using the below EigenLayer webapp links:
 
 * [Mainnet](https://app.eigenlayer.xyz/avs/0x870679e138bcdf293b7ff14dd44b70fc97e12fc0)
-* [Holesky](https://holesky.eigenlayer.xyz/avs/eigenda)
+* [Holesky](https://holesky.eigenlayer.xyz/avs/eigenda) (Deprecated)
+* [Hoodi](https://hoodi.eigenlayer.xyz/avs/eigenda)
 
 #### I opted in into running EigenDA but I am not in the operator set anymore. What happened?
 
