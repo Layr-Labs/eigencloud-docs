@@ -6,7 +6,7 @@ sidebar_position: 2
 
 :::warning
 Holesky is deprecated. It is planned to be completely sunset 2 weeks after the Fusaka hardfork in November.
-Customers should migrate to using our [Sepolia](sepolia.md) testnet instead, and operators should use the upcoming Hoodi testnet.
+Customers should migrate to using our [Sepolia](sepolia.md) testnet instead, and operators should use the [Hoodi](hoodi.md) testnet.
 :::
 
 The EigenDA Holesky testnet is the EigenDA testnet for operators.
