@@ -14,7 +14,7 @@ Please read this entire guide before launching your new validator or integrating
 
 Native Restaking via the EigenLayer Web App consists of the following actions:
 
-1. [Restake New Validator Native Beacon Chain ETH](#restake-new-validator-native-beacon-chain-eth)
+1. [Restaking New Validators](#restaking-new-validators-native-beacon-chain-eth)
 2. [Checkpointing](#checkpointing)
 3. [Withdraw Native ETH or Validator Yield](#withdraw-native-eth-or-validator-yield)
 
@@ -31,7 +31,7 @@ The diagram below outlines the operational flow of native restaking including:
 
 We recommend users connect many validators to a single EigenPod in order to reduce cost and complexity where practical. For each of the actions below that require a checkpoint proof, the web app will batch up to 80 validators per proof transaction batch. Users with more validators will require additional transactions to complete each checkpoint proof. Please plan your gas costs accordingly.
 
-## Restake New Validator (Native Beacon Chain ETH)
+## Restaking New Validators (Native Beacon Chain ETH)
 
 :::important
 Running your own EigenPod for native restaking is an advanced task that requires operating and maintaining Ethereum validator infrastructure.
@@ -39,10 +39,9 @@ It involves managing validator keys and associated risks including slashing, dow
 restaked funds if keys are lost or compromised. For more information, refer to [Ethereum Launchpad](https://launchpad.ethereum.org/en/).
 :::
 
-Create EigenPod:
+#### Create EigenPod:
 
-1. Visit the [EigenLayer App](https://app.eigenlayer.xyz/).
-1. Click **Natively Staked Ether** via the Dashboard or Token tab.
+1. Visit https://app.eigenlayer.xyz/token/ETH
 1. Click **Create EigenPod**.
 1. **Sign** the transaction via your Web3 wallet when prompted.
 1. Observe the new EigenPod contract address is displayed.
@@ -51,14 +50,14 @@ Create EigenPod:
 This address is responsible for all subsequent restaking and withdrawal activities associated with that EigenPod.
 :::
 
-Set Validator Withdrawal Credentials to EigenPod:
+#### Set Validator Withdrawal Credentials to EigenPod:
 
 1. Configure the validator(s) credentials to point to the EigenPod address when the validator is created. Please see [Ethereum Launchpad](https://launchpad.ethereum.org/en/withdrawals#enabling-withdrawals) for more information.
    - Confirming Withdrawal Address: you can confirm your withdrawal credentials (which should match your EigenPod), via the following URL: https://beaconcha.in/validator/[validator_index_or_public_key]#deposits
    - Optional: as of the PEPE release you may choose to set the FEE_RECIPIENT to your EigenPod address if you wish to Restake those fees.
 1. Deposit your ETH into the validator via the deposit contract and wait for the validator(s) to become active on-chain. Please see https://beaconcha.in/[validator_index_or_public_key] to follow your validator status. Please note: this process can take up to 10 days depending on the length of the Beacon Chain deposit queue.
 
-Restake Unproven Validators:
+#### Restake Unproven Validators:
 
 ![unproven-validators.png](../../../../../../../static/img/eigenpod/unproven-validators.png)
 
@@ -93,7 +92,7 @@ Users can convert consensus rewards, validator execution fees and ETH sent to th
 1. The time lag associated with Ethereum beacon chain validator sweeps, which can be up to 65812 slots or 9 days. Please see the Ethereum docs [here](https://ethereum.org/en/staking/withdrawals/#validator-sweeping) for more information.
    :::
 
-### Checkpoint Frequency
+#### Checkpoint Frequency
 
 Users should not initiate a checkpoint more frequently than once every two weeks (approximately).
 The longer you wait before performing a checkpoint, the more gas users will save. The gas cost of a checkpoint is the same, regardless of how many consensus rewards will be proven. Each user should determine the best interval to fit their gas cost and restaking benefit needs.
@@ -102,23 +101,23 @@ Consensus rewards are moved from the beacon chain to your EigenPod once every ap
 
 ## Withdraw Native ETH or Validator Yield
 
-Overview: Withdrawing from EigenLayer involves first **Queueing a withdrawal**, waiting the 14 day escrow period, then finally **Completing the withdrawal**. You will be able to queue a withdrawal for any amount up to your restaked balance, but the maximum you are able to withdraw from the system is the Checkpointed Balance in your EigenPod. If your withdrawal is greater than the amount that is checkpointed in your EigenPod, you will first need to exit enough validators to ensure that the balance in your EigenPod is greater than the withdrawal amount and then complete a checkpoint to update your checkpointed EigenPod Balance.
+Overview: Withdrawing from EigenLayer involves first **Queueing a withdrawal**, waiting the 14 day escrow period, then finally **Completing the withdrawal**. You will be able to queue a withdrawal for any amount up to your restaked balance, but the maximum you are able to withdraw from the system is the Checkpointed Balance in your EigenPod. If your withdrawal is greater than the amount that is available in your EigenPod, you will first need to exit enough validators to ensure that the balance in your EigenPod is greater than the withdrawal amount and then complete a checkpoint to update your checkpointed EigenPod Balance.
 
 If you wish to withdraw native ETH from an active validator, complete the following steps before proceeding:
 
 1. Ensure you have repointed your validator's withdrawal credentials to your EigenPod prior to continuing. Please see [Ethereum Launchpad](https://launchpad.ethereum.org/en/withdrawals#enabling-withdrawals) for more information.
-1. Fully exit your validator from the beacon chain. You may monitor its activity via beaconcha.in/validator/[validator_index].
-1. Wait for the final beacon chain withdrawal to be deposited to your EigenPod. There can be a lag of up to 24 hours to 7 days between the validator appearing as "exited" and the withdrawal amount deposited to EigenPod. Please see the "Withdrawals" tab and "Time" column for your validator via beaconcha.in/validator/[validator_index]#withdrawals .
+1. Fully exit your validator from the beacon chain. You may monitor its activity via https://beaconcha.in/validator/[validator_index_or_public_key].
+1. Wait for the final beacon chain withdrawal to be deposited to your EigenPod. There can be a lag of up to 24 hours to 7 days between the validator appearing as "exited" and the withdrawal amount deposited to EigenPod. Please see the "Withdrawals" tab and "Time" column for your validator via https://beaconcha.in/validator/[validator_index_or_public_key]#withdrawals .
 
-Queue the Withdrawal:
+#### Queue the Withdrawal:
 
 1. Click **Queue Withdrawal** in the web app.
 1. Choose the amount you wish to queue for withdrawal and continue
 1. Wait for the [Escrow Period](../../testnet/README.md#testnet-vs-mainnet-differences) to complete.
 
-Redeposit or Complete Withdrawal:
+#### Redeposit or Complete Withdrawal:
 
 Once the escrow period is completed, you have the options to **Withdraw** or **Redeposit**. Redepositing is available for users who have undelegated and wish to redeposit the funds to restake with a different operator and is always possible regardless of EigenPod balance.
 
 1. Choose to either **Redeposit** or **Withdraw**. Withdraw will be disabled if the current balance of your EigenPod is less than the withdrawal amount.
-1. If the withdrawal is greater than your checkpointed EigenPod balance and less than your total EigenPod balance, it will trigger the checkpointing process ([see above](#checkpointing)) before triggering the withdrawal transaction.
+1. Sign the withdrawal or redeposit transaction. Note: if the withdrawal is greater than your checkpointed EigenPod balance and less than your total EigenPod balance, it will trigger the checkpointing process ([see above](#checkpointing)) before triggering the withdrawal transaction.
