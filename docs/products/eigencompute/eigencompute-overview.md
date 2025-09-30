@@ -3,6 +3,10 @@ title: EigenCompute Overview
 sidebar_position: 4
 ---
 
+:::tip Get Started
+Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli) to deploy your application to EigenCompute.
+:::
+
 ## Overview
 Build verifiable applications without thinking about determinism, solidity, or how to build a consensus mechanism. Simply containerize your application using docker and upload your application to EigenCompute to ship a verifiable, unstoppable application. 
 
@@ -40,3 +44,5 @@ To build on EigenCompute, all you need to do is:
 2. Upload it to EigenCompute using our EigenX CLI
 
 It's that simple to ship a verifiable, unstoppable application!
+
+For detailed instructions, see the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli).
