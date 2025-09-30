@@ -68,7 +68,7 @@ The caller must have [UAM permissions](../../../concepts/uam-for-avs.md) for `op
 EigenLabs generates and transports your stake table. To determine when transport is complete, monitor [`OperatorTableUpdater.GlobalRootConfirmed`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/destination/OperatorTableUpdater.md).
 
 
-The **operator tables of *all* operatorSets are updated weekly on Monday at 14:00 UTC on mainnet and daily at 14:00 UTC on testnet**. To ensure that operatorSets can immediately begin verifying certificates and that stake weights do not become stale between table updates, the multichain protocol updates tables for operatorSets when the following events are emitted:
+The **operator tables of *all* operatorSets are updated weekly on Monday at 14:00 UTC on mainnet and daily at 14:00 UTC on testnet**. To ensure that an operatorSet can immediately begin verifying certificates and that its stake weights do not become stale between table updates, the multichain protocol updates the table for a *single* operatorSet registered to the protocol when the following events are emitted:
 
 - AllocationManager: `OperatorSlashed`
 - AllocationManager: `OperatorAddedToOperatorSet`
