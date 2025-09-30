@@ -21,3 +21,10 @@ The following table outlines possible emergency procedures.
 | Operator Registration/Deregistration | Immediately updates across all chains when operators register or deregister |
 | Pause Mechanisms                     | System-wide pause capabilities for critical vulnerabilities                 |
 | Key Rotation                         | Operators can rotate compromised keys with configurable delays              |
+
+The **operator tables of *all* operatorSets are updated weekly on Monday at 14:00 UTC on mainnet**. To ensure that operatorSets can immediately begin verifying certificates and that stake weights do not become stale between table updates, the multichain protocol updates tables for operatorSets when the following events are emitted:
+
+- AllocationManager: `OperatorSlashed`
+- AllocationManager: `OperatorAddedToOperatorSet`
+- AllocationManager: `OperatorRemovedFromOperatorSet`
+- CrossChainRegistry: `GenerationReservationCreated`
