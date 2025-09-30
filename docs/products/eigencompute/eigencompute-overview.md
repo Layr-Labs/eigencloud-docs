@@ -4,7 +4,7 @@ sidebar_position: 4
 ---
 
 :::tip Get Started
-Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli) to deploy your application to EigenCompute.
+Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/README.md) to deploy your application to EigenCompute.
 :::
 
 ## Overview
