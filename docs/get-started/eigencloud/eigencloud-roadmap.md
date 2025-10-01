@@ -31,11 +31,12 @@ AVSs and apps without needing deep protocol expertise. Work includes:
 ### Eigen Primitives: Verifiable Blockspace
 
 To make verifiability easy to adopt, EigenCloud provides foundational, 1st party services that AVSs and applications can plug into.
-These primitives, [EigenDA](../../products/eigenda/core-concepts/overview.md), [EigenCompute](../../products/eigencompute/eigencompute-overview.md), and [EigenVerify](../../products/eigenverify/eigenverify-overview.md), deliver critical capabilities, such as data availability, offchain
+These primitives, [EigenDA](../../products/eigenda/core-concepts/overview.md), [EigenCompute](../../products/eigencompute/eigencompute-overview.md), [EigenAI](../../products/eigenai/eigenai-overview.md), and [EigenVerify](../../products/eigenverify/eigenverify-overview.md), deliver critical capabilities, such as data availability, offchain
 compute, and adjudication. By making these services developer-accessible, we enable new classes of verifiable applications,
 reduce developer lift, and promote ecosystem standardization. Work includes:
 * EigenDA Throughput: Scale EigenDA throughput from 50 mb/s to hundreds of mb/s
 * EigenDA Latency: Reduce EigenDA latency from 10s to less than a second
+* Preview release of EigenAI for a seamless, OpenAI-compatible verifiable inference API 
 * Preview release of EigenCompute for containerized, verifiable compute
 * Preview release of EigenVerify for fraud and dispute resolution
 * Finality gadgets, sequencing layers, and modular coordination for rollups
