@@ -1,29 +1,29 @@
 .copyButtonContainer {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--ifm-color-emphasis-300);
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .copyButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: var(--ifm-color-primary);
-  color: white;
-  border: none;
+  background-color: var(--ifm-button-background-color);
+  color: var(--ifm-font-color-base);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 0.375rem;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .copyButton:hover {
-  background-color: var(--ifm-color-primary-dark);
-  transform: translateY(-1px);
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
 }
 
 .copyButton:active {
@@ -33,12 +33,4 @@
 .copyButton svg {
   width: 16px;
   height: 16px;
-}
-
-html[data-theme='dark'] .copyButton {
-  background-color: var(--ifm-color-primary-light);
-}
-
-html[data-theme='dark'] .copyButton:hover {
-  background-color: var(--ifm-color-primary);
 }
