@@ -1,0 +1,44 @@
+.copyButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.copyButton:active {
+  transform: translateY(0);
+}
+
+.copyButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+html[data-theme='dark'] .copyButton {
+  background-color: var(--ifm-color-primary-light);
+}
+
+html[data-theme='dark'] .copyButton:hover {
+  background-color: var(--ifm-color-primary);
+}

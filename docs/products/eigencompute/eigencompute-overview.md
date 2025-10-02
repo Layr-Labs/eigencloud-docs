@@ -1,10 +1,10 @@
 ---
-title: EigenCompute Overview
-sidebar_position: 4
+title: Overview
+sidebar_position: 1
 ---
 
 :::tip Get Started
-Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli) to deploy your application to EigenCompute.
+Follow the [EigenX CLI Quickstart](./quickstart) to deploy your first application to EigenCompute in minutes.
 :::
 
 ## Overview
@@ -45,4 +45,9 @@ To build on EigenCompute, all you need to do is:
 
 It's that simple to ship a verifiable, unstoppable application!
 
-For detailed instructions, see the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli).
+## Next Steps
+
+- **[Quickstart Guide](./quickstart)** - Deploy your first app in 5 minutes
+- **[CLI Commands](./cli-commands/authentication)** - Complete command reference
+- **[Architecture Guide](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md)** - Deep dive into how EigenCompute works
+- **[Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md)** - Understanding keys, security, and best practices
