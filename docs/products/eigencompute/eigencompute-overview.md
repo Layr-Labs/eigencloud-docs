@@ -19,17 +19,17 @@ EigenCompute provides a third path: applications that offer cryptographic guaran
 
 When you deploy to EigenCompute, your application gets:
 
-1. **Hardware-isolated execution**: Your app runs in Intel TDX, a secure enclave with encrypted memory. Even the cloud provider cannot see your app's data or computation. This hardware can prove what Docker image is running inside it, making it impossible to fake or modify your application.
+1. **Hardware-isolated execution**: Your app runs inside Intel TDX, a secure enclave with encrypted memory that generates cryptographic proof of the exact Docker image running inside.
 
-2. **Autonomous wallet**: Each application gets its own unique wallet that only it controls. The hardware guarantees that only the code running in the enclave can access the private key.
+2. **A dedicated wallet**: Each application receives a unique wallet. Only that specific app, running the verified Docker image in the enclave, can retrieve the private key.
 
-3. **No key management**: The platform handles secure key distribution to your application.
+3. **Secure secret management**: Environment variables that are encrypted locally and only accessible within the TEE.
 
-4. **Public endpoints**: Expose ports for your application with HTTP by default, or configure HTTPS with your custom domain.
+4. **On-chain deployment record**: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
 
-5. **Code transparency**: Every deployment is recorded on-chain by its Docker digest.
+5. **Network access**: Optionally expose ports for HTTP endpoints, or configure HTTPS with a custom domain.
 
-This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them. From code to production in under a minute.
+This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them.
 
 ## Get Started
 
@@ -234,20 +234,11 @@ EigenCompute currently requires trust in:
 - Google Confidential Space attestation service
 - Single KMS operator (being decentralized via threshold cryptography)
 
-Applications cannot be compromised by:
-- Cloud infrastructure providers
-- Network operators
-- Application developers post-deployment
-- Other applications in the system
-
-### Verification Flow
-
-Applications can be verified through a cryptographic chain:
-
-1. Check on-chain Docker digest for the application
-2. Request attestation from the application endpoint
-3. Verify the signature matches the expected wallet address
-4. Confirm hardware attestation chain (TEE → KMS → Application)
+Security enhancements in development:
+- Public attestation endpoints for runtime verification
+- Threshold KMS for distributed key management
+- Replica prevention via onchain checks and heartbeats
+- Verifiably built images with reproducible builds
 
 ## Documentation
 
