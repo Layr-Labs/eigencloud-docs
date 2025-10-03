@@ -192,37 +192,6 @@ Applications can be verified through a cryptographic chain:
 3. Verify the signature matches the expected wallet address
 4. Confirm hardware attestation chain (TEE → KMS → Application)
 
-## Deploy Your Own App
-
-Four simple steps to deploy an autonomous application:
-
-```bash
-# 1. Install the CLI (one-time setup)
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
-
-# 2. Create your app from a template (choose: typescript | python | golang | rust)
-eigenx app create my-app
-cd my-app
-
-# 3. Edit your application code
-# Add your logic - your app gets process.env.MNEMONIC automatically
-
-# 4. Deploy to hardware-isolated infrastructure
-eigenx app deploy
-```
-
-✨ **That's it!** Your app is now running with:
-- Its own wallet address (no key management needed)
-- Hardware isolation via Intel TDX
-- Public HTTP endpoint (HTTPS with custom domain)
-- Ready to receive and manage funds
-
-Try it yourself - from zero to deployed in under a minute.
-
-:::tip Already have a Docker image?
-Deploy it directly: `eigenx app deploy your-image:tag`
-:::
-
 ## Documentation
 
 - **[Quickstart Guide](./quickstart)** - Deploy your first app in 5 minutes
