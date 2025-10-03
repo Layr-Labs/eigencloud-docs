@@ -8,8 +8,7 @@ const DEFAULT_STYLES = {
     borderRadius: '8px',
     fontFamily: 'Monaco, Menlo, "Courier New", monospace',
     fontSize: '14px',
-    minHeight: '400px',
-    maxHeight: '500px',
+    height: '400px',
     overflowY: 'auto',
     marginBottom: '1rem',
     border: '1px solid #333'
