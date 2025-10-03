@@ -1,61 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const DEMO_STEPS = [
-  {
-    command: 'eigenx app create my-trading-bot typescript',
-    output: [
-      '🚀 Creating app from typescript template...',
-      '✅ Created my-trading-bot/',
-      '✅ Generated index.ts',
-      '✅ Added package.json',
-      '✅ Created Dockerfile for TEE deployment',
-      '',
-      'cd my-trading-bot'
-    ]
-  },
-  {
-    command: 'cat index.ts',
-    output: [
-      'import { mnemonicToAccount } from "viem/accounts"',
-      '',
-      '// Access your app\'s wallet',
-      'const wallet = mnemonicToAccount(process.env.MNEMONIC)',
-      '',
-      'console.log("Address:", wallet.address)',
-      '',
-      '// Now your app can:',
-      '// - Hold funds autonomously',
-      '// - Sign transactions and messages',
-      '// - Interact with any blockchain'
-    ]
-  },
-  {
-    command: 'eigenx app deploy',
-    output: [
-      '🏗️  Building Docker image...',
-      '   ✓ Built: my-trading-bot:latest',
-      '',
-      '📤 Pushing to registry...',
-      '   ✓ Pushed: docker.io/my-trading-bot:latest',
-      '',
-      '⛓️  Submitting to blockchain...',
-      '   ✓ Transaction confirmed',
-      '',
-      '🚀 Deploying to TEE...',
-      '   ✓ Instance provisioned',
-      '   ✓ Running in Intel TDX',
-      '',
-      '✅ Deployment complete!',
-      '   App Name: my-trading-bot',
-      '   Docker Digest: sha256:4f6c2b3a...',
-      'Wallet Addresses:',
-      '   Ethereum: 0xa4Cae7029dfe122866F479E3b6eFb88dA3b35aea',
-      '   Solana: 6Xu2q4nifx9pfdwLtvAHSfGnXhXUJhnjWqcDhfhT1vpY',
-    ]
-  }
-];
-
-const styles = {
+const DEFAULT_STYLES = {
   terminal: {
     backgroundColor: '#1e1e1e',
     color: '#d4d4d4',
@@ -120,14 +65,23 @@ const styles = {
   }
 };
 
-export default function InteractiveDemo() {
+export default function InteractiveDemo({
+  steps = [],
+  completionMessage = "🎉 Demo complete!",
+  ctaButton = null,
+  styles: customStyles = {},
+  promptSymbol = '$',
+  typeSpeed = 100,
+  initialDelay = 300
+}) {
+  const styles = { ...DEFAULT_STYLES, ...customStyles };
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [output, setOutput] = useState(['']);
   const [outputComplete, setOutputComplete] = useState(false);
   const terminalRef = useRef(null);
 
-  const isFinished = currentStep >= DEMO_STEPS.length;
+  const isFinished = currentStep >= steps.length;
   const canAdvance = !isTyping && (currentStep === 0 || outputComplete);
 
   const scrollToBottom = () => {
@@ -137,7 +91,7 @@ export default function InteractiveDemo() {
   };
 
   const typeCommand = (stepIndex) => {
-    if (stepIndex >= DEMO_STEPS.length) return;
+    if (stepIndex >= steps.length) return;
 
     setIsTyping(true);
     setOutput([]);
@@ -145,23 +99,23 @@ export default function InteractiveDemo() {
 
     // Show output gradually
     setIsTyping(false);
-    const stepOutput = DEMO_STEPS[stepIndex].output;
-    
+    const stepOutput = steps[stepIndex].output;
+
     stepOutput.forEach((line, index) => {
       setTimeout(() => {
         setOutput(prev => [...prev, line]);
-        
+
         // Mark complete and scroll after last line
         if (index === stepOutput.length - 1) {
           setOutputComplete(true);
           setTimeout(scrollToBottom, 100);
         }
-      }, 300 + (index * 100));
+      }, initialDelay + (index * typeSpeed));
     });
   };
 
   const advanceStep = () => {
-    if (currentStep < DEMO_STEPS.length && canAdvance) {
+    if (currentStep < steps.length && canAdvance) {
       typeCommand(currentStep);
       setCurrentStep(currentStep + 1);
     }
@@ -185,8 +139,8 @@ export default function InteractiveDemo() {
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, [currentStep, canAdvance]);
 
-  const activeStep = currentStep > 0 ? DEMO_STEPS[currentStep - 1] : null;
-  const nextStep = currentStep < DEMO_STEPS.length ? DEMO_STEPS[currentStep] : null;
+  const activeStep = currentStep > 0 ? steps[currentStep - 1] : null;
+  const nextStep = currentStep < steps.length ? steps[currentStep] : null;
 
   return (
     <div>
@@ -205,11 +159,11 @@ export default function InteractiveDemo() {
         tabIndex={0}
       >
         {/* Initial state - show first command */}
-        {currentStep === 0 && (
+        {currentStep === 0 && steps.length > 0 && (
           <div>
-            <span style={styles.prompt}>$</span>
+            <span style={styles.prompt}>{promptSymbol}</span>
             <span style={styles.command}>
-              {DEMO_STEPS[0].command}
+              {steps[0].command}
             </span>
             <span style={styles.cursor} />
             <div style={styles.hint}>
@@ -221,7 +175,7 @@ export default function InteractiveDemo() {
         {/* Active command with output */}
         {activeStep && (
           <div>
-            <span style={styles.prompt}>$</span>
+            <span style={styles.prompt}>{promptSymbol}</span>
             <span style={styles.command}>
               {activeStep.command}
               {isTyping && <span style={styles.cursor} />}
@@ -240,7 +194,7 @@ export default function InteractiveDemo() {
         {/* Next command preview */}
         {nextStep && !isTyping && outputComplete && (
           <div style={{ marginTop: '1rem' }}>
-            <span style={styles.prompt}>$</span>
+            <span style={styles.prompt}>{promptSymbol}</span>
             <span style={{ ...styles.command, opacity: 0.5 }}>
               {nextStep.command}
             </span>
@@ -252,9 +206,9 @@ export default function InteractiveDemo() {
         )}
 
         {/* Completion message */}
-        {isFinished && outputComplete && (
+        {isFinished && outputComplete && completionMessage && (
           <div style={{ marginTop: '1rem', color: '#4ec9b0' }}>
-            🎉 <strong>That's it!</strong> Your app is deployed with its own wallet.
+            {completionMessage}
           </div>
         )}
       </div>
@@ -273,18 +227,20 @@ export default function InteractiveDemo() {
             {currentStep === 0 ? 'Run Command ⏎' : 'Next Step →'}
           </button>
         )}
-        <a
-          href="/products/eigencompute/quickstart"
-          style={{ 
-            ...styles.buttonSecondary, 
-            textDecoration: 'none', 
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          Deploy Your Own →
-        </a>
+        {ctaButton && (
+          <a
+            href={ctaButton.href}
+            style={{
+              ...styles.buttonSecondary,
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {ctaButton.text}
+          </a>
+        )}
       </div>
     </div>
   );
