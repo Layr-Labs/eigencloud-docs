@@ -16,7 +16,7 @@ Builders are leveraging EigenAI to build applications such as:
 - **Verifiable AI Games**: Build games with AI characters or AI governance, where you can prove to your users that their interactions with the AI aren't being gamed.
 - **Verifiable AI Judges**: Whether it's contests / games, admissions committees, or prediction market settlements, AI can be used to verifiably judge entries / submissions.
 
-![EigenAI Use Cases](https://ai.eigencloud.xyz/images/eigencloud-diagram.jpg)
+<img src="/img/eigenai-use-cases.jpg" alt="EigenAI Use Cases"/>
 
 ## Get started 
 
