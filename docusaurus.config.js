@@ -591,12 +591,11 @@ const config = {
         postBuild: async ({ content, routes, outDir }) => {
           const { allMd, developersMd, operatorsMd, eigenDAMd } = content;
 
-          // Write concatenated Markdown content to static directory (so they're accessible at runtime)
-          const staticDir = path.join(context.siteDir, "static");
-          await fs.promises.writeFile(path.join(staticDir, "llms-full.md"), allMd.join("\n\n---\n\n"));
-          await fs.promises.writeFile(path.join(staticDir, "avs-developer-docs.md"), developersMd.join("\n\n---\n\n"));
-          await fs.promises.writeFile(path.join(staticDir, "operators-developer-docs.md"), operatorsMd.join("\n\n---\n\n"));
-          await fs.promises.writeFile(path.join(staticDir, "eigenda-docs.md"), eigenDAMd.join("\n\n---\n\n"));
+          // Write concatenated Markdown content to build output directory (so they're accessible in production)
+          await fs.promises.writeFile(path.join(outDir, "llms-full.md"), allMd.join("\n\n---\n\n"));
+          await fs.promises.writeFile(path.join(outDir, "avs-developer-docs.md"), developersMd.join("\n\n---\n\n"));
+          await fs.promises.writeFile(path.join(outDir, "operators-developer-docs.md"), operatorsMd.join("\n\n---\n\n"));
+          await fs.promises.writeFile(path.join(outDir, "eigenda-docs.md"), eigenDAMd.join("\n\n---\n\n"));
 
           // we need to dig down several layers:
           // find PluginRouteConfig marked by plugin.name === "docusaurus-plugin-content-docs"

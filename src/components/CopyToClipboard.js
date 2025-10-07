@@ -74,8 +74,11 @@ export default function CopyButton({ title, description, text, filePath, isLastR
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-        document.execCommand('copy');
+        const successful = document.execCommand('copy');
         textArea.remove();
+        if (!successful) {
+          throw new Error('execCommand copy failed');
+        }
       }
       setShowToast(true);
       setTimeout(() => {
