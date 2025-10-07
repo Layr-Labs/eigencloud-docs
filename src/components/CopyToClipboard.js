@@ -33,7 +33,7 @@ export default function CopyButton({ title, description, text, filePath, isLastR
 
   const copyText = async () => {
     let contentToCopy = text;
-    
+
     if (filePath) {
       // If we already have the file content, use it
       if (fileContent) {
@@ -59,12 +59,32 @@ export default function CopyButton({ title, description, text, filePath, isLastR
         return;
       }
     }
-    
-    await navigator.clipboard.writeText(contentToCopy);
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 1000);
+
+    // Try modern clipboard API first, fallback to legacy method
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(contentToCopy);
+      } else {
+        // Fallback for non-secure contexts
+        const textArea = document.createElement('textarea');
+        textArea.value = contentToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        textArea.remove();
+      }
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 1000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      alert('Failed to copy to clipboard.');
+    }
   };
 
   const downloadFile = async () => {

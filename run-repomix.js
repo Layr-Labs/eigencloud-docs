@@ -4,7 +4,7 @@ import path from "node:path";
 async function processRemoteRepo(repoUrl, fileName) {
   const options = {
     remote: repoUrl,
-    output: path.join(process.cwd(), 'build', fileName),
+    output: path.join(process.cwd(), 'static', fileName),
     compress: true,
     style: 'markdown'
   }
@@ -21,9 +21,13 @@ const repos = [
     fileName: 'eigenlayer-go-sdk.md'
   },
   {
-    url: 'https://github.com/Layr-Labs/hello-world-avs',
-    fileName: 'hello-world-avs.md'
-  }
+    url: 'https://github.com/Layr-Labs/eigenx-cli',
+    fileName: "eigenx.md",
+  },
+  {
+    url: 'https://github.com/Layr-Labs/devkit-cli',
+    fileName: "devkit.md",
+  },
 ] 
 
 for (const repo of repos) {
