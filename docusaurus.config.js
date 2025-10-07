@@ -320,7 +320,7 @@ const redirects = [
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
-      to: '/products/eigenlayer/developers/reference/ai-resources',
+      to: '/get-started/ai-resources',
   },
   {
       from: '/developers/Reference/avs-developer-best-practices',
