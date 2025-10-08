@@ -46,7 +46,7 @@ Currently, the batch poster defaults to a maximum of `16mib` when dispersing bat
     }
 ```
 :::note
-When configuring your disperser batch parameters, consult this [batch sizing reference](https://github.com/Layr-Labs/eigenda/blob/master/encoding/utils/codec/README.md) to understand encoding overhead and cost implications.
+When configuring your batch parameters, consult this [batch sizing reference](https://github.com/Layr-Labs/eigenda/blob/master/encoding/utils/codec/README.md) to understand encoding overhead and cost implications.
 :::
 
 **Enabling Failover**
