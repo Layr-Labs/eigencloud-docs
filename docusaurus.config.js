@@ -703,17 +703,41 @@ const config = {
           srcDark: "img/eigencloud-logo.png",
         },
         items: [
+          // {
+          //   to: "get-started/eigencloud/eigencloud-overview",
+          //   label: "Get Started",
+          //   position: "left",
+          //   activeBasePath: 'get-started/',
+          // },
+          // {
+          //  to: "products/eigenlayer/concepts/eigenlayer-overview",
+          //  label: "Products",
+          //  position: "left",
+          //  activeBasePath: 'products/',
+          // },
           {
-            to: "get-started/eigencloud/eigencloud-overview",
-            label: "Get Started",
+            to: "developers/concepts/why-build-on-eigencloud",
+            label: "Developers",
             position: "left",
-            activeBasePath: 'get-started/',
+            activeBasePath: 'developers/',
           },
           {
             to: "products/eigenlayer/concepts/eigenlayer-overview",
-            label: "Products",
+            label: "Operators",
             position: "left",
-            activeBasePath: 'products/',
+            activeBasePath: 'operators/',
+          },
+          {
+            to: "products/eigenlayer/concepts/eigenlayer-overview",
+            label: "Stakers",
+            position: "left",
+            activeBasePath: 'stakers/',
+          },
+          {
+            to: "products/eigenlayer/concepts/eigenlayer-overview",
+            label: "Learn",
+            position: "left",
+            activeBasePath: 'learns/',
           },
 
           {
