@@ -16,7 +16,7 @@ Builders are leveraging EigenAI to build applications such as:
 - **Verifiable AI Games**: Build games with AI characters or AI governance, where you can prove to your users that their interactions with the AI aren't being gamed.
 - **Verifiable AI Judges**: Whether it's contests / games, admissions committees, or prediction market settlements, AI can be used to verifiably judge entries / submissions.
 
-![EigenAI Use Cases](https://ai.eigencloud.xyz/images/eigencloud-diagram.jpg)
+<img src="/img/eigenai-use-cases.jpg" alt="EigenAI Use Cases"/>
 
 ## Get started 
 
@@ -31,7 +31,7 @@ A few key points:
 
 ## Usage
 
-We're starting off with supporting the `gpt-oss-120b-f16` model based on initial demand and expanding from. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
+We're starting off with supporting the `gpt-oss-120b-f16` model based on initial demand and expanding from there. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
 
 ```bash
 $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
@@ -64,7 +64,8 @@ $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
       },
       "finish_reason": "length"
     }
-  ]
+  ],
+   "signature": "2ee2e48ae9f6796c1de67977981d937c886efec3957c9bfc28f7a3f3be8262f04af609f22878b3bc2f0c4858fd04005d76877208881abd473208317df1dcfaf11c"
 }
 ```
 

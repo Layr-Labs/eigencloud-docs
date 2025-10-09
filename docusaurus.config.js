@@ -320,7 +320,7 @@ const redirects = [
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
-      to: '/products/eigenlayer/developers/reference/ai-resources',
+      to: '/get-started/ai-resources',
   },
   {
       from: '/developers/Reference/avs-developer-best-practices',
@@ -591,7 +591,7 @@ const config = {
         postBuild: async ({ content, routes, outDir }) => {
           const { allMd, developersMd, operatorsMd, eigenDAMd } = content;
 
-          // Write concatenated Markdown content to build directory
+          // Write concatenated Markdown content to build output directory (so they're accessible in production)
           await fs.promises.writeFile(path.join(outDir, "llms-full.md"), allMd.join("\n\n---\n\n"));
           await fs.promises.writeFile(path.join(outDir, "avs-developer-docs.md"), developersMd.join("\n\n---\n\n"));
           await fs.promises.writeFile(path.join(outDir, "operators-developer-docs.md"), operatorsMd.join("\n\n---\n\n"));
@@ -628,7 +628,7 @@ const config = {
 
           // Write llms.txt file to build directory
           try {
-            fs.writeFileSync(path.join(outDir, "llms.md"), llmsTxt);
+            fs.writeFileSync(path.join(outDir, "llms.txt"), llmsTxt);
           } catch (err) {
             throw err;
           }

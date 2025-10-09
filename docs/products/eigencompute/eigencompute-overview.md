@@ -5,6 +5,12 @@ sidebar_position: 1
 
 import InteractiveDemo from '@site/src/components/InteractiveDemo';
 
+:::tip Get Started
+Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli) to deploy your application to EigenCompute.
+
+While in Alpha **an allowlisted account is required to create apps.** Use an existing address with `eigenx auth login` or generate a new address with `eigenx auth generate`, then submit an onboarding request [here](https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview).
+:::
+
 # EigenCompute Overview
 
 EigenCompute enables developers to deploy **verifiable applications**: containerized services that receive their own cryptographic identity, allowing them to hold funds, sign transactions, and operate autonomously.
