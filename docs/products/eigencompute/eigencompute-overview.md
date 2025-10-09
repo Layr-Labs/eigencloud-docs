@@ -8,7 +8,11 @@ import InteractiveDemo from '@site/src/components/InteractiveDemo';
 :::tip Get Started
 Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli) to deploy your application to EigenCompute.
 
-While in Alpha **an allowlisted account is required to create apps.** Use an existing address with `eigenx auth login` or generate a new address with `eigenx auth generate`, then submit an onboarding request [here](https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview).
+While in Alpha **an allowlisted account is required to create apps.** Use an existing address with `eigenx auth login` or generate a new address with `eigenx auth generate`, then submit an onboarding request:
+
+<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>Request Onboarding Access</span>
+</a>
 :::
 
 # EigenCompute Overview
