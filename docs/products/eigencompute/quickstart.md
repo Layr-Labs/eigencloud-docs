@@ -280,7 +280,7 @@ Let's Encrypt has a rate limit of 5 certificates per week per domain. Always tes
 
 ## Next Steps
 
-- **Explore [CLI Commands](./cli-commands/authentication)** - Learn about all available commands
+- **Explore [CLI Commands](reference/eigenx-cli/subcommands/authentication.md)** - Learn about all available commands
 - **Read [Architecture Documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md)** - Understand how EigenX works
 - **Review [Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md)** - Deep dive into keys, environment variables, and security
 

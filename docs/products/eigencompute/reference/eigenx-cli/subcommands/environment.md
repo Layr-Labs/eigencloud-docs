@@ -166,6 +166,6 @@ eigenx app deploy
 
 ## Related Commands
 
-- [Authentication](./authentication) - Manage credentials per environment
-- [Deployment](./deployment) - Deploy apps to current environment
-- [Monitoring](./monitoring) - View apps in current environment
+- [Authentication](authentication.md) - Manage credentials per environment
+- [Deployment](deployment.md) - Deploy apps to current environment
+- [Monitoring](monitoring.md) - View apps in current environment

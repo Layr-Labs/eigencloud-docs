@@ -401,6 +401,6 @@ eigenx auth login
 
 ## Related Commands
 
-- [Environment Management](./environment) - Switch between mainnet and sepolia
-- [Configuration](./configuration) - CLI configuration options
-- [Deployment](./deployment) - Deploy apps using authenticated credentials
+- [Environment Management](environment.md) - Switch between mainnet and sepolia
+- [Configuration](configuration.md) - CLI configuration options
+- [Deployment](deployment.md) - Deploy apps using authenticated credentials

@@ -251,6 +251,6 @@ eigenx app logs --watch my-app | grep -i error
 
 ## Related Commands
 
-- [Lifecycle Management](./lifecycle) - Start, stop, terminate apps
-- [Deployment](./deployment) - Deploy and upgrade apps
-- [Authentication](./authentication) - Manage account access
+- [Lifecycle Management](lifecycle.md) - Start, stop, terminate apps
+- [Deployment](deployment.md) - Deploy and upgrade apps
+- [Authentication](authentication.md) - Manage account access

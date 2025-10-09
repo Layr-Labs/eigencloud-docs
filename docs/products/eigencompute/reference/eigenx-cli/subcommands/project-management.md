@@ -498,6 +498,6 @@ eigenx app deploy
 
 ## Related Commands
 
-- [Deployment & Updates](./deployment) - Deploy and upgrade applications
-- [Authentication](./authentication) - Manage authentication for deployments
-- [Monitoring](./monitoring) - View app info and logs
+- [Deployment & Updates](deployment.md) - Deploy and upgrade applications
+- [Authentication](authentication.md) - Manage authentication for deployments
+- [Monitoring](monitoring.md) - View app info and logs

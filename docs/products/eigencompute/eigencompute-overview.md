@@ -249,6 +249,6 @@ Security enhancements in development:
 ## Documentation
 
 - **[Quickstart Guide](./quickstart)** - Deploy your first app in 5 minutes
-- **[CLI Commands](./cli-commands/authentication)** - Complete command reference
+- **[CLI Commands](reference/eigenx-cli/subcommands/authentication.md)** - Complete command reference
 - **[Architecture Guide](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md)** - Deep dive into how EigenCompute works
 - **[Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md)** - Understanding keys, security, and best practices

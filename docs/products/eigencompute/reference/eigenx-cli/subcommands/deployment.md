@@ -580,7 +580,7 @@ console.error('Error occurred:', error)
 
 ## Related Commands
 
-- [Lifecycle Management](./lifecycle) - Start, stop, and terminate apps
-- [Monitoring](./monitoring) - View logs and app information
-- [Project Management](./project-management) - Create and configure projects
-- [Authentication](./authentication) - Manage deployment credentials
+- [Lifecycle Management](lifecycle.md) - Start, stop, and terminate apps
+- [Monitoring](monitoring.md) - View logs and app information
+- [Project Management](project-management.md) - Create and configure projects
+- [Authentication](authentication.md) - Manage deployment credentials

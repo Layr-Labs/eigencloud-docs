@@ -530,6 +530,6 @@ Unfortunately, termination is irreversible. You'll need to:
 
 ## Related Commands
 
-- [Deployment](./deployment) - Deploy new apps or upgrade existing ones
-- [Monitoring](./monitoring) - View app status, info, and logs
-- [Project Management](./project-management) - Create and configure apps
+- [Deployment](deployment.md) - Deploy new apps or upgrade existing ones
+- [Monitoring](monitoring.md) - View app status, info, and logs
+- [Project Management](project-management.md) - Create and configure apps

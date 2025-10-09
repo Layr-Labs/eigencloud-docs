@@ -317,9 +317,9 @@ eigenx app deploy --verbose
 
 ## Related Commands
 
-- [Authentication](./authentication) - Manage credentials
-- [Environment Management](./environment) - Switch between mainnet and sepolia
-- [Monitoring](./monitoring) - View apps and logs
+- [Authentication](authentication.md) - Manage credentials
+- [Environment Management](environment.md) - Switch between mainnet and sepolia
+- [Monitoring](monitoring.md) - View apps and logs
 
 ## Additional Resources
 
