@@ -3,6 +3,8 @@ title: Build Faster with DevKit and Hourglass
 sidebar_position: 2
 ---
 
+> Click [here](https://github.com/Layr-Labs/devkit-cli)  get started building with DevKit.
+
 The task-based framework Hourglass provides the onchain and offchain infrastructure to run task-based AVSs. 
 Hourglass enables you to extend your smart contracts by using an offchain coprocessor AVS.
 

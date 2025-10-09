@@ -4,7 +4,10 @@ sidebar_position: 4
 ---
 
 :::tip Get Started
+
 Follow the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/README.md) to deploy your application to EigenCompute.
+
+While in Alpha **an allowlisted account is required to create apps.** Use an existing address with `eigenx auth login` or generate a new address with `eigenx auth generate`, then submit an onboarding request [here](https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview).
 :::
 
 ## Overview

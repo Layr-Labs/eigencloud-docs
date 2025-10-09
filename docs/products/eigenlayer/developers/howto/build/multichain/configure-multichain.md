@@ -6,7 +6,7 @@ title: Configure Multichain AVS
 :::important
 Multichain verification is early-access and in active development. Expect iterative updates before the mainnet release.
 
-Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-008.md) and is available on testnet in v1.7.0.
+Multichain implements [ELIP-008 EigenLayer Multichain Verification](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-008.md) and is available on testnet and mainnet in v1.7.0.
 :::
 
 The diagram illustrates the high level steps to configure multichain verification and create a reservation for a participating
@@ -66,6 +66,14 @@ The caller must have [UAM permissions](../../../concepts/uam-for-avs.md) for `op
 ## 5. Wait for deployment
 
 EigenLabs generates and transports your stake table. To determine when transport is complete, monitor [`OperatorTableUpdater.GlobalRootConfirmed`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.7.0-rc.4/docs/multichain/destination/OperatorTableUpdater.md).
+
+
+The **operator tables of *all* operatorSets are updated weekly on Monday at 14:00 UTC on mainnet and daily at 14:00 UTC on testnet**. To ensure that an operatorSet can immediately begin verifying certificates and that its stake weights do not become stale between table updates, the multichain protocol updates the table for a *single* operatorSet registered to the protocol when the following events are emitted:
+
+- AllocationManager: `OperatorSlashed`
+- AllocationManager: `OperatorAddedToOperatorSet`
+- AllocationManager: `OperatorRemovedFromOperatorSet`
+- CrossChainRegistry: `GenerationReservationCreated`
 
 ## Next 
 
