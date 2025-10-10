@@ -518,3 +518,84 @@ pre, code, .code-block, .DevelopAVSCode {
 }
 
 /* === End Figma Font Styles === */
+
+/* Onboarding CTA Button */
+.onboardingButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  margin: 16px 0;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5B47DB 0%, #7C6FE8 100%);
+  color: #FFFFFF;
+  font-family: 'ABC Repro', 'DM Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(91, 71, 219, 0.3);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboardingButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6B57EB 0%, #8C7FF8 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.onboardingButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 71, 219, 0.4);
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.onboardingButton:hover::before {
+  opacity: 1;
+}
+
+.onboardingButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgba(91, 71, 219, 0.3);
+}
+
+.onboardingButton span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Arrow icon for the button */
+.onboardingButton::after {
+  content: '→';
+  position: relative;
+  z-index: 1;
+  margin-left: 4px;
+  transition: transform 0.25s ease;
+}
+
+.onboardingButton:hover::after {
+  transform: translateX(4px);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .onboardingButton {
+  background: linear-gradient(135deg, #6B57EB 0%, #8C7FF8 100%);
+  box-shadow: 0 4px 12px rgba(107, 87, 235, 0.4);
+}
+
+[data-theme="dark"] .onboardingButton:hover {
+  box-shadow: 0 6px 20px rgba(107, 87, 235, 0.5);
+}
