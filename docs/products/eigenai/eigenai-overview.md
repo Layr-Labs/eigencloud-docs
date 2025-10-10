@@ -3,6 +3,10 @@ title: EigenAI Overview
 sidebar_position: 5
 ---
 
+:::tip Get Started
+While in Alpha **an allowlisted account is required to use the API.** If you have a wallet address already for [EigenCompute](../eigencompute/concepts/eigencompute-overview.md) or if you have a separate address, use that address to submit an onboarding request [here](https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigenai_overview) to receive an API key.
+:::
+
 ## Overview
 Build verifiable applications leveraging LLM inference without wondering if the same LLM call might produce different results on different runs, or whether your prompts, models, or responses are modified in any way. EigenAI offers a *deterministic, verifiable* API, compatible with the OpenAI API, so you can simply place the API endpoint in your existing application to start shipping AI-based applications you and your users can trust.
 

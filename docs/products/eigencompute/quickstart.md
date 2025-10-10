@@ -1,0 +1,331 @@
+---
+title: Quickstart
+sidebar_position: 2
+---
+
+# EigenX CLI Quickstart
+
+Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
+- **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
+- **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
+
+:::tip Testing on Sepolia
+To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
+- [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
+- [Alchemy Faucet](https://sepoliafaucet.com/)
+:::
+
+## Installation
+
+### macOS/Linux
+
+```bash
+curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
+```
+
+### Windows
+
+```bash
+curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
+```
+
+## Initial Setup
+
+### Docker Login
+
+First, log in to your Docker registry. This is required to push your application images:
+
+```bash
+docker login
+```
+
+### Authenticate with EigenX
+
+You have two options for authentication:
+
+#### Option 1: Use an Existing Private Key
+
+```bash
+eigenx auth login
+```
+
+This command will prompt you to enter your private key and store it securely in your OS keyring.
+
+#### Option 2: Generate a New Private Key
+
+```bash
+eigenx auth generate --store
+```
+
+This generates a new private key and stores it securely.
+
+### Get Testnet Funds
+
+Check your wallet address:
+
+```bash
+eigenx auth whoami
+```
+
+Ensure you have mainnet ETH for deployment transactions.
+
+## Create & Deploy Your First App
+
+### Create a New Application
+
+Create a new application from a template. Choose from: `typescript`, `python`, `golang`, or `rust`
+
+```bash
+eigenx app create my-app typescript
+cd my-app
+```
+
+This creates a new project with:
+- Application code from the template
+- A `Dockerfile` configured for TEE deployment
+- An `.env.example` file for environment variables
+
+### Configure Environment Variables
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` to add any environment variables your application needs:
+
+```bash
+# Example .env content
+API_KEY=your_api_key_here
+DATABASE_URL=your_database_url
+
+# Variables with _PUBLIC suffix are visible to users
+NETWORK_PUBLIC=sepolia
+```
+
+:::tip
+Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
+:::
+
+### Deploy to TEE
+
+Deploy your application to a Trusted Execution Environment:
+
+```bash
+eigenx app deploy
+```
+
+The CLI will:
+1. Build your Docker image targeting `linux/amd64`
+2. Push the image to your Docker registry
+3. Deploy to a TEE instance
+4. Return your app details including app ID and instance IP
+
+### View Your Application
+
+After deployment, view your app's information:
+
+```bash
+eigenx app info
+```
+
+View real-time logs:
+
+```bash
+eigenx app logs
+```
+
+## Working with Existing Projects
+
+Already have a containerized application? You don't need to start from a template:
+
+```bash
+cd my-existing-project
+
+# Deploy directly - the CLI will prompt for Dockerfile and .env paths
+eigenx app deploy
+```
+
+**Requirements for existing projects:**
+- **Dockerfile** - Must target `linux/amd64` and run as root user
+- **.env file** - Optional but recommended for environment variables
+
+The CLI will automatically prompt for file paths if they're not in default locations.
+
+### Manual Image Building
+
+If you prefer to build and push images yourself:
+
+```bash
+# Build and push manually
+docker build --platform linux/amd64 -t myregistry/myapp:v1.0 .
+docker push myregistry/myapp:v1.0
+
+# Deploy using the image reference
+eigenx app deploy myregistry/myapp:v1.0
+```
+
+## Update Your Application
+
+After making changes to your code or environment variables:
+
+```bash
+eigenx app upgrade
+```
+
+The CLI will rebuild and redeploy your application with the latest changes.
+
+## Application Environment
+
+Your TEE application runs with these capabilities:
+
+### Secure Execution
+Your code runs in an Intel TDX instance with hardware-level isolation.
+
+### Auto-Generated Wallet
+Access a private mnemonic via `process.env.MNEMONIC`:
+
+```typescript
+// TypeScript/JavaScript example
+import { mnemonicToAccount } from 'viem/accounts'
+
+const account = mnemonicToAccount(process.env.MNEMONIC)
+```
+
+```python
+# Python example
+import os
+from eth_account import Account
+
+Account.enable_unaudited_hdwallet_features()
+account = Account.from_mnemonic(os.environ['MNEMONIC'])
+```
+
+:::important KMS-Generated Mnemonic
+The `MNEMONIC` variable is **automatically generated by KMS** and injected into your TEE at runtime. Any mnemonic you see in `.env.example` is just a placeholder for local development. The TEE will **overwrite** this with the actual KMS-generated mnemonic that's unique and persistent to your app.
+
+Only your specific TEE instance can decrypt and use this mnemonic.
+:::
+
+### Environment Variables
+All variables from your `.env` file are available in your container:
+- Variables with `_PUBLIC` suffix are visible to users for transparency
+- Standard variables remain private and encrypted within the TEE
+
+### Onchain Management
+Your app's lifecycle is controlled via Ethereum smart contracts on Sepolia.
+
+## TLS/HTTPS Setup (Optional)
+
+To expose your application via HTTPS with a custom domain:
+
+### Add TLS Configuration
+
+```bash
+eigenx app configure tls
+```
+
+This adds Caddy configuration files to your project for automatic HTTPS.
+
+### Configure Domain
+
+Add these variables to your `.env`:
+
+```bash
+DOMAIN=yourdomain.com
+APP_PORT=3000
+
+# Recommended for first deployment
+ENABLE_CADDY_LOGS=true
+ACME_STAGING=true  # Use staging certificates to avoid rate limits
+```
+
+### DNS Setup
+
+Create an A record pointing to your instance IP (get from `eigenx app info`):
+
+- **Type**: A
+- **Name**: yourdomain.com
+- **Value**: `<instance-ip>`
+
+### Deploy
+
+```bash
+eigenx app upgrade
+```
+
+### Production Certificates
+
+Once you've tested with staging certificates, switch to production:
+
+```bash
+# In .env:
+ACME_STAGING=false
+ACME_FORCE_ISSUE=true  # Only needed once if staging cert exists
+
+# Deploy
+eigenx app upgrade
+
+# After successful deployment, set ACME_FORCE_ISSUE=false
+```
+
+:::warning Rate Limits
+Let's Encrypt has a rate limit of 5 certificates per week per domain. Always test with staging certificates first.
+:::
+
+## Next Steps
+
+- **Explore [CLI Commands](./cli-commands/authentication)** - Learn about all available commands
+- **Read [Architecture Documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md)** - Understand how EigenX works
+- **Review [Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md)** - Deep dive into keys, environment variables, and security
+
+## Troubleshooting
+
+### Docker Build Fails
+
+Ensure your Dockerfile targets the correct platform:
+
+```dockerfile
+FROM --platform=linux/amd64 node:18
+```
+
+### Deployment Transaction Fails
+
+Check your ETH balance:
+
+```bash
+eigenx auth whoami
+```
+
+Ensure you have sufficient mainnet ETH for deployment transactions.
+
+### Image Push Fails
+
+Ensure you're logged into Docker:
+
+```bash
+docker login
+```
+
+### App Not Starting
+
+Check your app logs for errors:
+
+```bash
+eigenx app logs
+```
+
+Common issues:
+- Port conflicts - ensure `APP_PORT` is set correctly
+- Missing environment variables
+- Application crashes - check your code
+
+## Get Help
+
+- **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/eigenx-cli/issues)
+- **Onboarding**: [Submit request](https://onboarding.eigencloud.xyz)
