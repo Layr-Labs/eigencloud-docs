@@ -6,13 +6,19 @@ export default function CopyMarkdownButton() {
 
   const copyMarkdown = async () => {
     try {
-      // Get the main article content
-      const article = document.querySelector('article');
-      if (!article) return;
+      // Get the main content with Docusaurus-specific selectors
+      const contentElement = document.querySelector('.theme-doc-markdown') || 
+                            document.querySelector('article');
 
-      // Get the markdown content from the page
-      const title = document.querySelector('h1')?.textContent || '';
-      const content = article.innerText;
+      if (!contentElement) return;
+
+      // Get the title
+      const title = document.querySelector('.theme-doc-markdown h1')?.textContent || 
+                   document.querySelector('h1')?.textContent || 
+                   document.title || '';
+
+      // Get the content text
+      const content = contentElement.innerText || contentElement.textContent || '';
 
       // Format as markdown
       const markdown = `# ${title}\n\n${content}`;
