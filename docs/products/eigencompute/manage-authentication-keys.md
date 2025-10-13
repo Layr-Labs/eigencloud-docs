@@ -11,4 +11,27 @@ EigenCompute uses two types of keys:
 For more information on EigenCompute keys, refer to the Keys Overview concept topic.
 :::
 
-Display the current 
+## Check authentication status
+
+Check the authentication status to: 
+* Verify that you are logged in before deploying.
+* Find your address to request testnet funds.
+* Confirm the environment to which you're deploying.
+
+To display the currently authenticated address: 
+
+`eigenx auth whoami`
+
+The authenticated address and environment are displayed:
+
+```
+Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
+Source:  stored credentials (sepolia)
+```
+
+## List stored keys
+
+List stored keys to: 
+* Audit stored keys across environments.
+* Check which key is active for key environment.
+* Track keys for different environments. 
