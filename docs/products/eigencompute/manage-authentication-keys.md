@@ -20,7 +20,9 @@ Check the authentication status to:
 
 To display the currently authenticated address: 
 
-`eigenx auth whoami`
+```
+eigenx auth whoami
+```
 
 The authenticated address and environment are displayed:
 
@@ -35,3 +37,17 @@ List stored keys to:
 * Audit stored keys across environments.
 * Check which key is active for key environment.
 * Track keys for different environments. 
+
+To list all stored keys: 
+
+```
+eigenx auth list
+```
+
+The addresses of the stored keys are displayed for each environment: 
+
+```
+Stored private keys:
+
+sepolia      0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
+```
