@@ -3,17 +3,17 @@ title: Building with DevKit and Hourglass
 sidebar_position: 1
 ---
 
-:::note
-DevKit and Hourglass are currently in public preview meaning they are in active development.
-:::
-
-DevKit is the official developer CLI toolkit for building, testing, and managing AVSs using the task-based execution framework Hourglass. 
+DevKit is the official developer CLI toolkit for building, testing, and managing AVSs using the task-based execution framework Hourglass.
 DevKit provides a streamlined, modular experience enabling developers to go from scaffolding to execution in minutes, not weeks.
 
-Hourglass is a task-based execution framework for building decentralized services (AVSs) requiring verifiable offchain compute. 
+Hourglass is a task-based execution framework for building decentralized services (AVSs) requiring verifiable offchain compute.
 Hourglass standardizes how developers define, distribute, execute, and verify compute tasks across decentralized operator networks.
 
 Together, Hourglass and DevKit form the foundation for building scalable, verifiable offchain services on EigenLayer and EigenCloud.
+
+:::tip install
+curl -fsSL https://raw.githubusercontent.com/Layr-Labs/devkit-cli/main/install-devkit.sh | bash
+:::
 
 ## Get Started with AVS Development
 
@@ -35,6 +35,6 @@ Use DevKit and Hourglass to:
 
 For a step-by-step guide on getting started with DevKit, refer to the [DevKit repo](https://github.com/Layr-Labs/devkit-cli?tab=readme-ov-file#-getting-started).
 
-:::important 
+:::important
 While in public preview, DevKit is intended for local experimentation and development, and has not yet been audited.
 ::: 
