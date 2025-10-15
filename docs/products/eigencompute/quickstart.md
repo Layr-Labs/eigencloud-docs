@@ -32,7 +32,7 @@ curl -fsSL https://tools.eigencloud.xyz | bash
 ### Windows
 
 ```bash
-curl -fsSL https://tools.eigencloud.xyz | powershell -
+curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
 ```
 
 ## Initial Setup
