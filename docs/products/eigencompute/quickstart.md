@@ -26,13 +26,13 @@ To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet
 ### macOS/Linux
 
 ```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
+curl -fsSL https://tools.eigencloud.xyz | bash
 ```
 
 ### Windows
 
 ```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
+curl -fsSL https://tools.eigencloud.xyz | powershell -
 ```
 
 ## Initial Setup
