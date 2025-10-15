@@ -1,6 +1,6 @@
 ---
-title: Keys Overview
-sidebar_position: 5
+title: Keys
+sidebar_position: 3
 ---
 
 EigenCompute uses two types of keys: 
