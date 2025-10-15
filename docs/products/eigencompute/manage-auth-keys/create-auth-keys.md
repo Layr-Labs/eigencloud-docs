@@ -38,8 +38,12 @@ Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
 To create and securely store an authentication key for a specific environment:
 
 ```
-eigenx auth generate --store --env prod
+eigenx auth generate --store --environment sepolia
 ```
+
+:::tip
+To list available deployment environments, use `eigenx environment list`
+:::
 
 ## Create and display an authentication key
 
