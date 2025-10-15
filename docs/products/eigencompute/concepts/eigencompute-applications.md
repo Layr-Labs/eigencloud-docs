@@ -1,5 +1,5 @@
 ---
-title: EigenCompute Applications
+title: Applications
 sidebar_position: 2
 ---
 
