@@ -4,7 +4,11 @@ sidebar_position: 5
 ---
 
 :::tip Get Started
-While in Alpha **an allowlisted account is required to use the API.** If you have a wallet address already for [EigenCompute](../eigencompute/concepts/eigencompute-overview.md) or if you have a separate address, use that address to submit an onboarding request [here](https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigenai_overview) to receive an API key.
+While in Alpha **an allowlisted account is required to use the API.** If you have a wallet address already for [EigenCompute](../eigencompute/eigencompute-overview.md) or if you have a separate address, use that address to submit an onboarding request here to receive an API key:
+
+<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigenai_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>Request Onboarding Access</span>
+</a>
 :::
 
 ## Overview
