@@ -81,6 +81,10 @@ With `GenericCommitment`, this will skip deploying the DAChallengeContract (see 
 
 If you are not using op-deployer and possibly generating this file manually, make sure to set `da_commitment_type` to use generic commitment instead of [keccak commitments](https://specs.optimism.io/experimental/alt-da.html#input-commitment-submission)! The other values are meaningless, but they still need to be set somehow.
 
+:::note
+When configuring your batch parameters, consult this [batch sizing reference](https://github.com/Layr-Labs/eigenda/blob/master/encoding/utils/codec/README.md) to understand encoding overhead and cost implications.
+:::
+
 ### Deploying EigenDA Proxy
 
 We push docker images to our [ghcr registry](https://github.com/Layr-Labs/eigenda-proxy/pkgs/container/eigenda-proxy) on every [release](https://github.com/Layr-Labs/eigenda-proxy/releases).

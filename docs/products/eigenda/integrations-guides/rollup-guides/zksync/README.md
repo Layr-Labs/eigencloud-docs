@@ -79,6 +79,10 @@ da_client:
   blob_version: 0
 ```
 
+:::note
+When configuring your batching parameters, consult this [batch sizing reference](https://github.com/Layr-Labs/eigenda/blob/master/encoding/utils/codec/README.md) to understand encoding overhead and cost implications.
+:::
+
 You also need to modify `etc/env/file_based/secrets.yaml` to include the private key
 of the account that will be used to pay for dispersals. You need to add the following field:
 
