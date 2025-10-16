@@ -220,6 +220,33 @@ All variables from your `.env` file are available in your container:
 ### Onchain Management
 Your app's lifecycle is controlled via Ethereum smart contracts on Sepolia.
 
+## Port Configuration
+
+To make your application accessible over the internet, you need to expose ports in your Dockerfile.
+
+### Basic Port Exposure
+
+Add the `EXPOSE` directive to your Dockerfile:
+
+```dockerfile
+FROM --platform=linux/amd64 node:18
+USER root
+WORKDIR /app
+COPY . .
+RUN npm install
+
+# Expose the port your app listens on
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+### Application Binding
+
+Your application must bind to `0.0.0.0` (not `localhost`) to be accessible.
+
+For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](howto/expose-ports.md).
+
 ## TLS/HTTPS Setup (Optional)
 
 To expose your application via HTTPS with a custom domain:
