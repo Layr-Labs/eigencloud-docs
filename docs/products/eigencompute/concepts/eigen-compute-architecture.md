@@ -18,7 +18,9 @@ When you deploy an EigenCompute app you get:
 
 The deployment flow ensures only verified, attested apps are deployed to TEEs and can access the app wallet keys.
 
-![Deployment Flow](/img/eigencompute-deployment-flow.png)
+<img src="/img/uam/eigencompute-deployment-flow.png" width="100%"
+style={{ margin: '50px'}}>
+</img>
 
 The EigenCompute components are:
 
