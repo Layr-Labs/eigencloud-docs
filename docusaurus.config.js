@@ -56,6 +56,13 @@ const redirects = [
       to: '/products/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
   },
 
+  // EigenCompute
+
+  {
+        from: '/products/eigencompute',
+        to: '/products/eigencompute/concepts/eigencompute-overview',
+    },
+
   // Get Started
   {
     from: '/get-started/eigencloud-overview',
