@@ -168,9 +168,26 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-# Must expose a port or run a service
 CMD ["npm", "start"]
 ```
+
+**Port Exposure:**
+
+Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on:
+
+```dockerfile
+# Single port
+EXPOSE 3000
+
+# Multiple ports
+EXPOSE 3000
+EXPOSE 9090
+
+# Port range
+EXPOSE 8000-8010
+```
+
+See the [Port Exposure Guide](../../howto/expose-ports.md).
 
 **Environment Variables:**
 
