@@ -1,9 +1,17 @@
 ---
-title: Quickstart
+title: EigenX CLI Quickstart
 sidebar_position: 1
 ---
 
-# EigenX CLI Quickstart
+<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>Request Onboarding Access</span>
+</a>
+
+:::important Allow List
+While in Alpha, an allowlisted account is required to create apps. To allowlist an address:
+1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
+2. Submit an onboarding request using the button above.
+   :::
 
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
