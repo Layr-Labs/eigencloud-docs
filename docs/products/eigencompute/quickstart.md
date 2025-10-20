@@ -249,61 +249,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## TLS/HTTPS Setup (Optional)
 
-To expose your application via HTTPS with a custom domain:
-
-### Add TLS Configuration
-
-```bash
-eigenx app configure tls
-```
-
-This adds Caddy configuration files to your project for automatic HTTPS.
-
-### Configure Domain
-
-Add these variables to your `.env`:
-
-```bash
-DOMAIN=yourdomain.com
-APP_PORT=3000
-
-# Recommended for first deployment
-ENABLE_CADDY_LOGS=true
-ACME_STAGING=true  # Use staging certificates to avoid rate limits
-```
-
-### DNS Setup
-
-Create an A record pointing to your instance IP (get from `eigenx app info`):
-
-- **Type**: A
-- **Name**: yourdomain.com
-- **Value**: `<instance-ip>`
-
-### Deploy
-
-```bash
-eigenx app upgrade
-```
-
-### Production Certificates
-
-Once you've tested with staging certificates, switch to production:
-
-```bash
-# In .env:
-ACME_STAGING=false
-ACME_FORCE_ISSUE=true  # Only needed once if staging cert exists
-
-# Deploy
-eigenx app upgrade
-
-# After successful deployment, set ACME_FORCE_ISSUE=false
-```
-
-:::warning Rate Limits
-Let's Encrypt has a rate limit of 5 certificates per week per domain. Always test with staging certificates first.
-:::
+For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/configure-tls.md).
 
 ## Next Steps
 
