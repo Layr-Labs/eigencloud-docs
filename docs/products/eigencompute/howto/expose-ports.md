@@ -1,4 +1,7 @@
-# Expose Ports in EigenCompute
+---
+title: Expose Ports
+sidebar_position: 4
+---
 
 This guide explains how to configure network ports for your EigenCompute applications, enabling them to receive incoming connections.
 
