@@ -19,7 +19,10 @@ Custom domain available.
     * Name: yourdomain.com
     * Value: Obtain IP address from `eigenx app info`
 
-3. Run `eigenx app configure tls`. 
+3. Run:
+   ```
+   eigenx app configure tls 
+   ```
 
 4. Add TLS environment variables to `.env`:
    ```
@@ -28,14 +31,14 @@ Custom domain available.
    
 5. Configure the required variables: 
 
-```
-# Required
-DOMAIN=yourdomain.com
-APP_PORT=3000
-# Recommended for first deployment
-ENABLE_CADDY_LOGS=true
-ACME_STAGING=true  # Use staging certificates initially
-```
+    ```
+    # Required
+    DOMAIN=yourdomain.com
+    APP_PORT=3000
+    # Recommended for first deployment
+    ENABLE_CADDY_LOGS=true
+    ACME_STAGING=true  # Use staging certificates initially
+    ```
 
 The configured TLS routes traffic from ports 80 and 443 to the `APP_PORT`.
 
