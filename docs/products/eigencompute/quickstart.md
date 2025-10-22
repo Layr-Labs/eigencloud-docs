@@ -1,9 +1,17 @@
 ---
-title: Quickstart
+title: EigenX CLI Quickstart
 sidebar_position: 1
 ---
 
-# EigenX CLI Quickstart
+<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>Request Onboarding Access</span>
+</a>
+
+:::important Allow List
+While in Alpha, an allowlisted account is required to create apps. To allowlist an address:
+1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
+2. Submit an onboarding request using the button above.
+   :::
 
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
@@ -249,61 +257,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## TLS/HTTPS Setup (Optional)
 
-To expose your application via HTTPS with a custom domain:
-
-### Add TLS Configuration
-
-```bash
-eigenx app configure tls
-```
-
-This adds Caddy configuration files to your project for automatic HTTPS.
-
-### Configure Domain
-
-Add these variables to your `.env`:
-
-```bash
-DOMAIN=yourdomain.com
-APP_PORT=3000
-
-# Recommended for first deployment
-ENABLE_CADDY_LOGS=true
-ACME_STAGING=true  # Use staging certificates to avoid rate limits
-```
-
-### DNS Setup
-
-Create an A record pointing to your instance IP (get from `eigenx app info`):
-
-- **Type**: A
-- **Name**: yourdomain.com
-- **Value**: `<instance-ip>`
-
-### Deploy
-
-```bash
-eigenx app upgrade
-```
-
-### Production Certificates
-
-Once you've tested with staging certificates, switch to production:
-
-```bash
-# In .env:
-ACME_STAGING=false
-ACME_FORCE_ISSUE=true  # Only needed once if staging cert exists
-
-# Deploy
-eigenx app upgrade
-
-# After successful deployment, set ACME_FORCE_ISSUE=false
-```
-
-:::warning Rate Limits
-Let's Encrypt has a rate limit of 5 certificates per week per domain. Always test with staging certificates first.
-:::
+For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/configure-tls.md).
 
 ## Next Steps
 
