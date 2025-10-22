@@ -13,7 +13,7 @@ Custom domain available.
 
 1. In Vercel, go to Settings and Domains, and enter the custom domain. A CNAME is provided. 
 
-2. In your domain settings, configure DNS by creating an A record pointing to your instance IP:
+2. In your DNS provider settings, configure DNS by creating an A record pointing to your instance IP:
 
     * Type: A
     * Name: yourdomain.com
