@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 
 EigenCompute enables developers to deploy verifiable applications in Trusted Execution Environments (TEEs). Each app receives
-its own deterministic wallet that serves as its cryptographic identity, allowing it to sign transactions, hold funds, and operate
+its own wallet serving as its cryptographic identity, allowing it to sign transactions, hold funds, and operate
 autonomously.
 
 When you deploy an EigenCompute app you get:
@@ -29,7 +29,7 @@ The EigenCompute components are:
 * EigenLabs Coordinator to manage infrastructure:
   - Listens for onchain app creation.
   - Deploys image to TEE.
-* Intel  TDX (Google Cloud) to execute app with unique wallet key:
+* [Intel  TDX (Google Cloud)](https://cloud.google.com/confidential-computing/confidential-space/docs/confidential-space-overview) to execute app with unique wallet key:
   - Deploys verified app inside TEE.
   - Requests keys from KMS.
 * KMS to manage onchain verification and key delivery:
