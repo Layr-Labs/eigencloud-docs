@@ -66,11 +66,7 @@ const redirects = [
   // Get Started
   {
     from: '/get-started/eigencloud-overview',
-    to: '/get-started/eigencloud/eigencloud-overview',
-  },
-  {
-    from: '/get-started/eigencloud-roadmap',
-    to: '/get-started/eigencloud/eigencloud-roadmap',
+    to: '/products/eigencloud/eigencloud-overview',
   },
 
 
@@ -281,15 +277,15 @@ const redirects = [
   },
   {
       from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
-      to: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
   },
   {
       from: '/developers/HowTo/get-started/quickstart',
-      to: '/products/eigenlayer/developers/howto/get-started/quickstart',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
   },
   {
       from: '/developers/HowTo/get-started/support',
-      to: '/products/eigenlayer/developers/howto/get-started/support',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/support',
   },
   {
       from: '/developers/HowTo/publish/onboard-avs-dashboard',
@@ -327,7 +323,7 @@ const redirects = [
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
-      to: '/get-started/ai-resources',
+      to: '/products/ai-resources',
   },
   {
       from: '/developers/Reference/avs-developer-best-practices',
