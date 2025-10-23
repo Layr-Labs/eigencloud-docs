@@ -34,15 +34,16 @@ eigenx app deploy [command options] [image_ref]
 
 ### Flags
 
-| Flag | Description |
-| --- | --- |
-| `--dockerfile <path>`, `-f` | Path to Dockerfile |
-| `--env-file <path>` | Path to .env file (default: `.env`) |
-| `--private-key <key>` | Private key for signing transactions |
-| `--environment <env>` | Deployment environment to use |
-| `--rpc-url <url>` | RPC URL to connect to blockchain |
-| `--name <name>` | Friendly name for the app |
-| `--log-visibility <setting>` | Log visibility: `public`, `private`, or `off` |
+| Flag                         | Description                                                         |
+|------------------------------|---------------------------------------------------------------------|
+| `--dockerfile <path>`, `-f`  | Path to Dockerfile                                                  |
+| `--env-file <path>`          | Path to .env file (default: `.env`)                                 |
+| `--private-key <key>`        | Private key for signing transactions                                |
+| `--environment <env>`        | Deployment environment to use                                       |
+| `--rpc-url <url>`            | RPC URL to connect to blockchain                                    |
+| `--name <name>`              | Friendly name for the app                                           |
+| `--log-visibility <setting>` | Log visibility: `public`, `private`, or `off`                       |
+| `--instance-type <value>`    | Machine instance type to use: `g1-standard-4t`, or `g1-standard-8t` |
 
 ### Examples
 
@@ -187,7 +188,7 @@ EXPOSE 9090
 EXPOSE 8000-8010
 ```
 
-See the [Port Exposure Guide](../../howto/expose-ports.md).
+See the [Port Exposure Guide](../../howto/configure/expose-ports.md).
 
 **Environment Variables:**
 
@@ -311,14 +312,15 @@ eigenx app upgrade [command options] <app-id|name> <image_ref>
 
 ### Flags
 
-| Flag | Description |
-| --- | --- |
-| `--dockerfile <path>`, `-f` | Path to Dockerfile |
-| `--env-file <path>` | Path to .env file (default: `.env`) |
-| `--private-key <key>` | Private key for signing transactions |
-| `--environment <env>` | Deployment environment to use |
-| `--rpc-url <url>` | RPC URL to connect to blockchain |
-| `--log-visibility <setting>` | Log visibility: `public`, `private`, or `off` |
+| Flag                         | Description                                                         |
+|------------------------------|---------------------------------------------------------------------|
+| `--dockerfile <path>`, `-f`  | Path to Dockerfile                                                  |
+| `--env-file <path>`          | Path to .env file (default: `.env`)                                 |
+| `--private-key <key>`        | Private key for signing transactions                                |
+| `--environment <env>`        | Deployment environment to use                                       |
+| `--rpc-url <url>`            | RPC URL to connect to blockchain                                    |
+| `--log-visibility <setting>` | Log visibility: `public`, `private`, or `off`                       |
+| `--instance-type <value>`    | Machine instance type to use: `g1-standard-4t`, or `g1-standard-8t` |
 
 ### Examples
 

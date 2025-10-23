@@ -59,7 +59,7 @@ Your application code must bind to `0.0.0.0` (all interfaces) to be accessible.
 
 For production applications with custom domains, you'll need to configure TLS in addition to exposing ports.
 
-See the [TLS configuration guide](../quickstart.md#configure-tlshttps-optional) for complete setup instructions.
+See the [TLS configuration guide](../../quickstart.md#configure-tlshttps-optional) for complete setup instructions.
 
 ## Troubleshooting
 
@@ -86,7 +86,7 @@ If you see "port already in use" errors:
 
 ## Related Documentation
 
-- [Quickstart Guide](../quickstart.md) - Complete deployment walkthrough
-- [TLS Configuration](../quickstart.md#configure-tlshttps-optional) - Setting up HTTPS with custom domains
-- [Deployment Reference](../reference/cli-commands/deployment.md) - Dockerfile requirements
-- [Monitoring](../reference/cli-commands/monitoring.md) - Viewing application logs
+- [Quickstart Guide](../../quickstart.md) - Complete deployment walkthrough
+- [TLS Configuration](../../quickstart.md#configure-tlshttps-optional) - Setting up HTTPS with custom domains
+- [Deployment Reference](../../reference/cli-commands/deployment.md) - Dockerfile requirements
+- [Monitoring](../../reference/cli-commands/monitoring.md) - Viewing application logs
