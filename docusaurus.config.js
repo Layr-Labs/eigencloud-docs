@@ -211,10 +211,6 @@ const redirects = [
       from: '/eigenlayer/releases',
       to: '/products/eigenlayer/releases',
   },
-  {
-      from: '/eigenlayer/roadmap',
-      to: '/get-started/eigencloud/eigencloud-roadmap',
-  },
   
   // Security
   {
