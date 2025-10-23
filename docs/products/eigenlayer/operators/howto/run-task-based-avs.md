@@ -17,6 +17,6 @@ EigenLayer Operator operations.
 
 For more information on `hgctl`, refer to the [README](https://github.com/Layr-Labs/hourglass-monorepo/blob/master/hgctl-go/README.md).
 
-For information on Operator concepts, and operating all other AVS, refer to the [EigenLayer](../../products/eigenlayer/concepts/eigenlayer-overview.md)
-and [Operator](../../products/eigenlayer/operators/concepts/operator-introduction.md) documentation.
+For information on Operator concepts, and operating all other AVS, refer to the [EigenLayer](../../concepts/eigenlayer-overview.md)
+and [Operator](../concepts/operator-introduction.md) documentation.
  

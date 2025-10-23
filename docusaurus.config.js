@@ -711,13 +711,7 @@ const config = {
         },
         items: [
           {
-            to: "get-started/eigencloud/eigencloud-overview",
-            label: "Get Started",
-            position: "left",
-            activeBasePath: 'get-started/',
-          },
-          {
-            to: "products/eigenlayer/concepts/eigenlayer-overview",
+            to: "products/eigencloud/eigencloud-overview",
             label: "Products",
             position: "left",
             activeBasePath: 'products/',

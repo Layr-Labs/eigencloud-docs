@@ -1,6 +1,6 @@
 ---
 title: Understanding AVSs on EigenLayer
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## What is an AVS

@@ -1,6 +1,6 @@
 ---
 title: Why Build on EigenLayer
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 ## What is EigenLayer
@@ -38,4 +38,4 @@ Services with commitments to:
 
 If your service is task based, use the DevKit with the task-based AVS template to get started.
 
-For other types of commitments, refer to the [EigenLayer documentation](../../../products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components.md).
+For other types of commitments, refer to the [EigenLayer documentation](../developers/howto/get-started-without-devkit/implement-minimum-onchain-components.md).
