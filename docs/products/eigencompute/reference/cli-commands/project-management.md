@@ -9,138 +9,41 @@ These commands help you create new projects and configure existing ones for depl
 
 ## Commands Overview
 
-| Command | Description |
-| --- | --- |
-| `eigenx app create [name] [language]` | Create new project from template |
-| `eigenx app configure tls` | Add TLS configuration to your project |
-| `eigenx app name <app-id\|name> <new-name>` | Set a friendly name for your app |
+| Command                                     | Description                           |
+|---------------------------------------------|---------------------------------------|
+| `eigenx app create [name] [language]`       | Create new project from template      |
+| `eigenx app configure tls`                  | Add TLS configuration to your project |
+| `eigenx app name <app-id\|name> <new-name>` | Set a friendly name for your app      |
 
----
+## Subcommands
 
-## `eigenx app create`
+### create
 
-Create a new application project from a template with all necessary configuration files.
-
-### Syntax
+Create an application project from a template with all necessary configuration files. For more information on creating
+applications, refer to [Create Application](../../howto/create-app-from-template.md).
 
 ```bash
-eigenx app create [command options] [name] [language]
+eigenx app create [name] [language] [--template <url>] [--template-version <version>]
 ```
 
-### Arguments
+| Argument   | Description                         | Required                     |
+|------------|-------------------------------------|------------------------------|
+| `name`     | Name for your application directory | No (prompts if not provided) |
+| `language` | Template language to use            | No (prompts if not provided) |
 
-| Argument | Description | Required |
-| --- | --- | --- |
-| `name` | Name for your application directory | No (prompts if not provided) |
-| `language` | Template language to use | No (prompts if not provided) |
+| Flag                           | Description                    |
+|--------------------------------|--------------------------------|
+| `--template <url>`             | Custom template repository URL |
+| `--template-version <version>` | Template version/tag to use    |
 
 ### Supported Languages
 
-| Language | Description | Use Case |
-| --- | --- | --- |
-| `typescript` | TypeScript/Node.js template | Web services, APIs, bots |
-| `python` | Python template | ML/AI, data processing, scripts |
-| `golang` | Go template | High-performance services |
-| `rust` | Rust template | Systems programming, performance-critical apps |
-
-### Flags
-
-| Flag | Description |
-| --- | --- |
-| `--template <url>` | Custom template repository URL |
-| `--template-version <version>` | Template version/tag to use |
-
-### Examples
-
-**Create TypeScript application**
-
-```bash
-eigenx app create my-trading-bot typescript
-```
-
-Output:
-```
-Cloning template: https://github.com/Layr-Labs/eigenx-templates → extracting templates/minimal/typescript
-
-[====================] 100% eigenx-templates (Cloning from ref: main)
-
-Template extraction complete: templates/minimal/typescript
-```
-
-Your application is ready! Next steps:
-```bash
-cd my-trading-bot
-cp .env.example .env
-# Edit .env with your configuration
-eigenx app deploy
-```
-
-**Create Python application**
-
-```bash
-eigenx app create ml-agent python
-```
-
-**Create Go application**
-
-```bash
-eigenx app create high-perf-service golang
-```
-
-**Create Rust application**
-
-```bash
-eigenx app create systems-app rust
-```
-
-### Project Structure
-
-After creating a project, you'll have this structure:
-
-```
-my-app/
-├── src/                    # Application source code
-├── Dockerfile             # Pre-configured for TEE deployment
-├── .env.example          # Example environment variables
-├── .gitignore            # Git ignore file
-├── package.json          # Dependencies (TypeScript/Node.js)
-├── tsconfig.json         # TypeScript config (TypeScript)
-├── requirements.txt      # Dependencies (Python)
-├── go.mod                # Dependencies (Go)
-├── Cargo.toml            # Dependencies (Rust)
-└── README.md             # Project documentation
-```
-
-### Template Features
-
-All templates include:
-
-1. **TEE-Ready Dockerfile** - Pre-configured to:
-   - Target `linux/amd64` architecture
-   - Run as root user (required for TEE)
-   - Include necessary system dependencies
-
-2. **Environment Variable Handling** - Access to:
-   - `MNEMONIC` - Auto-generated wallet mnemonic
-   - Custom environment variables from `.env`
-
-3. **Example Code** - Demonstrates:
-   - Accessing the TEE mnemonic
-   - Creating wallet accounts
-   - Making onchain transactions
-   - Environment variable usage
-
-4. **Development Setup** - Includes:
-   - Local development instructions
-   - Testing guidelines
-   - Deployment best practices
-
-### Use Cases
-
-- **Quick prototyping** - Start building immediately with working examples
-- **Learning EigenX** - Understand TEE patterns through template code
-- **Production apps** - Templates follow best practices for deployment
-- **Language preference** - Choose the stack you're most comfortable with
+| Language     | Description                 | Use Case                                       | 
+|--------------|-----------------------------|------------------------------------------------|
+| `typescript` | TypeScript/Node.js template | Web services, APIs, bots                       |
+| `python`     | Python template             | ML/AI, data processing, scripts                |
+| `golang`     | Go template                 | High-performance services                      |
+| `rust`       | Rust template               | Systems programming, performance-critical apps |
 
 ### Working Without Templates
 

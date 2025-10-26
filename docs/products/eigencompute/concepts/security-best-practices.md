@@ -1,6 +1,6 @@
 ---
-title: Security
-sidebar_position: 4
+title: Security Best Practices
+sidebar_position: 5
 ---
 
 ## Best Practices 
@@ -41,15 +41,3 @@ sidebar_position: 4
 
     TEE protects against infrastructure attacks but doesn't eliminate application-level vulnerabilities such as SQL injection.
 
-## Trust Requirements
-
-EigenCompute currently requires trust in:
-- Intel TDX hardware security guarantees
-- Google Confidential Space attestation service
-- Single KMS operator (being decentralized via threshold cryptography)
-
-Security enhancements in development:
-- Public attestation endpoints for runtime verification
-- Threshold KMS for distributed key management
-- Replica prevention via onchain checks and heartbeats
-- Verifiably built images with reproducible builds
