@@ -15,6 +15,10 @@ Hourglass standardizes how developers define, distribute, execute, and verify co
 
 Together, Hourglass and DevKit form the foundation for building scalable, verifiable offchain services on EigenLayer and EigenCloud.
 
+:::tip install
+curl -fsSL https://raw.githubusercontent.com/Layr-Labs/devkit-cli/main/install-devkit.sh | bash
+:::
+
 ## Get Started with AVS Development
 
 Use DevKit and Hourglass to:
@@ -35,6 +39,6 @@ Use DevKit and Hourglass to:
 
 For a step-by-step guide on getting started with DevKit, refer to the [DevKit repo](https://github.com/Layr-Labs/devkit-cli?tab=readme-ov-file#-getting-started).
 
-:::important 
+:::important
 While in public preview, DevKit is intended for local experimentation and development, and has not yet been audited.
 ::: 
