@@ -5,6 +5,13 @@ sidebar_position: 1
 
 When deploying an EigenCompute app, the machine instance type appropriate for the app vCPU and memory use is specified.
 
+## Available Instance Types
+
+| Machine type     | vCPUs   |  Memory  | Architecture |
+|------------------|:-------:|:--------:|---------------|
+| g1-standard-4t   |    4    |  16 GB   | Intel TDX     |
+| g1-standard-8t   |    8    |  32 GB   | Intel TDX     |
+
 ## Use --instance-type flag
 
 To specify the instance type using the `--instance-type` flag:
@@ -24,3 +31,5 @@ To change the instance type for a deployed app:
 ```
 eigenx app upgrade --instance-type g1-standard-8t
 ```
+
+
