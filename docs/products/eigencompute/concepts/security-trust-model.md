@@ -16,6 +16,14 @@ EigenCompute currently requires trust in:
 * Your responsibility: Application logic, dependency security, and secret handling within your code.
 * Platform/EigenLabs responsibility: Infrastructure security, TEE provisioning, and [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) operation.
 
+:::tip Security Enhancements in Development
+Security enhancements in development:
+- Public attestation endpoints for runtime verification
+- Threshold KMS for distributed key management
+- Replica prevention via onchain checks and heartbeats
+- Verifiably built images with reproducible builds
+:::
+
 ## Threat Model 
 
 The EigenCompute TEE/KMS architecture protects against: 
@@ -39,11 +47,3 @@ The EigenCompute TEE/KMS architecture does not protect against:
 | Side-channel attacks        | While TEEs mitigate many side-channels, be cautious with timing-sensitive operations.                           |
 | Physical access attacks     | TEE protects against remote attacks, but sophisticated physical access could theoretically compromise hardware. |
 | Malicious container images  | You control your container. Ensure you build from trusted base images and scan for vulnerabilities.             |
-
-## Security Roadmap
-
-Security enhancements in development:
-- Public attestation endpoints for runtime verification.
-- Threshold KMS for distributed key management.
-- Replica prevention via onchain checks and heartbeats.
-- Verifiably built images with reproducible builds.
