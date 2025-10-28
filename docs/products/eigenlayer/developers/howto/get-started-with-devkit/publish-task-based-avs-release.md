@@ -75,4 +75,4 @@ Optional DevKit commands are described in the [DevKit repo](https://github.com/L
 
 ## Advertise to Operators
 
-Advertise to Operators that your AVS is an Hourglass AVS. Operators use the [Hourglass CLI (`hgctl`)](../../operators/run-task-based-avs.md) to streamline operations of Hourglass AVS.
+Advertise to Operators that your AVS is an Hourglass AVS. Operators use the [Hourglass CLI (`hgctl`)](../../../operators/howto/run-task-based-avs.md) to streamline operations of Hourglass AVS.

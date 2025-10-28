@@ -66,11 +66,7 @@ const redirects = [
   // Get Started
   {
     from: '/get-started/eigencloud-overview',
-    to: '/get-started/eigencloud/eigencloud-overview',
-  },
-  {
-    from: '/get-started/eigencloud-roadmap',
-    to: '/get-started/eigencloud/eigencloud-roadmap',
+    to: '/products/eigencloud/eigencloud-overview',
   },
 
 
@@ -216,10 +212,38 @@ const redirects = [
       to: '/products/eigenlayer/releases',
   },
   {
-      from: '/eigenlayer/roadmap',
-      to: '/get-started/eigencloud/eigencloud-roadmap',
+      from: '/get-started/eigencloud/eigencloud-overview',
+      to: '/products/eigencloud/eigencloud-overview',
   },
-  
+  {
+     from: '/get-started/developers/concepts/build-faster-hourglass-devkit',
+     to: '/products/eigenlayer/concepts/build-faster-hourglass-devkit',
+  },
+  {
+     from: '/get-started/developers/concepts/understanding-avs-on-eigenlayer',
+     to: '/products/eigenlayer/concepts/understanding-avs-on-eigenlayer',
+  },
+  {
+     from: '/get-started/developers/concepts/why-build-on-eigenlayer',
+     to: '/products/eigenlayer/concepts/why-build-on-eigenlayer',
+  },
+  {
+     from: '/developers/howto/build-test-locally',
+     to: '/products/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
+  },
+  {
+     from: '/get-started/developers/howto/start-building-task-based-avs',
+     to: '/products/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
+  },
+  {
+     from: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
+     to: '/products/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+  },
+  {
+     from: '/products/eigenlayer/developers/howto/get-started/quickstart',
+     to: '/products/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+  },
+
   // Security
   {
       from: '/eigenlayer/security/audits',
@@ -281,15 +305,15 @@ const redirects = [
   },
   {
       from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
-      to: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
   },
   {
       from: '/developers/HowTo/get-started/quickstart',
-      to: '/products/eigenlayer/developers/howto/get-started/quickstart',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
   },
   {
       from: '/developers/HowTo/get-started/support',
-      to: '/products/eigenlayer/developers/howto/get-started/support',
+      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/support',
   },
   {
       from: '/developers/HowTo/publish/onboard-avs-dashboard',
@@ -327,7 +351,7 @@ const redirects = [
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
-      to: '/get-started/ai-resources',
+      to: '/products/ai-resources',
   },
   {
       from: '/developers/Reference/avs-developer-best-practices',
@@ -711,13 +735,7 @@ const config = {
         },
         items: [
           {
-            to: "get-started/eigencloud/eigencloud-overview",
-            label: "Get Started",
-            position: "left",
-            activeBasePath: 'get-started/',
-          },
-          {
-            to: "products/eigenlayer/concepts/eigenlayer-overview",
+            to: "products/eigencloud/eigencloud-overview",
             label: "Products",
             position: "left",
             activeBasePath: 'products/',

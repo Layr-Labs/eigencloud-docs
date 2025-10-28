@@ -1,6 +1,6 @@
 ---
 title: Build Faster with DevKit and Hourglass
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 > Click [here](https://github.com/Layr-Labs/devkit-cli)  get started building with DevKit.
