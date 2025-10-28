@@ -253,11 +253,11 @@ CMD ["npm", "start"]
 
 Your application must bind to `0.0.0.0` (not `localhost`) to be accessible.
 
-For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](howto/expose-ports.md).
+For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](howto/configure/expose-ports.md).
 
 ## TLS/HTTPS Setup (Optional)
 
-For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/configure-tls.md).
+For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/deploy-to-production/configure-tls.md).
 
 ## Next Steps
 

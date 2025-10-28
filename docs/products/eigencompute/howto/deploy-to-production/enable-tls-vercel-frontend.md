@@ -1,6 +1,6 @@
 ---
 title: Enable TLS when Deploying to Vercel
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Vercel requires TLS/HTTPS. 
