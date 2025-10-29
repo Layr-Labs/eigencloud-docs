@@ -14,7 +14,7 @@ economic incentives. Services are fragmented, tooling is underpowered, and integ
 builders who want to create high-performance, trust-minimized systems, this complexity is a blocker.
 
 EigenCloud is our answer. It reimagines the developer experience around [EigenLayer](../eigenlayer/concepts/eigenlayer-overview.md), bundling together a suite of 1st party
-verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md), [EigenCompute](../eigencompute/concepts/eigencompute-overview.md), and [EigenAI](../eigenai/eigenai-overview.md) with new powerful developer tooling. This includes a
+verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md), [EigenCompute](../eigencompute/concepts/eigencompute-overview.md), and [EigenAI](../eigenai/concepts/eigenai-overview.md) with new powerful developer tooling. This includes a
 new CLI called DevKit for AVS and App developers, composable middleware and orchestration tools, unified billing and economic
 incentives, and best-in-class onboarding and monitoring capabilities.These capabilities empower developers to go from idea to
 deployment in days rather than months without needing to understand EigenLayer’s internals, enabling mainstream adoption of
