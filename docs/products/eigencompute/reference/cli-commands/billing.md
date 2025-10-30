@@ -22,10 +22,22 @@ EigenCompute requires a [subscription for deploying applications](../../get-star
 Redirects to the payment portal to supply a payment method for billing. For more information,
 refer to [Subscribe](../../get-started/pricing.md#subscribe).
 
+| Flag                  | Description                                                                |
+|-----------------------|----------------------------------------------------------------------------|
+| `--env <environment>` | Specify environment for the subscription.  Default is current environment. |
+
 ### cancel
 
 Cancel an existing subscription. For more information, refer to [Cancel a Subscription](../../get-started/pricing.md#cancel-a-subscription).
 
+| Flag                  | Description                                                                |
+|-----------------------|----------------------------------------------------------------------------|
+| `--env <environment>` | Specify environment for the subscription.  Default is current environment. |
+
 ### status
 
 Display current billing status. For more information, refer to [Manage Billing](../../get-started/pricing.md#manage-billing).
+
+| Flag                  | Description                                                                |
+|-----------------------|----------------------------------------------------------------------------|
+| `--env <environment>` | Specify environment for the subscription.  Default is current environment. |
