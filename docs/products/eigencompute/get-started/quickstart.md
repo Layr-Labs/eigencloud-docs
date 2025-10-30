@@ -110,6 +110,23 @@ NETWORK_PUBLIC=sepolia
 Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
 :::
 
+### Subscribe to EigenCompute
+
+Before deploying, you'll need an [EigenCompute subscription](pricing.md).
+
+To subscribe:
+
+```
+eigenx billing subscribe
+```
+
+The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
+
+:::important Mainnet Pricing
+Current EigenCompute pricing is the [testnet pricing](pricing.md). Mainnet deployments are available testnet pricing for a promotional
+period ending on 12/31/2025.
+:::
+
 ### Deploy to TEE
 
 Deploy your application to a Trusted Execution Environment:
@@ -119,16 +136,10 @@ eigenx app deploy
 ```
 
 The CLI will:
-1. Prompt you for [billing details](pricing.md) in our payment portal. 
-2. Build your Docker image targeting `linux/amd64`
+1. Build your Docker image targeting `linux/amd64`
 2. Push the image to your Docker registry
 3. Deploy to a TEE instance
 4. Return your app details including app ID and instance IP
-
-:::important Mainnet Pricing
-Current EigenCompute pricing is the [testnet pricing](pricing.md). Mainnet deployments are available testnet pricing for a promotional
-period ending on 12/31/2025.
-:::
 
 ### View Your Application
 

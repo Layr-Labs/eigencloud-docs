@@ -22,9 +22,38 @@ Pricing is a monthly subscription and you'll be prompted to provide billing deta
 
 Subscriptions are per app, and a separate subscription is required for Sepolia testnet and mainnet.
 
-## Stopping a Subscription
+## Subscribe
 
-To cancel an active subscription, TODO.
+To subscribe to EigenCompute: 
+
+```
+eigenx billing subscribe
+```
+
+The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
+
+The payment successful message is displayed.  Return to the terminal and you have access to [deploy your application](../reference/cli-commands/deployment.md).
+
+## Cancel a Subscription
+
+To cancel an active subscription:
+
+```
+eigenx billing cancel
+```
+
+The deployed application is terminated and a refund for the remaining period of the month issued to the payment method you provided
+when subscribing.
+
+## Manage Billing
+
+To view current subscriptions:
+
+```
+eigenx billing status
+```
+
+The subscription status is displayed and a link provided to manage payment methods and view subscription transactions.
 
 ## Support
 
