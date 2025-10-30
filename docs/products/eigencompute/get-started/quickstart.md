@@ -3,15 +3,9 @@ title: EigenX CLI Quickstart
 sidebar_position: 1
 ---
 
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
-:::important Allow List
-While in Alpha, an allowlisted account is required to create apps. To allowlist an address:
-1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
-2. Submit an onboarding request using the button above.
-   :::
+:::important Mainnet Alpha Pricing
+While in Alpha, [mainnet pricing is the same as testnet pricing](pricing.md).
+:::
 
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
@@ -22,6 +16,7 @@ Before you begin, ensure you have:
 - **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
 - **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
+- **Billing details** - To provide when deploying to mainnet-alpha.
 
 :::tip Testing on Sepolia
 To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
@@ -129,7 +124,8 @@ eigenx app deploy
 ```
 
 The CLI will:
-1. Build your Docker image targeting `linux/amd64`
+1. Prompt you for [billing details](pricing.md) in our payment portal. 
+2. Build your Docker image targeting `linux/amd64`
 2. Push the image to your Docker registry
 3. Deploy to a TEE instance
 4. Return your app details including app ID and instance IP
@@ -158,6 +154,7 @@ cd my-existing-project
 # Deploy directly - the CLI will prompt for Dockerfile and .env paths
 eigenx app deploy
 ```
+The CLI will prompt you for [billing details](pricing.md) in our payment portal.
 
 **Requirements for existing projects:**
 - **Dockerfile** - Must target `linux/amd64` and run as root user
@@ -177,6 +174,8 @@ docker push myregistry/myapp:v1.0
 # Deploy using the image reference
 eigenx app deploy myregistry/myapp:v1.0
 ```
+
+The CLI will prompt you for [billing details](pricing.md) in our payment portal.
 
 ## Update Your Application
 
@@ -309,4 +308,5 @@ Common issues:
 ## Get Help
 
 - **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/eigenx-cli/issues)
-- **Onboarding**: [Submit request](https://onboarding.eigencloud.xyz)
+- **Discord**: TODO Add invite to channel.
+- **Talk to EigenCompute team**: TODO Add link to hubspot.
