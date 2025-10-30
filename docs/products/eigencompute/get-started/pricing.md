@@ -1,6 +1,6 @@
 ---
-title: EigenCompute Pricing
-sidebar_position: 1
+title: EigenCompute Testnet Pricing
+sidebar_position: 2
 ---
 
 The EigenCompute testnet pricing is approximately 3.1X GCP for vCPU hour (TODO - needs updating with $ figure). 
@@ -13,8 +13,8 @@ Testnet pricing includes the following instance types:
 | g1-standard-8t   |    8    |  32 GB   | Intel TDX     |
 
 :::important Mainnet Pricing
-Current pricing is the EigenCompute testnet pricing. While in the Mainnet Alpha phase, mainnet pricing is the same as
-testnet pricing.
+Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
+period ending on 12/31/2025.
 :::
 
 Pricing is a monthly subscription and you'll be prompted to provide billing details when deploying your app to EigenCompute using the

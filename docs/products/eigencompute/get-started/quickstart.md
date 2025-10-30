@@ -3,10 +3,6 @@ title: EigenX CLI Quickstart
 sidebar_position: 1
 ---
 
-:::important Mainnet Alpha Pricing
-While in Alpha, [mainnet pricing is the same as testnet pricing](pricing.md).
-:::
-
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
 ## Prerequisites
@@ -16,7 +12,6 @@ Before you begin, ensure you have:
 - **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
 - **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
-- **Billing details** - To provide when deploying to mainnet-alpha.
 
 :::tip Testing on Sepolia
 To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
@@ -129,6 +124,11 @@ The CLI will:
 2. Push the image to your Docker registry
 3. Deploy to a TEE instance
 4. Return your app details including app ID and instance IP
+
+:::important Mainnet Pricing
+Current EigenCompute pricing is the [testnet pricing](pricing.md). Mainnet deployments are available testnet pricing for a promotional
+period ending on 12/31/2025.
+:::
 
 ### View Your Application
 
