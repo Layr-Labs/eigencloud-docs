@@ -78,8 +78,11 @@ agent = sdk.createAgent(
 # Add MCP endpoint (will be your EigenCompute URL after deployment)
 agent.setMCP("https://your-eigencompute-agent.com/mcp")
 
-# Enable x402 payments
+# Enable x402 payments (for clients paying YOUR agent)
 agent.setX402Support(True)
+
+# note - this agent still uses API keys to pay for EigenAI inference.
+# x402 support for EigenAI is coming soon.
 
 # Set trust models - TEE attestation is key for Eigen!
 agent.setTrust(
