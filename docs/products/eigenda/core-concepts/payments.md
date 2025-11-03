@@ -8,10 +8,9 @@ sidebar_position: 3
 The Payments system streamlines user interactions with EigenDA, offering clear, flexible options for managing network
 bandwidth. EigenDA supports two flexible payment modalities:
 
-1. **On-demand Bandwidth**: Users can make pre-paid payments for occasional bandwidth usage without time limitations or
-   throughput guarantees, and payments are recorded per blob dispersal request. Charges are applied only when the
-   request is successfully validated by the disperser server, providing flexibility for users with dynamic bandwidth
-   requirements. 
+1. **On-demand Bandwidth**: Users are charged per blob dispersal request for occasional bandwidth usage without time
+   limitations or throughput guarantees. Charges are applied only when the request is successfully validated by the
+   disperser server, providing flexibility for users with dynamic bandwidth requirements. 
 
 2. **Reserved Bandwidth**: Users can reserve bandwidth for a fixed time period by pre-paying for system capacity, ensuring consistent and reliable throughput at discounted prices.
 
