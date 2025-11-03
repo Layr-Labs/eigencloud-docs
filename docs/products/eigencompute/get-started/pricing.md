@@ -11,8 +11,8 @@ Testnet pricing includes the following instance types:
 
 | Machine type     | vCPUs   |  Memory  | Architecture  | Monthly Subscription |
 |------------------|:-------:|:--------:|---------------|----------------------|
-| g1-standard-4t   |    4    |  16 GB   | Intel TDX     | USD$86.14            |
-| g1-standard-8t   |    8    |  32 GB   | Intel TDX     | USD$172.28           |         
+| g1-standard-4t   |    4    |  16 GB   | Intel TDX     | USD$335              |
+| g1-standard-8t   |    8    |  32 GB   | Intel TDX     | USD$670              |         
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
