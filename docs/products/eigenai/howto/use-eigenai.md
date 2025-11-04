@@ -3,7 +3,7 @@ title: Use EigenAI
 sidebar_position: 2
 ---
 
-We're starting off with supporting the `gpt-oss-120b-f16` model based on initial demand and expanding from there. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
+We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf16` models based on initial demand and expanding from there. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
 
 ```bash
 $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
