@@ -268,19 +268,17 @@ stateDiagram
     }
 ```
 
-Clients can query the disperser for their own offchain cumulative payment state. Clients' payment logic prioritizes
-using reservations before using on-demand payments.
-
 A client has their specific reservation parameters set onchain, including start/end timestamps and symbols per second
 rate. The client maintains a local leaky bucket to track reservation usage, filling it as blobs are dispersed and
-allowing it to leak at the reservation rate.
+allowing it to leak at the reservation rate. Clients use this locally tracked payment state to decide what type of
+payment to use for each dispersal.
 
 If a client's reservation bucket is temporarily full, the client can either wait for symbols to leak out, or switch to
-on-demand payments. The EigenDA client implementation can automatically fall back to on-demand payments when the
-reservation bucket is full. For on-demand payments, the cumulative payment field is incremented by the blob cost. The
-disperser validates on-demand requests by checking if the account's total cumulative usage exceeds their on-chain
-deposits in the PaymentVault, or if the global rate limit is hit. If either condition is true, the request will be
-rejected.
+on-demand payments. The EigenDA client implementation can be confgured to automatically fall back to on-demand payments
+when the reservation bucket is full. For on-demand payments, the cumulative payment field is incremented by the blob
+cost. The disperser validates on-demand requests by checking if the account's total cumulative usage exceeds their
+on-chain deposits in the PaymentVault, or if the global rate limit is hit. If either condition is true, the request
+will be rejected.
 
 ## Security Considerations
 
