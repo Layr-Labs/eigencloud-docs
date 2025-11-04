@@ -28,11 +28,9 @@ the `PaymentVault` contract, users can deposit funds via the `depositOnDemand` f
 the dispersal request is successfully processed, offering a flexible and efficient solution for dynamic bandwidth usage
 patterns.
 
-On-demand payments are currently supported only through the EigenDA Disperser. Since EigenDA currently lacks a consensus
-mechanism, validators cannot easily coordinate to limit total on-demand throughput across the network. The disperser
-serves as the arbiter, ensuring that total network throughput doesn't exceed configured levels. Users can retrieve their
-current on-demand balance from the disperser, enabling them to monitor their available funds effectively and plan for
-future bandwidth usage.
+On-demand payments are currently supported only through the EigenDA Disperser. Users can retrieve their current
+on-demand balance from the disperser, enabling them to monitor their available funds effectively and plan for future
+bandwidth usage.
 
 ### Reserved Bandwidth
 
