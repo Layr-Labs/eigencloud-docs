@@ -226,15 +226,6 @@ Post-expiry: endTimestamp reached -> Reservation expired.
 
 ### Disperser Client requirements
 
-A user may choose to implement their own ClientLedger for the disperser client, or use the one implemented by EigenDA,
-which relies on the disperser server to track the payment states between client instances.
-
-By interacting with the disperser server, the client trusts the disperser server to provide correct onchain and offchain payment information upon initialization.
-
-To use the EigenDA disperser client, as described above, the user will need to either negotiate a reservation with the
-EigenDA team, or deposit tokens permissionlessly into the payment vault contract for the account they want to use. They
-will supply the corresponding private key to the client, which will be used to sign the blob dispersal requests.
-
 ```mermaid
 stateDiagram
     state PaymentSetup {
@@ -274,7 +265,7 @@ allowing it to leak at the reservation rate. Clients use this locally tracked pa
 payment to use for each dispersal.
 
 If a client's reservation bucket is temporarily full, the client can either wait for symbols to leak out, or switch to
-on-demand payments. The EigenDA client implementation can be confgured to automatically fall back to on-demand payments
+on-demand payments. The EigenDA client implementation can be configured to automatically fall back to on-demand payments
 when the reservation bucket is full. For on-demand payments, the cumulative payment field is incremented by the blob
 cost. The disperser validates on-demand requests by checking if the account's total cumulative usage exceeds their
 on-chain deposits in the PaymentVault, or if the global rate limit is hit. If either condition is true, the request
