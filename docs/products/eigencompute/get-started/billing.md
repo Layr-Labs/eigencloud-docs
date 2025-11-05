@@ -1,5 +1,5 @@
 ---
-title: EigenCompute Testnet Pricing
+title: Billing
 sidebar_position: 2
 ---
 

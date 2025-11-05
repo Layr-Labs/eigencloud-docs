@@ -20,7 +20,7 @@ Deploy new applications to TEE instances and upgrade existing deployments with n
 
 Deploy a new application to a Trusted Execution Environment (TEE). 
 
-The CLI will prompt you for [billing details](../../get-started/pricing.md) in our payment portal.
+The CLI will prompt you for [billing details](../../get-started/billing) in our payment portal.
 
 ### Syntax
 

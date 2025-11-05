@@ -1,5 +1,5 @@
 ---
-title: EigenX CLI Quickstart
+title: Quickstart
 sidebar_position: 1
 ---
 
@@ -9,9 +9,8 @@ Get started with EigenX CLI and deploy your first verifiable application to a Tr
 
 Before you begin, ensure you have:
 
-- **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
-- **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
+- **Testnet or Mainnet ETH** - For deployment transactions
 
 :::tip Testing on Sepolia
 To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
@@ -112,7 +111,7 @@ Variables with the `_PUBLIC` suffix will be visible to users for transparency. S
 
 ### Subscribe to EigenCompute
 
-Before deploying, you'll need an [EigenCompute subscription](pricing.md).
+Before deploying, you'll need an [EigenCompute subscription](billing).
 
 To subscribe:
 
@@ -123,7 +122,7 @@ eigenx billing subscribe
 The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
 
 :::important Mainnet Pricing
-Current EigenCompute pricing is the [testnet pricing](pricing.md). Mainnet deployments are available testnet pricing for a promotional
+Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
 period ending on 12/31/2025.
 :::
 
@@ -165,7 +164,7 @@ cd my-existing-project
 # Deploy directly - the CLI will prompt for Dockerfile and .env paths
 eigenx app deploy
 ```
-The CLI will prompt you for [billing details](pricing.md) in our payment portal.
+The CLI will prompt you for [billing details](billing) in our payment portal.
 
 **Requirements for existing projects:**
 - **Dockerfile** - Must target `linux/amd64` and run as root user
@@ -186,7 +185,7 @@ docker push myregistry/myapp:v1.0
 eigenx app deploy myregistry/myapp:v1.0
 ```
 
-The CLI will prompt you for [billing details](pricing.md) in our payment portal.
+The CLI will prompt you for [billing details](billing) in our payment portal.
 
 ## Update Your Application
 
@@ -320,4 +319,4 @@ Common issues:
 
 - **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/eigenx-cli/issues)
 - **Discord**: TODO Add invite to channel.
-- **Talk to EigenCompute team**: TODO Add link to hubspot.
+- **Talk to EigenCompute team**: Complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.

@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Billing Commands
 
-EigenCompute requires a [subscription for deploying applications](../../get-started/pricing.md). Use these commands to manage billing and subscription.
+EigenCompute requires a [subscription for deploying applications](../../get-started/billing). Use these commands to manage billing and subscription.
 
 ## Commands Overview
 
@@ -20,7 +20,7 @@ EigenCompute requires a [subscription for deploying applications](../../get-star
 ### subscribe
 
 Redirects to the payment portal to supply a payment method for billing. For more information,
-refer to [Subscribe](../../get-started/pricing.md#subscribe).
+refer to [Subscribe](../../get-started/billing#subscribe).
 
 | Flag                  | Description                                                                |
 |-----------------------|----------------------------------------------------------------------------|
@@ -28,7 +28,7 @@ refer to [Subscribe](../../get-started/pricing.md#subscribe).
 
 ### cancel
 
-Cancel an existing subscription. For more information, refer to [Cancel a Subscription](../../get-started/pricing.md#cancel-a-subscription).
+Cancel an existing subscription. For more information, refer to [Cancel a Subscription](../../get-started/billing#cancel-a-subscription).
 
 | Flag                  | Description                                                                |
 |-----------------------|----------------------------------------------------------------------------|
@@ -36,7 +36,7 @@ Cancel an existing subscription. For more information, refer to [Cancel a Subscr
 
 ### status
 
-Display current billing status. For more information, refer to [Manage Billing](../../get-started/pricing.md#manage-billing).
+Display current billing status. For more information, refer to [Manage Billing](../../get-started/billing#manage-billing).
 
 | Flag                  | Description                                                                |
 |-----------------------|----------------------------------------------------------------------------|
