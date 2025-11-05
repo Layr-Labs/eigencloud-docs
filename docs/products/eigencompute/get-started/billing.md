@@ -9,14 +9,18 @@ One app can be deployed per subscription (that is, you can have one subscription
 
 Testnet pricing includes the following instance types: 
 
-| Machine type     | vCPUs   |  Memory  | Architecture  | Monthly Subscription |
-|------------------|:-------:|:--------:|---------------|----------------------|
-| g1-standard-4t   |    4    |  16 GB   | Intel TDX     | USD$525              |
-| g1-standard-8t   |    8    |  32 GB   | Intel TDX     | USD$1050             |         
+| Machine type     | vCPUs   |  Memory  | Architecture  | Monthly Subscription      |
+|------------------|:-------:|:--------:|---------------|---------------------------|
+| g1-standard-4t   |    4    |  16 GB   | Intel TDX     | USD$519                   |
+| g1-standard-8t   |    8    |  32 GB   | Intel TDX     | [Contact us](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) |         
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
 period ending on 12/31/2025.
+:::
+
+:::note Early Access Customers
+Early Access Customers will continue to get free access until the end of the year. Starting January 2026, we will begin turning off active applications without a subscription.
 :::
 
 ## Subscribe
@@ -59,6 +63,6 @@ The subscription status is displayed and a link provided to manage payment metho
 
 ## Support
 
-For support, join our Discord channel (TODO - Add discord link).
+For support, join our [Discord channel](https://discord.com/channels/1089434273720832071/1187153894564966480).
 
 To talk to the EigenCompute team, complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.
