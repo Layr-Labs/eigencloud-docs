@@ -1,17 +1,7 @@
 ---
-title: EigenX CLI Quickstart
+title: Quickstart
 sidebar_position: 1
 ---
-
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
-:::important Allow List
-While in Alpha, an allowlisted account is required to create apps. To allowlist an address:
-1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
-2. Submit an onboarding request using the button above.
-   :::
 
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
@@ -19,9 +9,8 @@ Get started with EigenX CLI and deploy your first verifiable application to a Tr
 
 Before you begin, ensure you have:
 
-- **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
-- **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
+- **Testnet or Mainnet ETH** - For deployment transactions
 
 :::tip Testing on Sepolia
 To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
@@ -118,6 +107,23 @@ NETWORK_PUBLIC=sepolia
 
 :::tip
 Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
+:::
+
+### Subscribe to EigenCompute
+
+Before deploying, you'll need an [EigenCompute subscription](billing.md).
+
+To subscribe:
+
+```
+eigenx billing subscribe
+```
+
+The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
+
+:::important Mainnet Pricing
+Current EigenCompute pricing is the [testnet pricing](billing.md). Mainnet deployments are available testnet pricing for a promotional
+period ending on 12/31/2025.
 :::
 
 ### Deploy to TEE
@@ -253,11 +259,11 @@ CMD ["npm", "start"]
 
 Your application must bind to `0.0.0.0` (not `localhost`) to be accessible.
 
-For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](howto/configure/expose-ports.md).
+For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](../howto/configure/expose-ports.md).
 
 ## TLS/HTTPS Setup (Optional)
 
-For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/deploy-to-production/configure-tls.md).
+For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](../howto/deploy-to-production/configure-tls.md).
 
 ## Next Steps
 

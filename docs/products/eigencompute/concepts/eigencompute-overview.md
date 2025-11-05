@@ -3,10 +3,6 @@ title: EigenCompute Overview
 sidebar_position: 1
 ---
 
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
 ## What is EigenCompute? 
 
 EigenCompute enables developers to deploy verifiable applications: containerized services that receive their own cryptographic identity, allowing them to hold funds, sign transactions, and operate autonomously.
@@ -54,7 +50,7 @@ in the enclave, can retrieve the private key.
 
 4. Onchain deployment record: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
 
-5. Network access: Optionally [expose ports](../howto/configure/expose-ports.md) for HTTP endpoints, or [configure HTTPS](../quickstart.md#tlshttps-setup-optional) with a custom domain.
+5. Network access: Optionally [expose ports](../howto/configure/expose-ports.md) for HTTP endpoints, or [configure HTTPS](../get-started/quickstart.md#tlshttps-setup-optional) with a custom domain.
 
 This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them.
 
@@ -69,8 +65,8 @@ The EigenCompute vision is to enable offchain execution systems to provide simil
 
 ## Next steps 
 
-* [Get Started using EigenCompute](../howto/get-started.md)
-* [Use the quickstart](../quickstart.md)
+* [Get Started using EigenCompute](../get-started/quickstart.md)
+* [Use the quickstart](../get-started/quickstart.md)
 * Read the EigenCompute: 
     * [Architecture Guide](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md) - Deep dive into how EigenCompute works
     * [Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md) - Understanding keys, security, and best practices

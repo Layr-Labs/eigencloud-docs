@@ -85,4 +85,4 @@ ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/quicksta
 
 ## Next
 
-For detailed instructions, try the [quickstart](../quickstart.md) or see the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli).
+For detailed instructions, try the [quickstart](../get-started/quickstart.md) or see the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli).
