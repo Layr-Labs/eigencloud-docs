@@ -33,22 +33,34 @@ The blob key is the keccak256 hash of the ABI-encoded `BlobHeader`. The hashing 
 
 The disperser enforces uniqueness - if you try to disperse a blob with a previously used blob key, the request will be rejected.
 
-The structure of the hash computation is:
+In practice, you'll use the SDK to compute the blob key. Here's how to do it in Go:
 
-```solidity
-blobKey = keccak256(
-    abi.encode(
-        keccak256(abi.encode(blobHeader.version, blobHeader.quorumNumbers, blobHeader.commitment)),
-        blobHeader.paymentHeaderHash
-    )
+```go
+import (
+    "github.com/Layr-Labs/eigenda/core/v2"
+    "github.com/Layr-Labs/eigenda/encoding"
+)
+
+// Compute the blob key from blob header components
+blobKey := core.ComputeBlobKey(
+    blobVersion,        // BlobVersion
+    blobCommitments,    // encoding.BlobCommitments (G1 and G2 points)
+    quorumNumbers,      // []core.QuorumID (automatically sorted)
+    paymentMetadataHash, // [32]byte
 )
 ```
 
-*Note: This Solidity notation shows the structure of the hash. In practice, you'll typically use SDK functions to compute the blob key - see [`ComputeBlobKey()` in Go](https://github.com/Layr-Labs/eigenda/blob/d73a9fa66a44dd2cfd334dcb83614cd5c1c5e005/core/v2/serialization.go#L42) or [`hashBlobHeaderV2()` in Solidity](https://github.com/Layr-Labs/eigenda/blob/d73a9fa66a44dd2cfd334dcb83614cd5c1c5e005/contracts/src/integrations/cert/libraries/EigenDACertVerificationLib.sol#L324) for onchain verification.*
+The function performs a nested hash:
+1. First, it hashes the blob version, quorum numbers (sorted), and commitments
+2. Then, it combines that hash with the payment metadata hash and hashes again
+3. Returns a 32-byte blob key
 
-A few things to note:
-- `paymentHeaderHash` is itself a keccak256 hash of the `PaymentHeader` structure. Hashing payment metadata separately keeps on-chain verification efficient.
-- `quorumNumbers` are sorted in ascending order before hashing. This ensures you get the same hash regardless of what order you specify the quorums.
+A few important notes:
+- `paymentMetadataHash` must be pre-computed from your `PaymentHeader` structure
+- Quorum numbers are automatically sorted before hashing to ensure consistency
+- This implementation matches the onchain hashing in [`hashBlobHeaderV2()` (Solidity)](https://github.com/Layr-Labs/eigenda/blob/d73a9fa66a44dd2cfd334dcb83614cd5c1c5e005/contracts/src/integrations/cert/libraries/EigenDACertVerificationLib.sol#L324)
+
+See the full implementation: [`ComputeBlobKey()` in Go](https://github.com/Layr-Labs/eigenda/blob/d73a9fa66a44dd2cfd334dcb83614cd5c1c5e005/core/v2/serialization.go#L42)
 
 ### Who Computes It
 
