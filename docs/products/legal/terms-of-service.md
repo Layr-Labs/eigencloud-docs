@@ -4,11 +4,11 @@ title: Terms of Service
 ---
 
 # Terms of Service
-***Last Revised on June 17, 2025***
+***Last Revised on November 4, 2025***
 
 These Terms of Service (these "**Terms**") explain the terms and conditions by which you may access and use our websites, including  www.eigenlayer.xyz (the "**EigenLayer Website**"), www.eigencloud.xyz and www.eigenda.xyz and any other websites through which these Terms are linked (collectively, the "**Websites**"), operated by or on behalf of Eigen Labs, Inc. ("**Company**", "**we**" or "**us**"). 
 
-Our Websites, the EigenCloud Platform (as defined below), our web application(s) and front-end interface(s) (each, an "**App**"), our testnet ("**Testnet**"), our application programming interfaces ("**APIs**"), and any content, portal, tools, documentation, features and functionality offered on or through the Websites or Apps are collectively referred to herein as the "**Services**". 
+Our Websites, the EigenCloud Platform (as defined below), our web application(s) and front-end interface(s) (each, an "**App**"), our testnet ("**Testnet**"), our application programming interfaces ("**APIs**"), and any content, portal, tools, documentation, features and functionality offered on or through the Websites or Apps are collectively referred to herein as the "**Services**". Your use of certain Services may be subject to additional terms as described herein. By using or accessing the EigenCompute Services, you further acknowledge that you have read, understand, and agree to be bound by the [**EigenCompute Terms**](eigen-compute-terms.md) which is hereby incorporated into these Terms.
 
 The Websites and Services do not include the following subdomains of the EigenLayer Website: forum.eigenlayer.xyz (the "**Forum**"), the research forum available at  research.eigenlayer.xyz  ("**Research**" and collectively with the Forum, and any other subdomains that contain a terms of service indicating they are operated by EigenFoundation, the "**Third-Party Subdomains**"), each including any lower-level domains and any content, tools, documentations, features and functionality offered therein. 
 
@@ -80,7 +80,7 @@ d. No Monetary Value. In your use of the Testnet, you may interact with or trans
 
 6. **Location of Our Privacy Policy**
 
-Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, please visit our [Privacy Policy here](./privacy-policy.md).
+Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, please visit our [Privacy Policy here](privacy-policy.md).
 
 7. **Rights We Grant You**
 

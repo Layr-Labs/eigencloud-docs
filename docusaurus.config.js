@@ -161,15 +161,15 @@ const redirects = [
   // Legal
   {
       from: '/eigenlayer/legal/disclaimers',
-      to: '/products/eigenlayer/legal/disclaimers',
+      to: '/products/legal/disclaimers',
   },
   {
       from: '/eigenlayer/legal/privacy-policy',
-      to: '/products/eigenlayer/legal/privacy-policy',
+      to: '/products/legal/privacy-policy',
   },
   {
       from: '/eigenlayer/legal/terms-of-service',
-      to: '/products/eigenlayer/legal/terms-of-service',
+      to: '/products/legal/terms-of-service',
   },
   
   // Overview -> Concepts (additional mappings)
