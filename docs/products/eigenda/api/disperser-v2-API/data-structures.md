@@ -11,13 +11,21 @@ The `blobKey` (also called `blob_header_hash` or `blobHeaderHash`) is the main i
 
 ### Common Use Cases
 
-**Direct dispersal:** When you call `DisperseBlob`, the disperser returns a blob key. You use this to poll `GetBlobStatus` until dispersal completes, then retrieve the blob via the Relay API or validators.
+There are two primary scenarios for working with blob keys:
 
-**Proxy dispersal (most common for rollups):** When using the EigenDA proxy, your rollup receives a DA commitment after dispersal. To retrieve the blob data later, you need to:
+**1. You have data and want to compute a blob key (direct dispersal)**
+
+When you call `DisperseBlob` directly with your data, the disperser computes and returns the blob key for you. You use this blob key to poll `GetBlobStatus` until dispersal completes, then retrieve the blob via the Relay API or validators. The disperser handles the blob key computation, but you should verify it matches your own computation.
+
+**2. You have a commitment and need to compute a blob key (proxy dispersal - most common)**
+
+When using the EigenDA proxy, your rollup receives a DA commitment after dispersal, but you need to compute the blob key yourself to retrieve the data later:
 1. Deserialize the `BlobCertificate` from the commitment
 2. Extract the `BlobHeader` from the certificate
-3. Compute the blob key by hashing the header (see below)
+3. Compute the blob key by hashing the header (see "How the BlobKey is Computed" below)
 4. Use this blob key to call `GetBlob` on relays or `GetChunks` on validators
+
+This proxy flow is the most common pattern for rollups integrating with EigenDA.
 
 ### How the BlobKey is Computed
 
