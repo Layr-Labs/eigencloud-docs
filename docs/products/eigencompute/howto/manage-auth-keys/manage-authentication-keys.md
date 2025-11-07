@@ -17,12 +17,12 @@ When using EigenX, logging in refers to providing your authentication key to the
 are supported and checked in this order: 
 
 1. `--private-key` flag on any command (not recommended). 
-2. `PRIVATE_KEY` environment variable.
+2. `EIGENX_PRIVATE_KEY` environment variable.
 3. OS keyring securely stored credentials.
 
 :::warning
 Using the `--private-key` flag to provide your private key directly on the command line is not recommended. When provided on the command line
-it may be stored in your shell history. Use the OS keyring to securely store credentials or the `PRIVATE_KEY` environment 
+it may be stored in your shell history. Use the OS keyring to securely store credentials or the `EIGENX_PRIVATE_KEY` environment 
 variable for CI/CD pipelines.
 :::
 

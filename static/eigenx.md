@@ -8564,13 +8564,13 @@ var (
 	RpcUrlFlag = &cli.StringFlag{
 		Name:    "rpc-url",
 		Usage:   "RPC URL to connect to blockchain",
-		EnvVars: []string{"RPC_URL"},
+		EnvVars: []string{"EIGENX_RPC_URL"},
 	}
 
 	PrivateKeyFlag = &cli.StringFlag{
 		Name:    "private-key",
 		Usage:   "Private key for signing transactions",
-		EnvVars: []string{"PRIVATE_KEY"},
+		EnvVars: []string{"EIGENX_PRIVATE_KEY"},
 	}
 
 	ForceFlag = &cli.BoolFlag{
@@ -11333,7 +11333,7 @@ eigenx auth logout           # Remove key
 ### 2. Environment Variable
 
 ```bash
-export PRIVATE_KEY=0x1234...
+export EIGENX_PRIVATE_KEY=0x1234...
 eigenx app deploy
 ```
 
