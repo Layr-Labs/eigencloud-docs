@@ -87,7 +87,7 @@ eigenx auth logout [--env <environment>] [--all]
 Instead of storing your private key in the keyring, you can provide it via environment variable:
 
 ```bash
-export PRIVATE_KEY=0x1234567890abcdef...
+export EIGENX_PRIVATE_KEY=0x1234567890abcdef...
 eigenx app deploy
 ```
 

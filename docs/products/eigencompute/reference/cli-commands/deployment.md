@@ -236,7 +236,7 @@ eigenx app deploy --dockerfile ./Dockerfile --env-file ./.env
 
 ```bash
 # In CI/CD script
-export PRIVATE_KEY=$CI_PRIVATE_KEY
+export EIGENX_PRIVATE_KEY=$CI_PRIVATE_KEY
 docker build --platform linux/amd64 -t registry.io/app:$CI_COMMIT_SHA .
 docker push registry.io/app:$CI_COMMIT_SHA
 eigenx app deploy registry.io/app:$CI_COMMIT_SHA
