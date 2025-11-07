@@ -18,7 +18,9 @@ Deploy new applications to TEE instances and upgrade existing deployments with n
 
 ## `eigenx app deploy`
 
-Deploy a new application to a Trusted Execution Environment (TEE).
+Deploy a new application to a Trusted Execution Environment (TEE). 
+
+The CLI will prompt you for [billing details](../../get-started/billing) in our payment portal.
 
 ### Syntax
 
