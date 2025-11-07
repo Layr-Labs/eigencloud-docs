@@ -1,17 +1,7 @@
 ---
-title: EigenX CLI Quickstart
+title: Quickstart
 sidebar_position: 1
 ---
-
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
-:::important Allow List
-While in Alpha, an allowlisted account is required to create apps. To allowlist an address:
-1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
-2. Submit an onboarding request using the button above.
-   :::
 
 Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
@@ -19,9 +9,8 @@ Get started with EigenX CLI and deploy your first verifiable application to a Tr
 
 Before you begin, ensure you have:
 
-- **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
-- **Mainnet ETH** - For deployment transactions on mainnet-alpha (default environment)
+- **Testnet or Mainnet ETH** - For deployment transactions
 
 :::tip Testing on Sepolia
 To test on Sepolia testnet instead, use `eigenx env set sepolia` and get testnet ETH from:
@@ -120,6 +109,23 @@ NETWORK_PUBLIC=sepolia
 Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
 :::
 
+### Subscribe to EigenCompute
+
+Before deploying, you'll need an [EigenCompute subscription](billing).
+
+To subscribe:
+
+```
+eigenx billing subscribe
+```
+
+The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
+
+:::important Mainnet Pricing
+Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
+period ending on 12/31/2025.
+:::
+
 ### Deploy to TEE
 
 Deploy your application to a Trusted Execution Environment:
@@ -158,6 +164,7 @@ cd my-existing-project
 # Deploy directly - the CLI will prompt for Dockerfile and .env paths
 eigenx app deploy
 ```
+The CLI will prompt you for [billing details](billing) in our payment portal.
 
 **Requirements for existing projects:**
 - **Dockerfile** - Must target `linux/amd64` and run as root user
@@ -177,6 +184,8 @@ docker push myregistry/myapp:v1.0
 # Deploy using the image reference
 eigenx app deploy myregistry/myapp:v1.0
 ```
+
+The CLI will prompt you for [billing details](billing) in our payment portal.
 
 ## Update Your Application
 
@@ -253,15 +262,15 @@ CMD ["npm", "start"]
 
 Your application must bind to `0.0.0.0` (not `localhost`) to be accessible.
 
-For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](howto/configure/expose-ports.md).
+For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](../howto/configure/expose-ports.md).
 
 ## TLS/HTTPS Setup (Optional)
 
-For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](howto/deploy-to-production/configure-tls.md).
+For information on exposing your application using HTTPS with a custom domain, refer to [Configure TLS](../howto/deploy-to-production/configure-tls.md).
 
 ## Next Steps
 
-- **Explore [CLI Commands](reference/cli-commands/authentication)** - Learn about all available commands
+- **Explore [CLI Commands](../reference/cli-commands/authentication)** - Learn about all available commands
 - **Read [Architecture Documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md)** - Understand how EigenX works
 - **Review [Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md)** - Deep dive into keys, environment variables, and security
 
@@ -309,4 +318,5 @@ Common issues:
 ## Get Help
 
 - **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/eigenx-cli/issues)
-- **Onboarding**: [Submit request](https://onboarding.eigencloud.xyz)
+- **Discord**: Join our [Support channel](https://discord.com/channels/1089434273720832071/1187153894564966480).
+- **Talk to EigenCompute team**: Complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.
