@@ -52,6 +52,9 @@ User submitted data to EigenDA.
 ### Blob
 The intermediate representation of user-submitted data (payload) following Reed–Solomon erasure encoding over the BN254 prime field (chunked and mapped to field elements), whose elements serve as polynomial coefficients and are KZG-committed for distribution to validators.
 
+### Blob Key
+Also known as `blob_header_hash` or `blobHeaderHash`. A 32-byte identifier computed as the keccak256 hash of the ABI-encoded BlobHeader. This is the main lookup key used throughout EigenDA for querying dispersal status, retrieving blobs from validators or relays, and linking blobs to their certificates. The disperser computes and returns the blob key to clients, who can verify it by recomputing the hash from the BlobHeader they sent.
+
 ### Chunk
 A shard of the erasure-coded blob that is assigned to and stored by individual validators based on their stake weight. Each validator is responsible for only storing their specific chunks rather than the entire blob.
 

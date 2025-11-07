@@ -40,7 +40,7 @@ The EigenDA v2 Disperser exposes the endpoints:
 
 These endpoints enable the blob dispersal lifecycle, from enqueuing blobs for dispersal, to waiting for a DA certificate that meets the
 client requested quorum thresholds. The Disperser offers an asynchronous API for dispersing blobs, where clients poll the `GetBlobStatus()` endpoint with
-the blob key they received from calling the `DisperseBlob()` endpoint until the disperser reports the blob as
+the [blob key](./data-structures.md#blobkey-blob-header-hash) they received from calling the `DisperseBlob()` endpoint until the disperser reports the blob as
 successfully dispersed and complete.
 
 The following flowchart describes how move blobs through this lifecycle with respect to these endpoints:
