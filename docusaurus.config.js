@@ -63,9 +63,14 @@ const redirects = [
   // EigenCompute
 
   {
-        from: '/products/eigencompute',
-        to: '/products/eigencompute/concepts/eigencompute-overview',
-    },
+      from: '/products/eigencompute',
+      to: '/products/eigencompute/concepts/eigencompute-overview',
+  },
+
+  {
+      from: '/products/eigencompute/quickstart',
+      to: '/products/eigencompute/get-started/quickstart'
+  },
 
   // Get Started
   {
@@ -559,7 +564,7 @@ const redirects = [
   {
     from: '/products/eigenai/eigenai-overview',
     to: '/products/eigenai/concepts/eigenai-overview'
-  }
+  },
 ]
 
 /** @type {import('@docusaurus/types').Config} */
