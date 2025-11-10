@@ -80,7 +80,7 @@ output: [
 }
 ]}
 completionMessage="🎉 That's it! Your app is deployed with its own wallet."
-ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/quickstart' }}
+ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-started/quickstart' }}
 />
 
 ## Next
