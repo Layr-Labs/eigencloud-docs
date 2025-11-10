@@ -13,6 +13,16 @@ function Root({ children }) {
       return;
     }
 
+    if (location.pathname === '/' || location.pathname === '/index.html') {
+      window.location.replace('/products/eigencloud/eigencloud-overview');
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!ExecutionEnvironment.canUseDOM) {
+      return;
+    }
+
     const eigenContext = getEigencomputeContext(location.pathname);
 
     // Enhanced click tracking for all links and buttons
