@@ -1,19 +1,9 @@
 ---
-title: Get Started with EigenCompute
+title: See Quickstart in Action
 sidebar_position: 1
 ---
 
 import InteractiveDemo from '@site/src/components/InteractiveDemo';
-
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
-:::important Allow List
-While in Alpha, an allowlisted account is required to create apps. To allowlist an address: 
-1. Use an existing address with `eigenx auth login`, or generate a new address with `eigenx auth generate`.
-2. Submit an onboarding request using the button above.
-:::
 
 To build on EigenCompute:
 
@@ -22,10 +12,11 @@ To build on EigenCompute:
 
 It's that simple to ship a verifiable application.
 
-### Try It Out
+### See for yourself
 
 <InteractiveDemo
 steps={[
+
 {
 command: 'eigenx app create my-trading-bot typescript',
 output: [
@@ -85,4 +76,4 @@ ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-star
 
 ## Next
 
-For detailed instructions, try the [quickstart](quickstart.md) or see the [EigenX CLI documentation](https://github.com/Layr-Labs/eigenx-cli).
+For detailed instructions, try the [quickstart](quickstart.md) or see detailed docs on how to [create an EigenCompute app from a template](../howto/create-app-from-template.md).

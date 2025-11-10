@@ -16,8 +16,12 @@ const redirects = [
      to: '/products/eigencloud/eigencloud-overview',
   },
   {
-      from: '/eigenlayer/overview',
-      to: '/products/eigenlayer/concepts/eigenlayer-overview',
+    from: '/eigenlayer/overview',
+    to: '/products/eigenlayer/concepts/eigenlayer-overview',
+  },
+  {
+      from: '/products/eigencompute/get-started/get-started',
+      to: '/products/eigencompute/get-started/demo',
   },
   {
       from: '/eigenlayer/overview/whitepaper',
