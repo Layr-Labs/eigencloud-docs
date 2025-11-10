@@ -403,7 +403,7 @@ Rollups will need to perform the following upgrade actions:
 
 ## Action Plan
 
-Blazar will be progressively released to the Holesky testnet and Ethereum mainnet environments according to the following expected timeline. Once Blazar validator software has been released on an environment, validator operators will have a period of some number of weeks in order to upgrade their software. During this period, ejections based on Blazar (V2) signing rates will be paused (ejections based on V1 signing rate will continue to be performed). After this period, operator signing rates will be measured as the worse of V1 and Blazar (V2) signing rate, and will be ejected based on the worse of the two signing rates. Please refer to the "Eligibility for ejection" dates below to ensure the validators are upgraded and avoid ejections.
+Blazar will be progressively released to the Hoodi testnet and Ethereum mainnet environments according to the following expected timeline. Once Blazar validator software has been released on an environment, validator operators will have a period of some number of weeks in order to upgrade their software. During this period, ejections based on Blazar (V2) signing rates will be paused (ejections based on V1 signing rate will continue to be performed). After this period, operator signing rates will be measured as the worse of V1 and Blazar (V2) signing rate, and will be ejected based on the worse of the two signing rates. Please refer to the "Eligibility for ejection" dates below to ensure the validators are upgraded and avoid ejections.
 
 |     **Environment**    | **Targeted release date** | **Eligibility for ejection** |
 | ---------------------- |---------------------------|------------------------------|

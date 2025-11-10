@@ -46,33 +46,6 @@ If you meet the delegation requirements for opting into one or more [quorums](ht
 
 
   </TabItem>
-  <TabItem value="holesky" label="Holesky">
-    Holesky is deprecated. New testnet operators should use Hoodi
-    ```
-    cd holesky
-
-    ./run.sh opt-in <quorum>
-
-    # for opting in to quorum 0:
-    ./run.sh opt-in 0
-
-    # for opting in to quorum 0 and 1:
-    ./run.sh opt-in 0,1
-
-    # for opting in to all quorums:
-    ./run.sh opt-in 0,1,2
-    ```
-
-    Note: EigenDA maintains three [quorums](https://docs.eigenlayer.xyz/eigenda/networks/holesky) on Holesky: Restaked ETH (including Native and LST Restaked ETH) and Restaked WETH. EigenDA allows the Operator to opt-in to any quorum or all quorums at once.
-    - ETH (Native & LST) Quorum:  `0`
-    - WrappedEth (WETH) Quorum: `1`
-    - Restaked ALT (reALT) Quorum: `2`
-
-    You only need to provide the quorum which you want to opt into. For example, if you are already registered to quorum `0` and want to opt-in one more quorum `1`, then you just need to set `<quorum>` as `1` while opting in again.
-
-    If you attempt to opt-in to many quorums ('`0,1,2`') you must have sufficient TVL to opt-in to the active Operator set for all quorums, otherwise the entire opt-in attempt will fail for all quorums. The opt-in attempt for all quorums is an "all or nothing" process.
-
-  </TabItem>
   <TabItem value="hoodi" label="Hoodi">
     ```
     cd hoodi
@@ -101,7 +74,7 @@ If you meet the delegation requirements for opting into one or more [quorums](ht
 https://docs.eigenda.xyz/networks/
 https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-introduction#quorums
 :::warning
-Operators must wait for their stakes to be synced if the delegation happened after you opt-in to the EigenDA AVS. EigenLayer's AVS-Sync component runs at certain intervals to update the delegation totals on chain for each operator. If you are unable to opt in despite having sufficient delegated stake, please wait at least the amount necessary for staked to be synced, then retry opt-in. This sync interval varies for different networks and you can check [Mainnet](../../networks/mainnet) and [Holesky](../../networks/holesky) for details.
+Operators must wait for their stakes to be synced if the delegation happened after you opt-in to the EigenDA AVS. EigenLayer's AVS-Sync component runs at certain intervals to update the delegation totals on chain for each operator. If you are unable to opt in despite having sufficient delegated stake, please wait at least the amount necessary for staked to be synced, then retry opt-in. This sync interval varies for different networks and you can check [Mainnet](../../networks/mainnet) and [Hoodi](../../networks/hoodi) for details.
 :::
 
 
