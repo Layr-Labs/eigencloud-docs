@@ -20,7 +20,7 @@ These commands help you create new projects and configure existing ones for depl
 ### create
 
 Create an application project from a template with all necessary configuration files. For more information on creating
-applications, refer to [Create Application](../../howto/create-app-from-template.md).
+applications, refer to [Create Application](../../howto/build/create-app-from-template.md).
 
 ```bash
 eigenx app create [name] [language] [--template <url>] [--template-version <version>]

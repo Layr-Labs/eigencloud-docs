@@ -1,6 +1,6 @@
 ---
 title: Create Application
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 The EigenX CLI provides templates for creating EigenCompute application projects with all required configuration files. 
