@@ -360,9 +360,7 @@ script/
       deploy_from_scratch.slashing.anvil.config.json
     mainnet/
       mainnet-addresses.config.json
-    holesky.json
     mainnet.json
-    preprod.json
     zipzoop.json
   deploy/
     devnet/
@@ -576,7 +574,6 @@ src/
         Slashed_Eigenpod_AVS.t.sol
         SlashingWithdrawals.t.sol
         Timing.t.sol
-        Upgrade_Setup.t.sol
       users/
         AVS.t.sol
         User.t.sol
@@ -766,7 +763,6 @@ slither.config.json
 		"PRIVATE_KEY": "${localEnv:PRIVATE_KEY}",
 		"PUBLIC_KEY": "${localEnv:PUBLIC_KEY}",
 		"RPC_MAINNET": "${localEnv:RPC_MAINNET}",
-		"RPC_HOLESKY": "${localEnv:RPC_HOLESKY}"
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -1559,7 +1555,6 @@ jobs:
             github.com:443
             release-assets.githubusercontent.com:443
             eth-mainnet.g.alchemy.com:443
-            powerful-dimensional-season.ethereum-holesky.quiknode.pro:443
 
       # Check out repository with all submodules for complete codebase access.
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -1637,7 +1632,7 @@ jobs:
             github.com:443
             release-assets.githubusercontent.com:443
             eth-mainnet.g.alchemy.com:443
-            powerful-dimensional-season.ethereum-holesky.quiknode.pro:443
+            fabled-wispy-ensemble.ethereum-hoodi.quiknode.pro:443
             objects.githubusercontent.com:443
 
       # Check out repository with all submodules for complete codebase access.
@@ -1686,7 +1681,7 @@ jobs:
         env:
           FOUNDRY_PROFILE: ${{ matrix.suite == 'Fork' && 'forktest' || 'medium' }}
           RPC_MAINNET: ${{ secrets.RPC_MAINNET }}
-          RPC_HOLESKY: ${{ secrets.RPC_HOLESKY }}
+          RPC_HOODI: ${{ secrets.RPC_HOODI }}
 
   # -----------------------------------------------------------------------
   # Forge Storage Diff
@@ -1969,7 +1964,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        env: [preprod, testnet, mainnet, testnet-sepolia, testnet-hoodi, testnet-base-sepolia, base]
+        env: [mainnet, testnet-sepolia, testnet-hoodi, testnet-base-sepolia, base]
 
     steps:
       - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911
@@ -1999,7 +1994,7 @@ jobs:
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@82dee4ba654bd2146511f85f0d013af94670c4de
         with:
-          version: stable
+          version: v1.3.5
 
       # Run Forge's formatting checker to ensure consistent code style.
       - name: "Forge Fmt"
@@ -2032,12 +2027,10 @@ jobs:
           fi
           
           # Set RPC URL based on environment
-          if [ "${{ matrix.env }}" = "testnet" ] || [ "${{ matrix.env }}" = "preprod" ]; then
-            RPC_URL="${{ secrets.RPC_HOLESKY }}"
+          if [ "${{ matrix.env }}" = "testnet-hoodi" ]; then
+            RPC_URL="${{ secrets.RPC_HOODI }}"
           elif [ "${{ matrix.env }}" = "testnet-sepolia" ]; then
             RPC_URL="${{ secrets.RPC_SEPOLIA }}"
-          elif [ "${{ matrix.env }}" = "testnet-hoodi" ]; then
-            RPC_URL="${{ secrets.RPC_HOODI }}"
           elif [ "${{ matrix.env }}" = "testnet-base-sepolia" ]; then
             RPC_URL="${{ secrets.RPC_BASE_SEPOLIA }}"
           elif [ "${{ matrix.env }}" = "mainnet" ]; then
@@ -69984,134 +69977,6 @@ func (_TaskMailboxStorage *TaskMailboxStorageFilterer) ParseTaskVerified(log typ
 }
 ````
 
-## File: script/configs/holesky.json
-````json
-{
-    "config": {
-        "environment": {
-            "chainid": 17000,
-            "lastUpdated": "v0.4.2-mainnet-pepe",
-            "name": "testnet-holesky"
-        },
-        "params": {
-            "ethPOS": "0x4242424242424242424242424242424242424242",
-            "EIGENPOD_GENESIS_TIME": 1695902400,
-            "CALCULATION_INTERVAL_SECONDS": 604800,
-            "MAX_REWARDS_DURATION": 6048000,
-            "MAX_RETROACTIVE_LENGTH": 7776000,
-            "MAX_FUTURE_LENGTH": 2592000,
-            "GENESIS_REWARDS_TIMESTAMP": 1710979200,
-            "REWARDS_UPDATER_ADDRESS": "0x18a0f92Ad9645385E8A8f3db7d0f6CF7aBBb0aD4",
-            "ACTIVATION_DELAY": 7200,
-            "GLOBAL_OPERATOR_COMMISSION_BIPS": 1000
-        }
-    },
-    "deployment": {
-        "admin": {
-            "communityMultisig": "0xCb8d2f9e55Bc7B1FA9d089f9aC80C583D2BDD5F7",
-            "executorMultisig": "0x28Ade60640fdBDb2609D8d8734D1b5cBeFc0C348",
-            "operationsMultisig": "0xfaEF7338b7490b9E272d80A1a39f4657cAf2b97d",
-            "pauserMultisig": "0x53410249ec7d3a3F9F1ba3912D50D6A3Df6d10A7",
-            "pauserRegistry": "0x85Ef7299F8311B25642679edBF02B62FA2212F06",
-            "proxyAdmin": "0xDB023566064246399b4AE851197a97729C93A6cf",
-            "timelock": "0xcF19CE0561052a7A7Ff21156730285997B350A7D"
-        },
-        "core": {
-            "avsDirectory": {
-                "proxy": "0x055733000064333CaDDbC92763c58BF0192fFeBf",
-                "impl": "0xEF5BA995Bc7722fd1e163edF8Dc09375de3d3e3a",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "delegationManager": {
-                "proxy": "0xA44151489861Fe9e3055d95adC98FbD462B948e7",
-                "impl": "0x83f8F8f0BB125F7870F6bfCf76853f874C330D76",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "rewardsCoordinator": {
-                "proxy": "0xAcc1fb458a1317E886dB376Fc8141540537E68fE",
-                "impl": "0x1a17df4170099577b79038fd310f3ff62f79752e",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "slasher": {
-                "proxy": "0xcAe751b75833ef09627549868A04E32679386e7C",
-                "impl": "0x99715D255E34a39bE9943b82F281CA734bcF345A",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "strategyManager": {
-                "proxy": "0xdfB5f6CE42aAA7830E94ECFCcAd411beF4d4D5b6",
-                "impl": "0x59f766A603C53f3AC8Be43bBe158c1519b193a18",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        },
-        "pods": {
-            "delayedWithdrawalRouter": {
-                "proxy": "0x642c646053eaf2254f088e9019ACD73d9AE0FA32",
-                "impl": "0xcE8b8D99773a718423F8040a6e52c06a4ce63407",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "eigenPod": {
-                "beacon": "0x7261C2bd75a7ACE1762f6d7FAe8F63215581832D",
-                "impl": "0x10ad7e30e3F52076C8462D573530f4461377319c",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "eigenPodManager": {
-                "proxy": "0x30770d7E3e71112d7A6b7259542D1f680a70e315",
-                "impl": "0x91A6525a4a843F5a5B633905300c33F79413CCc5",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        },
-        "strategies": {
-            "strategyFactory": {
-                "proxy": "0x9c01252B580efD11a05C00Aa42Dd3ac1Ec52DF6d",
-                "impl": "0x5E699de7bFc4DD2A5E72EB5a2Ca99651EfdD51CB",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "strategyBeacon": {
-                "beacon": "0xd3c6C6BA4E40dB9288c6a2077e5635344F8aFA4F",
-                "impl": "0xb637caeedfCBf88e0d019E7AE4691b554c994A1e",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "preLongtailStrats": {
-                "impl": "0xFb83e1D133D0157775eC4F19Ff81478Df1103305",
-                "addrs": [
-                    "0x80528D6e9A2BAbFc766965E0E26d5aB08D9CFaF9",
-                    "0x3A8fBdf9e77DFc25d09741f51d3E181b25d0c4E0",
-                    "0x7D704507b76571a51d9caE8AdDAbBFd0ba0e63d3",
-                    "0x31B6F59e1627cEfC9fA174aD03859fC337666af7",
-                    "0x70EB4D3c164a6B4A5f908D4FBb5a9cAfFb66bAB6",
-                    "0x9281ff96637710Cd9A5CAcce9c6FAD8C9F54631c",
-                    "0x05037A81BD7B4C9E0F7B430f1F2A22c31a2FD943",
-                    "0x46281E3B7fDcACdBa44CADf069a94a588Fd4C6Ef",
-                    "0xaccc5A86732BE85b5012e8614AF237801636F8e5",
-                    "0x7673a47463F80c6a3553Db9E54c8cDcd5313d0ac",
-                    "0xAD76D205564f955A9c18103C4422D1Cd94016899",
-                    "0x78dBcbEF8fF94eC7F631c23d38d197744a323868"
-                ]
-            }
-        },
-        "token": {
-            "bEIGEN": {
-                "proxy": "0x275cCf9Be51f4a6C94aBa6114cdf2a4c45B9cb27",
-                "impl": "0x4500927874Ad41538c1bEF2F5278E7a86DF6bce8",
-                "pendingImpl": "0x0000000000000000000000000000000000000000",
-                "proxyAdmin": "0x67482666771e82c9a73bb9e9a22b2b597f448bbf"
-            },
-            "EIGEN": {
-                "proxy": "0x3B78576F7D6837500bA3De27A60c7f594934027E",
-                "impl": "0x083bC9e0DCF2C3e13E24686e5202232995578c5a",
-                "pendingImpl": "0x0000000000000000000000000000000000000000",
-                "proxyAdmin": "0x67482666771e82c9a73bb9e9a22b2b597f448bbf"
-            },
-            "eigenStrategy": {
-                "proxy": "0x43252609bff8a13dFe5e057097f2f45A24387a84",
-                "impl": "0x94650e09a471CEF96e7966cabf26718FBf352697",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        }
-    }
-}
-````
-
 ## File: script/configs/mainnet.json
 ````json
 {
@@ -70235,136 +70100,6 @@ func (_TaskMailboxStorage *TaskMailboxStorageFilterer) ParseTaskVerified(log typ
             "eigenStrategy": {
                 "proxy": "0xaCB55C530Acdb2849e6d4f36992Cd8c9D50ED8F7",
                 "impl": "0x27e7a3a81741b9fcc5ad7edcbf9f8a72a5c00428",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        }
-    }
-}
-````
-
-## File: script/configs/preprod.json
-````json
-{
-    "config": {
-        "environment": {
-            "chainid": 17000,
-            "lastUpdated": "v0.4.2-mainnet-pepe",
-            "name": "preprod-holesky"
-        },
-        "params": {
-            "ACTIVATION_DELAY": 7200,
-            "CALCULATION_INTERVAL_SECONDS": 604800,
-            "EIGENPOD_GENESIS_TIME": 1695902400,
-            "GENESIS_REWARDS_TIMESTAMP": 1710979200,
-            "GLOBAL_OPERATOR_COMMISSION_BIPS": 1000,
-            "MAX_FUTURE_LENGTH": 2592000,
-            "MAX_RETROACTIVE_LENGTH": 7776000,
-            "MAX_REWARDS_DURATION": 6048000,
-            "REWARDS_UPDATER_ADDRESS": "0x18a0f92Ad9645385E8A8f3db7d0f6CF7aBBb0aD4",
-            "ethPOS": "0x4242424242424242424242424242424242424242",
-            "multiSendCallOnly": "0x40A2aCCbd92BCA938b02010E17A5b8929b49130D"
-        }
-    },
-    "deployment": {
-        "admin": {
-            "communityMultisig": "0xDA29BB71669f46F2a779b4b62f03644A84eE3479",
-            "executorMultisig": "0xDA29BB71669f46F2a779b4b62f03644A84eE3479",
-            "operationsMultisig": "0xDA29BB71669f46F2a779b4b62f03644A84eE3479",
-            "pauserMultisig": "0xDA29BB71669f46F2a779b4b62f03644A84eE3479",
-            "pauserRegistry": "0x9Ab2FEAf0465f0eD51Fc2b663eF228B418c9Dad1",
-            "proxyAdmin": "0x1BEF05C7303d44e0E2FCD2A19d993eDEd4c51b5B",
-            "timelock": "0x0000000000000000000000000000000000000000"
-        },
-        "core": {
-            "avsDirectory": {
-                "proxy": "0x141d6995556135D4997b2ff72EB443Be300353bC",
-                "impl": "0x357978adC03375BD6a3605DE055fABb84695d79A",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "delegationManager": {
-                "proxy": "0x75dfE5B44C2E530568001400D3f704bC8AE350CC",
-                "impl": "0x56E88cb4f0136fC27D95499dE4BE2acf47946Fa1",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "rewardsCoordinator": {
-                "proxy": "0xb22Ef643e1E067c994019A4C19e403253C05c2B0",
-                "impl": "0x7523b42b081C30fA245AA4039c645e36746fC400",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "slasher": {
-                "proxy": "0x12699471dF8dca329C76D72823B1b79d55709384",
-                "impl": "0x9460fCe11E1e0365419fa860599903B4E5097cf0",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "strategyManager": {
-                "proxy": "0xF9fbF2e35D8803273E214c99BF15174139f4E67a",
-                "impl": "0x1a26B23a004C512350d7Dd89056655A80b850199",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        },
-        "pods": {
-            "delayedWithdrawalRouter": {
-                "proxy": "0xC4BC46a87A67a531eCF7f74338E1FA79533334Fa",
-                "impl": "0x0011FA2c512063C495f77296Af8d195F33A8Dd38",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "eigenPod": {
-                "beacon": "0x92Cc4a800A1513E85C481dDDf3A06C6921211eaC",
-                "impl": "0x8Da4b953cbFb715624D98C0D2b4a7978462eFd38",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "eigenPodManager": {
-                "proxy": "0xB8d8952f572e67B11e43bC21250967772fa883Ff",
-                "impl": "0x10EBa780CCd9E5e9FFBe529C25046c076Be91048",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            }
-        },
-        "strategies": {
-            "strategyFactory": {
-                "proxy": "0xad4A89E3cA9b3dc25AABe0aa7d72E61D2Ec66052",
-                "impl": "0x7a9478c0AcB819d7c235FbE2a6E13ee1D2fCD862",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "strategyBeacon": {
-                "beacon": "0xf2c2AcA859C685895E60ca7A14274365b64c0c2a",
-                "impl": "0xd648792F932FbabcCC80Cd376812074434412685",
-                "pendingImpl": "0x0000000000000000000000000000000000000000"
-            },
-            "preLongtailStrats": {
-                "impl": "0x62450517EfA1CE60d79801daf8f95973865e8D40",
-                "addrs": [
-                    "0x6e5d5060b33ca2090a78e9cb74fe207453b30e49",
-                    "0xf6a09ae03d7760aecf1626ce7df0f113bec2d9bd",
-                    "0x7fa77c321bf66e42eabc9b10129304f7f90c5585",
-                    "0x24da526f9e465c4fb6bae41e226df8aa5b34eac7",
-                    "0x6dc6ce589f852f96ac86cb160ab0b15b9f56dedd",
-                    "0x3c28437e610fb099cc3d6de4d9c707dfacd308ae",
-                    "0x7b6257f5caf7311b36f7416133a8499c68a83c3a",
-                    "0xc86382179500e8ed3e686fc4a99ed9ec72df3f56",
-                    "0x3cb1fd19cfb178c1098f2fc1e11090a0642b2314",
-                    "0x87f6c7d24b109919eb38295e3f8298425e6331d9",
-                    "0x5c8b55722f421556a2aafb7a3ea63d4c3e514312",
-                    "0xd523267698c81a372191136e477fdebfa33d9fb4",
-                    "0xdccf401fd121d8c542e96bc1d0078884422afad2"
-                ]
-            }
-        },
-        "token": {
-            "bEIGEN": {
-                "proxy": "0xA72942289a043874249E60469F68f08B8c6ECCe8",
-                "impl": "0xd5FdabDac3d8ACeAB7BFfDDFA18877A4c5D5Aa82",
-                "pendingImpl": "0x0000000000000000000000000000000000000000",
-                "proxyAdmin": "0x1BEF05C7303d44e0E2FCD2A19d993eDEd4c51b5B"
-            },
-            "EIGEN": {
-                "proxy": "0xD58f6844f79eB1fbd9f7091d05f7cb30d3363926",
-                "impl": "0x95a7431400F362F3647a69535C5666cA0133CAA0",
-                "pendingImpl": "0x0000000000000000000000000000000000000000",
-                "proxyAdmin": "0x1BEF05C7303d44e0E2FCD2A19d993eDEd4c51b5B"
-            },
-            "eigenStrategy": {
-                "proxy": "0xdcCF401fD121d8C542E96BC1d0078884422aFAD2",
-                "impl": "0x59D13E7Fb0bC0e57c1fc6594ff701592A6e4dD2B",
                 "pendingImpl": "0x0000000000000000000000000000000000000000"
             }
         }
@@ -73351,11 +73086,6 @@ function _verifyInitializationParams() internal view virtual {
 //     "rewardsCoordinator: rewardsUpdater not set correctly"
 ⋮----
 // assertEq(delegationManager.owner(), executorMultisig, "delegationManager: owner not set correctly");
-⋮----
-// On holesky, for ease of whitelisting we set to executorMultisig
-⋮----
-//     strategyManager.strategyWhitelister(), executorMultisig,
-//     "strategyManager: strategyWhitelister not set correctly"
 ⋮----
 // EigenPodBeacon
 ⋮----
@@ -89066,67 +88796,6 @@ function testFuzz_register_allocate_slashAfterDelay(uint24 _r) public rand(_r) {
 function testFuzz_allocate_register_slashAfterDelay(uint24 _r) public rand(_r) {
 ````
 
-## File: src/test/integration/tests/Upgrade_Setup.t.sol
-````
-// SPDX-License-Identifier: BUSL-1.1
-⋮----
-import "src/test/integration/IntegrationChecks.t.sol";
-⋮----
-contract IntegrationMainnetFork_UpgradeSetup is IntegrationCheckUtils {
-// /// @notice Test upgrade setup is correct
-// /// forge-config: default.fuzz.runs = 1
-// function test_mainnet_upgrade_setup(uint24 _random) public {
-//     _configRand({
-//         _randomSeed: _random,
-//         _assetTypes: HOLDS_LST | HOLDS_ETH | HOLDS_ALL,
-//         _userTypes: DEFAULT | ALT_METHODS
-//     });
-⋮----
-//     // 1. Check proper state pre-upgrade
-//     _verifyContractPointers();
-//     _verifyImplementations();
-//     _verifyContractsInitialized(false);
-//     _verifyInitializationParams();
-⋮----
-//     // 2. Upgrade mainnet contracts
-//     _upgradeEigenLayerContracts();
-//     _parseInitialDeploymentParams("script/configs/mainnet/M2_mainnet_upgrade.config.json");
-⋮----
-//     // 2. Verify upgrade setup
-⋮----
-// }
-⋮----
-// function test_holesky_upgrade_setup(uint24 _random) public {
-⋮----
-//         _userTypes: DEFAULT | ALT_METHODS,
-//         _forkTypes: HOLESKY
-⋮----
-//     // // 1. Check proper state pre-upgrade
-//     // _verifyContractPointers();
-//     // _verifyImplementations();
-//     // _verifyContractsInitialized(true);
-//     // _verifyInitializationParams();
-⋮----
-//     // 2. Upgrade holesky contracts
-⋮----
-//     _parseInitialDeploymentParams("script/configs/holesky/M2_deploy_from_scratch.holesky.config.json");
-⋮----
-//     // 3. Verify upgrade setup
-⋮----
-//     _verifyContractsInitialized(true);
-⋮----
-/// @notice Ensure contracts point at each other correctly via constructors
-/// override to remove ethPOSDeposit contract check
-function _verifyContractPointers() internal view virtual override {
-// AVSDirectory
-⋮----
-// DelegationManager
-⋮----
-// StrategyManager
-⋮----
-// EPM
-````
-
 ## File: src/test/integration/users/AVS.t.sol
 ````
 // SPDX-License-Identifier: BUSL-1.1
@@ -102918,7 +102587,7 @@ contract EigenPodHarnessSetup is EigenPodUnitTests {
 // Upgrade eigenPod to harness
 ⋮----
 /// @notice No unit tests as of now but would be good to add specific unit tests using proofs from our proofGen library
-/// for a EigenPod on Holesky
+/// for a EigenPod on Hoodi
 contract EigenPodUnitTests_proofParsingTests is EigenPodHarnessSetup, ProofParsing {
 ⋮----
 // Params to _verifyWithdrawalCredentials, can be set in test or helper function
@@ -107209,7 +106878,7 @@ function _withdrawStaker() public {
 ## File: .env.example
 ````
 RPC_MAINNET="https://eth.llamarpc.com"
-RPC_HOLESKY=""
+RPC_HOODI="https://ethereum-hoodi.gateway.tatum.io"
 ETHERSCAN_API_KEY="API-KEY"
 ````
 
@@ -107683,7 +107352,6 @@ WORKDIR /workspaces/eigenlayer-contracts
 
 [rpc_endpoints]
     mainnet = "${RPC_MAINNET}"
-    holesky = "${RPC_HOLESKY}"
 ````
 
 ## File: go.mod
@@ -107957,20 +107625,6 @@ Regex rules can be changed by modifying `exempt-branches-regex` config in the [y
 
 ## Release Management
 
-
-### Environment Networks
-
-Before diving into maintenance details, it's important to understand our environment network structure.
-
-| Environment | Environment Network | Definition and Practices |
-|-------------|---------------------|--------------------------|
-| **mainnet** | mainnet-ethereum | - Production environment on Ethereum mainnet<br>- Single canonical mainnet instance in foreseeable future<br>- External facing with highest security requirements |
-| **testnet** | testnet-holesky<br>testnet-sepolia<br>testnet-hoodi | - Test environments on Ethereum testnets (holesky, sepolia, etc.)<br>- Multiple testnet environments may exist simultaneously<br>- External facing, long-lived environments for both internal and external developers<br>- Used for integration testing, AVS onboarding, and community engagement |
-| **preprod** | preprod-holesky<br>preprod-sepolia<br>preprod-hoodi | - Pre-production environments on Ethereum testnets<br>- Multiple preprod environments may exist simultaneously<br>- Internal facing for development team use<br>- Used for feature verification before promoting to testnet<br>- Provides safe environment for testing breaking changes |
-
-For more details on our testing infrastructure strategy, see our blog post: [The Future of EigenLayer Testing: New & Improved Testnets & Tooling Coming Soon](https://www.blog.eigenlayer.xyz/the-future-of-eigenlayer-testing-new-and-improved-testnets-tooling-coming-soon/)
-
-
 ### Release Tags and Semver
 
 This section defines release tag semver where `<semver>` = `<major>.<minor>.<patch>`
@@ -108202,13 +107856,12 @@ EigenLayer brings together Restakers, Operators, and Autonomous Verifiable Servi
 
 ## Deployments
 
-The deployments on `mainnet`, `base`, `holesky`, `sepolia`, `hoodi`, and `base sepolia` are on the below versions:
+The deployments on `mainnet`, `base`, `sepolia`, `hoodi`, and `base sepolia` are on the below versions:
 
 | Environment | Version | Core Protocol Deployed | Supports Native Restaking | Supports Multichain |
 | -------- | -------- | -------- | -------- | -------- | 
 | Mainnet Ethereum | [`v1.8.1`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.1) | Yes | Yes | Yes (source & destination) |
 | Base | [`v1.8.1`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.1) | No | No | Yes (destination) |
-| Testnet Holesky | [`v1.8.1`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.1) | Yes | Yes | No |
 | Testnet Sepolia | [`v1.8.1`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.1) | Yes | No | Yes (source & destination) |
 | Testnet Hoodi | [`v1.8.0`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.0) | Yes | Yes | No |
 | Testnet Base Sepolia | [`v1.8.1`](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v1.8.1) | No | No | Yes (destination) |
@@ -108369,88 +108022,6 @@ The following contracts are used by AVSs.
 
 
 <details>
-    <summary>Testnet Holesky</summary>
-
-
-You can view the deployed contract addresses below, or check out the code itself on the [`testnet-holesky`](https://github.com/Layr-Labs/eigenlayer-contracts/tree/testnet-holesky) branch.
-
-###### Core
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- |
-| [`DelegationManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/DelegationManager.sol) | [`0xA44151489861Fe9e3055d95adC98FbD462B948e7`](https://holesky.etherscan.io/address/0xA44151489861Fe9e3055d95adC98FbD462B948e7) | [`0x39F2...b0CF4`](https://holesky.etherscan.io/address/0x39F23a044Ea7DB60b5392b964F2f9261B93b0CF4) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/StrategyManager.sol) | [`0xdfB5f6CE42aAA7830E94ECFCcAd411beF4d4D5b6`](https://holesky.etherscan.io/address/0xdfB5f6CE42aAA7830E94ECFCcAd411beF4d4D5b6) | [`0x4870...21a04`](https://holesky.etherscan.io/address/0x4870B0BbDD8360E49A15987B16590Ef917c21a04) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`EigenPodManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/pods/EigenPodManager.sol) | [`0x30770d7E3e71112d7A6b7259542D1f680a70e315`](https://holesky.etherscan.io/address/0x30770d7E3e71112d7A6b7259542D1f680a70e315) | [`0xf889...23AA`](https://holesky.etherscan.io/address/0xf889B045cdE04c9CB22FF0Ead6C66a72f3cb23AA) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`AVSDirectory`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/core/AVSDirectory.sol) | [`0x055733000064333CaDDbC92763c58BF0192fFeBf`](https://holesky.etherscan.io/address/0x055733000064333CaDDbC92763c58BF0192fFeBf) | [`0x331e...2506`](https://holesky.etherscan.io/address/0x331e3Bd9cf69562f6F9ade72BD3D9f271f1B2506) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`RewardsCoordinator`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/core/RewardsCoordinator.sol) | [`0xAcc1fb458a1317E886dB376Fc8141540537E68fE`](https://holesky.etherscan.io/address/0xAcc1fb458a1317E886dB376Fc8141540537E68fE) | [`0x4087...d41`](https://holesky.etherscan.io/address/0x40873dddA165258E1c5aE487f4842dac3946Ad41) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`AllocationManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/AllocationManager.sol) | [`0x78469728304326CBc65f8f95FA756B0B73164462`](https://holesky.etherscan.io/address/0x78469728304326CBc65f8f95FA756B0B73164462) | [`0x45A1...A591`](https://holesky.etherscan.io/address/0x45A1bb44e2d8d2475185d0bcE480ce2e55c4A591) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`PermissionController`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/permissions/PermissionController.sol) | [`0x598cb226B591155F767dA17AfE7A2241a68C5C10`](https://holesky.etherscan.io/address/0x598cb226B591155F767dA17AfE7A2241a68C5C10) | [`0x7ab0...a2b9`](https://holesky.etherscan.io/address/0x7ab0ebd25d5ffe7527600ca5b2858c1a3faba2b9#code) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-
-###### Strategies
-
-Anyone can deploy and whitelist strategies for standard ERC20s by using the `StrategyFactory` deployed to the address below (see [docs](./docs/core/StrategyManager.md#strategyfactorydeploynewstrategy)). Strategies deployed from the `StrategyFactory` are deployed using the beacon proxy pattern:
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- | 
-| [`StrategyFactory`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/strategies/StrategyFactory.sol) | [`0x9c01252B580efD11a05C00Aa42Dd3ac1Ec52DF6d`](https://holesky.etherscan.io/address/0x9c01252B580efD11a05C00Aa42Dd3ac1Ec52DF6d) | [`0x84aa...a7d`](https://holesky.etherscan.io/address/0x84aaD0F753b84Cd68F36Ff207DDfA0f2865b1a7d) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBase.sol) | [`0xd3c6C6BA4E40dB9288c6a2077e5635344F8aFA4F`](https://holesky.etherscan.io/address/0xd3c6C6BA4E40dB9288c6a2077e5635344F8aFA4F) | [`0x62cd...B86d`](https://holesky.etherscan.io/address/0x62cda01F3FbaB32FEe9E08094D9766D77566B86d) | - Beacon: [`BeaconProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.0/contracts/proxy/beacon/BeaconProxy.sol) <br />- Strategies: [`UpgradeableBeacon`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.4.1/contracts/proxy/beacon/UpgradeableBeacon.sol) |
-
-The following strategies were originally deployed and whitelisted outside of the `StrategyFactory`:
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- | 
-| [`StrategyBase (stETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x7D704507b76571a51d9caE8AdDAbBFd0ba0e63d3`](https://holesky.etherscan.io/address/0x7D704507b76571a51d9caE8AdDAbBFd0ba0e63d3) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (rETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x3A8fBdf9e77DFc25d09741f51d3E181b25d0c4E0`](https://holesky.etherscan.io/address/0x3A8fBdf9e77DFc25d09741f51d3E181b25d0c4E0) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (WETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x80528D6e9A2BAbFc766965E0E26d5aB08D9CFaF9`](https://holesky.etherscan.io/address/0x80528D6e9A2BAbFc766965E0E26d5aB08D9CFaF9) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (lsETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x05037A81BD7B4C9E0F7B430f1F2A22c31a2FD943`](https://holesky.etherscan.io/address/0x05037A81BD7B4C9E0F7B430f1F2A22c31a2FD943) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (sfrxETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x9281ff96637710Cd9A5CAcce9c6FAD8C9F54631c`](https://holesky.etherscan.io/address/0x9281ff96637710Cd9A5CAcce9c6FAD8C9F54631c) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (ETHx)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x31B6F59e1627cEfC9fA174aD03859fC337666af7`](https://holesky.etherscan.io/address/0x31B6F59e1627cEfC9fA174aD03859fC337666af7) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (osETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x46281E3B7fDcACdBa44CADf069a94a588Fd4C6Ef`](https://holesky.etherscan.io/address/0x46281E3B7fDcACdBa44CADf069a94a588Fd4C6Ef) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (cbETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x70EB4D3c164a6B4A5f908D4FBb5a9cAfFb66bAB6`](https://holesky.etherscan.io/address/0x70EB4D3c164a6B4A5f908D4FBb5a9cAfFb66bAB6) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (mETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0xaccc5A86732BE85b5012e8614AF237801636F8e5`](https://holesky.etherscan.io/address/0xaccc5A86732BE85b5012e8614AF237801636F8e5) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (ankrETH)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x7673a47463F80c6a3553Db9E54c8cDcd5313d0ac`](https://holesky.etherscan.io/address/0x7673a47463F80c6a3553Db9E54c8cDcd5313d0ac) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (reALT)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0xAD76D205564f955A9c18103C4422D1Cd94016899`](https://holesky.etherscan.io/address/0xAD76D205564f955A9c18103C4422D1Cd94016899) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`StrategyBase (EO)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/StrategyBaseTVLLimits.sol) | [`0x78dBcbEF8fF94eC7F631c23d38d197744a323868`](https://holesky.etherscan.io/address/0x78dBcbEF8fF94eC7F631c23d38d197744a323868) | [`0x332b...B518`](https://holesky.etherscan.io/address/0x332b384D7100bc8A6D1d1B99fa5D60834ac4B518) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-
-###### Strategies - Special
-
-The following strategies differ significantly from the other strategies deployed/used above:
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- |
-| [`EigenStrategy (EIGEN)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/strategies/EigenStrategy.sol) | [`0x43252609bff8a13dFe5e057097f2f45A24387a84`](https://holesky.etherscan.io/address/0x43252609bff8a13dFe5e057097f2f45A24387a84) | [`0xd673...2b99`](https://holesky.etherscan.io/address/0xd673a9Ee9DD278aED0705161b9D264e3F2296b99) | Proxy: [`TUP@4.7.1`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| `Beacon Chain ETH` | `0xbeaC0eeEeeeeEEeEeEEEEeeEEeEeeeEeeEEBEaC0` | - | - Used for Beacon Chain ETH shares <br />- Not a real contract! |
-
-###### EigenPods
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- | 
-| [`EigenPod (beacon)`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.6.0/src/contracts/pods/EigenPod.sol) | [`0x7261C2bd75a7ACE1762f6d7FAe8F63215581832D`](https://holesky.etherscan.io/address/0x7261C2bd75a7ACE1762f6d7FAe8F63215581832D) | [`0x2742...0aD9`](https://holesky.etherscan.io/address/0x2742bd43b254f0199Bb5020CB477Ff9Ad3A80aD9) | - Beacon: [`BeaconProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.0/contracts/proxy/beacon/BeaconProxy.sol) <br />- Pods: [`UpgradeableBeacon`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.4.1/contracts/proxy/beacon/UpgradeableBeacon.sol) |
-
-###### EIGEN/bEIGEN
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- | 
-| [`Eigen`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.6.0/src/contracts/token/Eigen.sol) | [`0x3B78576F7D7230049bE2c915629b31122C3FbF88`](https://holesky.etherscan.io/address/0x3B78576F7D7230049bE2c915629b31122C3FbF88) | [`0xfF1e...68F0`](https://holesky.etherscan.io/address/0xfF1e23C37EC543684cf866785c0626c2Ac7468F0) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`Backing Eigen`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/token/BackingEigen.sol) | [`0x275cCf9Be51f4a6C94aBa6114cdf2a4c45B9cb27`](https://holesky.etherscan.io/address/0x275cCf9Be51f4a6C94aBa6114cdf2a4c45B9cb27) | [`0x05ad...E05c`](https://holesky.etherscan.io/address/0x05adA1C66DdDD7c36705bC23a4d50dBa72E4E05c) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-
-###### Multisigs
-
-| Name | Proxy | Implementation | Notes |
-| -------- | -------- | -------- | -------- | 
-| [`PauserRegistry`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.4.2/src/contracts/permissions/PauserRegistry.sol) | - | [`0x41Db...ec1D`](https://holesky.etherscan.io/address/0x41Dbe7BbacA97D986FCF6f5203b98Ec02412ec1D) | |
-| [`OZ: TimelockController`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.7/contracts/governance/TimelockController.sol) | - | [`0x5e83c7d195318A5acf46B29E5810DdC323b2F6fD`](https://holesky.etherscan.io/address/0x5e83c7d195318A5acf46B29E5810DdC323b2F6fD) | |
-| [`OZ: Proxy Admin`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/ProxyAdmin.sol) | - | [`0xDB023566064246399b4AE851197a97729C93A6cf`](https://holesky.etherscan.io/address/0xDB023566064246399b4AE851197a97729C93A6cf) | |
-| [`Pauser Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x53410249ec7d3a3F9F1ba3912D50D6A3Df6d10A7`](https://holesky.etherscan.io/address/0x53410249ec7d3a3F9F1ba3912D50D6A3Df6d10A7) | [`0xd9db...9552`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Community Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0xCb8d2f9e55Bc7B1FA9d089f9aC80C583D2BDD5F7`](https://holesky.etherscan.io/address/0xCb8d2f9e55Bc7B1FA9d089f9aC80C583D2BDD5F7) | [`0xd9db...9552`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Executor Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x28Ade60640fdBDb2609D8d8734D1b5cBeFc0C348`](https://holesky.etherscan.io/address/0x28Ade60640fdBDb2609D8d8734D1b5cBeFc0C348) | [`0xd9db...9552`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Operations Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0xfaEF7338b7490b9E272d80A1a39f4657cAf2b97d`](https://holesky.etherscan.io/address/0xfaEF7338b7490b9E272d80A1a39f4657cAf2b97d) | [`0xd9db...9552`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-
-</details>
-
-
-
-<details>
     <summary>Testnet Sepolia</summary>
 
 
@@ -108462,7 +108033,7 @@ You can view the deployed contract addresses below, or check out the code itself
 | -------- | -------- | -------- | -------- |
 | [`DelegationManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/DelegationManager.sol) | [`0xD4A7E1Bd8015057293f0D0A557088c286942e84b`](https://sepolia.etherscan.io/address/0xD4A7E1Bd8015057293f0D0A557088c286942e84b) | [`0xa982...1b823`](https://sepolia.etherscan.io/address/0xa9821F0620D347648f375c597761C7FD16C1b823) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
 | [`StrategyManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/StrategyManager.sol) | [`0x2E3D6c0744b10eb0A4e6F679F71554a39Ec47a5D`](https://sepolia.etherscan.io/address/0x2E3D6c0744b10eb0A4e6F679F71554a39Ec47a5D) | [`0xf0A8...FCB3`](https://sepolia.etherscan.io/address/0xf0A8735c26121e6C488ebac65c8fa3fe37cBFCB3) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
-| [`EigenPodManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/pods/EigenPodManager.sol) | [`0x56BfEb94879F4543E756d26103976c567256034a`](https://sepolia.etherscan.io/address/0x56BfEb94879F4543E756d26103976c567256034a) | [`0x1084...88Ae`](https://sepolia.etherscan.io/address/0x10848d61cE044bcAEE301a28A4C30Ad0a40e88Ae) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) | All EigenPod functionality is paused on Holesky | 
+| [`EigenPodManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/pods/EigenPodManager.sol) | [`0x56BfEb94879F4543E756d26103976c567256034a`](https://sepolia.etherscan.io/address/0x56BfEb94879F4543E756d26103976c567256034a) | [`0x1084...88Ae`](https://sepolia.etherscan.io/address/0x10848d61cE044bcAEE301a28A4C30Ad0a40e88Ae) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) | All EigenPod functionality is paused on Sepolia | 
 | [`AVSDirectory`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.3.0/src/contracts/core/AVSDirectory.sol) | [`0xa789c91ECDdae96865913130B786140Ee17aF545`](https://sepolia.etherscan.io/address/0xa789c91ECDdae96865913130B786140Ee17aF545) | [`0xD88b...C188`](https://sepolia.etherscan.io/address/0xD88b96998325c3e74A74a0B0938BBFeA1395C188) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
 | [`RewardsCoordinator`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.3.0/src/contracts/core/RewardsCoordinator.sol) | [`0x5ae8152fb88c26ff9ca5C014c94fca3c68029349`](https://sepolia.etherscan.io/address/0x5ae8152fb88c26ff9ca5C014c94fca3c68029349) | [`0xcC30...7940`](https://sepolia.etherscan.io/address/0xcC305562B01bec562D13A40ef8781e313AFE7940) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
 | [`AllocationManager`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.5.0/src/contracts/core/AllocationManager.sol) | [`0x42583067658071247ec8CE0A516A58f682002d07`](https://sepolia.etherscan.io/address/0x42583067658071247ec8CE0A516A58f682002d07) | [`0xB87A...7Db7`](https://sepolia.etherscan.io/address/0xB87AeeA46BB3a3050D277272E33b011922537Db7) | Proxy: [`TUP@4.9.0`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) |
@@ -108536,10 +108107,10 @@ The multichain protocol expects AVSs to register on the source chain. AVS's stak
 | [`PauserRegistry`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/v1.3.0/src/contracts/permissions/PauserRegistry.sol) | - | [`0x63AA...20f3`](https://sepolia.etherscan.io/address/0x63AAe451780090f50Ad323aAEF155F63a29D20f3) | |
 | [`OZ: TimelockController`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.7/contracts/governance/TimelockController.sol) | - | [`0x1BEF...1b5B`](https://sepolia.etherscan.io/address/0x1BEF05C7303d44e0E2FCD2A19d993eDEd4c51b5B) | |
 | [`OZ: Proxy Admin`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/proxy/transparent/ProxyAdmin.sol) | - | [`0x56E8...6Fa1`](https://sepolia.etherscan.io/address/0x56E88cb4f0136fC27D95499dE4BE2acf47946Fa1) | |
-| [`Pauser Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x0B415f75980D863872C3eb8caa76E6eC8Bc81536`](https://sepolia.etherscan.io/address/0x0B415f75980D863872C3eb8caa76E6eC8Bc81536) | [`0x4167...461a`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Community Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x6f8459810197cc9fE123BBeB918451757a4fBAc6`](https://sepolia.etherscan.io/address/0x6f8459810197cc9fE123BBeB918451757a4fBAc6) | [`0x4167...461a`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Executor Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x4FDA8998EC3b7d4b4A612d45FeB8fB36734470f2`](https://sepolia.etherscan.io/address/0x4FDA8998EC3b7d4b4A612d45FeB8fB36734470f2) | [`0x4167...461a`](https://holesky.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
-| [`Operations Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0xb094Ba769b4976Dc37fC689A76675f31bc4923b0`](https://sepolia.etherscan.io/address/0xb094Ba769b4976Dc37fC689A76675f31bc4923b0) | [`0x4167...461a`](https://holesky.etherscan.io/address/0x41675C099F32341bf84BFc5382aF534df5C7461a) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
+| [`Pauser Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x0B415f75980D863872C3eb8caa76E6eC8Bc81536`](https://sepolia.etherscan.io/address/0x0B415f75980D863872C3eb8caa76E6eC8Bc81536) | [`0x4167...461a`](https://sepolia.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
+| [`Community Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x6f8459810197cc9fE123BBeB918451757a4fBAc6`](https://sepolia.etherscan.io/address/0x6f8459810197cc9fE123BBeB918451757a4fBAc6) | [`0x4167...461a`](https://sepolia.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
+| [`Executor Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0x4FDA8998EC3b7d4b4A612d45FeB8fB36734470f2`](https://sepolia.etherscan.io/address/0x4FDA8998EC3b7d4b4A612d45FeB8fB36734470f2) | [`0x4167...461a`](https://sepolia.etherscan.io/address/0xd9db270c1b5e3bd161e8c8503c55ceabee709552) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
+| [`Operations Multisig`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/GnosisSafe.sol) | [`0xb094Ba769b4976Dc37fC689A76675f31bc4923b0`](https://sepolia.etherscan.io/address/0xb094Ba769b4976Dc37fC689A76675f31bc4923b0) | [`0x4167...461a`](https://sepolia.etherscan.io/address/0x41675C099F32341bf84BFc5382aF534df5C7461a) | Proxy: [`Gnosis@1.3.0`](https://github.com/safe-global/safe-contracts/blob/v1.3.0/contracts/proxies/GnosisSafeProxy.sol) |
 
 </details>
 
