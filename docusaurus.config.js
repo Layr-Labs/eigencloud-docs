@@ -315,7 +315,25 @@ const redirects = [
       from: '/developers/Concepts/uam-for-avs',
       to: '/products/eigenlayer/developers/concepts/uam-for-avs',
   },
-  
+
+
+  {
+      from: '/products/eigencompute/howto/create-app-from-template',
+      to: '/products/eigencompute/howto/build/create-app-from-template',
+  },
+  {
+      from: '/products/eigencompute/howto/use-app-wallet',
+      to: '/products/eigencompute/howto/build/use-app-wallet',
+  },
+  {
+      from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
+      to: '/products/eigencompute/howto/deploy/manage-auth-keys/create-auth-keys',
+  },
+  {
+      from: '/products/eigencompute/howto/manage-auth-keys/manage-authentication-keys',
+      to: '/products/eigencompute/howto/deploy/manage-auth-keys/manage-authentication-keys',
+  },
+
   // Developer HowTo (handle both capitalized and lowercase versions)
   {
       from: '/developers/HowTo/deployment-testnet-mainnet',
