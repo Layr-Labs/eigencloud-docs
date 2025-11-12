@@ -3,7 +3,7 @@ title: Drop In Compatibility
 sidebar_position: 3
 ---
 
-The EigenAI API is compatible with the OpenAI API, so you can simply place the API endpoint in your existing application to
+The EigenAI API is compatible with the OpenAI API and uses open-source LLMs. You can simply place the API endpoint in your existing application to
 start shipping deterministic, verifiable AI-based applications. You can use the EigenAI as a direct replacement in your existing 
 workflows without rewriting code or changing your integration logic. Simply update your API endpoint to point to EigenAI, and 
 your application will continue to function exactly as before but with deterministic and verifiable outputs.

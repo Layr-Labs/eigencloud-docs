@@ -16,4 +16,5 @@ Deterministic execution enables:
 * Reproducible results. The same request results in the same output. Reproducible results
 enable reliable workflows with consistent outputs. 
 * Verifiability. A EigenAI user can repeat a request made by an application and verify they get the same result. 
+* Consistent [tool call](https://platform.openai.com/docs/guides/function-calling) planning. 
 * Simplified debugging of workflows that include AI inference due to consistent AI outputs.
