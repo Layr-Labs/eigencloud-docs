@@ -76,4 +76,4 @@ ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-star
 
 ## Next
 
-For detailed instructions, try the [quickstart](quickstart.md) or see detailed docs on how to [create an EigenCompute app from a template](../howto/create-app-from-template.md).
+For detailed instructions, try the [quickstart](quickstart.md) or see detailed docs on how to [create an EigenCompute app from a template](../howto/build/create-app-from-template.md).
