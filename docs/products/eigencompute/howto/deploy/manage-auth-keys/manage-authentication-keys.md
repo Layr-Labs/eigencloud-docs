@@ -8,7 +8,7 @@ EigenCompute uses two types of keys:
 * Authentication keys for deployments and protocol interactions.
 * TEE mnemonic for applications and wallet functionality inside the TEE.
 
-For more information on EigenCompute keys, refer to the [Keys](../../concepts/keys-overview.md) concept topic.
+For more information on EigenCompute keys, refer to the [Keys](../../../concepts/keys-overview.md) concept topic.
 :::
 
 ## Check authentication status
