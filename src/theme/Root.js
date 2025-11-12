@@ -338,15 +338,9 @@ function buildEigencomputeElementId(target, clickText, elementType) {
     return analyticsId;
   }
 
-  const codeBlock = target?.closest ? target.closest('pre') : null;
-  if (codeBlock) {
-    const firstLine = codeBlock.innerText
-      ? codeBlock.innerText.trim().split('\n')[0]
-      : '';
-    const codeId = slugify(firstLine).slice(0, 80);
-    if (codeId) {
-      return `code_${codeId}`;
-    }
+  const codeIdentifier = getCodeBlockIdentifier(target);
+  if (codeIdentifier) {
+    return codeIdentifier;
   }
 
   const ariaLabel = target?.getAttribute ? target.getAttribute('aria-label') : null;
@@ -400,6 +394,53 @@ function findAnalyticsId(element) {
   }
 
   return null;
+}
+
+function getCodeBlockIdentifier(element) {
+  if (!element || typeof element.closest !== 'function') {
+    return null;
+  }
+
+  const themeCodeBlock = element.closest('.theme-code-block');
+  if (themeCodeBlock) {
+    const codeElement =
+      themeCodeBlock.querySelector('pre code') ||
+      themeCodeBlock.querySelector('pre') ||
+      themeCodeBlock.querySelector('code');
+    const codeText = codeElement?.textContent || '';
+    const firstLine = getFirstNonEmptyLine(codeText);
+    const codeId = slugify(firstLine).slice(0, 80);
+    if (codeId) {
+      return `code_${codeId}`;
+    }
+  }
+
+  const preElement = element.closest('pre');
+  if (preElement) {
+    const firstLine = getFirstNonEmptyLine(preElement.textContent || '');
+    const codeId = slugify(firstLine).slice(0, 80);
+    if (codeId) {
+      return `code_${codeId}`;
+    }
+  }
+
+  return null;
+}
+
+function getFirstNonEmptyLine(text) {
+  if (!text) {
+    return '';
+  }
+
+  const lines = text.split('\n');
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed) {
+      return trimmed;
+    }
+  }
+
+  return '';
 }
 
 function slugify(value) {
