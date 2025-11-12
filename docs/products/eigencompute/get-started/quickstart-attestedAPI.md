@@ -34,7 +34,7 @@ Get testnet ETH from:
 ### macOS/Linux
 
 ```bash
-curl -fsSL https://tools.eigencloud.xyz | bash
+curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
 ```
 
 ### Windows
