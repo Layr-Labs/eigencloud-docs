@@ -9,12 +9,6 @@ The EigenDA v2 Disperser provides an API for:
 * Dispersing blobs to the EigenDA network. 
 * [Flexible payment modalities: on-demand and reserved bandwidth](https://docs.eigencloud.xyz/products/eigenda/core-concepts/payments).
 
-:::note
-As part of its essential data availability guarantee, the EigenDA network supports direct communication with 
-the EigenDA validators for blob retrieval; permissionless dispersal of blobs to the EigenDA network is planned for a future protocol
-upgrade in later 2025.
-:::
-
 The low level specification for the Disperser v2 API spec is [disperser.proto](https://github.com/Layr-Labs/eigenda/blob/v0.9.0/api/proto/disperser/v2/disperser_v2.proto), adjusted to the current release. 
 The goal of this document is to explain this spec at a higher level.
 
@@ -31,10 +25,6 @@ The EigenDA v2 Disperser exposes the endpoints:
 * `GetBlobStatus()`
 * `GetBlobCommitment()`
 * `GetPaymentStateForAllQuorums()`
-
-:::note
-`GetPaymentSate()` is deprecated. Use `GetPaymentStateForAllQuorums()`.
-:::
 
 ### Blob Dispersal Lifecycle
 
