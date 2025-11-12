@@ -12,7 +12,11 @@ While in Alpha **an allowlisted account is required to use the API.** If you hav
 :::
 
 ## Overview
-Build verifiable applications leveraging LLM inference without wondering if the same LLM call might produce different results on different runs, or whether your prompts, models, or responses are modified in any way. EigenAI offers a *deterministic, verifiable* API, compatible with the OpenAI API, so you can simply place the API endpoint in your existing application to start shipping AI-based applications you and your users can trust.
+Build verifiable applications leveraging LLM inference without wondering if the same LLM call might produce different results 
+on different runs, or whether your prompts, models, or responses are modified in any way. EigenAI offers:
+
+* [Deterministic execution of EigenAI API requests.](deterministic-execution.md)
+* [Drop-in compatibility with the OpenAI API.](drop-in-compatibility.md)
 
 **AI is one of the greatest technological advancements in human history. Our mission is to enable any developer to build with scalable & verifiable AI, so that any developer anywhere in the world can build trusted applications.** 
 
