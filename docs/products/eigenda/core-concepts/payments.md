@@ -270,19 +270,3 @@ when the reservation bucket is full. For on-demand payments, the cumulative paym
 cost. The disperser validates on-demand requests by checking if the account's total cumulative usage exceeds their
 on-chain deposits in the PaymentVault, or if the global rate limit is hit. If either condition is true, the request
 will be rejected.
-
-## Security Considerations
-
-The following security considerations apply with respect to the payments system:
-
-- Users are individually responsible for securing the private keys used to fund and sign payment information for blob
-  dispersal requests. Users leaking their private keys might cause someone else to use the bandwidth.
-- For reservation payments, validator nodes serve as the authoritative source of truth for metering using leaky bucket
-  rate limiting. This validator-based approach enables future fully permissionless dispersal to the EigenDA validator
-  set, providing high censorship resistance without relying on a centralized disperser.
-- Only the EigenDA Disperser supports on-demand payments. The disperser tracks cumulative usage and validates against
-  on-chain deposits. While clients populate the cumulative payment field, the disperser validates independently by
-  tracking total usage per account. By using on-demand payments, users are implicitly trusting the EigenDA disperser
-  with the deposited on-demand funds, since it is the sole arbiter tracking on-demand usage.
-- Funds deposited to the `PaymentVault` contract cannot be withdrawn. Users should only send funds to the
-`PaymentVault` which they expect to use.
