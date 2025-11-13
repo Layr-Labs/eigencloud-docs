@@ -181,15 +181,15 @@ function setReservation(
 
 The `symbolsPerSecond` reservation rate determines how quickly the leaky bucket drains. A symbol is defined as 32 bytes
 and is measured by the length of the erasure coded blob. The bucket capacity is determined by the reservation rate
-multiplied by a configured duration (currently 30 seconds). This controls the maximum burst size. When a blob is
+multiplied by a configured duration (currently 60 seconds). This controls the maximum burst size. When a blob is
 dispersed, its symbol count is added to the bucket, and symbols continuously leak out at the reservation rate. Validator
 nodes track reservation usage as the authoritative source of truth, while clients maintain their own local bucket state.
 If the bucket is full, requests will be rejected until sufficient symbols have leaked out. Clients can optionally fall
 back to on-demand payments when reservation capacity is temporarily exhausted.
 
-Example: If you have a reservation with 100 symbols per second and a 30-second bucket duration, your bucket capacity is
-3,000 symbols (100 * 30). You can burst up to ~93 KiB (3,000 symbols * 32 bytes), after which you must wait for symbols
-to leak out at 100 symbols/second before making additional dispersals.
+Example: If you have a reservation with 100 symbols per second, given the current 60-second bucket duration, your
+bucket capacity is 6,000 symbols (100 * 60). You can burst up to ~187 KiB (6,000 symbols * 32 bytes), after which you
+must wait for symbols to leak out at 100 symbols/second before making additional dispersals.
 
 #### Leaky Bucket Overfill
 
