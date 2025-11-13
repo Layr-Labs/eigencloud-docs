@@ -874,6 +874,11 @@ const config = {
       src: '/js/intercom.js',
       async: true,
     },
+    // Cookie3 Analytics
+    {
+      src: '/js/cookie3.js',
+      async: true,
+    },
     // {
     //   src: '/js/eigenda-redirects.js',
     //   async: false,
