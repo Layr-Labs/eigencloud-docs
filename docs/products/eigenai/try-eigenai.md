@@ -1,9 +1,9 @@
 ---
 title: Try EigenAI
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-We've built [deterministicinference.com](https://deterministicinference.com/) to showcase EigenAI in action.
+We built [deterministicinference.com](https://deterministicinference.com/) to showcase EigenAI in action.
 
 When you run a comparison, your prompt is executed in 3 ways:
 
@@ -11,4 +11,4 @@ When you run a comparison, your prompt is executed in 3 ways:
 2. With EigenAI along with a seed you select.
 3. With EigenAI along with a randomly generated seed.
 
-EigenAI provides determinism. You'll notice the results coming back from OpenAI will change, while the results coming from EigenAI will be identical and reproducable.
+EigenAI provides determinism. You'll notice the results coming back from OpenAI change, while the results coming from EigenAI are identical and reproducible.
