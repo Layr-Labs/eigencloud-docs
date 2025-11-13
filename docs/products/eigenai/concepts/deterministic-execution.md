@@ -8,7 +8,7 @@ EigenAI provides verifiable AI inference through deterministic execution using G
 
 The EigenAI API is deterministic, meaning that when you send the same request (including identical prompt, parameters, and
 configuration) multiple times, it produces exactly the same output bit-for-bit each time. This differs from APIs such as 
-OpenAI or Anthropic, which may return slightly different responses for identical inputs because their models are non-deterministic
+OpenAI or Anthropic, which may return slightly different responses for identical inputs because they don't guarantee determinism
 by design.
 
 Deterministic execution enables: 
