@@ -871,7 +871,7 @@ const config = {
   scripts: [
     // Object format.
     {
-      src: '/js/intercom.js',
+      src: '/js/plain.js',
       async: true,
     },
     // {
