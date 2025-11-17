@@ -8,7 +8,7 @@ EigenCompute uses two types of keys:
 * Authentication keys for deployments and protocol interactions.
 * TEE mnemonic for applications and wallet functionality inside the TEE. 
 
-For more information on EigenCompute keys, refer to the Keys Overview concept topic. 
+For more information on EigenCompute keys, refer to the [Keys](../../../concepts/keys-overview.md) concept topic. 
 :::
 
 New authentication keys are required for: 
@@ -34,6 +34,14 @@ Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
 ✓ Private key stored securely in OS keyring
 ✓ You can now use eigenx commands without additional authentication
 ```
+
+:::warning
+The private key is securely stored while you remain authenticated to EigenCompute.
+
+If you log out of EigenCompute and have not backed up the private key that was generated for you, you will be unable to access your deployed application.
+
+If you generate another EigenCompute key and overwrite the existing private key without first having backed up the private key that was generated for you, you will be unable to access your deployed application.
+:::
 
 To create and securely store an authentication key for a specific environment:
 
