@@ -44,7 +44,7 @@ $ just --list
   eigenda-devnet-test-memstore *ARGS=""              # meaning with a config file in eigenda-template-values/memstore-* .
 ```
 
-You can run `just eigenda-devnet-start` to start a devnet which will spin-up an [eigenda-proxy](../../eigenda-proxy/eigenda-proxy.md) in memstore mode, simulating EigenDA. To interact with the actual EigenDA [sepolia](../../../networks/sepolia.md) testnet, you can run `just eigenda-devnet-start "eigenda-template-values/sepolia-concurrent-small-blobs.json"`. You will need to fill in the two missing secret values in that [config file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda-template-values/sepolia-concurrent-small-blobs.json): `eigenda-proxy.secrets.eigenda.signer-private-key-hex` and `eigenda-proxy.secrets.eigenda.eth-rpc`. Feel free to modify any other values, or even modify the kurtosis eigenda [template file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda.yaml) directly if needed.
+You can run `just eigenda-devnet-start` to start a devnet which will spin-up an [eigenda-proxy](../../eigenda-proxy/eigenda-proxy.md) in memstore mode, simulating EigenDA. To interact with the actual EigenDA [sepolia](../../../networks/sepolia.md) testnet, you can run `just eigenda-devnet-start "eigenda-template-values/sepolia-concurrent-small-blobs.json"`. You will need to fill in the missing secret values in that [config file](https://github.com/Layr-Labs/optimism/blob/eigenda-develop/kurtosis-devnet/eigenda-template-values/sepolia-v2-concurrent-small-blobs.json): `eigenda-proxy.secrets.eigenda.signer-private-key-hex`, `eigenda-proxy.secrets.eigenda.v2.signer-private-key-hex` and `eigenda-proxy.secrets.eigenda.eth-rpc`. Feel free to modify any other values, or even modify the kurtosis eigenda [template file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda.yaml) directly if needed.
 
 ## Deploying
 
@@ -132,8 +132,8 @@ Failover was added in this [PR](https://github.com/Layr-Labs/optimism/pull/34), 
 ## Migrating To EigenDA V2
 
 For [trusted](../integrations-overview.md#trusted-integration) integrations, migrating to EigenDA V2 is as simple as:
-- op-node: restarting the eigenda-proxy to support [both V1 and V2 backends](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L102)
-- op-batcher: restarting the eigenda-proxy to [disperse to V2](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L106). This will require setting a [V2_SIGNER_PRIVATE_KEY](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L54) with [V2 payments](../../../core-concepts/payments.md) enabled (either pay-per-blob or reserved bandwidth).
+- op-node: restarting the eigenda-proxy to support [both V1 and V2 backends](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L17)
+- op-batcher: restarting the eigenda-proxy to [disperse to V2](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L21). This will require setting a [V2_SIGNER_PRIVATE_KEY](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L31) with [V2 payments](../../../core-concepts/payments.md) enabled (either pay-per-blob or reserved bandwidth).
 
 Please refer to the [EigenDA Proxy README](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) for more details. We also have a V2 migration test on our kurtosis devnet which shows how to [swap the dispersal-backend](https://github.com/Layr-Labs/optimism/blob/89ac40d0fddba2e06854b253b9f0266f36350af2/kurtosis-devnet/tests/eigenda/v2_migration_test.go#L83) from V1 to V2 without needing to restart the proxy.
 
