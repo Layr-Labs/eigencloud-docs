@@ -89,6 +89,10 @@ When configuring your batch parameters, consult this [batch sizing reference](ht
 
 Please use the [eigenda-proxy](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) user guide for the latest information.
 
+Make sure to read the different [features](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#features-and-configuration-options-flagsenv-vars) provided by the proxy, to understand the different flag options. We provide an example [config](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example) which contains the env vars required to configure Proxy for retrieval from both EigenDA V1 and V2.
+
+If deploying proxy for an op-batcher, which means blobs will be dispersed to EigenDA, make sure to set [EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L21) to submit blobs to EigenDA V2.
+
 ### Deploying OP Node
 
 The following env config values should be set to ensure proper communication between op-node and eigenda-proxy, replacing `{EIGENDA_PROXY_URL}` with the URL of your EigenDA Proxy server.
