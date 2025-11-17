@@ -87,11 +87,7 @@ When configuring your batch parameters, consult this [batch sizing reference](ht
 
 ### Deploying EigenDA Proxy
 
-We push docker images to our [ghcr registry](https://github.com/Layr-Labs/eigenda-proxy/pkgs/container/eigenda-proxy) on every [release](https://github.com/Layr-Labs/eigenda-proxy/releases).
-
-Make sure to read the different [features](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#features-and-configuration-options-flagsenv-vars) provided by the proxy, to understand the different flag options. We provide an example [sepolia config](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia) which contains the env vars required to configure Proxy for retrieval from both EigenDA V1 and V2.
-
-If deploying proxy for an op-batcher, which means blobs will be dispersed to EigenDA, make sure to set [EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L106) to submit blobs to EigenDA V2.
+Please use the [eigenda-proxy](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) user guide for the latest information.
 
 ### Deploying OP Node
 
@@ -127,7 +123,7 @@ EigenDA V1, because of its blocking calls, required setting `OP_BATCHER_ALTDA_MA
 
 #### **Failover**
 
-Failover was added in this [PR](https://github.com/Layr-Labs/optimism/pull/34), and is automatically supported by the batcher. Each channel will first attempt to disperse to EigenDA via the proxy. If a `503` HTTP error is received, that channel will failover and be submitted as calldata to ethereum instead. To configure when the proxy returns `503` errors, see the [failover signals](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#failover-signals-) section of the Proxy README.
+Failover was added in this [PR](https://github.com/Layr-Labs/optimism/pull/34), and is automatically supported by the batcher. Each channel will first attempt to disperse to EigenDA via the proxy. If a `503` HTTP error is received, that channel will failover and be submitted as calldata to ethereum instead. To configure when the proxy returns `503` errors, see the [failover signals](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#failover-signals-) section of the Proxy README.
 
 ## Migrating To EigenDA V2
 
@@ -135,7 +131,7 @@ For [trusted](../integrations-overview.md#trusted-integration) integrations, mig
 - op-node: restarting the eigenda-proxy to support [both V1 and V2 backends](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L102)
 - op-batcher: restarting the eigenda-proxy to [disperse to V2](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L106). This will require setting a [V2_SIGNER_PRIVATE_KEY](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.sepolia#L54) with [V2 payments](../../../core-concepts/payments.md) enabled (either pay-per-blob or reserved bandwidth).
 
-Please refer to the [EigenDA Proxy README](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#migrating-from-eigenda-v1-to-v2) for more details. We also have a V2 migration test on our kurtosis devnet which shows how to [swap the dispersal-backend](https://github.com/Layr-Labs/optimism/blob/89ac40d0fddba2e06854b253b9f0266f36350af2/kurtosis-devnet/tests/eigenda/v2_migration_test.go#L83) from V1 to V2 without needing to restart the proxy.
+Please refer to the [EigenDA Proxy README](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) for more details. We also have a V2 migration test on our kurtosis devnet which shows how to [swap the dispersal-backend](https://github.com/Layr-Labs/optimism/blob/89ac40d0fddba2e06854b253b9f0266f36350af2/kurtosis-devnet/tests/eigenda/v2_migration_test.go#L83) from V1 to V2 without needing to restart the proxy.
 
 ## Security Guarantees
 
