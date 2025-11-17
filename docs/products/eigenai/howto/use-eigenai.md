@@ -3,7 +3,13 @@ title: Use EigenAI
 sidebar_position: 2
 ---
 
+## Get Started with a Token Grant 
+
+See [Try EigenAI](../try-eigenai.md#get-started-for-free) for information on obtaining a token grant to get started for free.
+
 We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf16` models based on initial demand and expanding from there. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
+
+## Chat Completions API
 
 ```bash
 $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
