@@ -3,10 +3,6 @@ title: EigenCompute Overview
 sidebar_position: 1
 ---
 
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigencompute_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
-</a>
-
 ## What is EigenCompute? 
 
 EigenCompute enables developers to deploy verifiable applications: containerized services that receive their own cryptographic identity, allowing them to hold funds, sign transactions, and operate autonomously.
