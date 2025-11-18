@@ -3,6 +3,9 @@ title: Use EigenAI
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Get Started with a Token Grant 
 
 See [Try EigenAI](../try-eigenai.md#get-started-for-free) for information on obtaining a token grant to get started for free.
@@ -11,41 +14,62 @@ We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf
 
 ## Chat Completions API
 
-```bash
-$ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
--H "X-API-Key: <api-key>" \
--H "Content-Type: application/json" \
--d '{
-  "model": "gpt-oss-120b-f16",
-  "max_tokens": 120,
-  "seed": 42,
-  "messages": [{"role": "user", "content": "Write a story about programming"}]
-}' | jq
+<Tabs>
+    <TabItem value="testnet" label="Testnet Request">
+        ```bash
+        $ curl -X POST https://eigenai-sepolia.eigencloud.xyz/v1/chat/completions \
+        -H "X-API-Key: <api-key>" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "gpt-oss-120b-f16",
+          "max_tokens": 120,
+          "seed": 42,
+          "messages": [{"role": "user", "content": "Write a story about programming"}]
+        }' | jq
+        ```
+    </TabItem>
+    <TabItem value="mainnet" label="Mainnet Request">
+    ```bash
+    $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
+    -H "X-API-Key: <api-key>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gpt-oss-120b-f16",
+      "max_tokens": 120,
+      "seed": 42,
+      "messages": [{"role": "user", "content": "Write a story about programming"}]
+    }' | jq
+    ```
+    </TabItem>
 
-{
-  "id": "chatcmpl-eigenai-llama-1758835890305965",
-  "created": 1758835890,
-  "model": "gpt-oss-120b-f16",
-  "system_fingerprint": "eigenai-llama@0.1.0+eigenai-llama",
-  "object": "chat.completion",
-  "usage": {
-    "completion_tokens": 120,
-    "prompt_tokens": 72,
-    "total_tokens": 192
-  },
-  "choices": [
+  <TabItem value="response" label="Response">
+    ```
     {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "<|channel|>analysis<|message|>The user asks: \"Write a story about programming\". Need to produce a story. Probably creative, about programming, characters, maybe AI, debugging, etc. Should be engaging. No constraints other than story. I will craft a narrative with a protagonist, their journey, maybe metaphorical. Use vivid language. Provide a story. Ensure it's appropriate. Probably around 800-1200 words? Not too long, but enough. I'll deliver.<|end|><|start|>assistant<|channel|>final<|message|>**The Compiler’s Apprentice**\n\nWhen Maya first walked into the cramped, fluorescent‑lit office of LumenTech"
+      "id": "chatcmpl-eigenai-llama-1758835890305965",
+      "created": 1758835890,
+      "model": "gpt-oss-120b-f16",
+      "system_fingerprint": "eigenai-llama@0.1.0+eigenai-llama",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 72,
+        "total_tokens": 192
       },
-      "finish_reason": "length"
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asks: \"Write a story about programming\". Need to produce a story. Probably creative, about programming, characters, maybe AI, debugging, etc. Should be engaging. No constraints other than story. I will craft a narrative with a protagonist, their journey, maybe metaphorical. Use vivid language. Provide a story. Ensure it's appropriate. Probably around 800-1200 words? Not too long, but enough. I'll deliver.<|end|><|start|>assistant<|channel|>final<|message|>**The Compiler’s Apprentice**\n\nWhen Maya first walked into the cramped, fluorescent‑lit office of LumenTech"
+          },
+          "finish_reason": "length"
+        }
+      ],
+       "signature": "2ee2e48ae9f6796c1de67977981d937c886efec3957c9bfc28f7a3f3be8262f04af609f22878b3bc2f0c4858fd04005d76877208881abd473208317df1dcfaf11c"
     }
-  ],
-   "signature": "2ee2e48ae9f6796c1de67977981d937c886efec3957c9bfc28f7a3f3be8262f04af609f22878b3bc2f0c4858fd04005d76877208881abd473208317df1dcfaf11c"
-}
-```
+    ```
+   </TabItem>
+</Tabs>
 
 ### OpenAI Client usage
 
