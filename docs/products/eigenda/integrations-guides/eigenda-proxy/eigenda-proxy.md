@@ -2,8 +2,7 @@
 
 ## About
 
-EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network. Information about
-proxy releases can be found [here](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-).
+EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network.
 
 :::note
 The EigenDA proxy supports [EigenDA v1](../v1/eigenda-proxyv1.md) and v2, and provides a seamless migration path from v1 to v2. If you are a v1 user,
