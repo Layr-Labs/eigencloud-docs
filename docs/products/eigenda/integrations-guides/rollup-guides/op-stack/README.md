@@ -40,11 +40,11 @@ $ just --list
   eigenda-devnet-restart-batcher ENCLAVE_NAME="eigenda-devnet" # Restart batcher with new flags or image.
   eigenda-devnet-start VALUES_FILE="eigenda-template-values/memstore-concurrent-large-blobs.json" ENCLAVE_PREFIX="eigenda" # We also start a tx-fuzzer separately, since the optimism-package doesn't currently have that configurable as part of its package.
   eigenda-devnet-sync-status ENCLAVE_NAME="eigenda-devnet"
-  eigenda-devnet-test-holesky *ARGS=""               # Take a look at how CI does it in .github/workflows/kurtosis-devnet.yml .
+  eigenda-devnet-test-sepolia *ARGS=""               # Take a look at how CI does it in .github/workflows/kurtosis-devnet.yml .
   eigenda-devnet-test-memstore *ARGS=""              # meaning with a config file in eigenda-template-values/memstore-* .
 ```
 
-You can run `just eigenda-devnet-start` to start a devnet which will spin-up an [eigenda-proxy](../../eigenda-proxy/eigenda-proxy.md) in memstore mode, simulating EigenDA. To interact with the actual EigenDA [holesky](../../../networks/holesky.md) testnet, you can run `just eigenda-devnet-start "eigenda-template-values/holesky-concurrent-small-blobs.json"`. You will need to fill in the two missing secret values in that [config file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda-template-values/holesky-concurrent-small-blobs.json): `eigenda-proxy.secrets.eigenda.signer-private-key-hex` and `eigenda-proxy.secrets.eigenda.eth-rpc`. Feel free to modify any other values, or even modify the kurtosis eigenda [template file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda.yaml) directly if needed.
+You can run `just eigenda-devnet-start` to start a devnet which will spin-up an [eigenda-proxy](../../eigenda-proxy/eigenda-proxy.md) in memstore mode, simulating EigenDA. To interact with the actual EigenDA [sepolia](../../../networks/sepolia.md) testnet, you can run `just eigenda-devnet-start "eigenda-template-values/sepolia-concurrent-small-blobs.json"`. You will need to fill in the missing secret values in that [config file](https://github.com/Layr-Labs/optimism/blob/eigenda-develop/kurtosis-devnet/eigenda-template-values/sepolia-v2-concurrent-small-blobs.json): `eigenda-proxy.secrets.eigenda.signer-private-key-hex`, `eigenda-proxy.secrets.eigenda.v2.signer-private-key-hex` and `eigenda-proxy.secrets.eigenda.eth-rpc`. Feel free to modify any other values, or even modify the kurtosis eigenda [template file](https://github.com/Layr-Labs/optimism/blob/e1d636081550caacae42d88b79404899f0e45888/kurtosis-devnet/eigenda.yaml) directly if needed.
 
 ## Deploying
 
@@ -87,11 +87,11 @@ When configuring your batch parameters, consult this [batch sizing reference](ht
 
 ### Deploying EigenDA Proxy
 
-We push docker images to our [ghcr registry](https://github.com/Layr-Labs/eigenda-proxy/pkgs/container/eigenda-proxy) on every [release](https://github.com/Layr-Labs/eigenda-proxy/releases).
+Please use the [eigenda-proxy](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) user guide for the latest information.
 
-Make sure to read the different [features](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#features-and-configuration-options-flagsenv-vars) provided by the proxy, to understand the different flag options. We provide an example [holesky config](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.holesky) which contains the env vars required to configure Proxy for retrieval from both EigenDA V1 and V2.
+Make sure to read the different [features](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#features-and-configuration-options-flagsenv-vars) provided by the proxy, to understand the different flag options. We provide an example [config](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example) which contains the env vars required to configure Proxy for retrieval from both EigenDA V1 and V2.
 
-If deploying proxy for an op-batcher, which means blobs will be dispersed to EigenDA, make sure to set [EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.holesky#L106) to submit blobs to EigenDA V2.
+If deploying proxy for an op-batcher, which means blobs will be dispersed to EigenDA, make sure to set [EIGENDA_PROXY_STORAGE_DISPERSAL_BACKEND=V2](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L21) to submit blobs to EigenDA V2.
 
 ### Deploying OP Node
 
@@ -127,15 +127,15 @@ EigenDA V1, because of its blocking calls, required setting `OP_BATCHER_ALTDA_MA
 
 #### **Failover**
 
-Failover was added in this [PR](https://github.com/Layr-Labs/optimism/pull/34), and is automatically supported by the batcher. Each channel will first attempt to disperse to EigenDA via the proxy. If a `503` HTTP error is received, that channel will failover and be submitted as calldata to ethereum instead. To configure when the proxy returns `503` errors, see the [failover signals](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#failover-signals-) section of the Proxy README.
+Failover was added in this [PR](https://github.com/Layr-Labs/optimism/pull/34), and is automatically supported by the batcher. Each channel will first attempt to disperse to EigenDA via the proxy. If a `503` HTTP error is received, that channel will failover and be submitted as calldata to ethereum instead. To configure when the proxy returns `503` errors, see the [failover signals](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#failover-signals-) section of the Proxy README.
 
 ## Migrating To EigenDA V2
 
 For [trusted](../integrations-overview.md#trusted-integration) integrations, migrating to EigenDA V2 is as simple as:
-- op-node: restarting the eigenda-proxy to support [both V1 and V2 backends](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.holesky#L102)
-- op-batcher: restarting the eigenda-proxy to [disperse to V2](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.holesky#L106). This will require setting a [V2_SIGNER_PRIVATE_KEY](https://github.com/Layr-Labs/eigenda-proxy/blob/5f887a68889437d88cd1d39c45c1327f78cd74a4/.env.exampleV1AndV2.holesky#L54) with [V2 payments](../../../core-concepts/payments.md) enabled (either pay-per-blob or reserved bandwidth).
+- op-node: restarting the eigenda-proxy to support [both V1 and V2 backends](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L17)
+- op-batcher: restarting the eigenda-proxy to [disperse to V2](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L21). This will require setting a [V2_SIGNER_PRIVATE_KEY](https://github.com/Layr-Labs/eigenda/blob/master/api/proxy/.env.example#L31) with [V2 payments](../../../core-concepts/payments.md) enabled (either pay-per-blob or reserved bandwidth).
 
-Please refer to the [EigenDA Proxy README](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#migrating-from-eigenda-v1-to-v2) for more details. We also have a V2 migration test on our kurtosis devnet which shows how to [swap the dispersal-backend](https://github.com/Layr-Labs/optimism/blob/89ac40d0fddba2e06854b253b9f0266f36350af2/kurtosis-devnet/tests/eigenda/v2_migration_test.go#L83) from V1 to V2 without needing to restart the proxy.
+Please refer to the [EigenDA Proxy README](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) for more details. We also have a V2 migration test on our kurtosis devnet which shows how to [swap the dispersal-backend](https://github.com/Layr-Labs/optimism/blob/89ac40d0fddba2e06854b253b9f0266f36350af2/kurtosis-devnet/tests/eigenda/v2_migration_test.go#L83) from V1 to V2 without needing to restart the proxy.
 
 ## Security Guarantees
 

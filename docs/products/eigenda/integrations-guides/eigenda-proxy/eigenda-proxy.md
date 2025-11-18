@@ -2,12 +2,11 @@
 
 ## About
 
-EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network. Information about
-proxy releases can be found [here](https://github.com/Layr-Labs/eigenda-proxy/releases).
+EigenDA proxy is a sidecar server run as part of a rollup node cluster for communication with the EigenDA network.
 
 :::note
 The EigenDA proxy supports [EigenDA v1](../v1/eigenda-proxyv1.md) and v2, and provides a seamless migration path from v1 to v2. If you are a v1 user,
-refer to the [migration process in the EigenDA proxy Readme](https://github.com/Layr-Labs/eigenda-proxy?tab=readme-ov-file#migrating-from-eigenda-v1-to-v2). 
+refer to the [EigenDA proxy Readme](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-).
 :::
 
 ### Example Rollup interaction diagram
@@ -28,10 +27,10 @@ Different actors in the rollup topology will have to use proxy for communicating
 Reference this [Quick Start](../quick-start/v2/index.md) to setup payments for your usage. 
 :::
 ## Technical Details
-[EigenDA Proxy](https://github.com/Layr-Labs/eigenda-proxy) wraps the [high-level EigenDA client](https://github.com/Layr-Labs/eigenda/blob/master/api/clients/eigenda_client.go) with an HTTP server, and performs additional verification tasks when reading and writing blobs that eliminate any trust assumption on the EigenDA disperser service. EigenDA Proxy also provides additional security features (i.e, read fallback) and optional performance optimizations (i.e, caching). Instructions for building and running the service can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/README.md).
+[EigenDA Proxy](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-) wraps the [high-level EigenDA client](https://github.com/Layr-Labs/eigenda/blob/master/api/clients/eigenda_client.go) with an HTTP server, and performs additional verification tasks when reading and writing blobs that eliminate any trust assumption on the EigenDA disperser service. EigenDA Proxy also provides additional security features (i.e, read fallback) and optional performance optimizations (i.e, caching). Instructions for building and running the service can be found [here](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-).
 
 ## Recommended Config Types
-Different security measures and runtime optimizations can be applied through various proxy configurations. The different configuration flags can be found [here](https://github.com/Layr-Labs/eigenda-proxy/blob/main/docs/help_out.txt). The following recommendations are advised for different rollup node actor types:
+Different security measures and runtime optimizations can be applied through various proxy configurations. The different configuration flags can be found [here](https://github.com/Layr-Labs/eigenda/tree/master/api/proxy#eigenda-proxy-). The following recommendations are advised for different rollup node actor types:
 
 ### Batchers
 Privileged roles that are responsible for submitting rollup batches to EigenDA should have the following presets:
