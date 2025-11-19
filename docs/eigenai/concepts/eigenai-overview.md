@@ -4,11 +4,17 @@ sidebar_position: 1
 ---
 
 :::tip Get Started
-While in Alpha **an allowlisted account is required to use the API.** If you have a wallet address already for [EigenCompute](../../eigencompute/concepts/eigencompute-overview.md) or if you have a separate address, use that address to submit an onboarding request here to receive an API key:
 
-<a href="https://onboarding.eigencloud.xyz/?utm_source=docs&utm_content=eigenai_overview" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>Request Onboarding Access</span>
+Go to [deTERMinal](https://determinal.eigenarcade.com) and get a 1M inference token credit for free by connecting your X account.
+
+To integrate deTERMinal token credit with your client, refer to the [Grant API Integration README](https://github.com/scotthconner/eigenx-determinal-token-grants).
+
+<a href="https://determinal.eigenarcade.com" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>1M token credit</span>
 </a>
+
+
+For more tokens or different models, you can [contact us here](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ).
 :::
 
 ## Overview
@@ -17,8 +23,6 @@ on different runs, or whether your prompts, models, or responses are modified in
 
 * [Deterministic execution of EigenAI API requests.](deterministic-execution.md)
 * [Drop-in compatibility with the OpenAI API.](drop-in-compatibility.md)
-
-**AI is one of the greatest technological advancements in human history. Our mission is to enable any developer to build with scalable & verifiable AI, so that any developer anywhere in the world can build trusted applications.** 
 
 ## Use Cases
 
