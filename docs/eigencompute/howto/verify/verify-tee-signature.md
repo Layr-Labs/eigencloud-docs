@@ -1,6 +1,6 @@
 ---
 title: Verify TEE Signature
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Application users can verify a message was signed by a TEE using the application address.
