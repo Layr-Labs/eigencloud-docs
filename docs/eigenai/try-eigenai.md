@@ -17,6 +17,6 @@ EigenAI provides determinism. You'll see the results coming back from OpenAI cha
 
 ## Get Started for Free
 
-Go to [deTERMinal](https://determinal.eigenarcade.com) and get 1M in inference token grants for free by connecting your X account. 
+Go to [deTERMinal](https://determinal.eigenarcade.com) and get a 1M inference token credit for free by connecting your X account.
 
-To integrate deTERMinal token grants with your client, refer to the [Grant API Integration README](https://github.com/scotthconner/eigenx-determinal-token-grants).
+To integrate deTERMinal token credit with your client, refer to the [Grant API Integration README](https://github.com/scotthconner/eigenx-determinal-token-grants).
