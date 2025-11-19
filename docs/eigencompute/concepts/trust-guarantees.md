@@ -17,4 +17,4 @@ Roadmap items in active development will enable EigenCompute to provide similar 
 
 ## Verification Dashboards
 
-The Verification Dashboards for [mainnet](https://verify.eigencloud.xyz/) and [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/) display data to verify EigenCloud trust guarantees.
+The Verification Dashboards for [Mainnet](https://verify.eigencloud.xyz/) and [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/) display data to verify EigenCloud trust guarantees.
