@@ -127,7 +127,7 @@ The Attested API template is provided in Go, Python, Rust, and Typescript.
 
 ### Subscribe to EigenCompute
 
-Before deploying, you'll need an [EigenCompute subscription](billing).
+Before deploying, you'll need an EigenCompute subscription(TODO - add link).
 
 To subscribe:
 
@@ -138,7 +138,7 @@ eigenx billing subscribe
 The payment portal is displayed.  Enter your payment method details and click the **Subscribe** button.
 
 :::important Mainnet Pricing
-Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
+Current EigenCompute pricing is the [testnet pricing](../../../get-started/billing.md). Mainnet deployments are available testnet pricing for a promotional
 period ending on 12/31/2025.
 :::
 
