@@ -67,7 +67,6 @@ config/
   .gitignore
   config_embeds.go
   README.md
-  templates.yaml
 docs/
   EIGENX_ARCHITECTURE.md
   EIGENX_CONCEPTS.md
@@ -142,6 +141,10 @@ pkg/
       utils.go
       whoami_test.go
       whoami.go
+    billing/
+      cancel.go
+      status.go
+      subscribe.go
     environment/
       list.go
       set.go
@@ -160,6 +163,7 @@ pkg/
       version.go
     app.go
     auth.go
+    billing.go
     environment.go
     telemetry.go
     undelegate.go
@@ -179,7 +183,7 @@ pkg/
       prompt.go
       terminal.go
     progress/
-      decect_tty.go
+      detect_tty.go
       log_progress.go
       tty_progress.go
     app_registry.go
@@ -211,7 +215,7 @@ pkg/
     telemetry_test.go
     telemetry.go
   template/
-    config.go
+    catalog.go
     git_client_test.go
     git_client.go
     git_fetcher_test.go
@@ -783,7 +787,7 @@ jobs:
       - name: Run eigenx app create
         run: |
           cd /tmp
-          eigenx app create --disable-telemetry my-awesome-app ts
+          eigenx app create --disable-telemetry my-awesome-app ts minimal
 
       - name: Verify app project created
         run: |
@@ -1445,6 +1449,8 @@ temp_external/
 
 # Environment
 .env
+.env.*
+!.env.example
 
 # Language-specific build outputs
 # Node.js
@@ -1455,6 +1461,7 @@ yarn-error.log*
 *.tgz
 dist/
 build/
+coverage/
 
 # Python
 __pycache__/
@@ -1480,6 +1487,11 @@ wheels/
 .tox/
 .coverage
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+env/
+venv/
 
 # Rust
 target/
@@ -1488,6 +1500,9 @@ Cargo.lock
 # Go
 *.test
 *.prof
+
+# Misc
+*.log
 ````
 
 ## File: config/config_embeds.go
@@ -1495,9 +1510,6 @@ Cargo.lock
 package config
 ⋮----
 import _ "embed"
-⋮----
-//go:embed templates.yaml
-var TemplatesYaml string
 ⋮----
 //go:embed .gitignore
 var GitIgnore string
@@ -1644,19 +1656,6 @@ tls /path/to/cert.pem /path/to/key.pem
 ## Documentation
 
 [EigenX CLI Documentation](https://github.com/Layr-Labs/eigenx-cli/blob/main/README.md)
-````
-
-## File: config/templates.yaml
-````yaml
-framework:
-  tee:
-    template: "https://github.com/Layr-Labs/eigenx-templates"
-    version: "main"
-    languages:
-      - typescript
-      - golang
-      - rust
-      - python
 ````
 
 ## File: docs/EIGENX_ARCHITECTURE.md
@@ -4230,7 +4229,6 @@ USER root
 # Copy core TEE components
 COPY compute-source-env.sh /usr/local/bin/
 COPY kms-client /usr/local/bin/
-COPY kms-encryption-public-key.pem /usr/local/bin/
 COPY kms-signing-public-key.pem /usr/local/bin/
 
 {{- if .IncludeTLS}}
@@ -4248,7 +4246,6 @@ RUN chmod 755 /usr/local/bin/compute-source-env.sh \
     && chmod 755 /usr/local/bin/kms-client{{- if .IncludeTLS}} \
     && chmod 755 /usr/local/bin/tls-keygen \
     && chmod 755 /usr/local/bin/caddy{{- end}} \
-    && chmod 644 /usr/local/bin/kms-encryption-public-key.pem \
     && chmod 644 /usr/local/bin/kms-signing-public-key.pem
 
 # Switch back to the original user from base image
@@ -4266,6 +4263,7 @@ LABEL tee.launch_policy.log_redirect={{.LogRedirect}}
 {{- end}}
 
 LABEL eigenx_cli_version={{.EigenXCLIVersion}}
+LABEL eigenx_use_ita=True
 
 {{- if .IncludeTLS}}
 # Expose both HTTP and HTTPS ports for Caddy
@@ -4285,9 +4283,8 @@ echo "compute-source-env.sh: Running setup script..."
 echo "Fetching secrets from KMS..."
 if /usr/local/bin/kms-client \
   --kms-server-url "{{.KMSServerURL}}" \
-  --jwt-file "{{.JWTFile}}" \
-  --kms-encryption-key-file /usr/local/bin/kms-encryption-public-key.pem \
   --kms-signing-key-file /usr/local/bin/kms-signing-public-key.pem \
+  --userapi-url "{{.UserAPIURL}}" \
   --output /tmp/.env; then
     echo "compute-source-env.sh: Successfully fetched environment variables from KMS"
     set -a && . /tmp/.env && set +a
@@ -4549,10 +4546,10 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"slices"
 	"strings"
 
 	"github.com/Layr-Labs/eigenx-cli/config"
+	"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common/logger"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common/output"
@@ -4565,10 +4562,10 @@ import (
 "io"
 "os"
 "path/filepath"
-"slices"
 "strings"
 ⋮----
 "github.com/Layr-Labs/eigenx-cli/config"
+"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
 "github.com/Layr-Labs/eigenx-cli/pkg/common"
 "github.com/Layr-Labs/eigenx-cli/pkg/common/logger"
 "github.com/Layr-Labs/eigenx-cli/pkg/common/output"
@@ -4578,139 +4575,93 @@ import (
 var CreateCommand = &cli.Command{
 	Name:      "create",
 	Usage:     "Create new app project from template",
-	ArgsUsage: "[name] [language]",
+	ArgsUsage: "[name] [language] [template-name]",
 	Flags: append(common.GlobalFlags, []cli.Flag{
-		common.TemplateFlag,
+		common.TemplateRepoFlag,
 		common.TemplateVersionFlag,
 	}...),
 	Action: createAction,
 }
 ⋮----
-// Language configuration
-var primaryLanguages = []string{"typescript", "golang", "rust", "python"}
+var (
+	primaryLanguages = []string{"typescript", "golang", "rust", "python"}
+
+	shortNames = map[string]string{
+		"ts": "typescript",
+		"go": "golang",
+		"rs": "rust",
+		"py": "python",
+	}
+)
 ⋮----
-var shortNames = map[string]string{
-	"ts": "typescript",
-	"go": "golang",
-	"rs": "rust",
-	"py": "python",
-}
-⋮----
-var languageFiles = map[string][]string{
-	"typescript": {"package.json"},
-	"rust":       {"Cargo.toml", "Dockerfile"},
-	"golang":     {"go.mod"},
+type projectConfig struct {
+	name          string
+	language      string
+	templateName  string
+	templateEntry *template.TemplateEntry
+	repoURL       string
+	ref           string
+	subPath       string
 }
 ⋮----
 func createAction(cCtx *cli.Context) error
+⋮----
+// Check if directory exists
+⋮----
+// Create project directory
+⋮----
+func gatherProjectConfig(cCtx *cli.Context) (*projectConfig, error)
 ⋮----
 // Get project name
 ⋮----
 var err error
 ⋮----
-// Check if directory exists
+// Handle custom template repo
 ⋮----
-// Get language - only needed for built-in templates
-var language string
-⋮----
-var err error
+// Handle built-in templates
 ⋮----
 // Resolve short names to full names
 ⋮----
-// Validate language is supported
+// Get template name
 ⋮----
-// Resolve template URL and subdirectory path
+// Resolve template details from catalog
 ⋮----
-// Create project directory
+func populateProjectFromTemplate(cCtx *cli.Context, cfg *projectConfig) error
 ⋮----
-// Setup GitFetcher
-⋮----
-// Check if we should use local templates (for development)
-⋮----
-// First try EIGENX_TEMPLATES_PATH env var, then look for the eigenx-templates directory as a sibling directory
+// Handle local templates for development
 ⋮----
 // Look for eigenx-templates as a sibling directory
 ⋮----
-// Use local templates from the eigenx-templates repository
+// Fetch from remote repository
 ⋮----
-// Copy local template to project directory
+var err error
 ⋮----
-// Fetch only the subdirectory, if one is specified
+func postProcessTemplate(projectDir, language string, templateEntry *template.TemplateEntry) error
 ⋮----
-// Fetch the full repository
+// Get files to update from template metadata, fallback to just README.md
 ⋮----
-// Cleanup on failure
+// Update all files specified in template metadata
 ⋮----
-// Post-process only internal templates
-⋮----
-// validateProjectName validates that a project name is valid
-func validateProjectName(name string) error
-⋮----
-// resolveTemplateSource determines the repository URL, ref, and subdirectory path for a template
-func resolveTemplateSource(templateFlag, templateVersionFlag, language string) (string, string, string, error)
-⋮----
-// Custom template URL provided via --template flag
-⋮----
-// Use template configuration system for defaults
-⋮----
-// Get template URL and version from config for "tee" framework
-⋮----
-// Override version if --template-version flag provided
-⋮----
-// For templates from config, assume they follow our subdirectory structure
-⋮----
-// postProcessTemplate updates template files with project-specific values
-func postProcessTemplate(projectDir, language string) error
-⋮----
-// Copy .gitignore from config directory
-⋮----
-// Copy shared template files (.env.example)
-⋮----
-// Update README.md title for all languages
-⋮----
-// Update language-specific project files
-⋮----
-// copySharedTemplateFiles copies shared template files to the project directory
 func copySharedTemplateFiles(projectDir string) error
 ⋮----
-// Write .env.example from embedded string
+// Write .env.example
 ⋮----
-// Write or append README.md from embedded string
+// Write or append README.md
 ⋮----
 // README.md exists, append the content
 ⋮----
-// Add newline before appending
-⋮----
 // README.md doesn't exist, create it
 ⋮----
-// copyGitignore copies the .gitignore from embedded config to the project directory if it doesn't exist
 func copyGitignore(projectDir string) error
 ⋮----
-// Check if .gitignore already exists
+// Skip if .gitignore already exists
 ⋮----
-return nil // File already exists, skip copying
-⋮----
-// Use embedded config .gitignore
-⋮----
-// updateProjectFile updates a project file by replacing a specific string
 func updateProjectFile(projectDir, filename, oldString, newString string) error
 ⋮----
-// Read current file
+func validateProjectName(name string) error
 ⋮----
-// Replace the specified string
-⋮----
-// Write back to file
-⋮----
-// copyDir recursively copies a directory from src to dst
 func copyDir(src, dst string) error
 ⋮----
-// Calculate destination path
-⋮----
-// Create directory
-⋮----
-// Copy file
-⋮----
-// copyFile copies a single file from src to dst
 func copyFile(src, dst string, mode os.FileMode) error
 ````
 
@@ -4757,31 +4708,45 @@ func deployAction(cCtx *cli.Context) error
 ⋮----
 // 1. Do preflight checks (auth, network, etc.) first
 ⋮----
-// 2. Check if docker is running, else try to start it
+// 2. Check quota availability
 ⋮----
-// 3. Check for Dockerfile before asking for image reference
+// 3. Check if docker is running, else try to start it
 ⋮----
-// 4. Get image reference (context-aware based on Dockerfile decision)
+// 4. Check for Dockerfile before asking for image reference
 ⋮----
-// 5. Get app name upfront (before any expensive operations)
+// 5. Get image reference (context-aware based on Dockerfile decision)
 ⋮----
-// 6. Get environment file configuration
+// 6. Get app name upfront (before any expensive operations)
 ⋮----
-// 7. Get instance type selection (uses first from backend as default for new apps)
+// 7. Get environment file configuration
 ⋮----
-// 8. Get log settings from flags or interactive prompt
+// 8. Get instance type selection (uses first from backend as default for new apps)
 ⋮----
-// 9. Generate random salt
+// 9. Get log settings from flags or interactive prompt
 ⋮----
-// 10. Get app ID
+// 10. Generate random salt
 ⋮----
-// 11. Prepare the release (includes build/push if needed, with automatic retry on permission errors)
+// 11. Get app ID
 ⋮----
-// 12. Deploy the app
+// 12. Prepare the release (includes build/push if needed, with automatic retry on permission errors)
 ⋮----
-// 13. Save the app name mapping
+// 13. Deploy the app
 ⋮----
-// 14. Watch until deployment completes
+// 14. Save the app name mapping
+⋮----
+// 15. Watch until deployment completes
+⋮----
+// checkQuotaAvailable verifies that the user has deployment quota available
+// by checking their allowlist status on the contract
+func checkQuotaAvailable(cCtx *cli.Context, preflightCtx *utils.PreflightContext) error
+⋮----
+// Check user's quota limit from contract
+⋮----
+// If quota is 0, user needs to subscribe
+⋮----
+// Check current active app count from contract
+⋮----
+// Check if quota is reached
 ````
 
 ## File: pkg/commands/app/info.go
@@ -4950,7 +4915,7 @@ var StopCommand = &cli.Command{
 ⋮----
 var TerminateCommand = &cli.Command{
 	Name:      "terminate",
-	Usage:     "Terminate app (terminate GCP instance)",
+	Usage:     "Terminate app (terminate GCP instance) permanently",
 	ArgsUsage: "[app-id|name]",
 	Flags: append(common.GlobalFlags, []cli.Flag{
 		common.EnvironmentFlag,
@@ -5599,6 +5564,495 @@ func whoamiAction(cCtx *cli.Context) error
 // Display authentication info
 ⋮----
 // Show note if there's a different key available for current environment
+````
+
+## File: pkg/commands/billing/cancel.go
+````go
+package billing
+⋮----
+import (
+	"context"
+	"fmt"
+
+	"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+	"github.com/Layr-Labs/eigenx-cli/pkg/common"
+	"github.com/Layr-Labs/eigenx-cli/pkg/common/output"
+	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/urfave/cli/v2"
+)
+⋮----
+"context"
+"fmt"
+⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+"github.com/Layr-Labs/eigenx-cli/pkg/common"
+"github.com/Layr-Labs/eigenx-cli/pkg/common/output"
+ethcommon "github.com/ethereum/go-ethereum/common"
+"github.com/urfave/cli/v2"
+⋮----
+var CancelCommand = &cli.Command{
+	Name:  "cancel",
+	Usage: "Cancel subscription",
+	Flags: append(common.GlobalFlags, []cli.Flag{
+		common.EnvironmentFlag,
+	}...),
+	Action: func(cCtx *cli.Context) error {
+		ctx := cCtx.Context
+		logger := common.LoggerFromContext(cCtx)
+		environmentConfig, err := utils.GetEnvironmentConfig(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get environment config: %w", err)
+		}
+		envName := environmentConfig.Name
+
+		// Check authentication early to provide clear error message
+		if _, err := utils.GetPrivateKeyOrFail(cCtx); err != nil {
+			return err
+		}
+
+		// Get API client
+		apiClient, err := utils.NewUserApiClient(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to create API client: %w", err)
+		}
+
+		// Check current subscription status
+		subscription, err := apiClient.GetUserSubscription(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to check subscription status: %w", err)
+		}
+
+		if !isSubscriptionActive(subscription.Status) {
+			logger.Info("You don't have an active subscription on %s.", envName)
+			return nil
+		}
+
+		// Get contract caller for current environment
+		caller, err := utils.GetContractCaller(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get contract caller: %w", err)
+		}
+
+		// Get developer address
+		developerAddr, err := utils.GetDeveloperAddress(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get developer address: %w", err)
+		}
+
+		// Check active apps on current environment
+		activeAppCount, err := caller.GetActiveAppCount(ctx, developerAddr)
+		if err != nil {
+			return fmt.Errorf("failed to get active app count: %w", err)
+		}
+
+		// If apps exist, show warning and get confirmation
+		if activeAppCount > 0 {
+			logger.Info("You have %d active app(s) on %s that will be suspended.", activeAppCount, envName)
+			logger.Info("")
+
+			confirmed, err := output.Confirm("Continue?")
+			if err != nil {
+				return fmt.Errorf("failed to get confirmation: %w", err)
+			}
+
+			if !confirmed {
+				logger.Info("Cancellation aborted.")
+				return nil
+			}
+
+			// Get only active apps for this developer
+			activeApps, err := getActiveAppsByCreator(ctx, caller, developerAddr)
+			if err != nil {
+				return fmt.Errorf("failed to get active apps: %w", err)
+			}
+
+			if len(activeApps) > 0 {
+				logger.Info("Suspending apps...")
+
+				// Suspend only active apps
+				err = caller.Suspend(ctx, developerAddr, activeApps)
+				if err != nil {
+					return fmt.Errorf("failed to suspend apps: %w", err)
+				}
+
+				logger.Info("✓ Apps suspended")
+			}
+		} else {
+			// No active apps, just confirm cancellation
+			logger.Warn("Canceling your subscription on %s will prevent you from deploying new apps.", envName)
+			confirmed, err := output.Confirm("Are you sure you want to cancel your subscription?")
+			if err != nil {
+				return fmt.Errorf("failed to get confirmation: %w", err)
+			}
+
+			if !confirmed {
+				logger.Info("Cancellation aborted.")
+				return nil
+			}
+		}
+
+		// Cancel subscription via API
+		logger.Info("Canceling subscription...")
+		if err := apiClient.CancelSubscription(cCtx); err != nil {
+			return fmt.Errorf("failed to cancel subscription: %w", err)
+		}
+
+		logger.Info("\n✓ Subscription canceled successfully for %s.", envName)
+		return nil
+	},
+}
+⋮----
+// Check authentication early to provide clear error message
+⋮----
+// Get API client
+⋮----
+// Check current subscription status
+⋮----
+// Get contract caller for current environment
+⋮----
+// Get developer address
+⋮----
+// Check active apps on current environment
+⋮----
+// If apps exist, show warning and get confirmation
+⋮----
+// Get only active apps for this developer
+⋮----
+// Suspend only active apps
+⋮----
+// No active apps, just confirm cancellation
+⋮----
+// Cancel subscription via API
+⋮----
+// getActiveAppsByCreator retrieves only the active apps (STARTED/STOPPED) for a creator
+func getActiveAppsByCreator(ctx context.Context, caller *common.ContractCaller, creator ethcommon.Address) ([]ethcommon.Address, error)
+⋮----
+// Get all apps for this creator on this network
+⋮----
+// Filter to only active apps (STARTED/STOPPED)
+var activeApps []ethcommon.Address
+````
+
+## File: pkg/commands/billing/status.go
+````go
+package billing
+⋮----
+import (
+	"fmt"
+	"time"
+
+	"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+	"github.com/Layr-Labs/eigenx-cli/pkg/common"
+	"github.com/urfave/cli/v2"
+)
+⋮----
+"fmt"
+"time"
+⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+"github.com/Layr-Labs/eigenx-cli/pkg/common"
+"github.com/urfave/cli/v2"
+⋮----
+var StatusCommand = &cli.Command{
+	Name:  "status",
+	Usage: "Show subscription status and usage",
+	Flags: append(common.GlobalFlags, []cli.Flag{
+		common.EnvironmentFlag,
+	}...),
+	Action: func(cCtx *cli.Context) error {
+		logger := common.LoggerFromContext(cCtx)
+		environmentConfig, err := utils.GetEnvironmentConfig(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get environment config: %w", err)
+		}
+		envName := environmentConfig.Name
+
+		// Check authentication early to provide clear error message
+		if _, err := utils.GetPrivateKeyOrFail(cCtx); err != nil {
+			return err
+		}
+
+		// Get API client
+		apiClient, err := utils.NewUserApiClient(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to create API client: %w", err)
+		}
+
+		// Get subscription details
+		subscription, err := apiClient.GetUserSubscription(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get subscription details: %w", err)
+		}
+
+		hasCurrentPeriodEnd := subscription.CurrentPeriodEnd != nil && *subscription.CurrentPeriodEnd > 0
+		dateFormat := "January 2, 2006"
+
+		// Display subscription information
+		fmt.Println()
+
+		// Subscription status
+		statusDisplay := formatStatus(subscription.Status)
+		logger.Info("Status: %s", statusDisplay)
+
+		// Show historical details if canceled
+		if subscription.Status == utils.StatusCanceled {
+			logger.Info("\nYour subscription has been canceled.")
+			if hasCurrentPeriodEnd {
+				endDate := time.Unix(*subscription.CurrentPeriodEnd, 0)
+				logger.Info("Access ended on %s.", endDate.Format(dateFormat))
+			}
+			logger.Info("Run 'eigenx billing subscribe' to resubscribe.")
+
+			// Show portal link for viewing invoices
+			if subscription.PortalURL != nil && *subscription.PortalURL != "" {
+				logger.Info("\nView invoices and billing history:")
+				logger.Info("  %s", *subscription.PortalURL)
+			}
+
+			return nil
+		}
+
+		// Handle payment issues (past_due, unpaid) - show portal to fix
+		if subscription.Status == utils.StatusPastDue || subscription.Status == utils.StatusUnpaid {
+			logger.Warn("\nYour subscription has a payment issue.")
+			logger.Info("Please update your payment method to restore access.")
+
+			if subscription.PortalURL != nil && *subscription.PortalURL != "" {
+				logger.Info("\nUpdate payment method:")
+				logger.Info("  %s", *subscription.PortalURL)
+			}
+
+			return nil
+		}
+
+		// Handle all other inactive statuses (incomplete, expired, paused, inactive)
+		if !isSubscriptionActive(subscription.Status) {
+			logger.Info("\nYou don't have an active subscription on %s.", envName)
+			logger.Info("Run 'eigenx billing subscribe' to get started.")
+			return nil
+		}
+
+		// Plan details
+		if subscription.PlanPrice != nil && subscription.Currency != nil && *subscription.PlanPrice > 0 {
+			logger.Info("Plan: $%.2f/month", *subscription.PlanPrice)
+		} else {
+			logger.Info("Plan: Standard")
+		}
+		logger.Info("")
+
+		// Current environment usage
+		logger.Info("Usage:")
+
+		// Get contract caller for current environment
+		caller, err := utils.GetContractCaller(cCtx)
+		if err != nil {
+			logger.Warn("  Unable to fetch usage: %v", err)
+			logger.Info("")
+		} else if developerAddr, err := utils.GetDeveloperAddress(cCtx); err != nil {
+			logger.Warn("  Unable to fetch usage: failed to get developer address")
+			logger.Info("")
+		} else if count, err := caller.GetActiveAppCount(cCtx.Context, developerAddr); err != nil {
+			logger.Warn("  Unable to fetch usage: %v", err)
+			logger.Info("")
+		} else {
+			logger.Info("  %d / 1 apps deployed on %s", count, envName)
+			logger.Info("")
+		}
+
+		// Billing information
+		logger.Info("Billing:")
+
+		// Next billing date and amount
+		if subscription.UpcomingInvoice != nil && subscription.UpcomingInvoice.Date > 0 {
+			nextBilling := time.Unix(subscription.UpcomingInvoice.Date, 0)
+			logger.Info("  Next charge: $%.2f on %s", subscription.UpcomingInvoice.Amount, nextBilling.Format(dateFormat))
+		} else if hasCurrentPeriodEnd {
+			nextBilling := time.Unix(*subscription.CurrentPeriodEnd, 0)
+			logger.Info("  Next billing: %s", nextBilling.Format(dateFormat))
+		}
+
+		// Cancellation status
+		if subscription.CancelAtPeriodEnd != nil && *subscription.CancelAtPeriodEnd {
+			if hasCurrentPeriodEnd {
+				endDate := time.Unix(*subscription.CurrentPeriodEnd, 0)
+				logger.Info("  ⚠ Scheduled for cancellation on %s", endDate.Format(dateFormat))
+			}
+		}
+
+		logger.Info("")
+
+		// Billing portal link
+		if subscription.PortalURL != nil && *subscription.PortalURL != "" {
+			logger.Info("Manage billing online:")
+			logger.Info("  %s", *subscription.PortalURL)
+			logger.Info("")
+		}
+		return nil
+	},
+}
+⋮----
+// Check authentication early to provide clear error message
+⋮----
+// Get API client
+⋮----
+// Get subscription details
+⋮----
+// Display subscription information
+⋮----
+// Subscription status
+⋮----
+// Show historical details if canceled
+⋮----
+// Show portal link for viewing invoices
+⋮----
+// Handle payment issues (past_due, unpaid) - show portal to fix
+⋮----
+// Handle all other inactive statuses (incomplete, expired, paused, inactive)
+⋮----
+// Plan details
+⋮----
+// Current environment usage
+⋮----
+// Get contract caller for current environment
+⋮----
+// Billing information
+⋮----
+// Next billing date and amount
+⋮----
+// Cancellation status
+⋮----
+// Billing portal link
+⋮----
+// isSubscriptionActive returns true if the subscription status allows deploying apps
+func isSubscriptionActive(status utils.SubscriptionStatus) bool
+⋮----
+func formatStatus(status utils.SubscriptionStatus) string
+````
+
+## File: pkg/commands/billing/subscribe.go
+````go
+package billing
+⋮----
+import (
+	"fmt"
+	"time"
+
+	"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+	"github.com/Layr-Labs/eigenx-cli/pkg/common"
+	"github.com/pkg/browser"
+	"github.com/urfave/cli/v2"
+)
+⋮----
+"fmt"
+"time"
+⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/commands/utils"
+"github.com/Layr-Labs/eigenx-cli/pkg/common"
+"github.com/pkg/browser"
+"github.com/urfave/cli/v2"
+⋮----
+var SubscribeCommand = &cli.Command{
+	Name:  "subscribe",
+	Usage: "Subscribe to start deploying apps",
+	Flags: append(common.GlobalFlags, []cli.Flag{
+		common.EnvironmentFlag,
+	}...),
+	Action: func(cCtx *cli.Context) error {
+		logger := common.LoggerFromContext(cCtx)
+		environmentConfig, err := utils.GetEnvironmentConfig(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to get environment config: %w", err)
+		}
+		envName := environmentConfig.Name
+
+		// Check authentication early to provide clear error message
+		if _, err := utils.GetPrivateKeyOrFail(cCtx); err != nil {
+			return err
+		}
+
+		// Check if already subscribed
+		client, err := utils.NewUserApiClient(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to create API client: %w", err)
+		}
+
+		subscription, err := client.GetUserSubscription(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to check subscription status: %w", err)
+		}
+
+		if isSubscriptionActive(subscription.Status) {
+			logger.Info("You're already subscribed to %s. Run 'eigenx billing status' for details.", envName)
+			return nil
+		}
+
+		// Handle payment issues - direct to portal instead of creating new subscription
+		if subscription.Status == utils.StatusPastDue || subscription.Status == utils.StatusUnpaid {
+			logger.Info("You already have a subscription on %s, but it has a payment issue.", envName)
+			logger.Info("Please update your payment method to restore access.")
+
+			if subscription.PortalURL != nil && *subscription.PortalURL != "" {
+				logger.Info("\nUpdate payment method:")
+				logger.Info("  %s", *subscription.PortalURL)
+			}
+
+			return nil
+		}
+
+		// Create checkout session
+		logger.Info("Creating checkout session for %s...", envName)
+		session, err := client.CreateCheckoutSession(cCtx)
+		if err != nil {
+			return fmt.Errorf("failed to create checkout session: %w", err)
+		}
+
+		// Open checkout URL in browser
+		logger.Info("Opening payment page in your browser...")
+		if err := browser.OpenURL(session.CheckoutURL); err != nil {
+			logger.Warn("Failed to open browser automatically: %v", err)
+			logger.Info("\nPlease open this URL in your browser:")
+			logger.Info(session.CheckoutURL)
+		}
+
+		// Poll for subscription activation
+		logger.Info("\nWaiting for payment completion...")
+		timeout := time.After(5 * time.Minute)
+		ticker := time.NewTicker(3 * time.Second)
+		defer ticker.Stop()
+
+		for {
+			select {
+			case <-timeout:
+				return fmt.Errorf("payment confirmation timed out after 5 minutes. If you completed payment, run 'eigenx billing status' to check status")
+			case <-ticker.C:
+				subscription, err := client.GetUserSubscription(cCtx)
+				if err != nil {
+					logger.Debug("Failed to check subscription status: %v", err)
+					continue
+				}
+
+				if isSubscriptionActive(subscription.Status) {
+					logger.Info("\n✓ Subscription activated successfully for %s!", envName)
+					logger.Info("\nYou now have access to deploy 1 app on %s", envName)
+					logger.Info("\nStart deploying with: eigenx app deploy")
+					return nil
+				}
+			}
+		}
+	},
+}
+⋮----
+// Check authentication early to provide clear error message
+⋮----
+// Check if already subscribed
+⋮----
+// Handle payment issues - direct to portal instead of creating new subscription
+⋮----
+// Create checkout session
+⋮----
+// Open checkout URL in browser
+⋮----
+// Poll for subscription activation
 ````
 
 ## File: pkg/commands/environment/list.go
@@ -6272,15 +6726,18 @@ package utils
 ⋮----
 import (
 	"fmt"
+	"maps"
 	"math/big"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/Layr-Labs/eigenx-cli/pkg/common"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common/output"
+	"github.com/Layr-Labs/eigenx-cli/pkg/template"
 	"github.com/Layr-Labs/eigenx-contracts/pkg/bindings/v1/AppController"
 	dockercommand "github.com/docker/cli/cli/command"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -6289,15 +6746,18 @@ import (
 )
 ⋮----
 "fmt"
+"maps"
 "math/big"
 "os"
 "path/filepath"
+"slices"
 "sort"
 "strings"
 "time"
 ⋮----
 "github.com/Layr-Labs/eigenx-cli/pkg/common"
 "github.com/Layr-Labs/eigenx-cli/pkg/common/output"
+"github.com/Layr-Labs/eigenx-cli/pkg/template"
 "github.com/Layr-Labs/eigenx-contracts/pkg/bindings/v1/AppController"
 dockercommand "github.com/docker/cli/cli/command"
 "github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -6312,6 +6772,22 @@ type registryInfo struct {
 }
 ⋮----
 Type     string // "dockerhub", "ghcr", "gcr", "other"
+⋮----
+// SelectTemplateInteractive prompts the user to select a template from the catalog
+func SelectTemplateInteractive(language string) (string, error)
+⋮----
+// Fetch the template catalog
+⋮----
+// Get category descriptions for the selected language
+⋮----
+// Sort categories alphabetically for consistent ordering
+⋮----
+// Build display options in sorted order: "category: description"
+var options []string
+⋮----
+// Prompt user to select
+⋮----
+// Extract category from selected option (format: "category: description" or just "category")
 ⋮----
 // SelectRegistryInteractive provides interactive selection of registry for image reference
 func SelectRegistryInteractive(registries []registryInfo, imageName string, tag string, promptMessage string, validator func(string) error) (string, error)
@@ -6387,7 +6863,7 @@ var appItems []appItem
 // If same status, sort by index descending (newer apps first)
 ⋮----
 // Build final options and activeApps lists
-var options []string
+⋮----
 var activeApps []ethcommon.Address
 ⋮----
 // Find the selected app
@@ -6656,8 +7132,6 @@ func GetPrivateKeyOrFail(cCtx *cli.Context) (string, error)
 ⋮----
 // Validate the key format
 ⋮----
-// Try default
-⋮----
 // Provide clear instructions on how to provide the key
 ⋮----
 // GetDeveloperAddress gets developer address from private key
@@ -6869,7 +7343,6 @@ type LayeredDockerfileTemplateData struct {
 ⋮----
 type EnvSourceScriptTemplateData struct {
 	KMSServerURL string
-	JWTFile      string
 	UserAPIURL   string
 }
 ````
@@ -6888,6 +7361,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Layr-Labs/eigenx-cli/internal/version"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common"
 	kmscrypto "github.com/Layr-Labs/eigenx-kms/pkg/crypto"
 	kmstypes "github.com/Layr-Labs/eigenx-kms/pkg/types"
@@ -6904,11 +7378,27 @@ import (
 "strings"
 "time"
 ⋮----
+"github.com/Layr-Labs/eigenx-cli/internal/version"
 "github.com/Layr-Labs/eigenx-cli/pkg/common"
 kmscrypto "github.com/Layr-Labs/eigenx-kms/pkg/crypto"
 kmstypes "github.com/Layr-Labs/eigenx-kms/pkg/types"
 ethcommon "github.com/ethereum/go-ethereum/common"
 "github.com/urfave/cli/v2"
+⋮----
+// SubscriptionStatus represents the state of a user's subscription
+type SubscriptionStatus string
+⋮----
+const (
+	StatusIncomplete        SubscriptionStatus = "incomplete"
+	StatusIncompleteExpired SubscriptionStatus = "incomplete_expired"
+	StatusTrialing          SubscriptionStatus = "trialing"
+	StatusActive            SubscriptionStatus = "active"
+	StatusPastDue           SubscriptionStatus = "past_due"
+	StatusCanceled          SubscriptionStatus = "canceled"
+	StatusUnpaid            SubscriptionStatus = "unpaid"
+	StatusPaused            SubscriptionStatus = "paused"
+	StatusInactive          SubscriptionStatus = "inactive"
+)
 ⋮----
 const MAX_ADDRESS_COUNT = 5
 ⋮----
@@ -6920,8 +7410,8 @@ type AppStatus struct {
 	Status string `json:"app_status"`
 }
 ⋮----
-type AppInfoResponse struct {
-	Apps []AppInfo `json:"apps"`
+type RawAppInfoResponse struct {
+	Apps []RawAppInfo `json:"apps"`
 }
 ⋮----
 // InstanceType represents a machine instance type configuration.
@@ -6938,11 +7428,46 @@ type SKUListResponse struct {
 	SKUs []InstanceType `json:"skus"`
 }
 ⋮----
+type CheckoutSessionResponse struct {
+	CheckoutURL string `json:"checkout_url"`
+}
+⋮----
+type UpcomingInvoice struct {
+	Amount      float64 `json:"amount"`
+	Date        int64   `json:"date"`
+	Description string  `json:"description"`
+}
+⋮----
+type UserSubscriptionResponse struct {
+	Status             SubscriptionStatus `json:"status"`
+	CurrentPeriodStart *int64             `json:"current_period_start,omitempty"`
+	CurrentPeriodEnd   *int64             `json:"current_period_end,omitempty"`
+	PlanPrice          *float64           `json:"plan_price,omitempty"`
+	Currency           *string            `json:"currency,omitempty"`
+	UpcomingInvoice    *UpcomingInvoice   `json:"upcoming_invoice,omitempty"`
+	CancelAtPeriodEnd  *bool              `json:"cancel_at_period_end,omitempty"`
+	CanceledAt         *int64             `json:"canceled_at,omitempty"`
+	PortalURL          *string            `json:"portal_url,omitempty"`
+}
+⋮----
+type RawAppInfo struct {
+	Addresses   json.RawMessage `json:"addresses"`
+	Status      string          `json:"app_status"`
+	Ip          string          `json:"ip"`
+	MachineType string          `json:"machine_type"`
+}
+⋮----
+// AppInfo contains the app info with parsed and validated addresses
 type AppInfo struct {
-	Addresses   kmstypes.SignedResponse[kmstypes.AddressesResponse] `json:"addresses"`
-	Status      string                                              `json:"app_status"`
-	Ip          string                                              `json:"ip"`
-	MachineType string                                              `json:"machine_type"`
+	EVMAddresses    []kmstypes.EVMAddressAndDerivationPath
+	SolanaAddresses []kmstypes.SolanaAddressAndDerivationPath
+	Status          string
+	Ip              string
+	MachineType     string
+}
+⋮----
+type AppInfoResponse struct {
+	Apps []AppInfo
 }
 ⋮----
 type UserApiClient struct {
@@ -6960,9 +7485,11 @@ var result AppStatusResponse
 ⋮----
 func (cc *UserApiClient) GetInfos(cCtx *cli.Context, appIDs []ethcommon.Address, addressCount int) (*AppInfoResponse, error)
 ⋮----
-var result AppInfoResponse
+var rawResult RawAppInfoResponse
 ⋮----
-// verify signature
+// Get signing key for verification
+⋮----
+// Process each app's addresses
 ⋮----
 func (cc *UserApiClient) GetLogs(cCtx *cli.Context, appID ethcommon.Address) (string, error)
 ⋮----
@@ -6970,11 +7497,23 @@ func (cc *UserApiClient) GetSKUs(cCtx *cli.Context) (*SKUListResponse, error)
 ⋮----
 var result SKUListResponse
 ⋮----
+func (cc *UserApiClient) CreateCheckoutSession(cCtx *cli.Context) (*CheckoutSessionResponse, error)
+⋮----
+var result CheckoutSessionResponse
+⋮----
+func (cc *UserApiClient) GetUserSubscription(cCtx *cli.Context) (*UserSubscriptionResponse, error)
+⋮----
+var result UserSubscriptionResponse
+⋮----
+func (cc *UserApiClient) CancelSubscription(cCtx *cli.Context) error
+⋮----
 // buildAppIDsParam creates a comma-separated string of app IDs for URL parameters
 func buildAppIDsParam(appIDs []ethcommon.Address) string
 ⋮----
 // makeAuthenticatedRequest performs an HTTP request with optional authentication
 func (cc *UserApiClient) makeAuthenticatedRequest(cCtx *cli.Context, method, url string, permission *[4]byte) (*http.Response, error)
+⋮----
+// Add x-client-id header to identify the CLI client
 ⋮----
 // Add auth headers if permission is specified
 ⋮----
@@ -6987,6 +7526,33 @@ var errorResp struct {
 	}
 ⋮----
 // Fallback to raw body if not valid JSON
+⋮----
+// processAddressesResponse attempts to parse and validate addresses response as V2, then V1
+func processAddressesResponse(
+	rawAddresses json.RawMessage,
+	appID ethcommon.Address,
+	signingKey []byte,
+	addressCount int,
+) (evmAddrs []kmstypes.EVMAddressAndDerivationPath, solanaAddrs []kmstypes.SolanaAddressAndDerivationPath, err error)
+⋮----
+// Try V2 first - unmarshal and verify signature
+var signedV2 kmstypes.SignedResponse[kmstypes.AddressesResponseV2]
+⋮----
+// Verify signature - if this succeeds, it's V2
+⋮----
+// Validate AppID matches
+⋮----
+// Truncate to requested count
+⋮----
+// Signature failed - might be V1 response, fall through to try V1
+⋮----
+// Try V1 fallback
+var signedV1 kmstypes.SignedResponse[kmstypes.AddressesResponseV1]
+⋮----
+// Verify signature
+⋮----
+// V1 doesn't have AppID field, so we can't validate it
+// Truncate to requested count
 ````
 
 ## File: pkg/commands/version/version.go
@@ -7074,6 +7640,29 @@ var AuthCommand = &cli.Command{
 		auth.LogoutCommand,
 		auth.WhoamiCommand,
 		auth.ListCommand,
+	},
+}
+````
+
+## File: pkg/commands/billing.go
+````go
+package commands
+⋮----
+import (
+	"github.com/Layr-Labs/eigenx-cli/pkg/commands/billing"
+	"github.com/urfave/cli/v2"
+)
+⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/commands/billing"
+"github.com/urfave/cli/v2"
+⋮----
+var BillingCommand = &cli.Command{
+	Name:  "billing",
+	Usage: "Manage billing and subscription",
+	Subcommands: []*cli.Command{
+		billing.SubscribeCommand,
+		billing.CancelCommand,
+		billing.StatusCommand,
 	},
 }
 ````
@@ -7843,7 +8432,7 @@ func GetClearCommand() string
 // On Unix-like systems (and as fallback on Windows), try 'clear'
 ````
 
-## File: pkg/common/progress/decect_tty.go
+## File: pkg/common/progress/detect_tty.go
 ````go
 package progress
 ⋮----
@@ -8222,6 +8811,7 @@ const (
 // Environment variable names
 MnemonicEnvVar         = "MNEMONIC"                  // Filtered out, overridden by protocol
 EigenMachineTypeEnvVar = "EIGEN_MACHINE_TYPE_PUBLIC" // Instance type configuration
+EigenXPrivateKeyEnvVar = "EIGENX_PRIVATE_KEY"        // Private key for authentication
 ⋮----
 // API permissions constants
 var (
@@ -8233,6 +8823,9 @@ var (
 ⋮----
 // The permission to view sensitive app info (including real IPs)
 // bytes4(keccak256("CAN_VIEW_SENSITIVE_APP_INFO()"))
+⋮----
+// The permission to manage billing and subscriptions
+// bytes4(keccak256("CAN_MANAGE_BILLING()"))
 ⋮----
 // The address that is used to allow auth to be bypassed for certain permissions
 // address(bytes20(keccak256("PermissionController:AnyoneCanCall")))
@@ -8247,6 +8840,7 @@ const (
 	ContractAppStatusStarted
 	ContractAppStatusStopped
 	ContractAppStatusTerminated
+	ContractAppStatusSuspended
 )
 ⋮----
 // App status strings from API
@@ -8260,6 +8854,7 @@ const (
 	AppStatusStopped     = "Stopped"
 	AppStatusTerminating = "Terminating"
 	AppStatusTerminated  = "Terminated"
+	AppStatusSuspended   = "Suspended"
 	AppStatusFailed      = "Failed"
 	AppStatusExited      = "Exited"
 )
@@ -8428,6 +9023,20 @@ func (cc *ContractCaller) TerminateApp(ctx context.Context, appAddress common.Ad
 ⋮----
 // Note: Terminate always needs confirmation unless force is specified
 ⋮----
+// GetActiveAppCount returns the number of active apps (STARTED or STOPPED) for a user
+func (cc *ContractCaller) GetActiveAppCount(ctx context.Context, user common.Address) (uint32, error)
+⋮----
+// GetMaxActiveAppsPerUser returns the quota limit for a user
+func (cc *ContractCaller) GetMaxActiveAppsPerUser(ctx context.Context, user common.Address) (uint32, error)
+⋮----
+// GetAppsByCreator retrieves a paginated list of apps created by the specified address
+func (cc *ContractCaller) GetAppsByCreator(ctx context.Context, creator common.Address, offset uint64, limit uint64) ([]common.Address, []appcontrollerV1.IAppControllerAppConfig, error)
+⋮----
+// Suspend suspends all active apps for an account and sets their max active apps to 0
+func (cc *ContractCaller) Suspend(ctx context.Context, account common.Address, apps []common.Address) error
+⋮----
+// Prepare messages
+⋮----
 // EIP 7702 Utility Functions
 ⋮----
 // CheckERC7702Delegation checks if the given account already delegates to the ERC-7702 delegator
@@ -8557,8 +9166,9 @@ import "github.com/urfave/cli/v2"
 // Common flag definitions
 var (
 	EnvironmentFlag = &cli.StringFlag{
-		Name:  "environment",
-		Usage: "Deployment environment to use",
+		Name:    "environment",
+		Aliases: []string{"env"},
+		Usage:   "Deployment environment to use",
 	}
 
 	RpcUrlFlag = &cli.StringFlag{
@@ -8570,7 +9180,7 @@ var (
 	PrivateKeyFlag = &cli.StringFlag{
 		Name:    "private-key",
 		Usage:   "Private key for signing transactions",
-		EnvVars: []string{"EIGENX_PRIVATE_KEY"},
+		EnvVars: []string{EigenXPrivateKeyEnvVar},
 	}
 
 	ForceFlag = &cli.BoolFlag{
@@ -9000,6 +9610,7 @@ import (
 	"fmt"
 	"math/big"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -9013,6 +9624,7 @@ import (
 "fmt"
 "math/big"
 "os"
+"path/filepath"
 "regexp"
 "strings"
 ⋮----
@@ -9110,6 +9722,17 @@ func FormatETH(weiAmount *big.Int) string
 // Remove trailing zeros and decimal point if needed
 ⋮----
 // If result is "0", show "<0.000001" for small amounts
+⋮----
+// CreateTempDir creates a temporary directory with fallback to ~/.eigenx/tmp if system temp fails
+func CreateTempDir(prefix string) (string, error)
+⋮----
+// First try the system temp directory
+⋮----
+// If that fails, try `~/.eigenx/tmp`
+⋮----
+// Create the fallback directory if it doesn't exist
+⋮----
+// Create temp directory in fallback location
 ````
 
 ## File: pkg/common/version_test.go
@@ -9689,46 +10312,125 @@ func ContextWithClient(ctx context.Context, client Client) context.Context
 func ClientFromContext(ctx context.Context) (Client, bool)
 ````
 
-## File: pkg/template/config.go
+## File: pkg/template/catalog.go
 ````go
 package template
 ⋮----
 import (
+	"encoding/json"
 	"fmt"
-
-	"github.com/Layr-Labs/eigenx-cli/config"
-
-	"gopkg.in/yaml.v3"
+	"io"
+	"net/http"
+	"os"
+	"path/filepath"
+	"sync"
+	"time"
 )
 ⋮----
+"encoding/json"
 "fmt"
+"io"
+"net/http"
+"os"
+"path/filepath"
+"sync"
+"time"
 ⋮----
-"github.com/Layr-Labs/eigenx-cli/config"
+const (
+	// Environment variable names
+	EnvVarUseLocalTemplates = "EIGENX_USE_LOCAL_TEMPLATES"
+	EnvVarTemplatesPath     = "EIGENX_TEMPLATES_PATH"
+
+	// Default repository URL for templates
+	DefaultTemplateRepo = "https://github.com/Layr-Labs/eigenx-templates"
+
+	// Default version/branch for templates
+	DefaultTemplateVersion = "main"
+
+	// Default catalog URL in the eigenx-templates repository
+	DefaultCatalogURL = "https://raw.githubusercontent.com/Layr-Labs/eigenx-templates/main/templates.json"
+
+	// Cache duration for the catalog (15 minutes)
 ⋮----
-"gopkg.in/yaml.v3"
+// Environment variable names
 ⋮----
-type Config struct {
-	Framework map[string]FrameworkSpec `yaml:"framework"`
+// Default repository URL for templates
+⋮----
+// Default version/branch for templates
+⋮----
+// Default catalog URL in the eigenx-templates repository
+⋮----
+// Cache duration for the catalog (15 minutes)
+⋮----
+// TemplateEntry represents a single template in the catalog
+type TemplateEntry struct {
+	Path        string `json:"path"`
+	Description string `json:"description"`
+	PostProcess struct {
+		ReplaceNameIn []string `json:"replaceNameIn,omitempty"`
+	} `json:"postProcess,omitempty"`
+⋮----
+// TemplateCatalog represents the structure of templates.json
+// Organized by language first, then by category (e.g., "typescript" -> "minimal")
+type TemplateCatalog struct {
+	Languages map[string]map[string]TemplateEntry `json:"-"`
 }
 ⋮----
-type FrameworkSpec struct {
-	Template  string   `yaml:"template"`
-	Version   string   `yaml:"version"`
-	Languages []string `yaml:"languages"`
+// UnmarshalJSON implements custom JSON unmarshalling to handle nested structure
+func (tc *TemplateCatalog) UnmarshalJSON(data []byte) error
+⋮----
+var raw map[string]interface{}
+⋮----
+// Re-marshal and unmarshal to convert to map[string]TemplateEntry
+⋮----
+var templates map[string]TemplateEntry
+⋮----
+// GetTemplate finds a template by language and category
+func (tc *TemplateCatalog) GetTemplate(category, language string) (*TemplateEntry, error)
+⋮----
+// GetCategoryDescriptions returns a map of category names to their descriptions for a given language
+func (tc *TemplateCatalog) GetCategoryDescriptions(language string) map[string]string
+⋮----
+// GetSupportedLanguages returns a list of all unique languages in the catalog
+func (tc *TemplateCatalog) GetSupportedLanguages() []string
+⋮----
+var languages []string
+⋮----
+// catalogCache holds the cached catalog and its expiration time
+type catalogCache struct {
+	catalog   *TemplateCatalog
+	expiresAt time.Time
+	mu        sync.RWMutex
 }
 ⋮----
-func LoadConfig() (*Config, error)
+var cache = &catalogCache{}
 ⋮----
-// pull from embedded string
+// FetchTemplateCatalog fetches and parses the template catalog from the remote URL
+// It uses a 15-minute in-memory cache to avoid excessive network requests
+// If EIGENX_USE_LOCAL_TEMPLATES is set, it looks for a local templates.json file
+func FetchTemplateCatalog() (*TemplateCatalog, error)
 ⋮----
-var config Config
+// Check if using local templates
 ⋮----
-// GetTemplateURLs returns template URL & version for the requested framework + language.
-// Fails fast if the framework does not exist, the template URL is blank, or the
-// language is not declared in the framework's Languages slice.
-func GetTemplateURLs(config *Config, framework, lang string) (string, string, error)
+// Check cache first
 ⋮----
-// Language gate – only enforce if Languages slice is populated
+// Fetch from remote
+⋮----
+// Update cache
+⋮----
+// fetchRemoteCatalog fetches the catalog from a remote URL
+func fetchRemoteCatalog(url string) (*TemplateCatalog, error)
+⋮----
+var catalog TemplateCatalog
+⋮----
+// fetchLocalCatalog looks for a local templates.json file
+func fetchLocalCatalog() (*TemplateCatalog, error)
+⋮----
+// Look for EIGENX_TEMPLATES_PATH first
+⋮----
+// Look for eigenx-templates directory as a sibling
+⋮----
+// Try sibling directory
 ````
 
 ## File: pkg/template/git_client_test.go
@@ -10067,6 +10769,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Layr-Labs/eigenx-cli/pkg/common"
 	"github.com/Layr-Labs/eigenx-cli/pkg/common/logger"
 )
 ⋮----
@@ -10076,6 +10779,7 @@ import (
 "os"
 "path/filepath"
 ⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/common"
 "github.com/Layr-Labs/eigenx-cli/pkg/common/logger"
 ⋮----
 // GitFetcherConfig holds options; we only care about Verbose here
@@ -10114,13 +10818,6 @@ var reporter Reporter
 func (f *GitFetcher) FetchSubdirectory(ctx context.Context, repoURL, ref, subPath, targetDir string) error
 ⋮----
 // Create temporary directory for sparse clone
-// First try the system temp directory
-⋮----
-// If that fails, try `~/.eigenx/tmp`
-⋮----
-// Create the fallback directory if it doesn't exist
-⋮----
-// Create temp directory in fallback location
 ⋮----
 // Use sparse clone to fetch only the needed subdirectory
 ⋮----
@@ -10688,14 +11385,15 @@ go 1.24.0
 toolchain go1.24.5
 
 require (
-	github.com/Layr-Labs/eigenx-contracts v0.0.0-20250929214419-f0d751f5c9bc
-	github.com/Layr-Labs/eigenx-kms v0.0.0-20250929214127-72a46e110b30
+	github.com/Layr-Labs/eigenx-contracts v0.0.0-20251024194654-82395e726316
+	github.com/Layr-Labs/eigenx-kms v0.0.0-20251101091130-b725a6aaa815
 	github.com/fatih/color v1.16.0
 	github.com/google/go-containerregistry v0.20.6
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-envparse v0.1.0
 	github.com/holiman/uint256 v1.3.2
 	github.com/joho/godotenv v1.5.1
+	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 	github.com/posthog/posthog-go v1.4.10
 	github.com/urfave/cli/v2 v2.27.7
 	github.com/zalando/go-keyring v0.2.6
@@ -11201,7 +11899,7 @@ EigenX lets you deploy containerized applications that run in secure, verifiable
 
 ## Prerequisites
 
-- **Allowlisted Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`. Submit an onboarding request [here](https://onboarding.eigencloud.xyz).
+- **Billing Account** - Required to create apps. Use existing address with `eigenx auth login` or generate with `eigenx auth generate`, then set up billing with `eigenx billing subscribe`.
 - **Docker** - To package and publish application images ([Download](https://www.docker.com/get-started/))
 - **Sepolia ETH** - For deployment transactions ([Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) | [Alchemy Faucet](https://sepoliafaucet.com/))
 
