@@ -1,6 +1,6 @@
 ---
 title: Drop In Compatibility
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 The EigenAI API is compatible with the OpenAI API and uses open-source LLMs. You can simply place the API endpoint in your existing application to
