@@ -1,4 +1,6 @@
 {
   "position": 1,
-  "label": "EigenCloud"
+  "label": "EigenCloud",
+  "collapsible": true,
+  "collapsed": false,
 }

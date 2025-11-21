@@ -888,8 +888,8 @@ const config = {
       },
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
+          autoCollapseCategories: false,
         },
       },
       prism: {

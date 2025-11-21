@@ -1,4 +1,6 @@
 {
   "position": 2,
-  "label": "Concepts"
+  "label": "Concepts",
+  "collapsible": true,
+  "collapsed": false,
 }
