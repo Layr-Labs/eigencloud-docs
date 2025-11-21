@@ -3,7 +3,7 @@ title: Attested API Template
 sidebar_position: 1
 ---
 
-The Attested API template can be built on by to make signed messages accessible via API or generate attestable values.
+The Attested API template can be built on to make signed messages accessible via API or generate attestable values.
 The template is available in Go, Python, Rust, and Typescript.
 
 ## Overview 
@@ -37,7 +37,7 @@ What you'll do:
 Before you begin, ensure you have:
 
 - [Docker](https://www.docker.com/get-started/) - To package and publish application images.
-- Testnet ETH - For deployment transactions.
+- Sepolia Testnet ETH - For deployment transactions.
 - [Installed EigenX CLI](eigencompute/get-started/quickstart#installation) and [authenticated to EigenCompute](eigencompute/get-started/quickstart#initial-setup).
 - [Subscribed to EigenCompute](eigencompute/get-started/quickstart#subscribe-to-eigencompute).
 
@@ -53,21 +53,48 @@ docker login
 
 You must be logged into Docker to push the application image.
 
-#### Clone the templates repository 
+#### Create app from Attested API template 
 
-Clone the repository: 
-
-```
-git clone https://github.com/Layr-Labs/eigenx-templates.git
-```
-
-Change into the `attested-api` directory: 
+Create an app: 
 
 ```
-cd eigenx-templates/templates/attested-api/typescript
+eigenx app create
 ```
 
-#### Deploy to EigenCompute TEE
+Enter a name for your app and select language: 
+
+```
+? Enter project name: myproject
+? Select language: typescript
+```
+
+Select `attested-api`:
+
+```
+? Select template:  [Use arrows to move, type to filter]
+> attested-api: TypeScript API that generates cryptographically attested random numbers
+```
+
+The project is created: 
+
+```
+2025/11/21 11:30:48 
+2025/11/21 11:30:48 Cloning template: https://github.com/Layr-Labs/eigenx-templates → extracting templates/attested-api/typescript
+2025/11/21 11:30:48 
+2025/11/21 11:30:50 [====================] 100% eigenx-templates (Cloning from ref: main)
+2025/11/21 11:30:50
+2025/11/21 11:30:50 Template extraction complete: templates/attested-api/typescript
+2025/11/21 11:30:50 
+Successfully created typescript project: myproject
+```
+
+Change into project directory: 
+
+```
+cd myproject
+```
+
+#### Build and deploy
 
 Build and deploy your application:
 
