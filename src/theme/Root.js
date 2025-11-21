@@ -13,6 +13,18 @@ function Root({ children }) {
       return;
     }
 
+    if (location.pathname === '/' || location.pathname === '/index.html') {
+      window.location.replace('/products/eigencloud/eigencloud-overview');
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!ExecutionEnvironment.canUseDOM) {
+      return;
+    }
+
+    const eigenContext = getEigencomputeContext(location.pathname);
+
     // Enhanced click tracking for all links and buttons
     const handleClick = (event) => {
       // Find the actual clicked element (link or button)
@@ -56,6 +68,12 @@ function Root({ children }) {
       else if (isFooter) contentArea = 'footer';
       else if (isTOC) contentArea = 'table-of-contents';
 
+      // Generate Eigencompute-specific identifiers when applicable
+      let eigencomputeElementId = null;
+      if (eigenContext) {
+        eigencomputeElementId = buildEigencomputeElementId(target, clickText, elementType);
+      }
+
       // Send to GA4 using gtag
       if (window.gtag) {
         // Create a unique identifier combining page and click info
@@ -92,7 +110,15 @@ function Root({ children }) {
           
           // Custom event parameters for easier filtering in GA4
           custom_event_category: isExternal ? 'external_link' : 'internal_navigation',
-          custom_event_label: clickText || clickUrl
+          custom_event_label: clickText || clickUrl,
+
+          // Eigencompute identifiers
+          ...(eigenContext
+            ? {
+                eigencompute_page_id: eigenContext.pageId,
+                eigencompute_element_id: eigencomputeElementId,
+              }
+            : {})
         });
 
         // Send specialized events for specific click types
@@ -130,6 +156,21 @@ function Root({ children }) {
             link_text: clickText,
             link_url: clickUrl,
             page_path: location.pathname
+          });
+        }
+
+        if (eigenContext) {
+          window.gtag('event', 'eigencompute_click', {
+            page_path: location.pathname,
+            page_title: document.title,
+            eigencompute_page_id: eigenContext.pageId,
+            eigencompute_element_id: eigencomputeElementId,
+            eigencompute_click_identifier: clickIdentifier,
+            content_area: contentArea,
+            parent_section: section,
+            click_element: elementType,
+            click_text: clickText,
+            click_destination: clickUrl || 'no-url'
           });
         }
       }
@@ -204,8 +245,24 @@ function Root({ children }) {
                 window.gtag('event', 'scroll', {
                   percent_scrolled: milestone,
                   page_path: location.pathname,
-                  page_title: document.title
+                  page_title: document.title,
+                  ...(eigenContext
+                    ? {
+                        eigencompute_page_id: eigenContext.pageId,
+                        eigencompute_scroll_id: `${eigenContext.pageId}_${milestone}`,
+                      }
+                    : {})
                 });
+
+                if (eigenContext) {
+                  window.gtag('event', 'eigencompute_scroll', {
+                    page_path: location.pathname,
+                    page_title: document.title,
+                    eigencompute_page_id: eigenContext.pageId,
+                    eigencompute_scroll_id: `${eigenContext.pageId}_${milestone}`,
+                    eigencompute_scroll_percent: milestone
+                  });
+                }
                 break;
               }
             }
@@ -254,3 +311,146 @@ function Root({ children }) {
 }
 
 export default Root;
+
+const EIGENCOMPUTE_BASE_PATH = '/products/eigencompute';
+
+function getEigencomputeContext(pathname) {
+  if (!pathname || !pathname.startsWith(EIGENCOMPUTE_BASE_PATH)) {
+    return null;
+  }
+
+  const relativePath = pathname
+    .slice(EIGENCOMPUTE_BASE_PATH.length)
+    .replace(/^\/+/, '')
+    .replace(/\/$/, '');
+
+  const pageSeed = relativePath || 'index';
+  const pageId = `ec_${slugify(pageSeed) || 'index'}`;
+
+  return {
+    pageId,
+  };
+}
+
+function buildEigencomputeElementId(target, clickText, elementType) {
+  const analyticsId = findAnalyticsId(target);
+  if (analyticsId) {
+    return analyticsId;
+  }
+
+  const codeIdentifier = getCodeBlockIdentifier(target);
+  if (codeIdentifier) {
+    return codeIdentifier;
+  }
+
+  const ariaLabel = target?.getAttribute ? target.getAttribute('aria-label') : null;
+  if (ariaLabel) {
+    const ariaId = slugify(ariaLabel);
+    if (ariaId) {
+      return `aria_${ariaId}`;
+    }
+  }
+
+  const titleAttr = target?.getAttribute ? target.getAttribute('title') : null;
+  if (titleAttr) {
+    const titleId = slugify(titleAttr);
+    if (titleId) {
+      return `title_${titleId}`;
+    }
+  }
+
+  if (clickText) {
+    const textId = slugify(clickText);
+    if (textId) {
+      return `text_${textId}`;
+    }
+  }
+
+  if (elementType) {
+    const elementId = slugify(elementType);
+    if (elementId) {
+      return `element_${elementId}`;
+    }
+  }
+
+  return 'unknown';
+}
+
+function findAnalyticsId(element) {
+  let current = element;
+  let depth = 0;
+  const maxDepth = 5;
+
+  while (current && current !== document.body && depth < maxDepth) {
+    if (current.dataset && current.dataset.analyticsId) {
+      const normalized = slugify(current.dataset.analyticsId);
+      if (normalized) {
+        return normalized;
+      }
+    }
+
+    current = current.parentElement;
+    depth += 1;
+  }
+
+  return null;
+}
+
+function getCodeBlockIdentifier(element) {
+  if (!element || typeof element.closest !== 'function') {
+    return null;
+  }
+
+  const themeCodeBlock = element.closest('.theme-code-block');
+  if (themeCodeBlock) {
+    const codeElement =
+      themeCodeBlock.querySelector('pre code') ||
+      themeCodeBlock.querySelector('pre') ||
+      themeCodeBlock.querySelector('code');
+    const codeText = codeElement?.textContent || '';
+    const firstLine = getFirstNonEmptyLine(codeText);
+    const codeId = slugify(firstLine).slice(0, 80);
+    if (codeId) {
+      return `code_${codeId}`;
+    }
+  }
+
+  const preElement = element.closest('pre');
+  if (preElement) {
+    const firstLine = getFirstNonEmptyLine(preElement.textContent || '');
+    const codeId = slugify(firstLine).slice(0, 80);
+    if (codeId) {
+      return `code_${codeId}`;
+    }
+  }
+
+  return null;
+}
+
+function getFirstNonEmptyLine(text) {
+  if (!text) {
+    return '';
+  }
+
+  const lines = text.split('\n');
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed) {
+      return trimmed;
+    }
+  }
+
+  return '';
+}
+
+function slugify(value) {
+  if (!value || typeof value !== 'string') {
+    return '';
+  }
+
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
