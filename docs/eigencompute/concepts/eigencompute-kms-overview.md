@@ -39,3 +39,21 @@ From the mnemonic, applications can generate:
 :::tip Example Use Case
 Encrypt a database with a key derived from the mnemonic. On reboot, derive the same key and decrypt the database. Persistent encrypted state!
 :::
+
+## Distributed KMS (Q1, 2026)
+
+The distributed KMS (planned for release Q1, 2026) will use threshold cryptography (BLS12-381) to eliminate single points 
+of failure while maintaining Byzantine fault tolerance. The distributed KMS will provide two important properties:
+
+* No single Operator can access TEE secrets.
+* Applications continue operating even if some KMS Operators go offline.
+
+### No access to TEE secrets
+
+Key shares cannot be combined by any single party meaning that no Operator ever sees the full private key. A compromised Operator,
+or even a malicious one, cannot gain access to the private key without collusion from ⌈2n/3⌉ operators.
+
+### Fault-tolerant availability
+
+With a ⌈2n/3⌉ threshold, the KMS will tolerate up to n/3 Operator failures or outages. Applications can continue without interruption if up 
+to n/3 Operators fail. This ensures that availability is shared across a decentralized set of Operators.
