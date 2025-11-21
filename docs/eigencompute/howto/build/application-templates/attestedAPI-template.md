@@ -38,8 +38,8 @@ Before you begin, ensure you have:
 
 - [Docker](https://www.docker.com/get-started/) - To package and publish application images.
 - Sepolia Testnet ETH - For deployment transactions.
-- [Installed EigenX CLI](eigencompute/get-started/quickstart#installation) and [authenticated to EigenCompute](eigencompute/get-started/quickstart#initial-setup).
-- [Subscribed to EigenCompute](eigencompute/get-started/quickstart#subscribe-to-eigencompute).
+- [Installed EigenX CLI](../../../get-started/quickstart#installation) and [authenticated to EigenCompute](../../../get-started/quickstart#initial-setup).
+- [Subscribed to EigenCompute](../../../get-started/quickstart#subscribe-to-eigencompute).
 
 ### 1. Build and Attested API template 
 
