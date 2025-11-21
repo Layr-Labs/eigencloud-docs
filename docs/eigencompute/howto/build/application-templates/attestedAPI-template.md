@@ -1,103 +1,49 @@
 ---
-title: Attested API Quickstart
+title: Attested API Template
 sidebar_position: 1
 ---
 
-EigenCloud provides secure application hosting where Docker containers run with similar guarantees to smart contracts. This
-guide will get you started with EigenCompute and deploying your first containerized workload in minutes.
+The Attested API template can be built on by to make signed messages accessible via API or generate attestable values.
+The template is available in Go, Python, Rust, and Typescript.
 
-## Getting Started 
+## Overview 
+
+The Attested API template packages a minimal containerized service that:
+* Runs inside an EigenCompute Trusted Execution Environment (TEE).
+* Generates a random value inside the enclave.
+* Constructs a verifiable message including randomness and timestamp.
+* Signs the message using an address derived from the TEE mnemonic.
+* Exposes the result through a `/random` HTTP endpoint.
+
+## What you get
+
+When deployed, the template provides a REST endpoint returning:
+* A TEE-generated random number
+* The message string 
+* The message hash
+* A signature generated inside the TEE
+* The signer address.
+
+## Using the template
 
 What you'll do:
 
-1. Install EigenCloud CLI.
-2. Authenticate to EigenCompute.
-3. Build and deploy the Attested API application. 
-4. Request a signed message from the application.
-5. Verify the signed message was returned from the application TEE. 
+1. Build and deploy the Attested API application. 
+2. Request a signed message from the application.
+3. Verify the signed message was returned from the application TEE. 
 
-## Prerequisites
+### Prerequisites
 
 Before you begin, ensure you have:
 
 - [Docker](https://www.docker.com/get-started/) - To package and publish application images.
 - Testnet ETH - For deployment transactions.
+- [Installed EigenX CLI](eigencompute/get-started/quickstart#installation) and [authenticated to EigenCompute](eigencompute/get-started/quickstart#initial-setup).
+- [Subscribed to EigenCompute](eigencompute/get-started/quickstart#subscribe-to-eigencompute).
 
-:::tip Sepolia Faucets for Testnet ETH
-Get testnet ETH from:
-- [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
-- [Alchemy Faucet](https://sepoliafaucet.com/)
-:::
+### 1. Build and Attested API template 
 
-## 1. Install EigenCloud CLI
-
-### macOS/Linux
-
-```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
-```
-
-### Windows
-
-```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
-```
-
-## 2. Authenticate to EigenCompute
-
-### Switch to Sepolia Testnet
-
-Set the deployment environment to Sepolia testnet:
-
-```
-eigenx env set sepolia
-```
-
-### Authenticate
-
-Authenticate by generating a new private key: 
-
-```bash
-eigenx auth generate --store
-```
-
-The private key is displayed and must be backed up before continuing.
-
-```
-A new private key was generated for you.
-IMPORTANT: You MUST backup this key now. It will never be shown again.
-Copy it to your password manager or secure storage before continuing.
-```
-
-The private key is securely stored for the Eigenx CLI to use when signing deployment transactions.
-
-:::warning 
-The private key is securely stored while you remain authenticated to EigenCompute. 
-
-If you log out of EigenCompute and have not backed up the private key that was generated for you, you will be unable to access your deployed application.
-
-If you generate another EigenCompute key and overwrite the existing private key without first having backed up the private key that was generated for you, you will be unable to access your deployed application.
-:::
-
-### Get Testnet Funds
-
-Obtain your wallet address:
-
-```bash
-eigenx auth whoami
-```
-
-Ensure the appplication wallet is funded with testnet ETH for deployment. 
-
-:::tip Testnet ETH Faucets 
-You can obtain testnet ETH from a faucet:
-- [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
-- [Alchemy Faucet](https://sepoliafaucet.com/)
-::: 
-
-## 3. Build and deploy application 
-
-### Docker Login
+#### Docker Login
 
 Ensure Docker is running and log in to your Docker registry:
 
@@ -107,7 +53,7 @@ docker login
 
 You must be logged into Docker to push the application image.
 
-### Clone the templates repository 
+#### Clone the templates repository 
 
 Clone the repository: 
 
@@ -121,28 +67,7 @@ Change into the `attested-api` directory:
 cd eigenx-templates/templates/attested-api/typescript
 ```
 
-:::tip
-The Attested API template is provided in Go, Python, Rust, and Typescript.
-:::
-
-### Subscribe to EigenCompute
-
-Before deploying, you'll need an EigenCompute subscription(TODO - add link).
-
-To subscribe:
-
-```
-eigenx billing subscribe
-```
-
-The payment portal is displayed.  Enter your payment method details and click the **Subscribe** button.
-
-:::important Mainnet Pricing
-Current EigenCompute pricing is the [testnet pricing](../../../get-started/billing.md). Mainnet deployments are available testnet pricing for a promotional
-period ending on 12/31/2025.
-:::
-
-### Deploy to EigenCompute TEE
+#### Deploy to EigenCompute TEE
 
 Build and deploy your application:
 
@@ -201,7 +126,7 @@ app is being started.
 2025/11/11 10:54:58 App is now running with IP: 34.82.182.235
 ```
 
-## 4. Request signed message
+### 4. Request signed message
 
 View the application information:
 
@@ -234,7 +159,7 @@ The API response is displayed.
 {"randomNumber":"0xdf9aac2b3d24f016069f60b80f9eb6078af53a75e003efccb3d9a701398e1f2e","randomNumberDecimal":"101139047948132875594643189998571798010250255951109269318072821531194929585966","timestamp":"2025-11-10T06:11:14.025Z","message":"RandomnessBeacon|0xdf9aac2b3d24f016069f60b80f9eb6078af53a75e003efccb3d9a701398e1f2e|2025-11-10T06:11:14.025Z","messageHash":"0x8fb10cc1c2b7e200f748df0caa61342328eda3220ee8943f6cf87a8b6e06922f","signature":"0x65fef0640e256497f9276565a662f568a2569003f83ab5c1b717d8a47b6d9347064ef9fd28df568bc18d343cf7505b77fae788818d7251c8d6da6f6d6a74f17f1b","signer":"0x17c66C17F03899daD0cBab3A7Fc5EA89B37dcD52"}
 ```
 
-## 5. Verify the signed message
+### 5. Verify the signed message
 
 Click the **Verify Signature** button available on [Etherscan](https://etherscan.io/verifiedSignatures#). The **Verify Signature** window is displayed.
 
