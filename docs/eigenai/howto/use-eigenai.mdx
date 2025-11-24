@@ -81,8 +81,8 @@ We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf
     from openai import OpenAI
 
     client = OpenAI(
-    	base_url="https://eigenai.eigencloud.xyz/v1",
-        default_headers={"x-api-key": api_key}
+        base_url="https://eigenai.eigencloud.xyz/v1",
+        default_headers={"x-api-key": api_key},
     )
 
     tools: List[Dict[str, Any]] = [
@@ -98,7 +98,10 @@ We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf
                             "type": "string",
                             "description": "The city and state, e.g. San Francisco, CA",
                         },
-                        "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+                        "unit": {
+                            "type": "string",
+                            "enum": ["celsius", "fahrenheit"],
+                        },
                     },
                     "required": ["location"],
                 },
