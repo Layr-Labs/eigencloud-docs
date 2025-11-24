@@ -1,0 +1,42 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delegation Requirements
+
+EigenDA operators start by first registering as an EigenLayer operator and meeting stake requirements. These requirements are evaluated on a per-quorum basis, relative to the weighting for each quorum:
+
+<Tabs groupId="network">
+  <TabItem value="mainnet" label="Mainnet">
+
+    - Minimum stake floor: Each operator must have
+      - at least 32 ETH to join the ETH quorum, or
+      - at least 1 EIGEN to join the EIGEN quorum.
+    - Congested operator set stake floor: When the global operator cap (200) is reached for the quorum, the joining operator must have more than 1.1X the quorum weight of the current lowest-weighted operator in order to replace that operator.
+
+  </TabItem>
+  <TabItem value="hoodi" label="Hoodi">
+
+    - Minimum stake floor: Each operator must have
+      - at least 32 ETH to join the ETH quorum, or
+      - at least 1 EIGEN/bEIGEN to join the EIGEN quorum.
+    - Congested operator set stake floor: When the global operator cap (200) is reached for the quorum, the joining operator must have more than 1.1X the quorum weight of the current lowest-weighted operator in order to replace that operator.
+
+  </TabItem>
+</Tabs>
+
+Details about how these requirements are enforced and the process by which DA nodes join a quorum for which they are eligible can be found at the [Registration Protocol Overview](../registration-protocol.md).
+
+
+## Checking eligibility
+
+In order to determine the current TVL of the top 200 operators for each quorum, please visit our
+AVS page ([Mainnet](https://app.eigenlayer.xyz/avs/eigenda), [Hoodi](https://hoodi.eigenlayer.xyz/avs/eigenda)) and sort by `TVL
+Descending.` Observe the first 200 operators listed for the quorum and the amount of ETH TVL
+delegated to them. Please keep in mind that the AVS Page reflects the
+operator stake on EigenLayer, which is used to update the EigenDA operator set
+stake weights on a weekly basis (Wednesdays at 17:00 UTC), so the EigenDA stake
+may lag the real-time EigenLayer stake by at most 7 days.

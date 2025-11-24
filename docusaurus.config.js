@@ -633,9 +633,9 @@ const config = {
         loadContent: async () => {
           const { siteDir } = context;
           const contentDir = path.join(siteDir, "docs");
-          const developersDir = path.join(siteDir, "docs/products/eigenlayer/developers")
-          const operatorsDir = path.join(siteDir, "docs/products/eigenlayer/operators")
-          const eigenDADir = path.join(siteDir, "docs/products/eigenda")
+          const developersDir = path.join(siteDir, "docs/eigenlayer/developers")
+          const operatorsDir = path.join(siteDir, "docs/eigenlayer/operators")
+          const eigenDADir = path.join(siteDir, "docs/eigenda")
           const allMd = [];
           const developersMd = []
           const operatorsMd = []
@@ -711,18 +711,25 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects,
         createRedirects(existingPath) {
+              const folderMoves = [
+                ['/products/eigencompute/', '/eigencompute/'],
+                ['/products/eigenai/', '/eigenai/'],
+                ['/products/eigencloud/', '/eigencloud/'],
+                ['/products/eigenda/', '/eigenda/'],
+                ['/products/eigenlayer/', '/eigenlayer/'],
+              ];
 
-          // eigenlayer redirects
-          if (existingPath.includes('/eigenlayer')) {
-            return [
-              existingPath.replace('/eigenlayer', ''),
-            ];
-          }
+              for (const [oldDir, newDir] of folderMoves) {
+                // When Docusaurus generates the new path (e.g. /eigenai/foo)
+                // create a redirect from the old one (/products/eigenai/foo)
+                if (existingPath.startsWith(newDir)) {
+                  return [existingPath.replace(newDir, oldDir)];
+                }
+              }
 
-          return undefined; // Return a falsy value: no redirect created
-        },
+              return undefined;
+            },
       },
     ],
   ],
@@ -777,12 +784,35 @@ const config = {
         },
         items: [
           {
-            to: "products/eigencloud/eigencloud-overview",
-            label: "Products",
-            position: "left",
-            activeBasePath: 'products/',
+             to: "eigencloud/eigencloud-overview",
+             label: "EigenCloud",
+             position: "left",
+             activeBasePath: 'eigencloud',
           },
-
+          {
+            to: "eigencompute/concepts/eigencompute-overview",
+            label: "EigenCompute",
+            position: "left",
+            activeBasePath: 'eigencompute',
+          },
+          {
+            to: "eigenai/concepts/eigenai-overview",
+            label: "EigenAI",
+            position: "left",
+            activeBasePath: 'eigenai',
+          },
+          {
+            to: "eigenlayer/concepts/eigenlayer-overview",
+            label: "EigenLayer",
+            position: "left",
+            activeBasePath: 'eigenlayer',
+          },
+          {
+            to: "eigenda/core-concepts/overview",
+            label: "EigenDA",
+            position: "left",
+            activeBasePath: 'eigenda',
+          },
           {
             href: "https://github.com/Layr-Labs/eigencloud-docs",
             className: "header--github-link",
@@ -858,8 +888,8 @@ const config = {
       },
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
+          autoCollapseCategories: false,
         },
       },
       prism: {
@@ -872,6 +902,11 @@ const config = {
     // Object format.
     {
       src: '/js/intercom.js',
+      async: true,
+    },
+    // Cookie3 Analytics
+    {
+      src: '/js/cookie3.js',
       async: true,
     },
     // {
