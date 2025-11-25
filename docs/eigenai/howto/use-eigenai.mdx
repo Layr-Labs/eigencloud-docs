@@ -73,146 +73,165 @@ We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf
 
 ### OpenAI Client usage
 
-```python
-from openai import OpenAI
+#### Step 1
 
-client = OpenAI(
-	base_url="https://eigenai.eigencloud.xyz/v1",
-    default_headers={"x-api-key": api_key}
-)
+<Tabs>
+    <TabItem value="step1Request" label="Request">
+    ```python
+    from openai import OpenAI
 
-tools: List[Dict[str, Any]] = [
-    {
-        "type": "function",
-        "function": {
-            "name": "get_current_weather",
-            "description": "Get the current weather in a given location",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "location": {
-                        "type": "string",
-                        "description": "The city and state, e.g. San Francisco, CA",
-                    },
-                    "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
-                },
-                "required": ["location"],
-            },
-        },
-    }
-]
+    client = OpenAI(
+        base_url="https://eigenai.eigencloud.xyz/v1",
+        default_headers={"x-api-key": api_key},
+    )
 
-step1 = client.chat.completions.create(
-    model=model,
-    messages=[{"role": "user", "content": "What is the weather like in Boston today?"}],
-    tools=tools,
-    tool_choice="auto",
-)
-
-"""
-Response:
-{
-  "id": "chatcmpl-eigenai-llama-1758836092182536",
-  "object": "chat.completion",
-  "created": 1758727565,
-  "model": "gpt-oss-120b-f16",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "id": "call_YDzzMHFtp1yuURbiPe09uyHt",
+    tools: List[Dict[str, Any]] = [
+        {
             "type": "function",
             "function": {
-              "name": "get_current_weather",
-              "arguments": "{\"location\":\"Boston, MA\",\"unit\":\"fahrenheit\"}"
-            }
-          }
-        ],
-        "refusal": null,
-        "annotations": []
-      },
-      "finish_reason": "tool_calls"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 81,
-    "completion_tokens": 223,
-    "total_tokens": 304,
-    "prompt_tokens_details": {
-      "cached_tokens": 0,
-      "audio_tokens": 0
-    },
-    "completion_tokens_details": {
-      "reasoning_tokens": 192,
-      "audio_tokens": 0,
-      "accepted_prediction_tokens": 0,
-      "rejected_prediction_tokens": 0
-    }
-  },
-"""
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA",
+                        },
+                        "unit": {
+                            "type": "string",
+                            "enum": ["celsius", "fahrenheit"],
+                        },
+                    },
+                    "required": ["location"],
+                },
+            },
+        }
+    ]
 
-messages_step2: List[Dict[str, Any]] = [
-    {"role": "user", "content": "What is the weather like in Boston today?"},
+    step1 = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": "What is the weather like in Boston today?"}],
+        tools=tools,
+        tool_choice="auto",
+    )
+    ```
+    </TabItem>
+    <TabItem value="step1Responce" label="Response">
+    ```python
     {
-        "role": "assistant",
-        "content": None,
-        "tool_calls": [
-            {
-                "id": tool_call_id,
+      "id": "chatcmpl-eigenai-llama-1758836092182536",
+      "object": "chat.completion",
+      "created": 1758727565,
+      "model": "gpt-oss-120b-f16",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_YDzzMHFtp1yuURbiPe09uyHt",
                 "type": "function",
                 "function": {
-                    "name": "get_current_weather",
-                    "arguments": json.dumps({"location": "Boston, MA", "unit": "fahrenheit"}),
-                },
-            }
-        ],
-    },
-    {"role": "tool", "tool_call_id": tool_call_id, "content": "58 degrees"},
-    {"role": "user", "content": "Do I need a sweater for this weather?"},
-]
-
-step2 = client.chat.completions.create(model=model, messages=messages_step2)
-
-"""
-Response
-{
-  "id": "chatcmpl-eigenai-llama-CJOZTszzusoHvAYYrW8PT5lv6vzKo",
-  "object": "chat.completion",
-  "created": 1758738719,
-  "model": "gpt-oss-120b-f16",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "At around 58°F in Boston you’ll feel a noticeable chill—especially if there’s any breeze or you’re out in the morning or evening. I’d recommend throwing on a light sweater or layering a long-sleeve shirt under a casual jacket. If you tend to run cold, go with a medium-weight knit; if you’re just mildly sensitive, a thin cardigan or pullover should be enough.",
-        "refusal": null,
-        "annotations": []
+                  "name": "get_current_weather",
+                  "arguments": "{\"location\":\"Boston, MA\",\"unit\":\"fahrenheit\"}"
+                }
+              }
+            ],
+            "refusal": null,
+            "annotations": []
+          },
+          "finish_reason": "tool_calls"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 81,
+        "completion_tokens": 223,
+        "total_tokens": 304,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 192,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
       },
-      "finish_reason": "stop"
     }
-  ],
-  "usage": {
-    "prompt_tokens": 67,
-    "completion_tokens": 294,
-    "total_tokens": 361,
-    "prompt_tokens_details": {
-      "cached_tokens": 0,
-      "audio_tokens": 0
-    },
-    "completion_tokens_details": {
-      "reasoning_tokens": 192,
-      "audio_tokens": 0,
-      "accepted_prediction_tokens": 0,
-      "rejected_prediction_tokens": 0
+    ```
+    </TabItem>
+</Tabs>
+
+#### Step 2
+
+<Tabs>
+    <TabItem value="step2Request" label="Request">
+    ```python
+    messages_step2: List[Dict[str, Any]] = [
+        {"role": "user", "content": "What is the weather like in Boston today?"},
+        {
+            "role": "assistant",
+            "content": None,
+            "tool_calls": [
+                {
+                    "id": tool_call_id,
+                    "type": "function",
+                    "function": {
+                        "name": "get_current_weather",
+                        "arguments": json.dumps({"location": "Boston, MA", "unit": "fahrenheit"}),
+                    },
+                }
+            ],
+        },
+        {"role": "tool", "tool_call_id": tool_call_id, "content": "58 degrees"},
+        {"role": "user", "content": "Do I need a sweater for this weather?"},
+    ]
+
+    step2 = client.chat.completions.create(model=model, messages=messages_step2)
+    ```
+    </TabItem>
+    <TabItem value="step2Response" label="Response">
+    ```python
+    {
+      "id": "chatcmpl-eigenai-llama-CJOZTszzusoHvAYYrW8PT5lv6vzKo",
+      "object": "chat.completion",
+      "created": 1758738719,
+      "model": "gpt-oss-120b-f16",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "At around 58°F in Boston you’ll feel a noticeable chill—especially if there’s any breeze or you’re out in the morning or evening. I’d recommend throwing on a light sweater or layering a long-sleeve shirt under a casual jacket. If you tend to run cold, go with a medium-weight knit; if you’re just mildly sensitive, a thin cardigan or pullover should be enough.",
+            "refusal": null,
+            "annotations": []
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 294,
+        "total_tokens": 361,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 192,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
     }
-  },
-"""
-```
+    ```
+    </TabItem>
+</Tabs>
 
 ## Supported parameters
 
