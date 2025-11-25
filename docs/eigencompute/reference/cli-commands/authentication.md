@@ -23,7 +23,7 @@ authentication credentials securely.
 ### generate
 
 Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/deploy/manage-auth-keys/create-auth-keys.md).
+refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md).
 
 ```bash
 eigenx auth generate [--store] [--env <environment>]
@@ -38,7 +38,7 @@ eigenx auth generate [--store] [--env <environment>]
 ### login
 
 Store an existing authentication key securely in your OS keyring. For more information on logging in to EigenX, refer to
-[Manage Authentication Keys](../../howto/deploy/manage-auth-keys/manage-authentication-keys.md).
+[Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
 
 ```bash
 eigenx auth login [--private-key <key>] [--env <environment>]
@@ -53,7 +53,7 @@ eigenx auth login [--private-key <key>] [--env <environment>]
 ### whoami
 
 Display current authentication status and wallet address. For more information on checking your authentication status,
-refer to [Manage Authentication Keys](../../howto/deploy/manage-auth-keys/manage-authentication-keys.md).
+refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
 
 ```bash
 eigenx auth whoami
@@ -62,7 +62,7 @@ eigenx auth whoami
 ### list
 
 List all stored authentication keys organized by environment. For more information on listing keys,
-refer to [Manage Authentication Keys](../../howto/deploy/manage-auth-keys/manage-authentication-keys.md).
+refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
 
 ```bash
 eigenx auth list
