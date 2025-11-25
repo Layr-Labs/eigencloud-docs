@@ -1,14 +1,14 @@
 ---
-title: Attested API Template
+title: Attested API
 sidebar_position: 1
 ---
 
-The Attested API template can be built on to make signed messages accessible via API or generate attestable values.
+The Attested API template is an example of how to make signed messages accessible via API.
 The template is available in Go, Python, Rust, and Typescript.
 
 ## Overview 
 
-The Attested API template packages a minimal containerized service that:
+The Attested API example packages a minimal containerized service that:
 * Runs inside an EigenCompute Trusted Execution Environment (TEE).
 * Generates a random value inside the enclave.
 * Constructs a verifiable message including randomness and timestamp.
@@ -17,14 +17,14 @@ The Attested API template packages a minimal containerized service that:
 
 ## What you get
 
-When deployed, the template provides a REST endpoint returning:
+When deployed, the example provides a REST endpoint returning:
 * A TEE-generated random number
 * The message string 
 * The message hash
 * A signature generated inside the TEE
 * The signer address.
 
-## Using the template
+## To deploy and use the Attested API example
 
 What you'll do:
 
@@ -41,7 +41,7 @@ Before you begin, ensure you have:
 - [Installed EigenX CLI](../../../get-started/quickstart#installation) and [authenticated to EigenCompute](../../../get-started/quickstart#initial-setup).
 - [Subscribed to EigenCompute](../../../get-started/quickstart#subscribe-to-eigencompute).
 
-### 1. Build and Attested API template 
+### 1. Create Application from Attested API template 
 
 #### Docker Login
 
@@ -96,7 +96,7 @@ cd myproject
 
 #### Build and deploy
 
-Build and deploy your application:
+Build and deploy the example application:
 
 ```bash
 eigenx app deploy
