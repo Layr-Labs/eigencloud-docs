@@ -3,7 +3,7 @@ title: Attested API
 sidebar_position: 1
 ---
 
-The Attested API template is an example of how to make signed messages accessible via API.
+The Attested API example demonstrates how to make signed messages accessible via API.
 The template is available in Go, Python, Rust, and Typescript.
 
 ## Overview 
