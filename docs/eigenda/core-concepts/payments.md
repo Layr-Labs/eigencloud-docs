@@ -65,7 +65,7 @@ The payment system consists of the following components:
 
 To initiate a dispersal, the EigenDA client sends a dispersal request containing a payment header to the disperser,
 which validates the payment information. For on-demand payments, the disperser tracks usage and validates against
-deposits in the PaymentVault contract. For reservation payments, validator nodes serve as the source of truth, tracking
+deposits in the `PaymentVault` contract. For reservation payments, validator nodes serve as the source of truth, tracking
 each account's reservation usage using leaky bucket rate limiting. Clients can query the disperser to retrieve their own
 offchain state for on-demand usage information.
 
@@ -94,7 +94,7 @@ type PaymentMetadata struct {
 
 On-demand bandwidth users must first deposit tokens into the payment vault contract for a particular account, in which
 the contract stores the total payment deposited to that account (`totalDeposit`). Users should be mindful in depositing
-as they cannot withdrawal or request for refunds from the current Payment Vault contract. Users can retrieve their
+as they cannot withdrawal or request for refunds from the current `PaymentVault` contract. Users can retrieve their
 current on-demand balance from the disperser by calling the `GetPaymentState` gRPC endpoint.
 
 ```solidity
