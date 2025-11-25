@@ -15,8 +15,13 @@ To view verifiability data for an application using the dashboard:
    * Application ID and Creator address.
    * Release history with Docker Image Digests. 
    * TEE attestations for releases. There is a TEE attestation displayed for each release.
-   * Logs for running application.
+   * Logs for running application (if configured as publicly visible).
    * Wallet addresses for the application.
+
+:::note
+Whether logs are visible publicly is configured by the application developer using the `--log-visibiilty` option on the [`eigenx app deploy`](../../reference/cli-commands/deployment.md#eigenx-app-deploy) and
+[`eigenx app upgrade`](../../reference/cli-commands/deployment.md#eigenx-app-upgrade) commands.
+:::
 
 ## View Verifiability Data Onchain
 
