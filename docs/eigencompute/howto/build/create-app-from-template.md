@@ -1,6 +1,6 @@
 ---
 title: Create Application
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 The EigenX CLI provides templates for creating EigenCompute application projects with all required configuration files. 
@@ -18,8 +18,8 @@ Templates are available in:
 * Rust.
 
 :::tip 
-The EigenX CLI works with existing Docker projects and images. If you are working with an existing project or image,
-skip this step and refer to deploying an application for next steps.
+The EigenX CLI works with existing Docker projects and images. If have an existing project or image,
+refer to [Deploy Existing Project](../deploy/deploy-existing-project.md).
 ::: 
 
 ## Create an application from a template
