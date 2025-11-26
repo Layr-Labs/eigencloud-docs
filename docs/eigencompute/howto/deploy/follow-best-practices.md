@@ -7,7 +7,7 @@ sidebar_position: 5
 
 ### Security
 
-**1. Use public variables for transparency**
+Use public variables for transparency
 
 ```bash
 # .env
@@ -16,17 +16,9 @@ NETWORK_PUBLIC=sepolia
 SECRET_API_KEY=secret-here  # Private
 ```
 
-**2. Rotate secrets regularly**
-
-```bash
-# Update API keys periodically
-vim .env
-eigenx app upgrade my-app
-```
-
 ### Reliability
 
-**1. Health checks in your app**
+1. Health checks in your app
 
 ```javascript
 // Example health endpoint
@@ -35,7 +27,7 @@ app.get('/health', (req, res) => {
 })
 ```
 
-**2. Graceful shutdown**
+2. Graceful shutdown
 
 ```javascript
 process.on('SIGTERM', async () => {
@@ -45,7 +37,7 @@ process.on('SIGTERM', async () => {
 })
 ```
 
-**3. Logging**
+3. Logging
 
 ```javascript
 console.log('App started')
