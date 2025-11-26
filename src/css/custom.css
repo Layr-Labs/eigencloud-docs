@@ -599,3 +599,62 @@ pre, code, .code-block, .DevelopAVSCode {
 [data-theme="dark"] .onboardingButton:hover {
   box-shadow: 0 6px 20px rgba(107, 87, 235, 0.5);
 }
+
+/* Remove Redoc left menu entirely */
+.eigen-redoc .menu,
+.eigen-redoc .menu-content {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Use a clean, responsive two-column layout (OpenAI-style) */
+.eigen-redoc .layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(350px, 32%) !important;
+  column-gap: 48px !important;
+  width: 100% !important;
+  max-width: 1600px !important; /* keeps the page centered like OpenAI */
+  margin: 0 auto !important;
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+}
+
+/* Stretch content naturally */
+.eigen-redoc .api-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Right panel sizing — mirrors OpenAI */
+.eigen-redoc .right-panel {
+  width: 100% !important;
+  max-width: 480px !important;  /* OpenAI caps around 450–500px */
+}
+
+/* Collapse to a single column when the viewport gets narrower */
+@media screen and (max-width: 1200px) {
+  .eigen-redoc .layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .eigen-redoc .right-panel {
+    max-width: 100% !important;
+    position: static !important;
+    margin-top: 32px !important;
+  }
+}
+
+/* Slight spacing fix for tables and schema blocks */
+.eigen-redoc table {
+  width: 100% !important;
+}
+
+
+
