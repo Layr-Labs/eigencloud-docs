@@ -194,7 +194,7 @@ Click the **Verify Signature** button available on [Etherscan](https://etherscan
 
 From the API response, enter:
 
-1. `signer` in the _Address_ field. The `signer` is the EVM Address for the application.
+1. `signer` in the _Address_ field. The `signer` is a signing addresses derived from the TEE mnemonic.
 2. `message` in the _Message_ field.
 3. `signature` in the _Signature Hash_ field.
 
@@ -202,6 +202,8 @@ Click the **Verify** button. The _Signature Verification_ window is displayed an
 
 <img src="/img/message-signature-verified.png" width="50%" style={{ margin: '50px' }} />
 
-The signature verification verifies that message was signed by the private key for the application address.
+The signature verification verifies that message was signed by the `signer` in the response.
 
-
+To verify the `signer` is one of the signing addresses derived from the TEE mnemonic, use the Verifiability Dashboard 
+([Mainnet](https://verify.eigencloud.xyz/) and [Sepolia Testnet](https://verify-sepolia.eigencloud.xyz/)) to confirm the 
+signing address is one of the _Derived Addresses_ displayed for the application.
