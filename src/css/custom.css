@@ -656,5 +656,368 @@ pre, code, .code-block, .DevelopAVSCode {
   width: 100% !important;
 }
 
+/* Hide the extra Redoc wrapper column that is not needed */
+.redoc-wrap > div:nth-child(4) {
+  display: none !important;
+}
 
+/* ============================================
+   REDOC DARK MODE STYLES
+   ============================================ */
+
+/* Dark mode background for the entire Redoc container */
+[data-theme="dark"] .eigen-redoc,
+.eigen-redoc--dark {
+  background-color: #18181b;
+}
+
+/* Main content area background */
+[data-theme="dark"] .eigen-redoc .redoc-wrap,
+.eigen-redoc--dark .redoc-wrap {
+  background-color: #18181b !important;
+}
+
+/* Override any Redoc internal div backgrounds */
+[data-theme="dark"] .eigen-redoc .redoc-wrap > div,
+.eigen-redoc--dark .redoc-wrap > div {
+  background-color: transparent !important;
+}
+
+/* API content area */
+[data-theme="dark"] .eigen-redoc .api-content,
+.eigen-redoc--dark .api-content {
+  background-color: #18181b !important;
+}
+
+/* Override all Redoc generated background colors */
+[data-theme="dark"] .eigen-redoc div[class^="sc-"],
+[data-theme="dark"] .eigen-redoc section[class^="sc-"],
+.eigen-redoc--dark div[class^="sc-"],
+.eigen-redoc--dark section[class^="sc-"] {
+  background-color: transparent !important;
+}
+
+/* Specific Redoc content wrapper backgrounds */
+[data-theme="dark"] .eigen-redoc [class*="Content"],
+.eigen-redoc--dark [class*="Content"] {
+  background-color: #18181b !important;
+}
+
+/* Text colors for dark mode */
+[data-theme="dark"] .eigen-redoc h1,
+[data-theme="dark"] .eigen-redoc h2,
+[data-theme="dark"] .eigen-redoc h3,
+[data-theme="dark"] .eigen-redoc h4,
+[data-theme="dark"] .eigen-redoc h5,
+[data-theme="dark"] .eigen-redoc h6,
+.eigen-redoc--dark h1,
+.eigen-redoc--dark h2,
+.eigen-redoc--dark h3,
+.eigen-redoc--dark h4,
+.eigen-redoc--dark h5,
+.eigen-redoc--dark h6 {
+  color: #fafafa !important;
+}
+
+[data-theme="dark"] .eigen-redoc p,
+[data-theme="dark"] .eigen-redoc span,
+[data-theme="dark"] .eigen-redoc li,
+[data-theme="dark"] .eigen-redoc td,
+[data-theme="dark"] .eigen-redoc th,
+[data-theme="dark"] .eigen-redoc label,
+[data-theme="dark"] .eigen-redoc div,
+.eigen-redoc--dark p,
+.eigen-redoc--dark span,
+.eigen-redoc--dark li,
+.eigen-redoc--dark td,
+.eigen-redoc--dark th,
+.eigen-redoc--dark label,
+.eigen-redoc--dark div {
+  color: #d4d4d8 !important;
+}
+
+/* Schema/model backgrounds */
+[data-theme="dark"] .eigen-redoc [class*="property"],
+[data-theme="dark"] .eigen-redoc [class*="schema"],
+.eigen-redoc--dark [class*="property"],
+.eigen-redoc--dark [class*="schema"] {
+  background-color: transparent !important;
+}
+
+/* Override Redoc schema container specific elements */
+[data-theme="dark"] .eigen-redoc [class*="PropertyCellStyle"],
+[data-theme="dark"] .eigen-redoc [class*="RowCellStyle"],
+.eigen-redoc--dark [class*="PropertyCellStyle"],
+.eigen-redoc--dark [class*="RowCellStyle"] {
+  background-color: transparent !important;
+}
+
+/* Table styling for dark mode */
+[data-theme="dark"] .eigen-redoc table,
+.eigen-redoc--dark table {
+  background-color: #18181b !important;
+  border-color: #3f3f46 !important;
+}
+
+[data-theme="dark"] .eigen-redoc tr,
+.eigen-redoc--dark tr {
+  background-color: #18181b !important;
+  border-color: #3f3f46 !important;
+}
+
+[data-theme="dark"] .eigen-redoc tr:nth-child(even),
+.eigen-redoc--dark tr:nth-child(even) {
+  background-color: #27272a !important;
+}
+
+[data-theme="dark"] .eigen-redoc th,
+[data-theme="dark"] .eigen-redoc td,
+.eigen-redoc--dark th,
+.eigen-redoc--dark td {
+  border-color: #3f3f46 !important;
+}
+
+/* Input/textarea fields */
+[data-theme="dark"] .eigen-redoc input,
+[data-theme="dark"] .eigen-redoc textarea,
+[data-theme="dark"] .eigen-redoc select,
+.eigen-redoc--dark input,
+.eigen-redoc--dark textarea,
+.eigen-redoc--dark select {
+  background-color: #27272a !important;
+  color: #fafafa !important;
+  border-color: #3f3f46 !important;
+}
+
+/* Code blocks and pre elements */
+[data-theme="dark"] .eigen-redoc pre,
+[data-theme="dark"] .eigen-redoc code,
+.eigen-redoc--dark pre,
+.eigen-redoc--dark code {
+  background-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+/* Button styling */
+[data-theme="dark"] .eigen-redoc button,
+.eigen-redoc--dark button {
+  background-color: #3f3f46 !important;
+  color: #fafafa !important;
+  border-color: #52525b !important;
+}
+
+[data-theme="dark"] .eigen-redoc button:hover,
+.eigen-redoc--dark button:hover {
+  background-color: #52525b !important;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"] .eigen-redoc ::-webkit-scrollbar,
+.eigen-redoc--dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] .eigen-redoc ::-webkit-scrollbar-track,
+.eigen-redoc--dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+[data-theme="dark"] .eigen-redoc ::-webkit-scrollbar-thumb,
+.eigen-redoc--dark ::-webkit-scrollbar-thumb {
+  background-color: #52525b;
+  border-radius: 4px;
+}
+
+/* Operation summary/description areas */
+[data-theme="dark"] .eigen-redoc [class*="operation"],
+.eigen-redoc--dark [class*="operation"] {
+  border-color: #3f3f46 !important;
+}
+
+/* Response panels */
+[data-theme="dark"] .eigen-redoc [class*="response"],
+.eigen-redoc--dark [class*="response"] {
+  background-color: #27272a !important;
+  border-color: #3f3f46 !important;
+}
+
+/* Tabs in dark mode */
+[data-theme="dark"] .eigen-redoc [class*="tab"],
+.eigen-redoc--dark [class*="tab"] {
+  background-color: #27272a !important;
+  color: #d4d4d8 !important;
+}
+
+[data-theme="dark"] .eigen-redoc [class*="tab"][class*="active"],
+[data-theme="dark"] .eigen-redoc [class*="tab"]:hover,
+.eigen-redoc--dark [class*="tab"][class*="active"],
+.eigen-redoc--dark [class*="tab"]:hover {
+  background-color: #3f3f46 !important;
+  color: #fafafa !important;
+}
+
+/* Expand/collapse buttons */
+[data-theme="dark"] .eigen-redoc [class*="expand"],
+[data-theme="dark"] .eigen-redoc [class*="collapse"],
+.eigen-redoc--dark [class*="expand"],
+.eigen-redoc--dark [class*="collapse"] {
+  color: #648fe4 !important;
+}
+
+/* Links */
+[data-theme="dark"] .eigen-redoc a,
+.eigen-redoc--dark a {
+  color: #648fe4 !important;
+}
+
+[data-theme="dark"] .eigen-redoc a:hover,
+.eigen-redoc--dark a:hover {
+  color: #8ab4f8 !important;
+}
+
+/* Right panel (examples panel) - should be darker */
+[data-theme="dark"] .eigen-redoc .right-panel,
+.eigen-redoc--dark .right-panel {
+  background-color: #09090b !important;
+}
+
+/* Right panel inner divs */
+[data-theme="dark"] .eigen-redoc .right-panel div,
+[data-theme="dark"] .eigen-redoc .right-panel pre,
+.eigen-redoc--dark .right-panel div,
+.eigen-redoc--dark .right-panel pre {
+  background-color: transparent !important;
+}
+
+/* Right panel code examples */
+[data-theme="dark"] .eigen-redoc .right-panel pre code,
+.eigen-redoc--dark .right-panel pre code {
+  background-color: #18181b !important;
+}
+
+/* JSON example viewer */
+[data-theme="dark"] .eigen-redoc [class*="json"],
+.eigen-redoc--dark [class*="json"] {
+  background-color: #18181b !important;
+}
+
+/* Dropdown menus */
+[data-theme="dark"] .eigen-redoc [class*="dropdown"],
+[data-theme="dark"] .eigen-redoc [class*="menu"]:not(.menu),
+.eigen-redoc--dark [class*="dropdown"],
+.eigen-redoc--dark [class*="menu"]:not(.menu) {
+  background-color: #27272a !important;
+  border-color: #3f3f46 !important;
+}
+
+/* Model/schema type badges */
+[data-theme="dark"] .eigen-redoc [class*="type-"],
+.eigen-redoc--dark [class*="type-"] {
+  background-color: #3f3f46 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Required field indicator */
+[data-theme="dark"] .eigen-redoc [class*="required"],
+.eigen-redoc--dark [class*="required"] {
+  color: #f87171 !important;
+}
+
+/* HTTP method badges in dark mode */
+[data-theme="dark"] .eigen-redoc [class*="http-"],
+.eigen-redoc--dark [class*="http-"] {
+  font-weight: 600 !important;
+}
+
+/* Server URL dropdown */
+[data-theme="dark"] .eigen-redoc [class*="ServerUrl"],
+[data-theme="dark"] .eigen-redoc [class*="servers"],
+.eigen-redoc--dark [class*="ServerUrl"],
+.eigen-redoc--dark [class*="servers"] {
+  background-color: #27272a !important;
+  border-color: #3f3f46 !important;
+}
+
+/* Parameters section */
+[data-theme="dark"] .eigen-redoc [class*="Parameters"],
+.eigen-redoc--dark [class*="Parameters"] {
+  background-color: transparent !important;
+}
+
+/* Field names and descriptions */
+[data-theme="dark"] .eigen-redoc [class*="field-name"],
+[data-theme="dark"] .eigen-redoc [class*="field"],
+.eigen-redoc--dark [class*="field-name"],
+.eigen-redoc--dark [class*="field"] {
+  color: #fafafa !important;
+}
+
+/* Property table rows background */
+[data-theme="dark"] .eigen-redoc [class*="PropertyCell"],
+[data-theme="dark"] .eigen-redoc [class*="Row"],
+.eigen-redoc--dark [class*="PropertyCell"],
+.eigen-redoc--dark [class*="Row"] {
+  background-color: transparent !important;
+}
+
+/* Nested schema backgrounds */
+[data-theme="dark"] .eigen-redoc [class*="nested"],
+.eigen-redoc--dark [class*="nested"] {
+  background-color: #1f1f23 !important;
+}
+
+/* Examples dropdown and selectors */
+[data-theme="dark"] .eigen-redoc [class*="Example"],
+.eigen-redoc--dark [class*="Example"] {
+  background-color: #18181b !important;
+}
+
+/* Request body section */
+[data-theme="dark"] .eigen-redoc [class*="RequestBody"],
+.eigen-redoc--dark [class*="RequestBody"] {
+  background-color: transparent !important;
+}
+
+/* Content type selector */
+[data-theme="dark"] .eigen-redoc [class*="content-type"],
+.eigen-redoc--dark [class*="content-type"] {
+  background-color: #27272a !important;
+  color: #fafafa !important;
+}
+
+/* Arrow/caret icons */
+[data-theme="dark"] .eigen-redoc svg,
+.eigen-redoc--dark svg {
+  fill: currentColor;
+}
+
+/* Copy button styling */
+[data-theme="dark"] .eigen-redoc [class*="copy"],
+.eigen-redoc--dark [class*="copy"] {
+  background-color: #3f3f46 !important;
+  color: #fafafa !important;
+}
+
+/* Markdown content in descriptions */
+[data-theme="dark"] .eigen-redoc [class*="markdown"],
+.eigen-redoc--dark [class*="markdown"] {
+  color: #d4d4d8 !important;
+}
+
+/* Deprecated fields styling */
+[data-theme="dark"] .eigen-redoc [class*="deprecated"],
+.eigen-redoc--dark [class*="deprecated"] {
+  color: #a1a1aa !important;
+  text-decoration: line-through;
+}
+
+/* Enum/array badges */
+[data-theme="dark"] .eigen-redoc [class*="enum"],
+[data-theme="dark"] .eigen-redoc [class*="array"],
+.eigen-redoc--dark [class*="enum"],
+.eigen-redoc--dark [class*="array"] {
+  background-color: #3f3f46 !important;
+  color: #d4d4d8 !important;
+}
 
