@@ -12,10 +12,6 @@ function Root({ children }) {
     if (!ExecutionEnvironment.canUseDOM) {
       return;
     }
-
-    if (location.pathname === '/' || location.pathname === '/index.html') {
-      window.location.replace('/products/eigencloud/eigencloud-overview');
-    }
   }, [location.pathname]);
 
   useEffect(() => {
