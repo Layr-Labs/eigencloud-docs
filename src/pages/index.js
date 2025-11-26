@@ -18,10 +18,10 @@ function Home() {
     <Layout title="Homepage" description="EigenLayer Documentation">
       <main className={styles.main}>
         <HomeHero />
-        <DevelopAVSSection />
-        <OperateNodeSection />
+        {/* <DevelopAVSSection />
+        <OperateNodeSection /> */}
         {/* <BuildApplicationSection /> */}
-        <RestakeSection />
+        {/* <RestakeSection /> */}
         <CommunityResourcesSection />
       </main>
     </Layout>

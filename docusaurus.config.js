@@ -12,10 +12,6 @@ import path from "node:path";
 
 const redirects = [
   {
-     from: '/',
-     to: '/products/eigencloud/eigencloud-overview',
-  },
-  {
     from: '/eigenlayer/overview',
     to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
