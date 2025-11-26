@@ -3,7 +3,7 @@ title: Environment Variables
 sidebar_position: 3
 ---
 
-On deployment, the project `.env` file is encrypted and securely injected into the TEE:
+On deployment, the project's `.env` file is encrypted and securely injected into the TEE:
 
 ```bash
 # Private variables (encrypted)

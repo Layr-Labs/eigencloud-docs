@@ -35,7 +35,7 @@ eigenx app upgrade my-app --env-file ./.env
 
 ## Image pull fails
 
-Verify image exists and is accessible:
+Verify image exists and is publicly accessible:
 
 ```bash
 docker pull registry.io/user/app:tag

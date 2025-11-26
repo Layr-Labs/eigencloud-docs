@@ -21,7 +21,7 @@ docker login
 
 ## Transaction fails: insufficient funds
 
-Get Sepolia ETH:
+Get Sepolia ETH (for `sepolia` environment) or Mainnet ETH (for `mainnet-alpha` environment):
 
 ```bash
 eigenx auth whoami  # Get your address
