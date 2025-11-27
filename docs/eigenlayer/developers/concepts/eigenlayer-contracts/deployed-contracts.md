@@ -9,7 +9,7 @@ The EigenLayer core contracts are located in this repo: [`Layr-Labs/eigenlayer-c
 
 ### Deployment Addresses
 
-An up-to-date reference of our current mainnet and testnet contract deployments can be found in the core repository README: [`eigenlayer-contracts/README.md#deployments`](https://github.com/Layr-Labs/eigenlayer-contracts?tab=readme-ov-file#deployments).
+An up-to-date reference of our current mainnet and testnet contract deployments can be found in the core repository README: [`eigenlayer-contracts/README.md#deployments`](https://github.com/Layr-Labs/eigenlayer-contracts#current-deployment-contracts).
 
 ### Technical Documentation
 
