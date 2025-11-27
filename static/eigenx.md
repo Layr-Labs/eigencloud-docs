@@ -124,7 +124,7 @@ pkg/
       deploy.go
       info.go
       lifecycle.go
-      name.go
+      profile.go
       upgrade.go
     auth/
       generate_test.go
@@ -150,12 +150,14 @@ pkg/
       set.go
       show.go
     utils/
+      app_resolver.go
       auth_utils.go
       build_utils.go
       contract_utils.go
       environment_utils.go
       interactive.go
       preflight.go
+      profile_utils.go
       release_utils.go
       types.go
       userapi_client.go
@@ -173,6 +175,7 @@ pkg/
     iface/
       logger.go
       progress.go
+      resolver.go
     logger/
       basic_logger.go
       noop_logger_test.go
@@ -1564,9 +1567,9 @@ eigenx app upgrade [app-name] [image] # Update deployment
 eigenx app configure tls            # Configure TLS
 ```
 
-### App Naming
+### App Profile
 ```bash
-eigenx app name [app-id] [new-name]  # Update friendly name
+eigenx app profile set [app-id]  # Set app name, website, description, social links, and icon
 ```
 
 ## TLS Configuration (Optional)
@@ -4262,6 +4265,7 @@ RUN chmod +x /usr/local/bin/compute-source-env.sh \
 LABEL tee.launch_policy.log_redirect={{.LogRedirect}}
 {{- end}}
 
+LABEL tee.launch_policy.monitoring_memory_allow={{.ResourceUsageAllow}}
 LABEL eigenx_cli_version={{.EigenXCLIVersion}}
 LABEL eigenx_use_ita=True
 
@@ -4697,9 +4701,14 @@ var DeployCommand = &cli.Command{
 		common.PrivateKeyFlag,
 		common.EnvFlag,
 		common.FileFlag,
-		common.NameFlag,
 		common.LogVisibilityFlag,
+		common.ResourceUsageFlag,
 		common.InstanceTypeFlag,
+		common.NameFlag,
+		common.WebsiteFlag,
+		common.DescriptionFlag,
+		common.XURLFlag,
+		common.ImageFlag,
 	}...),
 	Action: deployAction,
 }
@@ -4716,13 +4725,13 @@ func deployAction(cCtx *cli.Context) error
 ⋮----
 // 5. Get image reference (context-aware based on Dockerfile decision)
 ⋮----
-// 6. Get app name upfront (before any expensive operations)
+// 6. Get environment file configuration
 ⋮----
-// 7. Get environment file configuration
+// 7. Get instance type selection (uses first from backend as default for new apps)
 ⋮----
-// 8. Get instance type selection (uses first from backend as default for new apps)
+// 8. Get log settings from flags or interactive prompt
 ⋮----
-// 9. Get log settings from flags or interactive prompt
+// 9. Get resource usage preference
 ⋮----
 // 10. Generate random salt
 ⋮----
@@ -4732,9 +4741,13 @@ func deployAction(cCtx *cli.Context) error
 ⋮----
 // 13. Deploy the app
 ⋮----
-// 14. Save the app name mapping
+// 14. Collect app profile while deployment is in progress (optional)
 ⋮----
-// 15. Watch until deployment completes
+// 15. Upload profile if provided (non-blocking - warn on failure but don't fail deployment)
+⋮----
+// Invalidate profile cache to ensure fresh data on next command
+⋮----
+// 16. Watch until deployment completes
 ⋮----
 // checkQuotaAvailable verifies that the user has deployment quota available
 // by checking their allowlist status on the contract
@@ -4943,7 +4956,7 @@ func terminateAction(cCtx *cli.Context) error
 // Call AppController.TerminateApp
 ````
 
-## File: pkg/commands/app/name.go
+## File: pkg/commands/app/profile.go
 ````go
 package app
 ⋮----
@@ -4961,30 +4974,42 @@ import (
 "github.com/Layr-Labs/eigenx-cli/pkg/common"
 "github.com/urfave/cli/v2"
 ⋮----
-var NameCommand = &cli.Command{
-	Name:      "name",
-	Usage:     "Set, change, or remove a friendly name for an app",
-	ArgsUsage: "<app-id|current-name> [new-name]",
-	Flags: append(common.GlobalFlags, []cli.Flag{
-		common.EnvironmentFlag,
-		common.RpcUrlFlag,
-		&cli.BoolFlag{
-			Name:    "delete",
-			Aliases: []string{"d"},
-			Usage:   "Delete the app name",
+var ProfileCommand = &cli.Command{
+	Name:      "profile",
+	Usage:     "Manage public app profile",
+	ArgsUsage: "<app-id|name>",
+	Subcommands: []*cli.Command{
+		{
+			Name:      "set",
+			Usage:     "Set public profile information for an app",
+			ArgsUsage: "<app-id|name>",
+			Flags: append(common.GlobalFlags, []cli.Flag{
+				common.EnvironmentFlag,
+				common.RpcUrlFlag,
+				common.NameFlag,
+				common.WebsiteFlag,
+				common.DescriptionFlag,
+				common.XURLFlag,
+				common.ImageFlag,
+			}...),
+			Action: profileSetAction,
 		},
-	}...),
-	Action: nameAction,
+	},
 }
 ⋮----
-func nameAction(cCtx *cli.Context) error
+func profileSetAction(cCtx *cli.Context) error
 ⋮----
-// Handle delete flag or new name
-var newName string
+// Get app ID
 ⋮----
-// Validate the friendly name
+// Collect profile fields using shared function
 ⋮----
-// Get environment config for context
+// Upload profile via API
+⋮----
+// Invalidate profile cache to ensure fresh data on next command
+⋮----
+// Display success message with returned data
+⋮----
+// Show uploaded profile data
 ````
 
 ## File: pkg/commands/app/upgrade.go
@@ -5018,6 +5043,7 @@ var UpgradeCommand = &cli.Command{
 		common.EnvFlag,
 		common.FileFlag,
 		common.LogVisibilityFlag,
+		common.ResourceUsageFlag,
 		common.InstanceTypeFlag,
 	}...),
 	Action: upgradeAction,
@@ -5043,13 +5069,15 @@ func upgradeAction(cCtx *cli.Context) error
 ⋮----
 // 9. Get log settings from flags or interactive prompt
 ⋮----
-// 10. Prepare the release (includes build/push if needed, with automatic retry on permission errors)
+// 10. Get resource usage preference
 ⋮----
-// 11. Check current permission state and determine if change is needed
+// 11. Prepare the release (includes build/push if needed, with automatic retry on permission errors)
 ⋮----
-// 12. Upgrade the app
+// 12. Check current permission state and determine if change is needed
 ⋮----
-// 13. Watch until upgrade completes
+// 13. Upgrade the app
+⋮----
+// 14. Watch until upgrade completes
 ⋮----
 // getCurrentInstanceType attempts to retrieve the current instance type for an app.
 // Returns empty string if unable to fetch (API unavailable, app info not ready, etc.).
@@ -6234,6 +6262,115 @@ var ShowCommand = &cli.Command{
 // Check if this came from GlobalConfig or is the fallback default
 ````
 
+## File: pkg/commands/utils/app_resolver.go
+````go
+package utils
+⋮----
+import (
+	"fmt"
+	"math/big"
+	"strings"
+	"time"
+
+	"github.com/Layr-Labs/eigenx-cli/pkg/common"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/urfave/cli/v2"
+)
+⋮----
+"fmt"
+"math/big"
+"strings"
+"time"
+⋮----
+"github.com/Layr-Labs/eigenx-cli/pkg/common"
+"github.com/ethereum/go-ethereum/accounts/abi/bind"
+ethcommon "github.com/ethereum/go-ethereum/common"
+"github.com/urfave/cli/v2"
+⋮----
+// AppResolver provides centralized app name/ID resolution with caching.
+// It checks remote profile names first, then falls back to local registry (legacy).
+type AppResolver struct {
+	cCtx             *cli.Context
+	environmentName  string
+	apps             []ethcommon.Address
+	profileNames     map[string]string // appID.Hex() → profile name
+	localRegistry    *common.AppRegistry
+	cacheInitialized bool
+}
+⋮----
+profileNames     map[string]string // appID.Hex() → profile name
+⋮----
+// NewAppResolver creates a new resolver instance for the current environment
+func NewAppResolver(cCtx *cli.Context) (*AppResolver, error)
+⋮----
+// ResolveAppID resolves an app ID or name by checking remote profile names first,
+// then falling back to the local registry (legacy)
+func (r *AppResolver) ResolveAppID(nameOrID string) (ethcommon.Address, error)
+⋮----
+// First check if it's already a valid hex address
+⋮----
+// Ensure cache is initialized
+⋮----
+// Check remote profile names first (case-insensitive)
+⋮----
+// Not found remotely, fall back to local registry
+⋮----
+// GetAppName returns the app name by checking remote profile first,
+// then falling back to local registry
+func (r *AppResolver) GetAppName(appID ethcommon.Address) string
+⋮----
+// Check remote profile first
+⋮----
+// Fall back to local registry (case-insensitive lookup)
+⋮----
+// IsNameAvailable checks if a name is available by checking both remote profiles
+// and local registry
+func (r *AppResolver) IsNameAvailable(name string) bool
+⋮----
+return false // If we can't check, assume not available to be safe
+⋮----
+// Check remote profile names (case-insensitive)
+⋮----
+return false // Name is taken
+⋮----
+// Check local registry
+⋮----
+// FindAvailableName finds an available variant of the base name by appending numbers
+func (r *AppResolver) FindAvailableName(baseName string) string
+⋮----
+// Try appending numbers until we find an available name
+⋮----
+// Fallback: return base name with large random-ish suffix
+⋮----
+// GetAllApps returns the cached list of app addresses
+func (r *AppResolver) GetAllApps() ([]ethcommon.Address, error)
+⋮----
+// FormatAppDisplay returns a user-friendly display string for an app
+// Returns "name (0x123...)" if name exists, or just "0x123..." if no name
+// Checks remote profile first, then falls back to local registry
+func (r *AppResolver) FormatAppDisplay(appID ethcommon.Address) string
+⋮----
+// ensureCacheInitialized lazily loads app list and profile names once per resolver instance
+func (r *AppResolver) ensureCacheInitialized() error
+⋮----
+// Fetch apps from contract
+⋮----
+// Try to load cached profile names (24-hour TTL)
+⋮----
+// Check if cache is fresh (< 24 hours old)
+⋮----
+// Use cached profiles
+⋮----
+// Cache is stale or missing, fetch from API
+⋮----
+// Save to cache
+⋮----
+// Load local registry
+⋮----
+// Local registry might not exist yet, that's okay
+````
+
 ## File: pkg/commands/utils/auth_utils.go
 ````go
 package utils
@@ -6392,11 +6529,11 @@ Platform: DockerPlatform, // linux/amd64
 ⋮----
 // Image Building and Pushing
 ⋮----
-func buildAndPushLayeredImage(cCtx *cli.Context, environmentConfig common.EnvironmentConfig, dockerfilePath, targetImageRef, logRedirect, envFilePath string) (string, error)
+func buildAndPushLayeredImage(cCtx *cli.Context, environmentConfig common.EnvironmentConfig, dockerfilePath, targetImageRef, logRedirect, resourceUsageAllow, envFilePath string) (string, error)
 ⋮----
 // Build base image from user's Dockerfile
 ⋮----
-func layerLocalImage(cCtx *cli.Context, dockerClient *client.Client, environmentConfig common.EnvironmentConfig, sourceImageRef, targetImageRef, logRedirect, envFilePath string) (string, error)
+func layerLocalImage(cCtx *cli.Context, dockerClient *client.Client, environmentConfig common.EnvironmentConfig, sourceImageRef, targetImageRef, logRedirect, resourceUsageAllow, envFilePath string) (string, error)
 ⋮----
 // Extract original command and user from source image
 ⋮----
@@ -6494,17 +6631,6 @@ ethcrypto "github.com/ethereum/go-ethereum/crypto"
 "github.com/fatih/color"
 "github.com/urfave/cli/v2"
 ⋮----
-// GetAppID gets the app id from CLI args or auto-detects from project context. App id is the address of the app contract on L1.
-func GetAppID(cCtx *cli.Context, argIndex int) (ethcommon.Address, error)
-⋮----
-// Check if app_id provided as argument
-⋮----
-// Get environment config for context
-⋮----
-// First try to resolve as a name from the registry
-⋮----
-// If not a name, check if it's a valid hex address
-⋮----
 func GetAppControllerBinding(cCtx *cli.Context) (*ethclient.Client, *AppController.AppController, error)
 ⋮----
 // Get RPC URL from flag or use environment default
@@ -6558,9 +6684,13 @@ func PrintAppInfoWithStatus(ctx context.Context, logger iface.Logger, client *et
 ⋮----
 // get timestamp for block number
 ⋮----
-// Show app name if available
+// Show app name - prioritize profile name, fall back to local registry
 ⋮----
 // Compare contract and API status to show transition states when they differ
+⋮----
+// Display CPU and Memory metrics if available
+⋮----
+// Display app profile if available
 ⋮----
 // Display addresses if available
 ⋮----
@@ -6832,15 +6962,23 @@ func GetLayeredTargetImageInteractive(cCtx *cli.Context, sourceImageRef string) 
 var defaultTarget string
 ⋮----
 // GetAppIDInteractive gets app ID from args or interactive selection
-func GetAppIDInteractive(cCtx *cli.Context, argIndex int, action string) (ethcommon.Address, error)
+// If resolver is provided, uses it to avoid duplicate API calls.
+// If resolver is nil, creates a new one.
+func GetAppIDInteractive(cCtx *cli.Context, resolver *AppResolver, argIndex int, action string) (ethcommon.Address, error)
 ⋮----
-// First try to get from args
+// Create resolver if not provided
 ⋮----
-// If not provided, show interactive selection
+var err error
+⋮----
+// Check if app ID or name provided as argument
+⋮----
+// Try to resolve (checks remote profiles first, then local registry)
+⋮----
+// Resolution failed - return error since user explicitly provided a name/ID
+⋮----
+// If no argument provided, show interactive selection message
 ⋮----
 // Get list of apps for the user
-⋮----
-// Get environment config for context
 ⋮----
 // Build apps list with status priority
 type appItem struct {
@@ -6868,34 +7006,14 @@ var activeApps []ethcommon.Address
 ⋮----
 // Find the selected app
 ⋮----
-// GetOrPromptAppName gets app name from flag or prompts interactively
-func GetOrPromptAppName(cCtx *cli.Context, context string, imageRef string) (string, error)
+// ExtractAndFindAvailableName extracts a base name from imageRef and finds an available variant
+func ExtractAndFindAvailableName(cCtx *cli.Context, context, imageRef string) (string, error)
 ⋮----
-// Check if provided via flag
+// IsAppNameAvailable checks if an app name is available in the given context.
+// If resolver is provided, uses it; otherwise creates a new one.
+func IsAppNameAvailable(cCtx *cli.Context, resolver *AppResolver, name string) bool
 ⋮----
-// Validate the provided name
-⋮----
-// Check if it's available
-⋮----
-// No flag provided, get interactively
-⋮----
-// GetAvailableAppNameInteractive interactively gets an available app name
-func GetAvailableAppNameInteractive(context, imageRef string) (string, error)
-⋮----
-// Start with a suggestion from the image
-⋮----
-// Find the first available name based on the suggestion
-⋮----
-// If input fails, use the suggestion
-⋮----
-// Check if the name is available
-⋮----
-// Name is taken, suggest alternatives and loop
-⋮----
-// Suggest alternatives based on their input
-⋮----
-// IsAppNameAvailable checks if an app name is available in the given context
-func IsAppNameAvailable(context, name string) bool
+return false // If we can't check, assume not available to be safe
 ⋮----
 // GetEnvFileInteractive prompts for env file path if not provided
 func GetEnvFileInteractive(cCtx *cli.Context) (string, error)
@@ -6910,6 +7028,8 @@ func GetEnvFileInteractive(cCtx *cli.Context) (string, error)
 ⋮----
 // GetDockerfileInteractive prompts to build from Dockerfile if it exists
 func GetDockerfileInteractive(cCtx *cli.Context) (string, error)
+⋮----
+// Check if provided via flag
 ⋮----
 // Check if default Dockerfile exists
 ⋮----
@@ -6967,14 +7087,11 @@ func displayRegistryExamples(appName string)
 // displayDetectedRegistries shows detected registries with examples
 func displayDetectedRegistries(registries []registryInfo, appName string)
 ⋮----
-// findAvailableName finds an available name by appending numbers if needed
-func findAvailableName(context, baseName string) string
+// findAvailableName finds an available name by appending numbers if needed.
 ⋮----
-// Check if base name is available
+func findAvailableName(cCtx *cli.Context, resolver *AppResolver, baseName string) string
 ⋮----
-// Try with incrementing numbers
-⋮----
-// Fallback to timestamp if somehow we have 100+ duplicates
+// Fallback to timestamp if resolver fails
 ⋮----
 // extractAppNameFromImage extracts the app name from an image reference
 // Examples:
@@ -7014,6 +7131,9 @@ func GetLogSettingsInteractive(cCtx *cli.Context) (logRedirect string, publicLog
 // Check if flag is provided
 ⋮----
 // Interactive prompt with three options
+⋮----
+// GetResourceUsageSetting returns the resource usage configuration from flags or prompt
+func GetResourceUsageSetting(cCtx *cli.Context) (string, error)
 ⋮----
 // GetInstanceTypeInteractive prompts for instance type if not provided via flag.
 // The defaultSKU parameter is used as the default selection in interactive mode:
@@ -7063,10 +7183,88 @@ var envNames []string
 ⋮----
 // Find the selected environment name
 ⋮----
+func GetAppNameInteractive(cCtx *cli.Context, defaultName string) (string, error)
+⋮----
+func GetAppWebsiteInteractive(cCtx *cli.Context) (*string, error)
+⋮----
+func GetAppDescriptionInteractive(cCtx *cli.Context) (*string, error)
+⋮----
+func GetAppXURLInteractive(cCtx *cli.Context) (*string, error)
+⋮----
+func GetAppImageInteractive(cCtx *cli.Context) (string, error)
+⋮----
+// CollectedProfile holds collected profile information with pointer fields for optional values
+type CollectedProfile struct {
+	Name        string
+	Website     *string
+	Description *string
+	XURL        *string
+	ImagePath   string
+}
+⋮----
+// GetAppProfileInteractive collects app profile information interactively
+// If defaultName is provided, it will be used as the suggested name
+// If allowRetry is true, user can re-enter information on rejection (deploy flow)
+// If allowRetry is false, rejection returns an error (profile set flow)
+// Returns CollectedProfile with at least a name (required), and optional fields
+func GetAppProfileInteractive(cCtx *cli.Context, defaultName string, allowRetry bool) (*CollectedProfile, error)
+⋮----
+// Collect name (required)
+⋮----
+// Collect optional fields
+⋮----
+// Always display profile for confirmation
+⋮----
+// User rejected the profile
+⋮----
+// Profile set flow: just return an error
+⋮----
+// Deploy flow: ask if they want to re-enter
+⋮----
+// User doesn't want to set a profile - skip it entirely
+⋮----
+// Loop back to re-collect information (keep the name)
+⋮----
 // ConfirmMainnetEnvironment shows a confirmation prompt for mainnet environments
 func ConfirmMainnetEnvironment(env string) error
 ⋮----
 return nil // Not mainnet, no confirmation needed
+⋮----
+// PromptConfig contains configuration for the flag-or-prompt pattern
+type PromptConfig struct {
+	FlagName    string
+	Prompt      string
+	Placeholder string
+	Default     string // Optional default value to suggest to user
+	Validate    func(string) error
+	Sanitize    func(string) (string, error)
+}
+⋮----
+Default     string // Optional default value to suggest to user
+⋮----
+// getFromFlagOrPrompt handles the flag-or-prompt pattern for strings
+func getFromFlagOrPrompt(cCtx *cli.Context, config PromptConfig) (*string, error)
+⋮----
+// printImageInfo prints image ratio and pixel dimensions, including a warning if the image is not square
+func printImageInfo(img *ImageInfo)
+⋮----
+// getProfileNamesForApps fetches profile names for a list of apps from the API
+// Batches requests and executes them in parallel
+func getProfileNamesForApps(cCtx *cli.Context, apps []ethcommon.Address) map[string]string
+⋮----
+// Create batches
+var batches [][]ethcommon.Address
+⋮----
+// Fetch all batches in parallel
+type batchResult struct {
+		batch []ethcommon.Address
+		infos *AppInfoResponse
+	}
+⋮----
+// Collect results and build profile names map
+⋮----
+// formatProfileForDisplay formats a profile for display to the user
+func formatProfileForDisplay(profile *CollectedProfile) string
 ````
 
 ## File: pkg/commands/utils/preflight.go
@@ -7100,6 +7298,7 @@ type PreflightContext struct {
 	Caller            *common.ContractCaller
 	EnvironmentConfig *common.EnvironmentConfig
 	Client            *ethclient.Client
+	Resolver          *AppResolver
 	PrivateKey        string
 }
 ⋮----
@@ -7117,7 +7316,9 @@ func DoPreflightChecks(cCtx *cli.Context) (*PreflightContext, error)
 ⋮----
 // 5. Get chain ID
 ⋮----
-// 6. Create contract caller
+// 6. Create app resolver for name/ID resolution
+⋮----
+// 7. Create contract caller
 ⋮----
 // GetPrivateKeyOrFail gets the private key from flag, environment, or keyring, failing with clear instructions if not found
 func GetPrivateKeyOrFail(cCtx *cli.Context) (string, error)
@@ -7136,6 +7337,127 @@ func GetPrivateKeyOrFail(cCtx *cli.Context) (string, error)
 ⋮----
 // GetDeveloperAddress gets developer address from private key
 func GetDeveloperAddress(cCtx *cli.Context) (ethcommon.Address, error)
+````
+
+## File: pkg/commands/utils/profile_utils.go
+````go
+package utils
+⋮----
+import (
+	"fmt"
+	"html"
+	"image"
+	_ "image/jpeg" // Register JPEG format decoder
+	_ "image/png"  // Register PNG format decoder
+	"net/url"
+	"os"
+	"path/filepath"
+	"slices"
+	"strings"
+)
+⋮----
+"fmt"
+"html"
+"image"
+_ "image/jpeg" // Register JPEG format decoder
+_ "image/png"  // Register PNG format decoder
+"net/url"
+"os"
+"path/filepath"
+"slices"
+"strings"
+⋮----
+const (
+	MaxImageSize         = 4 * 1024 * 1024 // 4MB
+	MaxAppNameLength     = 100
+	MaxDescriptionLength = 1000
+	BytesPerMB           = 1024 * 1024
+)
+⋮----
+MaxImageSize         = 4 * 1024 * 1024 // 4MB
+⋮----
+var (
+	ValidImageExtensions = []string{".jpg", ".jpeg", ".png"}
+	ValidXHosts          = []string{"twitter.com", "www.twitter.com", "x.com", "www.x.com"}
+)
+⋮----
+// AppProfile represents the profile information for an app
+type AppProfile struct {
+	Name        string `json:"name"`
+	Website     string `json:"website"`
+	Description string `json:"description"`
+	XURL        string `json:"xURL"`
+	ImageURL    string `json:"imageURL"`
+}
+⋮----
+// ImageInfo contains validated image metadata
+type ImageInfo struct {
+	Width  int
+	Height int
+	SizeKB float64
+	Format string
+}
+⋮----
+// IsSquare checks if image has approximately square aspect ratio
+func (img *ImageInfo) IsSquare() bool
+⋮----
+// AspectRatio returns the width/height ratio
+func (img *ImageInfo) AspectRatio() float64
+⋮----
+// ValidateURL validates that a string is a valid URL
+func ValidateURL(rawURL string) error
+⋮----
+// ValidateXURL validates that a URL is a valid X (Twitter) URL
+func ValidateXURL(rawURL string) error
+⋮----
+// Accept twitter.com and x.com domains
+⋮----
+// Ensure it has a path (username/profile)
+⋮----
+// ValidateAndGetImageInfo validates and extracts image information in one pass
+// Returns the cleaned file path (with quotes stripped) along with image info
+func ValidateAndGetImageInfo(filePath string) (string, *ImageInfo, error)
+⋮----
+// Strip quotes that may be added by terminal drag-and-drop or shell
+⋮----
+// Check if file exists
+⋮----
+// Check file size
+⋮----
+// Check file extension
+⋮----
+// Open and decode image (validates format and gets dimensions)
+⋮----
+// ValidateAppName validates an app name
+func ValidateAppName(name string) error
+⋮----
+// ValidateAppDescription validates an app description
+func ValidateAppDescription(description string) error
+⋮----
+// SanitizeString sanitizes a string by trimming whitespace and escaping HTML
+func SanitizeString(s string) string
+⋮----
+// SanitizeURL sanitizes a URL by trimming whitespace and validating
+func SanitizeURL(rawURL string) (string, error)
+⋮----
+// Add https:// if no scheme is present
+⋮----
+// SanitizeXURL sanitizes an X URL
+func SanitizeXURL(rawURL string) (string, error)
+⋮----
+// Handle username-only input (e.g., "@username" or "username")
+⋮----
+// Remove @ if present
+⋮----
+// Add https:// if URL-like but missing scheme
+⋮----
+// Normalize twitter.com to x.com
+⋮----
+// validateNotEmpty checks if a string is empty after trimming
+func validateNotEmpty(s, fieldName string) error
+⋮----
+// hasScheme checks if a URL has an http or https scheme
+func hasScheme(rawURL string) bool
 ````
 
 ## File: pkg/commands/utils/release_utils.go
@@ -7194,7 +7516,7 @@ v1 "github.com/google/go-containerregistry/pkg/v1"
 // PrepareReleaseFromContext prepares a release with separated Dockerfile handling
 // The dockerfile path and env file path are provided as parameters (already collected earlier)
 // maxPushRetries controls how many times to retry on push permission errors (0 = no retries)
-func PrepareReleaseFromContext(cCtx *cli.Context, environmentConfig *common.EnvironmentConfig, appID gethcommon.Address, dockerfilePath string, imageRef string, envFilePath string, logRedirect string, instanceType string, maxPushRetries int) (appcontrollerV2.IAppControllerRelease, string, error)
+func PrepareReleaseFromContext(cCtx *cli.Context, environmentConfig *common.EnvironmentConfig, appID gethcommon.Address, dockerfilePath string, imageRef string, envFilePath string, logRedirect string, resourceUsageAllow string, instanceType string, maxPushRetries int) (appcontrollerV2.IAppControllerRelease, string, error)
 ⋮----
 // Create operation closures that capture context
 ⋮----
@@ -7231,7 +7553,7 @@ func retryImagePushOperation(
 ⋮----
 // Update imageRef for retry
 ⋮----
-func layerRemoteImageIfNeeded(cCtx *cli.Context, environmentConfig common.EnvironmentConfig, imageRef, logRedirect, envFilePath string) (string, error)
+func layerRemoteImageIfNeeded(cCtx *cli.Context, environmentConfig common.EnvironmentConfig, imageRef, logRedirect, resourceUsageAllow, envFilePath string) (string, error)
 ⋮----
 // Check if the provided image is missing image layering, which is required for EigenX
 ⋮----
@@ -7333,12 +7655,13 @@ const (
 // Build-related constants
 ⋮----
 type LayeredDockerfileTemplateData struct {
-	BaseImage        string
-	OriginalCmd      string
-	OriginalUser     string
-	LogRedirect      string
-	IncludeTLS       bool
-	EigenXCLIVersion string
+	BaseImage          string
+	OriginalCmd        string
+	OriginalUser       string
+	LogRedirect        string
+	ResourceUsageAllow string
+	IncludeTLS         bool
+	EigenXCLIVersion   string
 }
 ⋮----
 type EnvSourceScriptTemplateData struct {
@@ -7352,12 +7675,16 @@ type EnvSourceScriptTemplateData struct {
 package utils
 ⋮----
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
 	"math/big"
+	"mime/multipart"
 	"net/http"
 	"net/url"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -7369,12 +7696,16 @@ import (
 	"github.com/urfave/cli/v2"
 )
 ⋮----
+"bytes"
 "encoding/json"
 "fmt"
 "io"
 "math/big"
+"mime/multipart"
 "net/http"
 "net/url"
+"os"
+"path/filepath"
 "strings"
 "time"
 ⋮----
@@ -7400,7 +7731,13 @@ const (
 	StatusInactive          SubscriptionStatus = "inactive"
 )
 ⋮----
-const MAX_ADDRESS_COUNT = 5
+const (
+	MaxAddressCount   = 5  // Max addresses to return per app
+	MaxAppsPerRequest = 10 // Max apps allowed per API request
+)
+⋮----
+MaxAddressCount   = 5  // Max addresses to return per app
+MaxAppsPerRequest = 10 // Max apps allowed per API request
 ⋮----
 type AppStatusResponse struct {
 	Apps []AppStatus `json:"apps"`
@@ -7450,11 +7787,21 @@ type UserSubscriptionResponse struct {
 	PortalURL          *string            `json:"portal_url,omitempty"`
 }
 ⋮----
+type AppProfileResponse struct {
+	Name        string  `json:"name"`
+	Website     *string `json:"website,omitempty"`
+	Description *string `json:"description,omitempty"`
+	XURL        *string `json:"xURL,omitempty"`
+	ImageURL    *string `json:"imageURL,omitempty"`
+}
+⋮----
 type RawAppInfo struct {
-	Addresses   json.RawMessage `json:"addresses"`
-	Status      string          `json:"app_status"`
-	Ip          string          `json:"ip"`
-	MachineType string          `json:"machine_type"`
+	Addresses   json.RawMessage     `json:"addresses"`
+	Status      string              `json:"app_status"`
+	Ip          string              `json:"ip"`
+	MachineType string              `json:"machine_type"`
+	Profile     *AppProfileResponse `json:"profile,omitempty"`
+	Metrics     *AppMetrics         `json:"metrics,omitempty"`
 }
 ⋮----
 // AppInfo contains the app info with parsed and validated addresses
@@ -7464,6 +7811,15 @@ type AppInfo struct {
 	Status          string
 	Ip              string
 	MachineType     string
+	Profile         *AppProfileResponse
+	Metrics         *AppMetrics
+}
+⋮----
+type AppMetrics struct {
+	CPUUtilizationPercent    float64 `json:"cpu_utilization_percent,omitempty"`
+	MemoryUtilizationPercent float64 `json:"memory_utilization_percent,omitempty"`
+	MemoryUsedBytes          uint64  `json:"memory_used_bytes,omitempty"`
+	MemoryTotalBytes         uint64  `json:"memory_total_bytes,omitempty"`
 }
 ⋮----
 type AppInfoResponse struct {
@@ -7491,6 +7847,8 @@ var rawResult RawAppInfoResponse
 ⋮----
 // Process each app's addresses
 ⋮----
+var metrics *AppMetrics
+⋮----
 func (cc *UserApiClient) GetLogs(cCtx *cli.Context, appID ethcommon.Address) (string, error)
 ⋮----
 func (cc *UserApiClient) GetSKUs(cCtx *cli.Context) (*SKUListResponse, error)
@@ -7507,13 +7865,36 @@ var result UserSubscriptionResponse
 ⋮----
 func (cc *UserApiClient) CancelSubscription(cCtx *cli.Context) error
 ⋮----
+// UploadAppProfile uploads app profile information with optional image
+func (cc *UserApiClient) UploadAppProfile(cCtx *cli.Context, appAddress string, name string, website, description, xURL *string, imagePath string) (*AppProfileResponse, error)
+⋮----
+// Create multipart form body
+⋮----
+// Add required name field
+⋮----
+// Add optional text fields
+⋮----
+// Add optional image file
+⋮----
+// Close the multipart writer to finalize the form
+⋮----
+// Use makeAuthenticatedRequest to handle authentication
+⋮----
+// Check for success (201 Created or 200 OK)
+⋮----
+// Parse response
+var result AppProfileResponse
+⋮----
 // buildAppIDsParam creates a comma-separated string of app IDs for URL parameters
 func buildAppIDsParam(appIDs []ethcommon.Address) string
 ⋮----
-// makeAuthenticatedRequest performs an HTTP request with optional authentication
-func (cc *UserApiClient) makeAuthenticatedRequest(cCtx *cli.Context, method, url string, permission *[4]byte) (*http.Response, error)
+// makeAuthenticatedRequest performs an HTTP request with optional authentication and body
+// contentType parameter allows setting custom Content-Type header (e.g., for multipart forms)
+func (cc *UserApiClient) makeAuthenticatedRequest(cCtx *cli.Context, method, url string, body io.Reader, contentType string, permission *[4]byte) (*http.Response, error)
 ⋮----
 // Add x-client-id header to identify the CLI client
+⋮----
+// Set content type if provided
 ⋮----
 // Add auth headers if permission is specified
 ⋮----
@@ -7613,7 +7994,7 @@ var AppCommand = &cli.Command{
 		app.ListCommand,
 		app.InfoCommand,
 		app.LogsCommand,
-		app.NameCommand,
+		app.ProfileCommand,
 		app.ConfigureTLSCommand,
 	},
 }
@@ -8025,6 +8406,23 @@ type ProgressInfo struct {
 	DisplayText string
 	Timestamp   string
 }
+````
+
+## File: pkg/common/iface/resolver.go
+````go
+package iface
+⋮----
+import common "github.com/ethereum/go-ethereum/common"
+⋮----
+// AppNameResolver resolves app IDs to display names.
+type AppNameResolver interface {
+	// GetAppName returns the app name by checking remote profile first,
+	// then falling back to local registry. Returns empty string if not found.
+	GetAppName(appID common.Address) string
+}
+⋮----
+// GetAppName returns the app name by checking remote profile first,
+// then falling back to local registry. Returns empty string if not found.
 ````
 
 ## File: pkg/common/logger/basic_logger.go
@@ -8553,7 +8951,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
 	"gopkg.in/yaml.v3"
 )
 ⋮----
@@ -8563,7 +8960,6 @@ import (
 "strings"
 "time"
 ⋮----
-"github.com/ethereum/go-ethereum/common"
 "gopkg.in/yaml.v3"
 ⋮----
 const (
@@ -8594,46 +8990,11 @@ var registry AppRegistry
 ⋮----
 // Initialize apps map if nil
 ⋮----
-// SaveAppRegistry saves the app registry to disk
-func SaveAppRegistry(context string, registry *AppRegistry) error
-⋮----
-// Ensure directory exists
-⋮----
-// SetAppName sets or updates a name for an app
-func SetAppName(context, appIDOrName, newName string) error
-⋮----
-// Resolve the target app ID and find any existing name
-⋮----
-// If can't resolve, check if it's a valid app ID
-⋮----
-// Normalize app ID for comparison
-⋮----
-// Find and remove any existing names for this app ID
-⋮----
-// If newName is empty, we're just removing the name
-⋮----
-// Add the new name entry
-⋮----
-// ResolveAppID resolves a name or app ID to an app ID
-func ResolveAppID(context, nameOrID string) (string, error)
-⋮----
-// First check if it's already a valid hex address
-⋮----
-// Try to load from registry
-⋮----
-// Look up by name
-⋮----
-// GetAppName returns the name for a given app ID, or empty string if not found
-func GetAppName(context, appID string) string
+// GetAppNameFromLocalRegistry returns the name for a given app ID from the local registry only (legacy fallback).
+// Returns empty string if not found. For new code, use utils.GetAppName which checks remote profiles first.
+func GetAppNameFromLocalRegistry(context, appID string) string
 ⋮----
 // Normalize the app ID
-⋮----
-// ListApps returns all apps in the registry
-func ListApps(context string) (map[string]App, error)
-⋮----
-// FormatAppDisplay returns a user-friendly display string for an app
-// Returns "name (0x123...)" if name exists, or just "0x123..." if no name
-func FormatAppDisplay(context string, appID common.Address) string
 ````
 
 ## File: pkg/common/config_base.go
@@ -8824,6 +9185,9 @@ var (
 // The permission to view sensitive app info (including real IPs)
 // bytes4(keccak256("CAN_VIEW_SENSITIVE_APP_INFO()"))
 ⋮----
+// The permission to update app profile
+// bytes4(keccak256("CAN_UPDATE_APP_PROFILE()"))
+⋮----
 // The permission to manage billing and subscriptions
 // bytes4(keccak256("CAN_MANAGE_BILLING()"))
 ⋮----
@@ -8986,9 +9350,10 @@ type ContractCaller struct {
 	permissionControllerBinding *permissioncontrollerV2.IPermissionController
 	erc7702DelegatorBinding     *erc7702delegatorV2.EIP7702StatelessDeleGator
 	SelfAddress                 common.Address
+	Resolver                    iface.AppNameResolver
 }
 ⋮----
-func NewContractCaller(privateKeyHex string, chainID *big.Int, environmentConfig EnvironmentConfig, client *ethclient.Client, logger iface.Logger) (*ContractCaller, error)
+func NewContractCaller(privateKeyHex string, chainID *big.Int, environmentConfig EnvironmentConfig, client *ethclient.Client, logger iface.Logger, resolver iface.AppNameResolver) (*ContractCaller, error)
 ⋮----
 // DeployApp creates a new app via AppController contract, accepts admin permissions, and upgrades the app
 func (cc *ContractCaller) DeployApp(ctx context.Context, salt [32]byte, release appcontrollerV2.IAppControllerRelease, publicLogs bool, imageRef string) (appID common.Address, err error)
@@ -9198,6 +9563,8 @@ var (
 		Name:  "image-name",
 		Usage: "Override app/image name (auto-detected from context if not provided)",
 ⋮----
+// Profile-related flags
+⋮----
 // GlobalFlags defines flags that apply to the entire application (global flags).
 var GlobalFlags = []cli.Flag{
 	&cli.BoolFlag{
@@ -9274,6 +9641,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"gopkg.in/yaml.v3"
 )
@@ -9281,6 +9649,7 @@ import (
 "fmt"
 "os"
 "path/filepath"
+"time"
 ⋮----
 "gopkg.in/yaml.v3"
 ⋮----
@@ -9298,6 +9667,10 @@ type GlobalConfig struct {
 	LastVersionCheck int64 `yaml:"last_version_check,omitempty"`
 	// LastKnownVersion stores the last known latest version from the server
 	LastKnownVersion string `yaml:"last_known_version,omitempty"`
+	// LastProfileCacheUpdate stores the timestamp of the last profile cache update
+	LastProfileCacheUpdate int64 `yaml:"last_profile_cache_update,omitempty"`
+	// ProfileCache stores app profiles (appID → profile name) per environment
+	ProfileCache map[string]map[string]string `yaml:"profile_cache,omitempty"`
 }
 ⋮----
 // FirstRun tracks if this is the user's first time running devkit
@@ -9311,6 +9684,10 @@ type GlobalConfig struct {
 // LastVersionCheck stores the timestamp of the last version check
 ⋮----
 // LastKnownVersion stores the last known latest version from the server
+⋮----
+// LastProfileCacheUpdate stores the timestamp of the last profile cache update
+⋮----
+// ProfileCache stores app profiles (appID → profile name) per environment
 ⋮----
 // GetGlobalConfigDir returns the XDG-compliant directory where global eigenx config should be stored
 func GetGlobalConfigDir() (string, error)
@@ -9360,6 +9737,22 @@ func GetDefaultEnvironment() (string, error)
 ⋮----
 // SetDefaultEnvironment sets the user's preferred deployment environment
 func SetDefaultEnvironment(environment string) error
+⋮----
+// LoadProfileCache loads the cached app profiles for a given environment
+// Returns cached profiles and timestamp, using 24-hour TTL
+func LoadProfileCache(environment string) (profiles map[string]string, timestamp int64, err error)
+⋮----
+// Initialize cache map if nil
+⋮----
+// Get profiles for this environment
+⋮----
+// SaveProfileCache saves app profiles to cache with current timestamp
+func SaveProfileCache(environment string, profiles map[string]string) error
+⋮----
+// Save profiles for this environment
+⋮----
+// InvalidateProfileCache clears the profile cache timestamp to force refresh
+func InvalidateProfileCache() error
 ````
 
 ## File: pkg/common/keyring.go
@@ -11234,7 +11627,7 @@ The CLI is built with `urfave/cli/v2` and organized hierarchically:
 | Command | Description |
 | --- | --- |
 | `eigenx app create [name] [language]` | Create new app project from template |
-| `eigenx app name <app-id\|name> [new-name]` | Set, change, or remove a friendly name for your app |
+| `eigenx app profile set <app-id\|name>` | Set app profile (name, website, description, X URL, image) |
 | `eigenx app deploy [image_ref]` | Build, push, deploy to TEE |
 | `eigenx app upgrade <app-id\|name> <image_ref>` | Upgrade existing deployment |
 | `eigenx app start [app-id\|name]` | Start stopped app (start GCP instance) |
@@ -11257,7 +11650,7 @@ Optional parameters are requested interactively when not provided:
 
 Commands auto-detect project context when run in directory containing `Dockerfile`. Makes `name` parameter optional for: `deploy`.
 
-Commands also support app name resolution - you can use either the full app ID (0x123...) or a friendly name you've set with `eigenx app name`.
+Commands also support app name resolution - you can use either the full app ID (0x123...) or a friendly name you've set with `eigenx app profile set`.
 
 ### Configuration System
 Global configuration with XDG Base Directory compliance:
@@ -12116,7 +12509,7 @@ ACME_FORCE_ISSUE=true  # Only if staging cert exists
 | --- | --- |
 | `eigenx app create [name] [language]` | Create new project from template |
 | `eigenx app configure tls` | Add TLS configuration to your project |
-| `eigenx app name <app-id\|name> <new-name>` | Set a friendly name for your app |
+| `eigenx app profile set <app-id\|name>` | Set app profile (name, website, description, social links, icon) |
 
 ### Deployment & Updates
 

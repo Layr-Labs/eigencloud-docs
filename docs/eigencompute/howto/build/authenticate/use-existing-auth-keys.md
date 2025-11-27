@@ -20,6 +20,8 @@ Log in to:
 * Import an existing key from Metamask or another wallet.
 * Configure the EigenX CLI on a new machine.
 
+## Provide by storing in OS keyring
+
 To log in by storing your authentication key in the OS keyring, use the interactive login:
 
 ```bash
@@ -41,3 +43,33 @@ Use the `--env` flag to log in to a specific environment:
 ```bash
 eigenx auth login --env sepolia
 ```
+
+## Provide using environment variable
+
+Instead of storing your private key in the keyring, you can provide it via environment variable:
+
+```bash
+export EIGENX_PRIVATE_KEY=0x1234567890abcdef...
+eigenx app deploy
+```
+
+This is useful for:
+- CI/CD pipelines
+- Automated scripts
+- Temporary usage
+
+:::caution
+Be careful not to commit `.env` files containing private keys to version control. Add them to `.gitignore`.
+:::
+
+## Provide private key using command flag 
+
+Provide your private key directly to any command:
+
+```bash
+eigenx app deploy --private-key 0x1234567890abcdef...
+```
+
+:::warning
+This method exposes your private key in your shell history. Only use this for testing with non-production keys.
+:::
