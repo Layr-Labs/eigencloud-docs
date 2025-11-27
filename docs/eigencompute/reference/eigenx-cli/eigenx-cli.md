@@ -1,5 +1,5 @@
 ---
-title: EigenX CLI
+title: eigenx Reference
 sidebar_position: 1
 ---
 
@@ -9,7 +9,7 @@ TODO - Add here
 
 ## Available Commands
 
-* app
+* [app](app/app.md)
 * auth
 * billing
 * environment, env

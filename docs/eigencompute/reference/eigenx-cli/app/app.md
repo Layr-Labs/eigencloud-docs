@@ -1,6 +1,6 @@
 ---
-title: app
-sidebar_position: 2
+title: Overview
+sidebar_position: 1
 ---
 
 ## Description
@@ -9,7 +9,7 @@ TODO - Add here
 
 ## Available Commands
 
-* create
+* [create](create.md)
 * deploy
 * upgrade
 * start
