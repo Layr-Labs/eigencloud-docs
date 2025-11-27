@@ -59,18 +59,6 @@ Log out of EigenX to:
 * Use a different authentication key.
 * Remove corrupted credentials when troubleshooting.
 
-To log out of all environments: 
-
-```bash
-eigenx auth logout --all
-```
-
-Output:
-```
-✓ Logged out from all environments
-✓ All private keys removed from OS keyring
-```
-
 To log out of the current environment: 
 
 ```bash
