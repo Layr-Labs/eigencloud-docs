@@ -3,14 +3,12 @@ title: create
 sidebar_position: 2
 ---
 
-## Description
-
 Create an application project from a template with all necessary configuration files. For more information on creating
 applications, refer to [Create Application](../../../howto/build/create-app-from-template.md).
 
 ## Synopsis
 
-`eigenx app create [name] [language] [--template <url>] [--template-version <version>]`
+`eigenx app create [name] [language] [--template-repo <url>] [--template-version <version>] [global options]`
 
 ## Arguments
 
@@ -28,7 +26,7 @@ applications, refer to [Create Application](../../../howto/build/create-app-from
 
 ## Options
 
-`--template <url>` (string)
+`--template-repo <url>` (string)
 
 > Custom template repository URL.
 

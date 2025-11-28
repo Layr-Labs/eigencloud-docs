@@ -3,23 +3,21 @@ title: Overview
 sidebar_position: 1
 ---
 
-## Description
-
-TODO - Add here
+Manage applications including creating, operating, and terminating.
 
 ## Available Commands
 
 * [create](create.md)
-* deploy
-* upgrade
-* start
-* stop
-* terminate
-* list
-* info
-* logs
-* profile
-* configure
+* [deploy](deploy.md)
+* [upgrade](upgrade.md)
+* [start](start.md)
+* [stop](stop.md)
+* [terminate](terminate.md)
+* [list](list.md)
+* [info](info.md)
+* [logs](logs.md)
+* [profile](profile.md)
+* [configure](configure.md)
 * help, h
 
 ## Global Options
@@ -30,15 +28,15 @@ TODO - Add here
 
 `--enable-telemetry` (boolean)
 
-> Enable telemetry collection on first run without prompting. The default is false.
+> Enable telemetry collection on first run without prompting. Default is false.
 
 `--disable-telemetry` (boolean)
 
-> Disable telemetry collection on first run without prompting. The default is false.
+> Disable telemetry collection on first run without prompting. Default is false.
 
 `--environment value, --env value` (string)
 
-> Deployment environment to use.
+> Deployment environment to use. One of `mainnet-alpha` and `sepolia`.
 
 `--rpc-url value ` (URL)
 
@@ -50,7 +48,7 @@ TODO - Add here
 
 `--env-file value` (string)
 
-> Environment file to use. The default is the `.env` file.
+> Environment file to use. Default is the `.env` file.
 
 `--help, -h`
 
