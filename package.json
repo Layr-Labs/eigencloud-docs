@@ -35,7 +35,8 @@
     "rehype-katex": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
-    "repomix": "^0.3.6"
+    "repomix": "^0.3.6",
+    "swagger-ui-dist": "^5.30.3"
   },
   "devDependencies": {
     "@docusaurus/eslint-plugin": "^3.8.1",

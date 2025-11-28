@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: EigenAI Chat API
+  version: 1.0.0
+  description: Chat completion API for EigenAI.
+
+servers:
+  - url: https://api.eigencloud.xyz
+
+paths:
+  /chat:
+    post:
+      summary: Create a chat completion
+      operationId: createChatCompletion
+      description: Generates a model response for a given chat conversation.
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+
+                model:
+                  type: string
+                  description: >
+                    Model ID used to generate the response, e.g. `gpt-oss-120b-f16`.
+
+                messages:
+                  type: array
+                  description: A list of messages representing the conversation so far.
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [system, user, assistant, tool]
+                      content:
+                        type: string
+
+                max_tokens:
+                  type: integer
+                  nullable: true
+                  description: >
+                    Optional. Maximum number of tokens to generate.
+
+                seed:
+                  type: integer
+                  nullable: true
+                  description: >
+                    Optional. If provided, inference becomes deterministic for repeated (seed + params).
+
+                stream:
+                  type: boolean
+                  nullable: true
+                  description: >
+                    Optional. If true, response is streamed using Server-Sent Events (SSE).
+
+                temperature:
+                  type: number
+                  format: float
+                  nullable: true
+                  description: >
+                    Optional. Sampling temperature between 0 and 2.
+
+                top_p:
+                  type: number
+                  format: float
+                  nullable: true
+                  description: >
+                    Optional. Nucleus sampling threshold (top-p).
+
+                logprobs:
+                  type: boolean
+                  nullable: true
+                  description: >
+                    Optional. If true, includes token-level log probabilities in the response.
+
+                frequency_penalty:
+                  type: number
+                  format: float
+                  nullable: true
+                  description: >
+                    Optional. Number between -2.0 and 2.0 penalizing token repetition frequency.
+
+                presence_penalty:
+                  type: number
+                  format: float
+                  nullable: true
+                  description: >
+                    Optional. Number between -2.0 and 2.0 penalizing previously seen tokens.
+
+                tools:
+                  type: array
+                  description: A list of tools the model may call.
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum: [function]
+                      function:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: Name of the function.
+                          description:
+                            type: string
+                          parameters:
+                            type: object
+                            description: JSON schema of function parameters.
+
+                tool_choice:
+                  description: >
+                    Optional. Controls how the model uses tools.  
+                    - `none`: never call tools  
+                    - `auto`: model decides (default if tools exist)  
+                    - `required`: must call tools  
+                    - or specify a particular function
+                  oneOf:
+                    - type: string
+                      enum: [none, auto, required]
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum: [function]
+                        function:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+
+              required:
+                - model
+                - messages
+
+      responses:
+        "200":
+          description: Successful completion response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  object:
+                    type: string
+                  created:
+                    type: integer
+                  model:
+                    type: string
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                        message:
+                          type: object
+                          properties:
+                            role:
+                              type: string
+                            content:
+                              type: string
+                        finish_reason:
+                          type: string
