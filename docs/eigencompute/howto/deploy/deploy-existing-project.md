@@ -27,7 +27,7 @@ Ensure you have a Dockerfile and .env. The CLI will prompt if not found.
 eigenx app deploy
 ```
 
-# 5. Add TLS if needed
+# 4. Add TLS if needed
 
 ```bash
 eigenx app configure tls
