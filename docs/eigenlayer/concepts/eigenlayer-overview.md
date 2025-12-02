@@ -47,5 +47,5 @@ Get started with EigenLayer:
 - [Restake on EigenLayer](../restakers/concepts/overview)
 - [Register as an Operator](../operators/howto/registeroperators/operator-installation.md)
 - [Build an AVS](../developers/concepts/avs-developer-guide)
-- Join our Ecosystem: [Discord](https://discord.com/invite/eigenlayer), [Twitter](https://twitter.com/eigenlayer)
+- Join our Ecosystem: [Discord](https://discord.com/invite/eigenlayer), [Twitter](https://x.com/eigencloud)
 

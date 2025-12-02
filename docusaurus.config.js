@@ -865,8 +865,8 @@ const config = {
                 href: "https://discord.com/invite/eigenlayer",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/eigenlayer",
+                label: "X",
+                href: "https://twitter.com/eigencloud",
               },
             ],
           },

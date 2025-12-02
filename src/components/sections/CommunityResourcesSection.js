@@ -12,7 +12,7 @@ function CommunityResourcesSection() {
     },
     {
       icon: '/img/community-twitter.png',
-      title: 'Follow us on Twitter →',
+      title: 'Follow us on X →',
       description: 'Stay up to date with the latest updates',
       link: 'https://x.com/BuildOnEigen'
     },
