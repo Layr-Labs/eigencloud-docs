@@ -308,7 +308,7 @@ function Root({ children }) {
 
 export default Root;
 
-const EIGENCOMPUTE_BASE_PATH = '/products/eigencompute';
+const EIGENCOMPUTE_BASE_PATH = '/eigencompute';
 
 function getEigencomputeContext(pathname) {
   if (!pathname || !pathname.startsWith(EIGENCOMPUTE_BASE_PATH)) {
