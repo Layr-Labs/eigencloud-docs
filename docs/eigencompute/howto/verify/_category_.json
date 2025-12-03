@@ -1,4 +1,6 @@
 {
-  "position": 6,
-  "label": "Verify"
+  "position": 4,
+  "label": "Verify",
+  "collapsible": true,
+  "collapsed": false,
 }

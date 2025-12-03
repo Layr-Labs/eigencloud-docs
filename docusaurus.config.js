@@ -376,6 +376,10 @@ const redirects = [
     to: '/products/eigenlayer/developers/howto/build/multichain/verification-methods',
   },
   {
+    from: '/products/eigencompute/quickstart',
+    to: '/eigencompute/get-started/quickstart',
+  },
+  {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
     to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
