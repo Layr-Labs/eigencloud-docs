@@ -5,18 +5,18 @@ sidebar_position: 1
 
 ## Description
 
-TODO - Add here 
+Use `eigenx` to verifiable applications in Trusted Execution Environments (TEEs).
 
 ## Available Commands
 
 * [app](app.md)
-* auth
-* billing
-* environment, env
-* version
-* undelegate
-* upgrade
-* telemetry
+* [auth](auth.md)
+* [billing](billing.md)
+* [environment, env](environment.md)
+* [version](version.md)
+* [undelegate](undelgate.md)
+* [upgrade](upgrade.md)
+* [telemetry](telemetry.md)
 * help
 
 ## Global Options

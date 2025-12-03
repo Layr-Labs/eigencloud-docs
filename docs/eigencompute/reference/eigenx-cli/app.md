@@ -20,40 +20,6 @@ Manage applications including creating, operating, and terminating.
 * [configure](#configure)
 * help, h
 
-## Global Options
-
-`--verbose, -v` (boolean)
-
-> Enable verbose logging.
-
-`--enable-telemetry` (boolean)
-
-> Enable telemetry collection on first run without prompting. Default is false.
-
-`--disable-telemetry` (boolean)
-
-> Disable telemetry collection on first run without prompting. Default is false.
-
-`--environment value, --env value` (string)
-
-> Deployment environment to use. One of `mainnet-alpha` and `sepolia`.
-
-`--rpc-url value ` (URL)
-
-> RPC URL to connect to blockchain. Can be set using environment variable `$EIGENX_RPC_URL`.
-
-`--private-key value` (string) 
-
-> Private key for signing transactions. Can be set using environment variable `$EIGENX_PRIVATE_KEY`.
-
-`--env-file value` (string)
-
-> Environment file to use. Default is the `.env` file.
-
-`--help, -h`
-
-> Show help.
-
 ## create
 
 Create an application project from a template with all necessary configuration files. For more information on creating
@@ -61,7 +27,7 @@ applications, refer to [Create Application](../../howto/build/create-app-from-te
 
 ### Synopsis
 
-`eigenx app create [name] [language] [--template-repo <url>] [--template-version <version>] [global options]`
+`eigenx app create [name] [language] [template-name] [--template-repo <url>] [--template-version <version>] [shared options]`
 
 ### Arguments
 
@@ -77,6 +43,10 @@ applications, refer to [Create Application](../../howto/build/create-app-from-te
 >  * `golang` - use for high-performance services
 >  *  `rust`  - use for systems programming, performance-critical apps
 
+`template-name` (string)
+
+> Name of template from which to create application. Prompted for if not provided.
+
 ### Options
 
 `--template-repo <url>` (string)
@@ -87,7 +57,7 @@ applications, refer to [Create Application](../../howto/build/create-app-from-te
 
 > Template version/tag to use.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--help, -h`. 
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--help, -h`. 
 
 ## deploy
 
@@ -97,7 +67,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 ### Synopsis
 
-`eigenx app deploy [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--name value] [--website value] [--description value] [--x-url value] [--image value] [global options] [image_ref]`
+`eigenx app deploy [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--name value] [--website value] [--description value] [--x-url value] [--image value] [shared options] [image_ref]`
 
 ### Arguments
 
@@ -109,7 +79,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `--dockerfile <path>, -f <path>` (string)
 
-> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used.
+> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../howto/configure/expose-ports.md).
 
 `--log-visibility <setting>` (string)
 
@@ -144,7 +114,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 > X (Twitter) profile. Displayed on the
 > Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--env-file`, `--help, -h`. 
 
 ## upgrade
@@ -153,7 +123,7 @@ Update an existing application with new code, configuration, or environment vari
 
 ### Synopsis
 
-`eigenx app upgrade [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [global options] [<app-id|name>] [<image_ref>]`
+`eigenx app upgrade [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [shared options] [<app-id|name>] [<image_ref>]`
 
 ### Arguments
 
@@ -184,7 +154,7 @@ Update an existing application with new code, configuration, or environment vari
 
 > Machine instance type to use. One of `g1-standard-4t` or `g1-standard-8t`. Prompted for if not provided.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--env-file`, `--help, -h`. 
 
 ## start
@@ -193,7 +163,7 @@ Start a previously stopped application.
 
 ### Synopsis
 
-`eigenx app start [global options] [<app-id|name>]`
+`eigenx app start [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -201,7 +171,9 @@ Start a previously stopped application.
 
 > Application ID or display name. Prompted for if not provided.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+### Options
+
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--help, -h`.
 
 ## stop
@@ -210,7 +182,7 @@ Stop a running application without removing it.
 
 ### Synopsis
 
-`eigenx app stop [global options] [<app-id|name>]`
+`eigenx app stop [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -218,7 +190,9 @@ Stop a running application without removing it.
 
 > Application ID or display name. Prompted for if not provided.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+### Options
+
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--help, -h`.
 
 ## terminate
@@ -236,7 +210,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ### Synopsis
 
-`eigenx app terminate [--force] [global options] [<app-id|name>]`
+`eigenx app terminate [--force] [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -250,7 +224,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 > Force termination without confirmation.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--help, -h`.
 
 ## list
@@ -259,7 +233,7 @@ List all applications deployed by your account in the current environment. For u
 
 ### Synopsis
 
-`eigenx app list [--all] [--address-count <value>] [global options]`
+`eigenx app list [--all] [--address-count <value>] [shared options]`
 
 ### Options
 
@@ -271,7 +245,7 @@ List all applications deployed by your account in the current environment. For u
 
 > Number of [addresses available to application](../../howto/build/use-app-wallet.mdx) to fetch. Default is `1`.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--private-key`, `--help, -h`.
 
 ## info
@@ -280,7 +254,7 @@ Display detailed information about a specific application.
 
 ### Synopsis
 
-`eigenx app info [--watch] [--address-count <value>] [global options] [<app-id|name>]`
+`eigenx app info [--watch] [--address-count <value>] [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -298,7 +272,7 @@ Display detailed information about a specific application.
 
 > Number of [addresses available to application](../../howto/build/use-app-wallet.mdx) to fetch. Default is `1`.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--help, -h`.
 
 ## logs
@@ -307,7 +281,7 @@ View application logs from your TEE instance. For usage examples, refer to [Moni
 
 ### Synopsis
 
-`eigenx app logs [--watch] [global options] [<app-id|name>]`
+`eigenx app logs [--watch] [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -321,7 +295,7 @@ View application logs from your TEE instance. For usage examples, refer to [Moni
 
 > Continuously fetch and display logs for application. Default is disabled.
 
-[Global options](#global-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
+[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
 `--help, -h`.
 
 ## profile
@@ -331,7 +305,7 @@ Update or specify application profile. The application profile properties are di
 
 ### Synopsis
 
-`eigenx app profile set [global options] [<app-id|name>]`
+`eigenx app profile set [shared options] [<app-id|name>]`
 
 ### Arguments
 
@@ -345,7 +319,9 @@ Update or specify application profile. The application profile properties are di
 
 > Prompts for application profile properties: Name, Website, Description, X (Twitter) profile URL, and application icon or image.
 
-The [global option](#global-options) `--help, -h` is available.
+### Options
+
+The [shared option](shared-options) `--help, -h` is available.
 
 ## configure
 
@@ -366,4 +342,6 @@ For more information on configuring TLS, refer to [Configure TLS](../../howto/de
 
 > Adds TLS configuration to the application.
 
-The [global option](#global-options) `--help, -h` is available.
+### Options
+
+The [shared option](shared-options) `--help, -h` is available.
