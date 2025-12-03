@@ -16,6 +16,38 @@ const redirects = [
     to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
   {
+    from: '/eigencompute/reference/cli-commands/authentication',
+    to: '/eigencompute/reference/eigenx-cli/auth',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/billing',
+    to: '/eigencompute/reference/eigenx-cli/billing',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/configuration',
+    to: '/eigencompute/reference/eigenx-cli/app',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/deployment',
+    to: '/eigencompute/reference/eigenx-cli/app',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/environment',
+    to: '/eigencompute/reference/eigenx-cli/environment',
+  },
+  {
+   from: '/eigencompute/reference/cli-commands/lifecycle',
+   to: '/eigencompute/reference/eigenx-cli/app',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/monitoring',
+    to: '/eigencompute/reference/eigenx-cli/app',
+  },
+  {
+    from: '/eigencompute/reference/cli-commands/project-management',
+    to: '/eigencompute/reference/eigenx-cli/app',
+  },
+  {
     from: '/products/operators/concepts/operator-introduction',
     to: '/eigenlayer/operators/concepts/operator-introduction',
   },
