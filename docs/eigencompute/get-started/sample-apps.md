@@ -1,6 +1,6 @@
 ---
 title: Sample Apps 
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 See the following sample apps for examples of how EigenCompute can be used.
@@ -15,6 +15,11 @@ Sample apps:
 
 Eigen Labs, Inc. does not provide support for production use.
 :::
+
+### compute-escrow-privy
+
+A forkable EigenCompute app that supports an on-chain escrow contract with Eigen Compute interaction, and Privy-authenticated RPCs.
+[Github repository](https://github.com/Layr-Labs/compute-escrow-privy).
 
 ### Pulse 
 

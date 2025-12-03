@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "position": 6,
+=======
+  "position": 4,
+>>>>>>> origin/main
   "label": "Verify",
   "collapsible": true,
   "collapsed": false,
