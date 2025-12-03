@@ -78,8 +78,8 @@ Templates include:
 
 ## Name application
 
-Use the [`--name` option for `eigenx deploy`](../../reference/eigenx-cli/app/deploy.md) to configure a name when deploying an application. Or use
-[`eigenx profile set`](../../reference/eigenx-cli/app/profile.md) to set or update a name for a previously deployed application. 
+Use the [`--name` option for `eigenx deploy`](../../reference/eigenx-cli/app.md) to configure a name when deploying an application. Or use
+[`eigenx profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
 
 Configuring an application display name provides the following benefits:
 

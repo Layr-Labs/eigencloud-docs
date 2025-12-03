@@ -9,7 +9,7 @@ TODO - Add here
 
 ## Available Commands
 
-* [app](app/app.md)
+* [app](app.md)
 * auth
 * billing
 * environment, env

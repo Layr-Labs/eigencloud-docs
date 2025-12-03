@@ -103,9 +103,6 @@ eigenx app info my-app
 # 4. Withdraw funds (from within your app code)
 # Transfer to a safe address
 
-# 5. Backup any data
-eigenx app logs my-app > logs.txt
-
-# 6. Terminate
+# 5. Terminate
 eigenx app terminate my-app
 ```

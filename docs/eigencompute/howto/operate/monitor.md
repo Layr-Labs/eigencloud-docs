@@ -15,8 +15,8 @@ eigenx app list --all
 # Count running apps
 eigenx app list | grep Running
 
-# Ensure prod apps are running
-eigenx app list --env prod
+# Ensure mainnet apps are running
+eigenx app list --env mainnet-alpha
 ```
 
 ## Get application information
@@ -58,4 +58,4 @@ Look for:
 - Dependency issues
 - Startup exceptions.
 
-For more information on the `list` and `logs` subcommands, refer to the [eigenx Reference](../../reference/eigenx-cli/app/app.md).
+For more information on the `list` and `logs` subcommands, refer to the [eigenx Reference](../../reference/eigenx-cli/app.md).
