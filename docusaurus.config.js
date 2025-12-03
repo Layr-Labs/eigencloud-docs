@@ -16,6 +16,10 @@ const redirects = [
     to: '/products/eigenlayer/concepts/eigenlayer-overview',
   },
   {
+    from: '/products/operators/concepts/operator-introduction',
+    to: '/eigenlayer/operators/concepts/operator-introduction',
+  },
+  {
       from: '/products/eigencompute/get-started/get-started',
       to: '/products/eigencompute/get-started/demo',
   },
@@ -865,8 +869,8 @@ const config = {
                 href: "https://discord.com/invite/eigenlayer",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/eigenlayer",
+                label: "X",
+                href: "https://twitter.com/eigencloud",
               },
             ],
           },
