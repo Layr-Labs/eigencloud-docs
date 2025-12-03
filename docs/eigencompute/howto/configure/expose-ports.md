@@ -88,5 +88,5 @@ If you see "port already in use" errors:
 
 - [Quickstart Guide](../../get-started/quickstart.md) - Complete deployment walkthrough
 - [TLS Configuration](../../get-started/quickstart.md#configure-tlshttps-optional) - Setting up HTTPS with custom domains
-- [Deployment Reference](../../reference/cli-commands/deployment.md) - Dockerfile requirements
-- [Monitoring](../../reference/cli-commands/monitoring.md) - Viewing application logs
+- [Deployment Reference](../../reference/eigenx-cli/app.md#deploy) - Dockerfile requirements
+- [Monitoring](../operate/monitor.md) - Viewing application logs
