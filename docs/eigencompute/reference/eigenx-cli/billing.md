@@ -13,7 +13,11 @@ EigenCompute requires a [subscription for deploying applications](../../get-star
 
 ## Global Options
 
-[Global options](global-options) available are `--verbose, -v`, `--environment`, and `--help, -h`.
+The `--environment` option is available for all `billing` subcommands:
+
+`--environment <env>` (string)
+
+> Deployment environment to use. One of `mainnet-alpha` and `sepolia`.
 
 ## subscribe
 

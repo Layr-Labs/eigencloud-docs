@@ -22,7 +22,23 @@ Manage applications including creating, operating, and terminating.
 
 ## Global Options
 
-[Global options](global-options) available are `--verbose, -v`, `--environment value`, `--rpc-url`, `--private-key`, `--env-file`, and `--help, -h`.
+Options available for all `app` subcommands are:
+
+`--environment <env>` (string)
+
+> Deployment environment to use. One of `mainnet-alpha` and `sepolia`. 
+
+`--rpc-url value ` (URL)
+
+> RPC URL to connect to blockchain. Can be set using environment variable `$EIGENX_RPC_URL`. 
+
+`--private-key value` (string)
+
+> Private key for signing transactions. Can be set using environment variable `$EIGENX_PRIVATE_KEY`. 
+
+`--env-file value` (string)
+
+> Environment file to use. Default is the `.env` file. 
 
 ## create
 

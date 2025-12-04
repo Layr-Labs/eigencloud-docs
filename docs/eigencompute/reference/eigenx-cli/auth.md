@@ -16,7 +16,11 @@ authentication credentials securely.
 
 ## Global Options
 
-[Global options](global-options) available are `--verbose, -v`, `--environment`, and `--help, -h`.
+The `--environment` option is available for all `auth` subcommands:
+
+`--environment <env>` (string)
+
+> Deployment environment to use. One of `mainnet-alpha` and `sepolia`.
 
 ## generate
 
