@@ -20,6 +20,10 @@ Manage applications including creating, operating, and terminating.
 * [configure](#configure)
 * help, h
 
+## Global Options
+
+[Global options](global-options) available are `--verbose, -v`, `--environment value`, `--rpc-url`, `--private-key`, `--env-file`, and `--help, -h`.
+
 ## create
 
 Create an application project from a template with all necessary configuration files. For more information on creating
@@ -27,7 +31,7 @@ applications, refer to [Create Application](../../howto/build/create-app-from-te
 
 ### Synopsis
 
-`eigenx app create [name] [language] [template-name] [--template-repo <url>] [--template-version <version>] [shared options]`
+`eigenx app create [name] [language] [template-name] [--template-repo <url>] [--template-version <version>] [global options]`
 
 ### Arguments
 
@@ -57,8 +61,6 @@ applications, refer to [Create Application](../../howto/build/create-app-from-te
 
 > Template version/tag to use.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--help, -h`. 
-
 ## deploy
 
 Deploy a new application to a Trusted Execution Environment (TEE).
@@ -67,7 +69,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 ### Synopsis
 
-`eigenx app deploy [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--name value] [--website value] [--description value] [--x-url value] [--image value] [shared options] [image_ref]`
+`eigenx app deploy [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--name value] [--website value] [--description value] [--x-url value] [--image value] [global options] [image_ref]`
 
 ### Arguments
 
@@ -114,16 +116,13 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 > X (Twitter) profile. Displayed on the
 > Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--env-file`, `--help, -h`. 
-
 ## upgrade
 
 Update an existing application with new code, configuration, or environment variables.
 
 ### Synopsis
 
-`eigenx app upgrade [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [shared options] [<app-id|name>] [<image_ref>]`
+`eigenx app upgrade [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [global options] [<app-id|name>] [<image_ref>]`
 
 ### Arguments
 
@@ -154,27 +153,19 @@ Update an existing application with new code, configuration, or environment vari
 
 > Machine instance type to use. One of `g1-standard-4t` or `g1-standard-8t`. Prompted for if not provided.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--env-file`, `--help, -h`. 
-
 ## start
 
 Start a previously stopped application.
 
 ### Synopsis
 
-`eigenx app start [shared options] [<app-id|name>]`
+`eigenx app start [global options] [<app-id|name>]`
 
 ### Arguments
 
 `app-id|name` (string)
 
 > Application ID or display name. Prompted for if not provided.
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--help, -h`.
 
 ## stop
 
@@ -182,18 +173,13 @@ Stop a running application without removing it.
 
 ### Synopsis
 
-`eigenx app stop [shared options] [<app-id|name>]`
+`eigenx app stop [global options] [<app-id|name>]`
 
 ### Arguments
 
 `app-id|name` (string)
 
 > Application ID or display name. Prompted for if not provided.
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--help, -h`.
 
 ## terminate
 Permanently remove an application and all its resources.
@@ -210,7 +196,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ### Synopsis
 
-`eigenx app terminate [--force] [shared options] [<app-id|name>]`
+`eigenx app terminate [--force] [global options] [<app-id|name>]`
 
 ### Arguments
 
@@ -224,16 +210,13 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 > Force termination without confirmation.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--help, -h`.
-
 ## list
 
 List all applications deployed by your account in the current environment. For usage examples, refer to [Monitor](../../howto/operate/monitor.md).
 
 ### Synopsis
 
-`eigenx app list [--all] [--address-count <value>] [shared options]`
+`eigenx app list [--all] [--address-count <value>] [global options]`
 
 ### Options
 
@@ -245,16 +228,13 @@ List all applications deployed by your account in the current environment. For u
 
 > Number of [addresses available to application](../../howto/build/use-app-wallet.mdx) to fetch. Default is `1`.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--private-key`, `--help, -h`.
-
 ## info
 
 Display detailed information about a specific application.
 
 ### Synopsis
 
-`eigenx app info [--watch] [--address-count <value>] [shared options] [<app-id|name>]`
+`eigenx app info [--watch] [--address-count <value>] [global options] [<app-id|name>]`
 
 ### Arguments
 
@@ -272,16 +252,13 @@ Display detailed information about a specific application.
 
 > Number of [addresses available to application](../../howto/build/use-app-wallet.mdx) to fetch. Default is `1`.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--help, -h`.
-
 ## logs
 
 View application logs from your TEE instance. For usage examples, refer to [Monitor](../../howto/operate/monitor.md).
 
 ### Synopsis
 
-`eigenx app logs [--watch] [shared options] [<app-id|name>]`
+`eigenx app logs [--watch] [global options] [<app-id|name>]`
 
 ### Arguments
 
@@ -295,9 +272,6 @@ View application logs from your TEE instance. For usage examples, refer to [Moni
 
 > Continuously fetch and display logs for application. Default is disabled.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment value`, `--rpc-url`,
-`--help, -h`.
-
 ## profile
 
 Update or specify application profile. The application profile properties are displayed on the Verifiability Dashboard for
@@ -305,7 +279,7 @@ Update or specify application profile. The application profile properties are di
 
 ### Synopsis
 
-`eigenx app profile set [shared options] [<app-id|name>]`
+`eigenx app profile set [global options] [<app-id|name>]`
 
 ### Arguments
 
@@ -318,10 +292,6 @@ Update or specify application profile. The application profile properties are di
 `set`
 
 > Prompts for application profile properties: Name, Website, Description, X (Twitter) profile URL, and application icon or image.
-
-### Options
-
-The [shared option](shared-options) `--help, -h` is available.
 
 ## configure
 
@@ -341,7 +311,3 @@ For more information on configuring TLS, refer to [Configure TLS](../../howto/de
 `tls`
 
 > Adds TLS configuration to the application.
-
-### Options
-
-The [shared option](shared-options) `--help, -h` is available.

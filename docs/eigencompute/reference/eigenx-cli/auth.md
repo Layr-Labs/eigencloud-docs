@@ -6,13 +6,17 @@ sidebar_position: 3
 EigenX CLI requires authentication to sign transactions for deploying and managing applications. Use `auth` commands to manage
 authentication credentials securely.
 
-## Available commands
+## Available Commands
 
 * [generate](#generate)
 * [login](#login)
 * [logout](#logout)
 * [whoami](#whoami)
 * [list](#list)
+
+## Global Options
+
+[Global options](global-options) available are `--verbose, -v`, `--environment`, and `--help, -h`.
 
 ## generate
 
@@ -21,7 +25,7 @@ refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-k
 
 ### Synopsis
 
-`eigenx auth generate [--store] [shared options]`
+`eigenx auth generate [--store] [global options]`
 
 ### Options
 
@@ -30,8 +34,6 @@ refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-k
 > Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
 refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md). Default is false.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`. 
-
 ## login
 
 Store an existing authentication key securely in your OS keyring. For more information on logging in to EigenX, refer to
@@ -39,11 +41,7 @@ Store an existing authentication key securely in your OS keyring. For more infor
 
 ### Synopsis
 
-`eigenx auth login [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
+`eigenx auth login [global options]`
 
 ## logout
 
@@ -51,15 +49,13 @@ Remove stored authentication keys from your OS keyring.
 
 ### Synopsis
 
-`eigenx auth logout [--force] [shared options]`
+`eigenx auth logout [--force] [global options]`
 
 ### Options
 
 `--force` (boolean)
 
 > Log out without requiring confirmation. Default is false.
-
-[shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
 
 ## whoami
 
@@ -68,11 +64,7 @@ refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authen
 
 ### Synopsis
 
-`eigenx auth whoami [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
+`eigenx auth whoami [global options]`
 
 ## list
 
@@ -81,8 +73,4 @@ refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authen
 
 ### Synopsis 
 
-`eigenx auth list [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, and `--help, -h`.
+`eigenx auth list [global options]`

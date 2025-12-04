@@ -1,5 +1,5 @@
 ---
-title: Shared Options
+title: Global Options
 sidebar_position: 10
 ---
 

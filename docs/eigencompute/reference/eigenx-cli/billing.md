@@ -11,6 +11,10 @@ EigenCompute requires a [subscription for deploying applications](../../get-star
 * [cancel](#cancel) 
 * [status](#status)
 
+## Global Options
+
+[Global options](global-options) available are `--verbose, -v`, `--environment`, and `--help, -h`.
+
 ## subscribe
 
 Redirects to the payment portal to supply a payment method for billing. For more information,
@@ -18,11 +22,7 @@ refer to [Subscribe](../../get-started/billing#subscribe).
 
 ### Synopsis
 
-`eigenx billing subscribe [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
+`eigenx billing subscribe [global options]`
 
 ## cancel
 
@@ -30,11 +30,7 @@ Cancel an existing subscription. For more information, refer to [Cancel a Subscr
 
 ### Synopsis
 
-`eigenx billing cancel [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
+`eigenx billing cancel [global options]`
 
 ## status
 
@@ -42,10 +38,5 @@ Display current billing status. For more information, refer to [Manage Billing](
 
 ### Synopsis
 
-`eigenx billing status [shared options]`
-
-### Options
-
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, `--environment`, and `--help, -h`.
-
+`eigenx billing status [global options]`
 

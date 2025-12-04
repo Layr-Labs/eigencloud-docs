@@ -7,7 +7,7 @@ Upgrades the `eigenx` binary.
 
 ## Synopsis
 
-`eigenx upgrade [--version value] [shared options]`
+`eigenx upgrade [--version value] [global options]`
 
 ## Options
 
@@ -15,4 +15,4 @@ Upgrades the `eigenx` binary.
 
 > Version to which to upgrade (for example, v0.0.8). Default is `latest`.
 
-[Shared options](shared-options) available are `--verbose, -v`, `--enable-telemetry`, `--disable-telemetry`, and `--help, -h`.
+[Global options](global-options) available are `--verbose, -v` and `--help, -h`.

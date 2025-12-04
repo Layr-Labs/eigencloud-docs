@@ -31,8 +31,6 @@ Switch to a different deployment environment.
 
 > Skip confirmation prompts. Default is false.
 
-The [shared option](shared-options) `--help, -h` is available.
-
 ## list
 
 List all available deployment environments.
@@ -41,10 +39,6 @@ List all available deployment environments.
 
 `eigenx environment list`
 
-### Options
-
-The [shared option](shared-options) `--help, -h` is available.
-
 ## show
 
 Display the currently active deployment environment.
@@ -52,11 +46,6 @@ Display the currently active deployment environment.
 ### Synopsis
 
 `eigenx environment show`
-
-### Options
-
-The [shared option](shared-options) `--help, -h` is available.
-
 
 `
 

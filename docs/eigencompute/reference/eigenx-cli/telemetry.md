@@ -7,7 +7,7 @@ Manage telemetry settings.
 
 ### Synopsis
 
-`eigenx telemetry [--enable] [--disable] [--status] [shared options]`
+`eigenx telemetry [--enable] [--disable] [--status]`
 
 ### Options
 
@@ -22,5 +22,3 @@ Manage telemetry settings.
 `--status` (boolean)
 
 > Show current telemetry status. Default is false.
-
-The [shared option](shared-options) `--help, -h` is available.
