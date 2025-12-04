@@ -19,14 +19,14 @@ For more tokens or different models, you can [contact us here](https://ein6l.sha
 
 ## What is EigenAI? 
 
-EigenAI is a deterministic, verifiable LLM inference service that provides an OpenAI API for executing open source LLMs.
+EigenAI is a deterministic, verifiable LLM inference service that provides an OpenAI-compatible API for executing open source LLMs.
 Unlike traditional AI services where you trust the provider's outputs, EigenAI enables cryptographic verification where inference
-is executed using the specified model and input, and the output results are untampered. Developers 
-access these guarantees through an OpenAI-compatible API with support for frontier open-source models.
+is executed using the specified model and input, and the output results are untampered.
 
 :::note
 - OpenAI-compatible refers to the [messages-based Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create).
-- Deterministic refers to providing one request (prompt, seed/parameters) to the EigenAI API multiple times will produce the same output bit-by-bit.
+- Deterministic behavior refers to providing one request (prompt, seed/parameters) to the EigenAI API multiple times and receiving the same output bit-by-bit every time. The EigenAI inference stack is designed with this determinism guarantee. 
+- Deterministic behavior requires not caching the results. Safety-critical systems cannot be vulnerable to potential cache misses.
 :::
 
 ## Why build with EigenAI? 
@@ -46,7 +46,7 @@ EigenAI delivers verifiable LLM inference by making GPU execution a deterministi
 
 ### Deterministic inference
 
-EigenAI controls GPU execution so that the same inputs always produce the same outputs. EigenAI removes typical nondeterministic behavior found in AI systems such as kernel race conditions and opportunistic memory reuse.
+EigenAI controls GPU execution and removes typical non-deterministic behavior found in kernel race conditions and opportunistic memory reuse. The overhead for this control remains negligible and retains practical inference performance (benchmarks will be included in the upcoming technical report).
 
 ### Isolated per-request execution
 
@@ -69,7 +69,7 @@ EigenAI provides a consistent, verifiable execution stack. Model weights, quanti
 EigenAI’s deterministic execution makes verification possible through deterministic re-execution. As we move through mainnet alpha into general availability, the verification pathways expand.
 
 ### Self-verification (Mainnet Alpha)
-EigenAI will open source its inference stack. Anyone with access to commodity GPUs can re-run a request locally using the same model, inputs, and seed, and confirm that the output matches bit-for-bit.
+EigenAI will open source its inference stack. Anyone with access to commodity GPUs (H100s) can re-run a request locally using the same model, inputs, and seed, and confirm that the output matches bit-for-bit.
 
 ### Third-party verification (GA Target)
 A separate verification API will allow independent operators to re-execute requests and return attestations. Applications can use this to spot-check results or provide external proof that an inference was executed correctly.
