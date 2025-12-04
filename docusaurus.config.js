@@ -716,6 +716,9 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         createRedirects(existingPath) {
+              if (existingPath === '/eigencompute/get-started/quickstart') {
+                return ['/products/eigencompute/quickstart'];
+              }
               const folderMoves = [
                 ['/products/eigencompute/', '/eigencompute/'],
                 ['/products/eigenai/', '/eigenai/'],
