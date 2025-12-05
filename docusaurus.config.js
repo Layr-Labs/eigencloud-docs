@@ -832,27 +832,27 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "EigenLayer",
+            title: "EigenCloud",
             items: [
               {
                 label: "About",
-                href: "https://www.eigenlayer.xyz/",
+                href: "https://www.eigencloud.xyz/",
               },
               {
                 label: "Privacy Policy",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/privacy-policy",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/privacy-policy",
               },
               {
                 label: "Terms of Service",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/terms-of-service",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/terms-of-service",
               },
               {
                 label: "Disclaimers",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/disclaimers",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/disclaimers",
               },
               {
                 label: "Acceptable Use Policy",
-                href: "https://docs.eigencloud.xyz/products/eigenlayer/legal/acceptable-use-policy",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/acceptable-use-policy",
               },
             ],
           },
