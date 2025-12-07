@@ -590,6 +590,10 @@ const redirects = [
     from: '/restakers/restaking-guides/restaking-user-guide/native-restaking/create-eigenpod-and-set-withdrawal-credentials/repointing-a-validators-withdrawal-credentials',
     to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/'
   },
+  {
+    from: '/developers/avs-developer-guide',
+    to: '/eigenlayer/developers/concepts/avs-developer-guide'
+  },
 
   // EigenAI section
   {
