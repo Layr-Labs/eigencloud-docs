@@ -460,6 +460,7 @@ const redirects = [
      from: '/products/eigenlayer/legal/privacy-policy',
      to: '/eigencloud/legal/privacy-policy'
   },
+  {
      from: '/products/eigenlayer/legal/terms-of-service',
      to: '/eigencloud/legal/terms-of-service'
   },
