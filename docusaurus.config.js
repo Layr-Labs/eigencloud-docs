@@ -592,7 +592,7 @@ const redirects = [
   },
   {
     from: '/developers/avs-developer-guide',
-    to: '/eigenlayer/developers/concepts/avs-developer-guide'
+    to: '/products/eigenlayer/developers/concepts/avs-developer-guide'
   },
 
   // EigenAI section
