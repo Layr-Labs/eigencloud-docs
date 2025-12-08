@@ -442,26 +442,26 @@ const redirects = [
   //Legal
   {
     from: '/products/legal/privacy-policy',
-    to: 'eigencloud/legal/privacy-policy'
+    to: '/eigencloud/legal/privacy-policy'
   },
   {
     from: '/products/legal/terms-of-service',
-    to: 'eigencloud/legal/terms-of-service'
+    to: '/eigencloud/legal/terms-of-service'
   },
   {
      from: '/products/eigenlayer/legal/acceptable-use-policy',
-     to: 'eigencloud/legal/acceptable-use-policy'
+     to: '/eigencloud/legal/acceptable-use-policy'
   },
   {
      from: '/products/eigenlayer/legal/disclosures',
-     to: 'eigencloud/legal/disclosures'
+     to: '/eigencloud/legal/disclosures'
   },
   {
      from: '/products/eigenlayer/legal/privacy-policy',
-     to: 'eigencloud/legal/privacy-policy'
+     to: '/eigencloud/legal/privacy-policy'
   },
      from: '/products/eigenlayer/legal/terms-of-service',
-     to: 'eigencloud/legal/terms-of-service'
+     to: '/eigencloud/legal/terms-of-service'
   },
 ]
 
