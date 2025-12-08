@@ -621,6 +621,8 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
 
+  trailingSlash: false,
+
   markdown: {
     mermaid: true
   },
