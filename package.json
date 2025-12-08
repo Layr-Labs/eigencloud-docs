@@ -7,7 +7,7 @@
     "start": "docusaurus start",
     "build": "npm run repomix && docusaurus build",
     "build-docusaurus": "docusaurus build",
-    "repomix": "node run-repomix.js",
+    "repomix": "node run-repomix.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -62,5 +62,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
