@@ -15,18 +15,10 @@ const redirects = [
     from: '/eigenlayer/overview',
     to: '/eigenlayer/concepts/eigenlayer-overview',
   },
-//  {
-//    from: '/products/operators/concepts/operator-introduction',
-//    to: '/eigenlayer/operators/concepts/operator-introduction',
-//  },
   {
       from: '/products/eigencompute/get-started/get-started',
       to: 'eigencompute/get-started/demo',
   },
-//  {
-//      from: '/eigenlayer/overview/whitepaper',
- //     to: '/products/eigenlayer/concepts/whitepaper',
- // },
   {
       from: '/developers/Concepts/eigenlayer-contracts/core-contracts',
       to: '/eigenlayer/developers/concepts/eigenlayer-contracts/core-contracts',
@@ -43,37 +35,12 @@ const redirects = [
       from: '/restakers/restaking-guides/restaking-developer-guide',
       to: '/eigenlayer/restakers/restaking-guides/restaking-developer-guide',
   },
-//  {
-//      from: '/eigenlayer/concepts/keys-and-signatures',
-//      to: '/products/eigenlayer/concepts/keys-and-signatures',
-//  },
-//  {
-//      from: '/eigenlayer/concepts/key-terms',
-//      to: '/products/eigenlayer/concepts/key-terms',
-//  },
-//  {
-//      from: '/eigenlayer/concepts/operator-sets/allocation-deallocation',
-//      to: '/products/eigenlayer/concepts/operator-sets/allocation-deallocation',
-//  },
-//  {
-//      from: '/eigenlayer/concepts/operator-sets/operator-sets-concept',
-//      to: '/products/eigenlayer/concepts/operator-sets/operator-sets-concept',
-//  },
-//  {
-//      from: '/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
-//      to: '/products/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
-//  },
 
   // EigenCompute
 
   {
       from: '/products/eigencompute',
       to: '/eigencompute/concepts/eigencompute-overview',
-  },
-
-  {
-      from: '/products/eigencompute/quickstart',
-      to: '/eigencompute/get-started/quickstart'
   },
 
   {
@@ -88,152 +55,9 @@ const redirects = [
   },
 
 
-  /* Rewards
-  {
-      from: '/eigenlayer/concepts/rewards/earners-claimers-recipients',
-      to: '/products/eigenlayer/concepts/rewards/earners-claimers-recipients',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/pi-split',
-      to: '/products/eigenlayer/concepts/rewards/pi-split',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-claiming-faq',
-      to: '/products/eigenlayer/concepts/rewards/rewards-claiming-faq',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-claiming',
-      to: '/products/eigenlayer/concepts/rewards/rewards-claiming',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-concept',
-      to: '/products/eigenlayer/concepts/rewards/rewards-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-split',
-      to: '/products/eigenlayer/concepts/rewards/rewards-split',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-submission',
-      to: '/products/eigenlayer/concepts/rewards/rewards-submission',
-  },
-  */
 
-  /* Slashing
-  {
-      from: '/eigenlayer/concepts/slashing/magnitudes-when-slashed',
-      to: '/products/eigenlayer/concepts/slashing/magnitudes-when-slashed',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/redistribution',
-      to: '/products/eigenlayer/concepts/slashing/redistribution',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/safety-delays-concept',
-      to: '/products/eigenlayer/concepts/slashing/safety-delays-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/slashable-stake-risks',
-      to: '/products/eigenlayer/concepts/slashing/slashable-stake-risks',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/slashing-concept',
-      to: '/products/eigenlayer/concepts/slashing/slashing-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/unique-stake',
-      to: '/products/eigenlayer/concepts/slashing/unique-stake',
-  },
-  
-  {
-    from: '/developers/HowTo/build/slashing/implement-slashing',
-    to: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
-  },
-  */
-
-  /*
-  // UAM (User Access Management)
-  {
-      from: '/eigenlayer/concepts/uam/uam-accounts',
-      to: '/products/eigenlayer/concepts/uam/uam-accounts',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/uam-admins',
-      to: '/products/eigenlayer/concepts/uam/uam-admins',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/uam-appointees',
-      to: '/products/eigenlayer/concepts/uam/uam-appointees',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/user-access-management',
-      to: '/products/eigenlayer/concepts/uam/user-access-management',
-  },
-
-
-  // Economy -> Reference
-  {
-      from: '/eigenlayer/economy/economy-calculation-and-formulas',
-      to: 'products/eigenlayer/reference/economy/economy-calculation-and-formulas',
-  },
-  {
-      from: '/eigenlayer/economy/sidecar',
-      to: '/products/eigenlayer/reference/economy/sidecar',
-  },
-  
-  // Legal
-  {
-      from: '/eigenlayer/legal/disclaimers',
-      to: '/products/legal/disclaimers',
-  },
-  {
-      from: '/eigenlayer/legal/privacy-policy',
-      to: '/products/legal/privacy-policy',
-  },
-  {
-      from: '/eigenlayer/legal/terms-of-service',
-      to: '/products/legal/terms-of-service',
-  },
-  
-  // Overview -> Concepts (additional mappings)
-  {
-      from: '/eigenlayer/overview/key-terms',
-      to: '/products/eigenlayer/concepts/key-terms',
-  },
-  {
-      from: '/eigenlayer/overview/support',
-      to: '/products/eigenlayer/support',
-  },
-  
-  // Reference
-  {
-      from: '/eigenlayer/reference/allocation-manager-interface',
-      to: '/products/eigenlayer/concepts/operator-sets/allocation-deallocation',
-  },
-  {
-      from: '/eigenlayer/reference/safety-delays-reference',
-      to: '/products/eigenlayer/reference/safety-delays-reference',
-  },
-  
-  // Resources -> Reference
-  {
-      from: '/eigenlayer/resources/apis-and-dashboards',
-      to: '/products/eigenlayer/reference/apis-and-dashboards',
-  },
-  {
-      from: '/eigenlayer/resources/infinite-hackathon',
-      to: '/',
-  },
-  {
-      from: '/eigenlayer/resources/learning-resources',
-      to: '/products/eigenlayer/reference/learning-resources',
-  },
-  */
   // Top-level files
- // {
- //     from: '/eigenlayer/releases',
- //     to: '/products/eigenlayer/releases',
- // },
+
   {
       from: '/get-started/eigencloud/eigencloud-overview',
       to: '/eigencloud/eigencloud-overview',
@@ -267,28 +91,7 @@ const redirects = [
      to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
   },
 
-  /* Security
-  {
-      from: '/eigenlayer/security/audits',
-      to: '/products/eigenlayer/security/audits',
-  },
-  {
-      from: '/eigenlayer/security/bug-bounty',
-      to: '/products/eigenlayer/security/bug-bounty',
-  },
-  {
-      from: '/eigenlayer/security/guardrails',
-      to: '/products/eigenlayer/security/guardrails',
-  },
-  {
-      from: '/eigenlayer/security/multisig-governance',
-      to: '/products/eigenlayer/security/multisig-governance',
-  },
-  {
-      from: '/eigenlayer/security/withdrawal-delay',
-      to: '/products/eigenlayer/security/withdrawal-delay',
-  }, */
-  
+
   // DEVELOPERS SECTION
   
   // Developer Concepts (handle both capitalized and lowercase versions)
@@ -333,10 +136,6 @@ const redirects = [
   {
       from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
       to: '/eigencompute/howto/manage-auth-keys/create-auth-keys',
-  },
-  {
-      from: '/products/eigencompute/howto/manage-auth-keys/manage-authentication-keys',
-      to: '/eigencompute/howto/manage-auth-keys/manage-authentication-keys',
   },
 
   // Developer HowTo (handle both capitalized and lowercase versions)
@@ -496,10 +295,6 @@ const redirects = [
       to: '/eigenlayer/operators/howto/operator-content-guidelines',
   },
   {
-      from: '/operators/howto/operator-installation',
-      to: '/eigenlayer/operators/howto/registeroperators/operator-installation',
-  },
-  {
       from: '/operators/howto/operator-sets',
       to: '/eigenlayer/operators/howto/operator-sets',
   },
@@ -604,6 +399,69 @@ const redirects = [
   {
     from: '/products/eigenai/eigenai-overview',
     to: '/eigenai/concepts/eigenai-overview'
+  },
+
+  //External references
+  {
+    from: '/api',
+    to: '/eigenlayer/reference/apis-and-dashboards'
+  },
+  {
+    from: '/developers/slashing-background',
+    to: '/eigenlayer/developers/concepts/slashing/slashing-concept-developers'
+  },
+  {
+    from: '/products/ai-resources',
+    to: '/eigencloud/ai-resources'
+  },
+  {
+    from: '/products/eigencompute/concepts/eigencompute-applications',
+    to: '/eigencompute/get-started/sample-apps'
+  },
+  {
+    from: '/products/eigencompute/sample-apps',
+    to: '/eigencompute/get-started/sample-apps'
+  },
+  {
+    from: '/products/eigencompute/eigencompute-overview',
+    to: '/eigencompute/concepts/eigencompute-overview'
+  },
+  {
+    from: '/products/eigencompute/get-started/quickstart',
+    to: '/eigencompute/get-started/quickstart'
+  },
+  {
+    from: '/products/eigencompute/howto/verify/verify-tee-signature',
+    to: '/eigencompute/howto/verify/verify-trust-guarantees'
+  },
+  {
+    from: '/products/eigenlayer/developers/howto/get-started/support',
+    to: '/eigenlayer/developers/howto/get-started-without-devkit/support'
+  },
+
+  //Legal
+  {
+    from: '/products/legal/privacy-policy',
+    to: 'eigencloud/legal/privacy-policy'
+  },
+  {
+    from: '/products/legal/terms-of-service',
+    to: 'eigencloud/legal/terms-of-service'
+  },
+  {
+     from: '/products/eigenlayer/legal/acceptable-use-policy',
+     to: 'eigencloud/legal/acceptable-use-policy'
+  },
+  {
+     from: '/products/eigenlayer/legal/disclosures',
+     to: 'eigencloud/legal/disclosures'
+  },
+  {
+     from: '/products/eigenlayer/legal/privacy-policy',
+     to: 'eigencloud/legal/privacy-policy'
+  },
+     from: '/products/eigenlayer/legal/terms-of-service',
+     to: 'eigencloud/legal/terms-of-service'
   },
 ]
 
