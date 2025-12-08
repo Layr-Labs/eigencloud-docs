@@ -26,7 +26,7 @@ is executed using the specified model and input, and the output results are unta
 :::note
 - OpenAI-compatible refers to the [messages-based Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create).
 - Deterministic behavior refers to providing one request (prompt, seed/parameters) to the EigenAI API multiple times and receiving the same output bit-by-bit every time. The EigenAI inference stack is designed with this determinism guarantee. 
-- Deterministic behavior requires not caching the results. Safety-critical systems cannot be vulnerable to potential cache misses.
+- Deterministic behavior is not a result of caching the results; it's a design property of the system. Safety-critical systems cannot be vulnerable to potential cache misses.
 :::
 
 ## Why build with EigenAI? 
