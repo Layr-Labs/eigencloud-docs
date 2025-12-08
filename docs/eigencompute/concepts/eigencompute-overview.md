@@ -12,6 +12,12 @@ of a smart contract while maintaining the integrity and security of the onchain 
 EigenCompute allows developers to upload app or agent logic as a Docker image, which is executed within a secure TEE 
 (Trusted Execution Environment).
 
+:::important Mainnet Alpha Limitations
+- Not recommended for customer funds - Mainnet Alpha is intended to enable developers to build, test and ship applications.
+- Developer is trusted - Does not enable full verifiable and trustless execution yet (see [Roadmap](#roadmap)).
+- No SLA - No SLAs around support and uptime of infrastructure.
+:::
+
 ## Why Build with EigenCompute?
 
 Traditional applications require users to trust developers with both code execution and key management. Smart contracts eliminated

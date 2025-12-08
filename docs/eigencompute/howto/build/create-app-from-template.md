@@ -1,6 +1,6 @@
 ---
 title: Create Application
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 The EigenX CLI provides templates for creating EigenCompute application projects with all required configuration files. 
@@ -75,3 +75,36 @@ Templates include:
     - Local development instructions.
     - Testing guidelines.
     - Deployment best practices.
+
+## Name application
+
+Use the [`--name` option for `eigenx deploy`](../../reference/eigenx-cli/app.md) to configure a name when deploying an application. Or use
+[`eigenx profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
+
+Configuring an application display name provides the following benefits:
+
+- Displayed on Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/).
+- Easier to remember - Use descriptive names instead of IDs
+- Better organization - Distinguish between multiple apps
+- Simplified commands - Type less when managing apps
+- Team collaboration - Share meaningful app names with team members
+
+Use cases include:
+
+- Multiple environments - `api-dev`, `api-staging`, `api-prod`
+- Multiple apps - `trading-bot`, `monitoring-service`, `data-processor`
+- Version tracking - `api-v1`, `api-v2`
+- Team clarity - Meaningful names for team members
+
+### Naming Best Practices
+
+Good names:
+- `production-api`
+- `staging-web-app`
+- `discord-bot-v2`
+- `ml-inference-service`
+
+Avoid:
+- Generic names: `app1`, `test`, `new`
+- Special characters: `my@app`, `app#123`
+- Spaces: `my app` (use hyphens: `my-app`)
