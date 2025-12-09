@@ -8,7 +8,7 @@ EigenCompute uses two types of keys:
 * Authentication keys for deployments and protocol interactions.
 * TEE mnemonic for applications and wallet functionality inside the TEE.
 
-For more information on EigenCompute keys, refer to the [Keys](../../../concepts/keys-overview.md) concept topic.
+For more information on EigenCompute keys, refer to the [Keys](../../concepts/keys-overview.md) concept topic.
 :::
 
 ## Check authentication status
@@ -58,18 +58,6 @@ Log out of EigenX to:
 * Remove credentials before leaving a shared machine.
 * Use a different authentication key.
 * Remove corrupted credentials when troubleshooting.
-
-To log out of all environments: 
-
-```bash
-eigenx auth logout --all
-```
-
-Output:
-```
-✓ Logged out from all environments
-✓ All private keys removed from OS keyring
-```
 
 To log out of the current environment: 
 

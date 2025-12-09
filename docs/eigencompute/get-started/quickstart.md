@@ -188,7 +188,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## Next Steps
 
-* Explore [CLI Commands](../reference/cli-commands/authentication) - Learn about all available commands
+* Explore [CLI Commands](../reference/eigenx-cli) - Learn about all available commands
 * Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
