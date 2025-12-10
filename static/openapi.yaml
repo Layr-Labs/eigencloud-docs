@@ -42,8 +42,8 @@ paths:
                 disable_auto_reasoning_format:
                   type: boolean
                   description: > 
-                    Controls response parsing and separating out of the reasoning from the content of the response. For client calls, this is a custom parameter. Refer to the relevant client SDK documentation for information on how to set this parameter.
-                  
+                    Controls response parsing and separating out the reasoning trace from the content of the response. For client calls, this is a custom parameter. For example, in the OpenAI client, it's set in the `extra_body` field. Refer to the relevant client SDK documentation for information on how to set this parameter.
+
                 max_tokens:
                   type: integer
                   nullable: true
