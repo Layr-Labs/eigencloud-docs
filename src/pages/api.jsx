@@ -8,6 +8,16 @@ export default function ApiDocs() {
       dom_id: "#swagger-container",
       url: "/openapi.yaml",
       deepLinking: true,
+      supportedSubmitMethods: [
+          "get",
+          "put",
+          "post",
+          "delete",
+          "options",
+          "head",
+          "patch",
+          "trace",
+      ],
     });
   }, []);
 

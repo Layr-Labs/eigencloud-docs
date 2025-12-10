@@ -5,10 +5,20 @@ info:
   description: Chat completion API for EigenAI.
 
 servers:
-  - url: https://api.eigencloud.xyz
+  - url: https://eigenai-sepolia.eigencloud.xyz/v1/chat
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+security:
+  - ApiKeyAuth: []
 
 paths:
-  /chat:
+  /completions:
     post:
       summary: Create a chat completion
       operationId: createChatCompletion
