@@ -39,6 +39,11 @@ paths:
                       content:
                         type: string
 
+                disable_auto_reasoning_format:
+                  type: boolean
+                  description: > 
+                    Controls response parsing and separating out of the reasoning from the content of the response. For client calls, this is a custom parameter. Refer to the relevant client SDK documentation for information on how to set this parameter.
+                  
                 max_tokens:
                   type: integer
                   nullable: true
