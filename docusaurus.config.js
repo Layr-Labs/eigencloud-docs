@@ -403,10 +403,6 @@ const redirects = [
 
   //External references
   {
-    from: '/api',
-    to: '/eigenlayer/reference/apis-and-dashboards'
-  },
-  {
     from: '/developers/slashing-background',
     to: '/eigenlayer/developers/concepts/slashing/slashing-concept-developers'
   },
