@@ -190,3 +190,11 @@ paths:
                           type: string
                   signature:
                     type: string
+        "400":
+          description: Bad request - validation error.
+        "401":
+          description: Unauthorized - missing or invalid API key.
+        "402":
+          description: Payment required - insufficient wallet balance.
+        "500":
+          description: Internal server error.
