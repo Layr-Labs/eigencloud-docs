@@ -153,8 +153,9 @@ paths:
                 - messages
               example:
                 model: gpt-oss-120b-f16
-                max_tokens: 120
+                max_tokens: 1000
                 seed: 42
+                disable_auto_reasoning_format: false
                 messages: [{"role": "user", "content": "Write a story about programming"}]
       responses:
         "200":
