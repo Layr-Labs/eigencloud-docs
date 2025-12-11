@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Description
 
-Use `eigenx` to verifiable applications in Trusted Execution Environments (TEEs).
+Use `eigenx` to deploy and manage verifiable applications in Trusted Execution Environments (TEEs).
 
 ## Available Commands
 
