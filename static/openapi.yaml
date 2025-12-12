@@ -18,6 +18,34 @@ security:
   - ApiKeyAuth: []
 
 paths:
+  /models:
+    get:
+      summary: Get list of models
+      operationId: getModels
+      description: Returns the list of supported models
+
+      responses:
+        "200":
+          description: Successful retrieval of model list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        object:
+                          type: string
+                        created:
+                          type: integer
+                        owned_by:
+                          type: string
+
   /completions:
     post:
       summary: Create a chat completion
