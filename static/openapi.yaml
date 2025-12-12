@@ -6,6 +6,7 @@ info:
 
 servers:
   - url: https://eigenai-sepolia.eigencloud.xyz/v1/
+  - url: https://eigenai.eigencloud.xyz/v1/
 
 components:
   securitySchemes:
