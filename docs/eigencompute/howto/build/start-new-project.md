@@ -8,7 +8,7 @@ The high level steps to start and deploy a new project are:
 ### 1. Create from template
 
 ```
-eigenx app create my-app typescript
+ecloud app create my-app typescript
 ```
 
 For more information, refer to [Create Application](create-app-from-template.md).
@@ -32,13 +32,13 @@ npm run dev
 ### 4. Deploy to TEE
 
 ```
-eigenx app deploy
+ecloud app deploy
 ```
 
 ### 5. (Optional) Add TLS if needed
 
 ```bash
-eigenx app configure tls
+ecloud app configure tls
 ```
 
 For more information, refer to [Configure TLS](../deploy-to-production/configure-tls.md).
@@ -48,7 +48,7 @@ For more information, refer to [Configure TLS](../deploy-to-production/configure
 After making changes to your code or environment variables:
 
 ```bash
-eigenx app upgrade
+ecloud app upgrade
 ```
 
 The CLI will rebuild and redeploy your application with the latest changes.

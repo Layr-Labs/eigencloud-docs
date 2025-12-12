@@ -3,15 +3,21 @@ title: Overview
 sidebar_position: 1
 ---
 
-Use the `ecloud` CLI to deploy and manage verifiable applications in Trusted Execution Environments (TEEs).
+Use the `ecloud` CLI to:
+
+* Deploy containerized applications to ecloud TEE
+* Manage application lifecycle (start, stop, terminate)
+* Build and push Docker images with encryption
+* Monitor application status and logs.
 
 :::important Migration from eigenx CLI
-If you are an existing eigenx CLI user, refer to the ecloud CLI Migration Guide.
+If you are an existing `eigenx` user, the `eigenx` CLI is deprecated and will not receive updates. The `ecloud` CLI supports 
+the same commands as `eigenx` and the `migrate` command is provided to migrate your authentication key. We recommend migrating to `ecloud` as soon as practical.
 ::: 
 
 ## Available Commands
 
-TODO - confirm this list is the same.
+TODO - confirm this list is the same. Then copy, paste, and confirm each subcommand is the same.
 
 * app
 * auth

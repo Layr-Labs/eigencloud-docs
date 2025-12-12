@@ -17,10 +17,10 @@ Before you begin, ensure you have:
 ### macOS/Linux
 
 ```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
+npm install -g @layr-labs/ecloud-cli | bash
 ```
 
-### Windows
+### Windows TODO - confirm what command this should be 
 
 ```bash
 curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
@@ -36,14 +36,14 @@ First, log in to your Docker registry. This is required to push your application
 docker login
 ```
 
-### Authenticate with EigenX
+### Authenticate with EigenCloud
 
 You have two options for authentication:
 
 #### Option 1: Use an Existing Private Key
 
 ```bash
-eigenx auth login
+ecloud auth login
 ```
 
 This command will prompt you to enter your private key and store it securely in your OS keyring.
@@ -51,7 +51,7 @@ This command will prompt you to enter your private key and store it securely in 
 #### Option 2: Generate a New Private Key
 
 ```bash
-eigenx auth generate --store
+ecloud auth generate --store
 ```
 
 This generates a new private key and stores it securely.
@@ -61,7 +61,7 @@ This generates a new private key and stores it securely.
 Check your wallet address:
 
 ```bash
-eigenx auth whoami
+ecloud auth whoami
 ```
 
 ```
@@ -69,7 +69,7 @@ Address: 0x9431Cf5DA0CE60664661341db650763B08286B18
 Source:  stored credentials (sepolia)
 ```
 
-The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use `eigenx env set sepolia`.
+The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use `ecloud env set sepolia`.
 
 :::tip Developing on Sepolia
 To get testnet ETH, use:
@@ -84,7 +84,7 @@ To get testnet ETH, use:
 Create a new application from a template. Choose from: `typescript`, `python`, `golang`, or `rust`
 
 ```bash
-eigenx app create my-app typescript
+ecloud app create my-app typescript
 cd my-app
 ```
 
@@ -121,12 +121,12 @@ Before deploying, you'll need an [EigenCompute subscription](billing).
 To subscribe:
 
 ```
-eigenx billing subscribe
+ecloud billing subscribe
 ```
 
 The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
 
-:::important Mainnet Pricing
+:::important Mainnet Pricing TODO - open question re this point 
 Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
 period ending on 12/31/2025.
 :::
@@ -136,7 +136,7 @@ period ending on 12/31/2025.
 Deploy your application to a Trusted Execution Environment:
 
 ```bash
-eigenx app deploy
+ecloud app deploy
 ```
 
 The CLI will:
@@ -150,20 +150,20 @@ The CLI will:
 After deployment, view your app's information:
 
 ```bash
-eigenx app info
+ecloud app info
 ```
 
 View real-time logs:
 
 ```bash
-eigenx app logs
+ecloud app logs
 ```
 
 ## Port Configuration
 
 To make your application accessible over the internet, you need to expose ports in your Dockerfile.
 
-### Basic Port Exposure
+### Basic Port Exposure TODO - question with Madhur 
 
 Add the `EXPOSE` directive to your Dockerfile:
 
@@ -206,7 +206,7 @@ FROM --platform=linux/amd64 node:18
 Check your ETH balance:
 
 ```bash
-eigenx auth whoami
+ecloud auth whoami
 ```
 
 Ensure you have sufficient mainnet ETH for deployment transactions.
@@ -224,7 +224,7 @@ docker login
 Check your app logs for errors:
 
 ```bash
-eigenx app logs
+ecloud app logs
 ```
 
 Common issues:

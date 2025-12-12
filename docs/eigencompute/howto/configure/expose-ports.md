@@ -73,7 +73,7 @@ Check that:
 ### "Connection refused"
 
 Your application may not be listening on the expected port:
-- Check application logs: `eigenx app logs`
+- Check application logs: `ecloud app logs`
 - Verify the port in your application startup logs
 - Ensure no port conflicts if running multiple services
 
@@ -82,7 +82,7 @@ Your application may not be listening on the expected port:
 If you see "port already in use" errors:
 - Check for multiple services binding to the same port
 - Ensure your application shuts down gracefully
-- Use `eigenx app restart` to force a clean restart
+- Use `ecloud app restart` to force a clean restart
 
 ## Related Documentation
 

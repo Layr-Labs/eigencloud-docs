@@ -8,17 +8,19 @@ import InteractiveDemo from '@site/src/components/InteractiveDemo';
 To build on EigenCompute:
 
 1. Place your application in a Docker container.
-2. Upload it to EigenCompute using the EigenX CLI.
+2. Upload it to EigenCompute using the ecloud CLI.
 
 It's that simple to ship a verifiable application.
 
 ### See for yourself
 
+TODO - check commands and command output match what's here 
+
 <InteractiveDemo
 steps={[
 
 {
-command: 'eigenx app create my-trading-bot typescript',
+command: 'ecloud app create my-trading-bot typescript',
 output: [
 '🚀 Creating app from typescript template...',
 '✅ Created my-trading-bot/',
@@ -46,7 +48,7 @@ output: [
 ]
 },
 {
-command: 'eigenx app deploy',
+command: 'ecloud app deploy',
 output: [
 '🏗️  Building Docker image...',
 '   ✓ Built: my-trading-bot:latest',
