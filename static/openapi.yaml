@@ -5,7 +5,7 @@ info:
   description: Chat completion API for EigenAI.
 
 servers:
-  - url: https://eigenai-sepolia.eigencloud.xyz/v1/chat
+  - url: https://eigenai-sepolia.eigencloud.xyz/v1/
 
 components:
   securitySchemes:
@@ -18,7 +18,35 @@ security:
   - ApiKeyAuth: []
 
 paths:
-  /completions:
+  /models:
+    get:
+      summary: Get list of models
+      operationId: getModels
+      description: Returns the list of supported models
+
+      responses:
+        "200":
+          description: Successful retrieval of model list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        object:
+                          type: string
+                        created:
+                          type: integer
+                        owned_by:
+                          type: string
+
+  /chat/completions:
     post:
       summary: Create a chat completion
       operationId: createChatCompletion
