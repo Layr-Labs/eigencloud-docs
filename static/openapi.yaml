@@ -5,7 +5,7 @@ info:
   description: Chat completion API for EigenAI.
 
 servers:
-  - url: https://eigenai-sepolia.eigencloud.xyz/v1/chat
+  - url: https://eigenai-sepolia.eigencloud.xyz/v1/
 
 components:
   securitySchemes:
@@ -46,7 +46,7 @@ paths:
                         owned_by:
                           type: string
 
-  /completions:
+  /chat/completions:
     post:
       summary: Create a chat completion
       operationId: createChatCompletion
