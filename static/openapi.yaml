@@ -6,6 +6,9 @@ info:
 
 servers:
   - url: https://eigenai-sepolia.eigencloud.xyz/v1/
+    description: Includes experimental and in-development features. Subject to change.
+  - url: https://eigenai.eigencloud.xyz/v1/
+    description: Production environment exposing stable, released features and models.
 
 components:
   securitySchemes:
