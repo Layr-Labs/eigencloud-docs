@@ -82,7 +82,7 @@ Your application may not be listening on the expected port:
 If you see "port already in use" errors:
 - Check for multiple services binding to the same port
 - Ensure your application shuts down gracefully
-- Use `ecloud app restart` to force a clean restart
+- Use `ecloud compute app stop` and `ecloud compute app start` to restart
 
 ## Related Documentation
 

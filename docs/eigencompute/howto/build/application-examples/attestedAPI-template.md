@@ -58,7 +58,7 @@ You must be logged into Docker to push the application image.
 Create an app: 
 
 ```
-ecloud app create
+ecloud compute app create
 ```
 
 Enter a name for your app and select language: 
@@ -99,7 +99,7 @@ cd myproject
 Build and deploy the example application:
 
 ```bash
-ecloud app deploy
+ecloud compute app deploy
 ```
 
 Deployment options are displayed. Select the default deployment method to build from Dockerfile:
@@ -158,7 +158,7 @@ app is being started.
 View the application information:
 
 ```bash
-ecloud app info
+ecloud compute app info
 ```
 
 The application information is displayed: 
