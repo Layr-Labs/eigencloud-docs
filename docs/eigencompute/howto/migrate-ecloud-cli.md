@@ -4,8 +4,10 @@ sidebar_position: 1
 ---
 
 :::important
-The [`eigenx` CLI](../reference/eigenx-cli/eigenx-cli.md) is being deprecated and will no longer receive updates. The [`ecloud` CLI](../reference/ecloud-cli/ecloud-cli-overview.md) supports the same commands as `eigenx`
-and the `migrate` command is provided to migrate your authentication key. We recommend migrating to the `ecloud` CLI as soon as practical.
+The [`eigenx` CLI](../reference/eigenx-cli/eigenx-cli.md) is being deprecated and will no longer receive updates. The [`ecloud` CLI](../reference/ecloud-cli/ecloud-cli-overview.md) supports the same commands as `eigenx`.
+The `app`, `environment`, and `undelegate` subcommands have moved under the [`compute` command](../reference/ecloud-cli/compute/compute-overview.md).
+
+The `migrate` command is provided to migrate your authentication key. We recommend migrating to the `ecloud` CLI as soon as practical.
 :::
 
 To migrate a stored authentication key from `eigenx` to `eigencloud`:
