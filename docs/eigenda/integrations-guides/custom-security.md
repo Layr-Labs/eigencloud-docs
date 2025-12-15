@@ -44,7 +44,7 @@ The process to implement custom security involves several key steps:
 
 ### 1. Deploy Custom EigenDACertVerifierRouter
 
-Deploy your own instance of the EigenDACertVerifierRouter contract which will manage certificate verification for your custom quorum configuration.
+Deploy your own instance of the EigenDACertVerifierRouter contract which will manage certificate verification for your custom quorum configuration, following steps [here](https://github.com/Layr-Labs/eigenda/blob/e586028cf9688935eca5949ba469961c09ddfc4e/contracts/script/deploy/router/README.md).
 
 ### 2. Configure Proxy Instances  
 
