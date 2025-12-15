@@ -3,7 +3,7 @@ title: Deploy Existing Project
 sidebar_position: 1
 ---
 
-You don't need to use `ecloud app create` if you have an existing project. The CLI works with any Docker-based project:
+You don't need to use `ecloud compute app create` if you have an existing project. The CLI works with any Docker-based project:
 
 ## 1. Navigate to your project
 

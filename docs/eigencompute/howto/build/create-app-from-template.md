@@ -79,7 +79,7 @@ Templates include:
 ## Name application
 
 Use the [`--name` option for `ecloud deploy`](../../reference/eigenx-cli/app.md) to configure a name when deploying an application. Or use
-[`ecloud profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
+[`ecloud compute app profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
 
 Configuring an application display name provides the following benefits:
 

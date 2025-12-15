@@ -51,7 +51,7 @@ applications, refer to [Create Application](../../../howto/build/create-app-from
 
 ### Synopsis
 
-`ecloud compute app create [name] [language] [template-name] [--template-repo <url>] [--template-version <version>] [global options]`
+`ecloud compute app create [--name <value>] [--language <value>] [--template-repo <value>] [--template-version <version>] [global options]`
 
 ### Options
 
@@ -67,13 +67,9 @@ applications, refer to [Create Application](../../../howto/build/create-app-from
 >  * `golang` - use for high-performance services
 >  *  `rust`  - use for systems programming, performance-critical apps
 
-`template-name` (string)
+`--template-repo <value>` (string)
 
-> Name of template from which to create application. Prompted for if not provided.
-
-`--template-repo <url>` (string)
-
-> Custom template repository URL.
+> Template name or custom template URL.
 
 `--template-version <version>` (string)
 
@@ -93,7 +89,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 ### Options
 
-`image_ref` (string)
+`--image_ref <value>` (string)
 
 > Pre-built Docker image reference. Can be set using environment variable `ECLOUD_IMAGE_REF`.
 
@@ -122,22 +118,22 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 `--website <URL>` (string)
 
 > Application website URL. Displayed on the
-> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
+> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). 
 
 `--description <value>` (string)
 
 > Application description. Displayed on the
-> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
+> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). 
 
 `--x-url <URL>` (string)
 
 > X (Twitter) profile. Displayed on the
-> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
+> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/).
 
 `--image <path>` (string)
 
 > Path to profile image. Must be JPG/PNG and max size of 4MB. Displayed on the
-> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/). Optional.
+> Verifiability Dashboard for [Mainnet](https://verify.eigencloud.xyz/) or [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/).
 
 `--skip-profile`
 

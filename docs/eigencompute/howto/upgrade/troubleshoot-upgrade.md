@@ -22,7 +22,7 @@ ecloud compute app logs my-app
 Rollback to previous version if needed:
 
 ```bash
-ecloud compute app upgrade my-app registry.io/user/app:previous-tag
+ecloud compute app upgrade my-app --image-ref registry.io/user/app:previous-tag
 ```
 
 ## Environment variables not updating

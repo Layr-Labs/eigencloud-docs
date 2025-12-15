@@ -16,7 +16,7 @@ Use `eigenx` to deploy and manage verifiable applications in Trusted Execution E
 
 * [app](app.md)
 * [auth](auth.md)
-* [billing](../ecloud-cli/billing)
+* [billing](billing.md)
 * [environment, env](environment.md)
 * [version](version.md)
 * [undelegate](undelgate.md)

@@ -14,13 +14,13 @@ The CLI will prompt you for deployment configuration.
 ## Deploy with custom Dockerfile location
 
 ```bash
-ecloud app compute deploy --dockerfile ./docker/Dockerfile.prod
+ecloud compute app deploy --dockerfile ./docker/Dockerfile.prod
 ```
 
 ## Deploy with custom .env location
 
 ```bash
-ecloud app compute deploy --env-file ./config/.env.production
+ecloud compute app deploy --env-file ./config/.env.production
 ```
 
 ## Deploy pre-built image
@@ -31,7 +31,7 @@ docker build --platform linux/amd64 -t registry.io/user/myapp:v1.0 .
 docker push registry.io/user/myapp:v1.0
 
 # Deploy the image
-ecloud app deploy registry.io/user/myapp:v1.0
+ecloud compute app deploy registry.io/user/myapp:v1.0
 ```
 
 ## Multi-Environment Deployment
