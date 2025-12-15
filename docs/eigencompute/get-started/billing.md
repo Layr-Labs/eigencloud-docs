@@ -36,7 +36,7 @@ The payment portal is displayed.  Enter your payment method details and click th
 The payment successful message is displayed.  Return to the terminal and you have access to [deploy your application](../reference/eigenx-cli/app.md#deploy).
 
 :::tip Specifying Sepolia Testnet or Mainnet
-Use the [`--env` option](../reference/eigenx-cli/billing.md) to specify the environment for the subsciption.  The default is
+Use the [`--env` option](../reference/ecloud-cli/billing) to specify the environment for the subsciption.  The default is
 the current environment. The `--env` option is available for all `billing` subcommands. 
 ::: 
 

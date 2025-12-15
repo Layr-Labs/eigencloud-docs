@@ -3,7 +3,7 @@ title: Use Existing Authentication Keys
 sidebar_position: 2
 ---
 
-When using EigenX, logging in refers to providing your authentication key to the EigenX command line. The following methods
+When using EigenCompute, logging in refers to providing your authentication key to the ecloud command line. The following methods
 are supported and checked in this order:
 
 1. `--private-key` flag on any command (not recommended).
@@ -12,7 +12,7 @@ are supported and checked in this order:
 
 :::warning
 Using the `--private-key` flag to provide your private key directly on the command line is not recommended. When provided on the command line
-it may be stored in your shell history. Use the OS keyring to securely store credentials or the `EIGENX_PRIVATE_KEY` environment
+it may be stored in your shell history. Use the OS keyring to securely store credentials or the `ECLOUD_PRIVATE_KEY` environment
 variable for CI/CD pipelines.
 :::
 
@@ -23,7 +23,7 @@ Log in to:
 To log in by storing your authentication key in the OS keyring, use the interactive login:
 
 ```bash
-eigenx auth login
+ecloud auth login
 ```
 
 The CLI will prompt you to enter your private key:
@@ -33,11 +33,5 @@ Enter your private key: [hidden input]
 Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
 
 ✓ Private key stored securely in OS keyring
-✓ You can now use eigenx commands without additional authentication
-```
-
-Use the `--env` flag to log in to a specific environment:
-
-```bash
-eigenx auth login --env sepolia
+✓ You can now use ecloud commands without additional authentication
 ```

@@ -14,7 +14,6 @@ For more information on EigenCompute keys, refer to the [Keys](../../concepts/ke
 New authentication keys are required for: 
 
 * First time set up to generate a key when you don't have one.
-* Multiple environments to generate separate keys for dev, testnet, and mainnet.
 * Testing to create separate keys for testing.
 
 ## Create and securely store an authentication key
@@ -22,7 +21,7 @@ New authentication keys are required for:
 To create and securely store an authentication key: 
 
 ```
-eigenx auth generate --store
+ecloud auth generate --store
 ```
 
 An authentication key is created and stored in the OS keyring: 
@@ -32,7 +31,7 @@ Generated new private key
 Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
 
 ✓ Private key stored securely in OS keyring
-✓ You can now use eigenx commands without additional authentication
+✓ You can now use ecloud commands without additional authentication
 ```
 
 :::warning
@@ -40,17 +39,7 @@ The private key is securely stored while you remain authenticated to EigenComput
 
 If you log out of EigenCompute and have not backed up the private key that was generated for you, you will be unable to access your deployed application.
 
-If you generate another EigenCompute key and overwrite the existing private key without first having backed up the private key that was generated for you, you will be unable to access your deployed application.
-:::
-
-To create and securely store an authentication key for a specific environment:
-
-```
-eigenx auth generate --store --environment sepolia
-```
-
-:::tip
-To list available deployment environments, use `eigenx environment list`
+If you generate another authentication key and overwrite the existing private key without first having backed up the private key that was generated for you, you will be unable to access your deployed application.
 :::
 
 ## Create and display an authentication key
@@ -63,7 +52,7 @@ authentication keys in the OS keyring](#create-and-securely-store-an-authenticat
 To create and display an authentication key: 
 
 ```
-eigenx auth generate
+ecloud auth generate
 ```
 
 An authentication key is created and displayed:
@@ -74,3 +63,8 @@ Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
 
 ⚠️  Private key not stored. Use --store flag to save it securely.
 ```
+
+:::note Follow best practices
+* Use OS Keyring - Most secure method for local development
+* Never commit keys - Add keys to `.gitignore` and use environment variables for CI/CD.
+:::

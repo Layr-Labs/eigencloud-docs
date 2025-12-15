@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 :::important
-The `eigenx` CLI is deprecated and will not receive updates. The `ecloud` CLI supports the same commands as `eigenx` and
+The `eigenx` CLI is being deprecated and will no longer receive updates. The `ecloud` CLI supports the same commands as `eigenx` and
 the `migrate` command is provided to migrate your authentication key. We recommend migrating to `ecloud` as soon as practical.
 :::
 
@@ -16,7 +16,7 @@ Use `eigenx` to deploy and manage verifiable applications in Trusted Execution E
 
 * [app](app.md)
 * [auth](auth.md)
-* [billing](billing.md)
+* [billing](../ecloud-cli/billing)
 * [environment, env](environment.md)
 * [version](version.md)
 * [undelegate](undelgate.md)

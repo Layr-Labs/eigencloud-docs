@@ -47,3 +47,9 @@ that the migrated key works correctly.
     ```
 
     The migrated key is displayed and will be used for all environments.
+
+Differences 
+
+Moved under the compute command -> add this 
+
+`list` subcommand no longer needed as same authenticaiton used for all environments. 
