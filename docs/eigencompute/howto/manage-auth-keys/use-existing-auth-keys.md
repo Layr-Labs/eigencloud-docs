@@ -18,7 +18,7 @@ variable for CI/CD pipelines.
 
 Log in to:
 * Import an existing key from Metamask or another wallet.
-* Configure the EigenX CLI on a new machine.
+* Configure the ecloud CLI on a new machine.
 
 To log in by storing your authentication key in the OS keyring, use the interactive login:
 

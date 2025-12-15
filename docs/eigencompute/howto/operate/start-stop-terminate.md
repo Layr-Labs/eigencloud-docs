@@ -60,7 +60,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 :::
 
 - [ ] **Critical**: Withdraw all funds from TEE wallet
-- [ ] Backup logs: `eigenx app logs my-app > backup.log`
+- [ ] Backup logs: `ecloud compute app logs my-app > backup.log`
 - [ ] Document configuration
 - [ ] Verify app is no longer needed
 - [ ] Check for any dependent services

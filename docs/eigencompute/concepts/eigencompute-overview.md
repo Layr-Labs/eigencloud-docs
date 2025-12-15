@@ -39,7 +39,7 @@ Use EigenCompute to build applications such as:
 
 The benefits of building with EigenCompute include: 
 - User trust: EigenCompute helps your users trust you. With our upcoming user dashboard, users will be able to verify the attestation flow themselves.
-- Easy deployment & development: Write your business logic in a Docker container and upload it easily using the EigenX CLI.
+- Easy deployment & development: Write your business logic in a Docker container and upload it easily using the ecloud CLI.
 - Web2 programmability & scale:  EigenCompute offers VMs up to 177vCPU cores and 756GB of RAM.
 
 ## How EigenCompute Works

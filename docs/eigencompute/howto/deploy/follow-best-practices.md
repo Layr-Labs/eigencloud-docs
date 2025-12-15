@@ -42,5 +42,5 @@ process.on('SIGTERM', async () => {
 ```javascript
 console.log('App started')
 console.error('Error occurred:', error)
-// Logs are visible via: eigenx app logs
+// Logs are visible via: ecloud compute app logs
 ```

@@ -19,8 +19,8 @@ To view verifiability data for an application using the dashboard:
    * Wallet addresses for the application.
 
 :::note
-Whether logs are visible publicly is configured by the application developer using the `--log-visibiilty` option on the [`eigenx app deploy`](../../reference/eigenx-cli/app.md#deploy) and
-[`eigenx app upgrade`](../../reference/eigenx-cli/app.md#upgrade) commands.
+Whether logs are visible publicly is configured by the application developer using the `--log-visibiilty` option on the [`ecloud compute app deploy`](../../reference/ecloud-cli/compute/app.md#deploy) and
+[`ecloud compute app upgrade`](../../reference/ecloud-cli/compute/app.md#upgrade) commands.
 :::
 
 ## View Verifiability Data Onchain

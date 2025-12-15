@@ -47,7 +47,7 @@ output: [
 ]
 },
 {
-command: 'ecloud app deploy',
+command: 'ecloud compute app deploy',
 output: [
 '🏗️  Building Docker image...',
 '   ✓ Built: my-trading-bot:latest',

@@ -40,7 +40,7 @@ ecloud compute app upgrade my-app
 
 ```bash
 # Add TLS
-eigenx app configure tls
+ecloud compute app configure tls
 cat .env.example.tls >> .env
 # Edit DOMAIN and APP_PORT
 ecloud compute app upgrade my-app

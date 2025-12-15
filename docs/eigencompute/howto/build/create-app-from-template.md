@@ -30,15 +30,6 @@ To create an Typescript application:
 ecloud compute app create --name my-app --language typescript --template-repo minimal
 ```
 
-Output:
-```
-Cloning template: https://github.com/Layr-Labs/ecloud-templates → extracting templates/minimal/typescript
-
-[====================] 100% ecloud-templates (Cloning from ref: main)
-
-Template extraction complete: templates/minimal/typescript
-```
-
 The project files and structure are created:
 
 ```
@@ -78,8 +69,8 @@ Templates include:
 
 ## Name application
 
-Use the [`--name` option for `ecloud deploy`](../../reference/eigenx-cli/app.md) to configure a name when deploying an application. Or use
-[`ecloud compute app profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
+Use the [`--name` option for `ecloud compute app deploy`](../../reference/ecloud-cli/compute/app.md#deploy) to configure a name when deploying an application. Or use
+[`ecloud compute app profile set`](../../reference/ecloud-cli/compute/app.md#profile-set) to set or update a name for a previously deployed application. 
 
 Configuring an application display name provides the following benefits:
 

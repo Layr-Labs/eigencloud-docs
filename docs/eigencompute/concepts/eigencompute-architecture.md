@@ -23,7 +23,7 @@ The deployment flow ensures only verified, attested apps are deployed to TEEs, a
 The EigenCompute components are:
 
 * Developer tools to publish digest metadata on Ethereum:
-  - Build container image using EigenX CLI.
+  - Build container image using ecloud CLI.
   - Sign image digest with authentication keys.
   - Push image to container registry.
 * EigenLabs Coordinator to manage infrastructure:

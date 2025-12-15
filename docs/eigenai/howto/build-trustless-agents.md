@@ -101,7 +101,7 @@ print(f"Agent registered: {agentId}")
 Now deploy your agent to a TEE with its own wallet:
 ```bash
 # Initial deployment
-eigenx deploy myagent:latest
+ecloud compute app deploy --image-ref myagent:latest
 ```
 
 Your deployed agent now has:
@@ -123,7 +123,7 @@ agent.register()
 
 **Deploying Updates**: When you update your agent code, deploy the new version:
 ```bash
-eigenx app upgrade
+ecloud compute app upgrade
 ```
 
 This creates a new cryptographic attestation for the updated Docker image while maintaining the same agent identity and wallet.
@@ -180,7 +180,7 @@ agent.setX402Support(True)
 agentId = agent.register()
 
 # 3. Deploy to EigenCompute
-# $ eigenx deploy alphabot:latest
+# $ ecloud compute app deploy --image-ref alphabot:latest
 
 # 4. Update registration with wallet
 agent = sdk.loadAgent(agentId)

@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 :::important
-The `eigenx` CLI is being deprecated and will no longer receive updates. The `ecloud` CLI supports the same commands as `eigenx`
+The [`eigenx` CLI](../reference/eigenx-cli/eigenx-cli.md) is being deprecated and will no longer receive updates. The [`ecloud` CLI](../reference/ecloud-cli/ecloud-cli-overview.md) supports the same commands as `eigenx`
 and the `migrate` command is provided to migrate your authentication key. We recommend migrating to the `ecloud` CLI as soon as practical.
 :::
 
@@ -52,8 +52,8 @@ To continue using other keys, use the `--private-key` option or the `ECLOUD_PRIV
 
 ### compute
 
-The `app`, `environment`, and `undelegate` subcommands have moved under the `compute` command.
+The `app`, `environment`, and `undelegate` subcommands have moved under the [`compute` command](../reference/ecloud-cli/compute).
 
 ### Arguments moved to options
 
-The `language`, `template-name`, `image-ref` arguments for the `app` subcommand in `eigenx` are options in `ecloud`. 
+The `language`, `template-name`, `image-ref` arguments for the `app` subcommand in `eigenx` are [options in `ecloud`](../reference/ecloud-cli/compute/app.md). 

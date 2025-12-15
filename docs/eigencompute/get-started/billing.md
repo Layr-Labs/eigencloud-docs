@@ -5,12 +5,12 @@ sidebar_position: 2
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription.
 
-EigenCompute has metered billing at 0.17c per vCPU hour so you pay for what you use. All new and migrating customers 
+EigenCompute has metered billing at 0.177c per vCPU hour so you pay for what you use. All new and migrating customers 
 receive a $100 credit.
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
-period ending on 03/31/2026.
+period ending on 01/31/2026.
 :::
 
 Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscription (that is, 20 apps total can be deployed per subscription per [ecloud CLI authentication key](../concepts/keys-overview.md)).
