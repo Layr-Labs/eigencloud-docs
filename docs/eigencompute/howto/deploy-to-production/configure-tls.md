@@ -27,7 +27,7 @@ EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using C
 To add TLS configuration:
 
 ```
-eigenx app configure tls
+ecloud compute app configure tls
 ```
 
 TLS configuration is added to your project:
@@ -53,10 +53,10 @@ To enable TLS:
    ACME_STAGING=true
 
 3. Set up DNS A record pointing to instance IP
-   Run 'eigenx app info' to get IP address
+   Run 'ecloud compute app info' to get IP address
 
 4. Upgrade:
-   eigenx app upgrade
+   ecloud compute app upgrade
 
 Note: Let's Encrypt rate limit is 5 certificates/week per domain
 ```
@@ -89,12 +89,12 @@ To avoid Let's Encrypt rate limits, always test with staging certificates first.
 
     * Type: A 
     * Name: yourdomain.com
-    * Value: Obtain IP address from `eigenx app info`
+    * Value: Obtain IP address from `ecloud compute app info`
 
 4. Deploy app with TLS configuration: 
 
 ```
-eigenx app upgrade
+ecloud compute app upgrade
 ```
 
 ## Switch to Production Certificates
@@ -111,7 +111,7 @@ ACME_FORCE_ISSUE=true  # Only needed once
 2. Redeploy the app:
 
 ```
-eigenx app upgrade
+ecloud compute app upgrade
 ```
 
 3. Disable the `ACME_FORCE_ISSUE` environment variable:
@@ -140,7 +140,7 @@ nslookup yourdomain.com
 Check logs:
 
 ```bash
-eigenx app logs
+ecloud compute app logs
 ```
 
 Common issues:

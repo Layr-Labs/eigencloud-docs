@@ -9,10 +9,10 @@ If you get authentication errors:
 
 ```bash
 # Check authentication status
-eigenx auth whoami
+ecloud auth whoami
 
 # If not authenticated, login
-eigenx auth login
+ecloud auth login
 ```
 
 ## Keyring Access Issues
@@ -31,9 +31,9 @@ If you're using the wrong address:
 
 ```bash
 # Check current address
-eigenx auth whoami
+ecloud auth whoami
 
 # Logout and login with correct key
-eigenx auth logout
-eigenx auth login
+ecloud auth logout
+ecloud auth login
 ```

@@ -6,7 +6,7 @@ sidebar_position: 3
 ## Deploy from current directory
 
 ```bash
-eigenx app deploy
+ecloud compute app deploy
 ```
 
 The CLI will prompt you for deployment configuration.
@@ -14,13 +14,13 @@ The CLI will prompt you for deployment configuration.
 ## Deploy with custom Dockerfile location
 
 ```bash
-eigenx app deploy --dockerfile ./docker/Dockerfile.prod
+ecloud compute app deploy --dockerfile ./docker/Dockerfile.prod
 ```
 
 ## Deploy with custom .env location
 
 ```bash
-eigenx app deploy --env-file ./config/.env.production
+ecloud compute app deploy --env-file ./config/.env.production
 ```
 
 ## Deploy pre-built image
@@ -31,15 +31,15 @@ docker build --platform linux/amd64 -t registry.io/user/myapp:v1.0 .
 docker push registry.io/user/myapp:v1.0
 
 # Deploy the image
-eigenx app deploy registry.io/user/myapp:v1.0
+ecloud compute app deploy registry.io/user/myapp:v1.0
 ```
 
 ## Multi-Environment Deployment
 
 ```bash
 # Deploy to mainnet (default)
-eigenx app deploy --env-file .env.mainnet
+ecloud compute app deploy --env-file .env.mainnet
 
 # Deploy to sepolia testnet
-eigenx app deploy --env-file .env.sepolia --environment sepolia
+ecloud compute app deploy --env-file .env.sepolia --environment sepolia
 ```

@@ -3,7 +3,7 @@ title: Create Application
 sidebar_position: 2
 ---
 
-The EigenX CLI provides templates for creating EigenCompute application projects with all required configuration files. 
+The ecloud CLI provides templates for creating EigenCompute application projects with all required configuration files. 
 Create applications using the templates to:
 
 * Start building immediately with working examples for quick prototyping. 
@@ -18,7 +18,7 @@ Templates are available in:
 * Rust.
 
 :::tip 
-The EigenX CLI works with existing Docker projects and images. If you are working with an existing project or image,
+The ecloud CLI works with existing Docker projects and images. If you are working with an existing project or image,
 skip this step and refer to deploying an application for next steps.
 ::: 
 
@@ -27,16 +27,7 @@ skip this step and refer to deploying an application for next steps.
 To create an Typescript application:
 
 ```bash
-eigenx app create my-trading-bot typescript
-```
-
-Output:
-```
-Cloning template: https://github.com/Layr-Labs/eigenx-templates → extracting templates/minimal/typescript
-
-[====================] 100% eigenx-templates (Cloning from ref: main)
-
-Template extraction complete: templates/minimal/typescript
+ecloud compute app create --name my-app --language typescript --template-repo minimal
 ```
 
 The project files and structure are created:
@@ -78,8 +69,8 @@ Templates include:
 
 ## Name application
 
-Use the [`--name` option for `eigenx deploy`](../../reference/eigenx-cli/app.md) to configure a name when deploying an application. Or use
-[`eigenx profile set`](../../reference/eigenx-cli/app.md) to set or update a name for a previously deployed application. 
+Use the [`--name` option for `ecloud compute app deploy`](../../reference/ecloud-cli/compute/app.md#deploy) to configure a name when deploying an application. Or use
+[`ecloud compute app profile set`](../../reference/ecloud-cli/compute/app.md#profile-set) to set or update a name for a previously deployed application. 
 
 Configuring an application display name provides the following benefits:
 

@@ -17,11 +17,11 @@ Custom domain available.
 
     * Type: A
     * Name: yourdomain.com
-    * Value: Obtain IP address from `eigenx app info`
+    * Value: Obtain IP address from `ecloud compute app info`
 
 3. Run:
    ```
-   eigenx app configure tls 
+   ecloud compute app configure tls 
    ```
 
 4. Add TLS environment variables to `.env`:

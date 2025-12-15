@@ -30,8 +30,8 @@ The address is your EigenCompute onchain identification, often referred to as a 
 |-----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Purpose   | Developer authentication for deployments and protocol interactions                                                                                                               |
 | Type      | secp256k1 private key (Ethereum-compatible)                                                                                                                                      |
-| Origin    | Generated or imported using `eigenx auth` CLI command                                                                                                                            | 
-| Location  | Local OS or organization keyring (macOS Keychain, 1Password, Windows Credential Manager, Linux Secret Service, etc.). Stored under `eigenx-<environment>` (eg, `eigenx-mainnet`) |
+| Origin    | Generated or imported using `ecloud auth` CLI command                                                                                                                            | 
+| Location  | Local OS or organization keyring (macOS Keychain, 1Password, Windows Credential Manager, Linux Secret Service, etc.). Stored under `ecloud-<environment>` (eg, `ecloud-mainnet`) |
 | Security  | Developer must secure and store the authentication keys securely to sign deployment transactions                                                                                 |
 
 ## TEE Mnemonic 

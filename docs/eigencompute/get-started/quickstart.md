@@ -3,7 +3,7 @@ title: Quickstart
 sidebar_position: 1
 ---
 
-Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
+Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
 ## Prerequisites
 
@@ -14,16 +14,8 @@ Before you begin, ensure you have:
 
 ## Installation
 
-### macOS/Linux
-
 ```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.sh | bash
-```
-
-### Windows
-
-```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
+npm install -g @layr-labs/ecloud-cli
 ```
 
 ## Initial Setup
@@ -36,14 +28,14 @@ First, log in to your Docker registry. This is required to push your application
 docker login
 ```
 
-### Authenticate with EigenX
+### Authenticate with EigenCloud
 
 You have two options for authentication:
 
 #### Option 1: Use an Existing Private Key
 
 ```bash
-eigenx auth login
+ecloud auth login
 ```
 
 This command will prompt you to enter your private key and store it securely in your OS keyring.
@@ -51,7 +43,7 @@ This command will prompt you to enter your private key and store it securely in 
 #### Option 2: Generate a New Private Key
 
 ```bash
-eigenx auth generate --store
+ecloud auth generate --store
 ```
 
 This generates a new private key and stores it securely.
@@ -61,15 +53,15 @@ This generates a new private key and stores it securely.
 Check your wallet address:
 
 ```bash
-eigenx auth whoami
+ecloud auth whoami
 ```
 
 ```
 Address: 0x9431Cf5DA0CE60664661341db650763B08286B18
-Source:  stored credentials (sepolia)
+Source:  stored credentials
 ```
 
-The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use `eigenx env set sepolia`.
+The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use `ecloud compute env set sepolia`.
 
 :::tip Developing on Sepolia
 To get testnet ETH, use:
@@ -84,7 +76,7 @@ To get testnet ETH, use:
 Create a new application from a template. Choose from: `typescript`, `python`, `golang`, or `rust`
 
 ```bash
-eigenx app create my-app typescript
+ecloud compute app create --name my-app --language typescript --template-repo minimal
 cd my-app
 ```
 
@@ -121,23 +113,20 @@ Before deploying, you'll need an [EigenCompute subscription](billing).
 To subscribe:
 
 ```
-eigenx billing subscribe
+ecloud billing subscribe
 ```
 
 The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
-
-:::important Mainnet Pricing
-Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
-period ending on 12/31/2025.
-:::
 
 ### Deploy to TEE
 
 Deploy your application to a Trusted Execution Environment:
 
 ```bash
-eigenx app deploy
+ecloud compute app deploy
 ```
+
+When prompted, select `Build and deploy from Dockerfile` option.
 
 The CLI will:
 1. Build your Docker image targeting `linux/amd64`
@@ -150,13 +139,7 @@ The CLI will:
 After deployment, view your app's information:
 
 ```bash
-eigenx app info
-```
-
-View real-time logs:
-
-```bash
-eigenx app logs
+ecloud compute app info
 ```
 
 ## Port Configuration
@@ -188,7 +171,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## Next Steps
 
-* Explore [CLI Commands](../reference/eigenx-cli) - Learn about all available commands
+* Explore [CLI Commands](../reference/ecloud-cli/ecloud-cli-overview.md) - Learn about all available commands
 * Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
@@ -206,7 +189,7 @@ FROM --platform=linux/amd64 node:18
 Check your ETH balance:
 
 ```bash
-eigenx auth whoami
+ecloud auth whoami
 ```
 
 Ensure you have sufficient mainnet ETH for deployment transactions.
@@ -224,7 +207,7 @@ docker login
 Check your app logs for errors:
 
 ```bash
-eigenx app logs
+ecloud compute app logs
 ```
 
 Common issues:
@@ -234,6 +217,6 @@ Common issues:
 
 ## Get Help
 
-- **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/eigenx-cli/issues)
+- **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/ecloud)
 - **Discord**: Join our [Support channel](https://discord.com/channels/1089434273720832071/1187153894564966480).
 - **Talk to EigenCompute team**: Complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.

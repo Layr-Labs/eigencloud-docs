@@ -73,7 +73,7 @@ Check that:
 ### "Connection refused"
 
 Your application may not be listening on the expected port:
-- Check application logs: `eigenx app logs`
+- Check application logs: `ecloud compute app logs`
 - Verify the port in your application startup logs
 - Ensure no port conflicts if running multiple services
 
@@ -82,11 +82,11 @@ Your application may not be listening on the expected port:
 If you see "port already in use" errors:
 - Check for multiple services binding to the same port
 - Ensure your application shuts down gracefully
-- Use `eigenx app restart` to force a clean restart
+- Use `ecloud compute app stop` and `ecloud compute app start` to restart
 
 ## Related Documentation
 
 - [Quickstart Guide](../../get-started/quickstart.md) - Complete deployment walkthrough
 - [TLS Configuration](../../get-started/quickstart.md#configure-tlshttps-optional) - Setting up HTTPS with custom domains
-- [Deployment Reference](../../reference/eigenx-cli/app.md#deploy) - Dockerfile requirements
+- [Deployment Reference](../../reference/ecloud-cli/compute/app.md#deploy) - Dockerfile requirements
 - [Monitoring](../operate/monitor.md) - Viewing application logs

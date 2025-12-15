@@ -7,49 +7,46 @@ sidebar_position: 2
 
 ```bash
 ## active apps
-eigenx app list
+ecloud compute app list
 
 ## all apps including terminated
-eigenx app list --all
-
-# Count running apps
-eigenx app list | grep Running
+ecloud compute list --all
 
 # Ensure mainnet apps are running
-eigenx app list --env mainnet-alpha
+ecloud compute app list --env mainnet-alpha
 ```
 
 ## Get application information
 
 ```bash
 # List to find the app ID you need
-eigenx app list
+ecloud compute app list
 
 # Check app status
-eigenx app info app-1a2b3c4d
+ecloud compute app info app-1a2b3c4d
 ```
 
 ## View logs from TEE instance
 
 ```bash
 # view recent logs
-eigenx app logs trading-bot
+ecloud compute app logs trading-bot
 
 # watch logs continuously
-eigenx app logs --watch trading-bot
+ecloud compute app logs --watch trading-bot
 
 # save logs for analysis
-eigenx app logs my-app > logs.txt
+ecloud compute app logs my-app > logs.txt
 
 # filter logs
-eigenx app logs my-app | grep -i error
-eigenx app logs my-app | grep "Transaction executed"
+ecloud compute app logs my-app | grep -i error
+ecloud compute app logs my-app | grep "Transaction executed"
 ```
 
 ## Troubleshoot application not starting
 
 ```bash
-eigenx app logs my-app
+ecloud compute app logs my-app
 ```
 
 Look for:
@@ -58,4 +55,4 @@ Look for:
 - Dependency issues
 - Startup exceptions.
 
-For more information on the `list` and `logs` subcommands, refer to the [eigenx Reference](../../reference/eigenx-cli/app.md).
+For more information on the `list` and `logs` subcommands, refer to the [ecloud Reference](../../reference/ecloud-cli/compute/app.md).

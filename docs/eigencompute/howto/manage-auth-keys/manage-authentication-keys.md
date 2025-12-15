@@ -16,57 +16,29 @@ For more information on EigenCompute keys, refer to the [Keys](../../concepts/ke
 Check the authentication status to: 
 * Verify that you are logged in before deploying.
 * Find your address to request testnet funds.
-* Confirm the environment to which you're deploying.
 
 To display the currently authenticated address: 
 
 ```
-eigenx auth whoami
+ecloud auth whoami
 ```
 
-The authenticated address and environment are displayed:
+The authenticated address are displayed:
 
 ```
 Address: 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
-Source:  stored credentials (sepolia)
+Source:  stored credentials
 ```
 
-## List stored keys
+## Log out 
 
-List stored keys to: 
-* Audit stored keys across environments.
-* Check which key is active for key environment.
-* Track keys for different environments. 
-
-To list all stored keys: 
-
-```
-eigenx auth list
-```
-
-The addresses of the stored keys are displayed for each environment: 
-
-```
-Stored private keys:
-
-sepolia      0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
-```
-
-## Log out of EigenX 
-
-Log out of EigenX to:
+Log out of ecloud CLI to:
 * Remove credentials before leaving a shared machine.
 * Use a different authentication key.
 * Remove corrupted credentials when troubleshooting.
 
-To log out of the current environment: 
+To log out: 
 
 ```bash
-eigenx auth logout
-```
-
-To log out from a specific environment:
-
-```bash
-eigenx auth logout --env sepolia
+ecloud auth logout
 ```

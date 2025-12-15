@@ -38,7 +38,7 @@ Before you begin, ensure you have:
 
 - [Docker](https://www.docker.com/get-started/) - To package and publish application images.
 - Sepolia Testnet ETH - For deployment transactions.
-- [Installed EigenX CLI](../../../get-started/quickstart#installation) and [authenticated to EigenCompute](../../../get-started/quickstart#initial-setup).
+- [Installed ecloud CLI](../../../get-started/quickstart#installation) and [authenticated](../../../get-started/quickstart#initial-setup).
 - [Subscribed to EigenCompute](../../../get-started/quickstart#subscribe-to-eigencompute).
 
 ### 1. Create Application from Attested API template 
@@ -58,7 +58,7 @@ You must be logged into Docker to push the application image.
 Create an app: 
 
 ```
-eigenx app create
+ecloud compute app create
 ```
 
 Enter a name for your app and select language: 
@@ -99,7 +99,7 @@ cd myproject
 Build and deploy the example application:
 
 ```bash
-eigenx app deploy
+ecloud compute app deploy
 ```
 
 Deployment options are displayed. Select the default deployment method to build from Dockerfile:
@@ -110,7 +110,7 @@ Found Dockerfile in current directory.
 
 📦 Build & Push Configuration
 Your Docker image will be built and pushed to a registry
-so that EigenX can pull and run it in the TEE.
+so that EigenCloud can pull and run it in the TEE.
 ```
 
 Select the default image reference: 
@@ -158,7 +158,7 @@ app is being started.
 View the application information:
 
 ```bash
-eigenx app info
+ecloud compute app info
 ```
 
 The application information is displayed: 

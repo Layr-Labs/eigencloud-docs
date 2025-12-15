@@ -3,9 +3,14 @@ title: eigenx Reference
 sidebar_position: 1
 ---
 
+:::important
+The `eigenx` CLI is being deprecated and will no longer receive updates. The `ecloud` CLI supports the same commands as `eigenx` and
+the `migrate` command is provided to migrate your authentication key. We recommend migrating to `ecloud` as soon as practical.
+:::
+
 ## Description
 
-Use `eigenx` to verifiable applications in Trusted Execution Environments (TEEs).
+Use `eigenx` to deploy and manage verifiable applications in Trusted Execution Environments (TEEs).
 
 ## Available Commands
 

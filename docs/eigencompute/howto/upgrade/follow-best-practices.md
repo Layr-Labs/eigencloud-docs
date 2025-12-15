@@ -12,7 +12,7 @@ docker run -p 3000:3000 my-app:test
 # Verify it works
 
 # Then upgrade
-eigenx app upgrade my-app
+ecloud compute app upgrade my-app
 ```
 
 ## 2. Use Version Tags
@@ -23,20 +23,20 @@ docker build --platform linux/amd64 -t registry.io/app:v2.1.0 .
 docker push registry.io/app:v2.1.0
 
 # Deploy specific version
-eigenx app upgrade my-app registry.io/app:v2.1.0
+ecloud compute app upgrade my-app --image-ref registry.io/app:v2.1.0 
 ```
 
 ## 3. Monitor After Upgrade
 
 ```bash
 # Upgrade
-eigenx app upgrade my-app
+ecloud compute app upgrade my-app
 
 # Immediately check logs
-eigenx app logs --watch my-app
+ecloud compute app logs --watch my-app
 
 # Verify app health
-eigenx app info my-app
+ecloud compute app info my-app
 ```
 
 ## 4. Use Version Tags
@@ -47,5 +47,5 @@ docker build --platform linux/amd64 -t registry.io/app:v2.1.0 .
 docker push registry.io/app:v2.1.0
 
 # Deploy specific version
-eigenx app upgrade my-app registry.io/app:v2.1.0
+ecloud compute app upgrade my-app --image-ref registry.io/app:v2.1.0
 ```
