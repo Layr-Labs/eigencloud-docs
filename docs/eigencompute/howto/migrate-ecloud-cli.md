@@ -52,7 +52,7 @@ To continue using other keys, use the `--private-key` option or the `ECLOUD_PRIV
 
 ### compute
 
-The `app`, `environment`, and `undelegate` subcommands have moved under the [`compute` command](../reference/ecloud-cli/compute).
+The `app`, `environment`, and `undelegate` subcommands have moved under the [`compute` command](../reference/ecloud-cli/compute/compute-overview.md).
 
 ### Arguments moved to options
 
