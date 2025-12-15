@@ -149,7 +149,7 @@ Update an existing application with new code, configuration, or environment vari
 
 ### Synopsis
 
-`ecloud compute app upgrade [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [global options] [<app-id|name>] [<image_ref>]`
+`ecloud compute app upgrade  [<app-id|name>] [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--image_ref <value>] [global options]`
 
 ### Arguments
 

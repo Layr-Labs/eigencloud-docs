@@ -27,7 +27,7 @@ skip this step and refer to deploying an application for next steps.
 To create an Typescript application:
 
 ```bash
-eigenx app create my-trading-bot typescript
+ecloud compute app create --name my-app --language typescript --template-repo minimal
 ```
 
 Output:

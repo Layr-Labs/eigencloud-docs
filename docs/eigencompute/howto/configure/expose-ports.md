@@ -73,7 +73,7 @@ Check that:
 ### "Connection refused"
 
 Your application may not be listening on the expected port:
-- Check application logs: `ecloud app logs`
+- Check application logs: `ecloud compute app logs`
 - Verify the port in your application startup logs
 - Ensure no port conflicts if running multiple services
 

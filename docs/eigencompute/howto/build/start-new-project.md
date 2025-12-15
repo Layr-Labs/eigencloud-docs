@@ -8,7 +8,7 @@ The high level steps to start and deploy a new project are:
 ### 1. Create from template
 
 ```
-ecloud app create my-app typescript
+ecloud compute app create --name my-app --language typescript --template-repo minimal
 ```
 
 For more information, refer to [Create Application](create-app-from-template.md).
@@ -32,13 +32,13 @@ npm run dev
 ### 4. Deploy to TEE
 
 ```
-ecloud app deploy
+ecloud compute app deploy
 ```
 
 ### 5. (Optional) Add TLS if needed
 
 ```bash
-ecloud app configure tls
+ecloud compute app configure tls
 ```
 
 For more information, refer to [Configure TLS](../deploy-to-production/configure-tls.md).
@@ -48,7 +48,7 @@ For more information, refer to [Configure TLS](../deploy-to-production/configure
 After making changes to your code or environment variables:
 
 ```bash
-ecloud app upgrade
+ecloud compute app upgrade
 ```
 
 The CLI will rebuild and redeploy your application with the latest changes.

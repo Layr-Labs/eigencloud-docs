@@ -7,7 +7,7 @@ When using EigenCompute, logging in refers to providing your authentication key 
 are supported and checked in this order:
 
 1. `--private-key` flag on any command (not recommended).
-2. `EIGENX_PRIVATE_KEY` environment variable.
+2. `ECLOUD_PRIVATE_KEY` environment variable.
 3. OS keyring securely stored credentials.
 
 :::warning

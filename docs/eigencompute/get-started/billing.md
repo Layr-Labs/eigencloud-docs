@@ -5,19 +5,15 @@ sidebar_position: 2
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription.
 
-One app can be deployed per subscription (that is, you can have one subscription per [eigenx CLI authentication key](../concepts/keys-overview.md)). 
-
-Testnet pricing includes the following instance types: 
-
-| Machine type     | vCPUs   |  Memory  | Architecture  | Monthly Subscription      |
-|------------------|:-------:|:--------:|---------------|---------------------------|
-| g1-standard-4t   |    4    |  16 GB   | Intel TDX     | USD$519                   |
-| g1-standard-8t   |    8    |  32 GB   | Intel TDX     | [Contact us](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) |         
+EigenCompute has metered billing at 0.17c per vCPU hour so you pay for what you use. All new and migrating customers 
+receive a $100 credit.
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
-period ending on 12/31/2025.
+period ending on 03/31/2026.
 :::
+
+Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscription (that is, 20 apps total can be deployed per subscription per [ecloud CLI authentication key](../concepts/keys-overview.md)).
 
 :::note Early Access Customers
 Early Access Customers will continue to get free access until the end of the year. Starting January 2026, we will begin turning off active applications without a subscription.
@@ -28,24 +24,19 @@ Early Access Customers will continue to get free access until the end of the yea
 To subscribe to EigenCompute: 
 
 ```
-eigenx billing subscribe
+ecloud billing subscribe
 ```
 
 The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
 
-The payment successful message is displayed.  Return to the terminal and you have access to [deploy your application](../reference/eigenx-cli/app.md#deploy).
-
-:::tip Specifying Sepolia Testnet or Mainnet
-Use the [`--env` option](../reference/ecloud-cli/billing) to specify the environment for the subsciption.  The default is
-the current environment. The `--env` option is available for all `billing` subcommands. 
-::: 
+The payment successful message is displayed.  Return to the terminal and you have access to [deploy your application](../reference/ecloud-cli/compute/app.md#deploy).
 
 ## Cancel a Subscription
 
 To cancel an active subscription:
 
 ```
-eigenx billing cancel
+ecloud billing cancel
 ```
 
 The deployed application is terminated and a refund for the remaining period of the month issued to the payment method you provided
@@ -56,7 +47,7 @@ when subscribing.
 To view current subscriptions:
 
 ```
-eigenx billing status
+ecloud billing status
 ```
 
 The subscription status is displayed and a link provided to manage payment methods and view subscription transactions.

@@ -3,16 +3,9 @@ title: Migrate to ecloud CLI
 sidebar_position: 1
 ---
 
-The `eigenx` CLI is being replaced by the `ecloud` CLI. The `ecloud` CLI supports the same commands as `eigenx` and the `migrate` 
-command is provided to migrate your authentication key. We recommend migrating to `ecloud` as soon as practical. 
-
-The `eigenx` CLI will continue to operate but will no longer be updated.
-
-:::note
-The `ecloud` CLI stores one key for all environments. When migrating from `eigenx`, which stored a key per environment,
-you select one stored key to migrate to `ecloud`.
-
-To continue using other keys, use the `--private-key` option or the `ECLOUD_PRIVATE_KEY` environment variable.
+:::important
+The `eigenx` CLI is being deprecated and will no longer receive updates. The `ecloud` CLI supports the same commands as `eigenx`
+and the `migrate` command is provided to migrate your authentication key. We recommend migrating to the `ecloud` CLI as soon as practical.
 :::
 
 To migrate a stored authentication key from `eigenx` to `eigencloud`:
@@ -48,8 +41,19 @@ that the migrated key works correctly.
 
     The migrated key is displayed and will be used for all environments.
 
-Differences 
+## Changes 
 
-Moved under the compute command -> add this 
+### One key for all environments
 
-`list` subcommand no longer needed as same authenticaiton used for all environments. 
+The `ecloud` CLI uses one key for all environments. When migrating from `eigenx`, which stored a key per environment,
+you select one stored key to migrate to `ecloud`.
+
+To continue using other keys, use the `--private-key` option or the `ECLOUD_PRIVATE_KEY` environment variable.
+
+### compute
+
+The `app`, `environment`, and `undelegate` subcommands have moved under the `compute` command.
+
+### Arguments moved to options
+
+The `language`, `template-name`, `image-ref` arguments for the `app` subcommand in `eigenx` are options in `ecloud`. 

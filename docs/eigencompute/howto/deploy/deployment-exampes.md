@@ -6,7 +6,7 @@ sidebar_position: 3
 ## Deploy from current directory
 
 ```bash
-ecloud app deploy
+ecloud compute app deploy
 ```
 
 The CLI will prompt you for deployment configuration.
@@ -14,13 +14,13 @@ The CLI will prompt you for deployment configuration.
 ## Deploy with custom Dockerfile location
 
 ```bash
-ecloud app deploy --dockerfile ./docker/Dockerfile.prod
+ecloud app compute deploy --dockerfile ./docker/Dockerfile.prod
 ```
 
 ## Deploy with custom .env location
 
 ```bash
-ecloud app deploy --env-file ./config/.env.production
+ecloud app compute deploy --env-file ./config/.env.production
 ```
 
 ## Deploy pre-built image
@@ -38,8 +38,8 @@ ecloud app deploy registry.io/user/myapp:v1.0
 
 ```bash
 # Deploy to mainnet (default)
-ecloud app deploy --env-file .env.mainnet
+ecloud compute app deploy --env-file .env.mainnet
 
 # Deploy to sepolia testnet
-ecloud app deploy --env-file .env.sepolia --environment sepolia
+ecloud compute app deploy --env-file .env.sepolia --environment sepolia
 ```

@@ -17,19 +17,19 @@ When deploying an EigenCompute app, the machine instance type appropriate for th
 To specify the instance type using the `--instance-type` flag:
 
 ```
-ecloud app deploy --instance-type g1-standard-8t
+ecloud compute app deploy --instance-type g1-standard-8t
 ```
 
 ## Specify when Prompted
 
-If the instance type not specified on the command line, you are prompted to select an instance type when running `ecloud app deploy`.
+If the instance type not specified on the command line, you are prompted to select an instance type when running `ecloud compute app deploy`.
 
 ## Change Instance Type for Deployed App
 
 To change the instance type for a deployed app: 
 
 ```
-ecloud app upgrade --instance-type g1-standard-8t
+ecloud compute app upgrade --instance-type g1-standard-8t
 ```
 
 

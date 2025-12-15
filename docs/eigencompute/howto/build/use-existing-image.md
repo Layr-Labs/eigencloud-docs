@@ -9,7 +9,7 @@ If you have a containerized application, you don't need to start from a template
 cd my-existing-project
 
 # Deploy directly - the CLI will prompt for Dockerfile and .env paths
-ecloud app deploy
+ecloud compute app deploy
 ```
 The CLI will prompt you for [billing details](../../get-started/billing.md) in our payment portal.
 
@@ -29,7 +29,7 @@ docker build --platform linux/amd64 -t myregistry/myapp:v1.0 .
 docker push myregistry/myapp:v1.0
 
 # Deploy using the image reference
-ecloud app deploy myregistry/myapp:v1.0
+ecloud compute app deploy myregistry/myapp:v1.0
 ```
 
 The CLI will prompt you for [billing details](../../get-started/billing.md) in our payment portal.

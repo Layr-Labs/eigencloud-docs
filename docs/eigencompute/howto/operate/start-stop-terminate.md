@@ -91,10 +91,10 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ```bash
 # 1. Stop the app first
-eigenx app stop my-app
+ecloud compute app stop my-app
 
 # 2. Get wallet address
-eigenx app info my-app
+ecloud compute app info my-app
 # Note the TEE Wallet address
 
 # 3. Check for funds
@@ -104,5 +104,5 @@ eigenx app info my-app
 # Transfer to a safe address
 
 # 5. Terminate
-eigenx app terminate my-app
+ecloud compute app terminate my-app
 ```

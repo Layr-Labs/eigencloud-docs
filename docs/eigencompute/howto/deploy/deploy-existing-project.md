@@ -24,13 +24,13 @@ Add your environment variables.
 Ensure you have a Dockerfile and .env. The CLI will prompt if not found.
 
 ```bash 
-ecloud app deploy
+ecloud compute app deploy
 ```
 
 # 4. Add TLS if needed
 
 ```bash
-ecloud app configure tls
+ecloud app compute configure tls
 ```
 
 For more information, refer to [Configure TLS](../deploy-to-production/configure-tls.md).

@@ -24,7 +24,7 @@ docker login
 Get Sepolia ETH (for `sepolia` environment) or Mainnet ETH (for `mainnet-alpha` environment):
 
 ```bash
-eigenx auth whoami  # Get your address
+ecloud auth whoami  # Get your address
 # Visit faucet and request funds
 ```
 
@@ -33,7 +33,7 @@ eigenx auth whoami  # Get your address
 Check logs:
 
 ```bash
-eigenx app logs <app-id>
+ecloud compute app logs <app-id>
 ```
 
 Common issues:

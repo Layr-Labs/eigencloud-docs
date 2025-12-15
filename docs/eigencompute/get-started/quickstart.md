@@ -3,7 +3,7 @@ title: Quickstart
 sidebar_position: 1
 ---
 
-Get started with EigenX CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
+Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
 ## Prerequisites
 
@@ -14,16 +14,8 @@ Before you begin, ensure you have:
 
 ## Installation
 
-### macOS/Linux
-
 ```bash
-npm install -g @layr-labs/ecloud-cli | bash
-```
-
-### Windows TODO - confirm what command this should be 
-
-```bash
-curl -fsSL https://eigenx-scripts.s3.us-east-1.amazonaws.com/install-eigenx.ps1 | powershell -
+npm install -g @layr-labs/ecloud-cli
 ```
 
 ## Initial Setup
@@ -84,7 +76,7 @@ To get testnet ETH, use:
 Create a new application from a template. Choose from: `typescript`, `python`, `golang`, or `rust`
 
 ```bash
-ecloud app create my-app typescript
+ecloud compute app create --name my-app --language typescript --template-repo minimal
 cd my-app
 ```
 
@@ -126,18 +118,15 @@ ecloud billing subscribe
 
 The payment portal is displayed.  Enter your payment method details and click the Subscribe button.
 
-:::important Mainnet Pricing TODO - open question re this point 
-Current EigenCompute pricing is the [testnet pricing](billing). Mainnet deployments are available testnet pricing for a promotional
-period ending on 12/31/2025.
-:::
-
 ### Deploy to TEE
 
 Deploy your application to a Trusted Execution Environment:
 
 ```bash
-ecloud app deploy
+ecloud compute app deploy
 ```
+
+When prompted, select `Build and deploy from Dockerfile` option.
 
 The CLI will:
 1. Build your Docker image targeting `linux/amd64`
@@ -150,20 +139,14 @@ The CLI will:
 After deployment, view your app's information:
 
 ```bash
-ecloud app info
-```
-
-View real-time logs:
-
-```bash
-ecloud app logs
+ecloud compute app info
 ```
 
 ## Port Configuration
 
 To make your application accessible over the internet, you need to expose ports in your Dockerfile.
 
-### Basic Port Exposure TODO - question with Madhur 
+### Basic Port Exposure
 
 Add the `EXPOSE` directive to your Dockerfile:
 
@@ -188,7 +171,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## Next Steps
 
-* Explore [CLI Commands](../reference/eigenx-cli) - Learn about all available commands
+* Explore [CLI Commands](../reference/ecloud-cli) - Learn about all available commands
 * Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
@@ -224,7 +207,7 @@ docker login
 Check your app logs for errors:
 
 ```bash
-ecloud app logs
+ecloud compute app logs
 ```
 
 Common issues:
