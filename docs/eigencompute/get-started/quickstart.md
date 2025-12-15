@@ -171,7 +171,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 ## Next Steps
 
-* Explore [CLI Commands](../reference/ecloud-cli) - Learn about all available commands
+* Explore [CLI Commands](../reference/ecloud-cli/ecloud-cli-overview.md) - Learn about all available commands
 * Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
