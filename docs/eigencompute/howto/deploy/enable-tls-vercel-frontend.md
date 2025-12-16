@@ -1,5 +1,5 @@
 ---
-title: Enable TLS when Deploying to Vercel
+title: Enable TLS when deploying to Vercel
 sidebar_position: 2
 ---
 

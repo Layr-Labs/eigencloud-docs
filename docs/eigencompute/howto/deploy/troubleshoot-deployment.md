@@ -1,7 +1,24 @@
 ---
-title: Troubleshoot Deployment
+title: Troubleshoot deployment
 sidebar_position: 6
 ---
+
+## Dockerfile requirements
+
+```dockerfile
+# Must target linux/amd64
+FROM --platform=linux/amd64 node:18
+
+# Must run as root (TEE requirement)
+USER root
+
+# Application code
+WORKDIR /app
+COPY . .
+RUN npm install
+
+CMD ["npm", "start"]
+```
 
 ## Build fails: platform mismatch
 

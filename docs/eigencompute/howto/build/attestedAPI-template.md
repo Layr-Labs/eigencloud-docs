@@ -1,6 +1,6 @@
 ---
-title: Attested API
-sidebar_position: 1
+title: Attested API example
+sidebar_position: 3
 ---
 
 The Attested API example demonstrates how to make signed messages accessible via API.

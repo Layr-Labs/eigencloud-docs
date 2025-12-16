@@ -25,7 +25,7 @@ The `--environment` option is available for all `auth` subcommands:
 ## generate
 
 Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md).
+refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md).
 
 ### Synopsis
 
@@ -36,12 +36,11 @@ refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-k
 `--store` (boolean)
 
 > Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md). Default is false.
+refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md). Default is false.
 
 ## login
 
-Store an existing authentication key securely in your OS keyring. For more information on logging in to EigenX, refer to
-[Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
+Store an existing authentication key securely in your OS keyring. 
 
 ### Synopsis
 
@@ -63,8 +62,7 @@ Remove stored authentication keys from your OS keyring.
 
 ## whoami
 
-Display current authentication status and wallet address. For more information on checking your authentication status,
-refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
+Display current authentication status and wallet address. 
 
 ### Synopsis
 
@@ -72,8 +70,7 @@ refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authen
 
 ## list
 
-List all stored authentication keys organized by environment. For more information on listing keys,
-refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
+List all stored authentication keys organized by environment. 
 
 ### Synopsis 
 

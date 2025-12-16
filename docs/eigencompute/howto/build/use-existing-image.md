@@ -1,6 +1,6 @@
 ---
-title: Use Existing Image
-sidebar_position: 3
+title: Use existing image
+sidebar_position: 2
 ---
 
 If you have a containerized application, you don't need to start from a template when creating an EigenCompute application:
@@ -11,7 +11,6 @@ cd my-existing-project
 # Deploy directly - the CLI will prompt for Dockerfile and .env paths
 ecloud compute app deploy
 ```
-The CLI will prompt you for [billing details](../../get-started/billing.md) in our payment portal.
 
 **Requirements for existing projects:**
 - **Dockerfile** - Must target `linux/amd64` and run as root user
@@ -31,5 +30,3 @@ docker push myregistry/myapp:v1.0
 # Deploy using the image reference
 ecloud compute app deploy myregistry/myapp:v1.0
 ```
-
-The CLI will prompt you for [billing details](../../get-started/billing.md) in our payment portal.

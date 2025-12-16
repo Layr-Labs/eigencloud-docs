@@ -47,7 +47,7 @@ Options available for all `app` subcommands are:
 ## create
 
 Create an application project from a template with all necessary configuration files. For more information on creating
-applications, refer to [Create Application](../../../howto/build/create-app-from-template.md).
+applications, refer to [Quickstart](../../../get-started/quickstart.md).
 
 ### Synopsis
 
@@ -235,7 +235,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ## list
 
-List all applications deployed by your account in the current environment. For usage examples, refer to [Monitor](../../../howto/operate/monitor.md).
+List all applications deployed by your account in the current environment. 
 
 ### Synopsis
 
@@ -277,7 +277,7 @@ Display detailed information about a specific application.
 
 ## logs
 
-View application logs from your TEE instance. For usage examples, refer to [Monitor](../../../howto/operate/monitor.md).
+View application logs from your TEE instance. 
 
 ### Synopsis
 
@@ -344,7 +344,7 @@ Add TLS/HTTPS configuration to your project for secure domain access. This comma
 * Caddy Server Configuration - Automatic HTTPS with [Let's Encrypt](https://letsencrypt.org/) using [Caddyfile](https://caddyserver.com/docs/caddyfile)
 * Environment Variables - Example TLS configuration in `.env.example.tls`
 
-For more information on configuring TLS, refer to [Configure TLS](../../../howto/deploy-to-production/configure-tls.md).
+For more information on configuring TLS, refer to [Configure TLS](../../../howto/deploy/configure-tls.md).
 
 ### Synopsis
 

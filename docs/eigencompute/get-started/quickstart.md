@@ -85,6 +85,28 @@ This creates a new project with:
 - A `Dockerfile` configured for TEE deployment
 - An `.env.example` file for environment variables
 
+Templates include:
+
+1. TEE-Ready Dockerfile. Pre-configured to:
+  - Target `linux/amd64` architecture.
+  - Run as root user (required for TEE).
+  - Include necessary system dependencies.
+
+2. Environment Variable Handling. Access to:
+  - `MNEMONIC` - Auto-generated wallet mnemonic.
+  - Custom environment variables from `.env`.
+
+3. Example Code. Demonstrates:
+  - Accessing the TEE mnemonic.
+  - Creating wallet accounts.
+  - Making onchain transactions.
+  - Environment variable usage.
+
+4. Development Setup. Includes:
+  - Local development instructions.
+  - Testing guidelines.
+  - Deployment best practices.
+
 ### Configure Environment Variables
 
 ```bash
@@ -102,9 +124,19 @@ DATABASE_URL=your_database_url
 NETWORK_PUBLIC=sepolia
 ```
 
-:::tip
 Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
+
+:::important Auto-Generated MNEMONIC
+The `MNEMONIC` environment variable is **automatically provided by KMS** at runtime. Any mnemonic in `.env.example` is just
+a placeholder. The TEE overwrites it with your app's unique, persistent KMS-generated mnemonic.
 :::
+
+### Test locally (if needed)
+
+```bash
+npm install
+npm run dev
+```
 
 ### Subscribe to EigenCompute
 
