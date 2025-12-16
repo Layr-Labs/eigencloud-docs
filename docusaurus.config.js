@@ -127,7 +127,7 @@ const redirects = [
 
   {
       from: '/products/eigencompute/howto/create-app-from-template',
-      to: '/eigencompute/howto/build/create-app-from-template',
+      to: '/eigencompute/get-started/quickstart',
   },
   {
       from: '/products/eigencompute/howto/use-app-wallet',
@@ -135,7 +135,7 @@ const redirects = [
   },
   {
       from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
-      to: '/eigencompute/howto/manage-auth-keys/create-auth-keys',
+      to: '/eigencompute/howto/create-use-auth-keys',
   },
 
   // Developer HowTo (handle both capitalized and lowercase versions)
@@ -428,7 +428,7 @@ const redirects = [
   },
   {
     from: '/products/eigencompute/howto/verify/verify-tee-signature',
-    to: '/eigencompute/howto/verify/verify-trust-guarantees'
+    to: '/eigencompute/howto/verify-trust-guarantees'
   },
   {
     from: '/products/eigenlayer/developers/howto/get-started/support',
