@@ -38,8 +38,8 @@ Before you begin, ensure you have:
 
 - [Docker](https://www.docker.com/get-started/) - To package and publish application images.
 - Sepolia Testnet ETH - For deployment transactions.
-- [Installed ecloud CLI](../../../get-started/quickstart#installation) and [authenticated](../../../get-started/quickstart#initial-setup).
-- [Subscribed to EigenCompute](../../../get-started/quickstart#subscribe-to-eigencompute).
+- [Installed ecloud CLI](../../get-started/quickstart) and [authenticated](../../get-started/quickstart#initial-setup).
+- [Subscribed to EigenCompute](../../get-started/quickstart#subscribe-to-eigencompute).
 
 ### 1. Create Application from Attested API template 
 
