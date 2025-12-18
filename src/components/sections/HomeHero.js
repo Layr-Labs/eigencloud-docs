@@ -13,25 +13,25 @@ function HomeHero() {
         </div>
         <h1 className={styles.h1}>Build on EigenCloud</h1>
         <div className={styles.subheading}>
-          EigenCloud brings blockchain verification to the real world, letting developers build applications, agents, and AVSs that can securely verify any input, data or event.
+          EigenCloud brings blockchain verification to the real world, letting developers build applications, agents, and services that can securely verify any input, data or event.
         </div>
         <div className={styles.divider} />
-        <div className={styles.learnTitle}>Learn about EigenCloud</div>
+        <div className={styles.learnTitle}>Get started building.</div>
         <div className={styles.cardsRow}>
           <FigmaCard
-            title="What is EigenLayer"
-            desc="The fundamentals of EigenLayer and how it enables shared security"
-            link="products/eigenlayer/concepts/eigenlayer-overview"
+            title="EigenAI"
+            desc="Verifiable, deterministic LLM inference."
+            link="/eigenai/concepts/eigenai-overview"
           />
           <FigmaCard
-            title="Data Availability with EigenDA"
-            desc="Fast, reliable data availability for high-throughput applications"
-            link="products/eigenda/core-concepts/overview"
+            title="EigenCompute"
+            desc="Verifiable containerized compute."
+            link="/eigencompute/concepts/eigencompute-overview"
           />
           <FigmaCard
-            title="Introduction to AVSs"
-            desc="Unlock fundamentally new possibilities for decentralized coordination"
-            link="products/eigenlayer/developers/Concepts/avs-developer-guide"
+            title="DevKit"
+            desc="Unified CLI for building EigenLayer AVSs."
+            link="/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs"
           />
         </div>
       </div>

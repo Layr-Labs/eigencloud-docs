@@ -6,13 +6,13 @@ function CommunityResourcesSection() {
   const resources = [
     {
       icon: '/img/community-avs.png',
-      title: 'Book an AVS Intro Call →',
-      description: 'Chat with the EigenLayer team about your AVS idea',
+      title: 'Book an Intro Call →',
+      description: 'Chat with the EigenLayer team about your idea',
       link: 'https://www.eigencloud.xyz/contact'
     },
     {
       icon: '/img/community-twitter.png',
-      title: 'Follow us on Twitter →',
+      title: 'Follow us on X →',
       description: 'Stay up to date with the latest updates',
       link: 'https://x.com/BuildOnEigen'
     },
@@ -24,8 +24,8 @@ function CommunityResourcesSection() {
     },
     {
       icon: '/img/community-discord.png',
-      title: 'Join the EigenLayer Community Discord →',
-      description: 'Join the Discord for discussions about EigenLayer',
+      title: 'Join the EigenCloud Community Discord →',
+      description: 'Join the Discord for discussions about EigenCloud',
       link: 'https://discord.com/invite/eigenlayer'
     },
   ];

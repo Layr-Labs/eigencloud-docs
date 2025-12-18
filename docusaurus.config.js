@@ -12,394 +12,202 @@ import path from "node:path";
 
 const redirects = [
   {
-     from: '/',
-     to: '/products/eigencloud/eigencloud-overview',
-  },
-  {
     from: '/eigenlayer/overview',
-    to: '/products/eigenlayer/concepts/eigenlayer-overview',
+    to: '/eigenlayer/concepts/eigenlayer-overview',
   },
   {
       from: '/products/eigencompute/get-started/get-started',
-      to: '/products/eigencompute/get-started/demo',
-  },
-  {
-      from: '/eigenlayer/overview/whitepaper',
-      to: '/products/eigenlayer/concepts/whitepaper',
+      to: 'eigencompute/get-started/demo',
   },
   {
       from: '/developers/Concepts/eigenlayer-contracts/core-contracts',
-      to: '/products/eigenlayer/developers/concepts/eigenlayer-contracts/core-contracts',
+      to: '/eigenlayer/developers/concepts/eigenlayer-contracts/core-contracts',
   },
   {
       from: '/developers/Concepts/eigenlayer-contracts/middleware-contracts',
-      to: '/products/eigenlayer/developers/concepts/eigenlayer-contracts/middleware-contracts',
+      to: '/eigenlayer/developers/concepts/eigenlayer-contracts/middleware-contracts',
   },
   {
       from: '/eigenlayer/deployed-contracts',
-      to: '/products/eigenlayer/developers/concepts/eigenlayer-contracts/deployed-contracts',
+      to: '/eigenlayer/developers/concepts/eigenlayer-contracts/deployed-contracts',
   },
   {
       from: '/restakers/restaking-guides/restaking-developer-guide',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-developer-guide',
-  },
-  {
-      from: '/eigenlayer/concepts/keys-and-signatures',
-      to: '/products/eigenlayer/concepts/keys-and-signatures',
-  },
-  {
-      from: '/eigenlayer/concepts/key-terms',
-      to: '/products/eigenlayer/concepts/key-terms',
-  },
-  {
-      from: '/eigenlayer/concepts/operator-sets/allocation-deallocation',
-      to: '/products/eigenlayer/concepts/operator-sets/allocation-deallocation',
-  },
-  {
-      from: '/eigenlayer/concepts/operator-sets/operator-sets-concept',
-      to: '/products/eigenlayer/concepts/operator-sets/operator-sets-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
-      to: '/products/eigenlayer/concepts/operator-sets/strategies-and-magnitudes',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-developer-guide',
   },
 
   // EigenCompute
 
   {
       from: '/products/eigencompute',
-      to: '/products/eigencompute/concepts/eigencompute-overview',
-  },
-
-  {
-      from: '/products/eigencompute/quickstart',
-      to: '/products/eigencompute/get-started/quickstart'
+      to: '/eigencompute/concepts/eigencompute-overview',
   },
 
   {
     from: '/products/eigencompute/get-started',
-    to: '/products/eigencompute/get-started/demo'
+    to: '/eigencompute/get-started/demo'
   },
 
   // Get Started
   {
     from: '/get-started/eigencloud-overview',
-    to: '/products/eigencloud/eigencloud-overview',
+    to: '/eigencloud/eigencloud-overview',
   },
 
 
-  // Rewards
-  {
-      from: '/eigenlayer/concepts/rewards/earners-claimers-recipients',
-      to: '/products/eigenlayer/concepts/rewards/earners-claimers-recipients',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/pi-split',
-      to: '/products/eigenlayer/concepts/rewards/pi-split',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-claiming-faq',
-      to: '/products/eigenlayer/concepts/rewards/rewards-claiming-faq',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-claiming',
-      to: '/products/eigenlayer/concepts/rewards/rewards-claiming',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-concept',
-      to: '/products/eigenlayer/concepts/rewards/rewards-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-split',
-      to: '/products/eigenlayer/concepts/rewards/rewards-split',
-  },
-  {
-      from: '/eigenlayer/concepts/rewards/rewards-submission',
-      to: '/products/eigenlayer/concepts/rewards/rewards-submission',
-  },
-  
-  // Slashing
-  {
-      from: '/eigenlayer/concepts/slashing/magnitudes-when-slashed',
-      to: '/products/eigenlayer/concepts/slashing/magnitudes-when-slashed',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/redistribution',
-      to: '/products/eigenlayer/concepts/slashing/redistribution',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/safety-delays-concept',
-      to: '/products/eigenlayer/concepts/slashing/safety-delays-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/slashable-stake-risks',
-      to: '/products/eigenlayer/concepts/slashing/slashable-stake-risks',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/slashing-concept',
-      to: '/products/eigenlayer/concepts/slashing/slashing-concept',
-  },
-  {
-      from: '/eigenlayer/concepts/slashing/unique-stake',
-      to: '/products/eigenlayer/concepts/slashing/unique-stake',
-  },
-  
-  {
-    from: '/developers/HowTo/build/slashing/implement-slashing',
-    to: '/products/eigenlayer/developers/howto/build/slashing/implement-slashing'
-  },
-  // UAM (User Access Management)
-  {
-      from: '/eigenlayer/concepts/uam/uam-accounts',
-      to: '/products/eigenlayer/concepts/uam/uam-accounts',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/uam-admins',
-      to: '/products/eigenlayer/concepts/uam/uam-admins',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/uam-appointees',
-      to: '/products/eigenlayer/concepts/uam/uam-appointees',
-  },
-  {
-      from: '/eigenlayer/concepts/uam/user-access-management',
-      to: '/products/eigenlayer/concepts/uam/user-access-management',
-  },
-  
-  // Economy -> Reference
-  {
-      from: '/eigenlayer/economy/economy-calculation-and-formulas',
-      to: 'products/eigenlayer/reference/economy/economy-calculation-and-formulas',
-  },
-  {
-      from: '/eigenlayer/economy/sidecar',
-      to: '/products/eigenlayer/reference/economy/sidecar',
-  },
-  
-  // Legal
-  {
-      from: '/eigenlayer/legal/disclaimers',
-      to: '/products/legal/disclaimers',
-  },
-  {
-      from: '/eigenlayer/legal/privacy-policy',
-      to: '/products/legal/privacy-policy',
-  },
-  {
-      from: '/eigenlayer/legal/terms-of-service',
-      to: '/products/legal/terms-of-service',
-  },
-  
-  // Overview -> Concepts (additional mappings)
-  {
-      from: '/eigenlayer/overview/key-terms',
-      to: '/products/eigenlayer/concepts/key-terms',
-  },
-  {
-      from: '/eigenlayer/overview/support',
-      to: '/products/eigenlayer/support',
-  },
-  
-  // Reference
-  {
-      from: '/eigenlayer/reference/allocation-manager-interface',
-      to: '/products/eigenlayer/concepts/operator-sets/allocation-deallocation',
-  },
-  {
-      from: '/eigenlayer/reference/safety-delays-reference',
-      to: '/products/eigenlayer/reference/safety-delays-reference',
-  },
-  
-  // Resources -> Reference
-  {
-      from: '/eigenlayer/resources/apis-and-dashboards',
-      to: '/products/eigenlayer/reference/apis-and-dashboards',
-  },
-  {
-      from: '/eigenlayer/resources/infinite-hackathon',
-      to: '/',
-  },
-  {
-      from: '/eigenlayer/resources/learning-resources',
-      to: '/products/eigenlayer/reference/learning-resources',
-  },
-  
+
   // Top-level files
-  {
-      from: '/eigenlayer/releases',
-      to: '/products/eigenlayer/releases',
-  },
+
   {
       from: '/get-started/eigencloud/eigencloud-overview',
-      to: '/products/eigencloud/eigencloud-overview',
+      to: '/eigencloud/eigencloud-overview',
   },
   {
      from: '/get-started/developers/concepts/build-faster-hourglass-devkit',
-     to: '/products/eigenlayer/concepts/build-faster-hourglass-devkit',
+     to: '/eigenlayer/concepts/build-faster-hourglass-devkit',
   },
   {
      from: '/get-started/developers/concepts/understanding-avs-on-eigenlayer',
-     to: '/products/eigenlayer/concepts/understanding-avs-on-eigenlayer',
+     to: '/eigenlayer/concepts/understanding-avs-on-eigenlayer',
   },
   {
      from: '/get-started/developers/concepts/why-build-on-eigenlayer',
-     to: '/products/eigenlayer/concepts/why-build-on-eigenlayer',
+     to: '/eigenlayer/concepts/why-build-on-eigenlayer',
   },
   {
      from: '/developers/howto/build-test-locally',
-     to: '/products/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
+     to: '/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
   },
   {
      from: '/get-started/developers/howto/start-building-task-based-avs',
-     to: '/products/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
+     to: '/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
   },
   {
      from: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
-     to: '/products/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+     to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
   },
   {
      from: '/products/eigenlayer/developers/howto/get-started/quickstart',
-     to: '/products/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+     to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
   },
 
-  // Security
-  {
-      from: '/eigenlayer/security/audits',
-      to: '/products/eigenlayer/security/audits',
-  },
-  {
-      from: '/eigenlayer/security/bug-bounty',
-      to: '/products/eigenlayer/security/bug-bounty',
-  },
-  {
-      from: '/eigenlayer/security/guardrails',
-      to: '/products/eigenlayer/security/guardrails',
-  },
-  {
-      from: '/eigenlayer/security/multisig-governance',
-      to: '/products/eigenlayer/security/multisig-governance',
-  },
-  {
-      from: '/eigenlayer/security/withdrawal-delay',
-      to: '/products/eigenlayer/security/withdrawal-delay',
-  },
-  
+
   // DEVELOPERS SECTION
   
   // Developer Concepts (handle both capitalized and lowercase versions)
   {
       from: '/developers/Concepts/avs-contracts',
-      to: '/products/eigenlayer/developers/concepts/avs-contracts',
+      to: '/eigenlayer/developers/concepts/avs-contracts',
   },
   {
       from: '/developers/Concepts/avs-developer-guide',
-      to: '/products/eigenlayer/developers/concepts/avs-developer-guide',
+      to: '/eigenlayer/developers/concepts/avs-developer-guide',
   },
   {
       from: '/developers/Concepts/avs-keys',
-      to: '/products/eigenlayer/developers/concepts/slashing/key-management-redistributable-slashing',
+      to: '/eigenlayer/developers/concepts/slashing/key-management-redistributable-slashing',
   },
   {
       from: '/developers/Concepts/avs-security-models',
-      to: '/products/eigenlayer/developers/concepts/avs-security-models',
+      to: '/eigenlayer/developers/concepts/avs-security-models',
   },
   {
       from: '/developers/Concepts/slashing/slashing-concept-developers',
-      to: '/products/eigenlayer/developers/concepts/slashing/slashing-concept-developers',
+      to: '/eigenlayer/developers/concepts/slashing/slashing-concept-developers',
   },
   {
       from: '/developers/Concepts/task',
-      to: '/products/eigenlayer/developers/concepts/task',
+      to: '/eigenlayer/developers/concepts/task',
   },
   {
       from: '/developers/Concepts/uam-for-avs',
-      to: '/products/eigenlayer/developers/concepts/uam-for-avs',
+      to: '/eigenlayer/developers/concepts/uam-for-avs',
   },
 
 
   {
       from: '/products/eigencompute/howto/create-app-from-template',
-      to: '/products/eigencompute/howto/build/create-app-from-template',
+      to: '/eigencompute/howto/build/create-app-from-template',
   },
   {
       from: '/products/eigencompute/howto/use-app-wallet',
-      to: '/products/eigencompute/howto/build/use-app-wallet',
+      to: '/eigencompute/howto/build/use-app-wallet',
   },
   {
       from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
-      to: '/products/eigencompute/howto/deploy/manage-auth-keys/create-auth-keys',
-  },
-  {
-      from: '/products/eigencompute/howto/manage-auth-keys/manage-authentication-keys',
-      to: '/products/eigencompute/howto/deploy/manage-auth-keys/manage-authentication-keys',
+      to: '/eigencompute/howto/manage-auth-keys/create-auth-keys',
   },
 
   // Developer HowTo (handle both capitalized and lowercase versions)
   {
       from: '/developers/HowTo/deployment-testnet-mainnet',
-      to: '/products/eigenlayer/developers/howto/deploy/deployment-testnet-mainnet',
+      to: '/eigenlayer/developers/howto/deploy/deployment-testnet-mainnet',
   },
   {
       from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
-      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+      to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
   },
   {
       from: '/developers/HowTo/get-started/quickstart',
-      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+      to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
   },
   {
       from: '/developers/HowTo/get-started/support',
-      to: '/products/eigenlayer/developers/howto/get-started-without-devkit/support',
+      to: '/eigenlayer/developers/howto/get-started-without-devkit/support',
   },
   {
       from: '/developers/HowTo/publish/onboard-avs-dashboard',
-      to: '/products/eigenlayer/developers/howto/publish/onboard-avs-dashboard',
+      to: '/eigenlayer/developers/howto/publish/onboard-avs-dashboard',
   },
   {
       from: '/developers/HowTo/test/obtain-testnet-eth',
-      to: '/products/eigenlayer/developers/howto/test/obtain-testnet-eth',
+      to: '/eigenlayer/developers/howto/test/obtain-testnet-eth',
   },
   {
       from: '/developers/HowTo/test/test-avs',
-      to: '/products/eigenlayer/developers/howto/test/test-avs',
+      to: '/eigenlayer/developers/howto/test/test-avs',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/stake-weighting',
-    to: '/products/eigenlayer/developers/concepts/multichain/stake-weighting',
+    to: '/eigenlayer/developers/concepts/multichain/stake-weighting',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/multichain-integration-patterns',
-    to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
+    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
-    to: '/products/eigenlayer/developers/howto/build/multichain/verification-methods',
+    to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
+  },
+  {
+    from: '/products/eigencompute/quickstart',
+    to: '/eigencompute/get-started/quickstart',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
-    to: '/products/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
+    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
   },
   {
    from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
-   to: '/products/eigenlayer/developers/howto/build/multichain/verification-methods',
+   to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
   },
 
   // Developer Reference (handle both capitalized and lowercase versions)
   {
       from: '/developers/Reference/ai-resources',
-      to: '/products/ai-resources',
+      to: '/eigencloud/ai-resources',
   },
   {
       from: '/developers/Reference/avs-developer-best-practices',
-      to: '/products/eigenlayer/developers/reference/avs-developer-best-practices',
+      to: '/eigenlayer/developers/reference/avs-developer-best-practices',
   },
   {
       from: '/developers/Reference/eigenlayer-sdks',
-      to: '/products/eigenlayer/developers/reference/eigenlayer-sdks',
+      to: '/eigenlayer/developers/reference/eigenlayer-sdks',
   },
   {
       from: '/developers/Reference/resources',
-      to: '/products/eigenlayer/developers/reference/resources',
+      to: '/eigenlayer/developers/reference/resources',
   },
   
   // OPERATORS SECTION
@@ -407,76 +215,76 @@ const redirects = [
   // Operator Concepts
   {
       from: '/operators/concepts/operator-introduction',
-      to: '/products/eigenlayer/operators/concepts/operator-introduction',
+      to: '/eigenlayer/operators/concepts/operator-introduction',
   },
   {
       from: '/operators/concepts/operator-keys',
-      to: '/products/eigenlayer/operators/concepts/operator-keys',
+      to: '/eigenlayer/operators/concepts/operator-keys',
   },
   {
       from: '/operators/concepts/uam-for-operators',
-      to: '/products/eigenlayer/operators/concepts/uam-for-operators',
+      to: '/eigenlayer/operators/concepts/uam-for-operators',
   },
   
   // Operator HowTo
   {
       from: '/operators/howto/avs-operator-risks-mitigations-bp',
-      to: '/products/eigenlayer/operators/howto/avs-operator-risks-mitigations-bp',
+      to: '/eigenlayer/operators/howto/avs-operator-risks-mitigations-bp',
   },
   {
       from: '/operators/howto/claimrewards/batch-claim-rewards',
-      to: '/products/eigenlayer/operators/howto/claimrewards/batch-claim-rewards',
+      to: '/eigenlayer/operators/howto/claimrewards/batch-claim-rewards',
   },
   {
       from: '/operators/howto/claimrewards/claim-rewards-cli',
-      to: '/products/eigenlayer/operators/howto/claimrewards/claim-rewards-cli',
+      to: '/eigenlayer/operators/howto/claimrewards/claim-rewards-cli',
   },
   {
       from: '/operators/howto/claimrewards/claim-rewards-smart-contract',
-      to: '/products/eigenlayer/operators/howto/claimrewards/claim-rewards-smart-contract',
+      to: '/eigenlayer/operators/howto/claimrewards/claim-rewards-smart-contract',
   },
   {
       from: '/operators/howto/operator-installation',
-      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
+      to: '/eigenlayer/operators/howto/registeroperators/operator-installation',
   },
   
   // Fix typo: confirgurerewards -> configurerewards (handles both old typo and corrected version)
   {
       from: '/operators/howto/confirgurerewards/rewards-snapshot-data',
-      to: '/products/eigenlayer/operators/howto/configurerewards/rewards-snapshot-data',
+      to: '/eigenlayer/operators/howto/configurerewards/rewards-snapshot-data',
   },
   {
       from: '/operators/howto/configurerewards/rewards-snapshot-data',
-      to: '/products/eigenlayer/operators/howto/configurerewards/rewards-snapshot-data',
+      to: '/eigenlayer/operators/howto/configurerewards/rewards-snapshot-data',
   },
   {
       from: '/operators/howto/confirgurerewards/set-pi-split',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-pi-split',
+      to: '/eigenlayer/operators/howto/configurerewards/set-pi-split',
   },
   {
       from: '/operators/howto/configurerewards/set-pi-split',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-pi-split',
+      to: '/eigenlayer/operators/howto/configurerewards/set-pi-split',
   },
   {
       from: '/operators/howto/confirgurerewards/set-rewards-claimer',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-rewards-claimer',
+      to: '/eigenlayer/operators/howto/configurerewards/set-rewards-claimer',
   },
   {
       from: '/operators/howto/configurerewards/set-rewards-claimer',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-rewards-claimer',
+      to: '/eigenlayer/operators/howto/configurerewards/set-rewards-claimer',
   },
   {
       from: '/operators/howto/confirgurerewards/set-rewards-split',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-rewards-split',
+      to: '/eigenlayer/operators/howto/configurerewards/set-rewards-split',
   },
   {
       from: '/operators/howto/configurerewards/set-rewards-split',
-      to: '/products/eigenlayer/operators/howto/configurerewards/set-rewards-split',
+      to: '/eigenlayer/operators/howto/configurerewards/set-rewards-split',
   },
   
   {
       from: '/operators/howto/managekeys/institutional-operators',
-      to: '/products/eigenlayer/operators/howto/managekeys/institutional-operators',
+      to: '/eigenlayer/operators/howto/managekeys/institutional-operators',
   },
   {
       from: '/operators/howto/managekeys/solo-operators',
@@ -484,33 +292,29 @@ const redirects = [
   },
   {
       from: '/operators/howto/operator-content-guidelines',
-      to: '/products/eigenlayer/operators/howto/operator-content-guidelines',
-  },
-  {
-      from: '/operators/howto/operator-installation',
-      to: '/products/eigenlayer/operators/howto/registeroperators/operator-installation',
+      to: '/eigenlayer/operators/howto/operator-content-guidelines',
   },
   {
       from: '/operators/howto/operator-sets',
-      to: '/products/eigenlayer/operators/howto/operator-sets',
+      to: '/eigenlayer/operators/howto/operator-sets',
   },
   {
       from: '/operators/howto/troubleshooting',
-      to: '/products/eigenlayer/operators/howto/troubleshooting',
+      to: '/eigenlayer/operators/howto/troubleshooting',
   },
   {
       from: '/operators/howto/uam/op-add-remove-admins',
-      to: '/products/eigenlayer/operators/howto/uam/op-add-remove-admins',
+      to: '/eigenlayer/operators/howto/uam/op-add-remove-admins',
   },
   {
       from: '/operators/howto/uam/op-add-remove-appointees',
-      to: '/products/eigenlayer/operators/howto/uam/op-add-remove-appointees',
+      to: '/eigenlayer/operators/howto/uam/op-add-remove-appointees',
   },
   
   // Operator Reference
   {
       from: '/operators/reference/operator-faq',
-      to: '/products/eigenlayer/operators/reference/operator-faq',
+      to: '/eigenlayer/operators/reference/operator-faq',
   },
   
   // RESTAKERS SECTION
@@ -518,79 +322,143 @@ const redirects = [
   // Restaker Concepts
   {
     from: '/operators/howto/managekeys/solo-stakers',
-    to: '/products/eigenlayer/operators/howto/managekeys/solo-stakers',
+    to: '/eigenlayer/operators/howto/managekeys/solo-stakers',
   },
   {
       from: '/restakers/concepts/native-restaking-withdrawal-delays',
-      to: '/products/eigenlayer/restakers/concepts/native-restaking-withdrawal-delays',
+      to: '/eigenlayer/restakers/concepts/native-restaking-withdrawal-delays',
   },
   {
       from: '/restakers/concepts/overview',
-      to: '/products/eigenlayer/restakers/concepts/overview',
+      to: '/eigenlayer/restakers/concepts/overview',
   },
   
   // Restaking Guides (comprehensive coverage of the 0-restaking-user-guide structure)
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/liquid-restaking/restake-lsts',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/liquid-restaking/restake-lsts',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/liquid-restaking/restake-lsts',
   },
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/liquid-restaking/withdraw-from-eigenlayer',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/liquid-restaking/withdraw-from-eigenlayer',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/liquid-restaking/withdraw-from-eigenlayer',
   },
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/native-restaking',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
   },
   {
     from: '/restakers/restaking-guides/restaking-user-guide/native-restaking',
-    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
+    to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/',
   },
   {
     from: '/restakers/restaking-guides/overview',
-    to: '/products/eigenlayer/restakers/concepts/overview'
+    to: '/eigenlayer/restakers/concepts/overview'
   },
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/restaker-delegation/delegate-to-an-operator',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/delegate-to-an-operator',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/delegate-to-an-operator',
   },
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/restaker-delegation/redelegation-process',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/redelegation-process',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/redelegation-process',
   },
   {
       from: '/restakers/restaking-guides/0-restaking-user-guide/restaker-delegation/undelegate-from-an-operator-and-initiate-withdrawal',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/undelegate-from-an-operator-and-initiate-withdrawal',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/restaker-delegation/undelegate-from-an-operator-and-initiate-withdrawal',
   },
   {
       from: '/restakers/restaking-guides/1-restaking-developer-guide',
-      to: '/products/eigenlayer/restakers/restaking-guides/restaking-developer-guide',
+      to: '/eigenlayer/restakers/restaking-guides/restaking-developer-guide',
   },
   {
       from: '/restakers/restaking-guides/claim-rewards-app',
-      to: '/products/eigenlayer/restakers/restaking-guides/claim-rewards-app',
+      to: '/eigenlayer/restakers/restaking-guides/claim-rewards-app',
   },
   {
       from: '/restakers/restaking-guides/testnet/1-restaking-developer-guide',
-      to: '/products/eigenlayer/restakers/restaking-guides/testnet/restaking-developer-guide',
+      to: '/eigenlayer/restakers/restaking-guides/testnet/restaking-developer-guide',
   },
   {
       from: '/restakers/restaking-guides/testnet',
-      to: '/products/eigenlayer/restakers/restaking-guides/testnet/',
+      to: '/eigenlayer/restakers/restaking-guides/testnet/',
   },
   {
       from: '/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
-      to: '/products/eigenlayer/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
+      to: '/eigenlayer/restakers/restaking-guides/testnet/obtaining-testnet-eth-and-liquid-staking-tokens-lsts',
   },
   {
     from: '/restakers/restaking-guides/restaking-user-guide/native-restaking/create-eigenpod-and-set-withdrawal-credentials/repointing-a-validators-withdrawal-credentials',
-    to: '/products/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/'
+    to: '/eigenlayer/restakers/restaking-guides/restaking-user-guide/native-restaking/'
+  },
+  {
+    from: '/developers/avs-developer-guide',
+    to: '/eigenlayer/developers/concepts/avs-developer-guide'
   },
 
   // EigenAI section
   {
     from: '/products/eigenai/eigenai-overview',
-    to: '/products/eigenai/concepts/eigenai-overview'
+    to: '/eigenai/concepts/eigenai-overview'
+  },
+
+  //External references
+  {
+    from: '/developers/slashing-background',
+    to: '/eigenlayer/developers/concepts/slashing/slashing-concept-developers'
+  },
+  {
+    from: '/products/ai-resources',
+    to: '/eigencloud/ai-resources'
+  },
+  {
+    from: '/products/eigencompute/concepts/eigencompute-applications',
+    to: '/eigencompute/get-started/sample-apps'
+  },
+  {
+    from: '/products/eigencompute/sample-apps',
+    to: '/eigencompute/get-started/sample-apps'
+  },
+  {
+    from: '/products/eigencompute/eigencompute-overview',
+    to: '/eigencompute/concepts/eigencompute-overview'
+  },
+  {
+    from: '/products/eigencompute/get-started/quickstart',
+    to: '/eigencompute/get-started/quickstart'
+  },
+  {
+    from: '/products/eigencompute/howto/verify/verify-tee-signature',
+    to: '/eigencompute/howto/verify/verify-trust-guarantees'
+  },
+  {
+    from: '/products/eigenlayer/developers/howto/get-started/support',
+    to: '/eigenlayer/developers/howto/get-started-without-devkit/support'
+  },
+
+  //Legal
+  {
+    from: '/products/legal/privacy-policy',
+    to: '/eigencloud/legal/privacy-policy'
+  },
+  {
+    from: '/products/legal/terms-of-service',
+    to: '/eigencloud/legal/terms-of-service'
+  },
+  {
+     from: '/products/eigenlayer/legal/acceptable-use-policy',
+     to: '/eigencloud/legal/acceptable-use-policy'
+  },
+  {
+     from: '/products/eigenlayer/legal/disclosures',
+     to: '/eigencloud/legal/disclosures'
+  },
+  {
+     from: '/products/eigenlayer/legal/privacy-policy',
+     to: '/eigencloud/legal/privacy-policy'
+  },
+  {
+     from: '/products/eigenlayer/legal/terms-of-service',
+     to: '/eigencloud/legal/terms-of-service'
   },
 ]
 
@@ -613,6 +481,9 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
 
+  // Added this to help with redirects but not working
+  //trailingSlash: false,
+
   markdown: {
     mermaid: true
   },
@@ -633,9 +504,9 @@ const config = {
         loadContent: async () => {
           const { siteDir } = context;
           const contentDir = path.join(siteDir, "docs");
-          const developersDir = path.join(siteDir, "docs/products/eigenlayer/developers")
-          const operatorsDir = path.join(siteDir, "docs/products/eigenlayer/operators")
-          const eigenDADir = path.join(siteDir, "docs/products/eigenda")
+          const developersDir = path.join(siteDir, "docs/eigenlayer/developers")
+          const operatorsDir = path.join(siteDir, "docs/eigenlayer/operators")
+          const eigenDADir = path.join(siteDir, "docs/eigenda")
           const allMd = [];
           const developersMd = []
           const operatorsMd = []
@@ -712,17 +583,29 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects,
+
         createRedirects(existingPath) {
+              if (existingPath === '/eigencompute/get-started/quickstart') {
+                return ['/products/eigencompute/quickstart'];
+              }
+              const folderMoves = [
+                ['/products/eigencompute/', '/eigencompute/'],
+                ['/products/eigenai/', '/eigenai/'],
+                ['/products/eigencloud/', '/eigencloud/'],
+                ['/products/eigenda/', '/eigenda/'],
+                ['/products/eigenlayer/', '/eigenlayer/'],
+              ];
 
-          // eigenlayer redirects
-          if (existingPath.includes('/eigenlayer')) {
-            return [
-              existingPath.replace('/eigenlayer', ''),
-            ];
-          }
+              for (const [oldDir, newDir] of folderMoves) {
+                // When Docusaurus generates the new path (e.g. /eigenai/foo)
+                // create a redirect from the old one (/products/eigenai/foo)
+                if (existingPath.startsWith(newDir)) {
+                  return [existingPath.replace(newDir, oldDir)];
+                }
+              }
 
-          return undefined; // Return a falsy value: no redirect created
-        },
+              return undefined;
+            },
       },
     ],
   ],
@@ -777,12 +660,35 @@ const config = {
         },
         items: [
           {
-            to: "products/eigencloud/eigencloud-overview",
-            label: "Products",
-            position: "left",
-            activeBasePath: 'products/',
+             to: "eigencloud/eigencloud-overview",
+             label: "EigenCloud",
+             position: "left",
+             activeBasePath: 'eigencloud',
           },
-
+          {
+            to: "eigencompute/concepts/eigencompute-overview",
+            label: "EigenCompute",
+            position: "left",
+            activeBasePath: 'eigencompute',
+          },
+          {
+            to: "eigenai/concepts/eigenai-overview",
+            label: "EigenAI",
+            position: "left",
+            activeBasePath: 'eigenai',
+          },
+          {
+            to: "eigenlayer/concepts/eigenlayer-overview",
+            label: "EigenLayer",
+            position: "left",
+            activeBasePath: 'eigenlayer',
+          },
+          {
+            to: "eigenda/core-concepts/overview",
+            label: "EigenDA",
+            position: "left",
+            activeBasePath: 'eigenda',
+          },
           {
             href: "https://github.com/Layr-Labs/eigencloud-docs",
             className: "header--github-link",
@@ -795,27 +701,27 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "EigenLayer",
+            title: "EigenCloud",
             items: [
               {
                 label: "About",
-                href: "https://www.eigenlayer.xyz/",
+                href: "https://www.eigencloud.xyz/",
               },
               {
                 label: "Privacy Policy",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/privacy-policy",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/privacy-policy",
               },
               {
                 label: "Terms of Service",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/terms-of-service",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/terms-of-service",
               },
               {
                 label: "Disclaimers",
-                href: "https://docs.eigenlayer.xyz/eigenlayer/legal/disclaimers",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/disclaimers",
               },
               {
                 label: "Acceptable Use Policy",
-                href: "https://docs.eigencloud.xyz/products/eigenlayer/legal/acceptable-use-policy",
+                href: "https://docs.eigencloud.xyz/eigencloud/legal/acceptable-use-policy",
               },
             ],
           },
@@ -835,8 +741,8 @@ const config = {
                 href: "https://discord.com/invite/eigenlayer",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/eigenlayer",
+                label: "X",
+                href: "https://twitter.com/eigencloud",
               },
             ],
           },
@@ -858,8 +764,8 @@ const config = {
       },
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
+          autoCollapseCategories: false,
         },
       },
       prism: {
@@ -872,6 +778,11 @@ const config = {
     // Object format.
     {
       src: '/js/plain.js',
+      async: true,
+    },
+    // Cookie3 Analytics
+    {
+      src: '/js/cookie3.js',
       async: true,
     },
     // {

@@ -1,0 +1,239 @@
+---
+title: Use EigenAI
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Get Started with a Token Grant 
+
+See [Try EigenAI](../try-eigenai.md#get-started-for-free) for information on obtaining a token grant to get started for free.
+
+We're starting off with supporting the `gpt-oss-120b-f16` and `qwen3-32b-128k-bf16` models based on initial demand and expanding from there. To get started or request another model, visit our [onboarding page](https://onboarding.eigencloud.xyz/).
+
+## Chat Completions API Reference
+
+Refer to the [swagger documentation for the EigenAI API](https://docs.eigencloud.xyz/api).
+
+## Chat Completions API Examples
+
+<Tabs>
+    <TabItem value="testnet" label="Testnet Request">
+        ```bash
+        $ curl -X POST https://eigenai-sepolia.eigencloud.xyz/v1/chat/completions \
+        -H "X-API-Key: <api-key>" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "gpt-oss-120b-f16",
+          "max_tokens": 120,
+          "seed": 42,
+          "messages": [{"role": "user", "content": "Write a story about programming"}]
+        }' | jq
+        ```
+    </TabItem>
+    <TabItem value="mainnet" label="Mainnet Request">
+    ```bash
+    $ curl -X POST https://eigenai.eigencloud.xyz/v1/chat/completions \
+    -H "X-API-Key: <api-key>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gpt-oss-120b-f16",
+      "max_tokens": 120,
+      "seed": 42,
+      "messages": [{"role": "user", "content": "Write a story about programming"}]
+    }' | jq
+    ```
+    </TabItem>
+
+  <TabItem value="response" label="Response">
+    ```
+    {
+      "id": "chatcmpl-eigenai-llama-1758835890305965",
+      "created": 1758835890,
+      "model": "gpt-oss-120b-f16",
+      "system_fingerprint": "eigenai-llama@0.1.0+eigenai-llama",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 72,
+        "total_tokens": 192
+      },
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asks: \"Write a story about programming\". Need to produce a story. Probably creative, about programming, characters, maybe AI, debugging, etc. Should be engaging. No constraints other than story. I will craft a narrative with a protagonist, their journey, maybe metaphorical. Use vivid language. Provide a story. Ensure it's appropriate. Probably around 800-1200 words? Not too long, but enough. I'll deliver.<|end|><|start|>assistant<|channel|>final<|message|>**The Compiler’s Apprentice**\n\nWhen Maya first walked into the cramped, fluorescent‑lit office of LumenTech"
+          },
+          "finish_reason": "length"
+        }
+      ],
+       "signature": "2ee2e48ae9f6796c1de67977981d937c886efec3957c9bfc28f7a3f3be8262f04af609f22878b3bc2f0c4858fd04005d76877208881abd473208317df1dcfaf11c"
+    }
+    ```
+   </TabItem>
+</Tabs>
+
+### OpenAI Client usage
+
+#### Step 1
+
+<Tabs>
+    <TabItem value="step1Request" label="Request">
+    ```python
+    from openai import OpenAI
+
+    client = OpenAI(
+        base_url="https://eigenai.eigencloud.xyz/v1",
+        default_headers={"x-api-key": api_key},
+    )
+
+    tools: List[Dict[str, Any]] = [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA",
+                        },
+                        "unit": {
+                            "type": "string",
+                            "enum": ["celsius", "fahrenheit"],
+                        },
+                    },
+                    "required": ["location"],
+                },
+            },
+        }
+    ]
+
+    step1 = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": "What is the weather like in Boston today?"}],
+        tools=tools,
+        tool_choice="auto",
+    )
+    ```
+    </TabItem>
+    <TabItem value="step1Responce" label="Response">
+    ```python
+    {
+      "id": "chatcmpl-eigenai-llama-1758836092182536",
+      "object": "chat.completion",
+      "created": 1758727565,
+      "model": "gpt-oss-120b-f16",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_YDzzMHFtp1yuURbiPe09uyHt",
+                "type": "function",
+                "function": {
+                  "name": "get_current_weather",
+                  "arguments": "{\"location\":\"Boston, MA\",\"unit\":\"fahrenheit\"}"
+                }
+              }
+            ],
+            "refusal": null,
+            "annotations": []
+          },
+          "finish_reason": "tool_calls"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 81,
+        "completion_tokens": 223,
+        "total_tokens": 304,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 192,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+    }
+    ```
+    </TabItem>
+</Tabs>
+
+#### Step 2
+
+<Tabs>
+    <TabItem value="step2Request" label="Request">
+    ```python
+    messages_step2: List[Dict[str, Any]] = [
+        {"role": "user", "content": "What is the weather like in Boston today?"},
+        {
+            "role": "assistant",
+            "content": None,
+            "tool_calls": [
+                {
+                    "id": tool_call_id,
+                    "type": "function",
+                    "function": {
+                        "name": "get_current_weather",
+                        "arguments": json.dumps({"location": "Boston, MA", "unit": "fahrenheit"}),
+                    },
+                }
+            ],
+        },
+        {"role": "tool", "tool_call_id": tool_call_id, "content": "58 degrees"},
+        {"role": "user", "content": "Do I need a sweater for this weather?"},
+    ]
+
+    step2 = client.chat.completions.create(model=model, messages=messages_step2)
+    ```
+    </TabItem>
+    <TabItem value="step2Response" label="Response">
+    ```python
+    {
+      "id": "chatcmpl-eigenai-llama-CJOZTszzusoHvAYYrW8PT5lv6vzKo",
+      "object": "chat.completion",
+      "created": 1758738719,
+      "model": "gpt-oss-120b-f16",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "At around 58°F in Boston you’ll feel a noticeable chill—especially if there’s any breeze or you’re out in the morning or evening. I’d recommend throwing on a light sweater or layering a long-sleeve shirt under a casual jacket. If you tend to run cold, go with a medium-weight knit; if you’re just mildly sensitive, a thin cardigan or pullover should be enough.",
+            "refusal": null,
+            "annotations": []
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 294,
+        "total_tokens": 361,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 192,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+    }
+    ```
+    </TabItem>
+</Tabs>
+
