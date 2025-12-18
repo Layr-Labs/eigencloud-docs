@@ -17,7 +17,7 @@ const redirects = [
   },
   {
       from: '/products/eigencompute/get-started/get-started',
-      to: 'eigencompute/get-started/demo',
+      to: 'eigencompute/get-started/quickstart',
   },
   {
       from: '/developers/Concepts/eigenlayer-contracts/core-contracts',
@@ -45,7 +45,7 @@ const redirects = [
 
   {
     from: '/products/eigencompute/get-started',
-    to: '/eigencompute/get-started/demo'
+    to: '/eigencompute/get-started/quickstart'
   },
 
   // Get Started
@@ -135,7 +135,7 @@ const redirects = [
   },
   {
       from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
-      to: '/eigencompute/howto/create-use-auth-keys',
+      to: '/eigencompute/howto/setup/create-use-auth-keys',
   },
 
   // Developer HowTo (handle both capitalized and lowercase versions)
@@ -428,7 +428,7 @@ const redirects = [
   },
   {
     from: '/products/eigencompute/howto/verify/verify-tee-signature',
-    to: '/eigencompute/howto/verify-trust-guarantees'
+    to: '/eigencompute/howto/operate/verify-trust-guarantees'
   },
   {
     from: '/products/eigenlayer/developers/howto/get-started/support',
