@@ -56,7 +56,7 @@ in the enclave, can retrieve the private key.
 
 4. Onchain deployment record: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
 
-5. Network access: Optionally [expose ports](../howto/configure/expose-ports.md) for HTTP endpoints, or [configure HTTPS](../get-started/quickstart.md#tlshttps-setup-optional) with a custom domain.
+5. Network access: Optionally [expose ports](../howto/deploy/expose-ports.md) for HTTP endpoints, or [configure HTTPS](../get-started/quickstart.md#tlshttps-setup-optional) with a custom domain.
 
 This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them.
 

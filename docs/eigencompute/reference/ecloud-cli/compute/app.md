@@ -95,7 +95,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `--dockerfile <path>, -f <path>` (string)
 
-> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../../howto/configure/expose-ports.md). Can be set using environment variable `ECLOUD_DOCKERFILE_PATH`.
+> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../../howto/deploy/expose-ports.md). Can be set using environment variable `ECLOUD_DOCKERFILE_PATH`.
 
 `--log-visibility <setting>` (string)
 
@@ -109,6 +109,12 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 `--instance-type <value>` (string)
 
 > Machine instance type to use. One of `g1-standard-4t` or `g1-standard-8t`. Prompted for if not provided. Can be set using environment variable `ECLOUD_INSTANCE_TYPE`.
+>
+> | Machine type     | vCPUs   |  Memory  | Architecture |
+> |------------------|:-------:|:--------:|---------------|
+> | g1-standard-4t   |    4    |  16 GB   | Intel TDX     |
+> | g1-standard-8t   |    8    |  32 GB   | Intel TDX     |
+
 
 `--name <name>` (string)
 

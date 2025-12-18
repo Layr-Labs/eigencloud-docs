@@ -1,11 +1,11 @@
 ---
 title: Operate application
-sidebar_position: 7
+sidebar_position: 1
 ---
 
-Use the [`list`](../reference/ecloud-cli/compute/app.md#list), [`info`](../reference/ecloud-cli/compute/app.md#info), and [`logs`](../reference/ecloud-cli/compute/app.md#logs) commands to monitor and manage EigenCompute applications.
+Use the [`list`](../../reference/ecloud-cli/compute/app.md#list), [`info`](../../reference/ecloud-cli/compute/app.md#info), and [`logs`](../../reference/ecloud-cli/compute/app.md#logs) commands to monitor and manage EigenCompute applications.
 
-Use the [`start`](../reference/ecloud-cli/compute/app.md#start), [`stop`](../reference/ecloud-cli/compute/app.md#stop), and [`terminate`](../reference/ecloud-cli/compute/app.md#terminate) commands to change application state.
+Use the [`start`](../../reference/ecloud-cli/compute/app.md#start), [`stop`](../../reference/ecloud-cli/compute/app.md#stop), and [`terminate`](../../reference/ecloud-cli/compute/app.md#terminate) commands to change application state.
 
 ## When starting a previously stopped application
 

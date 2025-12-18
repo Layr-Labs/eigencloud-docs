@@ -25,7 +25,7 @@ The `--environment` option is available for all `auth` subcommands:
 ## generate
 
 Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md).
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md).
 
 ### Synopsis
 
@@ -36,7 +36,7 @@ refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md).
 `--store` (boolean)
 
 > Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md). Default is false.
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md). Default is false.
 
 ## login
 

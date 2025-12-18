@@ -18,7 +18,7 @@ authentication credentials securely.
 ## generate
 
 Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md).
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md).
 
 ### Synopsis
 
@@ -29,7 +29,7 @@ refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md).
 `--store` (boolean)
 
 > Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/create-use-auth-keys.md). Default is false.
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md). Default is false.
 
 ## login
 
@@ -55,7 +55,7 @@ Remove stored authentication key from your OS keyring.
 
 ## migrate
 
-Migrate authentication key from `eigenx` CLI to `ecloud` CLI.  For mor information, refer to [Migrate to ecloud CLI](../../howto/migrate-ecloud-cli.md).
+Migrate authentication key from `eigenx` CLI to `ecloud` CLI.  For mor information, refer to [Migrate to ecloud CLI](../../howto/setup/migrate-ecloud-cli.md).
 
 ### Synopsis
 

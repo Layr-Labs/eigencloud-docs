@@ -97,7 +97,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `--dockerfile <path>, -f <path>` (string)
 
-> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../howto/configure/expose-ports.md).
+> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../howto/deploy/expose-ports.md).
 
 `--log-visibility <setting>` (string)
 
