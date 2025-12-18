@@ -71,11 +71,7 @@ The EigenCompute vision is to enable offchain execution systems to provide simil
 
 ## Next steps 
 
-* [Get Started using EigenCompute](../get-started/demo)
 * [Use the quickstart](../get-started/quickstart.md)
-* Read the EigenCompute: 
-    * [Architecture Guide](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_ARCHITECTURE.md) - Deep dive into how EigenCompute works
-    * [Core Concepts](https://github.com/Layr-Labs/eigenx-cli/blob/main/docs/EIGENX_CONCEPTS.md) - Understanding keys, security, and best practices
 * [Connect with our team](https://onboarding.eigencloud.xyz/)
 
 
