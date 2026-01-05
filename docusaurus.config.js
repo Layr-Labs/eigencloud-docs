@@ -40,7 +40,11 @@ const redirects = [
 
   {
       from: '/products/eigencompute',
-      to: '/eigencompute/concepts/eigencompute-overview',
+      to: '/eigencompute/get-started/eigencompute-overview',
+  },
+  {
+     from: '/eigencompute/concepts/eigencompute-overview',
+     to: '/eigencompute/get-started/eigencompute-overview',
   },
 
   {
@@ -420,7 +424,7 @@ const redirects = [
   },
   {
     from: '/products/eigencompute/eigencompute-overview',
-    to: '/eigencompute/concepts/eigencompute-overview'
+    to: '/eigencompute/get-started/eigencompute-overview'
   },
   {
     from: '/products/eigencompute/get-started/quickstart',
@@ -666,7 +670,7 @@ const config = {
              activeBasePath: 'eigencloud',
           },
           {
-            to: "eigencompute/concepts/eigencompute-overview",
+            to: "eigencompute/get-started/eigencompute-overview",
             label: "EigenCompute",
             position: "left",
             activeBasePath: 'eigencompute',

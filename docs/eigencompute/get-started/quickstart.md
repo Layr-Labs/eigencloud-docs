@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 import InteractiveDemo from '@site/src/components/InteractiveDemo';
@@ -278,7 +278,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 ## Next Steps
 
 * Explore [CLI Commands](../reference/ecloud-cli/ecloud-cli-overview.md) - Learn about all available commands
-* Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
+* Review [Core Concepts](eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
 

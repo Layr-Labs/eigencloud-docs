@@ -26,7 +26,7 @@ function HomeHero() {
           <FigmaCard
             title="EigenCompute"
             desc="Verifiable containerized compute."
-            link="/eigencompute/concepts/eigencompute-overview"
+            link="/eigencompute/get-started/eigencompute-overview"
           />
           <FigmaCard
             title="DevKit"
