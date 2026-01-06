@@ -17,7 +17,7 @@ const redirects = [
   },
   {
       from: '/products/eigencompute/get-started/get-started',
-      to: 'eigencompute/get-started/demo',
+      to: 'eigencompute/get-started/quickstart',
   },
   {
       from: '/developers/Concepts/eigenlayer-contracts/core-contracts',
@@ -40,12 +40,16 @@ const redirects = [
 
   {
       from: '/products/eigencompute',
-      to: '/eigencompute/concepts/eigencompute-overview',
+      to: '/eigencompute/get-started/eigencompute-overview',
+  },
+  {
+     from: '/eigencompute/concepts/eigencompute-overview',
+     to: '/eigencompute/get-started/eigencompute-overview',
   },
 
   {
     from: '/products/eigencompute/get-started',
-    to: '/eigencompute/get-started/demo'
+    to: '/eigencompute/get-started/quickstart'
   },
 
   // Get Started
@@ -127,7 +131,7 @@ const redirects = [
 
   {
       from: '/products/eigencompute/howto/create-app-from-template',
-      to: '/eigencompute/howto/build/create-app-from-template',
+      to: '/eigencompute/get-started/quickstart',
   },
   {
       from: '/products/eigencompute/howto/use-app-wallet',
@@ -135,7 +139,7 @@ const redirects = [
   },
   {
       from: '/products/eigencompute/howto/manage-auth-keys/create-auth-key',
-      to: '/eigencompute/howto/manage-auth-keys/create-auth-keys',
+      to: '/eigencompute/howto/setup/create-use-auth-keys',
   },
 
   // Developer HowTo (handle both capitalized and lowercase versions)
@@ -420,7 +424,7 @@ const redirects = [
   },
   {
     from: '/products/eigencompute/eigencompute-overview',
-    to: '/eigencompute/concepts/eigencompute-overview'
+    to: '/eigencompute/get-started/eigencompute-overview'
   },
   {
     from: '/products/eigencompute/get-started/quickstart',
@@ -428,7 +432,7 @@ const redirects = [
   },
   {
     from: '/products/eigencompute/howto/verify/verify-tee-signature',
-    to: '/eigencompute/howto/verify/verify-trust-guarantees'
+    to: '/eigencompute/howto/operate/verify-trust-guarantees'
   },
   {
     from: '/products/eigenlayer/developers/howto/get-started/support',
@@ -666,7 +670,7 @@ const config = {
              activeBasePath: 'eigencloud',
           },
           {
-            to: "eigencompute/concepts/eigencompute-overview",
+            to: "eigencompute/get-started/eigencompute-overview",
             label: "EigenCompute",
             position: "left",
             activeBasePath: 'eigencompute',

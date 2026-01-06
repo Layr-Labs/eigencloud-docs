@@ -47,7 +47,7 @@ Options available for all `app` subcommands are:
 ## create
 
 Create an application project from a template with all necessary configuration files. For more information on creating
-applications, refer to [Create Application](../../../howto/build/create-app-from-template.md).
+applications, refer to [Quickstart](../../../get-started/quickstart.md).
 
 ### Synopsis
 
@@ -95,7 +95,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `--dockerfile <path>, -f <path>` (string)
 
-> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../../howto/configure/expose-ports.md). Can be set using environment variable `ECLOUD_DOCKERFILE_PATH`.
+> Path to Dockerfile. If not provided, the Dockerfile in the current directory is used. Your Dockerfile must include the `EXPOSE` directive to specify which port(s) your application listens on, see the [Port Exposure Guide](../../../howto/deploy/expose-ports.md). Can be set using environment variable `ECLOUD_DOCKERFILE_PATH`.
 
 `--log-visibility <setting>` (string)
 
@@ -109,6 +109,12 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 `--instance-type <value>` (string)
 
 > Machine instance type to use. One of `g1-standard-4t` or `g1-standard-8t`. Prompted for if not provided. Can be set using environment variable `ECLOUD_INSTANCE_TYPE`.
+>
+> | Machine type     | vCPUs   |  Memory  | Architecture |
+> |------------------|:-------:|:--------:|---------------|
+> | g1-standard-4t   |    4    |  16 GB   | Intel TDX     |
+> | g1-standard-8t   |    8    |  32 GB   | Intel TDX     |
+
 
 `--name <name>` (string)
 
@@ -235,7 +241,7 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ## list
 
-List all applications deployed by your account in the current environment. For usage examples, refer to [Monitor](../../../howto/operate/monitor.md).
+List all applications deployed by your account in the current environment. 
 
 ### Synopsis
 
@@ -277,7 +283,7 @@ Display detailed information about a specific application.
 
 ## logs
 
-View application logs from your TEE instance. For usage examples, refer to [Monitor](../../../howto/operate/monitor.md).
+View application logs from your TEE instance. 
 
 ### Synopsis
 
@@ -344,7 +350,7 @@ Add TLS/HTTPS configuration to your project for secure domain access. This comma
 * Caddy Server Configuration - Automatic HTTPS with [Let's Encrypt](https://letsencrypt.org/) using [Caddyfile](https://caddyserver.com/docs/caddyfile)
 * Environment Variables - Example TLS configuration in `.env.example.tls`
 
-For more information on configuring TLS, refer to [Configure TLS](../../../howto/deploy-to-production/configure-tls.md).
+For more information on configuring TLS, refer to [Configure TLS](../../../howto/deploy/configure-tls.md).
 
 ### Synopsis
 

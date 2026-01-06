@@ -1,6 +1,6 @@
 ---
-title: Verify Trust Guarantees
-sidebar_position: 1
+title: Verify trust guarantees
+sidebar_position: 2
 ---
 
 Use the Verifiability Dashboards for [mainnet](https://verify.eigencloud.xyz/) and [Sepolia testnet](https://verify-sepolia.eigencloud.xyz/) to verify [trust guarantees enabled by EigenCompute](../../concepts/trust-guarantees.md). 
@@ -19,7 +19,7 @@ To view verifiability data for an application using the dashboard:
    * Wallet addresses for the application.
 
 :::note
-Whether logs are visible publicly is configured by the application developer using the `--log-visibiilty` option on the [`ecloud compute app deploy`](../../reference/ecloud-cli/compute/app.md#deploy) and
+Whether logs are visible publicly is configured by the application developer using the `--log-visibility` option on the [`ecloud compute app deploy`](../../reference/ecloud-cli/compute/app.md#deploy) and
 [`ecloud compute app upgrade`](../../reference/ecloud-cli/compute/app.md#upgrade) commands.
 :::
 

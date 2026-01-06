@@ -18,7 +18,7 @@ authentication credentials securely.
 ## generate
 
 Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md).
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md).
 
 ### Synopsis
 
@@ -29,12 +29,11 @@ refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-k
 `--store` (boolean)
 
 > Generate a new authentication key with optional secure storage. For more information on creating authentication keys,
-refer to [Create Authentication Keys](../../howto/manage-auth-keys/create-auth-keys.md). Default is false.
+refer to [Create Authentication Keys](../../howto/setup/create-use-auth-keys.md). Default is false.
 
 ## login
 
-Store an existing authentication key securely in your OS keyring. For more information, refer to
-[Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
+Store an existing authentication key securely in your OS keyring. 
 
 ### Synopsis
 
@@ -56,7 +55,7 @@ Remove stored authentication key from your OS keyring.
 
 ## migrate
 
-Migrate authentication key from `eigenx` CLI to `ecloud` CLI.  For mor information, refer to [Migrate to ecloud CLI](../../howto/migrate-ecloud-cli.md).
+Migrate authentication key from `eigenx` CLI to `ecloud` CLI.  For mor information, refer to [Migrate to ecloud CLI](../../howto/setup/migrate-ecloud-cli.md).
 
 ### Synopsis
 
@@ -64,8 +63,7 @@ Migrate authentication key from `eigenx` CLI to `ecloud` CLI.  For mor informati
 
 ## whoami
 
-Display current authentication status and wallet address. For more information,
-refer to [Manage Authentication Keys](../../howto/manage-auth-keys/manage-authentication-keys.md).
+Display current authentication status and wallet address. 
 
 ### Synopsis
 

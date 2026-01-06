@@ -1,7 +1,81 @@
 ---
 title: Quickstart
-sidebar_position: 1
+sidebar_position: 2
 ---
+
+import InteractiveDemo from '@site/src/components/InteractiveDemo';
+
+To build on EigenCompute:
+
+1. Place your application in a Docker container.
+2. [Subscribe to EigenCompute](billing.md). All new customers receive a $100 credit.
+3. Upload it to EigenCompute using the `ecloud` CLI.
+
+It's that simple to ship a verifiable application.
+
+### See for yourself
+
+<InteractiveDemo
+steps={[
+
+{
+command: 'ecloud compute app create --name my-trading-bot --language typescript',
+output: [
+'🚀 Creating app from typescript template...',
+'✅ Created my-trading-bot/',
+'✅ Generated index.ts',
+'✅ Added package.json',
+'✅ Created Dockerfile for TEE deployment',
+'',
+'cd my-trading-bot'
+]
+},
+{
+command: 'cat src/index.ts',
+output: [
+'import { mnemonicToAccount } from "viem/accounts"',
+'',
+'// Access your app\'s wallet',
+'const wallet = mnemonicToAccount(process.env.MNEMONIC)',
+'',
+'console.log("Address:", wallet.address)',
+'',
+'// Now your app can:',
+'// - Hold funds autonomously',
+'// - Sign transactions and messages',
+'// - Interact with any blockchain'
+]
+},
+{
+command: 'ecloud compute app deploy',
+output: [
+'🏗️  Building Docker image...',
+'   ✓ Built: my-trading-bot:latest',
+'',
+'📤 Pushing to registry...',
+'   ✓ Pushed: docker.io/my-trading-bot:latest',
+'',
+'⛓️  Submitting to blockchain...',
+'   ✓ Transaction confirmed',
+'',
+'🚀 Deploying to TEE...',
+'   ✓ Instance provisioned',
+'   ✓ Running in Intel TDX',
+'',
+'✅ Deployment complete!',
+'   App Name: my-trading-bot',
+'   Docker Digest: sha256:4f6c2b3a...',
+'Wallet Addresses:',
+'   Ethereum: 0xa4Cae7029dfe122866F479E3b6eFb88dA3b35aea',
+'   Solana: 6Xu2q4nifx9pfdwLtvAHSfGnXhXUJhnjWqcDhfhT1vpY',
+]
+}
+]}
+completionMessage="🎉 That's it! Your app is deployed with its own wallet."
+ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-started/quickstart' }}
+/>
+
+## Next
 
 Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
@@ -85,6 +159,28 @@ This creates a new project with:
 - A `Dockerfile` configured for TEE deployment
 - An `.env.example` file for environment variables
 
+Templates include:
+
+1. TEE-Ready Dockerfile. Pre-configured to:
+  - Target `linux/amd64` architecture.
+  - Run as root user (required for TEE).
+  - Include necessary system dependencies.
+
+2. Environment Variable Handling. Access to:
+  - `MNEMONIC` - Auto-generated wallet mnemonic.
+  - Custom environment variables from `.env`.
+
+3. Example Code. Demonstrates:
+  - Accessing the TEE mnemonic.
+  - Creating wallet accounts.
+  - Making onchain transactions.
+  - Environment variable usage.
+
+4. Development Setup. Includes:
+  - Local development instructions.
+  - Testing guidelines.
+  - Deployment best practices.
+
 ### Configure Environment Variables
 
 ```bash
@@ -102,9 +198,19 @@ DATABASE_URL=your_database_url
 NETWORK_PUBLIC=sepolia
 ```
 
-:::tip
 Variables with the `_PUBLIC` suffix will be visible to users for transparency. Standard variables remain encrypted within the TEE.
+
+:::important Auto-Generated MNEMONIC
+The `MNEMONIC` environment variable is **automatically provided by KMS** at runtime. Any mnemonic in `.env.example` is just
+a placeholder. The TEE overwrites it with your app's unique, persistent KMS-generated mnemonic.
 :::
+
+### Test locally (if needed)
+
+```bash
+npm install
+npm run dev
+```
 
 ### Subscribe to EigenCompute
 
@@ -167,12 +273,12 @@ CMD ["npm", "start"]
 
 Your application must bind to `0.0.0.0` (not `localhost`) to be accessible.
 
-For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](../howto/configure/expose-ports.md).
+For more advanced port configuration including multiple ports and port ranges, see the [Port Exposure Guide](../howto/deploy/expose-ports.md).
 
 ## Next Steps
 
 * Explore [CLI Commands](../reference/ecloud-cli/ecloud-cli-overview.md) - Learn about all available commands
-* Review [Core Concepts](../concepts/eigencompute-overview.md) - Deep dive into keys, environment variables, and security
+* Review [Core Concepts](eigencompute-overview.md) - Deep dive into keys, environment variables, and security
 
 ## Troubleshooting
 

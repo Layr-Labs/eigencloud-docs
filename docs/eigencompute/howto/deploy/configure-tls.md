@@ -97,6 +97,8 @@ To avoid Let's Encrypt rate limits, always test with staging certificates first.
 ecloud compute app upgrade
 ```
 
+The configured TLS routes traffic from ports 80 and 443 to the `APP_PORT`.
+
 ## Switch to Production Certificates
 
 To switch from staging to production:

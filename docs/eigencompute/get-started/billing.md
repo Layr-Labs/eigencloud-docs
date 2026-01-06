@@ -1,6 +1,6 @@
 ---
 title: Billing
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription.

@@ -1,53 +1,20 @@
 ---
-title: Start, Stop, and Terminate
+title: Operate application
 sidebar_position: 1
 ---
 
-## What happens when starting a previously stopped application
+Use the [`list`](../../reference/ecloud-cli/compute/app.md#list), [`info`](../../reference/ecloud-cli/compute/app.md#info), and [`logs`](../../reference/ecloud-cli/compute/app.md#logs) commands to monitor and manage EigenCompute applications.
 
-1. Transaction Submission
-    - Sign and submit start transaction
-    - Wait for blockchain confirmation
+Use the [`start`](../../reference/ecloud-cli/compute/app.md#start), [`stop`](../../reference/ecloud-cli/compute/app.md#stop), and [`terminate`](../../reference/ecloud-cli/compute/app.md#terminate) commands to change application state.
 
-2. Instance Activation
-    - Resume TEE instance
-    - Reinject environment variables
-
-3. Application Startup
-    - Container starts
-    - Application initializes
-    - Begins accepting requests
-
-### Behavior
+## When starting a previously stopped application
 
 - Wallet persists - Same MNEMONIC is available
 - IP persists - Usually keeps the same instance IP
 - State reset - In-memory state is lost (use external storage for persistence)
 - Logs preserved - Previous logs may still be available
 
-## Before Stopping
-
-- [ ] Finish any in-progress transactions
-- [ ] Notify users if it's a public service
-- [ ] Save any ephemeral state to external storage
-
-### What Happens When Stopping
-
-1. Transaction Submission
-    - Sign and submit stop transaction
-    - Wait for blockchain confirmation
-
-2. Graceful Shutdown (if supported by app)
-    - SIGTERM signal sent to container
-    - Application has time to clean up
-    - Container stops
-
-3. Instance Pause
-    - Container is stopped
-    - Instance is paused
-    - Resources are held
-
-### Behavior
+### When stopping
 
 - No requests - App doesn't accept requests while stopped
 - Logs preserved - Can still view logs

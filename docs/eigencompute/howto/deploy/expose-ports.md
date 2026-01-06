@@ -1,5 +1,5 @@
 ---
-title: Expose Ports
+title: Expose ports
 sidebar_position: 4
 ---
 
@@ -59,7 +59,7 @@ Your application code must bind to `0.0.0.0` (all interfaces) to be accessible.
 
 For production applications with custom domains, you'll need to configure TLS in addition to exposing ports.
 
-See the [TLS configuration guide](../../get-started/quickstart.md#configure-tlshttps-optional) for complete setup instructions.
+See the [TLS configuration guide](configure-tls.md) for complete setup instructions.
 
 ## Troubleshooting
 
@@ -87,6 +87,6 @@ If you see "port already in use" errors:
 ## Related Documentation
 
 - [Quickstart Guide](../../get-started/quickstart.md) - Complete deployment walkthrough
-- [TLS Configuration](../../get-started/quickstart.md#configure-tlshttps-optional) - Setting up HTTPS with custom domains
+- [TLS Configuration](configure-tls.md) - Setting up HTTPS with custom domains
 - [Deployment Reference](../../reference/ecloud-cli/compute/app.md#deploy) - Dockerfile requirements
-- [Monitoring](../operate/monitor.md) - Viewing application logs
+- [Monitoring](../operate/operate-application.md) - Viewing application logs
