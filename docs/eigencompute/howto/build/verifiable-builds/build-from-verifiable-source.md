@@ -5,12 +5,12 @@ sidebar_position: 1
 
 To build from a verifiable source, options are: 
 
-1. Use the `ecloud compute build submit` command to submit a verifiable build from GitHub source.
-2. Use the verifiable flow (by specifying `--verifiable` or selecting `Yes` when prompted) when deploying or upgrading.
+1. Use the `ecloud compute build submit` command to submit a verifiable build from a GitHub source.
+2. Specify the `--verifiable` option or select `Yes` when prompted when deploying or upgrading using the `ecloud compute deploy` or `upgrade` commands..
 
 ## Submit from GitHub source
 
-To submit a verifiable build from GitHub source, specify the required options or supply when prompted:
+To submit a verifiable build from a GitHub source, specify the required options or supply when prompted:
 
 * `--repo` (`ECLOUD_BUILD_REPO`) 
 * `--commit` (`ECLOUD_BUILD_COMMIT`) 
@@ -22,7 +22,15 @@ To submit a verifiable build from GitHub source, specify the required options or
 * `--json`
 
 For example:
-TODO - add example.
+```
+ecloud compute build submit --repo https://github.com/myorg/myapp --commit abc123...
+
+ecloud compute build submit --repo https://github.com/myorg/myapp --commit abc123... --dependencies sha256:def456...
+
+ecloud compute build submit --repo https://github.com/myorg/myapp --commit abc123... --build-caddyfile Caddyfile
+
+ecloud compute build submit --repo https://github.com/myorg/myapp --commit abc123... --no-follow
+```
 
 Once built and verified, the image can be specified as a prebuilt image when deploying or upgrading.
 
@@ -31,17 +39,12 @@ Once built and verified, the image can be specified as a prebuilt image when dep
 To submit when deploying or upgrading, specify the `--verifiable` option for the `ecloud compute app` command, or select
 `Yes` when prompted. 
 
-When deploying or upgrading, specify a GitHub source using the [relevant options](#submit-from-github-source) or specify
-a prebuilt verifiable image using the `--image-ref` option.
-
-For example:
-TODO - add examples.
+When deploying or upgrading, specify a GitHub source using the `--build-context`, `--build-dependencies`, and `--build-dockerfile` options,
+or specify a prebuilt verifiable image using the `--image-ref` option.
 
 ## Submitting builds with dependencies
 
 To specify prebuilt dependencies to include in a verifiable build, use the `--dependencies` option for `ecloud compute build`,
 `ecloud compute app deploy` or `ecloud compute app upgrade`
 
-:::note
-TODO - add point about tls-keygen and kms-client. 
-:::
+For more information on dependencies in verifiable builds, refer to [Verifiable Builds](../../../concepts/verifiable-builds.md).
