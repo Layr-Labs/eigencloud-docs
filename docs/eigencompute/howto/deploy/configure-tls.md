@@ -24,12 +24,6 @@ EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using C
 
 ## Add TLS Configuration
 
-:::note Enable TLS for Vercel
-Vercel requires TLS/HTTPS.
-
-When a custom domain is available, go to Settings and Domains in Vercel, and enter the custom domain. A CNAME is provided.
-:::
-
 To add TLS configuration:
 
 ```
