@@ -3,7 +3,7 @@ title: Verifiable Builds
 sidebar_position: 5
 ---
 
-Verifiable builds provide cryptographic proof of the source code and build process for EigenCompute applications. EigenCompute verifiable builds
+Verifiable builds provide cryptographic proof linking the source code and build process for EigenCompute applications. EigenCompute verifiable builds
 enable users to cryptographically verify that a running container was built from a specific GitHub commit. 
 
 EigenCompute uses the [Google Cloud Build SLSA provenance system](https://cloud.google.com/build/docs/securing-builds/generate-validate-build-provenance/)
@@ -19,6 +19,8 @@ Verifiably built containers are stored publicly in [Docker Hub](https://hub.dock
 
 The [Verifiability Dashboard](https://verify.eigencloud.xyz/) displays the status of source code verification for applications.
 
+For information on how to build verifiably, see [Build from verfiable source](../howto/build/verifiable-builds/build-from-verifiable-source.md). 
+
 ## Dependencies
 
 For an application to be verifiably built, every layer of the application stack must be verifiably built. You cannot include
@@ -32,7 +34,7 @@ When you submit a build with dependencies, each dependency:
 
 When submitting a build with dependencies, provenance is validated and dependency digests are recorded in the build's SLSA provenance.
 
-The EigenCompute TLS and KMS clients are prebuilt and the digests included in all EigenCompute applications.
+The [EigenCompute TLS and KMS clients are prebuilt](https://github.com/Layr-Labs/eigencompute-containers) and the digests included in all EigenCompute applications.
 
 EigenCompute applications with dependencies other than the TLS and KMS clients must submit those verifiable builds and include
 the dependency's image digest when verifiably building the application.

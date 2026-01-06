@@ -45,6 +45,9 @@ or specify a prebuilt verifiable image using the `--image-ref` option.
 ## Submitting builds with dependencies
 
 To specify prebuilt dependencies to include in a verifiable build, use the `--dependencies` option for `ecloud compute build`,
-`ecloud compute app deploy` or `ecloud compute app upgrade`
+`ecloud compute app deploy` or `ecloud compute app upgrade`.
+
+The EigenCompute TLS and KMS clients do not need to be specified as dependencies because they are [prebuilt](https://github.com/Layr-Labs/eigencompute-containers) 
+and the digests included in all EigenCompute applications.
 
 For more information on dependencies in verifiable builds, refer to [Verifiable Builds](../../../concepts/verifiable-builds.md).
