@@ -27,7 +27,7 @@ Deploy a router and configure the default certVerifier by following the [guide o
 
 When processing a DA cert, the router automatically extracts the reference block number and selects the appropriate cert verifier implementation from the key-value map.
 
-It is **strongly recommended** that rollups deploy their own router. If using an EigenLabs-deployed router, the rollup must follow EigenLabs' upgrade schedule. For example, if EigenLabs upgrades on January 1st but your rollup needs to upgrade in March, L2 consensus nodes that did not upgrade before January 1st will **halt**. Even if both the batcher and L2 consensus nodes run the older version, the contract can reject older-version certs once upgraded. This is intentional to prevent malicious batchers from submitting older certs that might contain bugs.
+It is **strongly recommended** that rollups deploy their own router. If using an EigenLabs-deployed router, the rollup must follow EigenLabs' upgrade schedule. For example, if EigenLabs upgrades the router on January 1st but your rollup needs to upgrade in March, L2 consensus nodes that did not upgrade before January 1st will **halt**. Even if both the batcher and L2 consensus nodes run the older version, the contract can reject older-version certs once upgraded. This is intentional to prevent malicious batchers from submitting older certs that might contain bugs.
 
 ## Upgrading Procedures
 
@@ -55,8 +55,8 @@ To avoid submitting V3 certs entirely after the activation number, use the manua
 **Context:** Same as Scenario 1, except the batcher is posting V2 certs to the L1 inbox.
 
 The current EigenDA proxy does not support submitting V2 certs. There are two possible upgrade solutions:
-i. Add a feature to the proxy to construct V2 certs
-ii. Manually upgrade the batcher after the activation block number
+- (i) Add a feature to the proxy to construct V2 certs
+- (ii) Manually upgrade the batcher after the activation block number
 
 We describe procedures for the second method. If the code for option (i) is implemented, the procedures match Scenario 1 exactly.
 
