@@ -33,6 +33,11 @@ It is **strongly recommended** that rollups deploy their own router. If using an
 
 This section describes upgrading from V3 to V4 certs and from V2 to V4 certs.
 
+You are using V3 certs if the batcher is using the proxy release v2.x.x. You are using V2 certs if the batcher is using the proxy release v1.8.x. You can also determine the cert version by inspecting the calldata from your L1 inbox:
+
+1. Go to Etherscan and navigate to your batcher inbox address
+2. Copy the calldata and use a tool called integration_utils with the subcommand [parse-altdacommitment](https://github.com/Layr-Labs/eigenda/tree/master/tools/integration_utils#parse-altdacommitment), which will print out the Certificate Version.
+
 ### Scenario 1 - Upgrading from V3 to V4 Cert
 
 **Context:** The batcher is posting V3 certs to the L1 inbox; EigenDA proxies on L2 consensus nodes are processing V3 certs from the L1 inbox. Assume a router is already deployed, the current L1 block number is 24136054 (Jan 1, 2026), and the upgrade is scheduled at L1 block number 24560854 (approximately March 1).
