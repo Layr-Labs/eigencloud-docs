@@ -29,6 +29,17 @@ When processing a DA cert, the router automatically extracts the reference block
 
 It is **strongly recommended** that rollups deploy their own router. If using an EigenLabs-deployed router, the rollup must follow EigenLabs' upgrade schedule. For example, if EigenLabs upgrades the router on January 1st but your rollup needs to upgrade in March, L2 consensus nodes that did not upgrade before January 1st will **halt**. Even if both the batcher and L2 consensus nodes run the older version, the contract can reject older-version certs once upgraded. This is intentional to prevent malicious batchers from submitting older certs that might contain bugs.
 
+You can either deploy your own CertVerifier or use some deployed immuntable CertVerifier.
+
+### Current V3 CertVerifier Addresses
+
+If you are currently using V3 certs, you can find the deployed `CertVerifier` addresses in the [EigenDA directory](https://docs.eigencloud.xyz/eigenda/networks/mainnet#contract-addresses) or reference them below:
+
+| Network    | V3 CertVerifier |
+| -------- | ------- |
+| Mainnet  | [0x61692e93b6B045c444e942A91EcD1527F23A3FB7](https://etherscan.io/address/0x64AB2e9A86FA2E183CB6f01B2D4050c1c2dFAad4#readProxyContract)    |
+| Sepolia | [0x19a469Ddb7199c7EB9E40455978b39894BB90974](https://sepolia.etherscan.io/address/0x9620dC4B3564198554e4D2b06dEFB7A369D90257#readProxyContract)     |
+
 ## Upgrading Procedures
 
 This section describes upgrading from V3 to V4 certs and from V2 to V4 certs.
