@@ -7,3 +7,5 @@
 
 
 **EigenCloud: Build Powerful Crypto Apps on Any Chain with the Verifiable Cloud** ([PDF](/pdf/EigenCloud_Whitepaper.pdf)): the paper that proposes a new architecture that merges the programmability of traditional cloud infrastructure with the verifiability of blockchain systems, enabling developers to build rich, powerful, off-chain applications that interact securely with any chain.
+
+**EigenAI Whitepaper** ([PDF](/pdf/EigenAI_Whitepaper.pdf)): the paper that introduces EigenAI's deterministic inference stack, enabling bit-exact reproducible LLM outputs on production GPUs (validated across 10,000 runs) with under ~2% overhead. The document explains why GPU nondeterminism breaks verifiable autonomous agents, and how EigenAI enforces determinism across hardware, math libraries, and the inference engine—then layers optimistic verification + cryptoeconomic enforcement (disputes, re-execution by verifiers, and slashing for mismatches) to make AI execution replayable, auditable, and economically accountable.
