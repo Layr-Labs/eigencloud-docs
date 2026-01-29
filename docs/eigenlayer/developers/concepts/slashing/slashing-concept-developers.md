@@ -27,3 +27,7 @@ For information on how to implement slashing, refer to:
 * [Design Operator Sets](../../howto/build/operator-sets/design-operator-set.md)
 * [Migrate to Operator Sets](../../howto/build/operator-sets/migrate-to-operatorsets.md)
 * [Veto Committee Design](../../howto/build/slashing/slashing-veto-committee-design.md)
+
+## Slashers
+
+Upon creation of an operatorSet, a `slasher` address is specified. The `slasher` is the only address that can slash an operatorSet and can be updated on a 17.5 day delay. This delay is in place to enable AVSs to make credible commitments to the operators that they are running their service. Furthermore, we recommend that AVS slashing contract be on a time delay on proxy upgrades or be immutable to allow credible commitments around slashing conditions to be made. 
