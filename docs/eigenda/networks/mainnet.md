@@ -45,17 +45,5 @@ All other contracts are now tracked inside the EigenDADirectory contract:
 | 1 | [EIGEN](https://etherscan.io/address/0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83) |
 | 2 | [reALT](https://etherscan.io/address/0xF96798F49936EfB1a56F99Ceae924b6B8359afFb) |
 
-## V1 Specs (Deprecated)
-
-| Property | Value |
-| --- | --- |
-| Disperser Address | `disperser.eigenda.xyz:443` |
-| DataAPI Address | `dataapi.eigenda.xyz` |
-| Churner Address | `churner.eigenda.xyz:443` |
-| Batch Confirmation Interval | Every 10 minutes (may vary based on network health) |
-| Max Blob Size | 16 MiB |
-| Stake Sync (AVS-Sync) Interval | Every 6 days |
-| Ejection Cooldown Period | 3 days |
-
 [1]: https://blobs.eigenda.xyz/
 [2]: https://app.eigenlayer.xyz/avs/0x870679e138bcdf293b7ff14dd44b70fc97e12fc0

@@ -220,7 +220,7 @@ of the L2 VM design works as-is for arbitrating fraud.
 
 ### Optimistic Cert Verification
 
-The integration strategy under the V2 [Blazar](../../releases/blazar.md) release is similar to the 
+The V2 integration strategy is similar to the 
 existing integration strategy, with the
 difference that EigenDA certificates are only verified on Ethereum if needed by the dispute game.
 This requires the certs to be verified within the L2 State Transition Function (STF).
