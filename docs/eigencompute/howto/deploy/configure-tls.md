@@ -12,7 +12,7 @@ Add TLS/HTTPS configuration to your project for secure domain access to:
 
 EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using Caddyfile](https://caddyserver.com/docs/caddyfile#:~:text=The%20Caddyfile%20is%20just%20a,use%20JSON%20with%20Caddy's%20API.). To use an alternative certificate provider, configure in your Dockerfile.
 
-## TLS Environment Variables 
+## TLS Environment Variables
 
 | Variable            | Description               | Required   | Default   |
 |---------------------|---------------------------|------------|-----------|
@@ -125,6 +125,12 @@ ACME_FORCE_ISSUE=false
 :::warning Let's Encrypt Rate Limits
 Let's Encrypt has a rate limit of 5 certificates per week per domain. Always test with staging certificates first.
 ::: 
+
+## Upgrading
+
+You can update `DOMAIN` and `APP_PORT` in the [environment file](#tls-environment-variables) and upgrade without rebuilding
+the Docker image. If you change anything else in the Caddyfile itself, you must rebuild the image because the Caddyfile 
+is embedded at build time.
 
 ## Troubleshooting 
 
