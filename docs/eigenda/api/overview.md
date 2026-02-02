@@ -5,7 +5,7 @@ title: Overview
 
 ## Dispersing Blobs
 
-The EigenDA v2 Disperser provides an API for:
+The EigenDA Disperser provides an API for:
 * Dispersing blobs to the EigenDA network. 
 * [Flexible payment modalities: on-demand and reserved bandwidth](https://docs.eigencloud.xyz/products/eigenda/core-concepts/payments).
 
@@ -14,15 +14,15 @@ As part of its essential data availability guarantee, the EigenDA network suppor
 the EigenDA validators for blob retrieval.
 :::
 
-The low level specification for the Disperser v2 API spec is [disperser.proto](https://github.com/Layr-Labs/eigenda/blob/v0.9.0/api/proto/disperser/v2/disperser_v2.proto), adjusted to the current release. 
+The low level specification for the Disperser API is [disperser.proto](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/disperser/v2/disperser_v2.proto).
 The goal of this document is to explain this spec at a higher level.
 
-Eigen Labs hosts one v2 disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages 
+Eigen Labs hosts a disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages 
 for [Mainnet](../../networks/mainnet.md) and [Sepolia](../../networks/sepolia.md).
 
 ### Disperser Endpoints
 
-The EigenDA v2 Disperser exposes the endpoints:
+The EigenDA Disperser exposes the endpoints:
 
 * `DisperseBlob()`
 * `GetBlobStatus()`
@@ -58,7 +58,7 @@ The `GetBlobStatus()` response includes the relay keys. Fetch the relay URL from
 :::
 
 :::tip
-Here we provide a narrative-level description of the major API endpoints. Please see [the repo](https://github.com/Layr-Labs/eigenda/blob/v0.9.0/api/proto/disperser/v2/disperser_v2.proto) adjusted to the current release, for detailed, field-level API documentation.
+Here we provide a narrative-level description of the major API endpoints. Please see [the repo](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/disperser/v2/disperser_v2.proto) for detailed, field-level API documentation.
 :::
 
 ## Retrieving Blobs
@@ -90,5 +90,5 @@ The EigenDA Node exposes the retrieval endpoints:
 * `NodeInfo()`
 
 :::tip
-Here we provide a narrative-level description of the major API endpoints. Please see [the repo](https://github.com/Layr-Labs/eigenda/blob/v0.9.1/api/proto/node/node.proto) adjusted to the current release, for detailed, field-level API documentation.
+Here we provide a narrative-level description of the major API endpoints. Please see [the repo](https://github.com/Layr-Labs/eigenda/blob/master/api/proto/node/node.proto) for detailed, field-level API documentation.
 :::
