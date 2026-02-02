@@ -87,7 +87,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 `ecloud compute app deploy [--name <value>] [--dockerfile <value>] [--image-ref <value>]
 [--log-visibility] [--instance-type <value>] [--skip-profile] [--resource-usage-monitoring] [--website <value>]
 [--description <value>] [--x-url <value>] [--image <value>] [--skip-profile]
-[--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] [--build-context <value>] [--build-dependencies <value>...] [global options]` 
+[--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] [--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]` 
 
 ### Options
 
@@ -173,6 +173,11 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 > Dependency digests for verifiable build when building from Git source (sha256:...).
 
+`--build-caddyfile=<value>`
+
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if ommitted,
+> auto-detected from the env file TLS settings.
+
 ## upgrade
 
 Update an existing application with new code, configuration, or environment variables.
@@ -181,7 +186,7 @@ Update an existing application with new code, configuration, or environment vari
 
 `ecloud compute app upgrade  [<app-id|name>] [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] 
 [--instance-type value] [--image_ref <value>] [--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] 
-[--build-context <value>] [--build-dependencies <value>...] [global options]`
+[--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]`
 
 ### Arguments
 
@@ -237,6 +242,11 @@ Update an existing application with new code, configuration, or environment vari
 `--build-dependencies=<value>...`
 
 > Dependency digests for verifiable build when building from Git source (sha256:...).
+
+`--build-caddyfile=<value>`
+
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if ommitted,
+> auto-detected from the env file TLS settings.
 
 ## start
 
