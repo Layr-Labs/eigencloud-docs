@@ -52,6 +52,11 @@ const redirects = [
     to: '/eigencompute/get-started/quickstart'
   },
 
+  {
+      from: '/eigencompute/get-started/demo',
+      to: '/eigencompute/get-started/quickstart'
+    },
+
   // Get Started
   {
     from: '/get-started/eigencloud-overview',
