@@ -175,7 +175,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `--build-caddyfile=<value>`
 
-> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if ommitted,
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if omitted,
 > auto-detected from the env file TLS settings.
 
 ## upgrade
@@ -245,7 +245,7 @@ Update an existing application with new code, configuration, or environment vari
 
 `--build-caddyfile=<value>`
 
-> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if ommitted,
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if omitted,
 > auto-detected from the env file TLS settings.
 
 ## start

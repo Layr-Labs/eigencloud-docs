@@ -100,7 +100,7 @@ View or stream build logs in real-time using the `--follow` option.
 
 ### Synopsis
 
-`ecloud compute build logs [BUILDID] [-follow] [--tail <value>] [global options]`
+`ecloud compute build logs [BUILDID] [--follow] [--tail <value>] [global options]`
 
 ### Arguments
 
