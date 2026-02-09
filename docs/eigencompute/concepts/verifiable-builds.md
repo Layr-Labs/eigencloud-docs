@@ -3,8 +3,7 @@ title: Verifiable Builds
 sidebar_position: 5
 ---
 
-Verifiable builds provide cryptographic proof linking the source code and build process for EigenCompute applications. EigenCompute verifiable builds
-enable users to cryptographically verify that a running container was built from a specific GitHub commit. 
+EigenCompute verifiable builds enable users to cryptographically verify that a running container was built from a specific GitHub commit. 
 
 EigenCompute uses the [Google Cloud Build SLSA provenance system](https://cloud.google.com/build/docs/securing-builds/generate-validate-build-provenance/)
 to provide the build digest that is cryptographically signed by Google Cloud Build and includes:
@@ -19,7 +18,7 @@ Verifiably built containers are stored publicly in [Docker Hub](https://hub.dock
 
 The [Verifiability Dashboard](https://verify.eigencloud.xyz/) displays the status of source code verification for applications.
 
-For information on how to build verifiably, see [Build from verfiable source](../howto/build/verifiable-builds/build-from-verifiable-source.md). 
+For information on how to build verifiably, see [Build from verifiable source](../howto/build/verifiable-builds/build-from-verifiable-source.md). 
 
 ## Dependencies
 
@@ -30,7 +29,7 @@ When you submit a build with dependencies, each dependency:
 
 1. Must be a previously verifiably built image.
 2. Must have valid SLSA provenance.
-3. Must have it's digest recorded in your build's provenance.
+3. Must have its digest recorded in your build's provenance.
 
 When submitting a build with dependencies, provenance is validated and dependency digests are recorded in the build's SLSA provenance.
 
