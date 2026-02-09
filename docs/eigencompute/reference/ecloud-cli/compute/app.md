@@ -16,6 +16,7 @@ Manage applications including creating, operating, and terminating.
 * [list](#list)
 * [info](#info)
 * [logs](#logs)
+* [releases](#releases)
 * [profile](#profile)
 * [configure](#configure)
 * help, h
@@ -85,7 +86,8 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `ecloud compute app deploy [--name <value>] [--dockerfile <value>] [--image-ref <value>]
 [--log-visibility] [--instance-type <value>] [--skip-profile] [--resource-usage-monitoring] [--website <value>]
-[--description <value>] [--x-url <value>] [--image <value>] [--skip-profile] [global options]` 
+[--description <value>] [--x-url <value>] [--image <value>] [--skip-profile]
+[--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] [--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]` 
 
 ### Options
 
@@ -145,13 +147,46 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 > Skip app profile setup.
 
+`--verifiable`
+
+> Enable verifiable build mode. Build from either: 
+> * Git source using `--repo` and `--commit`
+> * Prebuilt verifiable image using `--image-ref`.
+
+`--repo <value>`
+
+> Git repository URL. Required with `--verifiable` when building from Git source.
+
+`--commit <value>`
+
+> Git commit SHA (40 hex chars). Required with `--verifiable` when building from Git source.
+
+`--build-dockerfile <value>`
+
+> Dockerfile path for verifiable build when building from Git source.
+
+`--build-context <value>`
+
+> Build context path for verifiable build when building from Git source.
+
+`--build-dependencies=<value>...`
+
+> Dependency digests for verifiable build when building from Git source (sha256:...).
+
+`--build-caddyfile=<value>`
+
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if omitted,
+> auto-detected from the env file TLS settings.
+
 ## upgrade
 
 Update an existing application with new code, configuration, or environment variables.
 
 ### Synopsis
 
-`ecloud compute app upgrade  [<app-id|name>] [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] [--instance-type value] [--image_ref <value>] [global options]`
+`ecloud compute app upgrade  [<app-id|name>] [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] 
+[--instance-type value] [--image_ref <value>] [--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] 
+[--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]`
 
 ### Arguments
 
@@ -181,6 +216,37 @@ Update an existing application with new code, configuration, or environment vari
 `--instance-type <value>` (string)
 
 > Machine instance type to use. One of `g1-standard-4t` or `g1-standard-8t`. Prompted for if not provided. Can be set using `ECLOUD_INSTANCE_TYPE`.
+
+`--verifiable`
+
+> Enable verifiable build mode. Build from either:
+> * Git source using `--repo` and `--commit`
+> * Prebuilt verifiable image using `--image-ref`.
+
+`--repo <value>`
+
+> Git repository URL. Required with `--verifiable` when building from Git source.
+
+`--commit <value>`
+
+> Git commit SHA (40 hex chars). Required with `--verifiable` when building from Git source.
+
+`--build-dockerfile <value>`
+
+> Dockerfile path for verifiable build when building from Git source.
+
+`--build-context <value>`
+
+> Build context path for verifiable build when building from Git source.
+
+`--build-dependencies=<value>...`
+
+> Dependency digests for verifiable build when building from Git source (sha256:...).
+
+`--build-caddyfile=<value>`
+
+> Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if omitted,
+> auto-detected from the env file TLS settings.
 
 ## start
 
@@ -300,6 +366,29 @@ View application logs from your TEE instance.
 `--watch`
 
 > Continuously fetch and display logs for application. Default is disabled.
+
+## releases
+
+Display app releases including verifiable builds and dependency builds.
+
+### Synopsis
+
+`ecloud compute app releases [app-id|name] [--json] [--full] [global options]`
+
+### Arguments
+
+`app-id|name` (string)
+
+> Application ID or display name. Prompted for if not provided.
+
+### Options
+
+`--json`
+
+> Output JSON instead of formatted text.
+
+`--full`
+> Display the full (multi-line) release details instead of a table.
 
 ## profile set
 

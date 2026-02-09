@@ -1,6 +1,6 @@
 ---
 title: environment
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 Manage deployment environments to switch between Mainnet and Sepolia testnet.
