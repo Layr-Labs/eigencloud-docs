@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3
-title: Restaking Smart Contract Developer
+sidebar_position: 4
+title: Restaking smart contract developer
 ---
 
 Smart Contract Restaking allows the user to interact directly with the EigenLayer core contracts. The following sections describe how to setup your Restaking integration with the EigenLayer contracts directly with no reliance on the EigenLayer Web App.

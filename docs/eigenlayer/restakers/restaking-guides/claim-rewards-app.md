@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Claim Rewards using EigenLayer App
+title: Claim rewards using EigenLayer app
 ---
 
 For information on Rewards concepts, refer to [Rewards Overview](../../concepts/rewards/rewards-concept.md).
