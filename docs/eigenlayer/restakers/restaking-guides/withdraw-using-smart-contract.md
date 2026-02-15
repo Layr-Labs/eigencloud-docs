@@ -30,8 +30,8 @@ the withdrawal attempt will fail.
    1. Navigate to the _Contract_ tab.
    2. Select *Read as Proxy*.
    3. Find function 19: `getQueuedWithdrawals`. Note that it's `Withdrawals`, with an S at the end.
-   4. Click on the arrow to the right. You will see something like `withdrawalRoot (bytes32)`.
-   5. Enter your wallet address and click *Query*.
+   4. Click on the arrow to the right. 
+   5. In the _staker (address)_ field, enter your wallet address and click *Query*.
 
 3. Save the Withdrawal Data. 
 
