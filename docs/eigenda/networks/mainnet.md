@@ -9,7 +9,7 @@ sidebar_position: 1
 * [AVS Page][2]
 * [Blob Explorer][1]
 
-## Blazar (V2) Specs
+## Network Specs
 
 | Property | Value |
 | --- | --- |

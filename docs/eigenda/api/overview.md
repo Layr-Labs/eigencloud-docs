@@ -18,7 +18,7 @@ The low level specification for the Disperser API is [disperser.proto](https://g
 The goal of this document is to explain this spec at a higher level.
 
 Eigen Labs hosts a disperser endpoint for each EigenDA network. These endpoints are documented in respective network pages 
-for [Mainnet](../../networks/mainnet.md) and [Sepolia](../../networks/sepolia.md).
+for [Mainnet](../networks/mainnet.md) and [Sepolia](../networks/sepolia.md).
 
 ### Disperser Endpoints
 
