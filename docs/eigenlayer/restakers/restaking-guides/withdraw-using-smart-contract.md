@@ -36,13 +36,24 @@ the withdrawal attempt will fail.
 3. Save the Withdrawal Data. 
 
    You receive a response similar to:
-   ` [ getQueuedWithdrawals(address) Response ]
-   withdrawals tuple[] :
-   [[0x840675002eE34C147C04e6dD91E7E01Ec0b0A408,0x1f8C8b1d78d01bCc42ebdd34Fae60181bD697662, 0x840675002eE34C147C04e6dD91E7E01Ec0b0A408,0,23198928,0x0Fe4F44beE93503346A3Ac9EE5A26b130a5796d6,27225244801338426]] `
-
-   The response corresponds to
-   `[staker address, delegated address, withdrawer address, nonce, start block, strategies, scaledShares]`
-
+   ```
+   [getQueuedWithdrawals(address) Response]
+   withdrawals (array) : [
+    {
+     staker (address) : 0x[YOUR ADDRESS]
+     delegatedTo (address) : 0x[OPERATOR]
+     withdrawer (address) : 0x[YOUR ADDRESS]
+     nonce (uint256) : 15
+     startBlock (uint32) : 24246024
+     strategies (array) : [
+     0xbeaC0eeEeeeeEEeEeEEEEeeEEeEeeeEeeEEBEaC0
+     scaledShares (array) : [
+     13636298239000000000
+     ]
+    }
+   ]
+   ```
+   
    Save these values, you need them in the next step.
 
    :::note
@@ -54,15 +65,19 @@ the withdrawal attempt will fail.
    2. Connect your wallet.
    3. Find the function completeQueuedWithdrawal. Note that it's `Withdrawal`, no S at the end.
    4. Fill in the inputs using the data you saved in the previous step:
-     `staker: <staker address>
+      ```
+      staker: <staker address>
       delegatedTo: <delegated address>
       withdrawer: <withdrawer address>
       nonce: <nonce number>
       startBlock: <start block number>
       strategies: [<strategy address>]
       scaledShares: [<scaledShares number>]
-      tokens: [<token address you want to withdraw>]
-      receiveAsTokens: true`
+      tokens: [<token address you want to withdraw. For Native ETH withdrawals, enter 0x0000000000000000000000000000000000000000>]
+      receiveAsTokens: true
+      ```
+
+      You can specify `receiveAsTokens: false` to cancel a completable withdrawal and return the assets to fully restaked status eligible to earn rewards.
 
 5. Submit the Transaction
     1. Click *Write*.
