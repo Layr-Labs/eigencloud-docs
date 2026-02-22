@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # How to Build Trustless Agents with ERC-8004 and EigenCloud
 
-Building verifiable AI agents using [ERC8004](https://eips.ethereum.org/EIPS/eip-8004), [Agent0 SDK](https://sdk.ag0.xyz/), [EigenAI](https://docs.eigencloud.xyz/products/eigenai/concepts/eigenai-overview), and [EigenCompute](https://docs.eigencloud.xyz/products/eigencompute/concepts/eigencompute-overview).
+Building verifiable AI agents using [ERC8004](https://eips.ethereum.org/EIPS/eip-8004), [Agent0 SDK](https://sdk.ag0.xyz/), [EigenAI](https://docs.eigencloud.xyz/eigenai/concepts/eigenai-overview), and [EigenCompute](https://docs.eigencloud.xyz/eigencompute/get-started/eigencompute-overview).
 
 > **Note**: This guide uses Python examples, but both the OpenAI SDK and Agent0 SDK are also available in TypeScript.
 
@@ -232,7 +232,7 @@ results = sdk.searchAgents(
 
 ## Next Steps
 
-1. **Get Access**: Request [onboarding](https://onboarding.eigencloud.xyz/) for [EigenAI](https://docs.eigencloud.xyz/products/eigenai/concepts/eigenai-overview) and [EigenCompute](https://docs.eigencloud.xyz/products/eigencompute/concepts/eigencompute-overview)
+1. **Get Access**: [Contact us](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) for [EigenAI](https://docs.eigencloud.xyz/eigenai/concepts/eigenai-overview) and [EigenCompute](https://docs.eigencloud.xyz/eigencompute/get-started/eigencompute-overview)
 2. **Build Your Agent**: Integrate EigenAI for deterministic inference
 3. **Register Identity**: Use [Agent0 SDK](https://sdk.ag0.xyz/) to register on ERC-8004
 4. **Deploy to TEE**: Follow [EigenCompute quickstart](https://docs.eigencloud.xyz/products/eigencompute/quickstart)
@@ -242,5 +242,5 @@ results = sdk.searchAgents(
 
 - **Agent0 SDK**: [Python and TypeScript](https://sdk.ag0.xyz/)
 - **ERC-8004 Spec**: [EIP-8004](https://eips.ethereum.org/EIPS/eip-8004)
-- **EigenAI Docs**: [docs.eigencloud.xyz/products/eigenai](https://docs.eigencloud.xyz/products/eigenai/concepts/eigenai-overview)
-- **EigenCompute Docs**: [docs.eigencloud.xyz/products/eigencompute](https://docs.eigencloud.xyz/products/eigencompute/concepts/eigencompute-overview)
+- **EigenAI Docs**: [docs.eigencloud.xyz/eigenai](https://docs.eigencloud.xyz/eigenai/concepts/eigenai-overview)
+- **EigenCompute Docs**: [docs.eigencloud.xyz/eigencompute](https://docs.eigencloud.xyz/eigencompute/get-started/eigencompute-overview)

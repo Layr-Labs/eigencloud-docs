@@ -3,18 +3,14 @@ title: EigenAI Overview
 sidebar_position: 1
 ---
 
-:::tip Get Started
+:::tip Get Access
 
-Go to [deTERMinal](https://determinal.eigenarcade.com) and get a 1M inference token credit for free by connecting your X account.
+EigenAI is available on request. To get access, please [contact us](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ).
 
-To integrate deTERMinal token credit with your client, refer to the [Grant API Integration README](https://github.com/scotthconner/eigenx-determinal-token-grants).
-
-<a href="https://determinal.eigenarcade.com" className="onboardingButton" target="_blank" rel="noopener noreferrer">
-  <span>1M token credit</span>
+<a href="https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ" className="onboardingButton" target="_blank" rel="noopener noreferrer">
+  <span>Request Access</span>
 </a>
 
-
-For more tokens or different models, you can [contact us here](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ).
 :::
 
 ## What is EigenAI? 
