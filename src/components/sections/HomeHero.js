@@ -20,7 +20,7 @@ function HomeHero() {
         <div className={styles.cardsRow}>
           <FigmaCard
             title="EigenAI"
-            desc="Verifiable, deterministic LLM inference."
+            desc="Verifiable, deterministic LLM inference. Available on request."
             link="/eigenai/concepts/eigenai-overview"
           />
           <FigmaCard
