@@ -659,13 +659,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/eigencloud-logo-blue.png',
+      image: 'img/eigen-logo-horizontal.svg',
       navbar: {
-        title: "Home",
+      //  title: "Home",
         logo: {
           alt: "EigenLayer Logo",
-          src: "img/eigencloud-logo-blue.png",
-          srcDark: "img/eigencloud-logo.png",
+          src: "img/eigen-logo-horizontal.svg",
+          srcDark: "img/eigen-logo-horizontal.svg",
         },
         items: [
           {
