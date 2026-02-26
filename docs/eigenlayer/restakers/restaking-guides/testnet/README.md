@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Testnet Restaking
+title: Testnet restaking
 ---
 
 ## Testing Restaking on the Holesky Testnet
