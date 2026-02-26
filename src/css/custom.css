@@ -245,6 +245,11 @@ html[data-theme="dark"] .header--github-link:before {
   line-height: 100%; /* 14px */
 }
 
+.navbar__logo img{
+    height: 80%;
+    margin-top: 3px;
+}
+
 [data-theme="dark"] .navbar__title{
   color: white;
 }
