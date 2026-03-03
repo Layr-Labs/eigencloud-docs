@@ -4,6 +4,9 @@ title: Overview
 ---
 
 Rewards are tokens distributed to Stakers and Operators by an AVS to reward Stakers and Operators for participation in securing AVSs.
+
+## Rewards v2
+
 Rewards implements the [EigenLayer Improvement Proposal-001: Rewards v2](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-001.md).
 
 EigenLayer has a flexible rewards mechanism that enables:
@@ -25,13 +28,31 @@ EigenLayer has a flexible rewards mechanism that enables:
     a split enables Operators to have flexibility in determining the appropriate take rate. The Programmatic Incentive splits 
     integrate with the Rewards distribution process which ensures that Stakers delegating to Operators benefit proportionately.
 
+## Rewards v2.2
+
+[EigenLayer Improvement Proposal-014: Rewards v2.2](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-014.md) adds rewards mechanisms that enable:
+
+* Unique stake weighted rewards
+
+  AVSs can distribute rewards based on allocated unique stake in Operator Sets. Supports both retroactive and future 
+  commitments (max of 2 years).
+
+* Total stake weighted rewards
+
+  AVSs can distribute rewards based on total delegated stake in Operator Sets. Supports both retroactive and future
+  commitments (max of 2 years).
+
+The Rewards v2.2 rewards mechanisms enable predictable, multi-period incentive structures.
+
+## Submission, calculation, and distribution
+
 Rewards are submitted, calculated, and distributed as follows:
 
 1. [AVSs submit rewards submissions to Operators and Stakers](../../developers/howto/build/submit-rewards-submissions.md).
 2. The Rewards updater calculates Rewards offchain and consolidates these into a merkle root posted onchain.
 3. [Operators and Stakers claim their allocated Rewards](rewards-claiming).
 
-## Rewards Calculation 
+## Rewards calculation 
 
 Rewards are calculated via an offchain process. A Merkle root (known as the distribution root) is posted which represents
 the cumulative rewards across all earners weekly on mainnet and daily on testnet. There is an additional 2 hour delay on
