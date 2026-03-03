@@ -8,9 +8,6 @@ function HomeHero() {
   return (
     <section className={dotPattern}>
       <div className={styles.container}>
-        <div className={styles.logoWrapper}>
-          <img src="/img/eigencloud-logo.png" alt="EigenCloud Logo" className={styles.logoImg} />
-        </div>
         <h1 className={styles.h1}>Build on EigenCloud</h1>
         <div className={styles.subheading}>
           EigenCloud brings blockchain verification to the real world, letting developers build applications, agents, and services that can securely verify any input, data or event.
