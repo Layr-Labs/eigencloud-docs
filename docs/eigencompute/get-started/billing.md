@@ -22,14 +22,14 @@ Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscripti
 
 ### Instance pricing and specifications
 
-| Instance Tier    | Resources            | Security Type      | Hourly Price | Monthly Price    |
-|:-----------------|:---------------------|:-------------------|:-------------|:-----------------|
-| **Starter 1**    | Shared 2 vCPU + 1 GB | Shielded VM (vTPM) | $0.03/hr     | $19.99/mo        |
-| **Starter 2**    | Shared 2 vCPU + 2 GB | Shielded VM (vTPM) | $0.04/hr     | $27.99/mo        |
-| **Growth 1**     | 2 vCPU + 4 GB        | SEV-SNP (TEE)      | $0.07/hr     | $53.99/mo        |
-| **Growth 2**     | 2 vCPU + 8 GB        | SEV-SNP (TEE)      | $0.12/hr     | $85.99/mo        |
-| **Enterprise 1** | 4 vCPU + 16 GB       | TDX (TEE)          | $0.33/hr     | $239.99/mo       |
-| **Enterprise 2** | 8 vCPU + 32 GB       | TDX (TEE)          | $0.66/hr     | $484.99/mo       |
+| Instance Tier    | Resources            | Security Type      | Hourly Price | Monthly Price |
+|:-----------------|:---------------------|:-------------------|:-------------|:--------------|
+| **Starter 1**    | Shared 2 vCPU + 1 GB | Shielded VM (vTPM) | $0.03/hr     | $19.99/mo     |
+| **Starter 2**    | E2-Medium            | Shielded VM (vTPM) | $0.04/hr     | $29.99/mo     |
+| **Pro 1**        | 2 vCPU + 4 GB        | SEV-SNP (TEE)      | $0.07/hr     | $53.99/mo     |
+| **Pro 2**        | 2 vCPU + 8 GB        | SEV-SNP (TEE)      | $0.12/hr     | $85.99/mo     |
+| **Enterprise 1** | 4 vCPU + 16 GB       | TDX (TEE)          | $0.33/hr     | $239.99/mo    |
+| **Enterprise 2** | 8 vCPU + 32 GB       | TDX (TEE)          | $0.66/hr     | $484.99/mo    |
 
 ## Subscribe
 
