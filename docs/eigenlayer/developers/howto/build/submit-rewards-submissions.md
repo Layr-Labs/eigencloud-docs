@@ -14,7 +14,10 @@ For information on Rewards concepts, refer to [Rewards Overview](../../../concep
 
 Submitting rewards for an AVS is handled by the [RewardsCoorinator core contract](../../concepts/eigenlayer-contracts/core-contracts.md).
 
-To submit rewards submissions, use [`RewardsCoordinator.createOperatorDirectedOperatorSetRewardsSubmission`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/RewardsCoordinator.md#createoperatordirectedoperatorsetrewardssubmission).
+To submit rewards submissions, use:
+* [`RewardsCoordinator.createOperatorDirectedOperatorSetRewardsSubmission`](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/core/RewardsCoordinator.md#createoperatordirectedoperatorsetrewardssubmission) 
+for Rewards v2 (operator directed rewards) and Rewards v2.1 (operator director Operator Set rewards).
+* `createUniqueStakeRewardsSubmission` or `createTotalStakeRewardsSubmission` for Rewards v2.2 (unique stake and total stake Operator Set rewards).
 
 An AVS can use onchain or offchain data in rewards logic to determine the reward amount per Operator. The rewards can be calculated 
 based on the work performed by Operators during a certain period of time, can be a flat reward rate, or another structure based on 
@@ -31,8 +34,7 @@ rewards calculation per Operator by the AVS.
 
 Each rewards submission specifies:
 
-* Time range for which the rewards submission is valid. Rewards submissions can be retroactive from the [M2 upgrade](https://github.com/Layr-Labs/eigenlayer-contracts/releases/tag/v0.2.3-mainnet-m2)
-  and last up to 30 days in the future.
+* Time range for which the rewards submission is valid. 
 * List of strategies and multipliers that enables the AVS to weigh the relative payout to each strategy within a single rewards submission.
 * ERC20 token in which rewards should be denominated.
 
