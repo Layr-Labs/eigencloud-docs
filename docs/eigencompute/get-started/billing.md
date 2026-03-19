@@ -5,10 +5,10 @@ sidebar_position: 3
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription.
 
-EigenCompute has metered billing so you pay for what you use. All new customers receive a $100 credit.
+EigenCompute has metered billing so you pay for what you use. All new customers receive up to $25 matched credits.
 
 :::important Mainnet Pricing
-Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available testnet pricing for a promotional
+Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available at testnet pricing for a promotional
 period ending on 04/31/2026.
 :::
 
@@ -25,7 +25,7 @@ Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscripti
 | Instance Tier    | Resources            | Security Type      | Hourly Price | Monthly Price |
 |:-----------------|:---------------------|:-------------------|:-------------|:--------------|
 | **Starter 1**    | Shared 2 vCPU + 1 GB | Shielded VM (vTPM) | $0.03/hr     | $19.99/mo     |
-| **Starter 2**    | E2-Medium            | Shielded VM (vTPM) | $0.04/hr     | $29.99/mo     |
+| **Starter 2**    | Shared 2 vCPU + 4 GB | Shielded VM (vTPM) | $0.04/hr     | $29.99/mo     |
 | **Pro 1**        | 2 vCPU + 4 GB        | SEV-SNP (TEE)      | $0.07/hr     | $53.99/mo     |
 | **Pro 2**        | 2 vCPU + 8 GB        | SEV-SNP (TEE)      | $0.12/hr     | $85.99/mo     |
 | **Enterprise 1** | 4 vCPU + 16 GB       | TDX (TEE)          | $0.33/hr     | $239.99/mo    |

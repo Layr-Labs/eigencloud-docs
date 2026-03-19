@@ -116,7 +116,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 > | Machine type      |  vCPUs   | Memory | Architecture     |
 > |-------------------|:--------:|:------:|------------------|
 > | g1-micro-1v       | 2 shared |  1GB   | vTPM Shielded VM | 
-> | g1-small-1v       | 2 shared |  2GB   | vTPM Shielded VM | 
+> | g1-medium-1v      | 2 shared |  2GB   | vTPM Shielded VM | 
 > | g1-custom-2-4096s |    2     |  4GB   | AMD SEV-SNP      | 
 > | g1-standard-2s    |    2     |  8GB   | AMD SEV-SNP      | 
 > | g1-standard-4t    |    4     | 16 GB  | Intel TDX        |
@@ -226,7 +226,7 @@ Update an existing application with new code, configuration, or environment vari
 > | Machine type      |  vCPUs   | Memory | Architecture     |
 > |-------------------|:--------:|:------:|------------------|
 > | g1-micro-1v       | 2 shared |  1GB   | vTPM Shielded VM | 
-> | g1-small-1v       | 2 shared |  2GB   | vTPM Shielded VM | 
+> | g1-medium-1v      | 2 shared |  2GB   | vTPM Shielded VM | 
 > | g1-custom-2-4096s |    2     |  4GB   | AMD SEV-SNP      | 
 > | g1-standard-2s    |    2     |  8GB   | AMD SEV-SNP      | 
 > | g1-standard-4t    |    4     | 16 GB  | Intel TDX        |
