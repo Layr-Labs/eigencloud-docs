@@ -131,7 +131,7 @@ skills = ["scanner", "scorer", "ideator", "generator",
           "text_writer", "editor", "publisher", "learnings"]
 instruction = """
 1. Only proceed if something scores above 8/10
-2. If nothing qualifies, skip — write a concise analysis and publish
+2. If nothing qualifies, skip this cycle entirely
 """
 
 [[backgroundTasks]]

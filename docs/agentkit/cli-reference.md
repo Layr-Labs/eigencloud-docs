@@ -25,7 +25,7 @@ agentkit [flags]
 - `--env <file>` — Path to .env file with credentials or full deploy profile
 - `--subdomain <label>` — Agent subdomain, skips interactive prompt (headless only)
 - `--wallet <address>` — Override default local funding wallet (headless only)
-- `--plan <id>` — Compute plan SKU id, skips plan selection (headless only)
+- `--plan <id>` — Compute plan SKU ID, skips plan selection (headless only)
 - `--verbose` — Enable verbose logging
 
 ### Examples
@@ -46,7 +46,7 @@ agentkit init --files ./my-agent --env ./deploy.env \
 
 ## agentkit list
 
-List your deployed agents with their current status, subdomain, and compute plan.
+List your deployed agents with their current status, subdomain, and EigenCompute plan.
 
 ### Usage
 
@@ -176,6 +176,6 @@ The `--env` flag accepts a `.env` file containing platform credentials and custo
 
 Templates may define additional custom keys. Include any extra variables your agent needs in the same file.
 
-## Compute Plans
+## EigenCompute Plans
 
-Pass a SKU id to `--plan` during headless init to skip the interactive plan selector. See [Credits and Billing](./credits-and-billing.md) for tiers, SKUs, and pricing.
+Pass a SKU ID to `--plan` during headless init to skip the interactive plan selector. See [Credits and Billing](./credits-and-billing.md) for tiers, SKUs, and pricing.

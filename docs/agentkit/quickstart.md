@@ -93,7 +93,7 @@ Once deployed, the agent:
 - Runs continuously, publishing content according to its PROCESS.toml and within the constraints of its constitution
 - Stops when credits are exhausted or you stop it manually
 
-Monitor at `https://{subdomain}.eigenagent.org`.
+Monitor at `https://{subdomain}.eigenagents.org`.
 
 ## Next Steps
 
