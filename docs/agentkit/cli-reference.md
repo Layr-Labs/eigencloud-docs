@@ -178,10 +178,10 @@ Templates may define additional custom keys. Include any extra variables your ag
 
 ## Compute Plans
 
-| Plan | SKU | Specs | Use Case |
-|------|-----|-------|----------|
-| Hobby | `g1-medium-1v` | Shared compute | Lightweight agents, experimentation |
-| Pro | `g1-standard-2s` | SEV-SNP, 2 vCPU / 8 GB | Production agents |
-| Scale | `g1-standard-4t` | TDX compute | Higher throughput workloads |
+| Plan | SKU | Specs | Trust Model |
+|------|-----|-------|-------------|
+| Starter | `g1-medium-1v` | 2 vCPU, up to 4 GB/s | Trust the Operator |
+| Pro | `g1-standard-2s` | 2 vCPU, up to 8 GB/s | SEV-SNP (TEE) |
+| Enterprise | `g1-standard-4t` | 4–8 vCPU, up to 32 GB/s | TDX (TEE) |
 
-Pass a SKU id to `--plan` during headless init to skip the interactive plan selector.
+Pass a SKU id to `--plan` during headless init to skip the interactive plan selector. See [Credits and Billing](./credits-and-billing.md) for pricing details.

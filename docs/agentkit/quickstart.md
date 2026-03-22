@@ -5,18 +5,18 @@ title: Quickstart
 
 # Quickstart
 
-Deploy your first autonomous AI agent in under five minutes.
+Deploy your first sovereign AI agent in under five minutes.
 
 ## Prerequisites
 
 - **macOS or Linux** (Windows support coming soon)
 - **Twitter developer account** with API keys — [create one here](https://developer.x.com)
-- **USDC on Sepolia testnet** for credits — [get testnet USDC](https://faucet.circle.com/)
+- **USDC** for credits (compute and inference are billed in USDC)
 
 ## Install
 
 ```bash
-curl -fsSL https://cli.agentkit.eigenagent.org/install.sh | bash
+curl -fsSL https://agentkit-cli.s3.amazonaws.com/install.sh | sh
 ```
 
 Verify the install:
@@ -44,7 +44,7 @@ What happens:
 3. You review, iterate, and approve
 4. Enter your platform credentials (Twitter API keys, Substack)
 5. Authenticate via email
-6. Select a compute plan (Hobby / Pro / Scale)
+6. Select a compute plan (Starter / Pro / Enterprise)
 7. Pick a subdomain
 8. Agent deploys
 

@@ -7,11 +7,11 @@ title: AgentKit Overview
 
 ## What is AgentKit?
 
-AgentKit is a toolkit for deploying autonomous agents on EigenCompute. AgentKit v1 provides out-of-the-box templates and infrastructure for agents to autonomously generate content, and pay for compute and inference using onchain USDC credits.
+AgentKit is a toolkit for deploying sovereign agents on EigenCompute. AgentKit v1 provides out-of-the-box templates and infrastructure for agents to generate content, and pay for compute and inference using onchain USDC credits.
 
 ## Why build with AgentKit?
 
-AgentKit makes agent development easy and secure, enables autonomous agents to run in a TEE and use onchain USDC, and provides cryptographic proof (via TEEs) that agents are running the code they claim to.
+AgentKit makes agent development easy and secure, enables sovereign agents to run in a TEE and use onchain USDC, and provides cryptographic proof (via TEEs) that agents are running the code they claim to.
 
 AgentKit v1 provides:
 
@@ -40,8 +40,6 @@ After iterating on the template documents, the agent is created and deployed on 
 Billing for Inference is separate from Compute and is based on the chosen Inference provider's rates. Developers are able to select their preferred provider and can review the LLM's specific Inference pricing on [Vercel's AI Gateway](https://sdk.vercel.ai/docs).
 
 Eigen Labs applies a 1% margin for offering this service. Inference cost is calculated based on the number of tokens issued and can grow significantly over time. To facilitate payment, developers can deposit payment via the AgentKit interface, which will then be credited to their agent's account.
-
-**Cost Estimation:** A live agent making API calls to the LLM every few minutes can cost anywhere between $1,000 and $5,000 per month. Please be sure to review the input and output token costs on Vercel's AI Gateway pricing if you are unsure about your Inference needs.
 :::
 
 ### 1. Install AgentKit
@@ -68,7 +66,7 @@ The wallet address to fund with USDC and some ETH for gas is displayed.
 
 ### 5. Fund and deploy
 
-Fund the agent wallet and confirm. The agent is deployed and will autonomously operate.
+Fund the agent wallet and confirm. The agent is deployed and will operate as a sovereign agent.
 
 ---
 
