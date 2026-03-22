@@ -22,24 +22,22 @@ AgentKit v1 provides:
 
 ## How AgentKit works
 
-AgentKit deploys agents on EigenCloud. EigenCompute provides the TEE, key management, USDC payments, and verification of agent actions.
+AgentKit deploys agents on EigenCompute. EigenCompute provides the TEE, key management, USDC payments, and verification of agent actions.
 
 AgentKit templates are provided to define the agent:
 
 | File | Purpose |
 | --- | --- |
-| **SOUL.md** | The agent's living personality document |
-| **PROCESS.toml** | Creative workflow definition |
-| **constitution.md** | Hard constraints the agent must always respect |
+| **SOUL.md** | Who the agent is — personality, voice, beliefs |
+| **PROCESS.toml** | What the agent does — workflows, schedules, skills |
+| **constitution.md** | What the agent must never violate — governance rules |
 
 After iterating on the template documents, the agent is created and deployed on EigenCloud.
 
 ## How to get started
 
 :::important Inference costs
-Billing for Inference is separate from Compute and is based on the chosen Inference provider's rates. Developers are able to select their preferred provider and can review the LLM's specific Inference pricing on [Vercel's AI Gateway](https://sdk.vercel.ai/docs).
-
-Eigen Labs applies a 1% margin for offering this service. Inference cost is calculated based on the number of tokens issued and can grow significantly over time. To facilitate payment, developers can deposit payment via the AgentKit interface, which will then be credited to their agent's account.
+Inference is billed separately from compute, per token, based on your chosen model's rates via [Vercel's AI Gateway](https://sdk.vercel.ai/docs). See [Credits and Billing](./credits-and-billing.md) for details.
 :::
 
 ### 1. Install AgentKit
@@ -54,7 +52,7 @@ curl -fsSL https://agentkit-cli.s3.amazonaws.com/install.sh | sh
 agentkit init
 ```
 
-A conversation is started with an AI designer for you to describe the agent you want. Follow the prompts.
+An AI designer walks you through building the agent. Follow the prompts.
 
 ### 3. Start deployment
 

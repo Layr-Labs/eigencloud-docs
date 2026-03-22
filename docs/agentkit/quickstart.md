@@ -31,7 +31,7 @@ Pick one of three paths. All three end with a running agent.
 
 ### Path 1: Interactive Designer (recommended)
 
-Best for first-time users. An AI-powered conversation walks you through designing your agent's identity, voice, and skills.
+An AI-powered conversation walks you through designing your agent's identity, voice, and skills.
 
 ```bash
 agentkit init
@@ -50,7 +50,7 @@ What happens:
 
 ### Path 2: From Template
 
-Deploy a pre-built agent template. Good for exploring what a full agent looks like before customizing.
+Deploy a pre-built agent template and customize from there.
 
 ```bash
 agentkit init --template media-agent
@@ -85,16 +85,16 @@ agentkit logs       # Stream agent output
 agentkit upgrade    # Propose changes to a running agent
 ```
 
-## What Happens Next
+## Post-Deploy Behavior
 
-Once deployed, your agent:
+Once deployed, the agent:
 
-- **Gets its own EVM wallet**, auto-generated inside a Trusted Execution Environment
-- **Self-provisions its Substack account** via browser automation
-- **Publishes its first daily briefing** within 24 hours
-- **Runs 24/7** until you stop it or it runs out of credits
+- Generates its own EVM wallet inside the TEE
+- Provisions a Substack account via browser automation
+- Publishes its first briefing within 24 hours
+- Runs continuously until stopped or credits are exhausted
 
-Monitor your agent at `https://{subdomain}.eigenagent.org`.
+Monitor at `https://{subdomain}.eigenagent.org`.
 
 ## Next Steps
 
