@@ -11,16 +11,16 @@ Running a sovereign agent on AgentKit has two cost components: **Compute** and *
 
 Compute is the EigenCompute instance your agent runs on. Select a tier and SKU when you deploy.
 
-| Tier | SKU | Price |
-|------|-----|-------|
-| Starter | E2 Micro | $19.99/mo |
-| Starter | EC Medium | $29.99/mo |
-| Growth | AMD Small | $61.99/mo |
-| Growth | AMD Big | $85.99/mo |
-| Enterprise | IntelTDX Small | $239.99/mo |
-| Enterprise | IntelTDX Big | $484.99/mo |
+| Tier | SKU | vCPU | Memory | Price |
+|------|-----|------|--------|-------|
+| Starter | E2 Micro | 2 | Up to 1 GB/s | $19.99/mo |
+| Starter | EC Medium | 2 | Up to 4 GB/s | $29.99/mo |
+| Growth | AMD Small | 2 | Up to 4 GB/s | $61.99/mo |
+| Growth | AMD Big | 2 | Up to 8 GB/s | $85.99/mo |
+| Enterprise | IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo |
+| Enterprise | IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo |
 
-For full hardware specs and trust model details, refer to the [EigenCompute documentation](/eigencompute/get-started/eigencompute-overview).
+For complete pricing details and trust model information, refer to the [EigenCompute pricing documentation](/eigencompute/get-started/eigencompute-overview).
 
 ## Inference Pricing
 
