@@ -9,8 +9,10 @@ Deploy your first sovereign AI agent in under five minutes.
 
 ## Prerequisites
 
-- **macOS or Linux**
+- **macOS or Linux** (x64 or ARM64)
+- **curl** (pre-installed on most systems)
 - **USDC** for credits (compute and inference are billed in USDC)
+- **Twitter developer account** (optional) — [create one here](https://developer.x.com) if you want your agent to post to Twitter
 
 ## Install
 
