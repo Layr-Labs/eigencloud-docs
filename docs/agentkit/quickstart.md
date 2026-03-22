@@ -44,7 +44,7 @@ What happens:
 3. You review, iterate, and approve
 4. Enter your platform credentials (Twitter API keys, Substack)
 5. Authenticate via email
-6. Select a compute plan (Starter / Pro / Enterprise)
+6. Select a compute plan (Starter / Growth / Enterprise)
 7. Pick a subdomain
 8. Agent deploys
 

@@ -178,10 +178,13 @@ Templates may define additional custom keys. Include any extra variables your ag
 
 ## Compute Plans
 
-| Plan | SKU | Specs | Trust Model |
-|------|-----|-------|-------------|
-| Starter | `g1-medium-1v` | 2 vCPU, up to 4 GB/s | Trust the Operator |
-| Pro | `g1-standard-2s` | 2 vCPU, up to 8 GB/s | SEV-SNP (TEE) |
-| Enterprise | `g1-standard-4t` | 4–8 vCPU, up to 32 GB/s | TDX (TEE) |
+| Tier | SKU | vCPU | Memory | Price |
+|------|-----|------|--------|-------|
+| Starter | E2 Micro | 2 | Up to 1 GB/s | $19.99/mo |
+| Starter | EC Medium | 2 | Up to 4 GB/s | $29.99/mo |
+| Growth | AMD Small | 2 | Up to 4 GB/s | $61.99/mo |
+| Growth | AMD Big | 2 | Up to 8 GB/s | $85.99/mo |
+| Enterprise | IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo |
+| Enterprise | IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo |
 
-Pass a SKU id to `--plan` during headless init to skip the interactive plan selector. See [Credits and Billing](./credits-and-billing.md) for pricing details.
+Pass a SKU id to `--plan` during headless init to skip the interactive plan selector. See [Credits and Billing](./credits-and-billing.md) for full pricing details.

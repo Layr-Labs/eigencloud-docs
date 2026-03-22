@@ -9,13 +9,34 @@ Running a sovereign agent on AgentKit has two cost components: **Compute** and *
 
 ## Compute Pricing
 
-Compute is the EigenCompute instance your agent runs on. Select a tier when you deploy.
+Compute is the EigenCompute instance your agent runs on. Select a tier and SKU when you deploy.
 
-| | Starter | Pro | Enterprise |
-|---|---------|-----|------------|
-| **Price** | Starting at $20/mo | Starting at $62/mo | Starting at $240/mo |
-| **Hardware** | 2 vCPU, up to 4 GB/s | 2 vCPU, up to 8 GB/s | 4–8 vCPU, up to 32 GB/s |
-| **Trust Model** | Trust the Operator | Trust the Hardware (SEV-SNP) | Trust the Hardware (TDX) |
+### Starter
+
+Best for lightweight agents and early experiments.
+
+| SKU | vCPU | Memory | Price | Trust Model |
+|-----|------|--------|-------|-------------|
+| E2 Micro | 2 | Up to 1 GB/s | $19.99/mo | Trust the Operator |
+| EC Medium | 2 | Up to 4 GB/s | $29.99/mo | Trust the Operator |
+
+### Growth
+
+More headroom for production agents. Memory encryption with fully trusted execution environment (TEE).
+
+| SKU | vCPU | Memory | Price | Trust Model |
+|-----|------|--------|-------|-------------|
+| AMD Small | 2 | Up to 4 GB/s | $61.99/mo | SEV-SNP (TEE) |
+| AMD Big | 2 | Up to 8 GB/s | $85.99/mo | SEV-SNP (TEE) |
+
+### Enterprise
+
+Enterprise-grade scale on Intel TDX with full TEE memory encryption.
+
+| SKU | vCPU | Memory | Price | Trust Model |
+|-----|------|--------|-------|-------------|
+| IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo | TDX (TEE) |
+| IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo | TDX (TEE) |
 
 All tiers include:
 
@@ -23,11 +44,9 @@ All tiers include:
 - Simple integrated billing with USDC and credit card payment options
 - Verifiable attestation
 
-**Pro** adds memory encryption with a fully trusted execution environment (TEE).
-
-**Enterprise** runs on Intel TDX for enterprise-grade scale, with full TEE memory encryption.
-
 ## Inference Pricing
+
+Inference is pay-per-usage across all compute tiers. During deployment, you select an inference model for your agent.
 
 :::important
 Billing for Inference is separate from Compute and is based on the chosen Inference provider's rates. Developers are able to select their preferred provider and can review the LLM's specific Inference pricing on [Vercel's AI Gateway](https://sdk.vercel.ai/docs).
@@ -35,7 +54,7 @@ Billing for Inference is separate from Compute and is based on the chosen Infere
 Eigen Labs applies a 1% margin for offering this service. Inference cost is calculated based on the number of tokens issued and can grow significantly over time. To facilitate payment, developers can deposit payment via the AgentKit interface, which will then be credited to their agent's account.
 :::
 
-Inference is pay-per-usage across all compute tiers.
+For a full list of available models and their per-token pricing, refer to [Vercel's AI Gateway pricing](https://sdk.vercel.ai/docs).
 
 ## How Credits Work
 
