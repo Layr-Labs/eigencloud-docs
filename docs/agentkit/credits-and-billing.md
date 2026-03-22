@@ -11,14 +11,14 @@ Running a sovereign agent on AgentKit has two cost components: **Compute** and *
 
 Compute is the EigenCompute instance your agent runs on. Select a tier and SKU when you deploy.
 
-| Tier | SKU | vCPU | Memory | Price |
-|------|-----|------|--------|-------|
-| Starter | E2 Micro | 2 | Up to 1 GB/s | $19.99/mo |
-| Starter | EC Medium | 2 | Up to 4 GB/s | $29.99/mo |
-| Growth | AMD Small | 2 | Up to 4 GB/s | $61.99/mo |
-| Growth | AMD Big | 2 | Up to 8 GB/s | $85.99/mo |
-| Enterprise | IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo |
-| Enterprise | IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo |
+| Instance Tier | Resources | Security Type | Hourly Price | Monthly Price |
+|:--------------|:----------|:--------------|:-------------|:--------------|
+| **Starter 1** | Shared 2 vCPU + 1 GB | Shielded VM (vTPM) | $0.03/hr | $19.99/mo |
+| **Starter 2** | Shared 2 vCPU + 4 GB | Shielded VM (vTPM) | $0.04/hr | $29.99/mo |
+| **Pro 1** | 2 vCPU + 4 GB | SEV-SNP (TEE) | $0.07/hr | $53.99/mo |
+| **Pro 2** | 2 vCPU + 8 GB | SEV-SNP (TEE) | $0.12/hr | $85.99/mo |
+| **Enterprise 1** | 4 vCPU + 16 GB | TDX (TEE) | $0.33/hr | $239.99/mo |
+| **Enterprise 2** | 8 vCPU + 32 GB | TDX (TEE) | $0.66/hr | $484.99/mo |
 
 For complete EigenCompute pricing details, refer to the [EigenCompute billing documentation](/eigencompute/get-started/billing).
 
@@ -40,14 +40,6 @@ For a full list of available models and their per-token pricing, refer to [Verce
 4. The coordinator confirms the on-chain transaction
 5. Credits are consumed while the agent is running
 6. When credits run low, top up with `agentkit topup`
-
-## Estimated Runway
-
-```
-remainingCredits / hourlyPriceUsd = hours remaining
-```
-
-Check your agent's remaining runway with `agentkit status`.
 
 ## Topping Up
 
