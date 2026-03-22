@@ -10,6 +10,7 @@ EigenCompute requires a [subscription for deploying applications](../../get-star
 * [subscribe](#subscribe)
 * [cancel](#cancel) 
 * [status](#status)
+* [top-up](#top-up)
 
 ## Global Options
 
@@ -58,3 +59,6 @@ Display current billing status. For more information, refer to [Manage Billing](
 
 `ecloud billing status [global options]`
 
+## top-up
+
+Purchase EigenCompute credits with USDC. For more information, refer to [Manage Billing](../../get-started/billing#top-up-with-usdc)
