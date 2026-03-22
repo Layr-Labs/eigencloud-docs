@@ -20,7 +20,7 @@ Compute is the EigenCompute instance your agent runs on. Select a tier and SKU w
 | Enterprise | IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo |
 | Enterprise | IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo |
 
-For complete pricing details and trust model information, refer to the [EigenCompute pricing documentation](/eigencompute/get-started/eigencompute-overview).
+For complete EigenCompute pricing details, refer to the [EigenCompute billing documentation](/eigencompute/get-started/billing).
 
 ## Inference Pricing
 
