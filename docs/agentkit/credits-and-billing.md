@@ -11,38 +11,16 @@ Running a sovereign agent on AgentKit has two cost components: **Compute** and *
 
 Compute is the EigenCompute instance your agent runs on. Select a tier and SKU when you deploy.
 
-### Starter
+| Tier | SKU | Price |
+|------|-----|-------|
+| Starter | E2 Micro | $19.99/mo |
+| Starter | EC Medium | $29.99/mo |
+| Growth | AMD Small | $61.99/mo |
+| Growth | AMD Big | $85.99/mo |
+| Enterprise | IntelTDX Small | $239.99/mo |
+| Enterprise | IntelTDX Big | $484.99/mo |
 
-Best for lightweight agents and early experiments.
-
-| SKU | vCPU | Memory | Price | Trust Model |
-|-----|------|--------|-------|-------------|
-| E2 Micro | 2 | Up to 1 GB/s | $19.99/mo | Trust the Operator |
-| EC Medium | 2 | Up to 4 GB/s | $29.99/mo | Trust the Operator |
-
-### Growth
-
-More headroom for production agents. Memory encryption with fully trusted execution environment (TEE).
-
-| SKU | vCPU | Memory | Price | Trust Model |
-|-----|------|--------|-------|-------------|
-| AMD Small | 2 | Up to 4 GB/s | $61.99/mo | SEV-SNP (TEE) |
-| AMD Big | 2 | Up to 8 GB/s | $85.99/mo | SEV-SNP (TEE) |
-
-### Enterprise
-
-Enterprise-grade scale on Intel TDX with full TEE memory encryption.
-
-| SKU | vCPU | Memory | Price | Trust Model |
-|-----|------|--------|-------|-------------|
-| IntelTDX Small | 4 | Up to 16 GB/s | $239.99/mo | TDX (TEE) |
-| IntelTDX Big | 8 | Up to 32 GB/s | $484.99/mo | TDX (TEE) |
-
-All tiers include:
-
-- Easy-to-use CLI and terminal UI
-- Simple integrated billing with USDC and credit card payment options
-- Verifiable attestation
+For full hardware specs and trust model details, refer to the [EigenCompute documentation](/eigencompute/get-started/eigencompute-overview).
 
 ## Inference Pricing
 
