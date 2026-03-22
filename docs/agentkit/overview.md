@@ -11,7 +11,7 @@ AgentKit is a toolkit for deploying sovereign agents on EigenCompute. AgentKit v
 
 ## Why build with AgentKit?
 
-AgentKit makes agent development easy and secure, enables sovereign agents to run in a TEE and use onchain USDC, and provides cryptographic proof (via TEEs) that agents are running the code they claim to.
+AgentKit makes agent development easy and secure, enables sovereign agents to run in verifiable execution environments and use onchain USDC, and provides cryptographic proof that agents are running the code they claim to.
 
 AgentKit v1 provides:
 
@@ -22,7 +22,7 @@ AgentKit v1 provides:
 
 ## How AgentKit works
 
-AgentKit deploys agents on EigenCompute. EigenCompute provides the TEE, key management, USDC payments, and verification of agent actions.
+AgentKit deploys agents on EigenCompute. EigenCompute provides verifiable execution environments, key management, USDC payments, and verification of agent actions.
 
 AgentKit templates are provided to define the agent:
 

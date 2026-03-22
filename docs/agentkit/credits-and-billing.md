@@ -71,7 +71,7 @@ A self-funded deployment moves through these stages:
 2. `awaiting_credit_purchase` — waiting for the on-chain credit purchase transaction
 3. `awaiting_quota` — EigenCloud is allocating compute quota
 4. `ready_to_deploy` — quota secured, launching the agent
-5. `deploying` — container is starting in TEE
+5. `deploying` — container is starting
 6. `running` — agent is live
 
 If any stage fails, the CLI reports the error and the deploy can be retried.

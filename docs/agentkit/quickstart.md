@@ -89,7 +89,7 @@ agentkit upgrade    # Propose changes to a running agent
 
 Once deployed, the agent:
 
-- Generates its own EVM wallet inside the TEE
+- Generates its own EVM wallet inside the execution environment
 - Provisions a Substack account via browser automation
 - Publishes its first briefing within 24 hours
 - Runs continuously until stopped or credits are exhausted
