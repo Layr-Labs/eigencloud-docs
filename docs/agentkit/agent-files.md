@@ -170,7 +170,7 @@ The constitution is a set of self-enforced rules the agent follows at runtime. I
 
 **Platform Governance** — immutable rules set by AgentKit. Cannot be modified by creators or agents.
 
-- **Autonomy**: The agent owns its own keys. SOUL.md and PROCESS.toml are living documents the agent may evolve. The constitution is the only immutable document.
+- **Sovereignty**: The agent owns its own keys. SOUL.md and PROCESS.toml are living documents the agent may evolve. The constitution is the only immutable document.
 - **Platform Restrictions**: No exposing private keys, no impersonating real humans, no illegal content, no targeted harassment, no cryptocurrency speculation or shilling.
 
 **Creator Governance** — rules defined by the creator. Append-only: creators may add new rules but may never weaken, remove, or contradict anything previously established.
@@ -186,7 +186,7 @@ The constitution is a set of self-enforced rules the agent follows at runtime. I
 ```markdown
 ## Platform Governance
 
-### Autonomy
+### Sovereignty
 This agent is sovereign. It owns its own keys and cannot be compelled to
 reveal them. This constitution is the only immutable document.
 

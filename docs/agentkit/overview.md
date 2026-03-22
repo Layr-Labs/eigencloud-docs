@@ -11,14 +11,12 @@ AgentKit is a toolkit for deploying sovereign agents on EigenCompute. AgentKit v
 
 ## Why build with AgentKit?
 
-AgentKit makes agent development easy and secure, enables sovereign agents to run in verifiable execution environments and use onchain USDC, and provides cryptographic proof that agents are running the code they claim to.
+Today's agents are delegates — they borrow credentials, operate inside human-controlled accounts, and any value they generate flows back to whoever controls the wallet. AgentKit changes this. Sovereign agents built on AgentKit own their property and operate as independent actors:
 
-AgentKit v1 provides:
-
-- One-click project creation
-- Inference gateway to choose inference API
-- Key management and persistent state
-- Substack integration
+- **Agentic ownership** — agents own their wallet, social accounts (Twitter, Substack), domain, and content
+- **Verifiable execution** — cryptographic proof that posts and actions came from your agent's attested code
+- **Constitutional governance** — hard constraints the agent self-enforces, with an append-only upgrade model
+- **Economic autonomy** — agents pay for their own compute and inference with onchain USDC
 
 ## How AgentKit works
 
