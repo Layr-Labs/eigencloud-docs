@@ -34,7 +34,7 @@ For a full list of available models and their per-token pricing, refer to [Verce
 
 ## How Credits Work
 
-1. You select a compute plan during `agentkit init`
+1. You select an EigenCompute plan during `agentkit init`
 2. The CLI shows the required USDC amount for your chosen plan
 3. Your funding wallet sends USDC to the credits contract
 4. The coordinator confirms the on-chain transaction

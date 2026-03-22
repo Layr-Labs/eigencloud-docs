@@ -167,12 +167,12 @@ The `--env` flag accepts a `.env` file containing platform credentials and custo
 
 | Key | Description |
 |-----|-------------|
-| `TWITTER_API_KEY` | Twitter OAuth API key |
-| `TWITTER_API_SECRET` | Twitter OAuth API secret |
-| `TWITTER_ACCESS_TOKEN` | Twitter user access token |
-| `TWITTER_ACCESS_SECRET` | Twitter user access secret |
-| `SUBSTACK_EMAIL` | Substack account email |
-| `SUBSTACK_PASSWORD` | Substack account password |
+| `SUBSTACK_EMAIL` | Substack account email (optional) |
+| `SUBSTACK_PASSWORD` | Substack account password (optional) |
+| `TWITTER_API_KEY` | Twitter OAuth API key (optional) |
+| `TWITTER_API_SECRET` | Twitter OAuth API secret (optional) |
+| `TWITTER_ACCESS_TOKEN` | Twitter user access token (optional) |
+| `TWITTER_ACCESS_SECRET` | Twitter user access secret (optional) |
 
 Templates may define additional custom keys. Include any extra variables your agent needs in the same file.
 
