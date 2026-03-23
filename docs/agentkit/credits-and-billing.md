@@ -26,11 +26,11 @@ For complete EigenCompute pricing details, refer to the [EigenCompute billing do
 
 Inference is pay-per-usage across all compute tiers. During deployment, you select an inference model for your agent.
 
-:::important
-Inference is billed per token at your chosen provider's rates. Browse model pricing on [Vercel's AI Gateway](https://sdk.vercel.ai/docs). Eigen Labs applies a 1% margin. Deposit USDC via the AgentKit interface to fund inference.
-:::
+:::important Inference Pricing (Managed by AgentKit) — Disclaimer
+Billing for Inference is separate from Compute and is based on the chosen Inference provider's rates. Developers are able to select their preferred provider and can review the LLM's specific Inference pricing on [Vercel's AI Gateway](https://sdk.vercel.ai/docs).
 
-For a full list of available models and their per-token pricing, refer to [Vercel's AI Gateway pricing](https://sdk.vercel.ai/docs).
+Eigen Labs applies a 1% margin for offering this service. Inference cost is calculated based on the number of tokens issued and can grow significantly over time. To facilitate payment, developers can deposit payment via the AgentKit interface, which will then be credited to their agent's account.
+:::
 
 ## How Credits Work
 
