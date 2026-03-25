@@ -20,13 +20,7 @@ function CommunityResourcesSection() {
       icon: '/img/community-groupchat.png',
       title: 'Join the Telegram group chat →',
       description: 'Meet and chat with other developers and builders',
-      link: 'https://ein6l.share.hsforms.com/22TpUSMw-SZaba6q_gNp2hA'
-    },
-    {
-      icon: '/img/community-discord.png',
-      title: 'Join the EigenCloud Community Discord →',
-      description: 'Join the Discord for discussions about EigenCloud',
-      link: 'https://discord.com/invite/eigenlayer'
+      link: 'https://t.me/EigenCloudSupp'
     },
   ];
 
