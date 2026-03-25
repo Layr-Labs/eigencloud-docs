@@ -746,8 +746,8 @@ const config = {
                 href: "https://forum.eigenlayer.xyz/",
               },
               {
-                label: "Discord",
-                href: "https://discord.com/invite/eigenlayer",
+                label: "Telegram",
+                href: "https://t.me/EigenCloudSupp",
               },
               {
                 label: "X",
