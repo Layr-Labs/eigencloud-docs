@@ -675,7 +675,7 @@ const config = {
              activeBasePath: 'eigencloud',
           },
           {
-            to: "agentkit/overview",
+            to: "agentkit/get-started/agentkit-overview",
             label: "AgentKit",
             position: "left",
             activeBasePath: 'agentkit',
