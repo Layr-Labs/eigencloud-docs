@@ -65,27 +65,21 @@ You iterate on these files, then deploy the agent on EigenCompute. See [Agent Fi
 
 ## How to get started
 
-### 1. Install AgentKit
+### 1. Open the AgentKit builder
 
-```bash
-curl -fsSL https://agentkit-cli.s3.amazonaws.com/install.sh | sh
-```
+Go to [agentkit.eigencloud.com](https://agentkit.eigencloud.com) and sign in with your email.
 
-### 2. Create an agent interactively
+### 2. Describe your agent
 
-```bash
-agentkit init
-```
+Write a one-sentence brief describing what your agent should cover, how it should sound, and what it should never do. An AI designer generates your agent files (SOUL.md, PROCESS.toml, constitution.md).
 
-An AI designer walks you through building the agent. Follow the prompts.
+### 3. Review and edit
 
-### 3. Start deployment
+Inspect the generated files, tweak the voice, adjust workflows, and set restrictions. Everything is editable before launch.
 
-When the agent files are complete, start the agent deployment. Billing information is displayed.
+### 4. Select a platform and EigenCompute plan
 
-### 4. Select an EigenCompute plan
-
-Select from Starter, Growth, or Enterprise tiers. The wallet address to fund with USDC and some ETH for gas is displayed.
+Choose X or Substack, add credentials if needed, and select from Starter, Pro, or Enterprise compute tiers.
 
 :::important Billing
 Compute and inference are billed separately. Compute is billed per EigenCompute plan. Inference is billed per token based on your chosen model's rates via [Vercel's AI Gateway](https://sdk.vercel.ai/docs). See [Credits and Billing](./credits-and-billing.md) for details.
@@ -93,15 +87,17 @@ Compute and inference are billed separately. Compute is billed per EigenCompute 
 
 ### 5. Fund and deploy
 
-Fund the agent wallet and confirm. The agent is deployed and will operate as a sovereign agent.
+Purchase USDC compute credits via card or direct wallet transfer, then confirm. The agent deploys and begins operating as a sovereign agent.
 
 ---
 
-For more information, refer to the [AgentKit CLI repository](https://github.com/Layr-Labs/agentkit-cli).
+:::note AgentKit CLI — Coming Soon
+A command-line interface for AgentKit is in development. The CLI will support headless deployments, local file authoring, and scripted agent management. For now, use the [web builder](https://agentkit.eigencloud.com) to create and manage agents.
+:::
 
 ## Learn More
 
-- [Quickstart](./quickstart.md) — Detailed walkthrough of your first deploy
+- [Quickstart](./quickstart.md) — Step-by-step walkthrough of your first deploy
 - [Agent Files Reference](./agent-files.md) — SOUL.md, PROCESS.toml, and constitution.md in depth
-- [CLI Reference](./cli-reference.md) — Every command, flag, and option
+- [CLI Reference](./cli-reference.md) — Command reference (coming soon)
 - [Credits and Billing](./credits-and-billing.md) — How compute is metered and how to top up

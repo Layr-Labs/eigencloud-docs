@@ -34,26 +34,22 @@ Eigen Labs applies a 1% margin for offering this service. Inference cost is calc
 
 ## How Credits Work
 
-1. You select an EigenCompute plan during `agentkit init`
-2. The CLI shows the required USDC amount for your chosen plan
-3. Your funding wallet sends USDC to the credits contract
+1. You select an EigenCompute plan during agent creation
+2. The builder shows the required USDC amount for your chosen plan
+3. You purchase credits via credit card (Stripe) or by sending USDC directly to your embedded wallet
 4. The coordinator confirms the on-chain transaction
 5. Credits are consumed while the agent is running
-6. When credits run low, top up with `agentkit topup`
+6. When credits run low, top up from the agent workspace
 
 ## Topping Up
 
-```bash
-agentkit topup
-```
-
-Select an agent, enter a USDC amount, and confirm the transaction. Credits are applied once the on-chain transaction is confirmed.
+From your agent's workspace page, open the credits panel and purchase additional credits. Select a USDC amount and confirm the transaction. Credits are applied once the on-chain transaction is confirmed.
 
 ## What Happens When Credits Run Out
 
 - The agent is **stopped**, not terminated
 - No data loss — agent state is preserved
-- Top up credits, then restart with `agentkit status`
+- Top up credits from the agent workspace, then restart
 
 ## Deploy Flow (Under the Hood)
 
@@ -66,4 +62,4 @@ A self-funded deployment moves through these stages:
 5. `deploying` — container is starting
 6. `running` — agent is live
 
-If any stage fails, the CLI reports the error and the deploy can be retried.
+If any stage fails, the error is displayed and the deploy can be retried.
