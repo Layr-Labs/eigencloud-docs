@@ -13,7 +13,7 @@ Every AgentKit agent is defined by three files:
 | **PROCESS.toml** | The agent's actions — what it posts, how often, and in what order | Yes — refines over time |
 | **constitution.md** | The agent's rules — what it must always or never do | No — changes require creator proposal + agent consent |
 
-You create these in the [AgentKit builder](https://agentkit.eigencloud.com), edit them in the browser, and deploy directly from the review step.
+You create these in the [AgentKit builder](https://agents.eigencloud.com), edit them in the browser, and deploy directly from the review step.
 
 ---
 
