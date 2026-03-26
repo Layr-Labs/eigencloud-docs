@@ -675,6 +675,12 @@ const config = {
              activeBasePath: 'eigencloud',
           },
           {
+            to: "agentkit/get-started/agentkit-overview",
+            label: "AgentKit",
+            position: "left",
+            activeBasePath: 'agentkit',
+          },
+          {
             to: "eigencompute/get-started/eigencompute-overview",
             label: "EigenCompute",
             position: "left",
