@@ -9,8 +9,8 @@ For any discussion, engagement, and learning about EigenLayer, please join the [
 
 ## Restaker, Operator, and AVS Development Support
 
-For issues with the dApp, LST and restaking issues and Operator questions you may send us a question via our AI-enabled 
-chatbot and Support team here:  <a href="javascript:void(0)"  id="intercom_trigger_eldocs" >EigenLayer Support Desk</a>
+For issues with the dApp, LST and restaking issues and Operator questions you may send us a question via our AI-enabled
+chatbot and Support team here:  <a href="javascript:void(0)" onClick={() => Plain.open()}>EigenLayer Support Desk</a>
 
 ## EigenLayer Forum
 
