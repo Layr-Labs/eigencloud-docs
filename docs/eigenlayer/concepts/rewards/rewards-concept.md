@@ -30,6 +30,24 @@ Operator fees can be varied by Operator Set for more granular reward fee structu
 
 ## Rewards submission, calculation, and distribution
 
+## Rewards v2.2
+
+[EigenLayer Improvement Proposal-014: Rewards v2.2](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-014.md) adds rewards mechanisms that enable:
+
+* Unique stake weighted rewards
+
+  AVSs can distribute rewards based on allocated unique stake in Operator Sets. Supports both retroactive and future 
+  commitments (max of 2 years).
+
+* Total stake weighted rewards
+
+  AVSs can distribute rewards based on total delegated stake in Operator Sets. Supports both retroactive and future
+  commitments (max of 2 years).
+
+The Rewards v2.2 rewards mechanisms enable predictable, multi-period incentive structures.
+
+## Submission, calculation, and distribution
+
 Rewards are submitted, calculated, and distributed as follows:
 
 1. [AVSs submit rewards submissions to Operators and Stakers](../../developers/howto/build/submit-rewards-submissions.md).
