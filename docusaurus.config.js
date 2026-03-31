@@ -659,13 +659,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/eigencloud-logo-blue.png',
+      image: 'img/eigen-logo-horizontal.svg',
       navbar: {
-        title: "Home",
+      //  title: "Home",
         logo: {
           alt: "EigenLayer Logo",
-          src: "img/eigencloud-logo-blue.png",
-          srcDark: "img/eigencloud-logo.png",
+          src: "img/eigen-logo-horizontal.svg",
+          srcDark: "img/eigen-logo-horizontal.svg",
         },
         items: [
           {
@@ -673,6 +673,12 @@ const config = {
              label: "EigenCloud",
              position: "left",
              activeBasePath: 'eigencloud',
+          },
+          {
+            to: "agentkit/get-started/agentkit-overview",
+            label: "AgentKit",
+            position: "left",
+            activeBasePath: 'agentkit',
           },
           {
             to: "eigencompute/get-started/eigencompute-overview",
@@ -746,8 +752,8 @@ const config = {
                 href: "https://forum.eigenlayer.xyz/",
               },
               {
-                label: "Discord",
-                href: "https://discord.com/invite/eigenlayer",
+                label: "Telegram",
+                href: "https://t.me/EigenCloudSupp",
               },
               {
                 label: "X",
@@ -786,7 +792,7 @@ const config = {
   scripts: [
     // Object format.
     {
-      src: '/js/intercom.js',
+      src: '/js/plain.js',
       async: true,
     },
     // Cookie3 Analytics

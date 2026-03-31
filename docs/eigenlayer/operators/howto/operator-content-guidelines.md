@@ -35,5 +35,5 @@ Please use our [Support channel](https://support.eigenlayer.xyz/) for reporting 
 - Operator violations of Webapp Content Guidelines.
 - Appeal to review and whitelist an Operator who has remediated their violation of the guidelines.
 
-Click on the Intercom chat icon in the bottom right of your screen, then choose “Create a Ticket: Operator Blocklist”.
+Click on the support chat icon in the bottom right of your screen, then choose “Ask a Question -> Operator Blocklist”.
 
