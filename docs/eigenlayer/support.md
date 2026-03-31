@@ -5,7 +5,7 @@ sidebar_position: 9
 
 ## Community
 
-For any discussion, engagement, and learning about EigenLayer, please join the [EigenLayer Community Discord](https://discord.gg/eigenlayer).
+For any discussion, engagement, and learning about EigenLayer, please join the [EigenLayer Community Telegram](https://t.me/EigenCloudSupp).
 
 ## Restaker, Operator, and AVS Development Support
 
@@ -16,8 +16,3 @@ chatbot and Support team here:  <a href="javascript:void(0)" onClick={() => Plai
 
 If you are interested in EigenLayer at a deeper level, please check out the [EigenLayer forum](https://forum.eigenlayer.xyz/)! There are groups of 
 researchers, AVS developers, and more contributing their expertise to help build the open verifiable cloud.
-
-## Building on EigenLayer
-
-Are you interested in building on EigenLayer?  If so, please complete [this form](http://www.eigencloud.xyz/contact).  A member of the team will reach out to discuss your
-project and how we can help support your next steps.
