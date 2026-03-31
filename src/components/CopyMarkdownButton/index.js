@@ -1,21 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import TurndownService from 'turndown';
 import styles from './styles.module.css';
+
+function createTurndownService() {
+  const td = new TurndownService({
+    headingStyle: 'atx',
+    codeBlockStyle: 'fenced',
+    bulletListMarker: '-',
+  });
+
+  // Preserve fenced code blocks with language
+  td.addRule('fencedCodeBlock', {
+    filter(node) {
+      return (
+        node.nodeName === 'PRE' &&
+        node.querySelector('code')
+      );
+    },
+    replacement(content, node) {
+      const code = node.querySelector('code');
+      const classNames = code.className || '';
+      const langMatch = classNames.match(/language-(\S+)/);
+      const lang = langMatch ? langMatch[1] : '';
+      const text = code.textContent || '';
+      return `\n\`\`\`${lang}\n${text}\n\`\`\`\n`;
+    },
+  });
+
+  // Convert Docusaurus admonitions to blockquotes with labels
+  td.addRule('admonitions', {
+    filter(node) {
+      return (
+        node.nodeName === 'DIV' &&
+        /theme-admonition/.test(node.className || '')
+      );
+    },
+    replacement(content, node) {
+      const typeMatch = (node.className || '').match(/admonition-(\w+)/);
+      const type = typeMatch ? typeMatch[1].toUpperCase() : 'NOTE';
+      const lines = content.trim().split('\n');
+      return `\n> **${type}**\n${lines.map((l) => `> ${l}`).join('\n')}\n`;
+    },
+  });
+
+  // Convert Docusaurus tab content — just keep active tab's content
+  td.addRule('tabs', {
+    filter(node) {
+      return (
+        node.nodeName === 'DIV' &&
+        /tabs-container/.test(node.className || '')
+      );
+    },
+    replacement(content) {
+      return `\n${content}\n`;
+    },
+  });
+
+  // Strip copy buttons inside code blocks
+  td.addRule('stripCopyButton', {
+    filter(node) {
+      return (
+        node.nodeName === 'BUTTON' &&
+        /copyButton|clean-btn/.test(node.className || '')
+      );
+    },
+    replacement() {
+      return '';
+    },
+  });
+
+  // Strip the "Copy for LLM" button itself from output
+  td.addRule('stripSelf', {
+    filter(node) {
+      return (
+        node.nodeName === 'DIV' &&
+        node.querySelector('[title="Copy page as markdown for LLMs"]') != null
+      );
+    },
+    replacement() {
+      return '';
+    },
+  });
+
+  return td;
+}
 
 export default function CopyMarkdownButton() {
   const [copied, setCopied] = useState(false);
+  const tdRef = useRef(null);
 
   const copyMarkdown = async () => {
     try {
-      // Get the main article content
       const article = document.querySelector('article');
       if (!article) return;
 
-      // Get the markdown content from the page
-      const title = document.querySelector('h1')?.textContent || '';
-      const content = article.innerText;
+      if (!tdRef.current) {
+        tdRef.current = createTurndownService();
+      }
 
-      // Format as markdown
-      const markdown = `# ${title}\n\n${content}`;
+      const markdown = tdRef.current.turndown(article);
 
       await navigator.clipboard.writeText(markdown);
       setCopied(true);
