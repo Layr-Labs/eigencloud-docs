@@ -49,6 +49,11 @@
     "dotenv": "16.5.0",
     "typescript": "5.2.2"
   },
+  "resolutions": {
+    "form-data": "4.0.5",
+    "fast-xml-parser": "5.5.9",
+    "handlebars": "4.7.9"
+  },
   "engines": {
     "yarn": ">=1.22.22"
   },
