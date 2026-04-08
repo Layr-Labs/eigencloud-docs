@@ -1,68 +1,31 @@
 ---
-title: Deploy with an AI Agent
+title: Deploy Your Agent
 sidebar_position: 3
 ---
 
-# Deploy with an AI Agent
+# Deploy Your Agent on EigenCloud
 
-Use an AI coding agent to deploy, manage, and operate EigenCompute apps through natural language. Instead of running CLI commands manually, describe what you want and let your agent handle it.
+The fastest way to deploy an agent on EigenCloud is with [Claude Code](https://claude.ai/code) and the EigenCompute skill.
 
-## Install the skill
+## Quick setup
 
-The EigenCompute agent skill lives at [`Layr-Labs/skill.md`](https://github.com/Layr-Labs/skill.md). Install it into your AI coding agent:
+Add the skill to your project:
+
+```bash
+mkdir -p .claude/skills && curl -o .claude/skills/ecloud.md \
+  https://raw.githubusercontent.com/Layr-Labs/ecloud/master/packages/cli/skills/deploy/SKILL.md
+```
+
+Then tell Claude:
 
 ```
-https://github.com/Layr-Labs/skill.md
+> Deploy my agent to EigenCloud
 ```
 
-Works with [Claude Code](https://claude.ai/code), [Codex](https://openai.com/index/codex/), and any agent that supports the [Agent Skills](https://github.com/openai/skills) open standard.
-
-## What the agent can do
-
-Once the skill is loaded, you can ask your agent to:
-
-- **Deploy apps** — `"Deploy my Docker image to EigenCompute"` or `"Set up a new TypeScript app on a TEE"`
-- **Verifiable builds** — `"Do a verifiable build from my GitHub repo"`
-- **Manage apps** — `"Check the status of my app"`, `"Show me the logs"`, `"Upgrade to the latest image"`
-- **Handle billing** — `"Subscribe to EigenCompute"`, `"Top up my credits"`
-- **Troubleshoot** — `"My app isn't starting, help me debug it"`
-
-The skill includes a gate-based runbook that walks the agent through prerequisites, building, deploying, verifying, and post-deploy setup automatically.
+That's it. The skill handles prerequisites, building, deploying to a TEE, and verification.
 
 ## Prerequisites
 
-Your machine still needs:
-
-- **Docker** installed and logged in (`docker login`)
-- **ecloud CLI** installed (`npm install -g @layr-labs/ecloud-cli`)
-- **ETH** for deployment gas ([Sepolia testnet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) or mainnet)
-
-The agent checks for these and walks you through setup if anything is missing.
-
-## Example
-
-```
-> Deploy my trading bot to EigenCompute on sepolia with a TDX instance
-
-Agent: I'll walk through the deployment. Let me check your prerequisites first...
-  ✓ ecloud CLI installed
-  ✓ Auth configured (0x9431...)
-  ✓ Environment set to sepolia
-  ✓ Billing active
-  ✓ Docker running
-
-Building linux/amd64 image and pushing to registry...
-Deploying to g1-standard-4t (Intel TDX)...
-
-✅ Deployed!
-  App ID: 0x5940e21020adb5bd2d1fdda4d498edc0eb1f60df
-  IP: 34.56.78.90
-  EVM Wallet: 0xa4Cae7029dfe122866F479E3b6eFb88dA3b35aea
-  Dashboard: https://verify-sepolia.eigencloud.xyz/app/0x5940...
-```
-
-## Next steps
-
-- [Quickstart](quickstart.md) — deploy manually with the CLI
-- [Billing](billing.md) — subscription and credit details
-- [Sample Apps](sample-apps.md) — templates to start from
+- [Docker](https://www.docker.com/get-started/)
+- [ecloud CLI](quickstart.md): `npm install -g @layr-labs/ecloud-cli`
+- [Sepolia ETH](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) for testnet, or mainnet ETH for production
