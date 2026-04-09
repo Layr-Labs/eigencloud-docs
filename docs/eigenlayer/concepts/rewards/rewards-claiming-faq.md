@@ -16,7 +16,7 @@ Operators get a fixed 10% portion rewards, though this is subject to change in a
 ### How can I test reward distributions and claiming on testnet?
 
 #### 1. Programmatic incentives.
-To accumulate programmatic incentives, you must be delegated to an operator that is registered to at least one AVS of any type. Programmatic incentives are payed in Testnet EIGEN. Assets that earn programmatic incentives are limited to: EIGEN, LsETH, ETHx, rETH, osETH, cbETH, ankrETH, stETH, WETH, sfrxETH, mETH.
+To accumulate programmatic incentives, you must be delegated to an operator of a [fee-paying AVS to which the Incentives Council is directing incentives](pi-split.md).
 
 #### 2. Rewards from AVSs
 To accumulate testnet rewards from AVSs, you must be delegated to an Operator that is registered to at least one AVS with active rewards.
