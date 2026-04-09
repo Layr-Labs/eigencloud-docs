@@ -5,12 +5,6 @@ import styles from './CommunityResourcesSection.module.css';
 function CommunityResourcesSection() {
   const resources = [
     {
-      icon: '/img/community-avs.png',
-      title: 'Book an Intro Call →',
-      description: 'Chat with the EigenLayer team about your idea',
-      link: 'https://www.eigencloud.xyz/contact'
-    },
-    {
       icon: '/img/community-twitter.png',
       title: 'Follow us on X →',
       description: 'Stay up to date with the latest updates',

@@ -38,6 +38,3 @@ Examples of these services include rollup services, co-processors, cryptography 
 ![AVS Categories](/img/avs/avs-categories.png)
 
 
-## Get in Touch
-
-If you would like to discuss your ideas to build an AVS on EigenLayer, submit your contact information via [this form](https://www.eigencloud.xyz/contact) and we'll be in touch shortly.

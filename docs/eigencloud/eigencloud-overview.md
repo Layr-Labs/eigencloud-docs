@@ -24,5 +24,3 @@ We're building EigenCloud for developers of Verifiable Apps. Each service or fea
 on reducing friction, increasing adoption, and unlocking new value. As our 1st party and partner offerings expand, EigenCloud
 will bundle them into out-of-the-box solutions on a unified developer platform.
 
-Are you interested in building on EigenCloud?  If so, please complete [this form](http://www.eigencloud.xyz/contact).  A member of the team will reach out to discuss your
-project and how we can help support your next steps.
