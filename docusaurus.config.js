@@ -404,12 +404,6 @@ const redirects = [
     to: '/eigenlayer/developers/concepts/avs-developer-guide'
   },
 
-  // EigenAI section
-  {
-    from: '/products/eigenai/eigenai-overview',
-    to: '/eigenai/concepts/eigenai-overview'
-  },
-
   //External references
   {
     from: '/developers/slashing-background',
@@ -599,7 +593,6 @@ const config = {
               }
               const folderMoves = [
                 ['/products/eigencompute/', '/eigencompute/'],
-                ['/products/eigenai/', '/eigenai/'],
                 ['/products/eigencloud/', '/eigencloud/'],
                 ['/products/eigenda/', '/eigenda/'],
                 ['/products/eigenlayer/', '/eigenlayer/'],
