@@ -21,11 +21,6 @@ Eigen Labs, Inc. does not provide support for production use.
 A forkable EigenCompute app that supports an on-chain escrow contract with Eigen Compute interaction, and Privy-authenticated RPCs.
 [Github repository](https://github.com/Layr-Labs/compute-escrow-privy).
 
-### Pulse 
-
-AI-powered crypto trading agent that monitors Twitter/X influencers and automatically trades tokens based on positive sentiment analysis. 
-Built with Next.js, EigenAI, AgentKit and deployable on EigenCompute. [Github repository](https://github.com/Layr-Labs/pulse-agent?tab=readme-ov-file#%EF%B8%8F-important-warnings).
-
 ### Momentum Trading System - Hyperliquid
 
 A funding-aware, volatility-scaled time-series momentum (TSMOM) strategy for Hyperliquid perpetuals. [Github repository](https://github.com/Gajesh2007/momentum-trading).

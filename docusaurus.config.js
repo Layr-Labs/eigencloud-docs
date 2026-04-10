@@ -687,12 +687,6 @@ const config = {
             activeBasePath: 'eigencompute',
           },
           {
-            to: "eigenai/concepts/eigenai-overview",
-            label: "EigenAI",
-            position: "left",
-            activeBasePath: 'eigenai',
-          },
-          {
             to: "eigenlayer/concepts/eigenlayer-overview",
             label: "EigenLayer",
             position: "left",

@@ -13,14 +13,12 @@ Today, building verifiable applications is hard. Developers must manually manage
 economic incentives. Services are fragmented, tooling is underpowered, and integrations require deep protocol knowledge. For
 builders who want to create high-performance, trust-minimized systems, this complexity is a blocker.
 
-EigenCloud is our answer. It reimagines the developer experience around [EigenLayer](../eigenlayer/concepts/eigenlayer-overview.md), bundling together a suite of 1st party
-verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md), [EigenCompute](../eigencompute/get-started/eigencompute-overview.md), and [EigenAI](../eigenai/concepts/eigenai-overview.md) with new powerful developer tooling. This includes a
-new CLI called DevKit for AVS and App developers, composable middleware and orchestration tools, unified billing and economic
-incentives, and best-in-class onboarding and monitoring capabilities.These capabilities empower developers to go from idea to
-deployment in days rather than months without needing to understand EigenLayer’s internals, enabling mainstream adoption of
-verifiable infrastructure.
+EigenCloud is our answer. It reimagines the developer experience around [EigenLayer](../eigenlayer/concepts/eigenlayer-overview.md), bundling together
+verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md), [EigenCompute](../eigencompute/get-started/eigencompute-overview.md), and [AgentKit](../agentkit/get-started/agentkit-overview.mdx). 
+These capabilities empower developers to go from idea to deployment in days rather than months without needing to understand EigenLayer’s
+internals, enabling mainstream adoption of verifiable infrastructure.
 
-We're building EigenCloud for developers of Verifiable Apps. Each service or feature is tied to real user pain points, focused
+We're building EigenCloud for developers of verifiable applications, agents, and services. Each service or feature is tied to real user pain points, focused
 on reducing friction, increasing adoption, and unlocking new value. As our 1st party and partner offerings expand, EigenCloud
 will bundle them into out-of-the-box solutions on a unified developer platform.
 
