@@ -3,6 +3,8 @@ title: Build from verifiable source
 sidebar_position: 1
 ---
 
+> Importantly, if you intend to persist application data across upgrades, instruct the source to save the data at filesystem path /mnt/disks/userdata, which has been mounted at a persistent storage. More see [spec](https://github.com/Layr-Labs/go-tpm-tools/blob/main/specs/design-persistent-storage.md#35-shared-mount-point-for-both-modes).
+
 To build from a verifiable source, options are: 
 
 1. Use the `ecloud compute build submit` command to submit a verifiable build from a GitHub source.
