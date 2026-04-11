@@ -3,7 +3,7 @@ title: Build from verifiable source
 sidebar_position: 1
 ---
 
-> Importantly, if you intend to persist application data across upgrades, instruct the source to save the data at filesystem path /mnt/disks/userdata, which has been mounted at a persistent storage. More see [spec](https://github.com/Layr-Labs/go-tpm-tools/blob/main/specs/design-persistent-storage.md#35-shared-mount-point-for-both-modes).
+> Importantly, if you intend to persist application data across upgrades, instruct the source to save the data at the filesystem path /mnt/disks/userdata, which has been mounted to persistent storage. For more details, see [spec](https://github.com/Layr-Labs/go-tpm-tools/blob/main/specs/design-persistent-storage.md#35-shared-mount-point-for-both-modes). This path is also available as the environment variable USER_PERSISTENT_DATA_PATH, which is injected into the container.
 
 To build from a verifiable source, options are: 
 
