@@ -8,7 +8,7 @@ import InteractiveDemo from '@site/src/components/InteractiveDemo';
 To build on EigenCompute:
 
 1. Place your application in a Docker container.
-2. [Subscribe to EigenCompute](billing.md). All new customers receive a $100 credit.
+2. [Subscribe to EigenCompute](billing.md). We match up to $25 on your first USDC deposit or invoice payment.
 3. Upload it to EigenCompute using the `ecloud` CLI.
 
 It's that simple to ship a verifiable application.
