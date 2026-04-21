@@ -27,7 +27,7 @@ function HomeHero() {
           />
           <FigmaCard
             title="AgentKit"
-            desc="Build and deploy autonomous agents with verifiable execution."
+            desc="Build and deploy sovereign agents with verifiable execution."
             link="/agentkit/get-started/agentkit-overview"
           />
         </div>
