@@ -135,7 +135,8 @@ Address: 0x9431Cf5DA0CE60664661341db650763B08286B18
 Source:  stored credentials
 ```
 
-The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use `ecloud compute env set sepolia`.
+The current environment (Mainnet or Sepolia testnet) is displayed.  To change from Mainnet to Sepolia, use 
+`ecloud compute env set sepolia`.
 
 :::tip Developing on Sepolia
 To get testnet ETH, use:
