@@ -92,6 +92,18 @@ Before you begin, ensure you have:
 npm install -g @layr-labs/ecloud-cli
 ```
 
+:::tip
+Enable autocomplete for `ecloud` CLI. In your terminal window: 
+
+```bash
+printf "$(ecloud autocomplete script zsh)" >> ~/.zshrc; source ~/.zshrc
+```
+
+The command adds the `ECLOUD_AC_ZSH_SETUP_PATH` environment variable to your `zsh` config file and sources the file.
+Use tab to autocomplete `ecloud` commands and options. 
+:::
+
+
 ## Initial Setup
 
 ### Docker Login
