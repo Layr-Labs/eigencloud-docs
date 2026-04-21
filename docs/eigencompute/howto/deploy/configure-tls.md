@@ -22,82 +22,30 @@ EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using C
 | `ACME_FORCE_ISSUE`  | Force certificate reissue | No         | `false`   |
 | `ENABLE_CADDY_LOGS` | Enable Caddy debug logs   | No         | `false`   |
 
-## Add TLS Configuration
-
-To add TLS configuration:
-
-```
-ecloud compute app configure tls
-```
-
-TLS configuration is added to your project:
-
-```
-TLS configuration added successfully
-
-Created:
-  - Caddyfile
-  - .env.example.tls
-
-To enable TLS:
-
-1. Add TLS variables to .env:
-   cat .env.example.tls >> .env
-
-2. Configure required variables:
-   DOMAIN=yourdomain.com
-   APP_PORT=3000
-
-   For first deployment (recommended):
-   ENABLE_CADDY_LOGS=true
-   ACME_STAGING=true
-
-3. Set up DNS A record pointing to instance IP
-   Run 'ecloud compute app info' to get IP address
-
-4. Upgrade:
-   ecloud compute app upgrade
-
-Note: Let's Encrypt rate limit is 5 certificates/week per domain
-```
-
 ## Configure TLS and Test with Staging Certificates
 
-1. Add TLS environment variables to `.env`: 
+1. Add TLS environment variables as prompted, or provide using [`--domain`, `--app-port`, `--acme-staging`, and `--caddy-logs`
+options](../../reference/ecloud-cli/compute/app.md#configure-tls).
 
-```
-cat .env.example.tls >> .env
-```
+    The TLS variables are appended to your `.env` file, and TLS placeholders are appended to `.env.example`.
 
-2. Configure required variables: 
+    :::tip
+    To avoid Let's Encrypt rate limits, always test with staging certificates first.
+    :::
 
-```
-# Required
-DOMAIN=yourdomain.com
-APP_PORT=3000
-
-# Recommended for first deployment
-ENABLE_CADDY_LOGS=true
-ACME_STAGING=true  # Use staging certificates initially
-```
-
-:::tip
-To avoid Let's Encrypt rate limits, always test with staging certificates first.
-:::
-
-3. Configure DNS by creating an A record pointing to your instance IP: 
+2. Configure DNS by creating an A record pointing to your instance IP: 
 
     * Type: A 
     * Name: yourdomain.com
     * Value: Obtain IP address from `ecloud compute app info`
 
-4. Deploy app with TLS configuration: 
+3. Deploy app with TLS configuration: 
 
-```
-ecloud compute app upgrade
-```
+    ```
+    ecloud compute app upgrade  
+    ```
 
-The configured TLS routes traffic from ports 80 and 443 to the `APP_PORT`.
+    The configured TLS routes traffic from ports 80 and 443 to the `APP_PORT`.
 
 ## Switch to Production Certificates
 
