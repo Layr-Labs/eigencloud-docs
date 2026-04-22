@@ -6,20 +6,23 @@ sidebar_position: 4
 ## Trust Requirements
 
 EigenCompute currently requires trust in:
-- [Intel TDX hardware security guarantees](https://github.com/intel/tdx-module).
-- Google Confidential Space attestation service.
-- Single KMS operator (EigenLabs) and [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) [attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html) process.
+* [Intel TDX hardware security guarantees](https://github.com/intel/tdx-module).
+* EigenLabs [KMS Operators](eigencompute-kms-overview.md). 
+
+:::note
+Additional KMS Operators will be onboarded in Q3, 2026 which will provide Byzantine Fault Tolerance and tolerance of up to n/3 
+Operator failures or outages.
+:::
 
 ## Security Boundaries
 
-* Trust boundary: You trust the [TEE hardware manufacturer](https://github.com/intel/tdx-module), Google Confidential Space attestation service, [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) [attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html) process
+* Trust boundary: You trust the [TEE hardware manufacturer](https://github.com/intel/tdx-module), Google Confidential Space or Intel Trust Authority attestation services (production), or ESCDA signature-based attestation (development)
 * Your responsibility: Application logic, dependency security, and secret handling within your code.
 * Platform/EigenLabs responsibility: Infrastructure security, TEE provisioning, and [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) operation.
 
 :::tip Security Enhancements in Development
 Security enhancements in development:
 - Public attestation endpoints for runtime verification
-- Threshold KMS for distributed key management
 - Replica prevention via onchain checks and heartbeats
 - Verifiably built images with reproducible builds
 :::
