@@ -18,7 +18,7 @@ privileges as part of the operator onboarding docs. If privileges are not specif
 - AVS team should [sign their images](https://docs.docker.com/engine/security/trust/) for any releases, including upgrades
     - If they publish to Docker, Docker will show the verified badge next to the image.
     - Tag new releases via updated images.
-- Establish communication channels (Discord, TG)  with operators. This ensures coordinating upgrades occurs with minimal friction.
+- Establish communication channels (eg, Telegram) with operators. This ensures coordinating upgrades occurs with minimal friction.
 - Operators should be in control of upgrades to their AVS software. Avoid software upgrade patterns where an agent checks for updated software and automatically upgrades the software. 
 - Release Notes should explain new features including breaking changes / new hardware requirements etc.
 

@@ -83,6 +83,6 @@ If the wallet does not contain USDC, you are prompted to send USDC to the wallet
 
 ## Support
 
-For support, join our [Discord channel](https://discord.com/channels/1089434273720832071/1187153894564966480).
+For support, join our [Telegram channel](https://t.me/EigenCloudSupp).
 
 To talk to the EigenCompute team, complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.
