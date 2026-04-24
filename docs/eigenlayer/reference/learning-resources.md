@@ -33,7 +33,6 @@ title: Learning Resources
 
 * [EigenLayer Forum](https://forum.eigenlayer.xyz/)
 * [EigenLayer Research Forum](https://research.eigenlayer.xyz/)
-* [Build on Eigen group chat](https://ein6l.share.hsforms.com/22TpUSMw-SZaba6q_gNp2hA)
-* [Discord](https://discord.com/invite/eigenlayer)
+* [Telegram](https://t.me/EigenCloudSupp)
 * [EigenCloud Twitter](https://x.com/eigencloud)
 * [BuildOnEigen Twitter](https://x.com/buildoneigen)
