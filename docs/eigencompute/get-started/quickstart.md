@@ -336,5 +336,5 @@ Common issues:
 ## Get Help
 
 - **GitHub Issues**: [Report issues](https://github.com/Layr-Labs/ecloud)
-- **Discord**: Join our [Support channel](https://discord.com/channels/1089434273720832071/1187153894564966480).
+- **Telegram**: Join our [Support channel](https://t.me/EigenCloudSupp).
 - **Talk to EigenCompute team**: Complete [this form](https://ein6l.share.hsforms.com/2L1WUjhJWSLyk72IRfAhqHQ) and a member of the team will reach out to discuss your project.
