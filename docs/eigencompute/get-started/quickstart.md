@@ -234,11 +234,11 @@ ecloud compute app deploy
 
 When prompted, select `Build and deploy from Dockerfile` option.
 
-The CLI will:
-1. Build your Docker image targeting `linux/amd64`
-2. Push the image to your Docker registry
-3. Deploy to a TEE instance
-4. Return your app details including app ID and instance IP
+The CLI:
+1. Builds your Docker image targeting `linux/amd64`
+2. Pushes the image to your Docker registry
+3. Deploys to a TEE instance
+4. Returns your app details including app ID and instance IP
 
 ### View Your Application
 
