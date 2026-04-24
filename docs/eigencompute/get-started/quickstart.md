@@ -8,7 +8,7 @@ import InteractiveDemo from '@site/src/components/InteractiveDemo';
 To build on EigenCompute:
 
 1. Place your application in a Docker container.
-2. [Subscribe to EigenCompute](billing.md). All new customers receive a $100 credit.
+2. [Subscribe to EigenCompute](billing.md). We match up to $25 on your first USDC deposit or invoice payment.
 3. Upload it to EigenCompute using the `ecloud` CLI.
 
 It's that simple to ship a verifiable application.
@@ -234,11 +234,11 @@ ecloud compute app deploy
 
 When prompted, select `Build and deploy from Dockerfile` option.
 
-The CLI will:
-1. Build your Docker image targeting `linux/amd64`
-2. Push the image to your Docker registry
-3. Deploy to a TEE instance
-4. Return your app details including app ID and instance IP
+The CLI:
+1. Builds your Docker image targeting `linux/amd64`
+2. Pushes the image to your Docker registry
+3. Deploys to a TEE instance
+4. Returns your app details including app ID and instance IP
 
 ### View Your Application
 
