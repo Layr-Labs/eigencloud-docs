@@ -33,8 +33,7 @@ The EigenCompute components are:
   - Deploys verified app inside TEE.
   - Requests keys from KMS.
 * [Distributed KMS](eigencompute-kms-overview.md) to manage onchain verification and key delivery:
-  - DKG with 100% KMS Operators sending key shares and acknowledgments.
-  - Verifies Google Confidential Space or Intel Trust Authority attestation (production), or ESCDA signature-based attestation (development)
+  - Verifies TEE attestation and onchain whitelisted code match.
   - Provides app keys after successful verification.
 
 :::note KMS Operators in Mainnet Alpha Phase
