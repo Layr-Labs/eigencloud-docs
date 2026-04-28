@@ -25,7 +25,7 @@ The KMS provides three key properties to EigenCompute applications:
     This enables availability to be shared across a decentralized set of Operators.
 
 :::note KMS Operators in Mainnet Alpha Phase
-In the Mainnet Alpha phase, EigenLabs are running all KMS nodes. Additional Operators will be onboarded in Q3, 2026.
+In the Mainnet Alpha phase, EigenLabs are running all KMS nodes. Additional Operators will be onboarded in the coming months.
 :::
 
 ## Deterministic Mnemomic Generation

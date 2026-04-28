@@ -37,6 +37,6 @@ The EigenCompute components are:
   - Provides app keys after successful verification.
 
 :::note KMS Operators in Mainnet Alpha Phase
-In the Mainnet Alpha phase, EigenLabs are running all KMS nodes. Additional Operators will be onboarded in Q3, 2026.
+In the Mainnet Alpha phase, EigenLabs are running all KMS nodes. Additional Operators will be onboarded in the coming months.
 :::
 

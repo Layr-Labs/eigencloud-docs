@@ -10,8 +10,7 @@ EigenCompute currently requires trust in:
 * EigenLabs [KMS Operators](eigencompute-kms-overview.md). 
 
 :::note
-Additional KMS Operators will be onboarded in Q3, 2026 which will provide Byzantine Fault Tolerance and tolerance of up to n/3 
-Operator failures or outages.
+Additional KMS Operators will be onboarded in the coming months.
 :::
 
 ## Security Boundaries
