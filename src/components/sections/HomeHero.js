@@ -26,9 +26,9 @@ function HomeHero() {
             link="/eigenda/core-concepts/overview"
           />
           <FigmaCard
-            title="AgentKit"
-            desc="Toolkit for deploying sovereign agents."
-            link="/agentkit/get-started/agentkit-overview"
+            title="EigenLayer"
+            desc="Stake ETH & EIGEN. Secure the cloud powering verifiable apps, agents, and services."
+            link="/eigenlayer/concepts/eigenlayer-overview"
           />
         </div>
       </div>
