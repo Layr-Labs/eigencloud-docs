@@ -21,14 +21,14 @@ function HomeHero() {
             link="/eigencompute/get-started/eigencompute-overview"
           />
           <FigmaCard
-            title="AgentKit"
-            desc="Toolkit for deploying sovereign agents."
-            link="/agentkit/get-started/agentkit-overview"
-          />
-          <FigmaCard
             title="EigenDA"
             desc="Secure, high-throughput, and decentralized Data Availability."
             link="/eigenda/core-concepts/overview"
+          />
+          <FigmaCard
+            title="AgentKit"
+            desc="Toolkit for deploying sovereign agents."
+            link="/agentkit/get-started/agentkit-overview"
           />
         </div>
       </div>
