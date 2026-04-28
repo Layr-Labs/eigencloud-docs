@@ -17,11 +17,12 @@ Additional KMS Operators will be onboarded in the coming months.
 
 * Trust boundary: You trust the [TEE hardware manufacturer](https://github.com/intel/tdx-module), Google Confidential Space or Intel Trust Authority attestation services (production), or ESCDA signature-based attestation (development)
 * Your responsibility: Application logic, dependency security, and secret handling within your code.
-* Platform/EigenLabs responsibility: Infrastructure security, TEE provisioning, and [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) operation.
+* Platform/EigenLabs responsibility: Infrastructure security, TEE provisioning, and distributed [KMS](eigencompute-kms-overview.md) operation.
 
 :::tip Security Enhancements in Development
 Security enhancements in development:
 - Public attestation endpoints for runtime verification
+- Onboarding additional KMS Operators
 - Replica prevention via onchain checks and heartbeats
 - Verifiably built images with reproducible builds
 :::
@@ -30,14 +31,14 @@ Security enhancements in development:
 
 The EigenCompute TEE/KMS architecture protects against: 
 
-| Attack Vector                          | Protection                                                                                                                                                                                                                                                                                                                    |
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Malicious cloud providers              | EigenLabs cannot access your TEE memory or runtime data. In the Mainnet Alpha phase, EigenLabs has access to KMS keys and can theoretically decrypt environment variables. Future releases will eliminate this access through an external hardened KMS system.                                                                |
-| Infrastructure compromise              | Even if host machines are compromised, TEE hardware isolation prevents secret extraction.                                                                                                                                                                                                                                     |
-| Man-in-the-middle attacks              | Encrypted secrets can only be decrypted inside TEE instances verified using [attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html).                                                                                                                                |
-| Secret exfiltration by Operators       | [KMS](https://github.com/Layr-Labs/eigenx-kms/blob/master/kms.md) cryptographically binds secrets to your specific TEE. In the Mainnet Alpha phase, EigenLabs has access to KMS keys and can theoretically decrypt environment variables. Future releases will eliminate this access through an external hardened KMS system. |
-| Credential theft from storage          | Secrets are stored encrypted onchain and in the KMS. Secrets are never stored in plaintext outside your TEE.                                                                                                                                                                                                                  |
-| Supply chain attacks on infrastructure | [Attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html) ensures only genuine TEE hardware with verified measurements can decrypt secrets.                                                                                                                           |
+| Attack Vector                          | Protection                                                                                                                                                                                                                                                     |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Malicious cloud providers              | EigenLabs cannot access your TEE memory or runtime data. In the Mainnet Alpha phase, EigenLabs has access to KMS keys and can theoretically decrypt environment variables. Future releases will eliminate this access through an external hardened KMS system. |
+| Infrastructure compromise              | Even if host machines are compromised, TEE hardware isolation prevents secret extraction.                                                                                                                                                                      |
+| Man-in-the-middle attacks              | Encrypted secrets can only be decrypted inside TEE instances verified using [attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html).                                                                 |
+| Secret exfiltration by Operators       | In the Mainnet Alpha phase, EigenLabs are running all [KMS nodes](eigencompute-kms-overview.md) and could theoretically combine key shares. Additional KMS Operators will be onboarded in coming months which will remove this attack vector.                  |                                                                 |
+| Credential theft from storage          | Secrets are stored encrypted onchain and in the KMS. Secrets are never stored in plaintext outside your TEE.                                                                                                                                                   |
+| Supply chain attacks on infrastructure | [Attestation](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html) ensures only genuine TEE hardware with verified measurements can decrypt secrets.                                                            |
 
 The EigenCompute TEE/KMS architecture does not protect against: 
 
