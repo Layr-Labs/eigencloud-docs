@@ -16,19 +16,19 @@ function HomeHero() {
         <div className={styles.learnTitle}>Get started building.</div>
         <div className={styles.cardsRow}>
           <FigmaCard
-            title="EigenAI"
-            desc="Verifiable, deterministic LLM inference. Available on request."
-            link="/eigenai/concepts/eigenai-overview"
-          />
-          <FigmaCard
             title="EigenCompute"
             desc="Verifiable containerized compute."
             link="/eigencompute/get-started/eigencompute-overview"
           />
           <FigmaCard
-            title="DevKit"
-            desc="Unified CLI for building EigenLayer AVSs."
-            link="/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs"
+            title="EigenDA"
+            desc="Secure, high-throughput, and decentralized Data Availability."
+            link="/eigenda/core-concepts/overview"
+          />
+          <FigmaCard
+            title="EigenLayer"
+            desc="Stake ETH & EIGEN. Secure the cloud powering verifiable apps, agents, and services."
+            link="/eigenlayer/concepts/eigenlayer-overview"
           />
         </div>
       </div>
