@@ -39,6 +39,21 @@ Store an existing authentication key securely in your OS keyring.
 
 `ecloud auth login`
 
+### Options
+
+`--private-key 0x...` (string)
+
+> Private key to store (skips interactive prompt). Can be set using environment variable `ECLOUD_PRIVATE_KEY`.
+
+:::warning
+For best security, use the `ECLOUD_PRIVATE_KEY` environment variable. Private keys passed on the command line
+may be exposed in shell history, process listings, and system logs.
+:::
+
+`--force` (boolean)
+
+> Log in without requiring confirmation. Default is false.
+
 ## logout
 
 Remove stored authentication key from your OS keyring.

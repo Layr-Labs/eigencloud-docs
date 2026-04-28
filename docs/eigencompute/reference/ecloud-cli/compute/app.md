@@ -86,7 +86,7 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 `ecloud compute app deploy [--name <value>] [--dockerfile <value>] [--image-ref <value>]
 [--log-visibility] [--instance-type <value>] [--skip-profile] [--resource-usage-monitoring] [--website <value>]
-[--description <value>] [--x-url <value>] [--image <value>] [--skip-profile]
+[--description <value>] [--x-url <value>] [--image <value>] [--skip-profile] [--force]
 [--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] [--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]` 
 
 ### Options
@@ -152,6 +152,10 @@ If you don't have an EigenCompute subscription, the CLI will prompt you for [bil
 
 > Skip app profile setup.
 
+`--force` 
+
+> Skip all confirmation prompts.
+
 `--verifiable`
 
 > Enable verifiable build mode. Build from either: 
@@ -190,8 +194,8 @@ Update an existing application with new code, configuration, or environment vari
 ### Synopsis
 
 `ecloud compute app upgrade  [<app-id|name>] [--dockerfile value, -f value] [--log-visibility value] [--resource-usage-monitoring value] 
-[--instance-type value] [--image_ref <value>] [--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>] 
-[--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [global options]`
+[--instance-type value] [--image_ref <value>] [--verifiable] [--repo <value>] [--commit <value>] [--build-dockerfile <value>]
+[--build-context <value>] [--build-dependencies <value>...] [--build-caddyfile <value>] [--force] [global options]`
 
 ### Arguments
 
@@ -263,13 +267,17 @@ Update an existing application with new code, configuration, or environment vari
 > Caddyfile path for builds. Path inside the repository and relative to the build context. Optional and if omitted,
 > auto-detected from the env file TLS settings.
 
+`--force`
+
+> Skip all confirmation prompts.
+
 ## start
 
 Start a previously stopped application.
 
 ### Synopsis
 
-`ecloud compute app start [<app-id|name>] [global options]`
+`ecloud compute app start [<app-id|name>] [--force] [global options]`
 
 ### Arguments
 
@@ -290,6 +298,10 @@ Stop a running application without removing it.
 `app-id|name` (string)
 
 > Application ID or display name. Prompted for if not provided.
+
+`--force`
+
+> Skip all confirmation prompts.
 
 ## terminate
 Permanently remove an application and all its resources.
@@ -449,13 +461,33 @@ Update or specify application profile. The application profile properties are di
 
 ## configure tls
 
-Add TLS/HTTPS configuration to your project for secure domain access. This command adds:
+Configure TLS/HTTPS configuration for secure domain access. This command prompts for domain and TLS settings (or accepts
+them via options) and:
 
-* Caddy Server Configuration - Automatic HTTPS with [Let's Encrypt](https://letsencrypt.org/) using [Caddyfile](https://caddyserver.com/docs/caddyfile)
-* Environment Variables - Example TLS configuration in `.env.example.tls`
+* Creates Caddy Server configuration - Automatic HTTPS with [Let's Encrypt](https://letsencrypt.org/) using [Caddyfile](https://caddyserver.com/docs/caddyfile)
+* Appends TLS variables to `.env`
+* Appends TLS placeholders to `.env.example`
 
 For more information on configuring TLS, refer to [Configure TLS](../../../howto/deploy/configure-tls.md).
 
+### Options
+
+`--app-port <port>` (string)
+
+> Port on which your application listens. 
+
+`--acme-staging` (boolean)
+
+> Specifies whether to use Let's Encrypt staging environment. Default is `true`.
+
+`--caddy-logs` (boolean)
+
+> Specifies whether to enable Caddy debug logs. Default is `false`.
+
+`--domain <domain name>` (string)
+
+> Domain name for TLS certificate.
+
 ### Synopsis
 
-`ecloud compute app configure tls`
+`ecloud compute app configure tls [--app-port <port>] [--acme-staging] [--caddy-logs] [--domain <domain name>]`
