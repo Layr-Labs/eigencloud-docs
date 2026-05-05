@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: V2 Guide
+title: Guide
 ---
 
 # EigenDA Payment and Data Dispersal Guide

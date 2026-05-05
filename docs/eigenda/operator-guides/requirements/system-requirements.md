@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # System Requirements
 
-The following system requirements apply to the **Blazar (V2) upgrade** and are critical for maintaining optimal node performance and protocol compliance.
+The following system requirements are critical for maintaining optimal node performance and protocol compliance.
 
 ## General System Requirements
 

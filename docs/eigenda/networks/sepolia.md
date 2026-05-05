@@ -9,7 +9,7 @@ The EigenDA Sepolia testnet is the current EigenDA testnet for integrations.
 ## Quick Links
 
 * [AVS Page][2]
-* [Blob Explorer Blazar (V2)][1]
+* [Blob Explorer][1]
 
 ## Specs
 

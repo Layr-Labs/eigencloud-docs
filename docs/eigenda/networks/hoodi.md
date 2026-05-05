@@ -16,8 +16,7 @@ The EigenDA Hoodi testnet is the EigenDA testnet for operators.
 | --- | --- |
 | Disperser Address | `disperser-hoodi.eigenda.xyz:443` |
 | Churner Address | `churner-hoodi.eigenda.xyz:443` |
-| Batch Confirmation Interval (V1) | Every 10 minutes (may vary based on network health) |
-| Batch Confirmation Interval (V2) | Every 3 seconds (may vary based on network health) |
+| Batch Dispersal Interval | Every 3 seconds (may vary based on network health) |
 | Max Blob Size | 16 MiB |
 | Default Blob Dispersal Rate limit | No more than 1 blob every 100 seconds |
 | Default Blob Size Rate Limit | No more than 1.8 MiB every 10 minutes |
