@@ -5,10 +5,12 @@ sidebar_position: 1
 
 ## What is EigenCompute? 
 
-EigenCompute enables developers to deploy verifiable applications: containerized services that receive their own cryptographic identity, allowing them to hold funds, sign transactions, and operate autonomously.
+EigenCompute enables developers to deploy verifiable applications: containerized services that receive their own cryptographic 
+identity, allowing them to hold funds and sign transactions. 
 
-EigenCompute is a verifiable offchain compute service that enables developers to run complex, long-running agent logic outside
-of a smart contract while maintaining the integrity and security of the onchain environment. The mainnet alpha release of 
+Agents are a common pattern. EigenCompute enables applications that run complex, long-running logic outside of a smart contract while maintaining the integrity and security of the onchain environment. 
+
+The mainnet alpha release of 
 EigenCompute allows developers to upload app or agent logic as a Docker image, which is executed within a secure TEE 
 (Trusted Execution Environment).
 
@@ -28,7 +30,7 @@ EigenCompute provides a third path: applications that offer cryptographic guaran
 flexibility and performance of traditional computing.
 
 EigenCompute enables you to build verifiable applications without thinking about determinism, solidity, or how to build a 
-consensus mechanism.  To ship a verifiable application, Simply containerize your application using Docker and upload your 
+consensus mechanism.  To ship a verifiable application, simply containerize your application using Docker and upload your 
 application to EigenCompute.
 
 Use EigenCompute to build applications such as:
@@ -54,9 +56,11 @@ in the enclave, can retrieve the private key.
 
 3. Secure secret management: Environment variables that are encrypted locally and only accessible within the TEE.
 
-4. Onchain deployment record: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
+4. A LLM proxy: Agents can pay for their own inference via the Vercel AI Gateway.
 
-5. Network access: Optionally [expose ports](../howto/deploy/expose-ports.md) for HTTP endpoints, or [configure HTTPS](quickstart.md#tlshttps-setup-optional) with a custom domain.
+5. Onchain deployment record: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
+
+6. Network access: Optionally [expose ports](../howto/deploy/expose-ports.md) for HTTP endpoints, or [configure HTTPS](quickstart.md#tlshttps-setup-optional) with a custom domain.
 
 This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them.
 
