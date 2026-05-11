@@ -79,6 +79,10 @@ ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-star
 
 Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
+:::tip
+Using Claude Code or Codex? Install the [ecloud skill](https://github.com/Layr-Labs/skill.md) to let your agent deploy and manage TEEs directly.
+::: 
+
 ## Prerequisites
 
 Before you begin, ensure you have:
