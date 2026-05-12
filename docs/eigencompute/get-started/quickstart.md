@@ -210,6 +210,12 @@ The `MNEMONIC` environment variable is **automatically provided by KMS** at runt
 a placeholder. The TEE overwrites it with your app's unique, persistent KMS-generated mnemonic.
 :::
 
+:::caution Launch time env vars visibility
+Any environment variables in the container's launch-time env (image `ENV` or `tee-env-*` overrides) will be part of the
+attested measurement and be visible in the attestation token. Ensure secrets are configured in the encrypted `.env` file
+(same pattern as the [confidential space token](https://docs.cloud.google.com/confidential-computing/confidential-space/docs/reference/token-claims#workload-container-claims)).
+:::
+
 ### Test locally (if needed)
 
 ```bash
