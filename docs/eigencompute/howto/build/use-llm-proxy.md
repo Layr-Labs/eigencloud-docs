@@ -1,5 +1,5 @@
 ---
-title: Use LLM Proxy
+title: Use LLM proxy
 sidebar_position: 1
 ---
 
@@ -43,3 +43,7 @@ The supported models:
 * `anthropic/claude-opus-4.7`
 * `anthropic/claude-haiku-4.5`
 * Models provided by [Vercel AI gateway](https://vercel.com/ai-gateway/models).
+
+### Available on mainnet
+
+The LLM proxy is available for `mainnet` deployments only. The LLM proxy is not available on `sepolia-dev`.
