@@ -1,6 +1,6 @@
 ---
 title: Use ecloud SDK
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 Use the ecloud SDK to:

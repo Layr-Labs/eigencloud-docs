@@ -79,6 +79,10 @@ ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-star
 
 Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
 
+:::tip
+Using Claude Code or Codex? Install the [ecloud skill](https://github.com/Layr-Labs/skill.md) to let your agent deploy and manage TEEs directly.
+::: 
+
 ## Prerequisites
 
 Before you begin, ensure you have:
@@ -204,6 +208,12 @@ Variables with the `_PUBLIC` suffix will be visible to users for transparency. S
 :::important Auto-Generated MNEMONIC
 The `MNEMONIC` environment variable is **automatically provided by KMS** at runtime. Any mnemonic in `.env.example` is just
 a placeholder. The TEE overwrites it with your app's unique, persistent KMS-generated mnemonic.
+:::
+
+:::caution Launch time env vars visibility
+Any environment variables in the container's launch-time env (image `ENV` or `tee-env-*` overrides) will be part of the
+attested measurement and be visible in the attestation token. Ensure secrets are configured in the encrypted `.env` file
+(same pattern as the [confidential space token](https://docs.cloud.google.com/confidential-computing/confidential-space/docs/reference/token-claims#workload-container-claims)).
 :::
 
 ### Test locally (if needed)
