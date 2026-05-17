@@ -32,12 +32,11 @@ The EigenCompute components are:
 * [Intel  TDX (Google Cloud)](https://cloud.google.com/confidential-computing/confidential-space/docs/confidential-space-overview) to execute app with unique wallet key:
   - Deploys verified app inside TEE.
   - Requests keys from KMS.
-* KMS to manage onchain verification and key delivery:
+* [Distributed KMS](eigencompute-kms-overview.md) to manage onchain verification and key delivery:
   - Verifies TEE attestation and onchain whitelisted code match.
   - Provides app keys after successful verification.
 
-:::note KMS Operator in Mainnet Alpha Phase
-In the Mainnet Alpha phase, EigenLabs are running a single KMS node for all EigenCompute apps in [Google Cloud Platform](https://cloud.google.com/kms/docs/key-management-service).
-Threshold KMS for distributed key management is in development.
+:::note KMS Operators in Mainnet Alpha Phase
+In the Mainnet Alpha phase, EigenLabs are running all KMS nodes. Additional Operators will be onboarded in the coming months.
 :::
 
