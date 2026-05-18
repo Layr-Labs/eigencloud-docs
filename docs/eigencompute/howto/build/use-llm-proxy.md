@@ -46,4 +46,4 @@ The supported models:
 
 ### Available on mainnet
 
-The LLM proxy is available for `mainnet` deployments only. The LLM proxy is not available on `sepolia-dev`.
+The LLM proxy is available for `mainnet` deployments only. The LLM proxy is not available on `sepolia`.
