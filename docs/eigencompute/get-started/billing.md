@@ -4,13 +4,13 @@ sidebar_position: 3
 ---
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription. EigenCompute subscriptions
-can be paid by credit card or EigenCompute credits can be purchased with USDC.
+can be paid by credit card or EigenCompute credits can be purchased with USDC on Ethereum or Base.
 
 EigenCompute has metered billing so you pay for what you use. All new customers receive up to $25 matched credits.
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available at testnet pricing for a promotional
-period ending on 04/31/2026.
+period ending on 06/30/2026.
 :::
 
 Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscription (that is, 20 apps total can be deployed per subscription per [ecloud CLI authentication key](../concepts/keys-overview.md)).
@@ -42,9 +42,14 @@ ecloud billing subscribe
 
 Choose whether to subscribe with credit card or by purchasing credits with USDC. 
 
+:::note
+If purchasing credits with USDC on Ethereum or Base, a small amount of Eth is required to pay the gas fees for the subscription transaction.
+:::
+
 If you select credit card, the payment portal is displayed.  Enter your payment method details and click the Subscribe button.
 
-If you select purchase credits with USDC, the EigenCompute wallet address and balance is displayed. If the wallet contains USDC,
+If you select purchase credits with USDC, select the network (Ethereum or Base), and 
+the EigenCompute wallet address and balance is displayed. If the wallet contains USDC,
 specify the amount to spend on credits. If the wallet does not contain USDC, you are prompted to send USDC to the wallet.
 
 The payment successful message is displayed.  Return to the terminal and you have access to [deploy your application](../reference/ecloud-cli/compute/app.md#deploy).
@@ -72,13 +77,17 @@ The subscription status is displayed and a link provided to manage payment metho
 
 ## Top up with USDC
 
-To purchase EigenCompute credits with USDC:
+:::note
+If topping up with USDC on Ethereum or Base, a small amount of Eth is required to pay the gas fees for the subscription transaction.
+:::
+
+To purchase EigenCompute credits with USDC on Ethereum or Base:
 
 ```
 ecloud billing top-up
 ```
 
-The EigenCompute wallet address and balance is displayed. If the wallet contains USDC, specify the amount to spend on credits. 
+Select the network (Ethereum or Base). The EigenCompute wallet address and balance is displayed. If the wallet contains USDC, specify the amount to spend on credits. 
 If the wallet does not contain USDC, you are prompted to send USDC to the wallet.
 
 ## Support
