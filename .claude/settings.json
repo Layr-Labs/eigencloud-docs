@@ -1,0 +1,7 @@
+{
+  "agents": {
+    "docs-editor": {
+      "path": ".claude/agents/docs-editor.md"
+    }
+  }
+}
