@@ -3,6 +3,8 @@ title: EigenCompute Overview
 sidebar_position: 1
 ---
 
+# EigenCompute Overview
+
 ## What is EigenCompute? 
 
 EigenCompute enables developers to deploy verifiable applications: containerized services that receive their own cryptographic identity, allowing them to hold funds, sign transactions, and operate autonomously.
@@ -56,7 +58,7 @@ in the enclave, can retrieve the private key.
 
 4. Onchain deployment record: Every deployment is permanently recorded on-chain by its Docker digest, creating an immutable audit trail.
 
-5. Network access: Optionally [expose ports](../howto/deploy/expose-ports.md) for HTTP endpoints, or [configure HTTPS](quickstart.md#tlshttps-setup-optional) with a custom domain.
+5. Network access: Optionally [expose ports](../howto/deploy/expose-ports.md) for HTTP endpoints, or [configure HTTPS](../howto/deploy/configure-tls.md) with a custom domain.
 
 This creates truly autonomous applications - code that holds its own funds with cryptographic proof of what it will do with them.
 

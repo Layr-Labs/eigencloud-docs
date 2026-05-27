@@ -1,7 +1,9 @@
 ---
-title: Sample Apps 
-sidebar_position: 4
+title: Sample Apps
+sidebar_position: 5
 ---
+
+# Sample Apps
 
 See the following sample apps for examples of how EigenCompute can be used.
 
