@@ -5,6 +5,8 @@ sidebar_position: 2
 
 import InteractiveDemo from '@site/src/components/InteractiveDemo';
 
+# Quickstart
+
 To build on EigenCompute:
 
 1. Place your application in a Docker container.
@@ -13,7 +15,7 @@ To build on EigenCompute:
 
 It's that simple to ship a verifiable application.
 
-### See for yourself
+## See for yourself
 
 <InteractiveDemo
 steps={[
@@ -72,7 +74,7 @@ output: [
 }
 ]}
 completionMessage="🎉 That's it! Your app is deployed with its own wallet."
-ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-started/quickstart' }}
+ctaButton={{ text: 'Deploy Your Own →', href: '/eigencompute/get-started/quickstart' }}
 />
 
 ## Next
@@ -237,7 +239,7 @@ npm run dev
 
 ### Subscribe to EigenCompute
 
-Before deploying, you'll need an [EigenCompute subscription](billing).
+Before deploying, you'll need an [EigenCompute subscription](billing.md).
 
 To subscribe:
 

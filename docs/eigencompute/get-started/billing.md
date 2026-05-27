@@ -1,7 +1,9 @@
 ---
 title: Billing
-sidebar_position: 3
+sidebar_position: 4
 ---
+
+# Billing
 
 Deploying an EigenCompute application to Sepolia testnet or mainnet requires an EigenCompute subscription. EigenCompute subscriptions
 can be paid by credit card or EigenCompute credits can be purchased with USDC.
