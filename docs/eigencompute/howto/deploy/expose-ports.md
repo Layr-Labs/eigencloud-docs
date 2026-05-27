@@ -13,9 +13,9 @@ EigenCompute applications run in secure Docker containers. To make your applicat
 2. **Bind your application** to the correct port in your code
 3. **(Optional) Configure TLS/HTTPS** for production domains
 
-## Basic Port Configuration
+## Basic port configuration
 
-### The EXPOSE Directive
+### The EXPOSE directive
 
 Add the `EXPOSE` directive to your Dockerfile to specify which port(s) your application listens on:
 
@@ -32,9 +32,9 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
-### Exposing Multiple Ports
+### Exposing multiple ports
 
-If your application needs multiple ports (e.g., main service + metrics endpoint):
+If your application needs multiple ports (for example, main service + metrics endpoint):
 
 ```dockerfile
 # Expose multiple individual ports
@@ -42,7 +42,7 @@ EXPOSE 3000
 EXPOSE 9090
 ```
 
-### Exposing Port Ranges
+### Exposing port ranges
 
 For applications that need a range of ports:
 
@@ -51,11 +51,11 @@ For applications that need a range of ports:
 EXPOSE 8000-8010
 ```
 
-## Application Binding
+## Application binding
 
 Your application code must bind to `0.0.0.0` (all interfaces) to be accessible.
 
-## HTTPS with Custom Domains
+## HTTPS with custom domains
 
 For production applications with custom domains, you'll need to configure TLS in addition to exposing ports.
 
@@ -77,14 +77,14 @@ Your application may not be listening on the expected port:
 - Verify the port in your application startup logs
 - Ensure no port conflicts if running multiple services
 
-### Port Already in Use
+### Port already in use
 
 If you see "port already in use" errors:
 - Check for multiple services binding to the same port
 - Ensure your application shuts down gracefully
 - Use `ecloud compute app stop` and `ecloud compute app start` to restart
 
-## Related Documentation
+## Related documentation
 
 - [Quickstart Guide](../../get-started/quickstart.md) - Complete deployment walkthrough
 - [TLS Configuration](configure-tls.md) - Setting up HTTPS with custom domains
