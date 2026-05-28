@@ -64,14 +64,19 @@ Follow these key principles from the Microsoft Manual of Style:
 - **Use present tense**: Write "The system sends" not "The system will send"
 
 ### Terminology and Word Choice
-- **Use simple words**: Prefer "use" over "utilize", "start" over "initiate"
+- **Use simple words**: Prefer "use" over "utilize", "start" over "initiate", "using" or "through" over "via"
 - **Avoid jargon**: Explain technical terms on first use
 - **Be consistent**: Use the same term for the same concept throughout
 - **Avoid "please"**: In instructions, it's unnecessary ("Click Save" not "Please click Save")
-- **Avoid Latin abbreviations**: Use "for example" not "e.g.", "that is" not "i.e."
+- **Avoid Latin abbreviations and terms**: Use "for example" not "e.g.", "that is" not "i.e.", "using" not "via"
 
 ### Formatting and Structure
-- **Use sentence case for headings**: "Getting started" not "Getting Started"
+- **Use sentence case for headings**: Capitalize only the first word and proper nouns
+  - Examples: "Quick start" not "Quick Start", "Error handling" not "Error Handling"
+  - Examples: "TypeScript support" not "TypeScript Support", "Next steps" not "Next Steps"
+  - Exception: Proper nouns and trademarked terms remain capitalized ("EigenCompute overview")
+- **Use periods before tables**: End introductory sentences with a period, not a colon ("The SDK is organized into functional modules." not "The SDK is organized into functional modules:")
+- **Put links on key terms in tables**: In tables, link the main subject term rather than adding link text at the end (e.g., "**[Client](client.md)** | SDK initialization" not "**Client** | SDK initialization - [Client reference](client.md)")
 - **Use parallel structure in lists**: Start all items with the same part of speech
 - **Use numbered lists for procedures**: Use bullets for non-sequential items
 - **Keep lists short**: 5-7 items maximum; break longer lists into categories
