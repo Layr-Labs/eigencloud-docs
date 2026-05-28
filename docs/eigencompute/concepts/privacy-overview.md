@@ -6,7 +6,7 @@ sidebar_position: 7
 EigenCompute provides strong privacy guarantees through TEE isolation and encryption. To build secure applications, 
 it's important to understand what's private and what's public.
 
-## Private to your TEE Application 
+## Private to your TEE application 
 
 | Category                        | Details                                                                                       | Example Use Case                                                                                                                                                                                                  |
 |:--------------------------------|:----------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -16,7 +16,7 @@ it's important to understand what's private and what's public.
 | Runtime data                    | Memory contents, temporary files, and process state isolated in TEE                           | Process user PII or financial data in memory without it being accessible to cloud providers                                                                                                                       |
 | Private keys                    | Any keys derived from or stored within the TEE environment                                    | Generate signing keys for multi-party computation or [attestations](https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-overview.html) that prove computation happened correctly |
 
-## Publicly Visible Information
+## Publicly visible information
 
 | Category                      | Details                                                                 |
 |:------------------------------|:------------------------------------------------------------------------|
@@ -27,7 +27,7 @@ it's important to understand what's private and what's public.
 | Network endpoints             | Public IP addresses and exposed ports for your application              |
 | Logs (if public)              | Application logs only if configured to be public (private by default)   |
 
-## Privacy Guarantees 
+## Privacy guarantees 
 
 | Guarantee             | Details                                                                                                                                                                                                      |
 |:----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -36,7 +36,7 @@ it's important to understand what's private and what's public.
 | Attestation-based     | KMS releases secrets to verified TEE instances via cryptographic attestation proof                                                                                                                           |
 | Limited admin access  | EigenLabs cannot access your TEE's internal state or memory. However, in the Mainnet Alpha they have access to KMS keys for encryption/decryption operations.                                                |
 
-## Privacy Boundaries 
+## Privacy boundaries 
 
 * Private by default 
 
