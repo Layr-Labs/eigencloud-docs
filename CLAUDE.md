@@ -151,6 +151,43 @@ Local search is implemented using `@easyops-cn/docusaurus-search-local` plugin, 
 2. Run `yarn repomix` to regenerate files
 3. Generated files appear in `static/` directory
 
+## SDK Reference Documentation
+
+### ECloud SDK Reference
+
+The ecloud SDK reference documentation (`docs/eigencompute/reference/ecloud-sdk/`) uses a **hybrid approach**:
+- Auto-generated structure from source repository analysis
+- Manual curation of examples and best practices
+
+**Source Repository:** https://github.com/Layr-Labs/ecloud
+
+**When SDK Updates:**
+1. Analyze the ecloud repository to identify API changes
+2. Update reference docs with new methods/deprecations
+3. Update version number in documentation frontmatter
+4. Test and update code examples
+
+**Documentation Structure:**
+```
+docs/eigencompute/reference/ecloud-sdk/
+├── index.md           # Overview + getting started
+├── client.md          # Client creation & config
+├── compute/           # Compute module APIs
+├── billing.md         # Billing & subscriptions
+├── build.md           # Verifiable builds
+├── attest.md          # TEE attestation
+├── browser.md         # Browser APIs & React hooks
+├── utilities.md       # SDK utilities
+├── types.md           # TypeScript types
+└── advanced.md        # Advanced topics (EIP-7702, batching)
+```
+
+**Maintenance Notes:**
+- Mark auto-generated sections with: `<!-- AUTO-GENERATED from ecloud@v0.X.X -->`
+- Link to source code for reference: `[View source](https://github.com/...)`
+- Keep examples runnable and test with SDK updates
+- See memory: `sdk-reference-workflow.md` for detailed workflow
+
 ## Important Notes
 
 - Yarn version must be >= 1.22.22 (specified in `package.json` engines)
