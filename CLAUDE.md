@@ -186,7 +186,21 @@ docs/eigencompute/reference/ecloud-sdk/
 - Mark auto-generated sections with: `<!-- AUTO-GENERATED from ecloud@v0.X.X -->`
 - Link to source code for reference: `[View source](https://github.com/...)`
 - Keep examples runnable and test with SDK updates
-- See memory: `sdk-reference-workflow.md` for detailed workflow
+
+**IMPORTANT - Exclude Internal Features:**
+- **`sepolia-dev` environment** - Internal development only, do NOT document
+- Any methods/features marked as internal in source code
+- When updating docs from source, always filter out internal-only items
+
+**Environment Information:**
+- **`sepolia`** - Public testnet for development and testing
+  - Prerequisites: EigenCompute subscription + Sepolia ETH for gas
+- **`mainnet-alpha`** - Production environment (Alpha phase)
+  - Prerequisites: EigenCompute subscription + mainnet ETH for gas
+  
+**Both environments require:**
+- EigenCompute subscription (see `docs/eigencompute/get-started/billing.md`)
+- Complete prerequisites (see `docs/eigencompute/get-started/quickstart.md#prerequisites`)
 
 ## Important Notes
 
