@@ -3,19 +3,19 @@ title: Security Best Practices
 sidebar_position: 5
 ---
 
-## Best Practices 
+## Best practices 
 
 ### Do
 
 * Secure authentication keys
 
-    Store your [authentication keys](keys-overview.md) in organization password managers (1Password, etc.) and back them up securely.
+    Store your [authentication keys](keys-overview.md) in organization password managers (for example, 1Password) and back them up securely.
 * Validate inputs
 
     Always validate and sanitize inputs in your TEE application. TEE isolation doesn't eliminate traditional security vulnerabilities.
 * Use public variables intentionally 
 
-    Mark configuration as `_PUBLIC` only when transparency benefits users (e.g., API endpoints, version numbers).
+    Mark configuration as `_PUBLIC` only when transparency benefits users (for example, API endpoints, version numbers).
 * Handle secrets carefully
 
     Once secrets are decrypted inside the TEE, treat them as plaintext. Avoid logging or exfiltrating secrets.

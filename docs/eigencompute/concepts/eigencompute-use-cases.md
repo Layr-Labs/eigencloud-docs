@@ -3,7 +3,7 @@ title: Use Cases
 sidebar_position: 2
 ---
 
-### Autonomous Trading Systems
+### Autonomous trading systems
 
 Traditional trading bots require depositing funds into developer-controlled wallets. With EigenCompute, the bot itself holds the funds:
 
@@ -19,7 +19,7 @@ if (await meetsTradingConditions()) {
 
 Funds are sent directly to the bot's address, with only the verified trading logic able to access them.
 
-### Verifiable Social Media
+### Verifiable social media
 
 Social platforms can prove their ranking algorithms work as claimed:
 
@@ -45,7 +45,7 @@ const signature = await wallet.signMessage({
 
 The feed ranking algorithm is verifiable and transparent, preventing manipulation.
 
-### Verifiable Gaming
+### Verifiable gaming
 
 Build high-performance games with provable fairness and on-chain assets:
 

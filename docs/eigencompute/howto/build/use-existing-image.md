@@ -18,7 +18,7 @@ ecloud compute app deploy
 
 The CLI will automatically prompt for file paths if they're not in default locations.
 
-### Manual Image Building
+### Manual image building
 
 If you prefer to build and push images yourself:
 
