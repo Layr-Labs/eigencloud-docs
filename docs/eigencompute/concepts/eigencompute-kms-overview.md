@@ -9,7 +9,7 @@ of secrets, and with the [distributed KMS](#distributed-kms-q1-2026), long-term 
 
 The KMS provides three key properties to EigenCompute applications:
 
-1. [Deterministic TEE mnemonic](#deterministic-mnemomic-generation)
+1. [Deterministic TEE mnemonic](#deterministic-mnemonic-generation)
 
     Every application receives a deterministic mnemonic that only its TEE can access. This allows the TEE to hold a persistent wallet and act autonomously onchain.
 2. [No access to secrets outside the TEE](#derived-from-mnemonic)
@@ -20,11 +20,11 @@ The KMS provides three key properties to EigenCompute applications:
     Once threshold KMS is live, the KMS will tolerate up to n/3 Operator failures or outages, ensuring applications maintain their identity and capabilities.
 
 :::note KMS Operator in Mainnet Alpha Phase
-In the Mainnet Alpha phase, EigenLabs are running a single KMS node for all EigenCompute apps in Google Cloud Platform.
+In the Mainnet Alpha phase, EigenLabs is running a single KMS node for all EigenCompute apps in Google Cloud Platform.
 [Threshold KMS for distributed key management](#distributed-kms-q1-2026) is in active development.
 :::
 
-## Deterministic Mnemomic Generation
+## Deterministic mnemonic generation
 
 Each application gets a persistent mnemonic derived deterministically from its application ID.  That is, the same application
 ID will always produce the same mnemonic.
@@ -32,7 +32,7 @@ ID will always produce the same mnemonic.
 The deterministic mnemonic generation enables persistent identity across the entire application lifecycle. When you upgrade
 or restart your application, the new instance get the same mnemonic.
 
-### Derived from Mnemonic
+### Derived from mnemonic
 
 From the mnemonic, applications can generate:
 
@@ -49,7 +49,7 @@ From the mnemonic, applications can generate:
     * Encrypting data at rest
     * Securing communication with other services.
 
-:::tip Example Use Case
+:::tip Example use case
 Encrypt a database with a key derived from the mnemonic. On reboot, derive the same key and decrypt the database. Persistent encrypted state!
 :::
 
