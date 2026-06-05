@@ -2,6 +2,9 @@
   "agents": {
     "docs-editor": {
       "path": ".claude/agents/docs-editor.md"
+    },
+    "pr-doc-reviewer": {
+      "path": ".claude/agents/pr-doc-reviewer.md"
     }
   }
 }
