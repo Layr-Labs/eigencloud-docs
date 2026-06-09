@@ -202,6 +202,62 @@ docs/eigencompute/reference/ecloud-sdk/
 - EigenCompute subscription (see `docs/eigencompute/get-started/billing.md`)
 - Complete prerequisites (see `docs/eigencompute/get-started/quickstart.md#prerequisites`)
 
+## Documentation Patterns for New Features
+
+When documenting new EigenLayer protocol features, follow the **minimal documentation pattern** used for Rewards v2.2 and Duration Vaults:
+
+### Pattern: Minimal Feature Documentation
+
+**Follow this approach for specialized features (not core protocol changes):**
+
+1. **Update existing overview** (`docs/eigenlayer/concepts/eigenlayer-overview.md`)
+   - Add bullet point to core components list with brief description
+   - Link to dedicated concept page
+   - Do NOT add large sections - keep overview proportional
+
+2. **Create dedicated concept page** (`docs/eigenlayer/concepts/feature-name.md`)
+   - Full explanation (~300-400 words)
+   - Include ELIP references in `:::note` block
+   - How it works, comparison tables, when to use
+   - Supported configurations/tokens
+   - Important warnings in `:::important` blocks
+
+3. **Add brief mention to relevant audience overview** (if applicable)
+   - For staker features: `docs/eigenlayer/restakers/concepts/overview.md`
+   - For operator features: `docs/eigenlayer/operators/concepts/operator-introduction.md`
+   - For developer features: `docs/eigenlayer/developers/concepts/avs-developer-guide.md`
+   - Brief (~50 word) description with link to contract docs or concept page
+   - Not all features need audience-specific mentions - only if directly relevant
+
+4. **Create developer how-to guide** (if applicable)
+   - Location: `docs/eigenlayer/developers/howto/build/feature-name.md`
+   - When to use, lifecycle, supported options
+   - Link to contract documentation for implementation details
+   - **Do NOT include code examples** - link to contract docs instead
+
+**Precedents:**
+- **Rewards v2.2** - Added via 2 file updates (PR #257)
+- **Duration Vaults** - Added via 2 file updates + 2 new concept/how-to files
+
+**Key principles:**
+- Specialized features get dedicated concept pages, not large sections in overview
+- Link to contract documentation for technical implementation details
+- Keep code examples in contract repos, not user-facing docs
+- Use comparison tables to explain vs. existing approaches
+- Always reference relevant ELIPs
+
+**File structure for specialized features:**
+```
+docs/eigenlayer/
+├── concepts/
+│   ├── eigenlayer-overview.md (bullet point mention only)
+│   └── feature-name.md (dedicated page)
+├── restakers/concepts/
+│   └── overview.md (brief mention if relevant)
+└── developers/howto/build/
+    └── feature-name.md (how-to guide, links to contract docs)
+```
+
 ## Important Notes
 
 - Yarn version must be >= 1.22.22 (specified in `package.json` engines)
