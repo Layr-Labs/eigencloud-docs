@@ -88,6 +88,11 @@ If an Operator itself is compromised, it may stand up its own AVS to steal user 
 reputation and legitimacy of Operators when making delegations. For more information on these attack scenarios, refer to 
 [this forum post](https://forum.eigenlayer.xyz/t/risks-of-an-in-protocol-redistribution-design/14458).
 
+## Duration Vaults
+
+[Duration Vaults](../../concepts/duration-vaults.md) are time-bound strategies where Stakers delegate to the vault and deposit 
+tokens (ETH LSTs or other ERC-20s) for a fixed duration, providing guaranteed commitments. 
+
 ## Withdrawal Delay (Withdrawal Escrow)
 
 EigenLayer contracts feature a withdrawal delay for all Liquid and Native restaking, a critical security measure for instances 
