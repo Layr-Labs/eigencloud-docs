@@ -5,6 +5,8 @@ sidebar_position: 2
 
 import InteractiveDemo from '@site/src/components/InteractiveDemo';
 
+# Quickstart
+
 To build on EigenCompute:
 
 1. Place your application in a Docker container.
@@ -13,7 +15,7 @@ To build on EigenCompute:
 
 It's that simple to ship a verifiable application.
 
-### See for yourself
+## See for yourself
 
 <InteractiveDemo
 steps={[
@@ -72,12 +74,16 @@ output: [
 }
 ]}
 completionMessage="🎉 That's it! Your app is deployed with its own wallet."
-ctaButton={{ text: 'Deploy Your Own →', href: '/products/eigencompute/get-started/quickstart' }}
+ctaButton={{ text: 'Deploy Your Own →', href: '/eigencompute/get-started/quickstart' }}
 />
 
 ## Next
 
 Get started with `ecloud` CLI and deploy your first verifiable application to a Trusted Execution Environment (TEE) in minutes.
+
+:::tip
+Using Claude Code or Codex? Install the [ecloud skill](https://github.com/Layr-Labs/skill.md) to let your agent deploy and manage TEEs directly.
+::: 
 
 ## Prerequisites
 
@@ -91,6 +97,18 @@ Before you begin, ensure you have:
 ```bash
 npm install -g @layr-labs/ecloud-cli
 ```
+
+:::tip
+Enable autocomplete for `ecloud` CLI. In your terminal window: 
+
+```bash
+printf "$(ecloud autocomplete script zsh)" >> ~/.zshrc; source ~/.zshrc
+```
+
+The command adds the `ECLOUD_AC_ZSH_SETUP_PATH` environment variable to your `zsh` config file and sources the file.
+Use tab to autocomplete `ecloud` commands and options. 
+:::
+
 
 ## Initial Setup
 
@@ -206,6 +224,12 @@ The `MNEMONIC` environment variable is **automatically provided by KMS** at runt
 a placeholder. The TEE overwrites it with your app's unique, persistent KMS-generated mnemonic.
 :::
 
+:::caution Launch time env vars visibility
+Any environment variables in the container's launch-time env (image `ENV` or `tee-env-*` overrides) will be part of the
+attested measurement and be visible in the attestation token. Ensure secrets are configured in the encrypted `.env` file
+(same pattern as the [confidential space token](https://docs.cloud.google.com/confidential-computing/confidential-space/docs/reference/token-claims#workload-container-claims)).
+:::
+
 ### Test locally (if needed)
 
 ```bash
@@ -215,7 +239,7 @@ npm run dev
 
 ### Subscribe to EigenCompute
 
-Before deploying, you'll need an [EigenCompute subscription](billing).
+Before deploying, you'll need an [EigenCompute subscription](billing.md).
 
 To subscribe:
 

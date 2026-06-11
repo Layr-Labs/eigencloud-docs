@@ -22,9 +22,9 @@ When deployed, the example provides a REST endpoint returning:
 * The message string 
 * The message hash
 * A signature generated inside the TEE
-* The signer address.
+* The signer address
 
-## To deploy and use the Attested API example
+## To deploy and use the attested API example
 
 What you'll do:
 
@@ -36,14 +36,14 @@ What you'll do:
 
 Before you begin, ensure you have:
 
-- [Docker](https://www.docker.com/get-started/) - To package and publish application images.
-- Sepolia Testnet ETH - For deployment transactions.
+- [Installed Docker](https://www.docker.com/get-started/) - To package and publish application images.
+- Obtained Sepolia Testnet ETH - For deployment transactions.
 - [Installed ecloud CLI](../../get-started/quickstart) and [authenticated](../../get-started/quickstart#initial-setup).
 - [Subscribed to EigenCompute](../../get-started/quickstart#subscribe-to-eigencompute).
 
-### 1. Create Application from Attested API template 
+### 1. Create application from attested API template 
 
-#### Docker Login
+#### Docker login
 
 Ensure Docker is running and log in to your Docker registry:
 

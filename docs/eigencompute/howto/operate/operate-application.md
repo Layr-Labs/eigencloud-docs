@@ -11,12 +11,12 @@ Use the [`start`](../../reference/ecloud-cli/compute/app.md#start), [`stop`](../
 
 - Wallet persists - Same MNEMONIC is available
 - IP persists - Usually keeps the same instance IP
-- State reset - In-memory state is lost (use external storage for persistence)
-- Logs preserved - Previous logs may still be available
+- State resets - In-memory state is lost (use external storage for persistence)
+- Logs persist - Previous logs may still be available
 
 ### When stopping
 
-- No requests - App doesn't accept requests while stopped
+- Requests blocked - App doesn't accept requests while stopped
 - Logs preserved - Can still view logs
 - Costs reduced - Lower costs while stopped (but not zero)
 
@@ -49,8 +49,8 @@ Termination is permanent and irreversible. The TEE wallet mnemonic becomes inacc
 
 ### Behavior
 
-- Immediate - Takes effect after transaction confirmation
-- Permanent - Cannot be undone
+- Immediate effect - Takes effect after transaction confirmation
+- Permanent action - Cannot be undone
 - Name available - App name can be reused for new deployments
 - ID retired - App ID is never reused
 

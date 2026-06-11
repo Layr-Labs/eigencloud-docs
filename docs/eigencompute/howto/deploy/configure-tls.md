@@ -12,7 +12,7 @@ Add TLS/HTTPS configuration to your project for secure domain access to:
 
 EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using Caddyfile](https://caddyserver.com/docs/caddyfile#:~:text=The%20Caddyfile%20is%20just%20a,use%20JSON%20with%20Caddy's%20API.). To use an alternative certificate provider, configure in your Dockerfile.
 
-## TLS Environment Variables
+## TLS environment variables
 
 | Variable            | Description               | Required   | Default   |
 |---------------------|---------------------------|------------|-----------|
@@ -22,7 +22,7 @@ EigenCompute enables TLS with [Let's Encrypt](https://letsencrypt.org/) [using C
 | `ACME_FORCE_ISSUE`  | Force certificate reissue | No         | `false`   |
 | `ENABLE_CADDY_LOGS` | Enable Caddy debug logs   | No         | `false`   |
 
-## Configure TLS and Test with Staging Certificates
+## Configure TLS and test with staging certificates
 
 1. Add TLS environment variables as prompted, or provide using [`--domain`, `--app-port`, `--acme-staging`, and `--caddy-logs`
 options](../../reference/ecloud-cli/compute/app.md#configure-tls).
@@ -47,7 +47,7 @@ options](../../reference/ecloud-cli/compute/app.md#configure-tls).
 
     The configured TLS routes traffic from ports 80 and 443 to the `APP_PORT`.
 
-## Switch to Production Certificates
+## Switch to production certificates
 
 To switch from staging to production:
 

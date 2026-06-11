@@ -36,6 +36,7 @@ The core components of the EigenLayer protocol include:
 - **Delegation** is the process where stakers delegate their restaked ETH or LSTs to Operators or run validation services themselves, effectively becoming an Operator. This process involves a double opt-in between both parties, ensuring mutual agreement.
 - EigenLayer **Rewards** enables AVSs to make rewards distributions to stakers and operators that opt-in to support the AVS. AVSs make RewardsSubmissions to the RewardsCoordinator, a core protocol contract.
 - **Slashing** is a penalty for improperly or inaccurately completing tasks assigned in Operator Sets by an AVS. A slashing results in a burning/loss of funds.
+- **Duration Vaults** are time-bound strategies enabling guaranteed stake commitments for specific periods. Stakers delegate to the vault and deposit for fixed durations. 
 
 <img src="/img/overview/eigenlayer-arch-v2.png" width="75%"
     style={{ margin: '50px'}}>

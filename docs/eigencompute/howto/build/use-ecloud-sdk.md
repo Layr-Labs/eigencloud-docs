@@ -1,6 +1,6 @@
 ---
 title: Use ecloud SDK
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 Use the ecloud SDK to:
@@ -10,7 +10,7 @@ Use the ecloud SDK to:
 * Build and push Docker images with encryption
 * Monitor application status and logs
 
-## Getting Started
+## Getting started
 
 1. Install ecloud SDK:
 
