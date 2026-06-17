@@ -37,6 +37,10 @@ For more information on how magnitudes are reduced when slashed, refer to [Magni
 For [redistributable Operator Sets](../../../../concepts/slashing/redistribution.md), implement upstream contracts for [`redistributionRecipient`](../../../concepts/slashing/slashing-concept-developers.md#redistribution-recipient)
 to handle redistributed funds once they are transferred directly from the protocol via the `clearBurnOrRedistributableShares` function.
 
+:::note
+After slashing occurs, there is a 7-day delay (`SLASH_RESOLUTION_DELAY_BLOCKS`) before `clearBurnOrRedistributableShares` can be called to clear the slashed shares. See [Safety Delays](../../../../reference/safety-delays-reference.md) for details.
+:::
+
 ## Returned by `slashOperator`
 
 The `slashOperator` function returns the `slashId` and number of shares slashed for each strategy. The `slashId` is 
