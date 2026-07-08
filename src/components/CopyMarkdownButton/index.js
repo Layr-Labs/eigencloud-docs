@@ -23,11 +23,48 @@ export default function CopyMarkdownButton() {
       // Format as markdown
       const markdown = `# ${title}\n\n${content}`;
 
-      await navigator.clipboard.writeText(markdown);
+      await copyToClipboard(markdown);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy:', err);
+    }
+  };
+
+  // Tries the modern Clipboard API first; falls back to the legacy
+  // execCommand approach when the Clipboard API is blocked by a
+  // Permissions-Policy header (e.g. NotAllowedError on some deployments).
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      if (err.name === 'NotAllowedError' || !navigator.clipboard) {
+        copyWithExecCommand(text);
+      } else {
+        throw err;
+      }
+    }
+  };
+
+  const copyWithExecCommand = (text) => {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    // Keep it out of the visible viewport and away from scroll/focus jumps
+    textarea.style.position = 'fixed';
+    textarea.style.top = '0';
+    textarea.style.left = '0';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+      const successful = document.execCommand('copy');
+      if (!successful) {
+        throw new Error('execCommand copy was unsuccessful');
+      }
+    } finally {
+      document.body.removeChild(textarea);
     }
   };
 
