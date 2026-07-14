@@ -83,6 +83,54 @@ ecloud billing top-up
 The EigenCompute wallet address and balance is displayed. If the wallet contains USDC, specify the amount to spend on credits. 
 If the wallet does not contain USDC, you are prompted to send USDC to the wallet.
 
+## Top up with x402
+
+[x402](https://www.x402.org/) is an open protocol for paying APIs with signed stablecoin messages. EigenCompute credits can be
+purchased over x402 with USDC on Base. Unlike the on-chain USDC top-up, no ETH for gas is required — you sign a USDC payment
+authorization and settlement is handled by the billing API.
+
+To purchase credits over x402:
+
+```
+ecloud billing top-up --method x402 --amount 5
+```
+
+The CLI requests a payment challenge from the billing API, signs the USDC payment with your ecloud key, and settles it. On
+success, the credits are applied to your account and the CLI prints the payment ID and settlement transaction hash.
+
+By default, credits go to the shared credit pool for your wallet. To credit a specific app instead (isolated billing), pass the
+app address:
+
+```
+ecloud billing top-up --method x402 --amount 5 --app 0xYourAppAddress
+```
+
+:::note
+The minimum x402 purchase is $5. Payment settles in USDC on Base mainnet, so your wallet needs at least the purchase amount in
+USDC on Base. No ETH is required.
+:::
+
+### Purchase credits from an agent or x402 client
+
+The endpoints implement standard x402 (version 2), so any x402-capable client can purchase credits programmatically — including
+an agent topping up its own compute. The endpoints are discoverable at:
+
+```
+GET https://billingapi.eigencloud.xyz/.well-known/x402.json
+```
+
+To purchase, POST the amount in cents to either endpoint and complete the returned `402` payment challenge with your x402 client:
+
+```
+POST https://billingapi.eigencloud.xyz/creators/{creatorAddress}/x402-credits
+{"amountCents": 500}
+
+POST https://billingapi.eigencloud.xyz/apps/{appAddress}/x402-credits
+{"amountCents": 500}
+```
+
+A successful purchase returns the credited amount, a payment ID, and the settlement transaction hash.
+
 ## Support
 
 For support, join our [Telegram channel](https://t.me/EigenCloudSupp).
