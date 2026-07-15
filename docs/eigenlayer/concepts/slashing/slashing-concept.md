@@ -4,7 +4,7 @@ title: Overview
 ---
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets, and is now available on mainnet.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets. [ELIP-016 Slash Resolution Delay](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-016.md) introduced a 7-day delay before slashed shares can be cleared.
 :::
 
 Slashing is a type of penalty determined by an AVS as a deterrent for broken commitments by Operators. Broken commitments
@@ -63,13 +63,12 @@ When funds are slashed by an AVS, they are either burned (for standard, non-redi
 (for redistributable Operator Sets). 
 
 Before burning or redistributing, slashed shares are increased in `StrategyManager` storage as burnable or redistributable shares.
-In another call, slashed shares are converted and funds are transferred directly to the `redistributionRecipient` (or burned if using a standard Operator Set). This is done through a permissionless call to the `clearBurnOrRedistributeShares` function on the `StrategyManager`.
+After a 7-day delay (`SLASH_RESOLUTION_DELAY_BLOCKS`), slashed shares are converted and funds are transferred directly to the `redistributionRecipient` (or burned if using a standard Operator Set). This is done through a permissionless call to the `clearBurnOrRedistributeShares` function on the `StrategyManager`.
 
 This two party flow is non-atomic to maintain the guarantee that slash does not fail, in the case where a token transfer
 or some other upstream issue of removing funds from the protocol may fail. This flow is maintained, with the addition of
-redistributable shares, using the non-atomic approach while enabling direct distribution to redistribution recipients without a
-delay. The AVS can call `clearBurnOrRedistributeShares` themselves via a multi-call or `clearBurnOrRedistributeShares` is called 
-after some time by a cron job to ensure funds do not remain in the protocol after a slash.
+redistributable shares, using the non-atomic approach while enabling direct distribution to redistribution recipients after the resolution delay. The AVS can call `clearBurnOrRedistributeShares` themselves via a multi-call or `clearBurnOrRedistributeShares` is called 
+after the delay by a cron job to ensure funds do not remain in the protocol after a slash.
 
 Once the slash distribution is processed, the slashed funds exit the EigenLayer protocol:
 * When burned, ERC-20s are sent to the dead 0x00...00e16e4 address. The dead address is used to ensure proper

@@ -4,7 +4,7 @@ title: Redistribution
 ---
 
 :::note
-[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets, and is now available on mainnet.
+[ELIP-006 Redistributable Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-006.md) introduced Redistributable Operator Sets. [ELIP-016 Slash Resolution Delay](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-016.md) introduced a 7-day delay before slashed shares can be cleared.
 :::
 
 Redistribution enables AVSs to repurpose slashed funds instead of burning them. In use cases such as lending and insurance protocols, 
