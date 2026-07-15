@@ -73,11 +73,15 @@ the withdrawal attempt will fail.
       startBlock: <start block number>
       strategies: [<strategy address>]
       scaledShares: [<scaledShares number>]
-      tokens: [<token address you want to withdraw. For Native ETH withdrawals, enter 0x0000000000000000000000000000000000000000>]
+      tokens: [<token address you want to withdraw. For Native ETH withdrawals, enter 0x0000000000000000000000000000000000000000. For EIGEN withdrawals, enter 0xec53bf9167f50cdeb3ae105f56099aaab9061f83>]
       receiveAsTokens: true
       ```
 
       You can specify `receiveAsTokens: false` to cancel a completable withdrawal and return the assets to fully restaked status eligible to earn rewards.
+
+      :::important EIGEN withdrawals
+      For EIGEN withdrawals, use the EIGEN token address (`0xec53bf9167f50cdeb3ae105f56099aaab9061f83`) in the `tokens` field, even though the strategy holds bEIGEN.
+      :::
 
 5. Submit the Transaction
     1. Click *Write*.
