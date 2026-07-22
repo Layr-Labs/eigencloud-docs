@@ -59,3 +59,8 @@ In order for an Operator to be eligible for a reward submission they must been r
 of the reward duration. If an Operator does not meet this condition but has rewards submitted to them, the rewards are
 refunded back to the AVS address. To claim rewards as an AVS, you must set a claimer for the AVS, which can be done 
 using [`setClaimerFor`](https://github.com/Layr-Labs/eigenlayer-middleware/blob/5e2056601c69f39f29c3fe39edf9013852e83bf3/src/ServiceManagerBase.sol#L216) on the [`ServiceManagerBase`](https://github.com/Layr-Labs/eigenlayer-middleware/blob/2afed9dd5bdd874d8c41604453efceca93abbfbc/docs/ServiceManagerBase.md#L1) contract or [using the EigenLayer CLI](../../operators/howto/configurerewards/set-rewards-claimer.md).
+
+### Do rewards continue to accumulate during a queued withdrawal?
+
+No. Rewards stop accumulating when a withdrawal is queued. This applies whether you queue a withdrawal directly or if a withdrawal is automatically queued as part of an
+undelegate action. Once the escrow period ends, you can choose to either complete the withdrawal or redeposit to resume earning rewards.
