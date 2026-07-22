@@ -24,9 +24,8 @@ const repos = [
     url: 'https://github.com/Layr-Labs/eigenx-cli',
     fileName: "eigenx.md",
   },
-] 
+]
 
 for (const repo of repos) {
   await processRemoteRepo(repo.url, repo.fileName);
 }
-  

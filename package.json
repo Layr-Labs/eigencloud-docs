@@ -7,7 +7,7 @@
     "start": "docusaurus start",
     "build": "npm run repomix && docusaurus build",
     "build-docusaurus": "docusaurus build",
-    "repomix": "node run-repomix.js",
+    "repomix": "node run-repomix.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

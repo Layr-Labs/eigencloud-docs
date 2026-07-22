@@ -4251,8 +4251,8 @@ RUN chmod 755 /usr/local/bin/compute-source-env.sh \
     && chmod 755 /usr/local/bin/caddy{{- end}} \
     && chmod 644 /usr/local/bin/kms-signing-public-key.pem
 
-# Switch back to the original user from base image
-USER {{.OriginalUser}}
+# Store original user - entrypoint will drop privileges to this user after TEE setup
+ENV __EIGENX_ORIGINAL_USER={{.OriginalUser}}
 {{- else}}
 # Make binaries executable (preserve existing permissions, just add execute)
 RUN chmod +x /usr/local/bin/compute-source-env.sh \
@@ -4389,6 +4389,13 @@ setup_tls() {
 setup_tls
 
 echo "compute-source-env.sh: Environment sourced."
+
+# Drop privileges to original user for the application command
+if [ -n "$__EIGENX_ORIGINAL_USER" ] && [ "$(id -u)" = "0" ]; then
+    echo "compute-source-env.sh: Dropping privileges to user: $__EIGENX_ORIGINAL_USER"
+    exec su -s /bin/sh "$__EIGENX_ORIGINAL_USER" -c 'exec "$@"' -- sh "$@"
+fi
+
 exec "$@"
 ````
 
@@ -6051,7 +6058,9 @@ var SubscribeCommand = &cli.Command{
 		for {
 			select {
 			case <-timeout:
-				return fmt.Errorf("payment confirmation timed out after 5 minutes. If you completed payment, run 'eigenx billing status' to check status")
+				logger.Info("\nPayment confirmation timed out after 5 minutes.")
+				logger.Info("If you completed payment, run 'eigenx billing status' to check status.")
+				return nil
 			case <-ticker.C:
 				subscription, err := client.GetUserSubscription(cCtx)
 				if err != nil {
@@ -12285,6 +12294,9 @@ release:
 ## File: README.md
 ````markdown
 # EigenX CLI
+
+> [!NOTE]
+> EigenX CLI is being deprecated in favor of [Ecloud CLI](https://github.com/Layr-Labs/ecloud). Please follow the [migration guide](https://github.com/Layr-Labs/ecloud/blob/master/MIGRATION.md) to migrate your app deployment credentials to the new CLI. You can still use eigenx to maintain your application but no new features will be published to it. We recommend you migrate as soon as possible. Thank you.
 
 **Deploy verifiable applications in Trusted Execution Environments (TEEs)**
 
