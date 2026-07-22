@@ -81,7 +81,6 @@ The `run-repomix.js` script fetches and processes external repositories into mar
 - `eigenlayer-contracts.md` from github.com/Layr-Labs/eigenlayer-contracts
 - `eigenlayer-go-sdk.md` from github.com/Layr-Labs/eigensdk-go
 - `eigenx.md` from github.com/Layr-Labs/eigenx-cli
-- `devkit.md` from github.com/Layr-Labs/devkit-cli
 
 This runs automatically during `yarn build` but can be skipped with `yarn build-docusaurus`.
 

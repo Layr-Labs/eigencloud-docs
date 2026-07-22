@@ -36,6 +36,4 @@ Services with commitments to:
 
 ## How do I get started
 
-If your service is task based, use the DevKit with the task-based AVS template to get started.
-
-For other types of commitments, refer to the [EigenLayer documentation](../developers/howto/get-started-without-devkit/implement-minimum-onchain-components.md).
+Refer to the [Get Started guide](../developers/howto/get-started/quickstart.md) to build your first AVS.

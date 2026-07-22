@@ -9,7 +9,6 @@ the Protocol Council.
 The EigenLayer core contracts are documented in the [eigenlayer-contracts](https://github.com/Layr-Labs/eigenlayer-contracts) repository. The core contracts include contracts for:
 * The [EigenLayer protocol](#eigenlayer-protocol-core-contracts) to stake and secure verifiable services, and to enable incentives and consequences for Operator commitments.
 * [Permissions](#permissions-core-contracts) including User Access Management (UAM), and managing cryptographic keys for Operators across different Operator Sets.
-* The [multichain protocol](#multichain-core-contracts) to enable consumption of EigenLayer Ethereum stake on supported destination chains.
 
 This documentation matches the functionality available in [v1.7.0 of the core contracts](../../../releases.md). For release specific
 documentation for other releases, refer to the `/docs` repository on the branch for that release in the [eigenlayer-contracts](https://github.com/Layr-Labs/eigenlayer-contracts) repository.
@@ -31,11 +30,3 @@ documentation for other releases, refer to the `/docs` repository on the branch 
 |--------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [PermissionController](https://github.com/Layr-Labs/eigenlayer-contracts/tree/main/docs#permissioncontroller) | Enables AVSs and Operators to delegate the ability to call certain core contract functions to other addresses. For more information, refer to [User Access Management](../../../concepts/uam/user-access-management.md). |
 | [KeyRegistrar](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/permissions/KeyRegistrar.md)    | Manages cryptographic keys for operators across different operator sets. Supports both ECDSA and BN254 key types and ensures global uniqueness of keys across all operator sets.                                         |
-
-## Multichain Core Contracts
-
-| Core contract        | Description                                                                             | 
-|----------------------|-----------------------------------------------------------------------------------------|
-| [CertificateVerifier](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/multichain/destination/CertificateVerifier.md#certificateverifier)  | Responsible for verifying certificates onchain from an offchain task.                    |
-| [OperatorTableUpdater](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/multichain/destination/OperatorTableUpdater.md#operatortableupdater) | Updates Operator table for each Operator Set from the stake root, and validates with storage proofs.       | 
-| [CrossChainRegistry](https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/docs/multichain/source/CrossChainRegistry.md#crosschainregistry) | Manages the registration and deregistration of Operator Sets to the multichain protocol and helps generate the global stake root.|
