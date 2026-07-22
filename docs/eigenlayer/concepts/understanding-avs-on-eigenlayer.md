@@ -27,11 +27,3 @@ EigenLayer provides the onchain protocol components to implement the cryptoecono
 | Correct behavior is rewarded                     | Rewards framework                                      |
 | Misbehavior can be proven and penalized          | Slashing mechanism and other penalties such as ejection |
 | Parties harmed by misbehavior can be compensated | Redistribution                                         |
-
-
-Additionally EigenLayer provides onchain infrastructure for multichain deployments and key management.
-
-| Action                                        | EigenLayer Component                                   |
-|-----------------------------------------------|--------------------------------------------------------|
-| Deploying on multiple chains                  | Multichain Verification framework                      |
-| Secure key rotation, revocation, and recovery | User Access Management (UAM)                           |

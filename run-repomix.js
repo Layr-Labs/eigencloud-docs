@@ -24,10 +24,6 @@ const repos = [
     url: 'https://github.com/Layr-Labs/eigenx-cli',
     fileName: "eigenx.md",
   },
-  {
-    url: 'https://github.com/Layr-Labs/devkit-cli',
-    fileName: "devkit.md",
-  },
 ] 
 
 for (const repo of repos) {

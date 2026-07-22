@@ -1,22 +1,8 @@
 ---
 sidebar_position: 1
-title: Get started
+title: Hello World AVS
 ---
 
-:::note
-
-We are in the process of updating our samples to include Rewards and Slashing capabilities. The Hello World AVS example will be
-updated as soon as possible. Use Hello World AVS now to get familiar with EigenLayer. 
-
-For more information on Rewards and Slashing, refer to the [Rewards](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-001.md) and [Slashing](https://github.com/eigenfoundation/ELIPs/blob/main/ELIPs/ELIP-002.md) ELIPs,
-and [Rewards](../../../concepts/rewards/rewards-concept.md) and [Slashing](../../concepts/slashing/slashing-concept-developers) documentation. 
-
-For questions or support, reach out to us using the support button on the bottom right side of this page or <a href="javascript:void(0)" onClick={() => Plain.open()} >here</a>. 
-We will promptly follow up with support!
-
-:::
-
-## Hello World AVS: Local Deployment
 The [Hello World AVS](https://github.com/Layr-Labs/hello-world-avs) is a simple implementation designed to demonstrate the core mechanics of how AVSs work within the EigenLayer framework. This example walks you through the process of:
 - Spinning up a local chain with EigenLayer contracts and AVS contracts preconfigured.
 - Registering an Operator with both EigenLayer and the AVS.

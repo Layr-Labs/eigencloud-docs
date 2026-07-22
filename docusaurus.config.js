@@ -73,7 +73,11 @@ const redirects = [
   },
   {
      from: '/get-started/developers/concepts/build-faster-hourglass-devkit',
-     to: '/eigenlayer/concepts/build-faster-hourglass-devkit',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
+  },
+  {
+     from: '/eigenlayer/concepts/build-faster-hourglass-devkit',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
   {
      from: '/get-started/developers/concepts/understanding-avs-on-eigenlayer',
@@ -85,19 +89,35 @@ const redirects = [
   },
   {
      from: '/developers/howto/build-test-locally',
-     to: '/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
   {
      from: '/get-started/developers/howto/start-building-task-based-avs',
-     to: '/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
+  },
+  {
+     from: '/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
+  },
+  {
+     from: '/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
+  },
+  {
+     from: '/eigenlayer/developers/howto/get-started-with-devkit/publish-task-based-avs-release',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
+  },
+  {
+     from: '/eigenlayer/operators/howto/run-task-based-avs',
+     to: '/eigenlayer/operators/concepts/operator-introduction',
   },
   {
      from: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
-     to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+     to: '/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
   },
   {
      from: '/products/eigenlayer/developers/howto/get-started/quickstart',
-     to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
 
 
@@ -154,15 +174,15 @@ const redirects = [
   },
   {
       from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+      to: '/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
   },
   {
       from: '/developers/HowTo/get-started/quickstart',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+      to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
   {
       from: '/developers/HowTo/get-started/support',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/support',
+      to: '/eigenlayer/developers/howto/get-started/support',
   },
   {
       from: '/developers/HowTo/publish/onboard-avs-dashboard',
@@ -178,15 +198,15 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/stake-weighting',
-    to: '/eigenlayer/developers/concepts/multichain/stake-weighting',
+    to: '/eigenlayer/developers/howto/build/manage-registered-operators',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/multichain-integration-patterns',
-    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
+    to: '/eigenlayer/developers/howto/build/manage-registered-operators',
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
-    to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
+    to: '/eigenlayer/developers/howto/build/manage-registered-operators',
   },
   {
     from: '/products/eigencompute/quickstart',
@@ -194,11 +214,59 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
-    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
+    to: '/eigenlayer/developers/howto/build/manage-registered-operators',
   },
   {
    from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
-   to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/concepts/multichain/stake-weighting',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/concepts/multichain/multichain-overview',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/concepts/multichain/multichain-architecture',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/concepts/multichain/certificates',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain/multichain-howto-overview',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain/configure-multichain',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain/consume-certificates',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain/verification-methods',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/howto/build/multichain-security-considerations',
+   to: '/eigenlayer/developers/howto/build/manage-registered-operators',
+  },
+  {
+   from: '/eigenlayer/developers/reference/multichain-parameters',
+   to: '/eigenlayer/developers/reference/resources',
+  },
+  {
+   from: '/eigenlayer/operators/howto/mulitchain',
+   to: '/eigenlayer/operators/concepts/operator-introduction',
   },
 
   // Developer Reference (handle both capitalized and lowercase versions)
@@ -435,7 +503,7 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/get-started/support',
-    to: '/eigenlayer/developers/howto/get-started-without-devkit/support'
+    to: '/eigenlayer/developers/howto/get-started/support'
   },
 
   //Legal
