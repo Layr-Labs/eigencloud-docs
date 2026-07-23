@@ -14,7 +14,7 @@ economic incentives. Services are fragmented, tooling is underpowered, and integ
 builders who want to create high-performance, trust-minimized systems, this complexity is a blocker.
 
 EigenCloud is our answer. It reimagines the developer experience around [EigenLayer](../eigenlayer/concepts/eigenlayer-overview.md), bundling together
-verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md), [EigenCompute](../eigencompute/get-started/eigencompute-overview.md), and [AgentKit](../agentkit/get-started/agentkit-overview.mdx). 
+verifiable services, such as [EigenDA](../eigenda/core-concepts/overview.md) and [EigenCompute](../eigencompute/get-started/eigencompute-overview.md). 
 These capabilities empower developers to go from idea to deployment in days rather than months without needing to understand EigenLayer’s
 internals, enabling mainstream adoption of verifiable infrastructure.
 
