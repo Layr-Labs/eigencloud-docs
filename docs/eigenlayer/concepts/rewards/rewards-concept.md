@@ -63,3 +63,5 @@ information on the deterministic calculation of the distribution of rewards, ref
 
 The posted distribution roots contain cumulative earnings. That is, Stakers and Operators do not have to claim against every
 root and claiming against the most recent root claims anything not yet claimed.
+
+Rewards stop accumulating when a withdrawal is queued.

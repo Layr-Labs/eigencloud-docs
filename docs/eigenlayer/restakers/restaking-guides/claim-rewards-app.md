@@ -11,6 +11,10 @@ When claiming Rewards using the [EigenLayer app](https://app.eigenlayer.xyz/):
 
 To specify the [rewards recipient](../../operators/howto/claimrewards/claim-rewards-cli.mdx) or [batch claim](../../operators/howto/claimrewards/batch-claim-rewards.md), claim using the EigenLayer CLI.
 
+:::note
+Rewards stop accumulating when a withdrawal is queued.
+:::
+
 ## Earner
 
 To claim rewards using the EigenLayer app as an [Earner](../../concepts/rewards/earners-claimers-recipients.md):
