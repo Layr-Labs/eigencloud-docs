@@ -3,6 +3,10 @@ sidebar_position: 3
 title: Withdraw using contract
 ---
 
+:::info Disabled Pods Use a Different Method
+If you have permanently disabled your EigenPod, you must use `withdrawDisabledPodETH()` instead of the standard withdrawal methods described on this page. See [Disable Your EigenPod](./disable-eigenpod.md) for details.
+:::
+
 :::caution Manual withdrawals
 If you’re having issues withdrawing your funds using the EigenLayer app, you can manually complete the process using the 
 Delegation Contract on Etherscan.

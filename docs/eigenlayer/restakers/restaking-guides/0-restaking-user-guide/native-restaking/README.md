@@ -109,6 +109,10 @@ If you wish to withdraw native ETH from an active validator, complete the follow
 1. Fully exit your validator from the beacon chain. You may monitor its activity via https://beaconcha.in/validator/[validator_index_or_public_key].
 1. Wait for the final beacon chain withdrawal to be deposited to your EigenPod. There can be a lag of up to 24 hours to 7 days between the validator appearing as "exited" and the withdrawal amount deposited to EigenPod. Please see the "Withdrawals" tab and "Time" column for your validator via https://beaconcha.in/validator/[validator_index_or_public_key]#withdrawals .
 
+:::tip Permanently Disable Your EigenPod
+If you want to fully exit EigenLayer without completing additional checkpoints, or if you need to rotate validator keys, you can permanently [disable your EigenPod](../../disable-eigenpod.md).
+:::
+
 #### Queue the Withdrawal:
 
 1. Click **Queue Withdrawal** in the web app.

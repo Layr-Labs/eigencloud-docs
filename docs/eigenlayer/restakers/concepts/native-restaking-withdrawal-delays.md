@@ -63,3 +63,7 @@ queuing withdrawals on-chain in advance.
   * If a user underestimates the withdrawal amount, residual ETH remains in the EigenPod.
   * If a user overestimates, they must wait for the escrow to complete before adjusting.
   * Slashing events or penalties can disrupt planned withdrawals.
+
+:::tip Disable EigenPod
+If you want to exit EigenLayer without waiting for additional checkpoints to complete, or if you need to rotate validator keys, you can permanently [disable your EigenPod](../restaking-guides/disable-eigenpod.md).
+:::
