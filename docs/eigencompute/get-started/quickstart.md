@@ -304,6 +304,7 @@ For more advanced port configuration including multiple ports and port ranges, s
 
 * Explore [CLI Commands](../reference/ecloud-cli/ecloud-cli-overview.md) - Learn about all available commands
 * Review [Core Concepts](eigencompute-overview.md) - Deep dive into keys, environment variables, and security
+* Use [Runtime Attestation](../howto/build/use-runtime-attestation.md) - Prove what your app did: attest any payload from inside the TEE and hand verifiers a hardware-rooted receipt
 
 ## Troubleshooting
 
