@@ -72,10 +72,6 @@ const redirects = [
       to: '/eigencloud/eigencloud-overview',
   },
   {
-     from: '/get-started/developers/concepts/build-faster-hourglass-devkit',
-     to: '/eigenlayer/concepts/build-faster-hourglass-devkit',
-  },
-  {
      from: '/get-started/developers/concepts/understanding-avs-on-eigenlayer',
      to: '/eigenlayer/concepts/understanding-avs-on-eigenlayer',
   },
@@ -84,20 +80,12 @@ const redirects = [
      to: '/eigenlayer/concepts/why-build-on-eigenlayer',
   },
   {
-     from: '/developers/howto/build-test-locally',
-     to: '/eigenlayer/developers/howto/get-started-with-devkit/build-test-locally',
-  },
-  {
-     from: '/get-started/developers/howto/start-building-task-based-avs',
-     to: '/eigenlayer/developers/howto/get-started-with-devkit/start-building-task-based-avs',
-  },
-  {
      from: '/products/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
-     to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+     to: '/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
   },
   {
      from: '/products/eigenlayer/developers/howto/get-started/quickstart',
-     to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+     to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
 
 
@@ -154,15 +142,15 @@ const redirects = [
   },
   {
       from: '/developers/HowTo/get-started/implement-minimum-onchain-components',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/implement-minimum-onchain-components',
+      to: '/eigenlayer/developers/howto/get-started/implement-minimum-onchain-components',
   },
   {
       from: '/developers/HowTo/get-started/quickstart',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/quickstart',
+      to: '/eigenlayer/developers/howto/get-started/quickstart',
   },
   {
       from: '/developers/HowTo/get-started/support',
-      to: '/eigenlayer/developers/howto/get-started-without-devkit/support',
+      to: '/eigenlayer/developers/howto/get-started/support',
   },
   {
       from: '/developers/HowTo/publish/onboard-avs-dashboard',
@@ -177,28 +165,8 @@ const redirects = [
       to: '/eigenlayer/developers/howto/test/test-avs',
   },
   {
-    from: '/products/eigenlayer/developers/howto/build/multichain/stake-weighting',
-    to: '/eigenlayer/developers/concepts/multichain/stake-weighting',
-  },
-  {
-    from: '/products/eigenlayer/developers/howto/build/multichain/multichain-integration-patterns',
-    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
-  },
-  {
-    from: '/products/eigenlayer/developers/howto/build/multichain/verifications-methods',
-    to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
-  },
-  {
     from: '/products/eigencompute/quickstart',
     to: '/eigencompute/get-started/quickstart',
-  },
-  {
-    from: '/products/eigenlayer/developers/howto/build/multichain/implement-multichain',
-    to: '/eigenlayer/developers/howto/build/multichain/implement-certificate-verification',
-  },
-  {
-   from: '/products/eigenlayer/developers/howto/build/build/multichain/multichain-verification-consumers',
-   to: '/eigenlayer/developers/howto/build/multichain/verification-methods',
   },
 
   // Developer Reference (handle both capitalized and lowercase versions)
@@ -435,7 +403,7 @@ const redirects = [
   },
   {
     from: '/products/eigenlayer/developers/howto/get-started/support',
-    to: '/eigenlayer/developers/howto/get-started-without-devkit/support'
+    to: '/eigenlayer/developers/howto/get-started/support'
   },
 
   //Legal
