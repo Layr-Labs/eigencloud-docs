@@ -170,7 +170,14 @@ struct OnDemandPayment {
 }
 ```
 
-All on-demand payments share global parameters including the global symbols per period (`globalSymbolsPerPeriod`), global rate interval (`globalRatePeriodInterval`), minimum number of symbols per dispersal (`minNumSymbols`), and the price per symbol (`pricePerSymbol`).
+All on-demand payments share global parameters including the global rate (`globalSymbolsPerPeriod`), global rate interval (`globalRatePeriodInterval`), minimum number of symbols per dispersal (`minNumSymbols`), and the price per symbol (`pricePerSymbol`).
+
+:::note
+Despite its name, `globalSymbolsPerPeriod` is consumed as a **per-second** leak rate, and `globalRatePeriodInterval`
+sets the burst window rather than the rate's denominator. The sustained global limit is
+`globalSymbolsPerPeriod × 32 bytes` per second, and the maximum burst is that rate multiplied by
+`globalRatePeriodInterval`.
+:::
 
 ```solidity
 /* Constant parameters set by EigenDA governance */
