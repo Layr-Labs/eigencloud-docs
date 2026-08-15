@@ -28,6 +28,10 @@ The EigenDA Hoodi testnet is the EigenDA testnet for operators.
 | Contract | Address |
 | --- | --- |
 | EigenDADirectory | [0x5a44e56e88abcf610c68340c6814ae7f5c4369fd](https://hoodi.etherscan.io/address/0x5a44e56e88abcf610c68340c6814ae7f5c4369fd#readProxyContract) |
+| PaymentVault | [0xc043730ec3069171961aB995801f230d70B2bFb2](https://hoodi.etherscan.io/address/0xc043730ec3069171961aB995801f230d70B2bFb2) |
+
+The `PaymentVault` is listed above because it is the one contract users interact with directly, to fund on-demand
+bandwidth. See [Payments](../core-concepts/payments.md#depositing-for-on-demand-bandwidth) for how to deposit.
 
 All other contracts are now tracked inside the EigenDADirectory contract:
 1. Click on the etherscan link above.

@@ -23,6 +23,10 @@ The EigenDA Sepolia testnet is the current EigenDA testnet for integrations.
 | Contract | Address |
 | --- | --- |
 | EigenDADirectory | [0x9620dC4B3564198554e4D2b06dEFB7A369D90257](https://sepolia.etherscan.io/address/0x9620dC4B3564198554e4D2b06dEFB7A369D90257) |
+| PaymentVault | [0x2E1BDB221E7D6bD9B7b2365208d41A5FD70b24Ed](https://sepolia.etherscan.io/address/0x2E1BDB221E7D6bD9B7b2365208d41A5FD70b24Ed) |
+
+The `PaymentVault` is listed above because it is the one contract users interact with directly, to fund on-demand
+bandwidth. See [Payments](../core-concepts/payments.md#depositing-for-on-demand-bandwidth) for how to deposit.
 
 All other contracts are now tracked inside the EigenDADirectory contract:
 1. Click on the etherscan link above.
