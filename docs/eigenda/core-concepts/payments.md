@@ -123,8 +123,12 @@ disperser's `GetPaymentState` gRPC endpoint.
 
 :::important
 EigenDA proxy defaults to `--eigenda.v2.client-ledger-mode=reservation-only`
-(`EIGENDA_PROXY_EIGENDA_V2_CLIENT_LEDGER_MODE`), which will not use your on-demand deposit. Set it to
-`on-demand-only`, or `reservation-and-on-demand` to fall back to on-demand when a reservation bucket is full.
+(`EIGENDA_PROXY_EIGENDA_V2_CLIENT_LEDGER_MODE`), which does not use on-demand funds at all. In that mode the proxy
+builds a reservation ledger at startup and fails with `no reservation found for account 0x…` if the account has no
+reservation, so an on-demand-only user must change it.
+
+Set `on-demand-only` to use on-demand exclusively, or `reservation-and-on-demand` to fall back to on-demand when a
+reservation bucket is full.
 :::
 
 ### Estimating how much to deposit
