@@ -69,6 +69,71 @@ deposits in the `PaymentVault` contract. For reservation payments, validator nod
 each account's reservation usage using leaky bucket rate limiting. Clients can query the disperser to retrieve their own
 offchain state for on-demand usage information.
 
+## Depositing for On-Demand Bandwidth
+
+Depositing is permissionless: anyone can fund an account's on-demand balance. Reservations, by contrast, are set by
+EigenDA governance and cannot be self-served, so depositing into the `PaymentVault` is the path to get started without
+contacting the EigenDA team.
+
+:::warning
+Deposits are one-way. The current `PaymentVault` has no withdraw function and `totalDeposit` can only increase, so
+unspent funds cannot be recovered or refunded. Deposit in increments you expect to consume.
+:::
+
+### 1. Choose the account to credit
+
+Deposits are credited to an account address, and the disperser attributes usage by the address that **signs the
+dispersal request**. Fund the address corresponding to your client's signing key — for EigenDA proxy, the key set via
+`--eigenda.v2.signer-payment-key-hex` (`EIGENDA_PROXY_EIGENDA_V2_SIGNER_PRIVATE_KEY_HEX`).
+
+Because `depositOnDemand` takes the account as a parameter, the deposit can be funded from a completely separate
+wallet. The signing key itself never needs to hold ETH.
+
+### 2. Deposit
+
+Call `depositOnDemand` on the `PaymentVault` for your network ([Mainnet](../networks/mainnet.md#contract-addresses),
+[Sepolia](../networks/sepolia.md#contract-addresses), [Hoodi](../networks/hoodi.md#contract-addresses)), passing the
+account to credit and attaching ETH as the value:
+
+```bash
+cast send $PAYMENT_VAULT "depositOnDemand(address)" $ACCOUNT_TO_CREDIT \
+  --value 0.15ether --rpc-url $RPC_URL --private-key $FUNDING_KEY
+```
+
+From a browser, use the Etherscan link for your network, then **Contract → Write as Proxy → depositOnDemand**.
+
+:::caution
+The vault's `receive`/`fallback` functions also accept deposits, but they credit `msg.sender`. A plain ETH transfer from
+an exchange, a Safe, or any wallet that is not your signing account will credit *that* sender's address, and the
+deposit cannot be moved or refunded. Prefer the explicit `depositOnDemand(address)` call.
+:::
+
+### 3. Verify the deposit
+
+Read cumulative deposits back from the vault:
+
+```bash
+cast call $PAYMENT_VAULT "getOnDemandTotalDeposits(address[])(uint80[])" "[$ACCOUNT_TO_CREDIT]" --rpc-url $RPC_URL
+```
+
+This returns total deposits, not remaining balance, since usage is metered off-chain. For remaining balance, query the
+disperser's `GetPaymentState` gRPC endpoint.
+
+### 4. Enable on-demand in your client
+
+:::important
+EigenDA proxy defaults to `--eigenda.v2.client-ledger-mode=reservation-only`
+(`EIGENDA_PROXY_EIGENDA_V2_CLIENT_LEDGER_MODE`), which will not use your on-demand deposit. Set it to
+`on-demand-only`, or `reservation-and-on-demand` to fall back to on-demand when a reservation bucket is full.
+:::
+
+### Estimating how much to deposit
+
+Cost is driven by `pricePerSymbol` and `minNumSymbols` (see [below](#on-demand-bandwidth-on-demand-payments)), both
+readable from the vault. At the current mainnet parameters, budget roughly **0.015 ETH per GiB dispersed**, with a floor
+of about **1,831 gwei per dispersal**. Because every request rounds up to `minNumSymbols` (4,096 symbols, or 128 KiB),
+many small blobs cost the same as 128 KiB blobs — batch small payloads to avoid paying the floor repeatedly.
+
 ## Low-level Specification
 
 ### On-Demand Bandwidth (On-Demand Payments)
@@ -105,7 +170,7 @@ struct OnDemandPayment {
 }
 ```
 
-All on-demand payments share global parameters including the global symbols per second (`globalSymbolsPerSecond`), global rate interval (`globalRatePeriodInterval`), minimum number of symbols per dispersal (`minNumSymbols`), and the price per symbol (`pricePerSymbol`).
+All on-demand payments share global parameters including the global symbols per period (`globalSymbolsPerPeriod`), global rate interval (`globalRatePeriodInterval`), minimum number of symbols per dispersal (`minNumSymbols`), and the price per symbol (`pricePerSymbol`).
 
 ```solidity
 /* Constant parameters set by EigenDA governance */
@@ -133,7 +198,7 @@ currently considered by the disperser when determining if a payment is valid, th
 by clients, since the value may be used in the future. The disperser also enforces a global rate limit on on-demand 
 payments.
 
-Example: Initially, EigenDA team will set the price per symbol to be `0.4470gwei`, aiming for the price of `0.015ETH/GB`, or `2000gwei/128Kib` blob dispersal. We limit the global on-demand rate to be `131072` symbols per second (`4mb/s`) and 30 second rate intervals; this allows for ~4 MiB of data to be dispersed every second on average, and the maximum single spike of dispersal to be ~120MiB over 30 seconds.
+Example: Initially, EigenDA team will set the price per symbol to be `0.4470gwei`, aiming for the price of `0.015ETH/GB`, or `2000gwei/128Kib` blob dispersal. We limit the global on-demand rate to be `131072` symbols per second (`4 MiB/s`, shared across all on-demand users) and 30 second rate intervals; this allows for ~4 MiB of data to be dispersed every second on average, and the maximum single spike of dispersal to be ~120MiB over 30 seconds.
 
 ### Reserved Bandwidth (Reservations)
 
