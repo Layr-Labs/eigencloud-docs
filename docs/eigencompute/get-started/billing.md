@@ -12,7 +12,7 @@ EigenCompute has metered billing so you pay for what you use. All new customers 
 
 :::important Mainnet Pricing
 Current EigenCompute pricing is the testnet pricing. Mainnet deployments are available at testnet pricing for a promotional
-period ending on 04/31/2026.
+period.
 :::
 
 Up to 10 apps each can be deployed on Sepolia testnet and mainnet per subscription (that is, 20 apps total can be deployed per subscription per [ecloud CLI authentication key](../concepts/keys-overview.md)).

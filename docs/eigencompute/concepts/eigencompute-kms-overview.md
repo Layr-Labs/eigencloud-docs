@@ -5,7 +5,7 @@ sidebar_position: 2
 
 The EigenCompute Key Management Service (KMS) is the service that handles all secrets (for example, private keys, API secrets,
 encrypted tokens) for EigenCompute applications. The KMS provides applications a persistent onchain identity, strict isolation
-of secrets, and with the [distributed KMS](#distributed-kms-q1-2026), long-term recoverability even with hardware failures or Operator outages.
+of secrets, and with the [distributed KMS](#distributed-kms), long-term recoverability even with hardware failures or Operator outages.
 
 The KMS provides three key properties to EigenCompute applications:
 
@@ -15,13 +15,13 @@ The KMS provides three key properties to EigenCompute applications:
 2. [No access to secrets outside the TEE](#derived-from-mnemonic)
 
     Secrets are never exposed to application code or Operators. Only the TEE can derive and use private keys.
-3. Recoverability even if a TEE fails (with [distributed KMS](#distributed-kms-q1-2026))
+3. Recoverability even if a TEE fails (with [distributed KMS](#distributed-kms))
   
     Once threshold KMS is live, the KMS will tolerate up to n/3 Operator failures or outages, ensuring applications maintain their identity and capabilities.
 
 :::note KMS Operator in Mainnet Alpha Phase
 In the Mainnet Alpha phase, EigenLabs is running a single KMS node for all EigenCompute apps in Google Cloud Platform.
-[Threshold KMS for distributed key management](#distributed-kms-q1-2026) is in active development.
+[Threshold KMS for distributed key management](#distributed-kms) is in active development.
 :::
 
 ## Deterministic mnemonic generation
@@ -53,9 +53,9 @@ From the mnemonic, applications can generate:
 Encrypt a database with a key derived from the mnemonic. On reboot, derive the same key and decrypt the database. Persistent encrypted state!
 :::
 
-## Distributed KMS (Q1, 2026)
+## Distributed KMS
 
-The distributed KMS (planned for release Q1, 2026) will use threshold cryptography (BLS12-381) to eliminate single points 
+The distributed KMS will use threshold cryptography (BLS12-381) to eliminate single points 
 of failure while maintaining Byzantine fault tolerance. The distributed KMS will provide two important properties:
 
 * No single Operator can access TEE secrets.
