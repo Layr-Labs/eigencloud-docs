@@ -74,6 +74,5 @@ The EigenCompute vision is to enable offchain execution systems to provide simil
 ## Next steps 
 
 * [Use the quickstart](quickstart.md)
-* [Connect with our team](https://onboarding.eigencloud.xyz/)
 
 
