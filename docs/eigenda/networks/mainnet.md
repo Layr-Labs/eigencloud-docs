@@ -27,6 +27,10 @@ sidebar_position: 1
 | Contract | Address |
 | --- | --- |
 | EigenDADirectory | [0x64AB2e9A86FA2E183CB6f01B2D4050c1c2dFAad4](https://etherscan.io/address/0x64AB2e9A86FA2E183CB6f01B2D4050c1c2dFAad4) |
+| PaymentVault | [0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05](https://etherscan.io/address/0xb2e7ef419a2A399472ae22ef5cFcCb8bE97A4B05) |
+
+The `PaymentVault` is listed above because it is the one contract users interact with directly, to fund on-demand
+bandwidth. See [Payments](../core-concepts/payments.md#depositing-for-on-demand-bandwidth) for how to deposit.
 
 All other contracts are now tracked inside the EigenDADirectory contract:
 1. Click on the etherscan link above.
