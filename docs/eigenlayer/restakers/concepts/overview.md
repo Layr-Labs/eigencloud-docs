@@ -72,6 +72,11 @@ Delay and Allocation Delay](../../reference/safety-delays-reference.md), it is i
 
 For more information on the safety delays for Stakers, refer to the [Safety Delays reference](../../reference/safety-delays-reference.md).
 
+### Permanently Disabling an EigenPod (RETIRE)
+
+Native restakers can permanently and irreversibly disable restaking on their EigenPod via the RETIRE feature (ELIP-018).
+For more information, see [Disable Your EigenPod](../restaking-guides/disable-eigenpod.md).
+
 ### Redistributable Operator Sets
 
 With Redistributable Operator Sets, Stakers should carefully consider the AVSs that their delegated Operators are running, 
